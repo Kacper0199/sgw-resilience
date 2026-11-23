@@ -1,0 +1,109 @@
+# Ask bank, photos: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-PHO-002
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - user_reported
+  question: show the photos from flooded area from hurricane helene
+  expect:
+    photos: 3
+  judge: true
+- id: AB-PHO-005
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Which damage photos should we review first?
+  expect:
+    mentions_any:
+    - review
+    - rank
+    - triage
+    photos: 1
+- id: AB-PHO-006
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Show photos for feeder 2207.
+  expect:
+    photos: 1
+- id: AB-PHO-007
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Is there any photo showing road damage?
+  expect:
+    photos: 1
+- id: AB-PHO-010
+  lang: en
+  persona: ops_dm_02
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - typo
+  question: show pics of debris
+  expect:
+    photos: 1
+- id: AB-PHO-012
+  lang: en
+  persona: log_01
+  moment: notices-lifted
+  page: crews
+  klass: photos
+  question: Show the damage cases still awaiting review with their photos.
+  expect:
+    photos: 1
+- id: AB-PHO-016
+  lang: pl
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Pokaż zdjęcia zniszczeń.
+  expect:
+    photos: 3
+- id: AB-PHO-018
+  lang: pl
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: photos
+  tags:
+  - no_diacritics
+  question: pokaz zdjecia szkod po huraganie
+  expect:
+    photos: 3
+- id: AB-PHO-020
+  lang: pl
+  persona: log_01
+  moment: notices-lifted
+  page: crews
+  klass: photos
+  question: Skąd pochodzą te zdjęcia?
+  expect:
+    mentions_any:
+    - LADI
+    - benchmark
+    - zbi
+    photos: 1
+- id: AB-PHO-023
+  lang: fr
+  persona: exec_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - other_language
+  question: Montre-moi des photos des inondations.
+  expect:
+    photos: 3

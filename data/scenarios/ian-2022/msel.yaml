@@ -1,0 +1,194 @@
+# Hurricane Ian 2022 exercise injects (R34 B2): the master scenario events list (MSEL, HSEEP style) of the Ian pack,
+# raised on the scenario clock by the same zone-inject engine as the Helene injects (sgw.rules.injects). Everything
+# here is SYNTHETIC: invented facilities, resources and quantities (D-065), scripted times. Only the storm (NHC
+# HURDAT2 track, landfall near Georgetown, SC, 2022-09-30 18:05Z) is real. Same format as
+# data/synthetic/helene_injects.yaml; an inject may name its own `proposer` (the boil-water notice is raised by the
+# platform's pressure-loss rule, the only principal the approval policy lets propose a notice).
+version: "1.0-synthetic"
+proposer: system:rule:exercise_inject
+incident_id: INC-IAN-2022
+label: "Scripted exercise data (synthetic)"
+assets:
+  - {id: STG-GTN-SAMPIT-BLUFF-YARD, kind: staging_yard, domain: electric, region: SC-45043, name: "Sampit Bluff staging yard (synthetic)", lat: 33.402, lon: -79.402, critical: false, customers: 0, in_hazard_zone: false}
+  - {id: STG-HRY-BRACKENLOUGH-YARD, kind: staging_yard, domain: electric, region: SC-45051, name: "Brackenlough staging yard (synthetic)", lat: 33.921, lon: -79.104, critical: false, customers: 0, in_hazard_zone: false}
+  - {id: HSP-GTN-TIDEWRACK, kind: hospital, domain: electric, region: SC-45043, name: "Tidewrack Memorial hospital (synthetic)", lat: 33.381, lon: -79.291, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: ECC-HRY-WHELKSTONE, kind: dispatch_center, domain: electric, region: SC-45051, name: "Whelkstone 911 dispatch center (synthetic)", lat: 33.842, lon: -79.052, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: WTP-GTN-COQUINA-BEND, kind: treatment_plant, domain: water, region: SC-45043, name: "Coquina Bend water treatment plant (synthetic)", lat: 33.431, lon: -79.311, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: FDR-GTN-0412, kind: feeder, domain: electric, region: SC-45043, name: "Feeder 0412, Coquina Bend plant line (synthetic)", lat: 33.422, lon: -79.302, critical: false, customers: 1240, in_hazard_zone: true}
+  - {id: SUB-FLO-HARROWMEAD, kind: substation, domain: electric, region: SC-45041, name: "Harrowmead substation (synthetic)", lat: 34.188, lon: -79.771, critical: false, customers: 0, in_hazard_zone: true}
+  - {id: NRS-GTN-SALTMEADOW, kind: care_home, domain: water, region: SC-45043, name: "Saltmeadow care home (synthetic)", lat: 33.471, lon: -79.122, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: LS-HRY-OYSTERGRASS, kind: lift_station, domain: water, region: SC-45051, name: "Oystergrass sewer lift station (synthetic)", lat: 33.702, lon: -78.912, critical: false, customers: 780, in_hazard_zone: true}
+  - {id: PZ-GTN-MARSHGRASS-NECK, kind: pressure_zone, domain: water, region: SC-45043, name: "Marshgrass Neck water zone (synthetic)", lat: 33.452, lon: -79.131, critical: false, customers: 2950, in_hazard_zone: true}
+  - {id: MGEN-PETREL-500, kind: portable_generator, domain: electric, region: SC-45043, name: "Portable generator MGEN-PETREL-500, 500 kW (synthetic)", lat: 33.404, lon: -79.405, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: FTK-SCOTER-3, kind: fuel_truck, domain: electric, region: SC-45051, name: "Fuel truck FTK-SCOTER-3, 3,500 gal (synthetic)", lat: 33.923, lon: -79.107, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: WTK-WILLET-6, kind: potable_water_tanker, domain: water, region: SC-45043, name: "Potable water tanker WTK-WILLET-6, 5,000 gal (synthetic)", lat: 33.400, lon: -79.399, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+injects:
+  # ---- Day before landfall: 29 Sep ------------------------------------------------------------------------------
+  - id: IAN-01-EVENT-TYPE-MAJOR
+    title: "Declare a major storm event for the Pee Dee and coastal counties"
+    action_type: set_event_type
+    step: D1
+    domain: electric
+    region: SC-45043
+    targets: [SGW-ELECTRIC-TERRITORY]
+    params: {event_type: major_storm, previous: elevated_watch}
+    known_at: "2022-09-29T09:00:00Z"
+    resolved_at: "2022-09-30T12:00:00Z"
+    anchor_utc: "2022-09-30T06:00:00Z"
+    anchor_label: "Tropical-storm winds reach the Georgetown coast"
+    lead_key: event_type_declaration
+    if_late: "Storm roles, 16-hour shifts and the storm cost code start only after the first outages."
+    rationale: "Ian has crossed Florida and is forecast to make a second landfall on the South Carolina coast as a hurricane. Declaring a major storm event now starts storm roles and shifts before the wind arrives."
+  - id: IAN-02-MUTUAL-AID-TIDEWATER
+    title: "Request 16 mutual-aid line crews from the Tidewater group"
+    action_type: mutual_aid_request
+    step: D2
+    domain: electric
+    region: SC-45043
+    targets: [STG-GTN-SAMPIT-BLUFF-YARD]
+    params: {crews: 16, headcount: 128, source: "Tidewater mutual aid group (synthetic)", destination_id: STG-GTN-SAMPIT-BLUFF-YARD}
+    known_at: "2022-09-29T12:00:00Z"
+    resolved_at: "2022-09-30T12:00:00Z"
+    anchor_utc: "2022-09-30T03:00:00Z"
+    anchor_label: "Last departure that gets the crews to Sampit Bluff yard before the storm"
+    lead_key: mutual_aid_request_processing
+    if_late: "The 16 crews arrive after landfall and Georgetown starts restoration with local crews only."
+    rationale: "Local and contract crews cover about half of the scripted damage on the coast. 16 line crews (128 people) need about 12 h on the road; request them now so they stage at Sampit Bluff before the wind."
+  - id: IAN-03-STAGE-BRACKENLOUGH
+    title: "Stage 3 line crews at Brackenlough yard"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45051
+    targets: [STG-HRY-BRACKENLOUGH-YARD]
+    params: {crews: 3, crew_type: line, destination_id: STG-HRY-BRACKENLOUGH-YARD}
+    known_at: "2022-09-29T13:00:00Z"
+    resolved_at: "2022-09-30T14:00:00Z"
+    anchor_utc: "2022-09-30T09:00:00Z"
+    anchor_label: "Tropical-storm winds reach Horry County"
+    lead_key: crew_staging_small
+    if_late: "Horry County waits for crews from Georgetown after the storm."
+    rationale: "Horry County carries about 30% of the scripted outages. Three line crews staged inland at Brackenlough reach the coast first once the wind drops."
+  - id: IAN-04-GENERATOR-TIDEWRACK
+    title: "Send portable generator MGEN-PETREL-500 to Tidewrack Memorial hospital"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45043
+    targets: [MGEN-PETREL-500]
+    params: {resource_kind: mobile_generator, resource_id: MGEN-PETREL-500, destination_id: HSP-GTN-TIDEWRACK, kw: 500, backup_hours: 36}
+    known_at: "2022-09-29T14:00:00Z"
+    resolved_at: "2022-09-30T16:00:00Z"
+    anchor_utc: "2022-09-30T14:00:00Z"
+    anchor_label: "Roads to the hospital close for the storm"
+    lead_key: portable_generator_hookup
+    if_late: "The hospital rides out the outage on its own backup generator alone, with no spare."
+    rationale: "Tidewrack Memorial's backup generator covers about 36 h. A second 500 kW unit at the hospital before the roads close removes the single point of failure."
+  # ---- Landfall: 30 Sep -------------------------------------------------------------------------------------------
+  - id: IAN-05-FUEL-WHELKSTONE
+    title: "Send fuel truck FTK-SCOTER-3 to the Whelkstone 911 dispatch center"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45051
+    targets: [FTK-SCOTER-3]
+    params: {resource_kind: fuel, resource_id: FTK-SCOTER-3, destination_id: ECC-HRY-WHELKSTONE, gallons: 800, tank_hours: 20}
+    known_at: "2022-09-30T15:00:00Z"
+    resolved_at: "2022-10-01T06:00:00Z"
+    anchor_utc: "2022-09-30T23:30:00Z"
+    anchor_label: "The dispatch center's generator tank reaches its reserve"
+    lead_key: fuel_truck_dispatch
+    if_late: "911 dispatch for Horry County moves to the backup center while calls peak."
+    rationale: "The 911 dispatch center is on generator from landfall with about 20 h of fuel. Send 800 gallons from Brackenlough before the reserve so dispatch stays up through the night."
+  - id: IAN-06-RESTORE-COQUINA-FIRST
+    title: "Restore feeder 0412 first: it powers the Coquina Bend water plant"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: SC-45043
+    targets: [FDR-GTN-0412]
+    params: {first_id: FDR-GTN-0412, facility_id: WTP-GTN-COQUINA-BEND, plant_generator_hours: 10}
+    known_at: "2022-09-30T17:00:00Z"
+    resolved_at: "2022-10-01T12:00:00Z"
+    anchor_utc: "2022-10-01T05:00:00Z"
+    anchor_label: "The plant's generator fuel runs out"
+    lead_key: feeder_restoration_dispatch
+    if_late: "Coquina Bend stops treating water and the Marshgrass Neck zone loses pressure."
+    rationale: "Feeder 0412 is about to drop with the eyewall; Coquina Bend water treatment plant then runs on its generator with about 10 h of fuel. Restoring feeder 0412 before the other Georgetown feeders keeps water pressure up for about 2,950 customers."
+  - id: IAN-07-STAGE-HARROWMEAD
+    title: "Stage 2 substation crews at Harrowmead substation"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45041
+    targets: [SUB-FLO-HARROWMEAD]
+    params: {crews: 2, crew_type: substation, destination_id: SUB-FLO-HARROWMEAD}
+    known_at: "2022-09-30T17:30:00Z"
+    resolved_at: "2022-10-01T08:00:00Z"
+    anchor_utc: "2022-10-01T02:00:00Z"
+    anchor_label: "Ian's remnant reaches Florence County"
+    lead_key: crew_staging_small
+    if_late: "A tripped Harrowmead bus waits for crews from the coast."
+    rationale: "Ian weakens inland but keeps gusts over Florence County tonight. Two substation crews at Harrowmead can reclose the bus quickly if it trips."
+  # ---- Morning after landfall: 1 Oct ------------------------------------------------------------------------------
+  - id: IAN-08-NOTICE-MARSHGRASS
+    title: "Issue a boil-water notice for the Marshgrass Neck water zone"
+    proposer: system:rule:bwa_pressure_loss
+    action_type: boil_water_notice
+    step: D3
+    domain: water
+    region: SC-45043
+    targets: [PZ-GTN-MARSHGRASS-NECK]
+    params: {zone_id: PZ-GTN-MARSHGRASS-NECK, customers: 2950, pressure_psi: 14, floor_psi: 20}
+    known_at: "2022-10-01T08:00:00Z"
+    resolved_at: "2022-10-01T22:00:00Z"
+    anchor_utc: "2022-10-01T16:00:00Z"
+    anchor_label: "Notice must reach customers within the state's window after pressure loss"
+    lead_key: boil_water_notice_release
+    if_late: "About 2,950 customers keep drinking tap water from a zone that lost pressure."
+    rationale: "Pressure in the Marshgrass Neck zone fell to 14 psi overnight, below the 20 psi floor, while Coquina Bend ran on its generator. The pressure-loss rule calls for a boil-water notice."
+  - id: IAN-09-TANKER-SALTMEADOW
+    title: "Send potable water tanker WTK-WILLET-6 to Saltmeadow care home"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45043
+    targets: [WTK-WILLET-6]
+    params: {resource_kind: potable_water_tanker, resource_id: WTK-WILLET-6, destination_id: NRS-GTN-SALTMEADOW, tanker_gal: 5000, residents: 96}
+    known_at: "2022-10-01T09:00:00Z"
+    resolved_at: "2022-10-02T00:00:00Z"
+    anchor_utc: "2022-10-01T18:00:00Z"
+    anchor_label: "The care home's stored water runs out"
+    lead_key: potable_water_tanker
+    if_late: "96 residents are without safe drinking water this evening."
+    rationale: "Saltmeadow care home is inside the Marshgrass Neck zone and has stored water until about this evening. A 5,000 gallon tanker covers its 96 residents until the notice is lifted."
+  - id: IAN-10-RESTORE-OYSTERGRASS
+    title: "Restore power to the Oystergrass lift station before nearby feeders"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: SC-45051
+    targets: [LS-HRY-OYSTERGRASS]
+    params: {first_id: LS-HRY-OYSTERGRASS, facility_id: LS-HRY-OYSTERGRASS, wet_well_pct: 80}
+    known_at: "2022-10-01T10:00:00Z"
+    resolved_at: "2022-10-02T00:00:00Z"
+    anchor_utc: "2022-10-01T19:00:00Z"
+    anchor_label: "The wet well overflows"
+    lead_key: feeder_restoration_dispatch
+    if_late: "Sewage overflows near homes in Horry County."
+    rationale: "The Oystergrass lift station has been without power since landfall and its wet well is at 80%. Restoring it before the nearby residential feeders avoids an overflow."
+  - id: IAN-11-EXTEND-MUTUAL-AID
+    title: "Keep the Tidewater mutual-aid crews 3 more days"
+    action_type: mutual_aid_request
+    step: D2
+    domain: electric
+    region: SC-45043
+    targets: [STG-GTN-SAMPIT-BLUFF-YARD]
+    params: {crews: 16, extension_days: 3, source: "Tidewater mutual aid group (synthetic)", destination_id: STG-GTN-SAMPIT-BLUFF-YARD}
+    known_at: "2022-10-01T10:30:00Z"
+    resolved_at: "2022-10-02T06:00:00Z"
+    anchor_utc: "2022-10-02T00:00:00Z"
+    anchor_label: "The Tidewater crews' release time"
+    lead_key: mutual_aid_request_processing
+    if_late: "The 16 crews go home while about 30,000 customers are still out."
+    rationale: "About 98,700 customers are still out this morning. Keeping the 16 Tidewater crews 3 more days covers the scripted restoration plan."

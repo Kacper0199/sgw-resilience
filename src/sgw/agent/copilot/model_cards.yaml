@@ -1,0 +1,92 @@
+# R34: what Ask may say about the platform's own (non-LLM) models. One card per model: the words that name it
+# (English and Polish stems, matched on folded text), the page it lives on, and plain sentences on method,
+# inputs, provenance and honest quality. Every figure is a {number_key} from data/numbers/numbers.yaml and is
+# filled by code with its unit, so a card never carries a number of its own.
+cards:
+  - key: outage_forecast
+    page: forecast
+    match: [outage forecast, outage model, customers out forecast, prognoz awari, prognoza awari, ensemble, quantile]
+    method: >-
+      The outage forecast turns each forecast storm track into expected customers out per county. The working
+      core is a wind-fragility curve: two parameters that map peak wind to the share of customers who lose power.
+      The replay also runs a boosted quantile model trained on Debby, Ian and Michael, which gives the ranges.
+    inputs: Forecast storm tracks and wind fields from the hazard ensemble, county customer counts and public EAGLE-I outage history.
+    provenance: Trained and tested on real storms and real public outage data; the Helene numbers in the replay are synthetic.
+    quality: >-
+      In a leave-one-storm-out test the curve beat a fitted wind-threshold rule on {eval_outage_storms_won} of
+      {eval_outage_storms_n} storms, but it under-predicted the total on {eval_outage_storms_underpredicted}
+      of them. For Helene, held out, it forecast about {eval_outage_helene_forecast_m} million customers out against
+      {eval_outage_helene_observed_m} million observed. Only {eval_outage_helene_cover_inner_pct} of Helene counties
+      fell inside the 80% range. Treat it as a direction, not a count.
+  - key: surge_detector
+    page: map
+    match: [surge, surge detector, outage surge, skok awari, wykrywacz]
+    method: >-
+      The surge detector watches outage counts per county every hour and flags a county when outages climb fast
+      against its own recent level and its neighbours are rising too (a CUSUM test plus a neighbour rule).
+    inputs: Hourly public EAGLE-I outage counts per county.
+    provenance: Real 2024 EAGLE-I data for Helene; storm labels from NOAA NCEI, which miss some storms.
+    quality: >-
+      On test years it caught {eval_surge_test_recall} of storm episodes against {eval_surge_test_recall_fixed_share}
+      and {eval_surge_test_recall_rolling_z} for two tuned threshold rules, but raised more false alarms:
+      {eval_surge_test_fa_per_county_month} per county-month against {eval_surge_test_fa_fixed_share} and
+      {eval_surge_test_fa_rolling_z}. It did not pass its pre-registered bar, so a surge is a signal to check,
+      not a confirmed outage.
+  - key: water_anomaly
+    page: water
+    match: [anomaly, anomalies, sensor alarm, spoof, anomali, czujnik]
+    method: >-
+      The water anomaly detector compares each pressure and flow sensor with what the water twin expects and with
+      its neighbours, and flags leaks, stuck sensors and readings that look spoofed.
+    inputs: Synthetic SCADA pressure and flow telemetry and the water twin's expected values.
+    provenance: Synthetic data with seeded faults; no real SGW telemetry.
+    quality: >-
+      On a synthetic bench of {eval_anomaly_dev_faults} seeded faults it found {eval_anomaly_recall_dev} of them, against
+      {eval_anomaly_baseline_recall_dev} for a station low-pressure alarm alone. That misses its target, so a
+      quiet sensor is not proof that all is well.
+  - key: photo_triage
+    page: crews
+    match: [photo triage, damage photo, triage score, image model, computer vision, zdjeci, triaz]
+    method: >-
+      Photo triage scores each aerial photo for signs of damage (flooding, debris, damaged buildings and roads)
+      and ranks the queue so a reviewer sees the worst first. A person confirms every photo.
+    inputs: Public LADI-v2 aerial photos that stand in for field photos.
+    provenance: The photos are public and not from SGW territory; the model is a published LADI-v2 classifier.
+    quality: >-
+      Its published score is {eval_cv_map_test} mAP on {eval_cv_test_n} test images, a mean over labels that include
+      easy non-damage ones. SGW did not measure it on its own photos.
+  - key: crew_plan
+    page: crews
+    match: [crew plan, optimiser, optimizer, optimisation, optimization, dispatch plan, mutual aid plan, plan ekip, optymaliz]
+    method: >-
+      The crew plan optimiser compares ways to stage crews and request mutual aid across many possible storm
+      outcomes (sample average approximation) and shows the trade-off between customer-hours and cost. It does
+      not recommend: approvers choose.
+    inputs: Outage forecast scenarios, crew rosters, staging yards, travel times and the assumed mutual-aid day rate.
+    provenance: Synthetic Helene replay scenarios and assumed costs.
+    quality: >-
+      Planning for the spread of outcomes saved about {eval_saa_vss_customer_hours} customer-hours against planning for the
+      median forecast, over {eval_saa_scenarios} out-of-sample scenarios. These are synthetic results.
+  - key: water_twin
+    page: water
+    match: [water twin, pressure model, hydraulic, digital twin, blizniak, cisnieni]
+    method: >-
+      The water twin is a reduced hydraulic model of each pump station zone: tank level, pumping and the power
+      source over time, which gives the pressure and the hours until a zone drops below the state floor.
+    inputs: Pump station and tank data of the network, demand profiles and the power state of each station.
+    provenance: Synthetic network and data, checked against a full EPANET (WNTR) model.
+    quality: >-
+      Over {eval_water_wntr_runs} checks against the full model its timing error was tiny. It is only as good as
+      the synthetic network it models.
+  - key: etr_model
+    page: forecast
+    match: [etr model, restoration estimate, restoration model, etr range, czas przywrocenia, estimated time of restoration]
+    method: >-
+      The restoration estimate gives a median and a range for when power comes back, per operating area and for
+      the whole system, from the damage so far, crews and the storm's footprint.
+    inputs: Outage counts, crews on hand and the storm's footprint.
+    provenance: Tested on synthetic Helene-like storms only.
+    quality: >-
+      On {eval_etr_test_storms} synthetic test storms the 80% range held the actual time in {eval_etr_cover_regional_pct}
+      of operating areas, and the median missed by {eval_etr_global_error_pct} system-wide against
+      {eval_etr_global_analog_error_pct} for a historical analog. No real storm has tested it.

@@ -1,0 +1,203 @@
+{
+  "$defs": {
+    "Classification": {
+      "enum": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C3-N",
+        "C4",
+        "CX"
+      ],
+      "title": "Classification",
+      "type": "string"
+    },
+    "Effort": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "title": "Effort",
+      "type": "string"
+    },
+    "EvalResult": {
+      "additionalProperties": false,
+      "properties": {
+        "report": {
+          "description": "path under evals/reports/",
+          "title": "Report",
+          "type": "string"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "value_ppm": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Value Ppm",
+          "type": "integer"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "report",
+        "metric",
+        "value_ppm",
+        "passed"
+      ],
+      "title": "EvalResult",
+      "type": "object"
+    },
+    "ModelAlias": {
+      "enum": [
+        "sonnet",
+        "haiku",
+        "opus"
+      ],
+      "title": "ModelAlias",
+      "type": "string"
+    },
+    "NodeConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "node": {
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "title": "Node",
+          "type": "string"
+        },
+        "model": {
+          "$ref": "#/$defs/ModelAlias"
+        },
+        "effort": {
+          "$ref": "#/$defs/Effort"
+        },
+        "max_tokens": {
+          "maximum": 64000,
+          "minimum": 64,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "prompt_version": {
+          "pattern": "^v\\d+(\\.\\d+)*$",
+          "title": "Prompt Version",
+          "type": "string"
+        },
+        "output_schema": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "dotted path of a Pydantic model for structured output",
+          "title": "Output Schema"
+        },
+        "cache_breakpoints": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cache Breakpoints",
+          "type": "array"
+        },
+        "class_ceiling": {
+          "$ref": "#/$defs/Classification"
+        },
+        "citations": {
+          "default": false,
+          "title": "Citations",
+          "type": "boolean"
+        },
+        "betas": {
+          "description": "anthropic-beta values the gateway allows",
+          "items": {
+            "type": "string"
+          },
+          "title": "Betas",
+          "type": "array"
+        },
+        "tool_types": {
+          "description": "non-custom tool types allowed",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tool Types",
+          "type": "array"
+        },
+        "source_types": {
+          "description": "non-inline document/image sources the gateway allows, e.g. document.base64",
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Types",
+          "type": "array"
+        },
+        "routes": {
+          "description": "egress routes the node may use; R2 is required before a pseudonymized C2 claim counts",
+          "items": {
+            "enum": [
+              "R1",
+              "R2"
+            ],
+            "type": "string"
+          },
+          "title": "Routes",
+          "type": "array"
+        },
+        "eval_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvalResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "node",
+        "model",
+        "effort",
+        "max_tokens",
+        "prompt_version",
+        "class_ceiling"
+      ],
+      "title": "NodeConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/NodeConfig"
+      },
+      "title": "Nodes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "version",
+    "nodes"
+  ],
+  "title": "SGW K14 LLM node config",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

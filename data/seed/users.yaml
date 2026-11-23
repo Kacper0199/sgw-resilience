@@ -1,0 +1,99 @@
+# K18 seeded identities (X-01: PS DC-10 ids and functions; ops_dm_02 added by the orchestrator in the WP-02
+# fix round so the T2 small-staging step has a non-proposer operations approver). Display names are role titles, never person names.
+# The password is read from the environment variable named below; it is never stored in the repository.
+version: 1
+password_env: DEMO_PASSWORD
+users:
+  - user_id: ic_01
+    display_name: Incident Commander
+    persona: P1
+    function: command
+    roles: [incident_commander]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: true
+    break_glass_eligible: true
+    kill_trigger: true
+  - user_id: ops_dm_01
+    display_name: Duty Manager, Electric Operations
+    persona: P2
+    function: operations
+    roles: [duty_manager]
+    regions: [SC, GA]
+    domains: [electric]
+    can_approve: true
+    kill_trigger: true
+  - user_id: ops_dm_02
+    display_name: Duty Manager (relief)
+    persona: P2
+    function: operations
+    roles: [duty_manager]
+    regions: [SC, GA]
+    domains: [electric]
+    can_approve: true
+  - user_id: plan_etr_01
+    display_name: ETR Specialist
+    persona: P3
+    function: planning
+    roles: [etr_specialist]
+    regions: [SC, GA]
+    domains: [electric]
+    can_approve: false
+  - user_id: log_01
+    display_name: Logistics Section Chief
+    persona: P4
+    function: logistics
+    roles: [logistics_chief]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: true
+  - user_id: wtr_lead_01
+    display_name: Water Incident Lead
+    persona: P5
+    function: water_operations
+    roles: [water_incident_lead]
+    regions: [SC, GA]
+    domains: [water]
+    can_approve: true
+    kill_trigger: true
+  - user_id: wtr_comp_01
+    display_name: Water Compliance Officer
+    persona: P6
+    function: compliance
+    roles: [water_compliance_officer]
+    regions: [SC, GA]
+    domains: [water]
+    can_approve: true
+  - user_id: exec_01
+    display_name: Executive (COO)
+    persona: P7
+    function: executive
+    roles: [executive]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: false
+    kill_trigger: true
+  - user_id: audit_01
+    display_name: Auditor
+    persona: G1
+    function: audit
+    roles: [auditor]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: false
+  - user_id: admin_01
+    display_name: Platform Admin
+    persona: G2
+    function: platform
+    roles: [platform_admin]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: false
+  - user_id: ml_01
+    display_name: Data and Models Owner
+    persona: G3
+    function: data
+    roles: [ml_data_owner]
+    regions: [SC, GA]
+    domains: [electric, water]
+    can_approve: false

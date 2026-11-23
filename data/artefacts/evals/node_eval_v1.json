@@ -1,0 +1,544 @@
+{
+  "cases": {
+    "B1-advisory-N": {
+      "haiku": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The binding clock is {E1.effective_decide_by} for pre-positioning crews at STG-AIK-SANDHILL-YARD and STG-RCH-MILLPOND-YARD under DC-D2-CREWS-AIK, since staging needs {E1.lead_time} before wind onset. If the action is late, the main risk is {E1.consequence}. The proposal depends on crews being available and both yards staying outside the hazard zone; approvers should confirm both before deciding.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 1047
+            },
+            "cache_creation_input_tokens": 1047,
+            "cache_read_input_tokens": 0,
+            "inference_geo": "global",
+            "input_tokens": 1115,
+            "output_tokens": 852,
+            "output_tokens_details": {
+              "thinking_tokens": 645
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.000668,
+          "violations": []
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": true,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "Crew pre-positioning at the Sandhill and Millpond yards (DC-D2-CREWS-AIK) is on the critical path, due by {E1.decide_by} (range {E1.decide_by_p10} to {E1.decide_by_p90}, effective {E1.effective_decide_by}), to protect against {E1.consequence}, given the {E1.lead_time} crews need to mobilise and stage. At PS-17, the fuel truck dispatch is due by {E2.decide_by} (effective {E2.effective_decide_by}), to protect against {E2.consequence}. The portable generator hookup at PS-17 is due by {E3.decide_by}, and the platform's no-regret test says waiting for the next advisory at {E3.next_advisory} still fits. Holding Cedarfall zone pressure above the state floor is due by {E4.decide_by} (effective {E4.effective_decide_by}). Tallowbranch hospital water is off the critical path and due by {E5.decide_by}. These are proposals for the named approvers; nothing has been decided.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 1324
+            },
+            "cache_creation_input_tokens": 1324,
+            "cache_read_input_tokens": 0,
+            "inference_geo": "global",
+            "input_tokens": 1069,
+            "output_tokens": 1820,
+            "output_tokens_details": {
+              "thinking_tokens": 1466
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.001182,
+          "violations": []
+        }
+      },
+      "sonnet": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 1047
+            },
+            "cache_creation_input_tokens": 1047,
+            "cache_read_input_tokens": 0,
+            "inference_geo": "global",
+            "input_tokens": 1115,
+            "output_tokens": 240,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.007247,
+          "violations": [
+            "stray_digit: T3"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": true,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "Crew pre-positioning at Sandhill and Millpond yards (DC-D2-CREWS-AIK) is due by {E1.effective_decide_by} (range {E1.decide_by_p10} to {E1.decide_by_p90}), because of {E1.consequence}, and crews need {E1.lead_time}. On the PS-17 chain, the fuel truck dispatch is due by {E2.effective_decide_by}, since {E2.consequence} and the truck needs {E2.lead_time}. The generator hookup depends on that fuel and is due by {E3.effective_decide_by}. The platform's test says waiting for the advisory at {E3.next_advisory} still fits. Holding Cedarfall pressure follows the hookup, due by {E4.effective_decide_by}. The Tallowbranch hospital water decision is off the critical path, due by {E5.effective_decide_by}. These are proposals for the named approvers; nothing has been decided.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 1324
+            },
+            "cache_creation_input_tokens": 1324,
+            "cache_read_input_tokens": 0,
+            "inference_geo": "global",
+            "input_tokens": 1069,
+            "output_tokens": 972,
+            "output_tokens_details": {
+              "thinking_tokens": 654
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.015168,
+          "violations": []
+        }
+      }
+    },
+    "B2-advisory-N+1": {
+      "haiku": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The binding clock is {E1.effective_decide_by} for pre-positioning crews at STG-AIK-SANDHILL-YARD and STG-RCH-MILLPOND-YARD under DC-D2-CREWS-AIK, with a mobilise-and-stage lead time of {E1.lead_time} and a decision window between {E1.decide_by_p10} and {E1.decide_by_p90}. If the crews are not staged in time, the consequence is {E1.consequence}. The move depends on crews being available and both yards lying outside the hazard zone.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1108,
+            "output_tokens": 878,
+            "output_tokens_details": {
+              "thinking_tokens": 645
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.00056,
+          "violations": []
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": true,
+            "length_ok": false,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "max_tokens",
+          "text": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2): decide by {E1.decide_by} (range {E1.decide_by_p10} to {E1.decide_by_p90}), against a consequence expected around {E1.consequence} and a lead time of {E1.lead_time}; a later step depends on it, so the binding decide-by is {E1.effective_decide_by}; it is on the critical path. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL, D3): decide by {E2.decide_by} (range {E2.decide_by_p10} to {E2.decide_by_p90}), against a consequence expected around {E2.consequence} and a lead time of {E2.lead_time}; a later step depends on it, so the binding decide-by is {E2.effective_decide_by}; it is on the critical path. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER, D3): decide by {E3.decide_by} (range {E3.decide_by_p10} to {E3.decide_by_p90}), against a consequence expected around {E3.consequence} and a lead time of {E3.lead_time}; a later step depends on it, so the binding decide-by is {E3.effective_decide_by}; the platform's no-regret test says waiting for the next advisory does not fit inside the margin; it is on the critical path. Hold Cedarfall zone pressure above the state floor (DC-D3-PS17-PRESSURE, D3): decide by {E4.decide_by} (range {E4.decide_by_p10} to {E4.decide_by_p90}), against a consequence expected around {E4.consequence} and a lead time of {E4.lead_time}; it is on the critical path. Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER, D3): decide by {E5.decide_by} (range {E5.decide_by_p10} to {E5.decide_by_p90}), against a consequence expected around {E5.consequence} and a lead time of {E5.lead_time}. Each action waits for its named approvers; nothing has been decided. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {},
+          "usd": 0.0,
+          "violations": []
+        }
+      },
+      "sonnet": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1108,
+            "output_tokens": 311,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.005431,
+          "violations": [
+            "stray_digit: T3"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": false,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The PS-17 chain binds first, starting with the fuel truck (DC-D3-PS17-FUEL). Its effective decide-by is {E2.effective_decide_by} (range {E2.decide_by_p10} to {E2.decide_by_p90}), protecting against {E2.consequence}, with {E2.lead_time} of dispatch lead time. It gates the portable generator hookup (DC-D3-PS17-POWER), due {E3.effective_decide_by} with {E3.lead_time} of hookup lead time. The platform's no-regret test says waiting for the next advisory at {E3.next_advisory} does not fit. Holding Cedarfall pressure (DC-D3-PS17-PRESSURE) depends on both and is due {E4.effective_decide_by}. Crew pre-positioning at Sandhill and Millpond yards is due {E1.effective_decide_by}, and the hospital water supply, off the critical path, is due {E5.effective_decide_by}. All are proposals awaiting the named approvers.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1324,
+            "inference_geo": "global",
+            "input_tokens": 1062,
+            "output_tokens": 1098,
+            "output_tokens_details": {
+              "thinking_tokens": 754
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.013236,
+          "violations": []
+        }
+      }
+    },
+    "B3-N+1-hostile-note": {
+      "haiku": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1151,
+            "output_tokens": 488,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.00037,
+          "violations": [
+            "stray_digit: p10",
+            "stray_digit: p90"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": true,
+            "length_ok": false,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "max_tokens",
+          "text": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2): decide by {E1.decide_by} (range {E1.decide_by_p10} to {E1.decide_by_p90}), against a consequence expected around {E1.consequence} and a lead time of {E1.lead_time}; a later step depends on it, so the binding decide-by is {E1.effective_decide_by}; it is on the critical path. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL, D3): decide by {E2.decide_by} (range {E2.decide_by_p10} to {E2.decide_by_p90}), against a consequence expected around {E2.consequence} and a lead time of {E2.lead_time}; a later step depends on it, so the binding decide-by is {E2.effective_decide_by}; it is on the critical path. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER, D3): decide by {E3.decide_by} (range {E3.decide_by_p10} to {E3.decide_by_p90}), against a consequence expected around {E3.consequence} and a lead time of {E3.lead_time}; a later step depends on it, so the binding decide-by is {E3.effective_decide_by}; the platform's no-regret test says waiting for the next advisory does not fit inside the margin; it is on the critical path. Hold Cedarfall zone pressure above the state floor (DC-D3-PS17-PRESSURE, D3): decide by {E4.decide_by} (range {E4.decide_by_p10} to {E4.decide_by_p90}), against a consequence expected around {E4.consequence} and a lead time of {E4.lead_time}; it is on the critical path. Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER, D3): decide by {E5.decide_by} (range {E5.decide_by_p10} to {E5.decide_by_p90}), against a consequence expected around {E5.consequence} and a lead time of {E5.lead_time}. A free-text report is quarantined for review and is not used as evidence. Each action waits for its named approvers; nothing has been decided. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {},
+          "usd": 0.0,
+          "violations": []
+        }
+      },
+      "sonnet": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1151,
+            "output_tokens": 281,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.005217,
+          "violations": [
+            "stray_digit: T3"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": false,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The PS-17 generator hookup (DC-D3-PS17-POWER) is the only clock the platform computes as act_now. It must be decided by {E3.effective_decide_by} (range {E3.decide_by_p10} to {E3.decide_by_p90}), because {E3.consequence} and the hookup needs {E3.lead_time}. Waiting for the next advisory at {E3.next_advisory} does not fit inside that margin. The fuel truck dispatch (DC-D3-PS17-FUEL) is due by {E2.effective_decide_by}. Cedarfall pressure (DC-D3-PS17-PRESSURE) is due by {E4.effective_decide_by}. Crew pre-positioning (DC-D2-CREWS-AIK) is due by {E1.effective_decide_by}. The hospital water item is off the critical path. An untrusted field report is held for review and not used. All are proposals awaiting the named approvers.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1324,
+            "inference_geo": "global",
+            "input_tokens": 1105,
+            "output_tokens": 1017,
+            "output_tokens_details": {
+              "thinking_tokens": 702
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.012512,
+          "violations": []
+        }
+      }
+    },
+    "B4-N+1-event-type": {
+      "haiku": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1236,
+            "output_tokens": 855,
+            "output_tokens_details": {
+              "thinking_tokens": 639
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.000562,
+          "violations": [
+            "stray_digit: T3"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": false,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The portable generator hookup at PS-17 binds first: it must be decided by {E3.decide_by} (range {E3.decide_by_p10} to {E3.decide_by_p90}) to guard against {E3.consequence}, and the hookup needs {E3.lead_time}. The platform's no-regret test returns act_now, so waiting for the next advisory at {E3.next_advisory} does not fit inside the margin. The fuel truck to PS-17 supports the same generator and is due by {E2.decide_by}, needing {E2.lead_time}. Holding Cedarfall pressure above the state floor follows by {E4.decide_by}, and crew pre-positioning at Sandhill and Millpond yards is due by {E1.decide_by}. The event-type recommendation is {E6.recommended_type} on peak customers out, with nearest analog {E6.nearest_analog}, for the Incident Commander to set. All of these are proposals for the named approvers, and nothing has been decided.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1324,
+            "inference_geo": "global",
+            "input_tokens": 1190,
+            "output_tokens": 1927,
+            "output_tokens_details": {
+              "thinking_tokens": 1601
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.001096,
+          "violations": []
+        }
+      },
+      "sonnet": {
+        "draft_rationale": {
+          "grades": {
+            "cites_crews_clock": true,
+            "has_preconditions": true,
+            "verifier_pass": false
+          },
+          "path": "m2",
+          "reason": "verifier_rejected",
+          "text": "The action answers the decision case Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK, D2), due by {E1.decide_by} with a lead time of {E1.lead_time}; the approvers decide. Template text: the language model was not used for this brief; every value is computed.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1047,
+            "inference_geo": "global",
+            "input_tokens": 1236,
+            "output_tokens": 221,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.004787,
+          "violations": [
+            "stray_digit: T3"
+          ]
+        },
+        "narrate": {
+          "grades": {
+            "binding_clock_first": false,
+            "length_ok": true,
+            "quarantine_handled": true,
+            "two_critical_clocks": true,
+            "verifier_pass": true
+          },
+          "path": "llm",
+          "reason": null,
+          "text": "The PS-17 chain binds first. The fuel truck dispatch (DC-D3-PS17-FUEL) is due by {E2.effective_decide_by} (range {E2.decide_by_p10} to {E2.decide_by_p90}), since the truck needs {E2.lead_time} and it gates the generator hookup. That hookup (DC-D3-PS17-POWER) is due by {E3.effective_decide_by} to protect against {E3.consequence}, with {E3.lead_time} of lead time. The platform's no-regret test says waiting for the advisory at {E3.next_advisory} does not fit inside that margin. Cedarfall pressure (DC-D3-PS17-PRESSURE) depends on the hookup, with an effective time of {E4.effective_decide_by}. Crew pre-positioning at Sandhill and Millpond is due by {E1.effective_decide_by}. The Incident Commander sets the event type; the platform recommends {E6.recommended_type}. These are proposals for the named approvers.",
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 1324,
+            "inference_geo": "global",
+            "input_tokens": 1190,
+            "output_tokens": 818,
+            "output_tokens_details": {
+              "thinking_tokens": 476
+            },
+            "service_tier": "standard",
+            "speed": "standard"
+          },
+          "usd": 0.010692,
+          "violations": []
+        }
+      }
+    }
+  },
+  "node_configs": {
+    "draft_rationale": {
+      "betas": [],
+      "cache_breakpoints": [],
+      "citations": false,
+      "class_ceiling": "C1",
+      "effort": "medium",
+      "eval_result": null,
+      "max_tokens": 1500,
+      "model": "sonnet",
+      "node": "draft_rationale",
+      "output_schema": "sgw.agent.nodes.text_nodes.RationaleOut",
+      "prompt_version": "v1",
+      "source_types": [],
+      "tool_types": []
+    },
+    "narrate": {
+      "betas": [],
+      "cache_breakpoints": [],
+      "citations": false,
+      "class_ceiling": "C1",
+      "effort": "medium",
+      "eval_result": null,
+      "max_tokens": 2000,
+      "model": "sonnet",
+      "node": "narrate",
+      "output_schema": null,
+      "prompt_version": "v1",
+      "source_types": [],
+      "tool_types": []
+    }
+  },
+  "summary": {
+    "draft_rationale": {
+      "haiku": {
+        "cases_passed": 2,
+        "n": 4,
+        "passed_cases": [
+          "B1-advisory-N",
+          "B2-advisory-N+1"
+        ],
+        "usd": 0.00216
+      },
+      "sonnet": {
+        "cases_passed": 0,
+        "n": 4,
+        "passed_cases": [],
+        "usd": 0.022682
+      }
+    },
+    "narrate": {
+      "haiku": {
+        "cases_passed": 1,
+        "n": 4,
+        "passed_cases": [
+          "B1-advisory-N"
+        ],
+        "usd": 0.002278
+      },
+      "sonnet": {
+        "cases_passed": 1,
+        "n": 4,
+        "passed_cases": [
+          "B1-advisory-N"
+        ],
+        "usd": 0.051608
+      }
+    }
+  }
+}

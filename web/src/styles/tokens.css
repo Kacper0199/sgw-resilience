@@ -1,0 +1,259 @@
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #e6ecf5;
+  --surface: #ffffff;
+  --surface-2: #f5f7fa;
+  --surface-3: #eceff4;
+  --selected: #e0ebfc;
+  --hair: #dde3ec;
+  --hair-strong: #c3ccda;
+  --divider: #9aa8be;
+  --handle: #7f8fa8;
+  --scrollbar-thumb: #cdd5e1;
+  --scrollbar-thumb-active: #8c9bb2;
+  --ink: #131b2a;
+  --ink-2: #38445a;
+  --muted: #566379;
+  --faint: #5e6a7f;
+  --primary: #1f3a68;
+  --on-primary: #ffffff;
+  --primary-hover: #172c50;
+  --blue: #2563d4;
+  --blue-ink: #1b4dae;
+  --blue-soft: #eaf1fd;
+  --blue-line: #b8cdf3;
+  --warn: #8a5300;
+  --warn-soft: #fff3dc;
+  --warn-line: #e8c77f;
+  --warn-mark: #c47600;
+  --crit: #b3261e;
+  --crit-soft: #fde9e7;
+  --ok: #1f6b45;
+  --on-crit: #ffffff;
+
+  --glass: rgba(246, 248, 252, 0.82);
+  --glass-line: rgba(19, 27, 42, 0.1);
+  --scrim: rgba(19, 27, 42, 0.3);
+  --scrim-blur: 8px;
+  --glass-blur: blur(20px) saturate(1.6);
+  --toast-bg: #131b2a;
+  --on-toast: #f2f5fa;
+
+  --e-float: 0 0 0 1px rgba(19, 27, 42, 0.07), 0 8px 24px -6px rgba(19, 27, 42, 0.18);
+  --e-pop: 0 0 0 1px rgba(19, 27, 42, 0.08), 0 4px 16px rgba(19, 27, 42, 0.1);
+  --e-composer:
+    0 0 0 1px rgba(19, 27, 42, 0.1), 0 2px 8px rgba(19, 27, 42, 0.05), 0 10px 40px rgba(19, 27, 42, 0.05);
+  --e-dialog:
+    0 0 0 1px rgba(19, 27, 42, 0.1), 0 4px 16px rgba(19, 27, 42, 0.1), 0 28px 72px rgba(19, 27, 42, 0.22);
+
+  --chart-1: #2563d4;
+  --chart-2: #0f8fa0;
+  --chart-3: #c98a00;
+  --chart-band-wide: #9bb8ef;
+  --chart-band-mid: #5f8fe3;
+  --chart-band-core: #1f56bd;
+  --chart-median: #0b1220;
+  --chart-track: #dde3ec;
+
+  --map-land-us: #f1f3f6;
+  --map-land-other: #e2e7ee;
+  --map-state: #cbd3de;
+  --map-region: #ffffff;
+  --map-region-line: #1f3a68;
+  --map-geo-label: #7a879b;
+  --map-land: #fbfcfd;
+  --map-water: #d6e1ee;
+  --map-line: #ffffff;
+  --map-coast: #b9c1cd;
+  --map-gauge-below: #8794a8;
+  --map-gauge-minor: #dd8f1f;
+  --map-gauge-moderate: #cf3f35;
+  --map-gauge-major: #8a3fae;
+  --map-warning-hurricane: #b3263d;
+  --map-warning-tropical: #e0873a;
+  --map-warning-flood: #3c9c66;
+  --map-warning-flash-flood: #1b6b45;
+  --map-warning-tornado: #d43470;
+  --map-asset-water: #0b7f92;
+  --rlo: #f1eee6;
+  --rhi: #dda774;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --topbar: #1d2b3d;
+  --on-topbar: #eef2f8;
+  --topbar-muted: #b4bfd0;
+  --topbar-line: #43516a;
+  --topbar-field: #2a3a52;
+  --topbar-hover: #2a3a52;
+  --topbar-border: transparent;
+  --topbar-focus: #9db9f0;
+  --domain-power: #d9a21b;
+  --domain-water: #13a3b5;
+  --domain-docs: #8b6fd0;
+  --soft-shadow: none;
+  --box-shadow: none;
+  --pop-shadow: var(--e-pop);
+  --risk-1: #f1eee6;
+  --risk-2: #ecdcc9;
+  --risk-3: #e7caad;
+  --risk-4: #e2b990;
+  --risk-5: #dda774;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+}
+
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0a101d;
+  --surface: #111a2b;
+  --surface-2: #162033;
+  --surface-3: #1d2940;
+  --selected: #1a3157;
+  --hair: #25314a;
+  --hair-strong: #364565;
+  --divider: #4a5b7a;
+  --handle: #6b7d9d;
+  --scrollbar-thumb: #2f3d58;
+  --scrollbar-thumb-active: #6b7d9d;
+  --ink: #e8edf6;
+  --ink-2: #bdc8da;
+  --muted: #94a3bb;
+  --faint: #8493ab;
+  --primary: #9db9f0;
+  --on-primary: #0b1630;
+  --primary-hover: #b7ccf6;
+  --blue: #7caaff;
+  --blue-ink: #a9c6ff;
+  --blue-soft: #172b4d;
+  --blue-line: #2f4a82;
+  --warn: #f2c26b;
+  --warn-soft: #33270f;
+  --warn-line: #5f4a1c;
+  --warn-mark: #e6a238;
+  --crit: #ff8d98;
+  --crit-soft: #3e1a20;
+  --ok: #7fd1a1;
+  --on-crit: #2a0a0e;
+
+  --topbar: #070c16;
+  --on-topbar: #e8edf6;
+  --topbar-muted: #a3b1c8;
+  --topbar-line: #364565;
+  --topbar-field: #162033;
+  --topbar-hover: #162033;
+  --topbar-border: #25314a;
+  --topbar-focus: #9db9f0;
+  --domain-power: #f0c04a;
+  --domain-water: #4fd0e0;
+  --domain-docs: #b4a0f0;
+
+  --glass: rgba(17, 26, 43, 0.82);
+  --glass-line: rgba(255, 255, 255, 0.09);
+  --scrim: rgba(3, 6, 12, 0.58);
+  --toast-bg: #e8edf6;
+  --on-toast: #0b1630;
+
+  --e-float: 0 0 0 1px rgba(255, 255, 255, 0.09), 0 8px 24px -6px rgba(0, 0, 0, 0.55);
+  --e-pop: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 16px rgba(0, 0, 0, 0.45);
+  --e-composer:
+    0 0 0 1px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.3), 0 10px 40px rgba(0, 0, 0, 0.35);
+  --e-dialog:
+    0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 16px rgba(0, 0, 0, 0.45), 0 28px 72px rgba(0, 0, 0, 0.6);
+
+  --chart-1: #5b8def;
+  --chart-2: #1fa29a;
+  --chart-3: #c98a1c;
+  --chart-band-wide: #3a5a94;
+  --chart-band-mid: #5c86cc;
+  --chart-band-core: #9dc0ff;
+  --chart-median: #0a101d;
+  --chart-track: #25314a;
+
+  --map-land-us: #172033;
+  --map-land-other: #0f1726;
+  --map-state: #2a3652;
+  --map-region: #1d2940;
+  --map-region-line: #9db9f0;
+  --map-geo-label: #7f8da6;
+  --map-land: #141c2c;
+  --map-water: #0a111c;
+  --map-line: #111a2b;
+  --map-coast: #364565;
+  --map-gauge-below: #6f7d96;
+  --map-gauge-minor: #f0ab45;
+  --map-gauge-moderate: #ef6d60;
+  --map-gauge-major: #b884e3;
+  --map-warning-hurricane: #e3677b;
+  --map-warning-tropical: #f0a45c;
+  --map-warning-flood: #5cc287;
+  --map-warning-flash-flood: #3e9b6b;
+  --map-warning-tornado: #f06c9c;
+  --map-asset-water: #3cc3d6;
+  --rlo: #162033;
+  --rhi: #6a4a32;
+
+  --risk-1: #2b3a5c;
+  --risk-2: #5b3f6e;
+  --risk-3: #8c4a6a;
+  --risk-4: #c2605a;
+  --risk-5: #f0a24a;
+}
+
+/* Glass falls back to solid surfaces: no backdrop-filter, system settings, and the in-app setting. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root:root {
+    --glass: var(--surface);
+    --glass-blur: none;
+    --scrim: rgba(19, 27, 42, 0.5);
+    --scrim-blur: 0px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root:root {
+    --glass: var(--surface);
+    --glass-blur: none;
+    --scrim: rgba(19, 27, 42, 0.5);
+    --scrim-blur: 0px;
+  }
+}
+
+:root:root[data-transparency="reduced"] {
+  --glass: var(--surface);
+  --glass-blur: none;
+  --scrim: rgba(19, 27, 42, 0.5);
+  --scrim-blur: 0px;
+}
+
+/* Aliases are re-declared on every theme root so a scoped [data-theme] panel resolves them against its own palette. */
+:root,
+[data-theme] {
+  --subtle: var(--surface-3);
+  --row-hover: var(--surface-2);
+  --row-sel: var(--selected);
+  --link: var(--blue-ink);
+  --focus: var(--blue);
+  --error: var(--crit);
+  --on-error: var(--on-crit);
+  --warn-text: var(--warn);
+  --edge: var(--hair);
+  --tint: var(--surface-2);
+  --tint-line: var(--hair);
+  --mine: var(--warn-soft);
+  --mine-line: var(--warn-line);
+  --mine-dot: var(--warn-mark);
+  --well: var(--surface-2);
+  --sev-critical: var(--crit);
+  --sev-severe: var(--crit);
+  --sev-elevated: var(--warn);
+  --sev-advisory: var(--muted);
+  --sev-critical-fill: var(--crit-soft);
+  --sev-severe-fill: var(--crit-soft);
+  --sev-elevated-fill: var(--warn-soft);
+  --sev-advisory-fill: var(--surface-3);
+  --ok-fill: var(--surface-2);
+}

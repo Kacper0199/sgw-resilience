@@ -1,0 +1,1183 @@
+{
+ "about": "SGW platform ROI, South Carolina plus Georgia east of 83.6 W. Reproduces the R04 model (roi-sc-ga) in code. Million USD 2026, flat real. Cash and customer value are separate views. Every effect size and platform cost is an assumption.",
+ "generator": "uv run python -m sgw.roi",
+ "horizon_years": 10,
+ "discount_rate": 0.08,
+ "headline": {
+  "cash_npv_base": -17.6,
+  "cash_npv_conservative": -144.8,
+  "cash_npv_optimistic": 173.4,
+  "cash_npv_structural_low": -54.9,
+  "cash_npv_structural_high": 4.7,
+  "cash_bcr_base": 0.84,
+  "customer_npv_base": 220.1,
+  "customer_npv_conservative": -106.5,
+  "customer_npv_one_at_a_time_low": 125.0,
+  "customer_npv_one_at_a_time_high": 330.8,
+  "customer_bcr_base": 2.99,
+  "customer_payback_years_base": 3.4,
+  "breakeven_effect_multiple_base": 1.19,
+  "breakeven_effect_multiple_strict": 1.99,
+  "one_time_cost_base": 35,
+  "one_time_cost_conservative": 52,
+  "one_time_cost_optimistic": 23.5,
+  "run_cost_base": 12.7,
+  "run_cost_conservative": 19.7,
+  "run_cost_optimistic": 8.6,
+  "cash_benefit_steady_base": 20.4,
+  "customer_value_steady_base": 52.2,
+  "stage1_price_base": 15.9,
+  "stage1_price_low": 10.7,
+  "stage1_price_high": 23.9,
+  "phase0_price_base": 4.0,
+  "phase1_price_base": 11.9,
+  "gate_storm_reduction_pct": 4.0,
+  "gate_storm_reduction_base_assumption_pct": 2.5,
+  "gate_storm_reduction_strict_pct": 7.2,
+  "gate_storm_reduction_low_storm_cost_pct": 6.9
+ },
+ "scenarios": {
+  "conservative": {
+   "cash_lines": {
+    "Storm restoration efficiency": 1.5294,
+    "Storm cost recovery protected": 0.0765,
+    "Vegetation programme optimisation": 1.7524,
+    "Predictive T&D maintenance": 0.8751,
+    "Water non-revenue reduction": 0.639,
+    "Avoided main-break repairs": 0.2441,
+    "Analyst and reporting time": 1.2,
+    "Insurance premium effect": 0.0
+   },
+   "customer_lines": {
+    "Major-event customer minutes avoided": 6.0477,
+    "Routine customer minutes avoided": 4.0487
+   },
+   "one_time_lines": {
+    "Integrator and product build": 30,
+    "Data integration and quality": 12,
+    "Security and compliance set-up": 6,
+    "Change management and exercises": 4
+   },
+   "run_lines": {
+    "Platform team": 5.6,
+    "Cloud and data platform": 5,
+    "Licences and data feeds": 3,
+    "AI model usage": 0.5625,
+    "Assurance and audits": 1.0,
+    "Vendor support": 4.5
+   },
+   "one_time": 52,
+   "run_cost": 19.6625,
+   "cash_benefit": 6.3165,
+   "customer_value": 10.0964,
+   "cash_flows": [
+    -35.8312,
+    -37.8625,
+    -26.1992,
+    -16.5043,
+    -14.6093,
+    -13.346,
+    -13.346,
+    -13.346,
+    -13.346,
+    -13.346
+   ],
+   "cash_flows_with_customer": [
+    -35.8312,
+    -37.8625,
+    -24.1799,
+    -11.4561,
+    -6.5322,
+    -3.2496,
+    -3.2496,
+    -3.2496,
+    -3.2496,
+    -3.2496
+   ],
+   "spend": [
+    35.8312,
+    37.8625,
+    27.4625,
+    19.6625,
+    19.6625,
+    19.6625,
+    19.6625,
+    19.6625,
+    19.6625,
+    19.6625
+   ],
+   "npv_cash": -144.7759,
+   "npv_customer": -106.5295,
+   "irr_cash": null,
+   "irr_customer": null,
+   "payback_cash": null,
+   "payback_cash_discounted": null,
+   "payback_customer": null,
+   "pv_costs": 168.7035,
+   "bcr_cash": 0.1418,
+   "bcr_customer": 0.3685
+  },
+  "base": {
+   "cash_lines": {
+    "Storm restoration efficiency": 6.3936,
+    "Storm cost recovery protected": 0.6394,
+    "Vegetation programme optimisation": 4.8988,
+    "Predictive T&D maintenance": 2.6254,
+    "Water non-revenue reduction": 1.704,
+    "Avoided main-break repairs": 0.8136,
+    "Analyst and reporting time": 3.0,
+    "Insurance premium effect": 0.3
+   },
+   "customer_lines": {
+    "Major-event customer minutes avoided": 31.3207,
+    "Routine customer minutes avoided": 20.8689
+   },
+   "one_time_lines": {
+    "Integrator and product build": 20,
+    "Data integration and quality": 8,
+    "Security and compliance set-up": 4,
+    "Change management and exercises": 3
+   },
+   "run_lines": {
+    "Platform team": 3.8,
+    "Cloud and data platform": 3,
+    "Licences and data feeds": 2,
+    "AI model usage": 0.225,
+    "Assurance and audits": 0.7,
+    "Vendor support": 3.0
+   },
+   "one_time": 35,
+   "run_cost": 12.725,
+   "cash_benefit": 20.3748,
+   "customer_value": 52.1896,
+   "cash_flows": [
+    -23.8625,
+    -20.9,
+    -7.7876,
+    3.5749,
+    7.6498,
+    7.6498,
+    7.6498,
+    7.6498,
+    7.6498,
+    7.6498
+   ],
+   "cash_flows_with_customer": [
+    -23.8625,
+    -10.4621,
+    18.3072,
+    45.3266,
+    59.8395,
+    59.8395,
+    59.8395,
+    59.8395,
+    59.8395,
+    59.8395
+   ],
+   "spend": [
+    23.8625,
+    24.975,
+    17.975,
+    12.725,
+    12.725,
+    12.725,
+    12.725,
+    12.725,
+    12.725,
+    12.725
+   ],
+   "npv_cash": -17.5739,
+   "npv_customer": 220.1165,
+   "irr_cash": -0.0108,
+   "irr_customer": 0.7332,
+   "payback_cash": null,
+   "payback_cash_discounted": null,
+   "payback_customer": 3.4,
+   "pv_costs": 110.3683,
+   "bcr_cash": 0.8408,
+   "bcr_customer": 2.9944
+  },
+  "optimistic": {
+   "cash_lines": {
+    "Storm restoration efficiency": 22.2779,
+    "Storm cost recovery protected": 3.3417,
+    "Vegetation programme optimisation": 8.8576,
+    "Predictive T&D maintenance": 5.2509,
+    "Water non-revenue reduction": 3.195,
+    "Avoided main-break repairs": 1.6273,
+    "Analyst and reporting time": 4.8,
+    "Insurance premium effect": 0.8
+   },
+   "customer_lines": {
+    "Major-event customer minutes avoided": 155.0802,
+    "Routine customer minutes avoided": 41.7378
+   },
+   "one_time_lines": {
+    "Integrator and product build": 14,
+    "Data integration and quality": 5,
+    "Security and compliance set-up": 2.5,
+    "Change management and exercises": 2
+   },
+   "run_lines": {
+    "Platform team": 2.52,
+    "Cloud and data platform": 2,
+    "Licences and data feeds": 1.5,
+    "AI model usage": 0.1125,
+    "Assurance and audits": 0.4,
+    "Vendor support": 2.1
+   },
+   "one_time": 23.5,
+   "run_cost": 8.6325,
+   "cash_benefit": 50.1503,
+   "customer_value": 196.818,
+   "cash_flows": [
+    -16.0663,
+    -1.8124,
+    22.9477,
+    41.5178,
+    41.5178,
+    41.5178,
+    41.5178,
+    41.5178,
+    41.5178,
+    41.5178
+   ],
+   "cash_flows_with_customer": [
+    -16.0663,
+    57.233,
+    160.7204,
+    238.3359,
+    238.3359,
+    238.3359,
+    238.3359,
+    238.3359,
+    238.3359,
+    238.3359
+   ],
+   "spend": [
+    16.0663,
+    16.8575,
+    12.1575,
+    8.6325,
+    8.6325,
+    8.6325,
+    8.6325,
+    8.6325,
+    8.6325,
+    8.6325
+   ],
+   "npv_cash": 173.3793,
+   "npv_customer": 1146.8154,
+   "irr_cash": 0.9649,
+   "irr_customer": 4.8133,
+   "payback_cash": 2.8,
+   "payback_cash_discounted": 2.9,
+   "payback_customer": 1.3,
+   "pv_costs": 74.6577,
+   "bcr_cash": 3.3223,
+   "bcr_customer": 16.361
+  }
+ },
+ "breakeven": {
+  "cash": {
+   "conservative": 7.0506,
+   "base": 1.1894,
+   "optimistic": 0.301
+  },
+  "cash_strict": {
+   "conservative": 13.2384,
+   "base": 1.9903,
+   "optimistic": 0.4229
+  },
+  "customer_all_effects": {
+   "conservative": 2.7134,
+   "base": 0.334,
+   "optimistic": 0.0611
+  },
+  "customer_major_event_only": {
+   "conservative": 5.6501,
+   "base": 0.0,
+   "optimistic": 0.0
+  }
+ },
+ "structural_tests": [
+  {
+   "change": "Released staff time not counted as cash",
+   "cash_benefit": 17.3748,
+   "npv_cash": -31.237,
+   "bcr_cash": 0.717,
+   "npv_customer": 206.4535,
+   "bcr_customer": 2.8706
+  },
+  {
+   "change": "Vegetation line removed",
+   "cash_benefit": 15.4761,
+   "npv_cash": -39.8847,
+   "bcr_cash": 0.6386,
+   "npv_customer": 197.8057,
+   "bcr_customer": 2.7922
+  },
+  {
+   "change": "No insurance line",
+   "cash_benefit": 20.0748,
+   "npv_cash": -18.9402,
+   "bcr_cash": 0.8284,
+   "npv_customer": 218.7502,
+   "bcr_customer": 2.982
+  },
+  {
+   "change": "Storm O&M share 0.61",
+   "cash_benefit": 17.8813,
+   "npv_cash": -28.9303,
+   "bcr_cash": 0.7379,
+   "npv_customer": 208.7602,
+   "bcr_customer": 2.8915
+  },
+  {
+   "change": "Overhead miles per customer 0.03",
+   "cash_benefit": 25.2736,
+   "npv_cash": 4.7369,
+   "bcr_cash": 1.0429,
+   "npv_customer": 242.4274,
+   "bcr_customer": 3.1965
+  },
+  {
+   "change": "Water served 4.0 M",
+   "cash_benefit": 22.8925,
+   "npv_cash": -6.1077,
+   "bcr_cash": 0.9447,
+   "npv_customer": 231.5827,
+   "bcr_customer": 3.0983
+  },
+  {
+   "change": "Run cost x0.75",
+   "cash_benefit": 20.3748,
+   "npv_cash": -2.3856,
+   "bcr_cash": 0.9749,
+   "npv_customer": 235.3049,
+   "bcr_customer": 3.4722
+  },
+  {
+   "change": "Discount 5.5% real",
+   "cash_benefit": 20.3748,
+   "npv_cash": -14.2947,
+   "bcr_cash": 0.8828,
+   "npv_customer": 261.462,
+   "bcr_customer": 3.144
+  },
+  {
+   "change": "Average interruption cost (do not quote)",
+   "cash_benefit": 20.3748,
+   "npv_cash": -17.5739,
+   "bcr_cash": 0.8408,
+   "npv_customer": 430.6609,
+   "bcr_customer": 4.902
+  },
+  {
+   "change": "Major-event minutes at the median",
+   "cash_benefit": 20.3748,
+   "npv_cash": -17.5739,
+   "bcr_cash": 0.8408,
+   "npv_customer": 160.1006,
+   "bcr_customer": 2.4506
+  },
+  {
+   "change": "Strict cash (no staff time, vegetation, insurance)",
+   "cash_benefit": 12.1761,
+   "npv_cash": -54.9141,
+   "bcr_cash": 0.5024,
+   "npv_customer": 182.7763,
+   "bcr_customer": 2.6561
+  }
+ ],
+ "tornado": {
+  "npv_cash": {
+   "base": -17.5739,
+   "swings": [
+    {
+     "key": "storm_cost_per_cust",
+     "unit": "USD/customer/yr, O&M",
+     "low": 36.0,
+     "base": 60.2,
+     "high": 131.1,
+     "at_low": -30.4501,
+     "at_high": 20.1502,
+     "label": "D",
+     "width": 50.6002
+    },
+    {
+     "key": "storm_eff",
+     "unit": "share of storm O&M",
+     "low": 0.01,
+     "base": 0.025,
+     "high": 0.04,
+     "at_low": -35.0453,
+     "at_high": -0.1025,
+     "label": "A",
+     "width": 34.9427
+    },
+    {
+     "key": "build",
+     "unit": "MUSD one-time",
+     "low": 30,
+     "base": 20,
+     "high": 14,
+     "at_low": -35.7656,
+     "at_high": -6.6588,
+     "label": "A",
+     "width": 29.1068
+    },
+    {
+     "key": "vm_eff",
+     "unit": "share of VM spend",
+     "low": 0.01,
+     "base": 0.025,
+     "high": 0.04,
+     "at_low": -30.9604,
+     "at_high": -4.1874,
+     "label": "A",
+     "width": 26.773
+    },
+    {
+     "key": "cloud",
+     "unit": "MUSD/yr",
+     "low": 5,
+     "base": 3,
+     "high": 2,
+     "at_low": -30.0681,
+     "at_high": -11.3268,
+     "label": "A",
+     "width": 18.7414
+    },
+    {
+     "key": "team_fte",
+     "unit": "FTE",
+     "low": 28,
+     "base": 20,
+     "high": 14,
+     "at_low": -27.0695,
+     "at_high": -10.4522,
+     "label": "A",
+     "width": 16.6173
+    },
+    {
+     "key": "fte_released",
+     "unit": "FTE-equivalent",
+     "low": 10,
+     "base": 25,
+     "high": 40,
+     "at_low": -25.7717,
+     "at_high": -9.376,
+     "label": "A",
+     "width": 16.3957
+    },
+    {
+     "key": "maint_eff",
+     "unit": "share",
+     "low": 0.01,
+     "base": 0.02,
+     "high": 0.03,
+     "at_low": -23.5525,
+     "at_high": -11.5953,
+     "label": "A",
+     "width": 11.9572
+    },
+    {
+     "key": "licences",
+     "unit": "MUSD/yr",
+     "low": 3,
+     "base": 2,
+     "high": 1.5,
+     "at_low": -23.821,
+     "at_high": -14.4503,
+     "label": "A",
+     "width": 9.3707
+    },
+    {
+     "key": "maint_addressable",
+     "unit": "share",
+     "low": 0.2,
+     "base": 0.3,
+     "high": 0.4,
+     "at_low": -21.5596,
+     "at_high": -13.5882,
+     "label": "A",
+     "width": 7.9714
+    },
+    {
+     "key": "nrw_reduction",
+     "unit": "share of NRW value",
+     "low": 0.02,
+     "base": 0.04,
+     "high": 0.06,
+     "at_low": -21.4542,
+     "at_high": -13.6936,
+     "label": "A",
+     "width": 7.7606
+    },
+    {
+     "key": "data_integration",
+     "unit": "MUSD one-time",
+     "low": 12,
+     "base": 8,
+     "high": 5,
+     "at_low": -21.1023,
+     "at_high": -14.9276,
+     "label": "A",
+     "width": 6.1747
+    }
+   ]
+  },
+  "npv_customer": {
+   "base": 220.1165,
+   "swings": [
+    {
+     "key": "cmi_rr_med",
+     "unit": "share",
+     "low": 0.01,
+     "base": 0.03,
+     "high": 0.05,
+     "at_low": 125.0193,
+     "at_high": 315.2138,
+     "label": "A",
+     "width": 190.1944
+    },
+    {
+     "key": "saidi_med",
+     "unit": "major-event min/customer/yr",
+     "low": 162.6,
+     "base": 280.7,
+     "high": 469.6,
+     "at_low": 160.1006,
+     "at_high": 316.1116,
+     "label": "D",
+     "width": 156.0109
+    },
+    {
+     "key": "cmi_rr_blue",
+     "unit": "share",
+     "low": 0.005,
+     "base": 0.01,
+     "high": 0.02,
+     "at_low": 172.5943,
+     "at_high": 315.1611,
+     "label": "A",
+     "width": 142.5669
+    },
+    {
+     "key": "w_major",
+     "unit": "USD/CMI",
+     "low": 0.8755,
+     "base": 0.8755,
+     "high": 1.5547,
+     "at_low": 220.1165,
+     "at_high": 330.7791,
+     "label": "D",
+     "width": 110.6625
+    },
+    {
+     "key": "w_routine",
+     "unit": "USD/CMI",
+     "low": 1.5547,
+     "base": 4.0068,
+     "high": 4.0068,
+     "at_low": 161.9507,
+     "at_high": 220.1165,
+     "label": "D",
+     "width": 58.1658
+    },
+    {
+     "key": "storm_cost_per_cust",
+     "unit": "USD/customer/yr, O&M",
+     "low": 36.0,
+     "base": 60.2,
+     "high": 131.1,
+     "at_low": 207.2404,
+     "at_high": 257.8406,
+     "label": "D",
+     "width": 50.6002
+    },
+    {
+     "key": "storm_eff",
+     "unit": "share of storm O&M",
+     "low": 0.01,
+     "base": 0.025,
+     "high": 0.04,
+     "at_low": 202.6452,
+     "at_high": 237.5879,
+     "label": "A",
+     "width": 34.9427
+    },
+    {
+     "key": "build",
+     "unit": "MUSD one-time",
+     "low": 30,
+     "base": 20,
+     "high": 14,
+     "at_low": 201.9248,
+     "at_high": 231.0316,
+     "label": "A",
+     "width": 29.1068
+    },
+    {
+     "key": "vm_eff",
+     "unit": "share of VM spend",
+     "low": 0.01,
+     "base": 0.025,
+     "high": 0.04,
+     "at_low": 206.7301,
+     "at_high": 233.503,
+     "label": "A",
+     "width": 26.773
+    },
+    {
+     "key": "cloud",
+     "unit": "MUSD/yr",
+     "low": 5,
+     "base": 3,
+     "high": 2,
+     "at_low": 207.6223,
+     "at_high": 226.3637,
+     "label": "A",
+     "width": 18.7414
+    },
+    {
+     "key": "team_fte",
+     "unit": "FTE",
+     "low": 28,
+     "base": 20,
+     "high": 14,
+     "at_low": 210.6209,
+     "at_high": 227.2383,
+     "label": "A",
+     "width": 16.6173
+    },
+    {
+     "key": "fte_released",
+     "unit": "FTE-equivalent",
+     "low": 10,
+     "base": 25,
+     "high": 40,
+     "at_low": 211.9187,
+     "at_high": 228.3144,
+     "label": "A",
+     "width": 16.3957
+    }
+   ]
+  }
+ },
+ "storm_year_spread": {
+  "conservative": {
+   "p_severe": 0.3,
+   "low_mult": 0.35,
+   "high_mult": 2.517,
+   "n": 20000,
+   "seed": 42,
+   "cash_npv_p10_p50_p90": [
+    -147.5,
+    -144.9,
+    -141.6
+   ],
+   "customer_npv_p10_p50_p90": [
+    -119.3,
+    -107.2,
+    -91.6
+   ],
+   "share_cash_npv_positive": 0.0
+  },
+  "base": {
+   "p_severe": 0.3,
+   "low_mult": 0.35,
+   "high_mult": 2.517,
+   "n": 20000,
+   "seed": 42,
+   "cash_npv_p10_p50_p90": [
+    -30.8,
+    -19.1,
+    -3.1
+   ],
+   "customer_npv_p10_p50_p90": [
+    148.1,
+    212.0,
+    299.0
+   ],
+   "share_cash_npv_positive": 0.063
+  },
+  "optimistic": {
+   "p_severe": 0.3,
+   "low_mult": 0.35,
+   "high_mult": 2.517,
+   "n": 20000,
+   "seed": 42,
+   "cash_npv_p10_p50_p90": [
+    121.0,
+    169.6,
+    230.4
+   ],
+   "customer_npv_p10_p50_p90": [
+    777.4,
+    1120.1,
+    1549.1
+   ],
+   "share_cash_npv_positive": 1.0
+  }
+ },
+ "stage1": {
+  "method": "Stage 1 = phase 0 + phase 1 = the first 8 months of programme spend in the cost model; year-one spend spread evenly over twelve months. Range = optimistic and conservative cost scenarios.",
+  "phase_months": {
+   "phase_0": 2,
+   "phase_1": 6
+  },
+  "price_musd": {
+   "conservative": {
+    "year_one_spend": 35.8312,
+    "phase_0": 5.9719,
+    "phase_1": 17.9156,
+    "stage1": 23.8875
+   },
+   "base": {
+    "year_one_spend": 23.8625,
+    "phase_0": 3.9771,
+    "phase_1": 11.9313,
+    "stage1": 15.9083
+   },
+   "optimistic": {
+    "year_one_spend": 16.0663,
+    "phase_0": 2.6777,
+    "phase_1": 8.0331,
+    "stage1": 10.7108
+   }
+  },
+  "downside_full_commitment_conservative_npv_cash": -144.7759,
+  "gate_benefit": {
+   "what": "storm restoration cost reduction shown in the backtest, as a share of storm O&M",
+   "base_assumption": 0.025,
+   "breakeven_share": 0.0401,
+   "breakeven_multiple_of_base": 1.6035,
+   "breakeven_share_strict_cash": 0.0721,
+   "breakeven_share_at_low_storm_cost": 0.0687,
+   "low_storm_cost_usd_per_customer": 36.0,
+   "cash_npv_at_gate": 0.0,
+   "storm_line_at_gate_musd_per_year": 10.2523
+  },
+  "gate_price": {
+   "what": "quoted full-programme cost within the base case",
+   "one_time_max_musd": 35,
+   "run_max_musd_per_year": 12.725
+  }
+ },
+ "ice_weights": {
+  "avg8": 2.1677,
+  "avg2": 4.0068,
+  "m2_8": 1.5547,
+  "m8_24": 0.8755,
+  "m0_2": 3.3908
+ },
+ "footprint_major_event_minutes": {
+  "2025": 74.1984,
+  "2024": 2358.3436,
+  "2023": 98.6298,
+  "2022": 152.7689,
+  "2021": 19.9668,
+  "2020": 271.2628,
+  "2019": 162.6044,
+  "2018": 270.5051,
+  "2017": 483.5195,
+  "2016": 1152.2938,
+  "2015": 121.4994
+ },
+ "inputs": {
+  "residents_m": {
+   "conservative": 8.14,
+   "base": 8.14,
+   "optimistic": 8.14,
+   "unit": "M residents",
+   "label": "S",
+   "basis": "Census Vintage 2024, 46 SC and 77 GA counties"
+  },
+  "accounts_per_resident": {
+   "conservative": 0.5219,
+   "base": 0.5219,
+   "optimistic": 0.5219,
+   "unit": "accounts/resident",
+   "label": "S",
+   "basis": "EAGLE-I modelled customers"
+  },
+  "water_pop_m": {
+   "conservative": 1.5,
+   "base": 2.0,
+   "optimistic": 2.5,
+   "unit": "M residents on SGW water",
+   "label": "A",
+   "basis": "No split given"
+  },
+  "storm_cost_per_cust": {
+   "conservative": 36.0,
+   "base": 60.2,
+   "optimistic": 131.1,
+   "unit": "USD/customer/yr, O&M",
+   "label": "D",
+   "basis": "Georgia Power accrual; Duke Carolinas Helene cost; Georgia Power under-recovery"
+  },
+  "storm_om_share": {
+   "conservative": 1.0,
+   "base": 1.0,
+   "optimistic": 1.0,
+   "unit": "share",
+   "label": "D",
+   "basis": "Storm base is already O&M"
+  },
+  "storm_eff": {
+   "conservative": 0.01,
+   "base": 0.025,
+   "optimistic": 0.04,
+   "unit": "share of storm O&M",
+   "label": "A",
+   "basis": "Pre-staging, crew allocation"
+  },
+  "disallow_rate": {
+   "conservative": 0.005,
+   "base": 0.01,
+   "optimistic": 0.015,
+   "unit": "share of storm cost",
+   "label": "A",
+   "basis": "Cost at risk in review"
+  },
+  "disallow_capture": {
+   "conservative": 0.1,
+   "base": 0.25,
+   "optimistic": 0.4,
+   "unit": "share",
+   "label": "A",
+   "basis": "Risk removed by an evidence trail"
+  },
+  "oh_miles_per_cust": {
+   "conservative": 0.015,
+   "base": 0.015,
+   "optimistic": 0.015,
+   "unit": "OH miles/customer",
+   "label": "A",
+   "basis": "Replace with SGW GIS"
+  },
+  "vm_cycle_yr": {
+   "conservative": 4,
+   "base": 4,
+   "optimistic": 4,
+   "unit": "years",
+   "label": "A",
+   "basis": "Typical trim cycle"
+  },
+  "vm_cost_per_mile": {
+   "conservative": 11000,
+   "base": 12300,
+   "optimistic": 13900,
+   "unit": "USD/mile/cycle",
+   "label": "S",
+   "basis": "Public filings, national"
+  },
+  "vm_eff": {
+   "conservative": 0.01,
+   "base": 0.025,
+   "optimistic": 0.04,
+   "unit": "share of VM spend",
+   "label": "A",
+   "basis": "Risk-based cycle optimisation"
+  },
+  "maint_per_cust": {
+   "conservative": 103,
+   "base": 103,
+   "optimistic": 103,
+   "unit": "USD/customer/yr",
+   "label": "D",
+   "basis": "EIA Table 8.3, national"
+  },
+  "maint_addressable": {
+   "conservative": 0.2,
+   "base": 0.3,
+   "optimistic": 0.4,
+   "unit": "share",
+   "label": "A",
+   "basis": "Condition-based share"
+  },
+  "maint_eff": {
+   "conservative": 0.01,
+   "base": 0.02,
+   "optimistic": 0.03,
+   "unit": "share",
+   "label": "A",
+   "basis": "Predictive maintenance effect"
+  },
+  "nrw_per_capita": {
+   "conservative": 21.3,
+   "base": 21.3,
+   "optimistic": 21.3,
+   "unit": "USD/resident/yr",
+   "label": "D",
+   "basis": "Bluefield, national"
+  },
+  "nrw_reduction": {
+   "conservative": 0.02,
+   "base": 0.04,
+   "optimistic": 0.06,
+   "unit": "share of NRW value",
+   "label": "A",
+   "basis": "Leak and pressure analytics"
+  },
+  "main_miles_per_1000": {
+   "conservative": 7.33,
+   "base": 7.33,
+   "optimistic": 7.33,
+   "unit": "miles/1000 residents",
+   "label": "D",
+   "basis": "Bluefield, national"
+  },
+  "break_rate": {
+   "conservative": 11.1,
+   "base": 11.1,
+   "optimistic": 11.1,
+   "unit": "breaks/100 mi/yr",
+   "label": "S",
+   "basis": "USU 2023 via ASCE, national"
+  },
+  "cost_per_break": {
+   "conservative": 10000,
+   "base": 10000,
+   "optimistic": 10000,
+   "unit": "USD/break",
+   "label": "D",
+   "basis": "USU, national"
+  },
+  "break_reduction": {
+   "conservative": 0.02,
+   "base": 0.05,
+   "optimistic": 0.08,
+   "unit": "share",
+   "label": "A",
+   "basis": "Risk-ranked renewal"
+  },
+  "fte_released": {
+   "conservative": 10,
+   "base": 25,
+   "optimistic": 40,
+   "unit": "FTE-equivalent",
+   "label": "A",
+   "basis": "Storm room, reporting, after-action"
+  },
+  "fte_value": {
+   "conservative": 0.12,
+   "base": 0.12,
+   "optimistic": 0.12,
+   "unit": "MUSD/FTE",
+   "label": "A",
+   "basis": "Loaded operations and analyst cost"
+  },
+  "insurance_base": {
+   "conservative": 40,
+   "base": 60,
+   "optimistic": 80,
+   "unit": "MUSD/yr premium",
+   "label": "A",
+   "basis": "SGW premium unknown"
+  },
+  "insurance_saving": {
+   "conservative": 0.0,
+   "base": 0.005,
+   "optimistic": 0.01,
+   "unit": "share",
+   "label": "A",
+   "basis": "Underwriter credit unproven"
+  },
+  "saidi_med": {
+   "conservative": 162.6,
+   "base": 280.7,
+   "optimistic": 469.6,
+   "unit": "major-event min/customer/yr",
+   "label": "D",
+   "basis": "EIA Table 11.4 2015-2025, SC and GA weighted by customers"
+  },
+  "saidi_blue": {
+   "conservative": 122.6,
+   "base": 122.6,
+   "optimistic": 122.6,
+   "unit": "min/customer/yr",
+   "label": "D",
+   "basis": "EIA Table 11.4 without MED"
+  },
+  "cmi_rr_med": {
+   "conservative": 0.01,
+   "base": 0.03,
+   "optimistic": 0.05,
+   "unit": "share",
+   "label": "A",
+   "basis": "Major-event customer minutes avoided"
+  },
+  "cmi_rr_blue": {
+   "conservative": 0.005,
+   "base": 0.01,
+   "optimistic": 0.02,
+   "unit": "share",
+   "label": "A",
+   "basis": "Routine customer minutes avoided"
+  },
+  "res_share": {
+   "conservative": 0.868,
+   "base": 0.868,
+   "optimistic": 0.868,
+   "unit": "share",
+   "label": "S",
+   "basis": "EIA-861 2024"
+  },
+  "w_major": {
+   "conservative": 0.8755,
+   "base": 0.8755,
+   "optimistic": 1.5547,
+   "unit": "USD/CMI",
+   "label": "D",
+   "basis": "ICE 2.0 marginal"
+  },
+  "w_routine": {
+   "conservative": 1.5547,
+   "base": 4.0068,
+   "optimistic": 4.0068,
+   "unit": "USD/CMI",
+   "label": "D",
+   "basis": "ICE 2.0"
+  },
+  "build": {
+   "conservative": 30,
+   "base": 20,
+   "optimistic": 14,
+   "unit": "MUSD one-time",
+   "label": "A",
+   "basis": "Integrator and product build"
+  },
+  "data_integration": {
+   "conservative": 12,
+   "base": 8,
+   "optimistic": 5,
+   "unit": "MUSD one-time",
+   "label": "A",
+   "basis": "Connectors and data quality"
+  },
+  "security_oneoff": {
+   "conservative": 6,
+   "base": 4,
+   "optimistic": 2.5,
+   "unit": "MUSD one-time",
+   "label": "A",
+   "basis": "Segmentation, CIP boundary, pen tests"
+  },
+  "change_mgmt": {
+   "conservative": 4,
+   "base": 3,
+   "optimistic": 2,
+   "unit": "MUSD one-time",
+   "label": "A",
+   "basis": "Training, exercises, procedures"
+  },
+  "team_fte": {
+   "conservative": 28,
+   "base": 20,
+   "optimistic": 14,
+   "unit": "FTE",
+   "label": "A",
+   "basis": "Product, data, ML, SRE, security, governance"
+  },
+  "fte_cost": {
+   "conservative": 0.2,
+   "base": 0.19,
+   "optimistic": 0.18,
+   "unit": "MUSD/FTE",
+   "label": "D",
+   "basis": "BLS May 2024 medians, loaded"
+  },
+  "cloud": {
+   "conservative": 5,
+   "base": 3,
+   "optimistic": 2,
+   "unit": "MUSD/yr",
+   "label": "A",
+   "basis": "Compliant cloud, data platform, DR"
+  },
+  "licences": {
+   "conservative": 3,
+   "base": 2,
+   "optimistic": 1.5,
+   "unit": "MUSD/yr",
+   "label": "A",
+   "basis": "GIS, weather feeds, observability"
+  },
+  "llm_requests_m": {
+   "conservative": 5,
+   "base": 2,
+   "optimistic": 1,
+   "unit": "M requests/yr",
+   "label": "A",
+   "basis": "Assistant, summaries, retrieval"
+  },
+  "llm_input_tok": {
+   "conservative": 30000,
+   "base": 30000,
+   "optimistic": 30000,
+   "unit": "tokens/request",
+   "label": "A",
+   "basis": "Retrieved context"
+  },
+  "llm_output_tok": {
+   "conservative": 1500,
+   "base": 1500,
+   "optimistic": 1500,
+   "unit": "tokens/request",
+   "label": "A",
+   "basis": "Answer length"
+  },
+  "llm_in_price": {
+   "conservative": 2,
+   "base": 2,
+   "optimistic": 2,
+   "unit": "USD/MTok",
+   "label": "S",
+   "basis": "List price recorded in R01"
+  },
+  "llm_out_price": {
+   "conservative": 10,
+   "base": 10,
+   "optimistic": 10,
+   "unit": "USD/MTok",
+   "label": "S",
+   "basis": "List price recorded in R01"
+  },
+  "llm_overhead": {
+   "conservative": 1.5,
+   "base": 1.5,
+   "optimistic": 1.5,
+   "unit": "multiplier",
+   "label": "A",
+   "basis": "Retries, evaluation traffic"
+  },
+  "assurance": {
+   "conservative": 1.0,
+   "base": 0.7,
+   "optimistic": 0.4,
+   "unit": "MUSD/yr",
+   "label": "A",
+   "basis": "Model validation, audits, red team"
+  },
+  "support_rate": {
+   "conservative": 0.15,
+   "base": 0.15,
+   "optimistic": 0.15,
+   "unit": "share of build/yr",
+   "label": "A",
+   "basis": "Vendor and integrator support"
+  },
+  "discount": {
+   "conservative": 0.08,
+   "base": 0.08,
+   "optimistic": 0.08,
+   "unit": "rate",
+   "label": "A",
+   "basis": "Proxy for utility WACC on flat real flows"
+  }
+ }
+}

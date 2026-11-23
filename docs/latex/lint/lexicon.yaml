@@ -1,0 +1,29 @@
+# Plain-language lexicon (red-team finding assr-18, decision D-026).
+# Enforced for the executive briefing (pages 1-4 carry no technique names), advisory for the PRD and the deck.
+# term: Python regex (case sensitive). plain: the words to use instead.
+terms:
+  - {term: '\bVSS\b', plain: value of planning for uncertainty}
+  - {term: '\bEVPI\b', plain: value of better information}
+  - {term: '\bSAA\b', plain: planning across forecast scenarios}
+  - {term: '\bCE\b', plain: customer-equivalents (explain once)}
+  - {term: '\b(Mondrian|conformal)\b', plain: calibrated range}
+  - {term: '\bn_eff\b|\beffective sample size\b', plain: number of independent storms}
+  - {term: '\bLOSO\b|\bleave-one-storm-out\b', plain: tested on storms the model never saw}
+  - {term: '\bfamily [AB]\b', plain: describe the test set in words}
+  - {term: '\bT[0-4]\b', plain: sign-off level (name it in words)}
+  - {term: '\bM[0-4]\b', plain: safe mode when the AI is down}
+  - {term: '\bK\d{1,2}\b', plain: no internal contract ids}
+  - {term: '\bslot-rendered\b', plain: numbers filled in by code}
+  - {term: '\bP(10|50|90)\b', plain: range or median}
+  - {term: '\bLLMs?\b', plain: AI assistant}
+  - {term: '\bRAG\b', plain: search over SGW documents}
+  - {term: '\bMILP\b|\bmixed-integer\b', plain: optimisation}
+  - {term: '\bSHAP\b', plain: factor breakdown}
+  - {term: '\bensemble\b', plain: forecast scenarios}
+  - {term: '\bOPA\b', plain: policy engine}
+  - {term: '\bEd25519\b|\bhash chain\b', plain: tamper-evident record}
+  - {term: '\bHITL\b', plain: human sign-off}
+  - {term: '\b(LangGraph|LangChain|FastAPI|Postgres|PostgreSQL|TimescaleDB|PostGIS|pgvector|MLflow|Caddy|Docker|Kubernetes)\b', plain: no technique names for leadership}
+  - {term: '\bagentic\b', plain: assistant}
+  - {term: '\blatency\b', plain: response time}
+  - {term: '\bbackfill\w*\b|\bpipeline\b', plain: data feed}

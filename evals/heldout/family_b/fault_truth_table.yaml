@@ -1,0 +1,101 @@
+# Family-B fault truth table (eval author). Ground truth for the anomaly metrics of SC-6
+# (event-level recall and false alarms per 100 device-days) on split `heldout_family_b`.
+# Scenario: data/synthetic/family_b/debby_b.yaml (seed 80527); generated truth: family_b/truth_table.generated.json.
+# Every value is synthetic. Times are UTC.
+version: 1
+scenario: family_b/debby_b
+split: heldout_family_b
+telemetry_window: {start_utc: "2024-08-05T12:00:00Z", end_utc: "2024-08-11T12:00:00Z"}
+
+# Monitored continuous devices: the denominator for false alarms. 9 devices x 6.0 days = 54 device-days.
+monitored_devices:
+  - {device_id: PT-PS17-DISCH, kind: pressure_sensor, asset_id: PS-17}
+  - {device_id: PT-PS23-DISCH, kind: pressure_sensor, asset_id: PS-23}
+  - {device_id: PT-PS38-DISCH, kind: pressure_sensor, asset_id: PS-38}
+  - {device_id: PT-PS52-DISCH, kind: pressure_sensor, asset_id: PS-52}
+  - {device_id: PT-HSP-TALLOWBRANCH, kind: pressure_sensor, asset_id: HSP-AIK-TALLOWBRANCH}
+  - {device_id: LT-TNK-PS17-CEDARFALL, kind: tank_level, asset_id: TNK-PS17-CEDARFALL}
+  - {device_id: LT-TNK-PS23-LAURELSPUR, kind: tank_level, asset_id: TNK-PS23-LAURELSPUR}
+  - {device_id: LT-TNK-PS38-COPPERLEAF, kind: tank_level, asset_id: TNK-PS38-COPPERLEAF}
+  - {device_id: LT-TNK-PS52-DEERWATER, kind: tank_level, asset_id: TNK-PS52-DEERWATER}
+device_days: 54.0
+
+# Scoring rules (fixed before any detector is run on family B). Wording follows PLAN SC-6 ("false alarms per
+# 100 asset-days"); here an asset-day is one monitored device for one day.
+scoring:
+  unit: event
+  precedence: "windows are checked in this order: (1) fault window [onset_utc - 15 min, end_utc + 60 min] on the fault's devices; (2) physical-event window on its devices; (3) everything else. An alert is scored only by the first window that contains it. No fault window overlaps a physical-event window on the same device in this scenario (tested)."
+  hit: "an alert on one of the fault's devices whose class is in accepted_classes, raised at or after onset_utc minus 15 min and no later than detect_by_utc; one hit per fault at most"
+  late: "a correct-class alert after detect_by_utc and inside the fault window counts as a miss for recall and is reported separately as late"
+  wrong_class: "an alert in the fault window with a class outside accepted_classes counts as a miss, not a false alarm"
+  physical_events: "inside a physical-event window, alerts of class pressure_low or tank_low are correct operational alerts (neither hit nor false alarm); any sensor-fault class there (stuck_sensor, sensor_drift, replay_spoof, data_integrity) is a false alarm"
+  false_alarm: "any other alert on a monitored device; consecutive alerts on one device within 60 min count once"
+  metrics:
+    - {name: anomaly_event_recall, formula: "hits / faults", direction: higher_is_better, threshold: 0.8, n: 5}
+    - {name: anomaly_false_alarms_per_100_asset_days, formula: "false_alarms / device_days * 100", direction: lower_is_better, threshold: 5.0}
+  baseline: "static threshold rule: pressure below the 25 psi SC floor (numbers.yaml sc_pressure_floor_psi) or a tank-level step of more than 3 ft between 15-min samples"
+  reporting: "counts beside the rate (for example 4/5); no confidence interval on n = 5; replicate seeds in data/synthetic/family_b/seeds.yaml give the simulation interval"
+
+# Every fault is on a different device than its family-A counterpart (family A: pump trip PS-23, spoof PS-23,
+# stuck level PS-38, drift PS-52 upward, leak PS-52); the drift here runs downward.
+faults:
+  - id: FAULT-PS38-PUMP-TRIP
+    kind: pump_trip
+    devices: [PT-PS38-DISCH, LT-TNK-PS38-COPPERLEAF]
+    asset_id: PS-38
+    onset_utc: "2024-08-09T19:00:00Z"
+    end_utc: "2024-08-09T20:30:00Z"
+    detect_by_utc: "2024-08-09T19:30:00Z"
+    accepted_classes: [pump_trip, pressure_drop, equipment_fault]
+    note: "pump stops with grid power present (grid back 2024-08-09 16:16Z); pressure falls from about 59 psi; the zone then drops below the floor (physical event PHYS-PS38-POST-TRIP)"
+  - id: FAULT-PS17-REPLAY-SPOOF
+    kind: replay_spoof
+    devices: [PT-PS17-DISCH]
+    asset_id: PS-17
+    onset_utc: "2024-08-10T09:00:00Z"
+    end_utc: "2024-08-10T12:00:00Z"
+    detect_by_utc: "2024-08-10T12:00:00Z"
+    accepted_classes: [replay_spoof, data_integrity, cross_sensor_mismatch]
+    note: "PS-17 discharge replays its own values from 2024-08-09 09:00Z while PS-17 runs on the portable generator; visible only against tank level and the hospital sensor"
+  - id: FAULT-PS23-STUCK-LEVEL
+    kind: stuck_sensor
+    devices: [LT-TNK-PS23-LAURELSPUR]
+    asset_id: TNK-PS23-LAURELSPUR
+    onset_utc: "2024-08-10T02:00:00Z"
+    end_utc: "2024-08-10T09:00:00Z"
+    detect_by_utc: "2024-08-10T04:00:00Z"
+    accepted_classes: [stuck_sensor, flatline, data_quality]
+    note: "level frozen at about 117 ft through the night refill"
+  - id: FAULT-PS23-DRIFT
+    kind: sensor_drift
+    devices: [PT-PS23-DISCH]
+    asset_id: PS-23
+    onset_utc: "2024-08-09T12:00:00Z"
+    end_utc: "2024-08-11T00:00:00Z"
+    detect_by_utc: "2024-08-10T13:00:00Z"
+    accepted_classes: [sensor_drift, calibration, cross_sensor_mismatch]
+    note: "-0.08 psi/h (downward; family A drifts upward); detect before the offset reaches 2 psi (25 h); PS-23 has grid power throughout, so falling readings are not explained by an outage"
+  - id: FAULT-PS38-LEAK
+    kind: leak
+    devices: [LT-TNK-PS38-COPPERLEAF, PT-PS38-DISCH]
+    asset_id: WZ-PS38-COPPERLEAF
+    onset_utc: "2024-08-10T18:00:00Z"
+    end_utc: "2024-08-11T12:00:00Z"
+    detect_by_utc: "2024-08-11T06:00:00Z"
+    accepted_classes: [leak, demand_anomaly, mass_balance]
+    note: "demand x1.08 to the end of the window; a mass-balance detector should see it within 12 h"
+
+# Physical events (true conditions, not sensor faults), from the generated truth table water.* and the
+# telemetry. None overlaps a fault window on the same device.
+physical_events:
+  - {id: PHYS-PS17-BELOW-FLOOR, devices: [PT-PS17-DISCH, PT-HSP-TALLOWBRANCH, LT-TNK-PS17-CEDARFALL], from_utc: "2024-08-06T01:00:00Z", to_utc: "2024-08-09T03:51:00Z", cause: "grid loss 01:00Z on FDR-AIK-2207, no onsite generator; below floor 2024-08-06 04:38Z"}
+  - {id: PHYS-PS38-BELOW-FLOOR, devices: [PT-PS38-DISCH, LT-TNK-PS38-COPPERLEAF], from_utc: "2024-08-06T01:45:00Z", to_utc: "2024-08-07T05:11:00Z", cause: "grid loss; onsite generator out of fuel while the fuel truck is flood-blocked (D3-FUEL-TRUCK-FLOOD-BLOCK)"}
+  - {id: PHYS-PS38-POST-TRIP, devices: [PT-PS38-DISCH, LT-TNK-PS38-COPPERLEAF], from_utc: "2024-08-09T21:30:00Z", to_utc: "2024-08-10T02:15:00Z", cause: "zone below floor 22:45Z to 02:00Z after the pump trip (consequence of FAULT-PS38-PUMP-TRIP, scored as a physical event)"}
+  - {id: PHYS-PS52-BELOW-FLOOR, devices: [PT-PS52-DISCH, LT-TNK-PS52-DEERWATER], from_utc: "2024-08-06T02:15:00Z", to_utc: "2024-08-11T12:00:00Z", cause: "grid loss; onsite generator fails after 18 h run (D2-GENERATOR-FAILS-H30 pin)"}
+
+# Electric and telemetry seeded cases used by other family-B metrics (outage coverage, ETR coverage, AMI).
+electric_cases:
+  - {id: W9-AMI-DARK-SECTION, section: FDR-AIK-2231-S2, expect: "outage inferred without last-gasp messages (4 meters suppressed); fusion must not report the section energised"}
+  - {id: AMI-FLOOD-ONE-RECLOSER, section: FDR-AIK-2219-S3, expect: "one recloser-zone event from a burst of last gasps, not many single-premise outages"}
+  - {id: LATE-AMI-BACKLOG, window: ["2024-08-06T00:00:00Z", "2024-08-06T03:30:00Z"], expect: "late AMI events (70 min extra latency) do not create a second outage start or move fault_utc"}
+  - {id: HINGE-PS17-N-N1, expect: "PS-17 effective decide-by moves LATER between N and N+1 in family B (opposite sign to family A); a model or rule that assumes N+1 is always earlier fails"}

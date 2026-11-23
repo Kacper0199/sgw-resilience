@@ -1,0 +1,151 @@
+{
+  "version": 3,
+  "source": "src/sgw/agent/llm_nodes.yaml",
+  "nodes": [
+    {
+      "node": "narrate",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2000,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "draft_rationale",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 1500,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "rag_chunk_header",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 3000,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "answer_sop",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 1500,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": true,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "copilot_eval_v3",
+        "metric": "citations_valid_share",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "extract_note",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 3000,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "route_intent",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 1500,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "copilot_eval_v3",
+        "metric": "intent_correct_share",
+        "value_ppm": 942000,
+        "passed": true
+      }
+    },
+    {
+      "node": "investigate",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 4000,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": true,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "etr_brief",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2000,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "sitrep",
+      "model": "haiku",
+      "effort": "medium",
+      "max_tokens": 4000,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "sitrep_eval",
+        "metric": "no_unsupported_claim_share",
+        "value_ppm": 917000,
+        "passed": false
+      }
+    },
+    {
+      "node": "after_action_summary",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2500,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": [],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    }
+  ]
+}

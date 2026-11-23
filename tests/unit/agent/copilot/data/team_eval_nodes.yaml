@@ -1,0 +1,7 @@
+# Gateway node rules for the R27 team-node model choice (Haiku and Sonnet on the plan and two workers).
+version: 1
+nodes:
+  - {node: route_intent, models: [haiku], class_ceiling: C1}
+  - {node: ask_plan, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_water, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_policy, models: [haiku, sonnet], class_ceiling: C1}

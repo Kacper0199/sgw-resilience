@@ -1,0 +1,170 @@
+---
+doc_id: "WDS 03.318"
+legacy_id: "WOP-118"
+title: "PS-17 Pellicott Road Booster: Portable Generator Connection"
+family: sop
+layout: controlled
+owner_function: water_operations
+sme: "Ingle, Prentice W."
+revision: "E"
+effective: 2024-06-03
+supersedes: "WDS 03.318 Rev D (eff. 2021-05-17)"
+next_review: 2025-05-31
+approvals:
+  - {function: water_operations, position: "Water Incident Lead; Manager, Water Distribution", name: "Sistrunk, Odell M.", date: 2024-05-22}
+  - {function: logistics, position: "Logistics Section Chief; Manager, Supply Chain", name: "Huggins, Delmar J.", date: 2024-05-24}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D3]
+states: [SC]
+changes:
+  - {rev: "E", date: 2024-06-03, section: "5.0, 6.2, Att. A", change: "Hookup lead time restated as 150 min from dispatch to pumping. Hospital facilities notification at 35 psi zone pressure added (6.1.4)."}
+  - {rev: "E", date: 2024-06-03, section: "8.0", change: "Reference to WOP-112 replaced by WDS 03.240."}
+  - {rev: "D", date: 2021-05-17, section: "All", change: "Renumbered from WOP-118 into the WDS manual. No technical changes."}
+---
+# 1.0 PURPOSE
+
+This procedure connects a portable generator to PS-17 Pellicott Road Booster when grid supply is lost.
+
+# 2.0 SCOPE
+
+PS-17 has no onsite generator. On loss of grid supply, a portable generator is connected under this procedure.
+
+PS-17 serves pressure zone WZ-PS17-CEDARFALL and fills tank TNK-PS17-CEDARFALL. The zone includes Tallow Branch hospital (HSP-AIK-TALLOWBRANCH). PS-17 is supplied by feeder FDR-AIK-2207.
+
+This procedure does not apply to stations with a fixed standby generator; see WDS 03.322 for those units.
+
+# 3.0 RESPONSIBILITIES
+
+Water Incident Lead: orders the portable generator dispatch. Orders the return to grid supply.
+
+Water Compliance Officer: starts the boil water evaluation if zone pressure falls below the state minimum (WDS 03.105 section 6.4).
+
+Logistics Section Chief: releases MGEN-HALBERD-500 from DEP-AIK-GRANITEVILLE and assigns the tow vehicle and fuel per MAL 05.040.
+
+Water Distribution Operator (station crew): makes the cable connection, operates the manual transfer switch and logs readings.
+
+Water SCADA Operator: watches zone pressure and tank level and reports at the intervals in section 6.1.
+
+# 4.0 DEFINITIONS AND ABBREVIATIONS
+
+MTS: manual transfer switch. PS-17 has a manual transfer switch and no automatic transfer switch (ATS).
+
+Hookup lead time: time from dispatch of the portable generator to pumping on generator power.
+
+Residual-pressure limit: tank level below which zone pressure cannot be held (WDS 03.240 Attachment A).
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 Plan on a hookup lead time of 150 min from dispatch to pumping. This covers travel, cable connection and manual transfer.
+
+5.2 The station draws 412 kW at two-pump duty. MGEN-HALBERD-500 (500 kW) runs both pumps; do not start pump 3 on generator power.
+
+5.3 CAUTION: The MTS is break-before-make. Open the utility-side breaker before closing the generator side. Backfeed onto FDR-AIK-2207 endangers line crews.
+
+5.4 Ground the generator frame to the station ground bar before cables are landed.
+
+5.5 Do not run the generator in the dry well. Park it on the north pad, at least 15 ft from the louvres.
+
+# 6.0 PROCEDURE
+
+## 6.1 Loss of Grid Supply
+
+6.1.1 On a PS-17 power-fail alarm, the Water SCADA Operator confirms the fault with the Distribution Operations storm desk. Record the FDR-AIK-2207 status and the expected restoration, if known.
+
+6.1.2 The Water SCADA Operator reports TNK-PS17-CEDARFALL level and WZ-PS17-CEDARFALL pressure to the Water Incident Lead every 15 min. Track drawdown per WDS 03.240.
+
+6.1.3 If feeder restoration is not confirmed within 30 min, the Water Incident Lead orders the dispatch of the portable generator. Do not wait for low pressure.
+
+6.1.4 When zone pressure falls below 35 psi, notify the Tallow Branch hospital facilities manager. Use the after-hours line in Attachment B. Log the time and name on F-WDS-207.
+
+NOTE: The hospital runs its own standby generator (GEN-HSP-TALLOWBRANCH) for power. Its water supply still depends on PS-17.
+
+6.1.5 If the tank will reach its residual-pressure limit before pumping can resume, request a potable-water tanker for the hospital per WDS 03.240 section 6.3.
+
+## 6.2 Dispatch
+
+6.2.1 The Water Incident Lead raises the dispatch request on F-MAL-022 and calls the Logistics Section Chief.
+
+6.2.2 Logistics releases MGEN-HALBERD-500 from DEP-AIK-GRANITEVILLE with a full belly tank and the 4/0 cable set.
+
+6.2.3 Logistics confirms the route. If Pellicott Road is closed at the Horse Creek culvert, use the Bettis Academy Road approach.
+
+6.2.4 Record the dispatch time. The 150 min clock starts here.
+
+## 6.3 Connection and Transfer
+
+6.3.1 Position the generator on the north pad. Chock the wheels.
+
+6.3.2 Bond the frame to the ground bar.
+
+6.3.3 Verify the MTS is in the OFF (centre) position.
+
+6.3.4 Open utility breaker CB-1 and apply the station lock.
+
+6.3.5 Land the cables at the generator connection cabinet. Check phase rotation with the rotation meter.
+
+6.3.6 Start the generator. Allow 5 min warm-up at no load.
+
+6.3.7 Move the MTS to GENERATOR.
+
+6.3.8 Start pump 1, then pump 2 after 60 s.
+
+6.3.9 Confirm discharge pressure of 68 to 74 psi.
+
+6.3.10 Report "PS-17 pumping on generator" and the time to the Water Incident Lead.
+
+## 6.4 Running on Generator Power
+
+6.4.1 Record the pumping start time against the dispatch time. The planned hookup and start-up time is 150 min (Attachment A); report any overrun and its cause to Logistics.
+
+6.4.2 Log fuel, load and discharge pressure every 4 h on F-WDS-207.
+
+6.4.3 Request fuel at the threshold in WDS 03.322 section 6.3.
+
+## 6.5 Return to Grid Supply
+
+6.5.1 Return only on the Water Incident Lead's order, after Distribution Operations confirms FDR-AIK-2207 is stable.
+
+6.5.2 Stop pump 2, then pump 1.
+
+6.5.3 Move the MTS to OFF, then to UTILITY. Close CB-1.
+
+6.5.4 Restart the pumps on grid power. Run the generator unloaded for 5 min, then stop it.
+
+6.5.5 Leave the generator connected for 12 h if more weather is forecast.
+
+# 7.0 RECORDS
+
+F-WDS-207 Generator Run Log; F-MAL-022 dispatch request. Retain 5 years.
+
+# 8.0 REFERENCES
+
+WDS 03.105 Distribution Pressure Monitoring and Low-Pressure Response
+WDS 03.240 Tank Drawdown and Zone Isolation
+WDS 03.322 Standby Generator Fueling and Run-Time Monitoring
+MAL 05.040 Fuel and Portable Generator Logistics
+DOM 14.215 Restoration Priority Matrix (FDR-AIK-2207 is a Priority 1 feeder)
+SC R.61-58.7.E(7) minimum service pressure
+
+<<PAGEBREAK>>
+# ATTACHMENT A HOOKUP LEAD TIME BREAKDOWN
+
+| Stage | Planned time (min) | Cumulative (min) |
+|---|---|---|
+| Release and load-out at DEP-AIK-GRANITEVILLE | 30 | 30 |
+| Travel to PS-17 (normal route) | 55 | 85 |
+| Position, ground and cable connection | 45 | 130 |
+| Warm-up, manual transfer, pump start | 20 | 150 |
+
+Add 20 min when the Bettis Academy Road approach is used.
+
+# ATTACHMENT B CONTACTS
+
+| Position | Day | After hours |
+|---|---|---|
+| Water Incident Lead | 803-641-2270 | Water Control Room 803-641-2299 |
+| Logistics Section Chief | 803-641-3315 | EOC Logistics desk 803-641-3300 |
+| Facilities Manager, HSP-AIK-TALLOWBRANCH | 803-648-7710 | Hospital house supervisor 803-648-7000 |
+| Distribution Operations storm desk | 803-641-1180 | same |

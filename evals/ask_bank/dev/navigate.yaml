@@ -1,0 +1,491 @@
+# Ask bank, navigate: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-NAV-001
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: navigate
+  tags:
+  - user_reported
+  - link_request
+  question: Tell me where I can find information about water.
+  expect:
+    links:
+    - water
+  judge: true
+- id: AB-NAV-002
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: navigate
+  tags:
+  - user_reported
+  - link_request
+  question: where can I find information about water
+  expect:
+    links:
+    - water
+- id: AB-NAV-003
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: navigate
+  tags:
+  - link_request
+  question: Where do I sign a decision?
+  expect:
+    links:
+    - decisions
+- id: AB-NAV-004
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: navigate
+  tags:
+  - link_request
+  question: Open the PS-17 generator hookup decision.
+  expect:
+    links:
+    - decisions
+- id: AB-NAV-005
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I see the storm track?
+  expect:
+    links:
+    - map
+- id: AB-NAV-006
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: map
+  klass: navigate
+  tags:
+  - link_request
+  question: Show me PS-17 on the map.
+  expect:
+    links:
+    - map:PS-17
+- id: AB-NAV-007
+  lang: en
+  persona: plan_etr_01
+  moment: morning-after
+  page: forecast
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I see the outage forecast?
+  expect:
+    links:
+    - forecast
+- id: AB-NAV-008
+  lang: en
+  persona: plan_etr_01
+  moment: notices-lifted
+  page: forecast
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the ETR workspace?
+  expect:
+    links:
+    - forecast
+- id: AB-NAV-009
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I see the crews and staging yards?
+  expect:
+    links:
+    - crews
+- id: AB-NAV-010
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: navigate
+  tags:
+  - link_request
+  question: Where do I review damage cases?
+  expect:
+    links:
+    - crews
+- id: AB-NAV-011
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the executive briefing?
+  expect:
+    links:
+    - brief
+- id: AB-NAV-012
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I read the situation report?
+  expect:
+    links:
+    - brief
+- id: AB-NAV-014
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I check which deadlines were met or missed?
+  expect:
+    links:
+    - after_action
+- id: AB-NAV-016
+  lang: en
+  persona: ml_01
+  moment: at-n1
+  page: health
+  klass: navigate
+  tags:
+  - link_request
+  question: Where are the model details?
+  expect:
+    links:
+    - health
+- id: AB-NAV-017
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: readiness
+  klass: navigate
+  tags:
+  - link_request
+  question: Where are the pre-season readiness checks?
+  expect:
+    links:
+    - readiness
+- id: AB-NAV-018
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  page: admin
+  klass: navigate
+  tags:
+  - link_request
+  question: Where do I see users and what they can approve?
+  expect:
+    links:
+    - admin
+- id: AB-NAV-019
+  lang: en
+  persona: admin_01
+  moment: morning-after
+  page: admin
+  klass: navigate
+  tags:
+  - link_request
+  question: Where are the AI settings?
+  expect:
+    links:
+    - admin
+- id: AB-NAV-020
+  lang: en
+  persona: ops_dm_02
+  moment: morning-after
+  page: notifications
+  klass: navigate
+  tags:
+  - link_request
+  question: Where are my alerts?
+  expect:
+    links:
+    - notifications
+- id: AB-NAV-021
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: help
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I look up what a term means?
+  expect:
+    links:
+    - help
+- id: AB-NAV-022
+  lang: en
+  persona: wtr_comp_01
+  moment: morning-after
+  page: water
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I see the boil-water notices?
+  expect:
+    links:
+    - water
+- id: AB-NAV-023
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the PS-17 plan?
+  expect:
+    links:
+    - water
+- id: AB-NAV-024
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: map
+  klass: navigate
+  tags:
+  - link_request
+  question: Show me Tallowbranch hospital on the map.
+  expect:
+    links:
+    - map
+- id: AB-NAV-025
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: decisions
+  klass: navigate
+  tags:
+  - link_request
+  question: Take me to the tanker decision for the hospital.
+  expect:
+    links:
+    - decisions
+- id: AB-NAV-026
+  lang: en
+  persona: plan_etr_01
+  moment: at-n1
+  page: forecast
+  klass: navigate
+  tags:
+  - link_request
+  question: Where are the what-if storm scenarios?
+  expect:
+    links:
+    - forecast
+- id: AB-NAV-028
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  klass: navigate
+  tags:
+  - user_reported
+  - link_request
+  - vague
+  question: Give me the link.
+  expect:
+    mentions_any:
+    - /
+    - page
+- id: AB-NAV-029
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie znajdę informacje o wodzie?
+  expect:
+    links:
+    - water
+- id: AB-NAV-030
+  lang: pl
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: navigate
+  tags:
+  - no_diacritics
+  - link_request
+  question: gdzie znajde informacje o wodzie
+  expect:
+    links:
+    - water
+- id: AB-NAV-031
+  lang: pl
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie podpisuję decyzje?
+  expect:
+    links:
+    - decisions
+- id: AB-NAV-033
+  lang: pl
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - no_diacritics
+  - link_request
+  question: gdzie jest dziennik audytu
+  expect:
+    links:
+    - after_action
+- id: AB-NAV-034
+  lang: pl
+  persona: plan_etr_01
+  moment: morning-after
+  page: forecast
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie zobaczę prognozę awarii?
+  expect:
+    links:
+    - forecast
+- id: AB-NAV-036
+  lang: pl
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie sprawdzę, czy dane spływają na czas?
+  expect:
+    links:
+    - health
+- id: AB-NAV-037
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: navigate
+  tags:
+  - link_request
+  question: Pokaż PS-17 na mapie.
+  expect:
+    links:
+    - map:PS-17
+- id: AB-NAV-038
+  lang: pl
+  persona: log_01
+  moment: at-n1
+  page: readiness
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie są kontrole gotowości przed sezonem?
+  expect:
+    links:
+    - readiness
+- id: AB-NAV-039
+  lang: de
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: navigate
+  tags:
+  - other_language
+  - link_request
+  question: Wo finde ich Informationen zum Wasser?
+  expect:
+    links:
+    - water
+- id: AB-NAV-042
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: notifications
+  klass: navigate
+  tags:
+  - link_request
+  question: Where do I see the notifications addressed to me?
+  expect:
+    links:
+    - notifications
+- id: AB-NAV-043
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: help
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the glossary?
+  expect:
+    links:
+    - help
+- id: AB-NAV-044
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  page: ask
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I see my earlier questions to Ask AI?
+  expect:
+    links:
+    - ask
+- id: AB-NAV-045
+  lang: en
+  persona: log_01
+  moment: notices-lifted
+  page: readiness
+  klass: navigate
+  tags:
+  - link_request
+  question: Open the readiness check for the Tallowbranch tanker.
+  expect:
+    links:
+    - readiness
+- id: AB-NAV-047
+  lang: pl
+  persona: ops_dm_02
+  moment: morning-after
+  page: notifications
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie są moje powiadomienia?
+  expect:
+    links:
+    - notifications
+- id: AB-NAV-048
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: help
+  klass: navigate
+  tags:
+  - no_diacritics
+  - link_request
+  question: gdzie jest slowniczek pojec
+  expect:
+    links:
+    - help

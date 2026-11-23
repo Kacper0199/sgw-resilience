@@ -1,0 +1,84 @@
+# Secrets
+.env
+.env.*
+/llm.env
+!.env.example
+
+# User inputs and research material: never tracked
+materials/
+raw/
+task_description/
+
+# Project memory and agent notes stay local
+.memory/
+NOTES.md
+CLAUDE.local.md
+
+# Local tooling output
+.playwright-cli/
+.crawled/
+.claude/
+
+# Run and experiment artefacts
+*.log
+logs/
+tmp/
+scratch/
+mlruns/
+mlartifacts/
+.dagster/
+dagster_home/
+.coverage
+coverage/
+htmlcov/
+.ipynb_checkpoints/
+playwright-report/
+test-results/
+*.local.yaml
+
+# OS and editors
+.DS_Store
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+dist/
+.turbo/
+
+# LaTeX build output
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Build workflow
+.worktrees/
+.locks/
+var/
+.design-shots-tmp/
+
+# rendered screenshots of the redesign directions (large; regenerate from the HTML mockups)
+
+# demo smoke and other local reports
+out/
+design/

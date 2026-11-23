@@ -1,0 +1,68 @@
+# Builder query set (WP-18): written by the builder from the corpus facts, in its own words, to check that
+# retrieval generalises beyond the 10 dev items. Not an eval split; same schema and grader as evals/dev.
+set: retrieval
+split: builder
+version: 1
+k: 8
+default_as_of: "2024-09-27T12:00:00Z"
+items:
+  - {id: B-01, kind: semantic, query: "who sets the event type and who drafts the recommendation", relevant: [{doc_id: "GEP 00.010", revision: "G"}]}
+  - {id: B-02, kind: semantic, query: "percentage of customers out that makes a storm major rather than significant", relevant: [{doc_id: "GEP 00.010", revision: "G"}]}
+  - {id: B-03, kind: semantic, query: "how often is the event type reviewed during a hurricane watch", relevant: [{doc_id: "GEP 00.010", revision: "G"}]}
+  - {id: B-04, kind: semantic, query: "staffing matrix for storm classification", relevant: [{doc_id: "GEP 00.010", revision: "G"}]}
+  - {id: B-05, kind: semantic, query: "which role proposes crew staging plans to the incident commander", relevant: [{doc_id: "GEP 03.020", revision: "D"}], must_not_retrieve: [{doc_id: "GEP 03.020", revision: "C"}]}
+  - {id: B-06, kind: semantic, query: "where does the ETR specialist sit in the storm organization", relevant: [{doc_id: "GEP 03.020", revision: "D"}]}
+  - {id: B-07, kind: semantic, query: "who owns boil water decisions and talks to state drinking water regulators", relevant: [{doc_id: "GEP 03.020", revision: "D"}]}
+  - {id: B-08, kind: semantic, query: "when is the mutual aid request decided before hurricane landfall", relevant: [{doc_id: "GEP 2H.01", revision: "F"}], must_not_retrieve: [{doc_id: "GEP 2H.01", revision: "E"}]}
+  - {id: B-09, kind: semantic, query: "tolerance band for re-balancing crews between staging sites without new approval", relevant: [{doc_id: "GEP 2H.01", revision: "F"}]}
+  - {id: B-10, kind: semantic, query: "staging yards for Aiken and Richmond districts in the hurricane annex", relevant: [{doc_id: "GEP 2H.01", revision: "F"}]}
+  - {id: B-11, kind: semantic, query: "deliver fuel ahead of flooding when the route crosses a low-water crossing", relevant: [{doc_id: "GEP 2F.01", revision: "C"}]}
+  - {id: B-12, kind: semantic, query: "flood-prone roads to PS-38 and PS-52", relevant: [{doc_id: "GEP 2F.01", revision: "C"}]}
+  - {id: B-13, kind: semantic, query: "deadline for publishing the global restoration estimate after the all-clear", relevant: [{doc_id: "DOM 14.206", revision: "K"}], must_not_retrieve: [{doc_id: "DOM 14.206", revision: "J"}]}
+  - {id: B-14, kind: semantic, query: "when do regional ETRs follow the global one", relevant: [{doc_id: "DOM 14.206", revision: "K"}]}
+  - {id: B-15, kind: semantic, query: "how much must the P50 move before a published ETR is revised", relevant: [{doc_id: "DOM 14.206", revision: "K"}]}
+  - {id: B-16, kind: semantic, query: "wind speed at which bucket truck work stops", relevant: [{doc_id: "DOM 14.110", revision: "H"}]}
+  - {id: B-17, kind: semantic, query: "order in which damage patrols cover transmission, substations and feeders", relevant: [{doc_id: "DOM 14.110", revision: "H"}]}
+  - {id: B-18, kind: semantic, query: "damage photo review queue ordered by model score", relevant: [{doc_id: "DOM 14.110", revision: "H"}]}
+  - {id: B-19, kind: semantic, query: "restoration priority for hospitals and the pump stations that supply them", relevant: [{doc_id: "DOM 14.215", revision: "E"}]}
+  - {id: B-20, kind: semantic, query: "who approves restoring a hospital pump station feeder ahead of a bigger feeder", relevant: [{doc_id: "DOM 14.215", revision: "E"}]}
+  - {id: B-21, kind: semantic, query: "onboarding briefing time limit for arriving mutual aid crews", relevant: [{doc_id: "DOM 12.040", revision: "D"}, {doc_id: "OB-24-07"}]}
+  - {id: B-22, kind: semantic, query: "how many crews fit at the Sandhill yard", relevant: [{doc_id: "DOM 12.040", revision: "D"}]}
+  - {id: B-23, kind: semantic, query: "approvals needed before a mutual assistance request is released to SEE", relevant: [{doc_id: "MAL 05.012", revision: "C"}]}
+  - {id: B-24, kind: semantic, query: "SEE procedures versus bilateral agreement conflict", relevant: [{doc_id: "MAL 05.012", revision: "C"}]}
+  - {id: B-25, kind: semantic, query: "fuel vendor delivery time during a declared event", relevant: [{doc_id: "MAL 05.040", revision: "F"}]}
+  - {id: B-26, kind: semantic, query: "use the company fuel truck when the vendor is slower than the generator run time", relevant: [{doc_id: "MAL 05.040", revision: "F"}]}
+  - {id: B-27, kind: semantic, query: "lead time to hook up a portable generator at the Pellicott Road booster", relevant: [{doc_id: "WDS 03.318", revision: "E"}]}
+  - {id: B-28, kind: semantic, query: "does PS-17 have an automatic transfer switch", relevant: [{doc_id: "WDS 03.318", revision: "E"}]}
+  - {id: B-29, kind: semantic, query: "pressure at which the hospital facilities manager is told", relevant: [{doc_id: "WDS 03.318", revision: "E"}]}
+  - {id: B-30, kind: semantic, query: "tank level that triggers a standby generator refuel request", relevant: [{doc_id: "WDS 03.322", revision: "C"}], must_not_retrieve: [{doc_id: "WDS 03.322", revision: "B"}]}
+  - {id: B-31, kind: semantic, query: "how often to log generator fuel while running", relevant: [{doc_id: "WDS 03.322", revision: "C"}]}
+  - {id: B-32, kind: semantic, query: "minimum pressure at service connections in South Carolina under heavy flow", relevant: [{doc_id: "WDS 03.105", revision: "G"}]}
+  - {id: B-33, kind: semantic, query: "SCADA low pressure alarm setpoint", relevant: [{doc_id: "WDS 03.105", revision: "G"}]}
+  - {id: B-34, kind: semantic, query: "who orders isolation valves closed during tank drawdown", relevant: [{doc_id: "WDS 03.240", revision: "B"}]}
+  - {id: B-35, kind: semantic, query: "sampling needed to lift a boil water advisory in Georgia", relevant: [{doc_id: "WQC 07.114", revision: "E"}], must_not_retrieve: [{doc_id: "WQC 07.114", revision: "D"}]}
+  - {id: B-36, kind: semantic, query: "who to call at Georgia EPD at night or on weekends", relevant: [{doc_id: "WQC 07.114", revision: "E"}]}
+  - {id: B-37, kind: semantic, query: "can a boil water advisory be lifted for only some streets", relevant: [{doc_id: "WQC 07.114", revision: "E"}]}
+  - {id: B-38, kind: semantic, query: "which state agency is named on South Carolina boil water notices", relevant: [{doc_id: "WQC 07.120", revision: "C"}], must_not_retrieve: [{doc_id: "WQC 07.120", revision: "B"}]}
+  - {id: B-39, kind: semantic, query: "can a South Carolina boil water notice be given verbally", relevant: [{doc_id: "WQC 07.120", revision: "C"}]}
+  - {id: B-40, kind: semantic, query: "how long to flush faucets after the advisory is lifted", relevant: [{doc_id: "PCN 02.031", revision: "D"}]}
+  - {id: B-41, kind: semantic, query: "public wording of the global restoration estimate", relevant: [{doc_id: "PCN 02.044", revision: "C"}]}
+  - {id: B-42, kind: semantic, query: "outage length that requires a full report to the South Carolina commission", relevant: [{doc_id: "PCN 04.010", revision: "B"}]}
+  - {id: B-43, kind: semantic, query: "feeders excluded from rotating load shed blocks", relevant: [{doc_id: "TSO 11.002", revision: "D"}]}
+  - {id: B-44, kind: semantic, query: "non-reclose setting during live line work", relevant: [{doc_id: "TSO 06.110", revision: "F"}]}
+  - {id: B-45, kind: semantic, query: "when did the Cedarfall zone pressure drop below the floor during Helene", relevant: [{doc_id: "SR-HEL-24-04"}]}
+  - {id: B-46, kind: semantic, query: "crews assigned to Division Aiken North in operational period 5", relevant: [{doc_id: "IAP-HEL-24-OP05/204-02"}]}
+  - {id: B-47, kind: semantic, query: "Debby lessons learned about a blocked fuel delivery", relevant: [{doc_id: "AAR-DEB-24"}]}
+  - {id: B-48, kind: semantic, query: "boil water field checklist rows", relevant: [{doc_id: "F-WQC-031", revision: "C"}]}
+  - {id: B-49, kind: exact_id, query: "WQC 07.114", relevant: [{doc_id: "WQC 07.114", revision: "E"}], must_not_retrieve: [{doc_id: "WQC 07.114", revision: "D"}]}
+  - {id: B-50, kind: legacy_id, query: "what does WOP-118 say about the transfer switch", relevant: [{doc_id: "WDS 03.318", revision: "E"}]}
+  - {id: B-51, kind: exact_id, query: "summary of DOM 14.206", relevant: [{doc_id: "DOM 14.206", revision: "K"}], must_not_retrieve: [{doc_id: "DOM 14.206", revision: "J"}]}
+  - {id: B-52, kind: exact_id, query: "GEP 2H.01 Rev E/1 phase table", relevant: [{doc_id: "GEP 2H.01", revision: "F"}], must_not_retrieve: [{doc_id: "GEP 2H.01", revision: "E"}]}
+  - {id: B-53, kind: exact_id, query: "OB-24-07", relevant: [{doc_id: "OB-24-07"}]}
+  - {id: B-54, kind: exact_id, query: "F-WQC-031 checklist", relevant: [{doc_id: "F-WQC-031", revision: "C"}]}
+  - {id: B-55, kind: semantic, as_of: "2023-06-15T12:00:00Z", query: "deadline for publishing the global ETR after the all-clear", relevant: [{doc_id: "DOM 14.206", revision: "J"}], must_not_retrieve: [{doc_id: "DOM 14.206", revision: "K"}]}
+  - {id: B-56, kind: semantic, as_of: "2024-03-01T12:00:00Z", query: "when is the mutual aid request decided before hurricane landfall", relevant: [{doc_id: "GEP 2H.01", revision: "E"}], must_not_retrieve: [{doc_id: "GEP 2H.01", revision: "F"}]}
+  - {id: B-57, kind: semantic, as_of: "2024-08-01T12:00:00Z", query: "which agency is named on South Carolina boil water notices", relevant: [{doc_id: "WQC 07.120", revision: "B"}], must_not_retrieve: [{doc_id: "WQC 07.120", revision: "C"}]}
+  - {id: B-58, kind: semantic, as_of: "2024-10-20T12:00:00Z", query: "onboarding briefing time limit for arriving mutual aid crews", relevant: [{doc_id: "DOM 12.040", revision: "D"}], must_not_retrieve: [{doc_id: "OB-24-07"}]}
+  - {id: B-59, kind: exact_id, as_of: "2023-06-15T12:00:00Z", query: "WQC 07.114", relevant: [{doc_id: "WQC 07.114", revision: "D"}], must_not_retrieve: [{doc_id: "WQC 07.114", revision: "E"}]}
+  - {id: B-60, kind: semantic, as_of: "2024-09-29T12:00:00Z", query: "what happened at PS-23 Laurel Spur pump 1", relevant: [{doc_id: "INS-WDS-2409-0093"}]}

@@ -1,0 +1,8 @@
+# Family-B seeds (WP-15). The first seed is the scenario of record (debby_b.yaml `seed`); the replicate seeds
+# give the simulation interval for family-B coverage metrics (K17 split heldout_family_b). Pinned by sha256 in
+# evals/MANIFEST.sha256; changing a seed is a held-out change and needs the eval author.
+family: B
+scenario: debby_b
+scenario_seed: 80527
+replicate_seeds: [80527, 80611, 80743, 80859, 80991, 81137, 81203, 81349, 81421, 81577]
+rule: "report family-B coverage as the mean over replicate seeds with the min-max range as the simulation interval; never pick a seed after seeing results"

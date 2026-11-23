@@ -1,0 +1,7502 @@
+{
+  "$defs": {
+    "ActionType": {
+      "enum": [
+        "set_event_type",
+        "preposition_crews",
+        "reoptimise_within_envelope",
+        "stage_crews_small",
+        "mutual_aid_request",
+        "cross_domain_priority",
+        "boil_water_notice",
+        "lift_boil_water_notice",
+        "field_resource_order",
+        "publish_global_etr",
+        "work_order_draft",
+        "sitrep_draft",
+        "policy_change"
+      ],
+      "title": "ActionType",
+      "type": "string"
+    },
+    "AnomalyDetected": {
+      "additionalProperties": false,
+      "properties": {
+        "anomaly_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Anomaly Id",
+          "type": "string"
+        },
+        "entity_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "score_ppm": {
+          "description": "probability or share in parts per million",
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Score Ppm",
+          "type": "integer"
+        },
+        "anomaly_class": {
+          "title": "Anomaly Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anomaly_id",
+        "entity_id",
+        "score_ppm",
+        "anomaly_class"
+      ],
+      "title": "AnomalyDetected",
+      "type": "object"
+    },
+    "AnomalyDetectedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `AnomalyDetected` payload.",
+      "properties": {
+        "type": {
+          "const": "AnomalyDetected",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/AnomalyDetected"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "AnomalyDetectedEvent",
+      "type": "object"
+    },
+    "ApprovalDecision": {
+      "enum": [
+        "approve",
+        "reject",
+        "break_glass",
+        "cosign"
+      ],
+      "title": "ApprovalDecision",
+      "type": "string"
+    },
+    "ApprovalFunction": {
+      "description": "X-01: PS DC-10 functions plus `communications`, reserved and unused in seeds.",
+      "enum": [
+        "command",
+        "operations",
+        "planning",
+        "logistics",
+        "water_operations",
+        "compliance",
+        "executive",
+        "audit",
+        "platform",
+        "data",
+        "communications"
+      ],
+      "title": "ApprovalFunction",
+      "type": "string"
+    },
+    "ApprovalRecorded": {
+      "additionalProperties": false,
+      "properties": {
+        "approval_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Approval Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "proposal_version": {
+          "minimum": 1,
+          "title": "Proposal Version",
+          "type": "integer"
+        },
+        "action_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Action Hash",
+          "type": "string"
+        },
+        "approver_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Approver Id",
+          "type": "string"
+        },
+        "function": {
+          "$ref": "#/$defs/ApprovalFunction"
+        },
+        "decision": {
+          "$ref": "#/$defs/ApprovalDecision"
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason Code"
+        }
+      },
+      "required": [
+        "approval_id",
+        "proposal_id",
+        "proposal_version",
+        "action_hash",
+        "approver_id",
+        "function",
+        "decision"
+      ],
+      "title": "ApprovalRecorded",
+      "type": "object"
+    },
+    "ApprovalRecordedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ApprovalRecorded` payload.",
+      "properties": {
+        "type": {
+          "const": "ApprovalRecorded",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ApprovalRecorded"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ApprovalRecordedEvent",
+      "type": "object"
+    },
+    "BreakGlassUsed": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "ic_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Ic Id",
+          "type": "string"
+        },
+        "reason": {
+          "minLength": 10,
+          "title": "Reason",
+          "type": "string"
+        },
+        "cosign_due_utc": {
+          "format": "date-time",
+          "title": "Cosign Due Utc",
+          "type": "string"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "ic_id",
+        "reason",
+        "cosign_due_utc"
+      ],
+      "title": "BreakGlassUsed",
+      "type": "object"
+    },
+    "BreakGlassUsedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `BreakGlassUsed` payload.",
+      "properties": {
+        "type": {
+          "const": "BreakGlassUsed",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/BreakGlassUsed"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "BreakGlassUsedEvent",
+      "type": "object"
+    },
+    "Classification": {
+      "enum": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C3-N",
+        "C4",
+        "CX"
+      ],
+      "title": "Classification",
+      "type": "string"
+    },
+    "ClockBreached": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proposal Id"
+        },
+        "effective_decide_by_utc": {
+          "format": "date-time",
+          "title": "Effective Decide By Utc",
+          "type": "string"
+        },
+        "breached_at_utc": {
+          "format": "date-time",
+          "title": "Breached At Utc",
+          "type": "string"
+        },
+        "clock_kind": {
+          "$ref": "#/$defs/ClockKind"
+        }
+      },
+      "required": [
+        "decision_case_id",
+        "effective_decide_by_utc",
+        "breached_at_utc",
+        "clock_kind"
+      ],
+      "title": "ClockBreached",
+      "type": "object"
+    },
+    "ClockBreachedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ClockBreached` payload.",
+      "properties": {
+        "type": {
+          "const": "ClockBreached",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ClockBreached"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ClockBreachedEvent",
+      "type": "object"
+    },
+    "ClockKind": {
+      "enum": [
+        "rule_deadline",
+        "model_estimate"
+      ],
+      "title": "ClockKind",
+      "type": "string"
+    },
+    "CommitmentCreated": {
+      "additionalProperties": false,
+      "properties": {
+        "commitment_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Commitment Id",
+          "type": "string"
+        },
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "promised_by_utc": {
+          "format": "date-time",
+          "title": "Promised By Utc",
+          "type": "string"
+        },
+        "milestones": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Milestones",
+          "type": "array"
+        }
+      },
+      "required": [
+        "commitment_id",
+        "decision_case_id",
+        "proposal_id",
+        "promised_by_utc",
+        "milestones"
+      ],
+      "title": "CommitmentCreated",
+      "type": "object"
+    },
+    "CommitmentCreatedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `CommitmentCreated` payload.",
+      "properties": {
+        "type": {
+          "const": "CommitmentCreated",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/CommitmentCreated"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "CommitmentCreatedEvent",
+      "type": "object"
+    },
+    "CommitmentDrifted": {
+      "additionalProperties": false,
+      "properties": {
+        "commitment_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Commitment Id",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/CommitmentState"
+        },
+        "promised_by_utc": {
+          "format": "date-time",
+          "title": "Promised By Utc",
+          "type": "string"
+        },
+        "projected_utc": {
+          "format": "date-time",
+          "title": "Projected Utc",
+          "type": "string"
+        },
+        "drift_min": {
+          "title": "Drift Min",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "commitment_id",
+        "state",
+        "promised_by_utc",
+        "projected_utc",
+        "drift_min"
+      ],
+      "title": "CommitmentDrifted",
+      "type": "object"
+    },
+    "CommitmentDriftedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `CommitmentDrifted` payload.",
+      "properties": {
+        "type": {
+          "const": "CommitmentDrifted",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/CommitmentDrifted"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "CommitmentDriftedEvent",
+      "type": "object"
+    },
+    "CommitmentState": {
+      "enum": [
+        "on_track",
+        "at_risk",
+        "drifted",
+        "met",
+        "missed",
+        "cancelled"
+      ],
+      "title": "CommitmentState",
+      "type": "string"
+    },
+    "CoverageGap": {
+      "additionalProperties": false,
+      "properties": {
+        "gap_source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Gap Source Id",
+          "type": "string"
+        },
+        "from_utc": {
+          "format": "date-time",
+          "title": "From Utc",
+          "type": "string"
+        },
+        "to_utc": {
+          "format": "date-time",
+          "title": "To Utc",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gap_source_id",
+        "from_utc",
+        "to_utc",
+        "reason"
+      ],
+      "title": "CoverageGap",
+      "type": "object"
+    },
+    "CoverageGapEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `CoverageGap` payload.",
+      "properties": {
+        "type": {
+          "const": "CoverageGap",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/CoverageGap"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "CoverageGapEvent",
+      "type": "object"
+    },
+    "CrewStatus": {
+      "enum": [
+        "available",
+        "staged",
+        "enroute",
+        "onsite",
+        "blocked",
+        "done",
+        "off_shift"
+      ],
+      "title": "CrewStatus",
+      "type": "string"
+    },
+    "DQCheckFailed": {
+      "additionalProperties": false,
+      "properties": {
+        "check_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Check Id",
+          "type": "string"
+        },
+        "asset": {
+          "title": "Asset",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "warn",
+            "error"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "check_id",
+        "asset",
+        "severity",
+        "detail"
+      ],
+      "title": "DQCheckFailed",
+      "type": "object"
+    },
+    "DQCheckFailedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `DQCheckFailed` payload.",
+      "properties": {
+        "type": {
+          "const": "DQCheckFailed",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/DQCheckFailed"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "DQCheckFailedEvent",
+      "type": "object"
+    },
+    "DecisionApproved": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "proposal_version": {
+          "minimum": 1,
+          "title": "Proposal Version",
+          "type": "integer"
+        },
+        "action_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Action Hash",
+          "type": "string"
+        },
+        "tier": {
+          "$ref": "#/$defs/Tier"
+        },
+        "approver_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Approver Ids",
+          "type": "array"
+        },
+        "break_glass": {
+          "default": false,
+          "title": "Break Glass",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "decision_case_id",
+        "proposal_id",
+        "proposal_version",
+        "action_hash",
+        "tier",
+        "approver_ids"
+      ],
+      "title": "DecisionApproved",
+      "type": "object"
+    },
+    "DecisionApprovedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `DecisionApproved` payload.",
+      "properties": {
+        "type": {
+          "const": "DecisionApproved",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/DecisionApproved"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "DecisionApprovedEvent",
+      "type": "object"
+    },
+    "DecisionClockUpdated": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "decide_by_utc": {
+          "format": "date-time",
+          "title": "Decide By Utc",
+          "type": "string"
+        },
+        "effective_decide_by_utc": {
+          "format": "date-time",
+          "title": "Effective Decide By Utc",
+          "type": "string"
+        },
+        "previous_decide_by_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Decide By Utc"
+        },
+        "on_critical_path": {
+          "title": "On Critical Path",
+          "type": "boolean"
+        },
+        "no_regret_verdict": {
+          "$ref": "#/$defs/NoRegretVerdict"
+        },
+        "cause_event_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cause Event Id"
+        }
+      },
+      "required": [
+        "decision_case_id",
+        "decide_by_utc",
+        "effective_decide_by_utc",
+        "on_critical_path",
+        "no_regret_verdict"
+      ],
+      "title": "DecisionClockUpdated",
+      "type": "object"
+    },
+    "DecisionClockUpdatedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `DecisionClockUpdated` payload.",
+      "properties": {
+        "type": {
+          "const": "DecisionClockUpdated",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/DecisionClockUpdated"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "DecisionClockUpdatedEvent",
+      "type": "object"
+    },
+    "DegradedMode": {
+      "enum": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "title": "DegradedMode",
+      "type": "string"
+    },
+    "DeviceState": {
+      "additionalProperties": false,
+      "properties": {
+        "device_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Device Id",
+          "type": "string"
+        },
+        "device_kind": {
+          "enum": [
+            "breaker",
+            "recloser",
+            "feeder",
+            "pump",
+            "generator",
+            "pressure_sensor",
+            "tank"
+          ],
+          "title": "Device Kind",
+          "type": "string"
+        },
+        "tag": {
+          "title": "Tag",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        }
+      },
+      "required": [
+        "device_id",
+        "device_kind",
+        "tag",
+        "value"
+      ],
+      "title": "DeviceState",
+      "type": "object"
+    },
+    "DeviceStateEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `DeviceState` payload.",
+      "properties": {
+        "type": {
+          "const": "DeviceState",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/DeviceState"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "DeviceStateEvent",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "electric",
+        "water"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "EffectState": {
+      "enum": [
+        "queued",
+        "sent",
+        "delivery_unknown",
+        "acknowledged"
+      ],
+      "title": "EffectState",
+      "type": "string"
+    },
+    "EffectStateChanged": {
+      "additionalProperties": false,
+      "properties": {
+        "effect_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Effect Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "channel": {
+          "title": "Channel",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/EffectState"
+        }
+      },
+      "required": [
+        "effect_id",
+        "proposal_id",
+        "channel",
+        "state"
+      ],
+      "title": "EffectStateChanged",
+      "type": "object"
+    },
+    "EffectStateChangedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `EffectStateChanged` payload.",
+      "properties": {
+        "type": {
+          "const": "EffectStateChanged",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/EffectStateChanged"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "EffectStateChangedEvent",
+      "type": "object"
+    },
+    "EnvelopeApproved": {
+      "additionalProperties": false,
+      "properties": {
+        "envelope_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Envelope Id",
+          "type": "string"
+        },
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "bounds": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EnvelopeBound"
+          },
+          "title": "Bounds",
+          "type": "object"
+        },
+        "valid_until_utc": {
+          "format": "date-time",
+          "title": "Valid Until Utc",
+          "type": "string"
+        }
+      },
+      "required": [
+        "envelope_id",
+        "proposal_id",
+        "bounds",
+        "valid_until_utc"
+      ],
+      "title": "EnvelopeApproved",
+      "type": "object"
+    },
+    "EnvelopeApprovedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `EnvelopeApproved` payload.",
+      "properties": {
+        "type": {
+          "const": "EnvelopeApproved",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/EnvelopeApproved"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "EnvelopeApprovedEvent",
+      "type": "object"
+    },
+    "EnvelopeBound": {
+      "additionalProperties": false,
+      "description": "Inclusive bounds of one rounded parameter; the only envelope bound shape (K8, K2 EnvelopeApproved).",
+      "properties": {
+        "min": {
+          "title": "Min",
+          "type": "integer"
+        },
+        "max": {
+          "title": "Max",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ],
+      "title": "EnvelopeBound",
+      "type": "object"
+    },
+    "EtrPublished": {
+      "additionalProperties": false,
+      "description": "Restoration-time estimate (P10..P90 of the time all customers in scope are restored), WP-17.",
+      "properties": {
+        "estimate_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Estimate Id",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "global",
+            "region"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "region_id": {
+          "title": "Region Id",
+          "type": "string"
+        },
+        "as_of_utc": {
+          "format": "date-time",
+          "title": "As Of Utc",
+          "type": "string"
+        },
+        "p10_utc": {
+          "format": "date-time",
+          "title": "P10 Utc",
+          "type": "string"
+        },
+        "p25_utc": {
+          "format": "date-time",
+          "title": "P25 Utc",
+          "type": "string"
+        },
+        "p50_utc": {
+          "format": "date-time",
+          "title": "P50 Utc",
+          "type": "string"
+        },
+        "p75_utc": {
+          "format": "date-time",
+          "title": "P75 Utc",
+          "type": "string"
+        },
+        "p90_utc": {
+          "format": "date-time",
+          "title": "P90 Utc",
+          "type": "string"
+        },
+        "peak_customers_out": {
+          "minimum": 0,
+          "title": "Peak Customers Out",
+          "type": "integer"
+        },
+        "model_version": {
+          "title": "Model Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "estimate_id",
+        "scope",
+        "region_id",
+        "as_of_utc",
+        "p10_utc",
+        "p25_utc",
+        "p50_utc",
+        "p75_utc",
+        "p90_utc",
+        "peak_customers_out",
+        "model_version"
+      ],
+      "title": "EtrPublished",
+      "type": "object"
+    },
+    "EtrPublishedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `EtrPublished` payload.",
+      "properties": {
+        "type": {
+          "const": "EtrPublished",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/EtrPublished"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "EtrPublishedEvent",
+      "type": "object"
+    },
+    "FeedMode": {
+      "enum": [
+        "live",
+        "replay",
+        "synthetic"
+      ],
+      "title": "FeedMode",
+      "type": "string"
+    },
+    "Finality": {
+      "enum": [
+        "provisional",
+        "confirmed",
+        "retracted"
+      ],
+      "title": "Finality",
+      "type": "string"
+    },
+    "KillLevel": {
+      "enum": [
+        "K0",
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "title": "KillLevel",
+      "type": "string"
+    },
+    "KillSwitchChanged": {
+      "additionalProperties": false,
+      "properties": {
+        "kill_level": {
+          "$ref": "#/$defs/KillLevel"
+        },
+        "changed_by": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Changed By",
+          "type": "array"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kill_level",
+        "changed_by",
+        "reason"
+      ],
+      "title": "KillSwitchChanged",
+      "type": "object"
+    },
+    "KillSwitchChangedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `KillSwitchChanged` payload.",
+      "properties": {
+        "type": {
+          "const": "KillSwitchChanged",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/KillSwitchChanged"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "KillSwitchChangedEvent",
+      "type": "object"
+    },
+    "MeterEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "meter_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Meter Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "last_gasp",
+            "power_restore",
+            "voltage_sag"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "premise_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Premise Id",
+          "type": "string"
+        },
+        "feeder_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Feeder Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "meter_id",
+        "kind",
+        "premise_id",
+        "feeder_id"
+      ],
+      "title": "MeterEvent",
+      "type": "object"
+    },
+    "MeterEventEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `MeterEvent` payload.",
+      "properties": {
+        "type": {
+          "const": "MeterEvent",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/MeterEvent"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "MeterEventEvent",
+      "type": "object"
+    },
+    "ModeChanged": {
+      "additionalProperties": false,
+      "properties": {
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "degraded_mode": {
+          "$ref": "#/$defs/DegradedMode"
+        },
+        "changed_by": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Changed By",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_mode",
+        "degraded_mode",
+        "changed_by"
+      ],
+      "title": "ModeChanged",
+      "type": "object"
+    },
+    "ModeChangedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ModeChanged` payload.",
+      "properties": {
+        "type": {
+          "const": "ModeChanged",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ModeChanged"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ModeChangedEvent",
+      "type": "object"
+    },
+    "NetworkTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "trace_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "downstream_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Downstream Ids",
+          "type": "array"
+        },
+        "cross_domain_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Cross Domain Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "trace_id",
+        "source_id",
+        "downstream_ids"
+      ],
+      "title": "NetworkTrace",
+      "type": "object"
+    },
+    "NetworkTraceEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `NetworkTrace` payload.",
+      "properties": {
+        "type": {
+          "const": "NetworkTrace",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/NetworkTrace"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "NetworkTraceEvent",
+      "type": "object"
+    },
+    "NoRegretVerdict": {
+      "enum": [
+        "act_now",
+        "wait_for_next_advisory",
+        "n/a",
+        "decide_now"
+      ],
+      "title": "NoRegretVerdict",
+      "type": "string"
+    },
+    "OutageEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "outage_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Outage Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "updated",
+            "restored"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "device_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Device Id",
+          "type": "string"
+        },
+        "feeder_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Feeder Id",
+          "type": "string"
+        },
+        "customers_out": {
+          "minimum": 0,
+          "title": "Customers Out",
+          "type": "integer"
+        },
+        "cause": {
+          "enum": [
+            "unknown",
+            "wind",
+            "tree",
+            "flood",
+            "equipment",
+            "planned"
+          ],
+          "title": "Cause",
+          "type": "string"
+        },
+        "critical_facility_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Critical Facility Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "outage_id",
+        "status",
+        "device_id",
+        "feeder_id",
+        "customers_out",
+        "cause"
+      ],
+      "title": "OutageEvent",
+      "type": "object"
+    },
+    "OutageEventEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `OutageEvent` payload.",
+      "properties": {
+        "type": {
+          "const": "OutageEvent",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/OutageEvent"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "OutageEventEvent",
+      "type": "object"
+    },
+    "PipelineRunFinished": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "asset": {
+          "title": "Asset",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "success",
+            "failed",
+            "partial"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "rows_in": {
+          "minimum": 0,
+          "title": "Rows In",
+          "type": "integer"
+        },
+        "rows_out": {
+          "minimum": 0,
+          "title": "Rows Out",
+          "type": "integer"
+        },
+        "rows_quarantined": {
+          "minimum": 0,
+          "title": "Rows Quarantined",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "asset",
+        "status",
+        "rows_in",
+        "rows_out",
+        "rows_quarantined"
+      ],
+      "title": "PipelineRunFinished",
+      "type": "object"
+    },
+    "PipelineRunFinishedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `PipelineRunFinished` payload.",
+      "properties": {
+        "type": {
+          "const": "PipelineRunFinished",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/PipelineRunFinished"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "PipelineRunFinishedEvent",
+      "type": "object"
+    },
+    "ProposalCreated": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "action_type": {
+          "$ref": "#/$defs/ActionType"
+        },
+        "tier": {
+          "$ref": "#/$defs/Tier"
+        },
+        "proposal_version": {
+          "minimum": 1,
+          "title": "Proposal Version",
+          "type": "integer"
+        },
+        "action_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Action Hash",
+          "type": "string"
+        },
+        "proposed_by": {
+          "title": "Proposed By",
+          "type": "string"
+        },
+        "decide_by_utc": {
+          "format": "date-time",
+          "title": "Decide By Utc",
+          "type": "string"
+        },
+        "clock_kind": {
+          "$ref": "#/$defs/ClockKind"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "decision_case_id",
+        "action_type",
+        "tier",
+        "proposal_version",
+        "action_hash",
+        "proposed_by",
+        "decide_by_utc",
+        "clock_kind"
+      ],
+      "title": "ProposalCreated",
+      "type": "object"
+    },
+    "ProposalCreatedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ProposalCreated` payload.",
+      "properties": {
+        "type": {
+          "const": "ProposalCreated",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ProposalCreated"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ProposalCreatedEvent",
+      "type": "object"
+    },
+    "ProposalEscalated": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "from_tier": {
+          "$ref": "#/$defs/Tier"
+        },
+        "to_tier": {
+          "$ref": "#/$defs/Tier"
+        },
+        "escalators": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Escalators",
+          "type": "array"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "from_tier",
+        "to_tier",
+        "escalators"
+      ],
+      "title": "ProposalEscalated",
+      "type": "object"
+    },
+    "ProposalEscalatedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ProposalEscalated` payload.",
+      "properties": {
+        "type": {
+          "const": "ProposalEscalated",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ProposalEscalated"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ProposalEscalatedEvent",
+      "type": "object"
+    },
+    "ProposalExpired": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "proposal_version": {
+          "minimum": 1,
+          "title": "Proposal Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "proposal_version"
+      ],
+      "title": "ProposalExpired",
+      "type": "object"
+    },
+    "ProposalExpiredEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ProposalExpired` payload.",
+      "properties": {
+        "type": {
+          "const": "ProposalExpired",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ProposalExpired"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ProposalExpiredEvent",
+      "type": "object"
+    },
+    "ProposalUpdated": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "material": {
+          "title": "Material",
+          "type": "boolean"
+        },
+        "proposal_version": {
+          "minimum": 1,
+          "title": "Proposal Version",
+          "type": "integer"
+        },
+        "action_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Action Hash",
+          "type": "string"
+        },
+        "changed_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Changed Fields",
+          "type": "array"
+        },
+        "voided_approval_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Voided Approval Ids",
+          "type": "array"
+        },
+        "decide_by_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decide By Utc"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "material",
+        "proposal_version",
+        "action_hash",
+        "changed_fields",
+        "reason"
+      ],
+      "title": "ProposalUpdated",
+      "type": "object"
+    },
+    "ProposalUpdatedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ProposalUpdated` payload.",
+      "properties": {
+        "type": {
+          "const": "ProposalUpdated",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ProposalUpdated"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ProposalUpdatedEvent",
+      "type": "object"
+    },
+    "Quality": {
+      "enum": [
+        "good",
+        "suspect",
+        "bad",
+        "missing"
+      ],
+      "title": "Quality",
+      "type": "string"
+    },
+    "RiskBand": {
+      "enum": [
+        "very_low",
+        "low",
+        "moderate",
+        "high",
+        "very_high"
+      ],
+      "title": "RiskBand",
+      "type": "string"
+    },
+    "RiskEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "p_ppm": {
+          "description": "probability or share in parts per million",
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "P Ppm",
+          "type": "integer"
+        },
+        "band": {
+          "$ref": "#/$defs/RiskBand"
+        }
+      },
+      "required": [
+        "entity_id",
+        "p_ppm",
+        "band"
+      ],
+      "title": "RiskEntry",
+      "type": "object"
+    },
+    "RiskSnapshotPublished": {
+      "additionalProperties": false,
+      "properties": {
+        "snapshot_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "engine_version": {
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "as_of_utc": {
+          "format": "date-time",
+          "title": "As Of Utc",
+          "type": "string"
+        },
+        "top_entities": {
+          "items": {
+            "$ref": "#/$defs/RiskEntry"
+          },
+          "title": "Top Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "snapshot_id",
+        "engine_version",
+        "as_of_utc",
+        "top_entities"
+      ],
+      "title": "RiskSnapshotPublished",
+      "type": "object"
+    },
+    "RiskSnapshotPublishedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `RiskSnapshotPublished` payload.",
+      "properties": {
+        "type": {
+          "const": "RiskSnapshotPublished",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/RiskSnapshotPublished"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "RiskSnapshotPublishedEvent",
+      "type": "object"
+    },
+    "RunMode": {
+      "enum": [
+        "live",
+        "replay",
+        "backfill",
+        "shadow",
+        "what_if"
+      ],
+      "title": "RunMode",
+      "type": "string"
+    },
+    "ScenarioClockChanged": {
+      "additionalProperties": false,
+      "properties": {
+        "scenario_time_utc": {
+          "format": "date-time",
+          "title": "Scenario Time Utc",
+          "type": "string"
+        },
+        "speed": {
+          "enum": [
+            0,
+            1,
+            60,
+            900
+          ],
+          "title": "Speed",
+          "type": "integer"
+        },
+        "bookmark": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bookmark"
+        }
+      },
+      "required": [
+        "scenario_time_utc",
+        "speed"
+      ],
+      "title": "ScenarioClockChanged",
+      "type": "object"
+    },
+    "ScenarioClockChangedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `ScenarioClockChanged` payload.",
+      "properties": {
+        "type": {
+          "const": "ScenarioClockChanged",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/ScenarioClockChanged"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "ScenarioClockChangedEvent",
+      "type": "object"
+    },
+    "Tier": {
+      "enum": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "title": "Tier",
+      "type": "string"
+    },
+    "Trust": {
+      "enum": [
+        "system",
+        "verified_internal",
+        "internal_free_text",
+        "external"
+      ],
+      "title": "Trust",
+      "type": "string"
+    },
+    "UiSeverity": {
+      "enum": [
+        "critical",
+        "severe",
+        "elevated",
+        "advisory",
+        "normal",
+        "unknown_stale"
+      ],
+      "title": "UiSeverity",
+      "type": "string"
+    },
+    "WaterQualitySample": {
+      "additionalProperties": false,
+      "properties": {
+        "sample_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "zone_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Zone Id",
+          "type": "string"
+        },
+        "analyte": {
+          "enum": [
+            "total_coliform",
+            "e_coli",
+            "chlorine_residual",
+            "turbidity"
+          ],
+          "title": "Analyte",
+          "type": "string"
+        },
+        "result": {
+          "title": "Result",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "sample_id",
+        "zone_id",
+        "analyte",
+        "result"
+      ],
+      "title": "WaterQualitySample",
+      "type": "object"
+    },
+    "WaterQualitySampleEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `WaterQualitySample` payload.",
+      "properties": {
+        "type": {
+          "const": "WaterQualitySample",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/WaterQualitySample"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "WaterQualitySampleEvent",
+      "type": "object"
+    },
+    "WeatherAlert": {
+      "additionalProperties": false,
+      "properties": {
+        "alert_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Alert Id",
+          "type": "string"
+        },
+        "product": {
+          "enum": [
+            "warning",
+            "watch",
+            "advisory",
+            "statement"
+          ],
+          "title": "Product",
+          "type": "string"
+        },
+        "event_name": {
+          "title": "Event Name",
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "#/$defs/UiSeverity"
+        },
+        "area_fips": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Area Fips",
+          "type": "array"
+        },
+        "effective_utc": {
+          "format": "date-time",
+          "title": "Effective Utc",
+          "type": "string"
+        },
+        "expires_utc": {
+          "format": "date-time",
+          "title": "Expires Utc",
+          "type": "string"
+        },
+        "headline": {
+          "title": "Headline",
+          "type": "string"
+        }
+      },
+      "required": [
+        "alert_id",
+        "product",
+        "event_name",
+        "severity",
+        "area_fips",
+        "effective_utc",
+        "expires_utc",
+        "headline"
+      ],
+      "title": "WeatherAlert",
+      "type": "object"
+    },
+    "WeatherAlertEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `WeatherAlert` payload.",
+      "properties": {
+        "type": {
+          "const": "WeatherAlert",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/WeatherAlert"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "WeatherAlertEvent",
+      "type": "object"
+    },
+    "WeatherForecastIssued": {
+      "additionalProperties": false,
+      "properties": {
+        "forecast_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Forecast Id",
+          "type": "string"
+        },
+        "issuer": {
+          "enum": [
+            "NHC",
+            "NWS",
+            "synthetic"
+          ],
+          "title": "Issuer",
+          "type": "string"
+        },
+        "advisory_label": {
+          "title": "Advisory Label",
+          "type": "string"
+        },
+        "storm_name": {
+          "title": "Storm Name",
+          "type": "string"
+        },
+        "landfall_eta_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Landfall Eta Utc"
+        },
+        "ts_wind_onset_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "forecast onset of 34 kt winds in the first footprint county (H0, X-09)",
+          "title": "Ts Wind Onset Utc"
+        },
+        "max_gust_ms_by_fips": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Max Gust Ms By Fips",
+          "type": "object"
+        },
+        "next_advisory_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Advisory Utc"
+        }
+      },
+      "required": [
+        "forecast_id",
+        "issuer",
+        "advisory_label",
+        "storm_name"
+      ],
+      "title": "WeatherForecastIssued",
+      "type": "object"
+    },
+    "WeatherForecastIssuedEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `WeatherForecastIssued` payload.",
+      "properties": {
+        "type": {
+          "const": "WeatherForecastIssued",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/WeatherForecastIssued"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "WeatherForecastIssuedEvent",
+      "type": "object"
+    },
+    "WorkOrder": {
+      "additionalProperties": false,
+      "properties": {
+        "work_order_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Work Order Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "open",
+            "assigned",
+            "in_progress",
+            "closed",
+            "cancelled"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "asset_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "work_type": {
+          "title": "Work Type",
+          "type": "string"
+        },
+        "crew_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crew Id"
+        },
+        "proposal_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proposal Id"
+        }
+      },
+      "required": [
+        "work_order_id",
+        "status",
+        "asset_id",
+        "work_type"
+      ],
+      "title": "WorkOrder",
+      "type": "object"
+    },
+    "WorkOrderEvent": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `WorkOrder` payload.",
+      "properties": {
+        "type": {
+          "const": "WorkOrder",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/WorkOrder"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "WorkOrderEvent",
+      "type": "object"
+    },
+    "sgw__contracts__events__CrewStatusEvent__1": {
+      "additionalProperties": false,
+      "properties": {
+        "crew_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Crew Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/CrewStatus"
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location Id"
+        },
+        "headcount": {
+          "minimum": 0,
+          "title": "Headcount",
+          "type": "integer"
+        },
+        "block_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Block Reason"
+        }
+      },
+      "required": [
+        "crew_id",
+        "status",
+        "headcount"
+      ],
+      "title": "CrewStatusEvent",
+      "type": "object"
+    },
+    "sgw__contracts__events__CrewStatusEvent__2": {
+      "additionalProperties": false,
+      "description": "K2 envelope carrying a `CrewStatus` payload.",
+      "properties": {
+        "type": {
+          "const": "CrewStatus",
+          "title": "Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "feed_mode": {
+          "$ref": "#/$defs/FeedMode"
+        },
+        "run_mode": {
+          "$ref": "#/$defs/RunMode"
+        },
+        "event_time": {
+          "format": "date-time",
+          "title": "Event Time",
+          "type": "string"
+        },
+        "issued_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At"
+        },
+        "valid_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At"
+        },
+        "received_at": {
+          "format": "date-time",
+          "title": "Received At",
+          "type": "string"
+        },
+        "known_at": {
+          "format": "date-time",
+          "title": "Known At",
+          "type": "string"
+        },
+        "scenario_known_at": {
+          "format": "date-time",
+          "title": "Scenario Known At",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "dedup_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Dedup Key",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "trust": {
+          "$ref": "#/$defs/Trust"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": "good"
+        },
+        "coverage_ppm": {
+          "default": 1000000,
+          "maximum": 1000000,
+          "minimum": 0,
+          "title": "Coverage Ppm",
+          "type": "integer"
+        },
+        "finality": {
+          "$ref": "#/$defs/Finality",
+          "default": "confirmed"
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supersedes"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region Id"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "payload": {
+          "$ref": "#/$defs/sgw__contracts__events__CrewStatusEvent__1"
+        }
+      },
+      "required": [
+        "type",
+        "event_id",
+        "source_id",
+        "feed_mode",
+        "run_mode",
+        "event_time",
+        "received_at",
+        "known_at",
+        "scenario_known_at",
+        "dedup_key",
+        "classification",
+        "trust",
+        "payload"
+      ],
+      "title": "CrewStatusEvent",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "AnomalyDetected": "#/$defs/AnomalyDetectedEvent",
+      "ApprovalRecorded": "#/$defs/ApprovalRecordedEvent",
+      "BreakGlassUsed": "#/$defs/BreakGlassUsedEvent",
+      "ClockBreached": "#/$defs/ClockBreachedEvent",
+      "CommitmentCreated": "#/$defs/CommitmentCreatedEvent",
+      "CommitmentDrifted": "#/$defs/CommitmentDriftedEvent",
+      "CoverageGap": "#/$defs/CoverageGapEvent",
+      "CrewStatus": "#/$defs/sgw__contracts__events__CrewStatusEvent__2",
+      "DQCheckFailed": "#/$defs/DQCheckFailedEvent",
+      "DecisionApproved": "#/$defs/DecisionApprovedEvent",
+      "DecisionClockUpdated": "#/$defs/DecisionClockUpdatedEvent",
+      "DeviceState": "#/$defs/DeviceStateEvent",
+      "EffectStateChanged": "#/$defs/EffectStateChangedEvent",
+      "EnvelopeApproved": "#/$defs/EnvelopeApprovedEvent",
+      "EtrPublished": "#/$defs/EtrPublishedEvent",
+      "KillSwitchChanged": "#/$defs/KillSwitchChangedEvent",
+      "MeterEvent": "#/$defs/MeterEventEvent",
+      "ModeChanged": "#/$defs/ModeChangedEvent",
+      "NetworkTrace": "#/$defs/NetworkTraceEvent",
+      "OutageEvent": "#/$defs/OutageEventEvent",
+      "PipelineRunFinished": "#/$defs/PipelineRunFinishedEvent",
+      "ProposalCreated": "#/$defs/ProposalCreatedEvent",
+      "ProposalEscalated": "#/$defs/ProposalEscalatedEvent",
+      "ProposalExpired": "#/$defs/ProposalExpiredEvent",
+      "ProposalUpdated": "#/$defs/ProposalUpdatedEvent",
+      "RiskSnapshotPublished": "#/$defs/RiskSnapshotPublishedEvent",
+      "ScenarioClockChanged": "#/$defs/ScenarioClockChangedEvent",
+      "WaterQualitySample": "#/$defs/WaterQualitySampleEvent",
+      "WeatherAlert": "#/$defs/WeatherAlertEvent",
+      "WeatherForecastIssued": "#/$defs/WeatherForecastIssuedEvent",
+      "WorkOrder": "#/$defs/WorkOrderEvent"
+    },
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/WeatherAlertEvent"
+    },
+    {
+      "$ref": "#/$defs/WeatherForecastIssuedEvent"
+    },
+    {
+      "$ref": "#/$defs/OutageEventEvent"
+    },
+    {
+      "$ref": "#/$defs/DeviceStateEvent"
+    },
+    {
+      "$ref": "#/$defs/MeterEventEvent"
+    },
+    {
+      "$ref": "#/$defs/WorkOrderEvent"
+    },
+    {
+      "$ref": "#/$defs/sgw__contracts__events__CrewStatusEvent__2"
+    },
+    {
+      "$ref": "#/$defs/NetworkTraceEvent"
+    },
+    {
+      "$ref": "#/$defs/WaterQualitySampleEvent"
+    },
+    {
+      "$ref": "#/$defs/RiskSnapshotPublishedEvent"
+    },
+    {
+      "$ref": "#/$defs/AnomalyDetectedEvent"
+    },
+    {
+      "$ref": "#/$defs/ProposalCreatedEvent"
+    },
+    {
+      "$ref": "#/$defs/ProposalUpdatedEvent"
+    },
+    {
+      "$ref": "#/$defs/ApprovalRecordedEvent"
+    },
+    {
+      "$ref": "#/$defs/ProposalExpiredEvent"
+    },
+    {
+      "$ref": "#/$defs/ProposalEscalatedEvent"
+    },
+    {
+      "$ref": "#/$defs/EffectStateChangedEvent"
+    },
+    {
+      "$ref": "#/$defs/ModeChangedEvent"
+    },
+    {
+      "$ref": "#/$defs/KillSwitchChangedEvent"
+    },
+    {
+      "$ref": "#/$defs/PipelineRunFinishedEvent"
+    },
+    {
+      "$ref": "#/$defs/DQCheckFailedEvent"
+    },
+    {
+      "$ref": "#/$defs/CoverageGapEvent"
+    },
+    {
+      "$ref": "#/$defs/ScenarioClockChangedEvent"
+    },
+    {
+      "$ref": "#/$defs/EnvelopeApprovedEvent"
+    },
+    {
+      "$ref": "#/$defs/BreakGlassUsedEvent"
+    },
+    {
+      "$ref": "#/$defs/ClockBreachedEvent"
+    },
+    {
+      "$ref": "#/$defs/CommitmentCreatedEvent"
+    },
+    {
+      "$ref": "#/$defs/CommitmentDriftedEvent"
+    },
+    {
+      "$ref": "#/$defs/DecisionApprovedEvent"
+    },
+    {
+      "$ref": "#/$defs/DecisionClockUpdatedEvent"
+    },
+    {
+      "$ref": "#/$defs/EtrPublishedEvent"
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sgw-resilience-platform/contracts/schema/events.json",
+  "title": "SGW K2 event envelope",
+  "x-schema-versions": {
+    "WeatherAlert": 1,
+    "WeatherForecastIssued": 1,
+    "OutageEvent": 1,
+    "DeviceState": 1,
+    "MeterEvent": 1,
+    "WorkOrder": 1,
+    "CrewStatus": 1,
+    "NetworkTrace": 1,
+    "WaterQualitySample": 1,
+    "RiskSnapshotPublished": 1,
+    "AnomalyDetected": 1,
+    "ProposalCreated": 1,
+    "ProposalUpdated": 1,
+    "ApprovalRecorded": 1,
+    "ProposalExpired": 1,
+    "ProposalEscalated": 1,
+    "EffectStateChanged": 1,
+    "ModeChanged": 1,
+    "KillSwitchChanged": 1,
+    "PipelineRunFinished": 1,
+    "DQCheckFailed": 1,
+    "CoverageGap": 1,
+    "ScenarioClockChanged": 1,
+    "EnvelopeApproved": 1,
+    "BreakGlassUsed": 1,
+    "ClockBreached": 1,
+    "CommitmentCreated": 1,
+    "CommitmentDrifted": 1,
+    "DecisionApproved": 1,
+    "DecisionClockUpdated": 1,
+    "EtrPublished": 1
+  },
+  "x-webhook-event-types": [
+    "ClockBreached",
+    "CommitmentCreated",
+    "CommitmentDrifted",
+    "DecisionApproved"
+  ]
+}

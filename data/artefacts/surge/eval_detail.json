@@ -1,0 +1,1137 @@
+{
+  "name": "outage_surge_detail",
+  "model_version": "surge-cusum-v1",
+  "label": "C: computed on public EAGLE-I and NCEI data; not utility figures",
+  "source": "EAGLE-I county customers out, 15-min (ORNL, figshare doi:10.6084/m9.figshare.24237376.v4, CC BY 4.0); labels NCEI Storm Events (public domain)",
+  "split": {
+    "train": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "test": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "note": "2024 = Aug-Oct only"
+  },
+  "counties": 123,
+  "fa_budget_per_county_month": 0.25,
+  "match_window_h": {
+    "pre": 3.0,
+    "post": 12.0
+  },
+  "beats_both_tuned_baselines": false,
+  "contrasts": {
+    "fixed_share": {
+      "recall_diff": 0.2212,
+      "ci_low": 0.1493,
+      "ci_high": 0.283,
+      "fa_model": 0.4075,
+      "fa_baseline": 0.3544,
+      "beats": false
+    },
+    "rolling_z": {
+      "recall_diff": 0.1641,
+      "ci_low": 0.1131,
+      "ci_high": 0.2083,
+      "fa_model": 0.4075,
+      "fa_baseline": 0.365,
+      "beats": false
+    },
+    "fixed_share_corroborated": {
+      "recall_diff": 0.0426,
+      "ci_low": 0.0235,
+      "ci_high": 0.0631,
+      "fa_model": 0.4075,
+      "fa_baseline": 0.4298,
+      "beats": true
+    },
+    "robust_cusum_no_corroboration": {
+      "recall_diff": 0.1463,
+      "ci_low": 0.0973,
+      "ci_high": 0.1908,
+      "fa_model": 0.4075,
+      "fa_baseline": 0.3732,
+      "beats": false
+    },
+    "fixed_share_1pct": {
+      "recall_diff": -0.1284,
+      "ci_low": -0.1639,
+      "ci_high": -0.0969,
+      "fa_model": 0.4075,
+      "fa_baseline": 2.7327,
+      "beats": false
+    },
+    "rolling_z_4": {
+      "recall_diff": -0.1271,
+      "ci_low": -0.1698,
+      "ci_high": -0.0875,
+      "fa_model": 0.4075,
+      "fa_baseline": 2.8825,
+      "beats": false
+    }
+  },
+  "chosen": {
+    "robust_cusum": {
+      "method": "robust_cusum",
+      "window_h": 168.0,
+      "k": 0.5,
+      "h": 16.0,
+      "scale_floor": 0.35,
+      "min_customers": 250.0,
+      "min_share": 0.01,
+      "end_h": 6.0,
+      "corroborate": 6,
+      "corroborate_h": 3.0
+    },
+    "rolling_z": {
+      "method": "rolling_z",
+      "z": 6.0,
+      "window_h": 168.0,
+      "min_customers": 1500.0,
+      "min_share": 0.01,
+      "end_h": 6.0
+    },
+    "fixed_share": {
+      "method": "fixed_share",
+      "share": 0.08,
+      "window_h": 168.0,
+      "end_h": 6.0,
+      "corroborate": 0,
+      "corroborate_h": 3.0
+    },
+    "fixed_share_corroborated": {
+      "method": "fixed_share",
+      "share": 0.02,
+      "window_h": 168.0,
+      "end_h": 6.0,
+      "corroborate": 6,
+      "corroborate_h": 3.0
+    },
+    "robust_cusum_no_corroboration": {
+      "method": "robust_cusum",
+      "window_h": 168.0,
+      "k": 1.0,
+      "h": 8.0,
+      "scale_floor": 0.35,
+      "min_customers": 1500.0,
+      "min_share": 0.0025,
+      "end_h": 6.0,
+      "corroborate": 0,
+      "corroborate_h": 3.0
+    }
+  },
+  "train": {
+    "robust_cusum": {
+      "params": {
+        "method": "robust_cusum",
+        "window_h": 168.0,
+        "k": 0.5,
+        "h": 16.0,
+        "scale_floor": 0.35,
+        "min_customers": 250.0,
+        "min_share": 0.01,
+        "end_h": 6.0,
+        "corroborate": 6,
+        "corroborate_h": 3.0
+      },
+      "events": 2474,
+      "detected": 726,
+      "recall": 0.2935,
+      "surges": 2047,
+      "precision": 0.3796,
+      "false_alarms": 1270,
+      "county_months": 5116.0,
+      "false_alarms_per_county_month": 0.2482,
+      "delay_h_median": 1.0,
+      "delay_h_p25": 0.35,
+      "delay_h_p75": 3.1917,
+      "share_flagged_before_begin": 0.1253,
+      "by_tier": {
+        "high_wind": {
+          "events": 68,
+          "recall": 0.6176
+        },
+        "thunderstorm": {
+          "events": 2004,
+          "recall": 0.2136
+        },
+        "tornado": {
+          "events": 89,
+          "recall": 0.2697
+        },
+        "tropical": {
+          "events": 313,
+          "recall": 0.7412
+        }
+      }
+    },
+    "rolling_z": {
+      "params": {
+        "method": "rolling_z",
+        "z": 6.0,
+        "window_h": 168.0,
+        "min_customers": 1500.0,
+        "min_share": 0.01,
+        "end_h": 6.0
+      },
+      "events": 2474,
+      "detected": 489,
+      "recall": 0.1977,
+      "surges": 1780,
+      "precision": 0.3011,
+      "false_alarms": 1244,
+      "county_months": 5116.0,
+      "false_alarms_per_county_month": 0.2432,
+      "delay_h_median": 0.95,
+      "delay_h_p25": 0.3833,
+      "delay_h_p75": 3.75,
+      "share_flagged_before_begin": 0.1022,
+      "by_tier": {
+        "high_wind": {
+          "events": 68,
+          "recall": 0.5588
+        },
+        "thunderstorm": {
+          "events": 2004,
+          "recall": 0.1317
+        },
+        "tornado": {
+          "events": 89,
+          "recall": 0.191
+        },
+        "tropical": {
+          "events": 313,
+          "recall": 0.5431
+        }
+      }
+    },
+    "fixed_share": {
+      "params": {
+        "method": "fixed_share",
+        "share": 0.08,
+        "window_h": 168.0,
+        "end_h": 6.0,
+        "corroborate": 0,
+        "corroborate_h": 3.0
+      },
+      "events": 2474,
+      "detected": 402,
+      "recall": 0.1625,
+      "surges": 1681,
+      "precision": 0.254,
+      "false_alarms": 1254,
+      "county_months": 5116.0,
+      "false_alarms_per_county_month": 0.2451,
+      "delay_h_median": 1.6167,
+      "delay_h_p25": 0.5,
+      "delay_h_p75": 6.25,
+      "share_flagged_before_begin": 0.0721,
+      "by_tier": {
+        "high_wind": {
+          "events": 68,
+          "recall": 0.4559
+        },
+        "thunderstorm": {
+          "events": 2004,
+          "recall": 0.0858
+        },
+        "tornado": {
+          "events": 89,
+          "recall": 0.0674
+        },
+        "tropical": {
+          "events": 313,
+          "recall": 0.6166
+        }
+      }
+    },
+    "fixed_share_corroborated": {
+      "params": {
+        "method": "fixed_share",
+        "share": 0.02,
+        "window_h": 168.0,
+        "end_h": 6.0,
+        "corroborate": 6,
+        "corroborate_h": 3.0
+      },
+      "events": 2474,
+      "detected": 656,
+      "recall": 0.2652,
+      "surges": 1880,
+      "precision": 0.3702,
+      "false_alarms": 1184,
+      "county_months": 5116.0,
+      "false_alarms_per_county_month": 0.2314,
+      "delay_h_median": 0.85,
+      "delay_h_p25": 0.25,
+      "delay_h_p75": 3.2542,
+      "share_flagged_before_begin": 0.122,
+      "by_tier": {
+        "high_wind": {
+          "events": 68,
+          "recall": 0.6029
+        },
+        "thunderstorm": {
+          "events": 2004,
+          "recall": 0.1801
+        },
+        "tornado": {
+          "events": 89,
+          "recall": 0.191
+        },
+        "tropical": {
+          "events": 313,
+          "recall": 0.7572
+        }
+      }
+    },
+    "robust_cusum_no_corroboration": {
+      "params": {
+        "method": "robust_cusum",
+        "window_h": 168.0,
+        "k": 1.0,
+        "h": 8.0,
+        "scale_floor": 0.35,
+        "min_customers": 1500.0,
+        "min_share": 0.0025,
+        "end_h": 6.0,
+        "corroborate": 0,
+        "corroborate_h": 3.0
+      },
+      "events": 2474,
+      "detected": 526,
+      "recall": 0.2126,
+      "surges": 1850,
+      "precision": 0.3119,
+      "false_alarms": 1273,
+      "county_months": 5116.0,
+      "false_alarms_per_county_month": 0.2488,
+      "delay_h_median": 1.2,
+      "delay_h_p25": 0.5,
+      "delay_h_p75": 3.5,
+      "share_flagged_before_begin": 0.0913,
+      "by_tier": {
+        "high_wind": {
+          "events": 68,
+          "recall": 0.5735
+        },
+        "thunderstorm": {
+          "events": 2004,
+          "recall": 0.1487
+        },
+        "tornado": {
+          "events": 89,
+          "recall": 0.2022
+        },
+        "tropical": {
+          "events": 313,
+          "recall": 0.5463
+        }
+      }
+    }
+  },
+  "test": {
+    "robust_cusum": {
+      "params": {
+        "method": "robust_cusum",
+        "window_h": 168.0,
+        "k": 0.5,
+        "h": 16.0,
+        "scale_floor": 0.35,
+        "min_customers": 250.0,
+        "min_share": 0.01,
+        "end_h": 6.0,
+        "corroborate": 6,
+        "corroborate_h": 3.0
+      },
+      "events": 1456,
+      "detected": 697,
+      "recall": 0.4787,
+      "surges": 1935,
+      "precision": 0.3855,
+      "false_alarms": 1189,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 0.4075,
+      "delay_h_median": 0.6167,
+      "delay_h_p25": 0.25,
+      "delay_h_p75": 1.75,
+      "share_flagged_before_begin": 0.1463,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.25
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.416
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.4865
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.8025
+        }
+      }
+    },
+    "rolling_z": {
+      "params": {
+        "method": "rolling_z",
+        "z": 6.0,
+        "window_h": 168.0,
+        "min_customers": 1500.0,
+        "min_share": 0.01,
+        "end_h": 6.0
+      },
+      "events": 1456,
+      "detected": 458,
+      "recall": 0.3146,
+      "surges": 1549,
+      "precision": 0.3125,
+      "false_alarms": 1065,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 0.365,
+      "delay_h_median": 0.65,
+      "delay_h_p25": 0.2667,
+      "delay_h_p75": 1.8917,
+      "share_flagged_before_begin": 0.1157,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.1
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.2446
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.3514
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.6681
+        }
+      }
+    },
+    "fixed_share": {
+      "params": {
+        "method": "fixed_share",
+        "share": 0.08,
+        "window_h": 168.0,
+        "end_h": 6.0,
+        "corroborate": 0,
+        "corroborate_h": 3.0
+      },
+      "events": 1456,
+      "detected": 375,
+      "recall": 0.2576,
+      "surges": 1422,
+      "precision": 0.2729,
+      "false_alarms": 1034,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 0.3544,
+      "delay_h_median": 0.5833,
+      "delay_h_p25": 0.225,
+      "delay_h_p75": 2.3333,
+      "share_flagged_before_begin": 0.16,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.0
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.1637
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.2432
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.7395
+        }
+      }
+    },
+    "fixed_share_corroborated": {
+      "params": {
+        "method": "fixed_share",
+        "share": 0.02,
+        "window_h": 168.0,
+        "end_h": 6.0,
+        "corroborate": 6,
+        "corroborate_h": 3.0
+      },
+      "events": 1456,
+      "detected": 635,
+      "recall": 0.4361,
+      "surges": 1932,
+      "precision": 0.3509,
+      "false_alarms": 1254,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 0.4298,
+      "delay_h_median": 0.5833,
+      "delay_h_p25": 0.1833,
+      "delay_h_p75": 1.75,
+      "share_flagged_before_begin": 0.1543,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.15
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.3721
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.3514
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.7857
+        }
+      }
+    },
+    "robust_cusum_no_corroboration": {
+      "params": {
+        "method": "robust_cusum",
+        "window_h": 168.0,
+        "k": 1.0,
+        "h": 8.0,
+        "scale_floor": 0.35,
+        "min_customers": 1500.0,
+        "min_share": 0.0025,
+        "end_h": 6.0,
+        "corroborate": 0,
+        "corroborate_h": 3.0
+      },
+      "events": 1456,
+      "detected": 484,
+      "recall": 0.3324,
+      "surges": 1614,
+      "precision": 0.3253,
+      "false_alarms": 1089,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 0.3732,
+      "delay_h_median": 0.75,
+      "delay_h_p25": 0.3333,
+      "delay_h_p75": 1.775,
+      "share_flagged_before_begin": 0.1198,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.1
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.2653
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.3514
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.6765
+        }
+      }
+    }
+  },
+  "test_canonical": {
+    "fixed_share_1pct": {
+      "params": {
+        "method": "fixed_share",
+        "share": 0.01,
+        "window_h": 168.0,
+        "end_h": 6.0,
+        "corroborate": 0,
+        "corroborate_h": 3.0
+      },
+      "events": 1456,
+      "detected": 884,
+      "recall": 0.6071,
+      "surges": 8968,
+      "precision": 0.111,
+      "false_alarms": 7973,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 2.7327,
+      "delay_h_median": 0.4167,
+      "delay_h_p25": 0.1,
+      "delay_h_p75": 1.0,
+      "share_flagged_before_begin": 0.1867,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.3
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.5745
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.5676
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.7983
+        }
+      }
+    },
+    "rolling_z_4": {
+      "params": {
+        "method": "rolling_z",
+        "z": 4.0,
+        "window_h": 168.0,
+        "min_customers": 100.0,
+        "min_share": 0.002,
+        "end_h": 6.0
+      },
+      "events": 1456,
+      "detected": 882,
+      "recall": 0.6058,
+      "surges": 9430,
+      "precision": 0.1082,
+      "false_alarms": 8410,
+      "county_months": 2917.7,
+      "false_alarms_per_county_month": 2.8825,
+      "delay_h_median": 0.4,
+      "delay_h_p25": 0.05,
+      "delay_h_p75": 0.9792,
+      "share_flagged_before_begin": 0.1973,
+      "by_tier": {
+        "high_wind": {
+          "events": 20,
+          "recall": 0.4
+        },
+        "thunderstorm": {
+          "events": 1161,
+          "recall": 0.584
+        },
+        "tornado": {
+          "events": 37,
+          "recall": 0.4595
+        },
+        "tropical": {
+          "events": 238,
+          "recall": 0.7521
+        }
+      }
+    }
+  },
+  "test_model_by_year": {
+    "2022": {
+      "events": 418,
+      "detected": 173,
+      "recall": 0.4139,
+      "surges": 471,
+      "precision": 0.3928,
+      "false_alarms": 286,
+      "county_months": 852.7,
+      "false_alarms_per_county_month": 0.3354,
+      "delay_h_median": 0.6667,
+      "delay_h_p25": 0.25,
+      "delay_h_p75": 1.9333,
+      "share_flagged_before_begin": 0.1156,
+      "by_tier": {
+        "high_wind": {
+          "events": 5,
+          "recall": 0.0
+        },
+        "thunderstorm": {
+          "events": 354,
+          "recall": 0.387
+        },
+        "tornado": {
+          "events": 9,
+          "recall": 0.3333
+        },
+        "tropical": {
+          "events": 50,
+          "recall": 0.66
+        }
+      }
+    },
+    "2023": {
+      "events": 547,
+      "detected": 248,
+      "recall": 0.4534,
+      "surges": 622,
+      "precision": 0.4068,
+      "false_alarms": 369,
+      "county_months": 852.7,
+      "false_alarms_per_county_month": 0.4328,
+      "delay_h_median": 0.6333,
+      "delay_h_p25": 0.2958,
+      "delay_h_p75": 1.725,
+      "share_flagged_before_begin": 0.1008,
+      "by_tier": {
+        "high_wind": {
+          "events": 10,
+          "recall": 0.2
+        },
+        "thunderstorm": {
+          "events": 475,
+          "recall": 0.4126
+        },
+        "tornado": {
+          "events": 12,
+          "recall": 0.5
+        },
+        "tropical": {
+          "events": 50,
+          "recall": 0.88
+        }
+      }
+    },
+    "2024": {
+      "events": 207,
+      "detected": 140,
+      "recall": 0.6763,
+      "surges": 307,
+      "precision": 0.5277,
+      "false_alarms": 145,
+      "county_months": 359.7,
+      "false_alarms_per_county_month": 0.4032,
+      "delay_h_median": 0.9167,
+      "delay_h_p25": -0.5,
+      "delay_h_p75": 2.9625,
+      "share_flagged_before_begin": 0.2929,
+      "by_tier": {
+        "high_wind": {
+          "events": 3,
+          "recall": 0.6667
+        },
+        "thunderstorm": {
+          "events": 58,
+          "recall": 0.3276
+        },
+        "tornado": {
+          "events": 8,
+          "recall": 0.625
+        },
+        "tropical": {
+          "events": 138,
+          "recall": 0.8261
+        }
+      }
+    },
+    "2025": {
+      "events": 284,
+      "detected": 136,
+      "recall": 0.4789,
+      "surges": 535,
+      "precision": 0.2729,
+      "false_alarms": 389,
+      "county_months": 852.7,
+      "false_alarms_per_county_month": 0.4562,
+      "delay_h_median": 0.425,
+      "delay_h_p25": 0.2125,
+      "delay_h_p75": 1.1333,
+      "share_flagged_before_begin": 0.1176,
+      "by_tier": {
+        "high_wind": {
+          "events": 2,
+          "recall": 0.5
+        },
+        "thunderstorm": {
+          "events": 274,
+          "recall": 0.4781
+        },
+        "tornado": {
+          "events": 8,
+          "recall": 0.5
+        }
+      }
+    }
+  },
+  "operating_curve": {
+    "0.10": {
+      "robust_cusum": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 0.5,
+          "h": 16.0,
+          "scale_floor": 0.35,
+          "min_customers": 750.0,
+          "min_share": 0.01,
+          "end_h": 6.0,
+          "corroborate": 4,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.209,
+        "train_fa": 0.0999,
+        "test_recall": 0.3688,
+        "test_fa": 0.1542,
+        "test_delay_h_median": 0.7167
+      },
+      "rolling_z": null,
+      "fixed_share": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.15,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.0885,
+        "train_fa": 0.0979,
+        "test_recall": 0.1793,
+        "test_fa": 0.1477,
+        "test_delay_h_median": 0.75
+      },
+      "fixed_share_corroborated": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.04,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 6,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.1835,
+        "train_fa": 0.0864,
+        "test_recall": 0.3111,
+        "test_fa": 0.1429,
+        "test_delay_h_median": 0.5667
+      },
+      "robust_cusum_no_corroboration": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 1.0,
+          "h": 16.0,
+          "scale_floor": 0.35,
+          "min_customers": 2000.0,
+          "min_share": 0.02,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.1459,
+        "train_fa": 0.0952,
+        "test_recall": 0.2486,
+        "test_fa": 0.1289,
+        "test_delay_h_median": 0.8667
+      }
+    },
+    "0.25": {
+      "robust_cusum": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 0.5,
+          "h": 16.0,
+          "scale_floor": 0.35,
+          "min_customers": 250.0,
+          "min_share": 0.01,
+          "end_h": 6.0,
+          "corroborate": 6,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2935,
+        "train_fa": 0.2482,
+        "test_recall": 0.4787,
+        "test_fa": 0.4075,
+        "test_delay_h_median": 0.6167
+      },
+      "rolling_z": {
+        "params": {
+          "method": "rolling_z",
+          "z": 6.0,
+          "window_h": 168.0,
+          "min_customers": 1500.0,
+          "min_share": 0.01,
+          "end_h": 6.0
+        },
+        "train_recall": 0.1977,
+        "train_fa": 0.2432,
+        "test_recall": 0.3146,
+        "test_fa": 0.365,
+        "test_delay_h_median": 0.65
+      },
+      "fixed_share": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.08,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.1625,
+        "train_fa": 0.2451,
+        "test_recall": 0.2576,
+        "test_fa": 0.3544,
+        "test_delay_h_median": 0.5833
+      },
+      "fixed_share_corroborated": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.02,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 6,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2652,
+        "train_fa": 0.2314,
+        "test_recall": 0.4361,
+        "test_fa": 0.4298,
+        "test_delay_h_median": 0.5833
+      },
+      "robust_cusum_no_corroboration": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 1.0,
+          "h": 8.0,
+          "scale_floor": 0.35,
+          "min_customers": 1500.0,
+          "min_share": 0.0025,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2126,
+        "train_fa": 0.2488,
+        "test_recall": 0.3324,
+        "test_fa": 0.3732,
+        "test_delay_h_median": 0.75
+      }
+    },
+    "0.50": {
+      "robust_cusum": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 0.5,
+          "h": 4.0,
+          "scale_floor": 0.35,
+          "min_customers": 250.0,
+          "min_share": 0.0025,
+          "end_h": 6.0,
+          "corroborate": 6,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.382,
+        "train_fa": 0.475,
+        "test_recall": 0.5742,
+        "test_fa": 0.863,
+        "test_delay_h_median": 0.5
+      },
+      "rolling_z": {
+        "params": {
+          "method": "rolling_z",
+          "z": 3.0,
+          "window_h": 168.0,
+          "min_customers": 1000.0,
+          "min_share": 0.01,
+          "end_h": 6.0
+        },
+        "train_recall": 0.2542,
+        "train_fa": 0.4242,
+        "test_recall": 0.3867,
+        "test_fa": 0.6193,
+        "test_delay_h_median": 0.5167
+      },
+      "fixed_share": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.05,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2235,
+        "train_fa": 0.4472,
+        "test_recall": 0.3276,
+        "test_fa": 0.6317,
+        "test_delay_h_median": 0.5333
+      },
+      "fixed_share_corroborated": {
+        "params": {
+          "method": "fixed_share",
+          "share": 0.02,
+          "window_h": 168.0,
+          "end_h": 6.0,
+          "corroborate": 4,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2971,
+        "train_fa": 0.346,
+        "test_recall": 0.4629,
+        "test_fa": 0.6553,
+        "test_delay_h_median": 0.5333
+      },
+      "robust_cusum_no_corroboration": {
+        "params": {
+          "method": "robust_cusum",
+          "window_h": 168.0,
+          "k": 1.0,
+          "h": 16.0,
+          "scale_floor": 0.35,
+          "min_customers": 750.0,
+          "min_share": 0.01,
+          "end_h": 6.0,
+          "corroborate": 0,
+          "corroborate_h": 3.0
+        },
+        "train_recall": 0.2894,
+        "train_fa": 0.4955,
+        "test_recall": 0.4279,
+        "test_fa": 0.6882,
+        "test_delay_h_median": 0.7167
+      }
+    }
+  },
+  "grid_sizes": {
+    "robust_cusum": 864,
+    "rolling_z": 120,
+    "fixed_share": 13,
+    "fixed_share_corroborated": 39
+  },
+  "confidence": {
+    "features": [
+      "log10_excess_share",
+      "log1p_concurrent_counties"
+    ],
+    "coef": [
+      -0.0549,
+      0.8414
+    ],
+    "intercept": -2.7772,
+    "bands": {
+      "high": 0.5,
+      "medium": 0.2
+    },
+    "train_surges": 2047,
+    "train_base_rate": 0.3796,
+    "test_surges": 1935,
+    "test_brier": 0.2031,
+    "test_brier_base_rate": 0.2369,
+    "test_auc": 0.7284,
+    "test_explained_share_by_band": {
+      "high": 0.6692,
+      "medium": 0.2942,
+      "low": 0.1871
+    }
+  },
+  "helene": {
+    "window_utc": [
+      "2024-09-25T00:00:00+00:00",
+      "2024-09-30T00:00:00+00:00"
+    ],
+    "counties_monitored": 123,
+    "counties_with_surge": 122,
+    "surges": 137,
+    "first_detected_at": "2024-09-26T13:15:00+00:00",
+    "50pct_of_surging_counties_by": "2024-09-27T05:00:00+00:00",
+    "90pct_of_surging_counties_by": "2024-09-27T09:00:00+00:00",
+    "cumulative_surges_by_hour_utc": {
+      "2024-09-26T13:00:00+00:00": 5,
+      "2024-09-26T14:00:00+00:00": 7,
+      "2024-09-26T15:00:00+00:00": 8,
+      "2024-09-26T16:00:00+00:00": 9,
+      "2024-09-26T17:00:00+00:00": 13,
+      "2024-09-26T23:00:00+00:00": 15,
+      "2024-09-27T00:00:00+00:00": 19,
+      "2024-09-27T01:00:00+00:00": 24,
+      "2024-09-27T02:00:00+00:00": 33,
+      "2024-09-27T03:00:00+00:00": 48,
+      "2024-09-27T04:00:00+00:00": 66,
+      "2024-09-27T05:00:00+00:00": 79,
+      "2024-09-27T06:00:00+00:00": 93,
+      "2024-09-27T07:00:00+00:00": 108,
+      "2024-09-27T08:00:00+00:00": 120,
+      "2024-09-27T09:00:00+00:00": 128,
+      "2024-09-27T10:00:00+00:00": 133,
+      "2024-09-27T11:00:00+00:00": 135,
+      "2024-09-27T20:00:00+00:00": 137
+    },
+    "ncei_label_events": 119,
+    "ncei_recall": 0.7815,
+    "ncei_tropical_events": 109,
+    "ncei_tropical_recall": 0.8073,
+    "delay_h_median": 0.2667,
+    "confidence_median": 0.7066,
+    "high_confidence_surges": 119
+  },
+  "helene_baselines": {
+    "fixed_share": {
+      "window_utc": [
+        "2024-09-25T00:00:00+00:00",
+        "2024-09-30T00:00:00+00:00"
+      ],
+      "counties_monitored": 123,
+      "counties_with_surge": 120,
+      "surges": 127,
+      "first_detected_at": "2024-09-25T19:30:00+00:00",
+      "50pct_of_surging_counties_by": "2024-09-27T07:00:00+00:00",
+      "90pct_of_surging_counties_by": "2024-09-27T10:30:00+00:00",
+      "ncei_label_events": 119,
+      "ncei_recall": 0.9244,
+      "ncei_tropical_events": 109,
+      "ncei_tropical_recall": 0.9725,
+      "delay_h_median": 0.75,
+      "confidence_median": 0.6978,
+      "high_confidence_surges": 117
+    },
+    "rolling_z": {
+      "window_utc": [
+        "2024-09-25T00:00:00+00:00",
+        "2024-09-30T00:00:00+00:00"
+      ],
+      "counties_monitored": 123,
+      "counties_with_surge": 113,
+      "surges": 120,
+      "first_detected_at": "2024-09-25T00:30:00+00:00",
+      "50pct_of_surging_counties_by": "2024-09-27T06:45:00+00:00",
+      "90pct_of_surging_counties_by": "2024-09-27T10:15:00+00:00",
+      "ncei_label_events": 119,
+      "ncei_recall": 0.8403,
+      "ncei_tropical_events": 109,
+      "ncei_tropical_recall": 0.8716,
+      "delay_h_median": 1.0,
+      "confidence_median": 0.6967,
+      "high_confidence_surges": 110
+    }
+  },
+  "unmatched_zone_names": {},
+  "data_sha256": {
+    "eaglei_gasc_2016_may-nov.csv.gz": "3eee80fe5d6ed52d1bdd7a635bb1392142cb360a964198378ca4ce8768638abe",
+    "eaglei_gasc_2017_may-nov.csv.gz": "7e22d19b26e9ea0a1ff7fe5a1bc09af89fd9f93acf0e15408b946976a8ef5fef",
+    "eaglei_gasc_2018_may-nov.csv.gz": "80e15678520c3407bfd25e88254f4da4dbf7557668124e9ebc7856b7424df77f",
+    "eaglei_gasc_2019_may-nov.csv.gz": "79a1f2456375f5d68a925e988ac9e3c75e5968bd557a55644ba9e64fc344c243",
+    "eaglei_gasc_2020_may-nov.csv.gz": "143f6b4805d12d766a3ecbbc88e46c1f83cafd0389e601c96a69a23db11f7ac9",
+    "eaglei_gasc_2021_may-nov.csv.gz": "e16e9fd7c4d6491eb4bcac4230569a674b342c760f162bdcb30690884e0cbc8e",
+    "eaglei_gasc_2022_may-nov.csv.gz": "e3aba37c2131528ab601ea50223b1151e7eb8e3f44da2120ae7ad498a57d2792",
+    "eaglei_gasc_2023_may-nov.csv.gz": "7173d5f88fab9714f1f535c4e5517c476102619058e55c4a0db6df9b55d3ed97",
+    "eaglei_se_2024_aug-oct.csv.gz": "3c37362d4e2257ead82f376986fd381dcbdc5d8f259226417d59b41d50066080",
+    "eaglei_gasc_2025_may-nov.csv.gz": "d4a79e3339c17318c7b3311ea93fa70b78382de27ebe4fcf463a50761c0e850d",
+    "StormEvents_details-ftp_v1.0_d2016_c20261119.csv.gz": "dfbc09a108a6b25e6bd70439521ad908337c6a93d8f0dd90f19bf9d233e38817",
+    "StormEvents_details-ftp_v1.0_d2017_c20261119.csv.gz": "d52889d1a7c2d7ed735b8cd9822ea5799b7de1b16e3c32b2afdc32ecc0e8ff74",
+    "StormEvents_details-ftp_v1.0_d2018_c20261118.csv.gz": "e12418af170d773225f8c000e72cf3b079faa003db2b75cc5b3dbb54bb70750d",
+    "StormEvents_details-ftp_v1.0_d2019_c20261119.csv.gz": "35ae6ee519ff19e057ada1f55e42e3e86a7faaeebee3e48390c82a36f639f939",
+    "StormEvents_details-ftp_v1.0_d2020_c20261119.csv.gz": "7f154656d057a24e37fb4d67d1825b5ba6357387fa0b8057e0cc9e2335647738",
+    "StormEvents_details-ftp_v1.0_d2021_c20261119.csv.gz": "152e89ea4fae613ebe7a572451fc147da4f996d4956118f6d5b9f5044d6b06c8",
+    "StormEvents_details-ftp_v1.0_d2022_c20261118.csv.gz": "f1958e531d5c3c13be6c48c0afe47e13206a4cf3632ea0067b68c2d92fa6a825",
+    "StormEvents_details-ftp_v1.0_d2023_c20261118.csv.gz": "1eab8673bc640c11c17c34de95096a153039c739789fdcc69bb2fb00f79ebd66",
+    "StormEvents_details-ftp_v1.0_d2024_c20261118.csv.gz": "984da6273c2bff9d4cbb87089f6dd224fe91ba332601da9e8891a1a7bf937560",
+    "StormEvents_details-ftp_v1.0_d2025_c20261119.csv.gz": "dfa4627401446932774886035c4921f339ca74fe69d505bed319751553d739b9",
+    "MCC.csv": "d7fbe0d60ea71273f68bd744408059491fbc7f85b6254882d17783d7762bf65e"
+  }
+}

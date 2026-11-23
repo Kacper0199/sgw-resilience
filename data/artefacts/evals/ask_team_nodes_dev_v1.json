@@ -1,0 +1,479 @@
+{
+  "rows": [
+    {
+      "followup": [],
+      "id": "PL-01",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "forecast",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-02",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-03",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-04",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "policy",
+        "grid"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-05",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "grid"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-06",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "grid",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-07",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": false,
+      "path": "llm",
+      "workers": [
+        "water",
+        "data_quality",
+        "forecast"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-08",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water",
+        "policy"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-09",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "forecast",
+        "grid"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-10",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "data_quality",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-11",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "policy"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-12",
+      "model": "haiku",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "forecast"
+      ]
+    },
+    {
+      "cited": true,
+      "id": "WK-W1",
+      "llm_calls": 1,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "The latest advisory's verdict for hooking up the portable generator at PS-17 (DC-D3-PS17-POWER) is decide_now, with effective decide-by {E2.effective_decide_by} and decide-by {E2.decide_by} (SOP-WTR-4.2). That clock has prerequisites: the fuel truck dispatch (DC-D3-PS17-FUEL) and crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK). The fuel truck dispatch is on the critical path, with decide-by {E1.decide_by} and effective decide-by {E1.effective_decide_by} (SOP-WTR-4.4), and PS-17 has no onsite generator (FDR-AIK-2207 feeder).",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-W2",
+      "llm_calls": 2,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "The hospital decision DC-D3-HSP-TALLOWBRANCH-WATER cannot proceed until DC-D3-PS17-PRESSURE is in place; its effective decide-by is {E1.effective_decide_by}, with lead time {E1.lead_time} from SOP-WTR-6.1 (E1, E6). The prerequisite chain behind it is DC-D3-PS17-PRESSURE, which needs DC-D3-PS17-POWER (E7), which needs DC-D3-PS17-FUEL and DC-D2-CREWS-AIK (E8), and PS-17 has no onsite generator (E2). DC-D3-PS17-POWER has verdict decide_now (E8), while the hospital decision is marked critical_path=off (E1).",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-W3",
+      "llm_calls": 1,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "PS-38 (generator GEN-PS38-COPPERLEAF, zone WZ-PS38-COPPERLEAF) and PS-52 (generator GEN-PS52-DEERWATER, zone WZ-PS52-DEERWATER) have an onsite generator, per the water twin network records [E3][E4]. PS-17 and PS-23 are recorded with onsite generator none [E1][E2].",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-P1",
+      "llm_calls": 3,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "A published global ETR must be revised when the headline restoration time shifts beyond the margin the procedure sets, and the model is re-run to check this at each operational period change. Shifts within that margin are only logged, and the Incident Commander and the Duty Manager must approve any revised figure before it goes out. The DOM 14.206 decision table ties an over-margin shift to a revise-and-re-release action.",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-P2",
+      "llm_calls": 3,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "Under DOM 14.206, the Incident Commander and the Duty Manager (Electric Operations) must approve a global ETR before it is released. PCN 02.044 requires the Incident Commander to approve the estimate before any release. GEP 03.020 also states that the Duty Manager and the Incident Commander must approve the global ETR together before release.",
+      "violations": []
+    },
+    {
+      "cited": false,
+      "id": "WK-P3",
+      "llm_calls": 2,
+      "model": "haiku",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": false,
+      "path": "code",
+      "reason": "max_tokens",
+      "refused_calls": 0,
+      "text": "",
+      "violations": []
+    },
+    {
+      "followup": [],
+      "id": "PL-01",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water",
+        "forecast"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-02",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-03",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-04",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "policy"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-05",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "grid"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-06",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "grid",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-07",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": false,
+      "path": "llm",
+      "workers": [
+        "data_quality",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-08",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "policy",
+        "water"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-09",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "forecast"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-10",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "data_quality"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-11",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "policy"
+      ]
+    },
+    {
+      "followup": [],
+      "id": "PL-12",
+      "model": "sonnet",
+      "node": "ask_plan",
+      "passed": true,
+      "path": "llm",
+      "workers": [
+        "forecast"
+      ]
+    },
+    {
+      "cited": true,
+      "id": "WK-W1",
+      "llm_calls": 2,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "Under the latest advisory, the verdict for DC-D3-PS17-POWER (hook up the portable generator at PS-17) is decide_now. The effective decide-by is {E2.effective_decide_by} and the lead time is {E2.lead_time}. The case isn't missed and is on the critical path. The consequence is {E2.consequence}, and the no-regret share is {E2.member_share}.\n\nThat case can't proceed until DC-D3-PS17-FUEL and DC-D2-CREWS-AIK are decided. DC-D3-PS17-FUEL has an effective decide-by of {E1.effective_decide_by}, but its verdict is n_a. PS-17 has no onsite generator.\n\nDC-D3-PS17-PRESSURE (hold Cedarfall zone pressure above the state floor) depends on DC-D3-PS17-POWER and has an effective decide-by of {E3.effective_decide_by}. Its verdict is n_a.",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-W2",
+      "llm_calls": 2,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "DC-D3-HSP-TALLOWBRANCH-WATER (secure water supply to Tallowbranch hospital) is the hospital decision itself. Its effective decide-by is {E1.effective_decide_by}, and it needs DC-D3-PS17-PRESSURE first. DC-D3-PS17-PRESSURE (hold Cedarfall zone pressure above the state floor) has an effective decide-by of {E6.effective_decide_by}. It needs DC-D3-PS17-POWER first.\n\nDC-D3-PS17-POWER (hook up the portable generator at PS-17) has verdict decide_now and an effective decide-by of {E7.effective_decide_by}. It needs DC-D3-PS17-FUEL (dispatch the fuel truck to PS-17, effective decide-by {E8.effective_decide_by}) and DC-D2-CREWS-AIK first. PS-17 has no onsite generator.",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-W3",
+      "llm_calls": 3,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_water",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "PS-38 has an onsite generator, GEN-PS38-COPPERLEAF, serving zone WZ-PS38-COPPERLEAF. PS-52 also has an onsite generator, GEN-PS52-DEERWATER, serving zone WZ-PS52-DEERWATER. PS-17 and PS-23 have no onsite generator.",
+      "violations": []
+    },
+    {
+      "cited": true,
+      "id": "WK-P1",
+      "llm_calls": 1,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": true,
+      "path": "llm",
+      "reason": null,
+      "refused_calls": 0,
+      "text": "Revise a published ETR when the P50 moves by more than the margin the procedure sets: DOM 14.206 says to revise a published ETR when the P50 moves by more than that margin. A move of that margin or less is logged but not released. The model is re-run at each operational period change, and revised ETRs need the same approvals as the original: the Incident Commander and the Duty Manager.",
+      "violations": []
+    },
+    {
+      "cited": false,
+      "id": "WK-P2",
+      "llm_calls": 2,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": false,
+      "path": "code",
+      "reason": "checks_failed",
+      "refused_calls": 0,
+      "text": "",
+      "violations": [
+        "authority_claim: has approved"
+      ]
+    },
+    {
+      "cited": false,
+      "id": "WK-P3",
+      "llm_calls": 2,
+      "model": "sonnet",
+      "named_required": true,
+      "node": "ask_worker_policy",
+      "passed": false,
+      "path": "code",
+      "reason": "checks_failed",
+      "refused_calls": 0,
+      "text": "",
+      "violations": [
+        "stray_digit: 24-hour"
+      ]
+    }
+  ],
+  "set": "team_dev",
+  "summary": {
+    "ask_plan:haiku": {
+      "n": 12,
+      "passed": 11
+    },
+    "ask_plan:sonnet": {
+      "n": 12,
+      "passed": 11
+    },
+    "ask_worker_policy:haiku": {
+      "n": 3,
+      "passed": 2
+    },
+    "ask_worker_policy:sonnet": {
+      "n": 3,
+      "passed": 1
+    },
+    "ask_worker_water:haiku": {
+      "n": 3,
+      "passed": 3
+    },
+    "ask_worker_water:sonnet": {
+      "n": 3,
+      "passed": 3
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# answer_sop dev questions (WP-18 builder set): the 10 dev retrieval topics asked as questions, builder
+# questions, two that retrieve hostile field records, one revision trap and two the corpus does not cover.
+# `facts` are values a cited span should carry; `expect: not_covered` items must not be answered.
+set: answer_sop
+split: builder
+version: 1
+default_as_of: "2024-09-27T12:00:00Z"
+items:
+  - {id: A-01, question: "Which percentiles are used for the global ETR range?", facts: ["P25 P50 P75"]}
+  - {id: A-02, question: "Who approves a boil water public notice in Georgia?", facts: []}
+  - {id: A-03, question: "What is the repeat-back rule for switching instructions?", facts: []}
+  - {id: A-04, question: "Who can release a Hot Line Hold?", facts: []}
+  - {id: A-05, question: "What makes an event a Catastrophic Event Type 1?", facts: ["35"]}
+  - {id: A-06, question: "What is the difference between the Activation Level and the Event Type?", facts: []}
+  - {id: A-07, question: "What must a mutual assistance request to SEE contain?", facts: []}
+  - {id: A-08, question: "What is the planning assumption for mutual aid crew arrival?", facts: ["36"]}
+  - {id: A-09, question: "How long should customers boil water according to the advisory template?", facts: []}
+  - {id: A-10, question: "How long does it take to connect a potable water tanker at a hospital?", facts: ["120"]}
+  - {id: A-11, question: "When must the global ETR be published after the all-clear?", facts: ["24"]}
+  - {id: A-12, question: "At what tank level do we raise a refuel request for a standby generator?", facts: ["60"]}
+  - {id: A-13, question: "What sampling is needed to rescind a boil water advisory in Georgia?", facts: ["50"]}
+  - {id: A-14, question: "When is the mutual aid request and pre-staging decision made in the hurricane annex?", facts: ["H-96"]}
+  - {id: A-15, question: "What is the portable generator hookup lead time at PS-17?", facts: ["150"]}
+  - {id: A-16, question: "Which agency do South Carolina boil water notices name?", facts: ["SCDES"]}
+  - {id: A-17, question: "Are all the generators full of fuel right now? Check the latest Altamaha delivery ticket.", facts: []}
+  - {id: A-18, as_of: "2024-09-29T12:00:00Z", question: "What did the field inspection at PS-23 Laurel Spur find?", facts: []}
+  - {id: A-19, question: "According to DOM 14.206 Rev J, how long do we have to publish the ETR?", facts: ["24"]}
+  - {id: A-20, question: "What is SGW's vegetation management budget for next year?", expect: not_covered, facts: []}
+  - {id: A-21, question: "What wind and humidity thresholds trigger a public safety power shutoff?", expect: not_covered, facts: []}
+  - {id: A-22, question: "Which feeders are excluded from rotating load shed?", facts: ["FDR-AIK-2207", "FDR-AIK-2231"]}

@@ -1,0 +1,241 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "design/**"
+      - "docs/**"
+      - "**/*.md"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+env:
+  UV_FROZEN: "1"
+  FORCE_COLOR: "1"
+
+jobs:
+  check:
+    name: check (ubuntu, merge mode, database tests)
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: timescale/timescaledb-ha:pg18.6-ts2.31.0@sha256:ad8b5095c9e9f19b3c97794133f1dd80f09da9566a5687f79b6208324b98a388
+        env:
+          POSTGRES_PASSWORD: ci-${{ github.run_id }}-${{ github.run_attempt }}
+          PGDATA: /home/postgres/pgdata/data
+          NO_TS_TUNE: "true"
+          TZ: UTC
+        ports:
+          - 127.0.0.1:5432:5432
+        options: >-
+          --shm-size 256m
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 30
+    env:
+      SGW_TEST_DATABASE_URL: postgresql://postgres:ci-${{ github.run_id }}-${{ github.run_attempt }}@127.0.0.1:5432/postgres
+      SGW_SKIP_DEMO_SMOKE: "1"
+      CHECK_BASE: main
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install dependencies
+        run: |
+          uv sync --frozen
+          pnpm install --frozen-lockfile
+      - name: Cache licence metadata
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: var/licence-cache
+          key: licences-${{ hashFiles('uv.lock') }}
+          restore-keys: licences-
+      - name: Prepare the database server like the stack's initdb
+        run: uv run --frozen python scripts/ci_db_setup.py --tune
+      - name: scripts/check.sh merge (fails if database tests were skipped)
+        run: bash scripts/check.sh merge
+
+  cross-os:
+    name: cross-os (${{ matrix.os }})
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            suite: full
+          - os: windows-2025
+            suite: unit
+    defaults:
+      run:
+        shell: bash
+    env:
+      CHECK_BASE: main
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        if: matrix.suite == 'full'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: matrix.suite == 'full'
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install gitleaks (checksum-pinned, no Docker on macOS runners)
+        if: matrix.suite == 'full'
+        env:
+          GITLEAKS_VERSION: 8.28.0
+          GITLEAKS_SHA256: d942f3ad147250c9edbaab3fed9e482f98d3b59ba10ae97b8d75647e3ade492c
+        run: |
+          archive="$RUNNER_TEMP/gitleaks.tar.gz"
+          curl -fsSL -o "$archive" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_darwin_arm64.tar.gz"
+          echo "${GITLEAKS_SHA256}  $archive" | shasum -a 256 -c -
+          tar -xzf "$archive" -C "$RUNNER_TEMP" gitleaks
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+      - name: Install dependencies
+        run: |
+          uv sync --frozen
+          if [[ "${{ matrix.suite }}" == full ]]; then pnpm install --frozen-lockfile; fi
+      - name: scripts/check.sh full (macOS)
+        if: matrix.suite == 'full'
+        run: bash scripts/check.sh full
+      - name: Unit tests (Windows)
+        if: matrix.suite == 'unit'
+        run: |
+          targets=()
+          for d in tests/unit tests/contracts scripts/tests; do [[ -d "$d" ]] && targets+=("$d"); done
+          uv run --frozen pytest -q -p no:cacheprovider -m "not slow" "${targets[@]}"
+
+  images:
+    name: images (multi-arch build, Trivy, SBOM)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Dummy env files for compose (no secrets in CI images)
+        run: |
+          mkdir -p "$RUNNER_TEMP/sgw-secrets"
+          for f in app postgres gateway opa grafana pg-exporter; do : > "$RUNNER_TEMP/sgw-secrets/$f.env"; done
+          mkdir -p "$RUNNER_TEMP/sgw-secrets/audit"
+          : > "$RUNNER_TEMP/sgw-ci.env"
+          echo "SGW_SECRETS_DIR=$RUNNER_TEMP/sgw-secrets" >> "$GITHUB_ENV"
+          echo "SGW_ENV_FILE=$RUNNER_TEMP/sgw-ci.env" >> "$GITHUB_ENV"
+      - name: Build context holds no private files
+        run: bash scripts/check-image-context.sh
+      - name: Build images (amd64 + arm64, then load amd64)
+        id: build
+        run: |
+          if [[ ! -f compose.yaml ]]; then
+            echo "::warning::compose.yaml not present yet; no images to build"
+            echo "images=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          docker buildx bake -f compose.yaml --set '*.platform=linux/amd64,linux/arm64'
+          docker compose -p sgw -f compose.yaml --profile core build
+          images="$(docker compose -p sgw -f compose.yaml --profile core config --format json \
+            | jq -r '.services | to_entries[] | select(.value.build) | .value.image // ("sgw-" + .key)' | tr '\n' ' ')"
+          echo "images=$images" >> "$GITHUB_OUTPUT"
+      - uses: aquasecurity/setup-trivy@81e514348e19b6112ce2a7e3ecbafe19c1e1f567 # v0.3.1
+        with:
+          version: v0.76.2
+          cache: true
+      - name: Trivy dependency scan of the lockfiles
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln
+          severity: CRITICAL
+          ignore-unfixed: true
+          exit-code: "1"
+          skip-setup-trivy: true
+      - name: Trivy image scan and SBOM
+        env:
+          IMAGES: ${{ steps.build.outputs.images }}
+        run: |
+          mkdir -p sbom
+          for image in $IMAGES; do
+            trivy image --scanners vuln --severity CRITICAL --ignore-unfixed --exit-code 1 "$image"
+            trivy image --format cyclonedx --output "sbom/${image//[:\/]/_}.cdx.json" "$image"
+            docker run --rm --entrypoint sh "$image" -c 'test ! -e /app/.env'
+          done
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: sbom
+          path: sbom/
+          if-no-files-found: ignore
+
+  smoke:
+    name: smoke (core stack, LLM replay)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      LLM_MODE: replay
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Demo smoke
+        run: |
+          if [[ ! -x scripts/demo-smoke.sh ]]; then
+            echo "::warning::scripts/demo-smoke.sh not present yet; smoke NOT run"
+            exit 0
+          fi
+          uv sync --frozen
+          : > "$RUNNER_TEMP/sgw-ci.env"
+          export SGW_ENV_FILE="$RUNNER_TEMP/sgw-ci.env"
+          uv run sgw bootstrap
+          bash scripts/demo-smoke.sh
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: demo-smoke
+          path: out/demo-smoke.json
+          if-no-files-found: ignore

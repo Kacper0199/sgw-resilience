@@ -1,0 +1,30 @@
+---
+doc_id: IAP-HEL-24-OP04/202
+title: ICS 202 Incident Objectives, Helene, Operational Period 4
+family: form_record
+layout: record
+owner_function: command
+effective: '2024-09-26'
+classification: SGW Internal - Controlled
+trust: internal_free_text
+status: in_force
+decisions:
+- D1
+- D2
+---
+# INCIDENT OBJECTIVES (ICS 202)
+1. Incident Name: SGW-INC-24-0031 "HELENE"
+2. Operational Period: Date From: 2024-09-26  Date To: 2024-09-27  Time From: 1900  Time To: 0700 (EDT)
+# 3. Objective(s)
+a. Provide for the safety of SGW and mutual-aid personnel; all crews sheltered by H-12 and released only on the Safety Officer's all-clear.
+b. Keep critical-facility feeders and water pump stations under watch; report trips on FDR-AIK-2207 and FDR-AIK-2231 to the Duty Manager within 15 min.
+c. Confirm portable generator readiness at DEP-AIK-GRANITEVILLE (MGEN-HALBERD-500) for dispatch at first light.
+# 4. Operational Period Command Emphasis
+Nobody climbs or works from a bucket until the wind drops. Downed wires are energised until proven otherwise.
+General Situational Awareness: Hurricane Helene, Cat 1 to tropical storm over the area; sustained 50-60 mph, gusts to 70 mph.
+5. Site Safety Plan Required? Yes [X]  No [ ]   Approved Site Safety Plan(s) Located at: EOC Safety desk, binder S-4
+# 6. Incident Action Plan (the items checked below are included in this Incident Action Plan)
+[X] ICS 203  [X] ICS 204  [X] ICS 205  [ ] ICS 205A  [X] ICS 206  [X] ICS 208  [X] Map/Chart  [ ] Weather Forecast/Tides/Currents
+7. Prepared by: Name: Okonkwo, Adaeze N.  Position/Title: Planning Section Chief  Signature: A. Okonkwo
+8. Approved by Incident Commander: Name: Wingard, Lorraine T.  Signature: L. T. Wingard
+ICS 202 | IAP Page 1 | Date/Time: 2024-09-26 1900

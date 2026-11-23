@@ -1,0 +1,45 @@
+# Wildfire trigger and circuit-ranking parameters (WP-22). Labels: F sourced, C computed, A assumption.
+# kind=policy entries are SGW policy parameters (chip "SGW policy · assumed"); proposed for numbers.yaml as
+# policy_wildfire_* (WP-22 round file, "Root changes needed"). Facts come from planner-handoff section 3.
+version: "1.0"
+trigger:
+  ffwi_min: {value: 35.0, unit: "index", label: A, kind: policy, source: "planner-handoff s3 Wildfire trigger: FFWI >= about 35 (local P99; GSP 2023-24 hourly P99 34.4, R05 1.3)"}
+  rh_max_pct: {value: 25.0, unit: "%", label: A, kind: policy, source: "planner-handoff s3 Wildfire trigger"}
+  min_hours: {value: 3, unit: "h", label: A, kind: policy, source: "planner-handoff s3 Wildfire trigger; SPC critical fire weather duration 3 h (R02 2.2)"}
+  kbdi_min: {value: 500.0, unit: "index", label: A, kind: policy, source: "planner-handoff s3 Wildfire trigger (KBDI branch)"}
+ignition:
+  rate_per_100km_year: {value: 0.022, low: 0.011, high: 0.033, unit: "ignitions per 100 km-year", label: C, kind: fact, source: "planner-handoff s3 Ignition rate (SP 5c, FPA FOD 7th ed., SC 2015-2024)"}
+  logit_kbdi_coef: {value: 0.0, r02_value: 1.0, unit: "per 200 KBDI", label: C, kind: model, source: "IN-SAMPLE FIT (grid 0..0.5 x 1.6..4.0) to the same Feb/Mar/Apr month shares it is checked against (validation block), so the in-sample check is not independent; leave-one-month-out in validation.loo. R02 2.3 transfer (1.0, 0.8) puts 6 % of ignitions in Feb-Apr against 42.6 % observed. KBDI weight is not identifiable from two years at GSP (fit chose 0), so the ranking carries no drought signal"}
+  logit_kbdi_ref: {value: 400.0, unit: "index", label: A, kind: model, source: "R02 2.3"}
+  logit_ffwi_coef: {value: 2.0, r02_value: 0.8, unit: "per 20 FFWI", label: C, kind: model, source: "IN-SAMPLE FIT with logit_kbdi_coef (see there). The Table Rock window score depends on it: mean-feeder ratio to an average window 2.3x at 0.8, 5.6x at 1.6, 8.9x at 2.0, 17.8x at 2.8 (validation.ffwi_sensitivity; trigger.json recomputes it)"}
+  logit_ffwi_ref: {value: 30.0, unit: "index", label: A, kind: model, source: "R02 2.3"}
+  logit_fuel_coef: {value: 0.6, unit: "-", label: A, kind: model, source: "R02 2.3 (fuel_class 0..1 taken from feeder vegetation index)"}
+  logit_wet_coef: {value: -1.5, unit: "-", label: A, kind: model, source: "R02 2.3 (wet24h: > 2.54 mm rain in the last 24 h)"}
+  wet24h_mm: {value: 2.54, unit: "mm", label: A, kind: model, source: "0.1 in, WP-22 assumption"}
+  p_cap: {value: 0.5, unit: "-", label: A, kind: model, source: "R02 2.3 cap"}
+outage:
+  base_faults_per_km_year: {value: 0.1, unit: "faults per km-year", label: A, kind: model, source: "WP-22 assumption: blue-sky overhead distribution fault rate (sensitivity 0.05-0.2); cancels in the ranking order, sets p(outage) level"}
+  wind_onset_ms: {value: 6.7, unit: "m/s", label: A, kind: model, source: "15 mph, SPC elevated fire-weather wind (R02 2.2); fault hazard rises above it"}
+  wind_scale_ms: {value: 4.5, unit: "m/s", label: A, kind: model, source: "WP-22 assumption: hazard multiplier 1 + ((U - onset)/scale)^2"}
+  veg_floor: {value: 0.5, unit: "-", label: A, kind: model, source: "WP-22 assumption: tree-contact multiplier 0.5 + veg"}
+network:
+  customers_per_overhead_km: {value: 15.0, unit: "customers/km", label: A, kind: model, source: "WP-22 assumption for rural upstate SC feeders (WP-06 network has no line length)"}
+  counties: {value: ["45073", "45077", "45045"], unit: "FIPS", label: F, kind: model, source: "Oconee, Pickens, Greenville: the Table Rock fires (Pickens and Greenville, WFIGS, R05 G9) and the adjacent Blue Ridge county; weather from GSP"}
+validation:
+  observed_month_share_pct: {value: {2: 10.6, 3: 17.5, 4: 14.5}, unit: "% of annual power-line wildfires", label: C, kind: model, source: "R05 synthetic-params G9: FPA FOD 7th ed., SC+GA power-caused fires 1992-2024 month shares (897 fires, 840 of them SC: GA power cause is near zero by coding, so the shares are in effect SC)"}
+  tolerance_points: {value: 5.0, unit: "percentage points", label: A, kind: model, source: "R05 G9 validation rule: monthly shares within +-5 points"}
+  loo:
+    value:
+      - {held_out: 2, fit_on: [3, 4], kbdi_coef: 0.0, ffwi_coef: 2.0, predicted_pct: 11.5, observed_pct: 10.6, error_points: 0.9, within_tolerance: true}
+      - {held_out: 3, fit_on: [2, 4], kbdi_coef: 0.0, ffwi_coef: 2.0, predicted_pct: 12.9, observed_pct: 17.5, error_points: -4.6, within_tolerance: true}
+      - {held_out: 4, fit_on: [2, 3], kbdi_coef: 0.25, ffwi_coef: 4.0, predicted_pct: 27.5, observed_pct: 14.5, error_points: 13.0, within_tolerance: false}
+    unit: "percentage points"
+    label: C
+    kind: model
+    source: "leave-one-month-out refit on the same grid (`python -m sgw.generator.scenarios fit-ignition`): 2 of 3 held-out months within 5 points; April fails because Feb+Mar alone push the FFWI weight to the grid edge. Three months of one station over two years is weak validation"
+  ffwi_sensitivity:
+    value: {0.8: 2.3, 1.2: 3.5, 1.6: 5.6, 2.0: 8.9, 2.4: 13.3, 2.8: 17.8}
+    unit: "Table Rock window / average window, mean feeder, kbdi_coef 0"
+    label: C
+    kind: model
+    source: "`python -m sgw.generator.scenarios fit-ignition`; R02 weights (1.0, 0.8) give 0.6"

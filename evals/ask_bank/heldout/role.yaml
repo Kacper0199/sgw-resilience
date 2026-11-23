@@ -1,0 +1,142 @@
+# Ask bank, role: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-ROLE-005
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: role
+  question: Which decisions are mine as logistics?
+  expect:
+    mentions_any:
+    - crew
+    - fuel
+    - logistics
+- id: AB-ROLE-009
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: role
+  question: Can I sign decisions as auditor?
+  expect:
+    mentions_any:
+    - 'no'
+    - cannot
+    - read
+    - audit
+- id: AB-ROLE-010
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  page: admin
+  klass: role
+  question: What can a platform admin change?
+  expect:
+    links:
+    - admin
+    mentions_any:
+    - user
+    - policy
+    - integration
+    - AI
+    - setting
+- id: AB-ROLE-012
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: admin
+  klass: role
+  tags:
+  - role_limit
+  question: How do I add a new user?
+  expect:
+    mentions_any:
+    - admin
+    - administrator
+- id: AB-ROLE-013
+  lang: en
+  persona: audit_01
+  moment: at-n1
+  page: decisions
+  klass: role
+  tags:
+  - role_limit
+  question: Why can't I approve the PS-17 decision?
+  expect:
+    mentions_any:
+    - audit
+    - role
+    - sign
+    - command
+    - water
+- id: AB-ROLE-015
+  lang: pl
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: role
+  question: Co muszę dziś podpisać jako kierownik ds. wody?
+  expect:
+    mentions_any:
+    - cystern
+    - Laurelspur
+    - gotow
+    - wod
+- id: AB-ROLE-017
+  lang: pl
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: role
+  question: Na co powinien patrzeć członek zarządu?
+  expect:
+    mentions_any:
+    - briefing
+    - decyz
+    - klient
+- id: AB-ROLE-020
+  lang: de
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: role
+  tags:
+  - other_language
+  question: Darf ich als Prüfer Entscheidungen unterschreiben?
+  expect:
+    mentions_any:
+    - nein
+    - nicht
+    - Prüf
+- id: AB-ROLE-021
+  lang: es
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: role
+  tags:
+  - other_language
+  question: ¿Qué debería mirar primero como ejecutivo?
+  expect:
+    mentions_any:
+    - decisi
+    - cliente
+    - resumen
+    - informe
+- id: AB-ROLE-023
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: admin
+  klass: role
+  tags:
+  - role_limit
+  question: Can I see the platform admin settings?
+  expect:
+    mentions_any:
+    - admin
+    - audit
+    - cannot
+    - can't
+    - not

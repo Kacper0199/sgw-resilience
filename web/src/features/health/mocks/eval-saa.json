@@ -1,0 +1,64 @@
+{
+  "name": "saa-crew-plan",
+  "serving": {
+    "model_id": "saa-crew-plan@1.0",
+    "version": "1.0",
+    "alias": "serving",
+    "data_hash": "",
+    "mlflow_run_id": null
+  },
+  "eval_report": {
+    "path": "evals/reports/saa.json",
+    "name": "saa",
+    "created_at": "2026-11-19T23:46:52Z",
+    "code_version": "6090b74",
+    "metrics": [
+      {
+        "metric": "saa.coa_a.solve_seconds_max_over_replications",
+        "value": 0.542576,
+        "unit": "s (11 yards x 40 clusters x 50 scenarios)",
+        "n": 10,
+        "split": "dev",
+        "label": "C",
+        "baseline_name": "p50_deterministic plan solve",
+        "baseline_value": 0.01046,
+        "threshold": 120.0,
+        "direction": "lower_is_better",
+        "passed": true,
+        "ci_low": null,
+        "ci_high": null
+      },
+      {
+        "metric": "saa.coa_a.vss_vs_ev_out_of_sample",
+        "value": 91834.610529,
+        "unit": "customer-hours",
+        "n": 2000,
+        "split": "dev",
+        "label": "C",
+        "baseline_name": "expected_value plan (Birge EV), same early mutual-aid request",
+        "baseline_value": 14122640.475703,
+        "threshold": 1.0,
+        "direction": "higher_is_better",
+        "passed": true,
+        "ci_low": 83284.581278,
+        "ci_high": 100384.63978
+      },
+      {
+        "metric": "saa.coa_a.evpi_out_of_sample",
+        "value": 186843.682535,
+        "unit": "customer-hours",
+        "n": 200,
+        "split": "dev",
+        "label": "C",
+        "baseline_name": "wait-and-see on fresh scenarios",
+        "baseline_value": 13946495.43796,
+        "threshold": 0.0,
+        "direction": "higher_is_better",
+        "passed": true,
+        "ci_low": null,
+        "ci_high": null
+      }
+    ]
+  },
+  "card": null
+}

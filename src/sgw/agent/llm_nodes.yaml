@@ -1,0 +1,216 @@
+# K14 per-node LLM config (values; schema in src/sgw/contracts/llm_nodes.py). The gateway reads the same file
+# for its egress node rules. Working-rules 4: Sonnet 5.5 at medium by default, Haiku 5.5 only where its eval
+# passes. Model records are PROVISIONAL for WP-29 (n = 4 per node and model, code graders): selection in
+# data/artefacts/evals/node_eval_v1.json and node_eval_v2.json (Sonnet vs Haiku), current prompt versions
+# checked in data/artefacts/evals/node_eval_v3.json (Sonnet, n = 2). WP-21 (provisional, dev items, code graders,
+# reports in data/artefacts/evals/wp21_*): extract_note Haiku low, prompt v2 (13 dev items: Haiku 12/13, Sonnet
+# 13/13, both 0 polarity errors, 0 hostile followed, schema 13/13); route_intent Haiku low (30 builder items: both
+# 30/30, 0 injection-driven); investigate Sonnet medium, prompt v4 (R26: no advisory codes, sixty words, ids as
+# links; 7 dev copilot and red-team items 7/7, 0 writes, report copilot_eval_v4.json).
+version: 1
+nodes:
+  - node: narrate
+    model: sonnet
+    effort: medium
+    max_tokens: 2000
+    prompt_version: v3
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/node_eval_v3.json
+      metric: cases_passed_share_provisional_n2
+      value_ppm: 1000000
+      passed: true
+  - node: draft_rationale
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v2
+    output_schema: sgw.agent.nodes.text_nodes.RationaleOut
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/node_eval_v3.json
+      metric: cases_passed_share_provisional_n2
+      value_ppm: 1000000
+      passed: true
+  - node: rag_chunk_header
+    model: haiku
+    effort: low
+    max_tokens: 3000
+    prompt_version: v1
+    output_schema: sgw.agent.rag.headers.HeadersOut
+    class_ceiling: C1
+  - node: answer_sop
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+  - node: extract_note
+    model: haiku
+    effort: low
+    max_tokens: 3000
+    prompt_version: v2
+    output_schema: sgw.agent.extract.note.ModelOut
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/wp21_extract_eval_v2.json
+      metric: dev_items_passed_share_haiku_provisional_n13
+      value_ppm: 923077
+      passed: true
+  - node: route_intent
+    model: haiku
+    effort: low
+    max_tokens: 1500
+    prompt_version: v1
+    output_schema: sgw.agent.route.intent.ModelOut
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/wp21_route_eval_v1.json
+      metric: intent_correct_share_haiku_provisional_n30
+      value_ppm: 1000000
+      passed: true
+  # R33 wide gate: a second look at what route_intent sends out of scope (any language, structured output);
+  # Haiku low like route_intent. Eval: the R33 Ask bank (C2), dev split.
+  # R33 follow-ups: a turn that leans on the conversation becomes one standalone question (rewrite only).
+  - node: ask_contextualise
+    model: haiku
+    effort: low
+    max_tokens: 600
+    prompt_version: v1
+    output_schema: sgw.agent.route.followup.ModelOut
+    class_ceiling: C1
+  - node: triage_intent
+    model: haiku
+    effort: low
+    max_tokens: 1000
+    prompt_version: v1
+    output_schema: sgw.agent.route.gate.ModelOut
+    class_ceiling: C1
+  # R33 guide writer (navigator, explainer, photos, helpful refusals): Sonnet writes every user-facing answer.
+  - node: ask_guide
+    model: sonnet
+    effort: medium
+    max_tokens: 1200
+    prompt_version: v1
+    class_ceiling: C1
+  - node: investigate
+    model: sonnet
+    effort: medium
+    max_tokens: 4000
+    prompt_version: v4
+    citations: true
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/copilot_eval_v4.json
+      metric: dev_items_passed_share_provisional_n7
+      value_ppm: 1000000
+      passed: true
+  # WP-25 report nodes; eval tests/unit/agent/graphs/report_eval.py (report under data/artefacts/evals/).
+  # Sonnet 4/4 on every node; Haiku 4/4 etr_brief and sitrep v2, 3/4 after_action_summary (broken-chain case).
+  # sitrep v1: Sonnet 1/4, Haiku 3/4 (number words).
+  # Haiku for the recurring T1 sitrep draft; Sonnet for the T3 ETR approval card and the regulatory review.
+  - node: etr_brief
+    model: sonnet
+    effort: medium
+    max_tokens: 2000
+    prompt_version: v1
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/report_node_eval.json
+      metric: cases_passed_share_provisional_n4
+      value_ppm: 1000000
+      passed: true
+  - node: sitrep
+    model: haiku
+    effort: medium
+    max_tokens: 4000
+    prompt_version: v2
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/report_node_eval.json
+      metric: cases_passed_share_provisional_n4
+      value_ppm: 1000000
+      passed: true
+  - node: after_action_summary
+    model: sonnet
+    effort: medium
+    max_tokens: 2500
+    prompt_version: v1
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/report_node_eval.json
+      metric: cases_passed_share_provisional_n4
+      value_ppm: 1000000
+      passed: true
+  # R27 P1 copilot team (AX F5). Model choice: R27 P5 node comparison on the v1 prompts (dev 20 items, code
+# graders; ask_eval_v1.json before the R29 freeze, git history): plan Haiku 17/18 = Sonnet 17/18 -> Haiku low (cost 0.0016 vs 0.028 USD for 18 plans);
+# analysts Sonnet >= Haiku on every worker (water 3/4 vs 3/4, grid 2/3 vs 1/3, forecast 2/3 vs 1/3, policy 2/3 vs
+# 1/3, data quality 2/2 vs 2/2; Haiku hits max_tokens at 1500) -> Sonnet medium. Synthesis Sonnet medium (only
+# setting measured). Earlier small-set runs: team_dev.yaml -> data/artefacts/evals/ask_team_nodes_dev_v1.json.
+# R29 freeze: prompts v2, measured end to end in ask_eval_v1.json (dev) and ask_eval_v1_heldout.json.
+# R34 (B1): prompts v3 add the reader line (signed-in role), the Briefing customers-out measure, one verdict per
+# decision (writer) and concrete did_you_mean readings (planner); measured on the C2 bank (evals/ask_bank).
+  - node: ask_plan
+    model: haiku
+    effort: low
+    max_tokens: 1500
+    prompt_version: v3
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/ask_team_nodes_dev_v1.json
+      metric: dev_plans_passed_share_haiku_provisional_n12
+      value_ppm: 1000000
+      passed: true
+  - node: ask_worker_forecast
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+  - node: ask_worker_grid
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+  - node: ask_worker_water
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/ask_team_nodes_dev_v1.json
+      metric: dev_items_passed_share_sonnet_provisional_n3
+      value_ppm: 1000000
+      passed: true
+  - node: ask_worker_policy
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+    eval_result:
+      report: data/artefacts/evals/ask_team_nodes_dev_v1.json
+      metric: dev_items_passed_share_sonnet_provisional_n3
+      value_ppm: 333333
+      passed: false
+  - node: ask_worker_data_quality
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1
+  - node: ask_synth
+    model: sonnet
+    effort: medium
+    max_tokens: 2500
+    prompt_version: v3
+    citations: true
+    class_ceiling: C1

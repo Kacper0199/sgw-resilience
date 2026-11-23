@@ -1,0 +1,400 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./fonts.css";
+@import "./tokens.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-hair: var(--hair);
+  --color-hair-strong: var(--hair-strong);
+  --color-divider: var(--divider);
+  --color-handle: var(--handle);
+  --color-subtle: var(--subtle);
+  --color-row-hover: var(--row-hover);
+  --color-row-sel: var(--row-sel);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-link: var(--link);
+  --color-focus: var(--focus);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-topbar: var(--topbar);
+  --color-on-topbar: var(--on-topbar);
+  --color-topbar-muted: var(--topbar-muted);
+  --color-topbar-line: var(--topbar-line);
+  --color-topbar-field: var(--topbar-field);
+  --color-topbar-hover: var(--topbar-hover);
+  --color-topbar-border: var(--topbar-border);
+  --color-edge: var(--edge);
+  --color-tint: var(--tint);
+  --color-tint-line: var(--tint-line);
+  --color-mine: var(--mine);
+  --color-mine-line: var(--mine-line);
+  --color-mine-dot: var(--mine-dot);
+  --color-well: var(--well);
+  --color-sev-critical: var(--sev-critical);
+  --color-sev-severe: var(--sev-severe);
+  --color-sev-elevated: var(--sev-elevated);
+  --color-sev-advisory: var(--sev-advisory);
+  --color-sev-critical-fill: var(--sev-critical-fill);
+  --color-sev-severe-fill: var(--sev-severe-fill);
+  --color-sev-elevated-fill: var(--sev-elevated-fill);
+  --color-sev-advisory-fill: var(--sev-advisory-fill);
+  --color-ok: var(--ok);
+  --color-ok-fill: var(--ok-fill);
+  --color-warn-text: var(--warn-text);
+
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-selected: var(--selected);
+  --color-ink-2: var(--ink-2);
+  --color-faint: var(--faint);
+  --color-blue: var(--blue);
+  --color-blue-ink: var(--blue-ink);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-line: var(--blue-line);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-warn-line: var(--warn-line);
+  --color-warn-mark: var(--warn-mark);
+  --color-crit: var(--crit);
+  --color-crit-soft: var(--crit-soft);
+  --color-on-crit: var(--on-crit);
+  --color-domain-power: var(--domain-power);
+  --color-domain-water: var(--domain-water);
+  --color-domain-docs: var(--domain-docs);
+  --color-glass: var(--glass);
+  --color-glass-line: var(--glass-line);
+  --color-scrim: var(--scrim);
+  --color-toast: var(--toast-bg);
+  --color-on-toast: var(--on-toast);
+
+  --color-background: var(--surface);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary-foreground: var(--on-primary);
+  --color-secondary: var(--subtle);
+  --color-secondary-foreground: var(--ink);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--row-hover);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--error);
+  --color-border: var(--hair);
+  --color-input: var(--hair-strong);
+  --color-ring: var(--focus);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-toast: 12px;
+  --radius-dialog: 16px;
+  --radius-composer: 22px;
+  --shadow-pop: var(--e-pop);
+  --shadow-float: var(--e-float);
+  --shadow-composer: var(--e-composer);
+  --shadow-dialog: var(--e-dialog);
+  --shadow-box: var(--box-shadow);
+  --shadow-soft: var(--soft-shadow);
+  --ease-sgw: var(--ease);
+
+  --text-label: 12px;
+  --text-label--line-height: 1.4;
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+  --text-title: 16px;
+  --text-title--line-height: 1.4;
+  --text-headline: 20px;
+  --text-headline--line-height: 1.3;
+  --text-figure: 28px;
+  --text-figure--line-height: 1.21;
+  --text-display: 34px;
+  --text-display--line-height: 1.18;
+  --text-page: 26px;
+  --text-page--line-height: 1.23;
+  --text-section: 18px;
+  --text-section--line-height: 1.33;
+  --text-reading: 16px;
+  --text-reading--line-height: 1.62;
+}
+
+@layer base {
+  * {
+    border-color: var(--hair);
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+  *:hover {
+    scrollbar-color: var(--scrollbar-thumb-active) transparent;
+  }
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  :focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+  .band :focus-visible {
+    outline-color: var(--topbar-focus);
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  .maplibregl-canvas {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  .scrim {
+    background: var(--scrim);
+    backdrop-filter: blur(var(--scrim-blur));
+    -webkit-backdrop-filter: blur(var(--scrim-blur));
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--surface-3) 25%, var(--surface-2) 50%, var(--surface-3) 75%);
+    background-size: 200% 100%;
+    animation: sgw-shimmer 1.4s linear infinite;
+  }
+  .sgw-fade-in {
+    animation: sgw-fade 160ms var(--ease) both;
+  }
+  .sgw-reveal {
+    animation: sgw-reveal 900ms var(--ease) both;
+  }
+  .sgw-dialog-in {
+    animation: sgw-dialog 200ms var(--ease) both;
+  }
+  .sgw-sheet-in {
+    animation: sgw-sheet 220ms var(--ease) both;
+  }
+  .sgw-spin {
+    animation: sgw-spin 1s linear infinite;
+  }
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-group {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--e-pop);
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group button {
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--hair);
+}
+.maplibregl-ctrl-group.maplibregl-ctrl-group button:hover {
+  background-color: var(--surface-2);
+}
+[data-theme="dark"] .maplibregl-ctrl-icon {
+  filter: invert(1) brightness(0.9);
+}
+.maplibregl-ctrl.maplibregl-ctrl-attrib {
+  background: var(--glass);
+  color: var(--muted);
+}
+.maplibregl-ctrl-attrib.maplibregl-ctrl-attrib a {
+  color: var(--muted);
+}
+
+/* A table that turns into two-line cards on a phone: tag the cells' content with the sgw-card-* classes. */
+@media (max-width: 819px) {
+  .sgw-cards table,
+  .sgw-cards tbody,
+  .sgw-cards tr {
+    display: block;
+  }
+  .sgw-cards thead {
+    display: none;
+  }
+  .sgw-cards tr[data-row] {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 8px;
+    row-gap: 3px;
+    align-items: center;
+    height: auto;
+    padding: 10px 16px;
+  }
+  .sgw-cards tr[data-row][data-selected="true"] {
+    box-shadow: inset 3px 0 0 var(--blue);
+  }
+  .sgw-cards td {
+    display: contents;
+  }
+  .sgw-cards td.sgw-card-hide {
+    display: none;
+  }
+  .sgw-cards .sgw-card-body {
+    display: contents;
+  }
+  .sgw-cards .sgw-card-title {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sgw-cards .sgw-card-sev {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .sgw-cards .sgw-card-meta {
+    grid-column: 2;
+    grid-row: 2;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+  .sgw-cards .sgw-card-clock {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+}
+
+@keyframes sgw-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes sgw-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0.2;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+@keyframes sgw-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes sgw-dialog {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+}
+@keyframes sgw-sheet {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes sgw-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must win over component styles */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must win over component styles */
+    transition-duration: 0.01ms !important;
+  }
+  .skeleton,
+  .sgw-spin {
+    /* biome-ignore lint/complexity/noImportantStyles: loading motion stops under reduced motion */
+    animation: none !important;
+  }
+}
+
+/* Briefing print: A4, light theme (PrintBrief switches it), no top band or navigation, the page flows
+   past the app's fixed-height shell, and a section never splits across pages. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+  html:has([data-print-page]),
+  html:has([data-print-page]) body,
+  html:has([data-print-page]) *:has([data-print-page]) {
+    /* biome-ignore lint/complexity/noImportantStyles: the shell's panels set inline heights and overflow */
+    display: block !important;
+    /* biome-ignore lint/complexity/noImportantStyles: the shell's panels set inline heights and overflow */
+    height: auto !important;
+    /* biome-ignore lint/complexity/noImportantStyles: the shell's panels set inline heights and overflow */
+    max-height: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: the shell's panels set inline heights and overflow */
+    overflow: visible !important;
+    /* biome-ignore lint/complexity/noImportantStyles: the shell's panels set inline heights and overflow */
+    width: auto !important;
+    background: #fff;
+  }
+  html:has([data-print-page]) [data-panel]:not(:has([data-print-page])),
+  html:has([data-print-page]) [data-separator],
+  html:has([data-print-page]) [data-sonner-toaster],
+  [data-print-page] nav {
+    /* biome-ignore lint/complexity/noImportantStyles: chrome around the printed page is dropped */
+    display: none !important;
+  }
+  [data-print-page] {
+    /* biome-ignore lint/complexity/noImportantStyles: one column on paper */
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 0;
+    print-color-adjust: exact;
+  }
+  [data-print-page] > div > section,
+  [data-print-page] > div > div[id] {
+    break-inside: avoid-page;
+  }
+  [data-print-page] h2,
+  [data-print-page] h3 {
+    break-after: avoid-page;
+  }
+}

@@ -1,0 +1,94 @@
+# R29 zone rules (SX-1): decisions the scenario clock raises from the Helene world without a model. Each rule
+# reads facts from the WP-06 truth table (data/fixtures/helene/truth_table.json: water events, seeded cases),
+# the LIMS feed (data/fixtures/helene/lims.jsonl), the named assets (network.json) and the water twin member
+# table; the times below are only the policy windows the rules add. Labels: F sourced, A SGW policy or
+# assumption (synthetic data).
+version: "1.0-synthetic"
+region_id: SC-45003
+state: SC
+incident_id: INC-HELENE-2024
+policy:
+  ami_silence_min:
+    value: 60
+    label: A
+    source: "the silence window the observed-weather view uses (more than 60 min without a report, K3 ObservedStation)"
+  silent_outage_confirm_h:
+    value: 6
+    label: A
+    source: "R29 SX-1 assumption: a dark AMI section is patrolled and confirmed within half a 12 h shift of detection"
+  lift_release_h:
+    value: 12
+    label: A
+    source: "R29 SX-1 assumption: a notice is lifted within 12 h of the last clean sample result"
+resources:
+  WTK-CORDGRASS-2:
+    kind: potable_water_tanker
+    domain: water
+    name: "Potable water tanker WTK-CORDGRASS-2, 6,000 gal, Graniteville depot (synthetic)"
+  FTK-WREN-3:
+    kind: fuel_truck
+    domain: water
+    name: "Fuel truck FTK-WREN-3, Graniteville depot (synthetic)"
+  MGEN-HALBERD-500:
+    kind: portable_generator
+    domain: water
+    name: "Portable generator MGEN-HALBERD-500, 500 kW (synthetic)"
+resource_basis: "R29 SX-1 assumption: a mobile resource serves no customers and is staged at DEP-AIK-GRANITEVILLE, outside the storm hazard zone after landfall"
+zones:
+  WZ-PS17-CEDARFALL: {name: Cedarfall, station: PS-17, lims: CEDARF, issue_case: DC-D3-PS17-CEDARFALL-BWA}
+  WZ-PS23-LAURELSPUR: {name: Laurelspur, station: PS-23, lims: LAUREL}
+  WZ-PS38-COPPERLEAF: {name: Copperleaf, station: PS-38, lims: COPPER}
+  WZ-PS52-DEERWATER: {name: Deerwater, station: PS-52, lims: DEERWA}
+rules:
+  ps17_fuel_dispatch:
+    proposer: system:rule:zone_fuel_dispatch
+    case_id: DC-D3-PS17-FUEL
+    action_type: field_resource_order
+    resource: FTK-WREN-3
+  hospital_tanker:
+    proposer: system:rule:zone_hospital_tanker
+    case_id: DC-D3-HSP-TALLOWBRANCH-WATER
+    action_type: field_resource_order
+    resource: WTK-CORDGRASS-2
+    tanker_gal: 6000
+  hospital_tanker_observed:
+    proposer: system:rule:zone_hospital_tanker
+    case_id: DC-D3-HSP-TALLOWBRANCH-TANKER
+    action_type: field_resource_order
+    resource: WTK-CORDGRASS-2
+    tanker_gal: 6000
+    lead_key: potable_water_tanker
+  bwa_issue:
+    proposer: system:rule:bwa_pressure_loss
+    action_type: boil_water_notice
+    lead_key: boil_water_notice_release
+  restoration_order:
+    proposer: system:rule:zone_restoration_order
+    case_id: DC-D3-AIK-RESTORE-ORDER
+    action_type: cross_domain_priority
+    lead_key: feeder_restoration_dispatch
+    seeded_case: D7-PRIORITY-CONFLICT
+  ami_dark_section:
+    proposer: system:rule:ami_dark_section
+    case_id: DC-D2-AIK-2231-S3-PATROL
+    action_type: work_order_draft
+    lead_key: silent_outage_patrol
+    seeded_case: W9-AMI-DARK-SECTION
+  ps38_fuel_reroute:
+    proposer: system:rule:zone_fuel_reroute
+    case_id: DC-D3-PS38-FUEL-REROUTE
+    action_type: field_resource_order
+    resource: FTK-WREN-3
+    station: PS-38
+    lead_key: fuel_truck_dispatch
+  ps52_mobile_generator:
+    proposer: system:rule:zone_mobile_generator
+    case_id: DC-D3-PS52-MOBILE-GENERATOR
+    action_type: field_resource_order
+    resource: MGEN-HALBERD-500
+    station: PS-52
+    lead_key: portable_generator_hookup
+  bwa_lift:
+    proposer: system:rule:bwa_lift_clean_samples
+    action_type: lift_boil_water_notice
+    lead_key: boil_water_lift_release

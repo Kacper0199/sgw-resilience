@@ -1,0 +1,193 @@
+# Family-B held-out scenario (WP-15, eval author). Synthetic SGW world on the real track of Hurricane Debby 2024:
+# slow, rain-dominated, two landfalls (Big Bend FL, then Bulls Bay SC), the unseen storm class of DC-15.
+# Parameters come from data/synthetic/family_b.yaml (WP-06). Builders never train, tune or calibrate on this
+# scenario or its outputs; its hash is pinned in evals/MANIFEST.sha256. Every output value is synthetic.
+# Labels: F sourced, C computed, A assumption, I inference.
+scenario: family_b/debby_b  # the generator requires this field to equal the path under data/synthetic/
+family: B
+seed: 80527
+window:
+  start_utc: "2024-08-03T18:00:00Z"
+  end_utc: "2024-08-14T00:00:00Z"
+storm:
+  name: Debby
+  atcf_id: AL042024
+  landfall_utc: "2024-08-08T06:00:00Z"
+  source: "NHC HURDAT2 (hurdat2-1851-2025-092326.txt), US federal work; fixes 2024-08-03 18Z to 08-09 12Z. landfall_utc is the second (SC) landfall, the one that drives the detail area; the first landfall was 2024-08-05 11:00Z near Steinhatchee FL"
+  # time, lat, lon, vmax kt (1-min, 10 m), pmin hPa, RMW n mi, 34-kt radii NE SE SW NW n mi [F]
+  track:
+    - ["2024-08-03T18:00:00Z", 23.1, -82.6, 35, 1006, 100, 120, 120, 0, 0]
+    - ["2024-08-04T00:00:00Z", 23.9, -83.2, 35, 1003, 80, 120, 120, 0, 0]
+    - ["2024-08-04T06:00:00Z", 25.0, -83.8, 40, 1000, 80, 120, 120, 0, 0]
+    - ["2024-08-04T12:00:00Z", 26.2, -84.3, 50, 994, 80, 120, 150, 0, 0]
+    - ["2024-08-04T18:00:00Z", 27.3, -84.3, 60, 989, 60, 120, 150, 0, 60]
+    - ["2024-08-05T00:00:00Z", 28.3, -84.1, 70, 986, 30, 90, 130, 40, 70]
+    - ["2024-08-05T06:00:00Z", 29.1, -83.9, 70, 980, 25, 70, 130, 50, 60]
+    - ["2024-08-05T11:00:00Z", 29.7, -83.5, 70, 979, 20, 60, 120, 50, 50]
+    - ["2024-08-05T12:00:00Z", 29.9, -83.4, 65, 982, 20, 60, 120, 50, 50]
+    - ["2024-08-05T18:00:00Z", 30.4, -83.0, 50, 992, 30, 120, 120, 60, 0]
+    - ["2024-08-06T00:00:00Z", 30.8, -82.3, 45, 996, 60, 150, 150, 0, 0]
+    - ["2024-08-06T06:00:00Z", 31.3, -81.8, 45, 999, 70, 180, 180, 0, 0]
+    - ["2024-08-06T12:00:00Z", 31.8, -81.4, 40, 999, 80, 180, 180, 0, 0]
+    - ["2024-08-06T18:00:00Z", 32.0, -81.1, 40, 999, 80, 120, 150, 0, 0]
+    - ["2024-08-07T00:00:00Z", 31.9, -80.4, 40, 997, 90, 90, 150, 100, 0]
+    - ["2024-08-07T06:00:00Z", 31.8, -79.7, 45, 995, 100, 120, 150, 100, 0]
+    - ["2024-08-07T12:00:00Z", 32.2, -79.3, 50, 994, 100, 120, 160, 100, 0]
+    - ["2024-08-07T18:00:00Z", 32.5, -79.2, 50, 994, 100, 150, 160, 90, 0]
+    - ["2024-08-08T00:00:00Z", 32.7, -79.4, 45, 995, 100, 150, 160, 0, 0]
+    - ["2024-08-08T06:00:00Z", 33.0, -79.6, 40, 995, 100, 160, 170, 0, 0]
+    - ["2024-08-08T12:00:00Z", 33.7, -80.0, 40, 995, 120, 170, 180, 0, 0]
+    - ["2024-08-08T18:00:00Z", 34.6, -80.3, 40, 997, 150, 180, 200, 0, 0]
+    - ["2024-08-09T00:00:00Z", 35.5, -80.1, 30, 1000, 180, 0, 0, 0, 0]
+    - ["2024-08-09T06:00:00Z", 37.0, -79.7, 30, 1003, 210, 0, 0, 0, 0]
+    - ["2024-08-09T12:00:00Z", 40.3, -78.9, 30, 1003, 210, 0, 0, 0, 0]
+antecedent_soil_multiplier:
+  value: 0.78
+  label: A
+  source: "DC-15 rain-dominated class: multi-day rainfall before the SC landfall saturates soils more than for Helene (0.85); R02 hazard-interdependency 3.3 saturated-soil multiplier range"
+advisories:
+  first_utc: "2024-08-03T21:00:00Z"
+  last_utc: "2024-08-08T09:00:00Z"
+  every_h: 6
+  n_utc: "2024-08-05T09:00:00Z"
+  # Seeded case HINGE-PS17-N-N1 (family B): advisory N keeps the stall offshore and the SC landfall late and
+  # weak; N+1 near the truth. Opposite sign of along-track error to family A's pin (fast, east), so a model
+  # that learned "N is always slow and west" fails here.
+  official_error_overrides:
+    "N": {along_z: 0.9, cross_z: 0.6, intensity_z: -0.7}
+    "N+1": {along_z: 0.1, cross_z: -0.05, intensity_z: 0.05}
+telemetry_window:
+  start_utc: "2024-08-05T12:00:00Z"
+  end_utc: "2024-08-11T12:00:00Z"
+detail:
+  electric_fips: ["45003"]
+  region_by_state: {SC: "SC", GA: "GA"}
+  crew_pre_storm_available_utc: "2024-08-05T04:00:00Z"
+  crew_pre_storm_staged_utc: "2024-08-05T16:30:00Z"
+  mutual_aid_request_utc: "2024-08-06T03:00:00Z"
+  alert_fips: ["45003", "13051"]
+# Named assets: the SGW network is the same utility in both families (ids shared with family A and helene_micro).
+# The generator binds the PS-17 chain to these ids (sgw.generator, v1.0.0); family B shifts the storm, the
+# physics parameters and the seeded pins, not the utility. Root change proposed in the WP-15 round file:
+# parameterise the hinge assets so a later family-B revision can use a second detail area.
+named:
+  substation: {id: SUB-AIK-BRAMBLEGATE, fips: "45003", lat: 33.571, lon: -81.735}
+  feeders:
+    FDR-AIK-2207: {customers: 1840, lat: 33.566, lon: -81.722, pole_age: 47, veg: 0.85}
+    FDR-AIK-2219: {customers: 3960, lat: 33.548, lon: -81.701, pole_age: 41, veg: 0.8}
+    FDR-AIK-2231: {customers: 2410, lat: 33.512, lon: -81.778, pole_age: 38, veg: 0.6}
+    FDR-AIK-2214: {customers: 2120, lat: 33.604, lon: -81.655, pole_age: 44, veg: 0.7}
+    FDR-AIK-2238: {customers: 1980, lat: 33.489, lon: -81.690, pole_age: 52, veg: 0.75}
+    FDR-AIK-2225: {customers: 2275, lat: 33.640, lon: -81.810, pole_age: 29, veg: 0.5}
+  pump_stations:
+    PS-17: {feeder: FDR-AIK-2207, zone: WZ-PS17-CEDARFALL, tank: TNK-PS17-CEDARFALL, onsite_generator: null, lat: 33.564, lon: -81.719}
+    PS-23: {feeder: FDR-AIK-2225, zone: WZ-PS23-LAURELSPUR, tank: TNK-PS23-LAURELSPUR, onsite_generator: null, lat: 33.638, lon: -81.806}
+    PS-38: {feeder: FDR-AIK-2238, zone: WZ-PS38-COPPERLEAF, tank: TNK-PS38-COPPERLEAF, onsite_generator: GEN-PS38-COPPERLEAF, lat: 33.491, lon: -81.688}
+    PS-52: {feeder: FDR-AIK-2214, zone: WZ-PS52-DEERWATER, tank: TNK-PS52-DEERWATER, onsite_generator: GEN-PS52-DEERWATER, lat: 33.602, lon: -81.652}
+  hospital: {id: HSP-AIK-TALLOWBRANCH, zone: WZ-PS17-CEDARFALL, feeder: FDR-AIK-2231, generator: GEN-HSP-TALLOWBRANCH, pressure_sensor: PT-HSP-TALLOWBRANCH}
+  portable_generator: {id: MGEN-HALBERD-500, kw: 500, depot: DEP-AIK-GRANITEVILLE, lat: 33.566, lon: -81.810}
+  fuel_truck: {id: FTK-WREN-3, depot: DEP-AIK-GRANITEVILLE}
+  yards:
+    STG-AIK-SANDHILL-YARD: {fips: "45003", lat: 33.585, lon: -81.760}
+    STG-RCH-MILLPOND-YARD: {fips: "13245", lat: 33.430, lon: -82.030}
+    STG-RLD-CONGAREEBEND-YARD: {fips: "45079", lat: 33.980, lon: -81.000}
+    STG-GVL-REEDYSHOALS-YARD: {fips: "45045", lat: 34.850, lon: -82.390}
+    STG-CHS-ASHLEYFERRY-YARD: {fips: "45019", lat: 32.870, lon: -80.030}
+    STG-FLO-LYNCHESRUN-YARD: {fips: "45041", lat: 34.190, lon: -79.770}
+    STG-CHT-OGEECHEEWHARF-YARD: {fips: "13051", lat: 32.060, lon: -81.150}
+    STG-WRE-OKEFENOKEEGATE-YARD: {fips: "13299", lat: 31.220, lon: -82.360}
+    STG-LAU-OCONEEFLATS-YARD: {fips: "13175", lat: 32.540, lon: -82.900}
+    STG-CLK-NORTHOCONEE-YARD: {fips: "13059", lat: 33.950, lon: -83.380}
+    STG-YRK-CATAWBALANDING-YARD: {fips: "45091", lat: 34.930, lon: -81.030}
+  crews:
+    CRW-OSPREY-04: {yard: STG-AIK-SANDHILL-YARD, headcount: 24, mutual_aid: false}
+    CRW-KESTREL-02: {yard: STG-AIK-SANDHILL-YARD, headcount: 24, mutual_aid: false}
+    CRW-OSPREY-07: {yard: STG-RCH-MILLPOND-YARD, headcount: 24, mutual_aid: false}
+    CRW-MA-TALON-11: {yard: STG-RCH-MILLPOND-YARD, headcount: 40, mutual_aid: true}
+  detail_yards: [STG-AIK-SANDHILL-YARD, STG-RCH-MILLPOND-YARD]
+# Seeded cases: same generator-bound ids as family A, different pins and timings (inside the Debby window).
+# Outcomes are model output in the generated truth table; the fault rows and their detection expectations are
+# in evals/heldout/family_b/fault_truth_table.yaml.
+seeded:
+  - id: HINGE-PS17-N-N1
+    kind: forecast_hinge
+    entities: [ADV-DEBBY-SYN-N, ADV-DEBBY-SYN-NP1, PS-17, FDR-AIK-2207]
+    pin: "advisories.official_error_overrides"
+    must_see: true
+  - id: CP-PS17-CHAIN
+    kind: critical_path
+    entities: [DC-D3-PS17-FUEL, DC-D3-PS17-POWER, DC-D3-PS17-PRESSURE, DC-D3-HSP-TALLOWBRANCH-WATER, DC-D2-CREWS-AIK]
+    pin: "prerequisite edges fuel truck -> generator hookup -> pressure hold -> hospital supply; crews -> generator hookup"
+    must_see: true
+  - id: FDR2207-WEAK-TRUNK
+    kind: fragility_pin
+    entities: [FDR-AIK-2207, BRK-FDR-AIK-2207, PS-17]
+    pin: {section: FDR-AIK-2207-S1, capacity_quantile: 0.12}
+    must_see: true
+  - id: D7-PRIORITY-CONFLICT
+    kind: fragility_pin
+    entities: [FDR-AIK-2219, FDR-AIK-2207, HSP-AIK-TALLOWBRANCH]
+    pin: {section: FDR-AIK-2219-S1, capacity_quantile: 0.18}
+    must_see: true
+  - id: D6-HOSPITAL-POWER-NO-PRESSURE
+    kind: emergent
+    entities: [HSP-AIK-TALLOWBRANCH, GEN-HSP-TALLOWBRANCH, PT-HSP-TALLOWBRANCH, WZ-PS17-CEDARFALL]
+    pin: "hospital on own generator; PS-17 without onsite generator; reactive portable generator"
+    must_see: true
+  - id: D2-GENERATOR-FAILS-H30
+    kind: generator_pin
+    entities: [GEN-PS52-DEERWATER, PS-52, FDR-AIK-2214]
+    pin: {generator: GEN-PS52-DEERWATER, fail_after_run_h: 18, section: FDR-AIK-2214-S1, capacity_quantile: 0.1, damage_state: 3}
+    must_see: true
+  - id: D3-FUEL-TRUCK-FLOOD-BLOCK
+    kind: logistics_pin
+    entities: [FTK-WREN-3, GEN-PS38-COPPERLEAF, PS-38, FDR-AIK-2238]
+    pin: {generator: GEN-PS38-COPPERLEAF, tank_h: 16, refuel_blocked_h: 14, section: FDR-AIK-2238-S1, capacity_quantile: 0.1, damage_state: 3}
+    must_see: true
+  - id: W9-AMI-DARK-SECTION
+    kind: telemetry_pin
+    entities: [FDR-AIK-2231]
+    pin: {section: FDR-AIK-2231-S2, capacity_quantile: 0.1, ami_lost: true}
+    must_see: true
+  - id: AMI-FLOOD-ONE-RECLOSER
+    kind: telemetry_pin
+    entities: [FDR-AIK-2219]
+    pin: {section: FDR-AIK-2219-S3, capacity_quantile: 0.15, last_gasps: 75}
+    must_see: false
+  - id: LATE-AMI-BACKLOG
+    kind: telemetry_pin
+    entities: [ami-headend]
+    pin: {from_utc: "2024-08-06T00:00:00Z", to_utc: "2024-08-06T03:30:00Z", extra_latency_min: 70}
+    must_see: false
+  - id: GOV-ADVISORY-DURING-T3
+    kind: governance
+    entities: [ADV-DEBBY-SYN-NP1, PRP-CREW-AIK-0805A, APR-CREW-V1-IC]
+    pin: "advisory N+1 issued while the crew proposal holds one T3 signature"
+    must_see: true
+  # Water faults: every fault sits on a different device than in family A (and the drift runs the other way),
+  # and none overlaps a physical low-pressure window, so scoring is unambiguous.
+  - id: FAULT-PS38-PUMP-TRIP
+    kind: water_fault
+    entities: [PMP-PS-38-1, PS-38, PT-PS38-DISCH]
+    pin: {from_utc: "2024-08-09T19:00:00Z", duration_h: 1.5}
+    must_see: false
+  - id: FAULT-PS17-REPLAY-SPOOF
+    kind: water_fault
+    entities: [PT-PS17-DISCH]
+    pin: {from_utc: "2024-08-10T09:00:00Z", duration_h: 3.0, replay_of_utc: "2024-08-09T09:00:00Z"}
+    must_see: false
+  - id: FAULT-PS23-STUCK-LEVEL
+    kind: water_fault
+    entities: [LT-TNK-PS23-LAURELSPUR]
+    pin: {from_utc: "2024-08-10T02:00:00Z", duration_h: 7}
+    must_see: false
+  - id: FAULT-PS23-DRIFT
+    kind: water_fault
+    entities: [PT-PS23-DISCH]
+    pin: {from_utc: "2024-08-09T12:00:00Z", duration_h: 36, psi_per_h: -0.08}
+    must_see: false
+  - id: FAULT-PS38-LEAK
+    kind: water_fault
+    entities: [WZ-PS38-COPPERLEAF, LT-TNK-PS38-COPPERLEAF]
+    pin: {from_utc: "2024-08-10T18:00:00Z", demand_multiplier: 1.08}
+    must_see: false

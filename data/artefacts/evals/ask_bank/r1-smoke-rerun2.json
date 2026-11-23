@@ -1,0 +1,260 @@
+{
+ "meta": {
+  "label": "r1-smoke-rerun2",
+  "commit": "4dd225a",
+  "split": "dev",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R34",
+  "started_utc": "2026-11-22T07:28:19Z",
+  "seconds": 22.8,
+  "gateway_counters_delta": {
+   "replay_hits": 0,
+   "live_cache_hits": 4,
+   "replay_misses": 0,
+   "live_calls": 4,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 1,
+  "passed": 1,
+  "pass_rate": 1.0,
+  "infra": 0,
+  "valid": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  },
+  "usd": 0.0882,
+  "usd_per_item": 0.08823,
+  "live_calls": 4,
+  "latency_p50_s": 14.94,
+  "latency_p95_s": 14.94,
+  "errors": 0,
+  "grader_failures": {},
+  "paths": {
+   "llm": 1
+  },
+  "reasons": {
+   "None": 1
+  }
+ },
+ "by": {
+  "klass": {
+   "role": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "persona": {
+   "wtr_comp_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "lang": {
+   "en": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "moment": {
+   "notices-lifted": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "page": {
+   "water": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  }
+ },
+ "by_tag": {},
+ "items": [
+  {
+   "id": "AB-ROLE-007",
+   "lang": "en",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "role",
+   "tags": [],
+   "turns": [],
+   "question": "Do I need to sign anything as compliance officer?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "lift",
+     "notice"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Yes. Lift the boil water advisory for the Laurelspur zone (DC-D3-PS23-LAURELSPUR-BWA-LIFT) and lift the boil water advisory for the Copperleaf zone (DC-D3-PS38-COPPERLEAF-BWA-LIFT) list Compliance as a signer. Both are proposed with no signatures yet. Their effective decide-by slots are Sep 30, 10:30 ET and Sep 30, 17:41 ET. The other decisions you co-sign already show Compliance's signature. The documents do not say which signature a lift needs.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E18.effective_decide_by": "Sep 30, 10:30 ET",
+     "E19.effective_decide_by": "Sep 30, 17:41 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Yes. Lift the boil water advisory for the Laurelspur zone (DC-D3-PS23-LAURELSPUR-BWA-LIFT) and lift the boil water advisory for the Copperleaf zone (DC-D3-PS38-COPPERLEAF-BWA-LIFT) list Compliance as a signer. Both are proposed with no signatures yet. Their effective decide-by slots are Sep 30, 10:30 ET and Sep 30, 17:41 ET. The other decisions you co-sign already show Compliance's signature. The documents do not say which signature a lift needs.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-f13d43c73ea3"
+   ],
+   "latency_s": 14.94,
+   "usd": 0.08823,
+   "live_calls": 4
+  }
+ ]
+}

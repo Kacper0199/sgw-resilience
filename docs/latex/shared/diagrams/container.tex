@@ -1,0 +1,33 @@
+% Container view of the core compose profile. The signer runs inside the API process.
+\begin{tikzpicture}[sgw]
+  \node[sgw/person] (ops) at (0,1.0) {Operators\sgwsub{browser, desk roles}};
+  \node[sgw/service,minimum width=2.3cm] (edge) at (3.3,1.0) {Caddy\sgwsub{TLS, web app}};
+  \node[sgw/core,minimum width=3.5cm,minimum height=1.25cm] (api) at (7.1,1.0)
+    {API\sgwsub{\color{sgwHairline}decisions, clocks, approvals}\sgwsub{\color{sgwHairline}scenario jobs, Ask AI, signer}};
+  \node[sgw/service,minimum width=3.5cm,minimum height=1.05cm] (worker) at (7.1,-1.0)
+    {Ingest and model runs\sgwsub{started from the command line}};
+  \node[sgw/service,minimum width=2.3cm,text=sgwInkMuted] (stub) at (3.0,-4.1) {Worker\sgwsub{reserved, health check only}};
+  \node[sgw/service,minimum width=3.1cm] (opa) at (11.6,2.1) {OPA\sgwsub{approval policy}};
+  \node[sgw/store,minimum width=3.1cm] (db) at (11.6,0.15) {Postgres\sgwsub{time series, GIS, vectors,}\sgwsub{audit hash chain}};
+  \node[sgw/service,minimum width=3.1cm] (mlflow) at (11.6,-1.9) {MLflow\sgwsub{traces, model registry}};
+  \node[sgw/service,minimum width=3.5cm] (gw) at (7.1,-3.0) {LLM gateway\sgwsub{record, replay, spend cap}};
+  \node[sgw/external,minimum width=3.1cm] (llm) at (11.6,-4.75) {Model provider\sgwsub{external API}};
+  \node[sgw/source,minimum width=2.8cm,minimum height=1.05cm] (sgwsys) at (0.6,-0.85) {SGW systems\sgwsub{GIS, OMS, SCADA, AMI,}\sgwsub{EAM, field service}};
+  \node[sgw/external,minimum width=2.8cm] (nws) at (0.6,-2.2) {Weather service\sgwsub{public advisories}};
+
+  \begin{pgfonlayer}{background}
+    \node[sgw/zone=sgwNeutral,fit=(edge)(api)(worker)(opa)(db)(mlflow)(gw)(stub),inner sep=10pt] (core) {};
+  \end{pgfonlayer}
+  \node[sgw/zone title] at ([xshift=2pt,yshift=1pt]core.north west) {Core profile on one host (compose)};
+
+  \draw[sgw/flow] (ops) -- (edge);
+  \draw[sgw/flow] (edge) -- (api);
+  \draw[sgw/flow] ([yshift=3mm]api.east) -- ++(0.55,0) |- (opa.west);
+  \draw[sgw/flow] ([yshift=-3mm]api.east) -- ++(1.0,0) |- ([yshift=2mm]db.west);
+  \draw[sgw/flow] ([yshift=3mm]worker.east) -- ++(1.0,0) |- ([yshift=-2mm]db.west);
+  \draw[sgw/flow] ([yshift=-3mm]worker.east) -- ++(0.55,0) |- (mlflow.west);
+  \draw[sgw/flow] ([yshift=-4mm]api.west) -- ++(-0.45,0) |- (gw.west);
+  \draw[sgw/critical] (gw.east) -| node[pos=0.25,above,sgw/note] {only egress for AI} (llm.north);
+  \draw[sgw/flow muted] (sgwsys.east) -- node[above,sgw/note,pos=0.55] {read access} (worker.west |- sgwsys.east);
+  \draw[sgw/flow muted] (nws.east) -| ([xshift=-12mm]worker.south);
+\end{tikzpicture}

@@ -1,0 +1,117 @@
+---
+doc_id: "PCN 04.010"
+legacy_id: "RCR-03"
+title: "Regulatory Outage Reporting to the SC PSC"
+family: sop
+layout: controlled
+owner_function: compliance
+sme: "Ingle, Prentice W."
+revision: "B"
+effective: 2024-01-08
+supersedes: "PCN 04.010 Rev A (eff. 2021-11-15)"
+next_review: 2025-01-31
+approvals:
+  - {function: operations, position: "Director, Distribution Operations", name: "Thibodeaux, Marcus R.", date: 2023-12-18}
+  - {function: command, position: "Vice President, Emergency Management", name: "Wingard, Lorraine T.", date: 2023-12-20}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D4, D5]
+states: [SC]
+changes:
+  - {rev: "B", date: 2024-01-08, section: "6.3", change: "Full report drafted from the after-action timeline instead of the OMS event log alone."}
+  - {rev: "B", date: 2024-01-08, section: "Att. A", change: "Report content table aligned with SC 103-314."}
+  - {rev: "B", date: 2024-01-08, section: "2.0", change: "No Changes."}
+---
+# 1.0 PURPOSE
+
+This procedure sets how SGW notifies the Public Service Commission of South Carolina (SC PSC) and the Office of Regulatory Staff of major electric service interruptions in South Carolina, and how the full report is prepared.
+
+# 2.0 SCOPE
+
+Applies to SGW electric service in South Carolina. Georgia reporting to the GA PSC follows its own rule and is not covered here.
+
+# 3.0 RESPONSIBILITIES
+
+Compliance function (Regulatory Compliance Specialist on call): sends the initial notice, tracks deadlines, files the full report.
+Duty Manager: confirms customer counts, cause and start time for the initial notice.
+Planning Section: supplies restoration figures and the after-action timeline.
+Incident Commander: reviews the full report before filing during Event Types 1 to 3.
+Director, Corporate Communications: checks consistency with public releases.
+
+# 4.0 DEFINITIONS
+
+Interruption: loss of electric service to one or more customers, measured from the first OMS outage record to final restoration of the last customer in the event.
+After-action timeline: the time-stamped event sequence assembled for the AAR, per GEP 07.010.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 Under SC 103-314, a full report is filed when an interruption lasts longer than 6 h.
+5.2 Customer counts in any notice shall match the OMS count at the stated as-of time.
+5.3 Restoration figures shall match the latest released global ETR range per PCN 02.044.
+5.4 Do not include estimates that the Incident Commander has not approved.
+
+# 6.0 PROCEDURE
+
+## 6.1 Initial notice
+
+6.1.1 The initial notice is sent by the Compliance function.
+6.1.2 Duty Manager gives the Compliance function the outage start time, area, customers out and suspected cause.
+6.1.3 Compliance function sends the notice by e-mail and phone to the ORS and SC PSC duty contacts.
+6.1.4 Log the time sent and the person reached on the reporting log.
+6.1.5 NOTE: During Event Types 1 and 2, send an update with each global ETR release.
+
+## 6.2 Track duration
+
+6.2.1 Compliance function monitors the event in OMS.
+6.2.2 When the interruption passes 6 h, open a full-report file.
+6.2.3 Set the report due date in the compliance calendar.
+
+## 6.3 Full report
+
+6.3.1 The full report is drafted from the after-action timeline.
+6.3.2 Planning Section supplies the timeline within 10 business days of event close.
+6.3.3 Draft content per Attachment A.
+6.3.4 Duty Manager and Planning Section check figures.
+6.3.5 Incident Commander reviews; Compliance function files.
+6.3.6 Keep the filed copy and transmittal with the incident file.
+
+## 6.4 Reporting timeline
+
+| Step | Due | Owner | Record |
+|---|---|---|---|
+| Initial notice | As soon as counts are confirmed | Compliance function | Reporting log |
+| Update notice | With each global ETR release, Event Types 1 and 2 | Compliance function | Reporting log |
+| Full-report file opened | When the interruption passes 6 h | Compliance function | Compliance calendar |
+| After-action timeline to Compliance | 10 business days after event close | Planning Section | Timeline file |
+| Full report filed | By the rule due date | Compliance function | Transmittal |
+
+6.4.1 Where a due date falls during an active Event Type 1 or 2, the Compliance function shall ask ORS staff for an extension in writing and log the reply.
+
+# 7.0 RECORDS
+
+Reporting log, initial notices, full reports and transmittals: retained 10 years by the Compliance function.
+
+# 8.0 REFERENCES
+
+SC 103-314; PCN 02.044; GEP 07.010; DOM 14.206.
+
+<<PAGEBREAK>>
+# ATTACHMENT A - FULL REPORT CONTENT
+
+| Item | Source | Owner |
+|---|---|---|
+| Start time and cause | OMS, after-action timeline | Duty Manager |
+| Area and counties affected | OMS | Planning Section |
+| Peak customers out, with time | OMS | Planning Section |
+| Duration (h) to last customer restored | After-action timeline | Planning Section |
+| Crews and mutual assistance used | Logistics check-in records | Logistics Section Chief |
+| Communications to customers | PCN 02.044 release log | Corporate Communications |
+| Corrective actions | AAR improvement plan | Compliance function |
+
+# ATTACHMENT B - CONTACTS
+
+| Position | Business hours | After hours |
+|---|---|---|
+| Regulatory Compliance Specialist | Compliance desk | On-call compliance phone 803-555-0129 |
+| Duty Manager | Storm Room | Storm Room, 24 h |

@@ -1,0 +1,351 @@
+{
+  "name": "outage_loso_detail",
+  "label": "C: computed from EAGLE-I (CC BY 4.0) and HURDAT2; directional, 4 storms, no significance claim; hindcast, observed track: features of the held-out storm come from its post-season HURDAT2 best track, not from the forecasts available at the time, so the errors understate operational forecast error",
+  "intervals": "storm-grouped CQR, uncalibrated across storm types; coverage reported per storm",
+  "fragility_baseline": "fragility_prior (lognormal on gust, median 50 m/s, beta 0.4; not fitted here, but lightly tuned: the median was set with Helene/EAGLE-I evidence, R02 hazard-interdependency 9.7)",
+  "data_sha256": "cd8c9b839b8f24168700cc2557c968e4b2548b89c8aaddcd9c2b0f7609a3ab56",
+  "unit": "county x storm; target = peak customers out above the pre-storm level, capped at MCC customers",
+  "note_totals": "sum of non-simultaneous county peaks, not the footprint simultaneous peak",
+  "storms": [
+    {
+      "storm": "michael",
+      "counties": 123,
+      "observed_total_out": 412540,
+      "model": {
+        "predicted_total_out": 911217,
+        "rel_total_error": 1.2088,
+        "county_mae_out": 5518.2,
+        "spearman": 0.4867,
+        "worst_miss": {
+          "fips": "45079",
+          "county": "Richland, SC",
+          "observed_out": 21358,
+          "predicted_out": 116448,
+          "abs_error": 95090,
+          "peak_gust_ms": 34.5
+        },
+        "coverage_50": 0.6911,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0,
+        "ci90_rel_total_error_county_resample_within_storm_only": [
+          0.7014,
+          1.7424
+        ],
+        "trained_on": [
+          "debby",
+          "helene",
+          "ian"
+        ]
+      },
+      "baseline": {
+        "predicted_total_out": 850647,
+        "rel_total_error": 1.062,
+        "county_mae_out": 4820.1,
+        "spearman": 0.4844,
+        "worst_miss": {
+          "fips": "45079",
+          "county": "Richland, SC",
+          "observed_out": 21358,
+          "predicted_out": 87883,
+          "abs_error": 66525,
+          "peak_gust_ms": 34.5
+        }
+      },
+      "fragility": {
+        "predicted_total_out": 487289,
+        "rel_total_error": 0.1812,
+        "county_mae_out": 2586.6,
+        "spearman": 0.5986,
+        "worst_miss": {
+          "fips": "45091",
+          "county": "York, SC",
+          "observed_out": 6587,
+          "predicted_out": 30650,
+          "abs_error": 24063,
+          "peak_gust_ms": 34.5
+        }
+      },
+      "observed_total_out_uncapped": 412825,
+      "baseline_fit": {
+        "threshold_ms": 34.0,
+        "share_above": 0.3862,
+        "share_below": 0.0867
+      },
+      "shap_mean_abs": {
+        "peak_gust_ms": 0.3333,
+        "hours_gust_ge_20": 0.0579,
+        "hours_ts": 0.2257,
+        "min_dist_km": 0.1302,
+        "speed_kmh_closest": 0.7608,
+        "vmax_ms_closest": 0.2003,
+        "log_customers": 0.1595
+      }
+    },
+    {
+      "storm": "ian",
+      "counties": 123,
+      "observed_total_out": 390769,
+      "model": {
+        "predicted_total_out": 683728,
+        "rel_total_error": 0.7497,
+        "county_mae_out": 2711.0,
+        "spearman": 0.6875,
+        "worst_miss": {
+          "fips": "45079",
+          "county": "Richland, SC",
+          "observed_out": 17159,
+          "predicted_out": 54338,
+          "abs_error": 37179,
+          "peak_gust_ms": 38.6
+        },
+        "coverage_50": 0.9919,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0,
+        "ci90_rel_total_error_county_resample_within_storm_only": [
+          0.5068,
+          1.2657
+        ],
+        "trained_on": [
+          "debby",
+          "helene",
+          "michael"
+        ]
+      },
+      "baseline": {
+        "predicted_total_out": 1088852,
+        "rel_total_error": 1.7864,
+        "county_mae_out": 5774.9,
+        "spearman": 0.6968,
+        "worst_miss": {
+          "fips": "45079",
+          "county": "Richland, SC",
+          "observed_out": 17159,
+          "predicted_out": 105360,
+          "abs_error": 88201,
+          "peak_gust_ms": 38.6
+        }
+      },
+      "fragility": {
+        "predicted_total_out": 952238,
+        "rel_total_error": 1.4368,
+        "county_mae_out": 4744.6,
+        "spearman": 0.759,
+        "worst_miss": {
+          "fips": "45019",
+          "county": "Charleston, SC",
+          "observed_out": 77759,
+          "predicted_out": 137652,
+          "abs_error": 59893,
+          "peak_gust_ms": 55.1
+        }
+      },
+      "observed_total_out_uncapped": 390769,
+      "baseline_fit": {
+        "threshold_ms": 36.0,
+        "share_above": 0.463,
+        "share_below": 0.1337
+      },
+      "shap_mean_abs": {
+        "peak_gust_ms": 0.4354,
+        "hours_gust_ge_20": 0.1392,
+        "hours_ts": 0.2245,
+        "min_dist_km": 0.0519,
+        "speed_kmh_closest": 0.3566,
+        "vmax_ms_closest": 0.2982,
+        "log_customers": 0.1613
+      }
+    },
+    {
+      "storm": "debby",
+      "counties": 123,
+      "observed_total_out": 237445,
+      "model": {
+        "predicted_total_out": 503991,
+        "rel_total_error": 1.1226,
+        "county_mae_out": 2999.7,
+        "spearman": 0.5782,
+        "worst_miss": {
+          "fips": "45051",
+          "county": "Horry, SC",
+          "observed_out": 5981,
+          "predicted_out": 39878,
+          "abs_error": 33897,
+          "peak_gust_ms": 38.3
+        },
+        "coverage_50": 0.9431,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0,
+        "ci90_rel_total_error_county_resample_within_storm_only": [
+          0.603,
+          1.7888
+        ],
+        "trained_on": [
+          "helene",
+          "ian",
+          "michael"
+        ]
+      },
+      "baseline": {
+        "predicted_total_out": 1003076,
+        "rel_total_error": 3.2245,
+        "county_mae_out": 6554.7,
+        "spearman": 0.5707,
+        "worst_miss": {
+          "fips": "45051",
+          "county": "Horry, SC",
+          "observed_out": 5981,
+          "predicted_out": 97533,
+          "abs_error": 91552,
+          "peak_gust_ms": 38.3
+        }
+      },
+      "fragility": {
+        "predicted_total_out": 682702,
+        "rel_total_error": 1.8752,
+        "county_mae_out": 4236.5,
+        "spearman": 0.587,
+        "worst_miss": {
+          "fips": "45051",
+          "county": "Horry, SC",
+          "observed_out": 5981,
+          "predicted_out": 65603,
+          "abs_error": 59622,
+          "peak_gust_ms": 38.3
+        }
+      },
+      "observed_total_out_uncapped": 237446,
+      "baseline_fit": {
+        "threshold_ms": 31.0,
+        "share_above": 0.3763,
+        "share_below": 0.0727
+      },
+      "shap_mean_abs": {
+        "peak_gust_ms": 0.2184,
+        "hours_gust_ge_20": 0.0838,
+        "hours_ts": 0.5658,
+        "min_dist_km": 0.1234,
+        "speed_kmh_closest": 0.8799,
+        "vmax_ms_closest": 0.2123,
+        "log_customers": 0.2871
+      }
+    },
+    {
+      "storm": "helene",
+      "counties": 123,
+      "observed_total_out": 2311982,
+      "model": {
+        "predicted_total_out": 754558,
+        "rel_total_error": 0.6736,
+        "county_mae_out": 14187.1,
+        "spearman": 0.6754,
+        "worst_miss": {
+          "fips": "45045",
+          "county": "Greenville, SC",
+          "observed_out": 208040,
+          "predicted_out": 23342,
+          "abs_error": 184698,
+          "peak_gust_ms": 36.4
+        },
+        "coverage_50": 0.1301,
+        "coverage_80": 0.2927,
+        "coverage_95": 0.5691,
+        "ci90_rel_total_error_county_resample_within_storm_only": [
+          0.6016,
+          0.727
+        ],
+        "trained_on": [
+          "debby",
+          "ian",
+          "michael"
+        ]
+      },
+      "baseline": {
+        "predicted_total_out": 566956,
+        "rel_total_error": 0.7548,
+        "county_mae_out": 14862.6,
+        "spearman": 0.635,
+        "worst_miss": {
+          "fips": "45045",
+          "county": "Greenville, SC",
+          "observed_out": 208040,
+          "predicted_out": 11650,
+          "abs_error": 196390,
+          "peak_gust_ms": 36.4
+        }
+      },
+      "fragility": {
+        "predicted_total_out": 1035932,
+        "rel_total_error": 0.5519,
+        "county_mae_out": 12056.0,
+        "spearman": 0.7173,
+        "worst_miss": {
+          "fips": "45045",
+          "county": "Greenville, SC",
+          "observed_out": 208040,
+          "predicted_out": 44406,
+          "abs_error": 163634,
+          "peak_gust_ms": 36.4
+        }
+      },
+      "observed_total_out_uncapped": 2493988,
+      "baseline_fit": {
+        "threshold_ms": 39.0,
+        "share_above": 0.2986,
+        "share_below": 0.056
+      },
+      "shap_mean_abs": {
+        "peak_gust_ms": 0.3279,
+        "hours_gust_ge_20": 0.0548,
+        "hours_ts": 0.171,
+        "min_dist_km": 0.357,
+        "speed_kmh_closest": 0.4556,
+        "vmax_ms_closest": 0.3097,
+        "log_customers": 0.2281
+      }
+    }
+  ],
+  "ablation_without_storm_level_features": {
+    "features": [
+      "peak_gust_ms",
+      "hours_gust_ge_20",
+      "hours_ts",
+      "min_dist_km",
+      "log_customers"
+    ],
+    "note": "sensitivity run, not the headline: the headline feature set was fixed before the first run; this run drops the two features that are nearly constant within a storm",
+    "storms": [
+      {
+        "storm": "michael",
+        "rel_total_error": 0.0393,
+        "county_mae_out": 2385.1,
+        "spearman": 0.6529,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0
+      },
+      {
+        "storm": "ian",
+        "rel_total_error": 2.6542,
+        "county_mae_out": 8583.1,
+        "spearman": 0.6911,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0
+      },
+      {
+        "storm": "debby",
+        "rel_total_error": 5.7083,
+        "county_mae_out": 11070.9,
+        "spearman": 0.6173,
+        "coverage_80": 1.0,
+        "coverage_95": 1.0
+      },
+      {
+        "storm": "helene",
+        "rel_total_error": 0.7687,
+        "county_mae_out": 15229.3,
+        "spearman": 0.544,
+        "coverage_80": 0.2033,
+        "coverage_95": 0.439
+      }
+    ]
+  }
+}

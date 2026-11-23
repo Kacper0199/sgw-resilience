@@ -1,0 +1,505 @@
+# Helene exercise injects (R33 C3): a master scenario events list (MSEL, HSEEP style) of extra decisions the
+# scenario clock raises around the PS-17 story, so every moment of the replay has a realistic decision load for
+# command, operations, logistics, water operations and compliance. Everything here is SYNTHETIC: invented
+# facilities and resources (D-065 naming rule), scripted times and quantities. Only the storm (NHC HURDAT2 track,
+# landfall 2024-09-27 03:10Z) is real. The PS-17 story, its seeded cases and the zone rules are untouched; the
+# injects only add decisions next to them.
+# Times are UTC. Each inject is raised at `known_at`, is no longer raised after `resolved_at` (the world settled
+# it), and its decide-by comes from the clock service: the consequence time (`anchor_utc` plus any `terms`, the time
+# from the anchor event until the harm) minus the lead time of `lead_key` (src/sgw/models/clocks/lead_times.yaml).
+version: "1.0-synthetic"
+proposer: system:rule:exercise_inject
+incident_id: INC-HELENE-2024
+label: "Scripted exercise inject (synthetic)"
+assets:
+  - {id: SHL-AIK-THISTLECROFT, kind: shelter, domain: electric, region: SC-45003, name: "Thistlecroft Middle School shelter (synthetic)", lat: 33.522, lon: -81.744, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: DLY-AIK-MARROWSTONE, kind: dialysis_center, domain: water, region: SC-45003, name: "Marrowstone dialysis center (synthetic)", lat: 33.548, lon: -81.690, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: NRS-AIK-ROSEWILD-PINES, kind: care_home, domain: water, region: SC-45003, name: "Rosewild Pines care home (synthetic)", lat: 33.610, lon: -81.768, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: ECC-AIK-FLINTHOLLOW, kind: dispatch_center, domain: electric, region: SC-45003, name: "Flinthollow 911 dispatch center (synthetic)", lat: 33.579, lon: -81.712, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: LS-AIK-SWALLOWTAIL, kind: lift_station, domain: water, region: SC-45003, name: "Swallowtail sewer lift station (synthetic)", lat: 33.497, lon: -81.731, critical: false, customers: 640, in_hazard_zone: true}
+  - {id: POD-AIK-OXBOW-RUN, kind: distribution_point, domain: water, region: SC-45003, name: "Oxbow Run water distribution point (synthetic)", lat: 33.534, lon: -81.802, critical: false, customers: 0, in_hazard_zone: false}
+  - {id: WTP-RCH-HOLLOWPINE, kind: treatment_plant, domain: water, region: GA-13245, name: "Hollowpine water treatment plant (synthetic)", lat: 33.402, lon: -82.008, critical: true, customers: 0, in_hazard_zone: true}
+  - {id: LS-RCH-BUTTONBUSH-CREEK, kind: lift_station, domain: water, region: GA-13245, name: "Buttonbush Creek lift station (synthetic)", lat: 33.441, lon: -81.986, critical: false, customers: 910, in_hazard_zone: true}
+  - {id: FDR-RCH-1406, kind: feeder, domain: electric, region: GA-13245, name: "Feeder FDR-RCH-1406, Hollowpine plant line (synthetic)", lat: 33.408, lon: -82.017, critical: false, customers: 860, in_hazard_zone: true}
+  - {id: FDR-RCH-1411, kind: feeder, domain: electric, region: GA-13245, name: "Feeder FDR-RCH-1411, residential (synthetic)", lat: 33.421, lon: -82.041, critical: false, customers: 3120, in_hazard_zone: true}
+  - {id: FDR-CLB-0817, kind: feeder, domain: electric, region: GA-13073, name: "Feeder FDR-CLB-0817 (synthetic)", lat: 33.541, lon: -82.122, critical: false, customers: 2740, in_hazard_zone: true}
+  - {id: FDR-GVL-3302, kind: feeder, domain: electric, region: SC-45045, name: "Feeder FDR-GVL-3302 (synthetic)", lat: 34.862, lon: -82.351, critical: false, customers: 4410, in_hazard_zone: true}
+  - {id: SUB-GVL-SLATEHOLLOW, kind: substation, domain: electric, region: SC-45045, name: "Slatehollow substation (synthetic)", lat: 34.878, lon: -82.366, critical: false, customers: 0, in_hazard_zone: true}
+  - {id: SUB-EDG-MOSSGROVE, kind: substation, domain: electric, region: SC-45037, name: "Mossgrove substation (synthetic)", lat: 33.789, lon: -81.928, critical: false, customers: 0, in_hazard_zone: true}
+  - {id: STG-EDG-KITEFIELD-YARD, kind: staging_yard, domain: electric, region: SC-45037, name: "Kitefield staging yard (synthetic)", lat: 33.771, lon: -81.954, critical: false, customers: 0, in_hazard_zone: false}
+  - {id: MGEN-GANNET-250, kind: portable_generator, domain: water, region: SC-45003, name: "Portable generator MGEN-GANNET-250, 250 kW (synthetic)", lat: 33.566, lon: -81.808, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: MGEN-SKUA-750, kind: portable_generator, domain: water, region: SC-45003, name: "Portable generator MGEN-SKUA-750, 750 kW (synthetic)", lat: 33.567, lon: -81.811, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: FTK-PLOVER-7, kind: fuel_truck, domain: water, region: SC-45003, name: "Fuel truck FTK-PLOVER-7, 4,000 gal (synthetic)", lat: 33.565, lon: -81.809, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: WTK-SEDGE-4, kind: potable_water_tanker, domain: water, region: SC-45003, name: "Potable water tanker WTK-SEDGE-4, 5,500 gal (synthetic)", lat: 33.564, lon: -81.807, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+  - {id: CHM-TERN-2, kind: chemical_truck, domain: water, region: GA-13245, name: "Hypochlorite delivery truck CHM-TERN-2 (synthetic)", lat: 33.470, lon: -82.080, critical: false, customers: 0, in_hazard_zone: false, mobile: true}
+injects:
+  # ---- Before landfall: 26 Sep (advisories N and N+1) --------------------------------------------------------
+  - id: EX-01-MUTUAL-AID-PRAIRIE
+    title: "Request 12 mutual-aid line crews from the Prairie Lakes group"
+    action_type: mutual_aid_request
+    step: D2
+    domain: electric
+    region: SC-45037
+    targets: [STG-EDG-KITEFIELD-YARD]
+    params: {crews: 12, headcount: 96, source: "Prairie Lakes mutual aid group (synthetic)", destination_id: STG-EDG-KITEFIELD-YARD}
+    known_at: "2024-09-26T06:00:00Z"
+    resolved_at: "2024-09-27T00:00:00Z"
+    anchor_utc: "2024-09-26T20:00:00Z"
+    anchor_label: "Last departure that gets the crews to Kitefield yard before the storm"
+    lead_key: mutual_aid_request_processing
+    if_late: "The 12 crews arrive a day late and the Edgefield and Aiken restoration starts with local crews only."
+    rationale: "The latest advisory keeps the cone over the western Carolinas. Local and contract crews cover about 60% of the expected damage; 12 line crews (96 people) from the Prairie Lakes group need about 10 h on the road. Request them now so they stage at Kitefield yard before the storm arrives."
+  - id: EX-02-VEG-CREW-2219
+    title: "Pre-stage a vegetation crew on feeder FDR-AIK-2219"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45003
+    targets: [FDR-AIK-2219]
+    params: {crews: 1, crew_type: vegetation, feeder_id: FDR-AIK-2219}
+    known_at: "2024-09-26T07:00:00Z"
+    resolved_at: "2024-09-26T20:00:00Z"
+    anchor_utc: "2024-09-26T20:00:00Z"
+    anchor_label: "Tropical-storm winds reach Aiken County"
+    lead_key: crew_staging_small
+    if_late: "Fallen trees on the hospital feeder wait for the general tree crews after the storm."
+    rationale: "Feeder FDR-AIK-2219 serves 3,960 customers and the Tallowbranch hospital line; its trunk runs under old oaks. One vegetation crew staged at the feeder head cuts the clearing time after the storm."
+  - id: EX-03-EVENT-TYPE-MAJOR
+    title: "Declare a major storm event for the SC and GA service area"
+    action_type: set_event_type
+    step: D1
+    domain: electric
+    region: SC-45003
+    targets: [SGW-ELECTRIC-TERRITORY]
+    params: {event_type: major_storm, previous: elevated_watch}
+    known_at: "2024-09-26T08:30:00Z"
+    resolved_at: "2024-09-26T21:00:00Z"
+    anchor_utc: "2024-09-26T21:00:00Z"
+    anchor_label: "First tropical-storm winds in the service area"
+    lead_key: event_type_declaration
+    if_late: "Storm roles, 16-hour shifts and the storm cost code start only after the first outages."
+    rationale: "The forecast now puts tropical-storm winds over most of the service area tonight. A major storm event switches on storm roles, 16-hour shifts and the storm cost code."
+  - id: EX-04-HYPOCHLORITE-HOLLOWPINE
+    title: "Top up hypochlorite at the Hollowpine water treatment plant"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: GA-13245
+    targets: [CHM-TERN-2]
+    params: {resource_kind: chemical, resource_id: CHM-TERN-2, destination_id: WTP-RCH-HOLLOWPINE, gallons: 3000, hours_on_hand: 84, hours_needed: 168}
+    known_at: "2024-09-26T09:00:00Z"
+    resolved_at: "2024-09-26T20:00:00Z"
+    anchor_utc: "2024-09-26T22:00:00Z"
+    anchor_label: "Roads to Hollowpine close in tropical-storm winds"
+    lead_key: water_treatment_chemical_delivery
+    if_late: "The plant runs out of disinfectant on day 4 if the roads stay closed."
+    rationale: "Hollowpine has 3.5 days of hypochlorite on site; the storm plan asks for 7. One 3,000 gal delivery by CHM-TERN-2 before the roads close covers the gap."
+  - id: EX-05-STAGE-UPSTATE
+    title: "Stage two crews at Reedy Shoals yard for the Upstate"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45045
+    targets: [STG-GVL-REEDYSHOALS-YARD]
+    params: {crews: 2, crew_type: line, destination_id: STG-GVL-REEDYSHOALS-YARD}
+    known_at: "2024-09-26T12:00:00Z"
+    resolved_at: "2024-09-26T22:00:00Z"
+    anchor_utc: "2024-09-27T02:00:00Z"
+    anchor_label: "Heavy rain and gusts reach Greenville County"
+    lead_key: crew_staging_small
+    if_late: "Greenville County starts restoration with no crews staged north of Columbia."
+    rationale: "The N+1 track shifts the strongest winds inland toward the Upstate. Two line crews moved from Congaree Bend to Reedy Shoals yard shorten the drive to Greenville feeders after the storm."
+  - id: EX-06-SHELTER-GENERATOR
+    title: "Pre-stage portable generator MGEN-GANNET-250 at the Thistlecroft shelter"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45003
+    targets: [MGEN-GANNET-250]
+    params: {resource_kind: mobile_generator, resource_id: MGEN-GANNET-250, destination_id: SHL-AIK-THISTLECROFT, kw: 250, shelter_capacity: 420}
+    known_at: "2024-09-26T13:00:00Z"
+    resolved_at: "2024-09-27T02:00:00Z"
+    anchor_utc: "2024-09-27T00:00:00Z"
+    anchor_label: "The county opens the Thistlecroft shelter"
+    lead_key: portable_generator_hookup
+    if_late: "420 sheltered residents spend the night without power, cooling or medical device charging."
+    rationale: "Aiken County opens Thistlecroft Middle School as a 420-bed shelter at 20:00 ET. The school has no backup power. Stage MGEN-GANNET-250 and connect it before the shelter opens."
+  - id: EX-07-DIALYSIS-TANKER
+    title: "Put water tanker WTK-SEDGE-4 on standby for the Marrowstone dialysis center"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [WTK-SEDGE-4]
+    params: {resource_kind: potable_water_tanker, resource_id: WTK-SEDGE-4, destination_id: DLY-AIK-MARROWSTONE, tanker_gal: 5500, patients_per_day: 64}
+    known_at: "2024-09-26T14:00:00Z"
+    resolved_at: "2024-09-27T06:00:00Z"
+    anchor_utc: "2024-09-27T04:00:00Z"
+    anchor_label: "Pressure in the Copperleaf zone may drop with the power"
+    lead_key: potable_water_tanker
+    if_late: "64 dialysis patients a day lose treatment if the center's water supply fails."
+    rationale: "The Marrowstone dialysis center treats 64 patients a day and needs about 400 gal of potable water an hour. It sits in the Copperleaf zone, which depends on PS-38's generator. A 5,500 gal tanker on standby covers 13 hours."
+  - id: EX-08-LIFT-STATION-BUTTONBUSH
+    title: "Send portable generator MGEN-SKUA-750 to the Buttonbush Creek lift station"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: GA-13245
+    targets: [MGEN-SKUA-750]
+    params: {resource_kind: mobile_generator, resource_id: MGEN-SKUA-750, destination_id: LS-RCH-BUTTONBUSH-CREEK, kw: 750, wet_well_hours: 3}
+    known_at: "2024-09-26T15:00:00Z"
+    resolved_at: "2024-09-27T04:00:00Z"
+    anchor_utc: "2024-09-27T04:00:00Z"
+    anchor_label: "Power to the lift station is expected to go out"
+    lead_key: portable_generator_hookup
+    terms: [{label: "wet well fills to the overflow level", minutes: 180}]
+    if_late: "Sewage overflows into Buttonbush Creek; a state overflow report is due within 24 h."
+    rationale: "Buttonbush Creek lift station has no backup generator and its wet well fills in about 3 h without power. Send MGEN-SKUA-750 before the storm so it is hooked up before the outage."
+  - id: EX-09-FUEL-DISPATCH-CENTER
+    title: "Fill the generator tank at the Flinthollow 911 dispatch center"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45003
+    targets: [FTK-PLOVER-7]
+    params: {resource_kind: fuel, resource_id: FTK-PLOVER-7, destination_id: ECC-AIK-FLINTHOLLOW, gallons: 900, tank_hours: 30}
+    known_at: "2024-09-26T14:30:00Z"
+    resolved_at: "2024-09-27T01:00:00Z"
+    anchor_utc: "2024-09-27T01:00:00Z"
+    anchor_label: "Tropical-storm winds stop fuel deliveries"
+    lead_key: fuel_truck_dispatch
+    if_late: "The 911 center starts the storm with a 30-hour tank and no delivery for two days."
+    rationale: "The Flinthollow 911 center's generator tank holds 30 hours. Deliveries stop in tropical-storm winds and roads may stay closed for two days. Top it up with 900 gal from FTK-PLOVER-7 now."
+  # ---- Morning after landfall: 27 Sep -------------------------------------------------------------------------
+  - id: EX-10-EVENT-TYPE-CATASTROPHIC
+    title: "Raise the event to catastrophic for Aiken, Richmond and Greenville"
+    action_type: set_event_type
+    step: D1
+    domain: electric
+    region: SC-45003
+    targets: [SGW-ELECTRIC-TERRITORY]
+    params: {event_type: catastrophic, previous: major_storm, counties: 3}
+    known_at: "2024-09-27T08:00:00Z"
+    resolved_at: "2024-09-27T18:00:00Z"
+    anchor_utc: "2024-09-27T18:00:00Z"
+    anchor_label: "The state emergency operations center asks for the first restoration plan"
+    lead_key: event_type_declaration
+    if_late: "Mutual aid and the federal cost tracking start under the wrong event level."
+    rationale: "More than half of the customers in Aiken, Richmond and Greenville counties are out and the damage patrols report broken poles on every trunk they reached. A catastrophic event opens the second mutual-aid wave and federal cost tracking."
+  - id: EX-11-MUTUAL-AID-SECOND-WAVE
+    title: "Request a second wave of 20 mutual-aid crews"
+    action_type: mutual_aid_request
+    step: D2
+    domain: electric
+    region: SC-45003
+    targets: [STG-AIK-SANDHILL-YARD, STG-RCH-MILLPOND-YARD]
+    params: {crews: 20, headcount: 160, source: "Ozark Ridge and Bluegrass cooperatives (synthetic)", destination_id: STG-AIK-SANDHILL-YARD}
+    known_at: "2024-09-27T07:00:00Z"
+    resolved_at: "2024-09-27T20:00:00Z"
+    anchor_utc: "2024-09-27T21:00:00Z"
+    anchor_label: "Last departure that reaches the day-2 restoration shift"
+    lead_key: mutual_aid_request_processing
+    if_late: "Day 2 starts with 20 fewer crews; the restoration estimate for Aiken slips by about two days."
+    rationale: "Patrols found about 3 times the pole damage the pre-storm plan assumed. The first wave of 12 crews covers Edgefield; Aiken and Richmond need 20 more crews (160 people) for day 2."
+  - id: EX-12-STAGE-MILLPOND
+    title: "Move three crews to Millpond yard for Augusta"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: GA-13245
+    targets: [STG-RCH-MILLPOND-YARD]
+    params: {crews: 3, crew_type: line, destination_id: STG-RCH-MILLPOND-YARD}
+    known_at: "2024-09-27T09:00:00Z"
+    resolved_at: "2024-09-27T18:00:00Z"
+    anchor_utc: "2024-09-27T19:00:00Z"
+    anchor_label: "Hollowpine plant line must be back before evening demand"
+    lead_key: crew_staging_small
+    if_late: "The Hollowpine plant line waits for crews that are still in Edgefield."
+    rationale: "Richmond County has the Hollowpine plant line and 3,120 customers on FDR-RCH-1411 out. Three line crews from Kitefield yard reach Millpond yard in about 2 h."
+  - id: EX-13-RESTORE-HOLLOWPINE-FIRST
+    title: "Restore FDR-RCH-1406 (Hollowpine plant) before FDR-RCH-1411"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: GA-13245
+    targets: [FDR-RCH-1406, FDR-RCH-1411]
+    params: {first_id: FDR-RCH-1406, then_id: FDR-RCH-1411, facility_id: WTP-RCH-HOLLOWPINE, plant_generator_hours: 14}
+    known_at: "2024-09-27T08:00:00Z"
+    resolved_at: "2024-09-27T22:00:00Z"
+    anchor_utc: "2024-09-27T22:00:00Z"
+    anchor_label: "The plant's generator fuel runs out"
+    lead_key: feeder_restoration_dispatch
+    if_late: "Hollowpine stops treating water and 41,000 people lose tap water pressure."
+    rationale: "Hollowpine runs on its generator with about 14 h of fuel. FDR-RCH-1406 (860 customers) feeds the plant; FDR-RCH-1411 has 3,120 customers but no critical load. Restoring the plant line first keeps water flowing for about 41,000 people."
+  - id: EX-14-PATROL-THISTLECROFT
+    title: "Patrol downed lines on the road to the Thistlecroft shelter"
+    action_type: work_order_draft
+    step: D2
+    domain: electric
+    region: SC-45003
+    targets: [SHL-AIK-THISTLECROFT]
+    params: {work: patrol, facility_id: SHL-AIK-THISTLECROFT, reports: 4}
+    known_at: "2024-09-27T10:30:00Z"
+    resolved_at: "2024-09-27T23:00:00Z"
+    anchor_utc: "2024-09-27T16:00:00Z"
+    anchor_label: "Shelter supply run at noon"
+    lead_key: silent_outage_patrol
+    if_late: "The shelter's food and fuel deliveries drive past live wires."
+    rationale: "The sheriff reported 4 lines down on the only road to the Thistlecroft shelter. Draft a patrol work order to make the road safe before the noon supply run."
+  - id: EX-15-FUEL-SHELTER
+    title: "Refuel MGEN-GANNET-250 at the Thistlecroft shelter"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45003
+    targets: [FTK-PLOVER-7]
+    params: {resource_kind: fuel, resource_id: FTK-PLOVER-7, destination_id: SHL-AIK-THISTLECROFT, serves_id: MGEN-GANNET-250, gallons: 300, tank_hours_left: 9}
+    known_at: "2024-09-27T10:00:00Z"
+    resolved_at: "2024-09-28T02:00:00Z"
+    anchor_utc: "2024-09-27T19:00:00Z"
+    anchor_label: "MGEN-GANNET-250 runs dry at the current load"
+    lead_key: fuel_truck_dispatch
+    if_late: "The shelter loses power with 380 residents inside."
+    rationale: "MGEN-GANNET-250 has about 9 hours of fuel left at the shelter's load and 380 residents are inside. FTK-PLOVER-7 can bring 300 gal once the road is patrolled."
+  - id: EX-16-TANKER-ROSEWILD
+    title: "Send water tanker WTK-SEDGE-4 to the Rosewild Pines care home"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [WTK-SEDGE-4]
+    params: {resource_kind: potable_water_tanker, resource_id: WTK-SEDGE-4, destination_id: NRS-AIK-ROSEWILD-PINES, tanker_gal: 5500, residents: 112}
+    known_at: "2024-09-27T09:30:00Z"
+    resolved_at: "2024-09-28T06:00:00Z"
+    anchor_utc: "2024-09-27T18:00:00Z"
+    anchor_label: "Care home's stored water runs out"
+    lead_key: potable_water_tanker
+    if_late: "112 residents run out of drinking water; the care home must evacuate."
+    rationale: "Rosewild Pines (112 residents) is in the Laurelspur zone, where pressure is below the state floor. Its stored water lasts until about 14:00 ET. The dialysis center is back on grid power, so WTK-SEDGE-4 is free."
+  - id: EX-17-GENERATOR-DISPATCH-CENTER
+    title: "Swap the failing generator at the Flinthollow 911 center"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45003
+    targets: [MGEN-SKUA-750]
+    params: {resource_kind: mobile_generator, resource_id: MGEN-SKUA-750, destination_id: ECC-AIK-FLINTHOLLOW, from_id: LS-RCH-BUTTONBUSH-CREEK, kw: 750}
+    known_at: "2024-09-27T06:00:00Z"
+    resolved_at: "2024-09-27T17:00:00Z"
+    anchor_utc: "2024-09-27T16:00:00Z"
+    anchor_label: "The 911 center's own generator is shut down for repair"
+    lead_key: portable_generator_hookup
+    if_late: "911 calls roll over to the Barnwell center, 40 minutes away by radio relay."
+    rationale: "The Flinthollow 911 center's generator is overheating and must be shut down for repair by noon ET. Buttonbush lift station's feeder is back, so MGEN-SKUA-750 can move to the 911 center."
+  - id: EX-18-LIFT-STATION-SWALLOWTAIL
+    title: "Draft a bypass-pump work order for the Swallowtail lift station"
+    action_type: work_order_draft
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [LS-AIK-SWALLOWTAIL]
+    params: {work: bypass_pump, facility_id: LS-AIK-SWALLOWTAIL, wet_well_pct: 85}
+    known_at: "2024-09-27T11:00:00Z"
+    resolved_at: "2024-09-28T00:00:00Z"
+    anchor_utc: "2024-09-27T15:00:00Z"
+    anchor_label: "Wet well reaches the overflow level"
+    lead_key: silent_outage_patrol
+    if_late: "Sewage overflows onto the street near 640 homes."
+    rationale: "The Swallowtail lift station is without power and its wet well is at 85%. Draft a work order for a trailer-mounted bypass pump."
+  - id: EX-19-RESTORE-MOSSGROVE
+    title: "Restore the Mossgrove substation before the Edgefield laterals"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: SC-45037
+    targets: [SUB-EDG-MOSSGROVE]
+    params: {first_id: SUB-EDG-MOSSGROVE, facility_id: SUB-EDG-MOSSGROVE, customers_behind: 6200, wells_behind: 3}
+    known_at: "2024-09-27T11:30:00Z"
+    resolved_at: "2024-09-28T04:00:00Z"
+    anchor_utc: "2024-09-28T00:00:00Z"
+    anchor_label: "Edgefield town wells run on stored water only"
+    lead_key: feeder_restoration_dispatch
+    if_late: "Edgefield's three town wells stay dark overnight and the town tank empties."
+    rationale: "Mossgrove substation feeds 6,200 customers and the three Edgefield town wells. Its transformer is intact but two bus breakers tripped. One crew can restore it in about 3 h, before the laterals."
+  # ---- Restoration: 28 Sep (ETR published) --------------------------------------------------------------------
+  - id: EX-20-EXTEND-MUTUAL-AID
+    title: "Extend the Prairie Lakes crews by five days"
+    action_type: mutual_aid_request
+    step: D2
+    domain: electric
+    region: SC-45037
+    targets: [STG-EDG-KITEFIELD-YARD]
+    params: {crews: 12, extension_days: 5, source: "Prairie Lakes mutual aid group (synthetic)", destination_id: STG-EDG-KITEFIELD-YARD}
+    known_at: "2024-09-28T12:00:00Z"
+    resolved_at: "2024-09-29T06:00:00Z"
+    anchor_utc: "2024-09-29T12:00:00Z"
+    anchor_label: "The Prairie Lakes crews' release date"
+    lead_key: mutual_aid_request_processing
+    if_late: "12 crews leave on 29 Sep and the published restoration estimate no longer holds."
+    rationale: "The published restoration estimate assumes all mutual-aid crews stay until 3 Oct. The Prairie Lakes agreement ends on 29 Sep. Ask the group to extend by five days."
+  - id: EX-21-STAGE-SLATEHOLLOW
+    title: "Stage two crews at Slatehollow substation for the Greenville rebuild"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45045
+    targets: [SUB-GVL-SLATEHOLLOW]
+    params: {crews: 2, crew_type: substation, destination_id: SUB-GVL-SLATEHOLLOW}
+    known_at: "2024-09-28T10:00:00Z"
+    resolved_at: "2024-09-28T22:00:00Z"
+    anchor_utc: "2024-09-29T00:00:00Z"
+    anchor_label: "Greenville feeders behind Slatehollow need the substation first"
+    lead_key: crew_staging_small
+    if_late: "Four Greenville feeders stay out another day."
+    rationale: "Slatehollow substation feeds FDR-GVL-3302 and three other Greenville feeders (about 15,000 customers). Its bus was flooded. Two substation crews from Reedy Shoals yard can start tonight."
+  - id: EX-22-RESTORE-GVL-3302
+    title: "Restore feeder FDR-GVL-3302 ahead of the other Greenville laterals"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: SC-45045
+    targets: [FDR-GVL-3302]
+    params: {first_id: FDR-GVL-3302, customers: 4410, booster_behind: true}
+    known_at: "2024-09-28T14:00:00Z"
+    resolved_at: "2024-09-29T02:00:00Z"
+    anchor_utc: "2024-09-29T03:00:00Z"
+    anchor_label: "The water booster on FDR-GVL-3302 runs out of generator fuel"
+    lead_key: feeder_restoration_dispatch
+    if_late: "The hill-top neighborhood on FDR-GVL-3302 loses water pressure overnight."
+    rationale: "FDR-GVL-3302 serves 4,410 customers and a water booster on a portable generator with fuel until about 23:00 ET. Restoring it first saves a fuel run and keeps the hill-top homes in water."
+  - id: EX-23-BULK-FUEL-YARDS
+    title: "Order bulk diesel for Sandhill and Millpond yards"
+    action_type: field_resource_order
+    step: D3
+    domain: electric
+    region: SC-45003
+    targets: [FTK-PLOVER-7]
+    params: {resource_kind: fuel, resource_id: FTK-PLOVER-7, destination_id: STG-AIK-SANDHILL-YARD, gallons: 8000, trucks_on_yard: 140}
+    known_at: "2024-09-28T15:00:00Z"
+    resolved_at: "2024-09-29T03:00:00Z"
+    anchor_utc: "2024-09-29T10:00:00Z"
+    anchor_label: "Day-3 shift fuels up at 06:00 ET"
+    lead_key: fuel_truck_dispatch
+    if_late: "140 trucks start day 3 with half tanks and lose about an hour each to fuel runs."
+    rationale: "Sandhill and Millpond yards now host 140 line and tree trucks. Both yard tanks fall below one day of fuel tonight. Order 8,000 gal of diesel for the 06:00 ET fuel-up."
+  - id: EX-24-WATER-POD-OXBOW
+    title: "Send water tanker WTK-SEDGE-4 to the Oxbow Run distribution point"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [WTK-SEDGE-4]
+    params: {resource_kind: potable_water_tanker, resource_id: WTK-SEDGE-4, destination_id: POD-AIK-OXBOW-RUN, tanker_gal: 5500, households: 900}
+    known_at: "2024-09-28T12:00:00Z"
+    resolved_at: "2024-09-29T12:00:00Z"
+    anchor_utc: "2024-09-28T22:00:00Z"
+    anchor_label: "Evening queue at the distribution point"
+    lead_key: potable_water_tanker
+    if_late: "900 households under the boil-water notice queue at an empty distribution point."
+    rationale: "The county opened the Oxbow Run water distribution point for homes under the boil-water notices. Bottled water runs out this evening; a 5,500 gal tanker covers about 900 households for a day."
+  - id: EX-25-BRAMBLEGATE-INSPECTION
+    title: "Draft an inspection work order for the Bramblegate substation transformer"
+    action_type: work_order_draft
+    step: D2
+    domain: electric
+    region: SC-45003
+    targets: [SUB-AIK-BRAMBLEGATE]
+    params: {work: inspection, facility_id: SUB-AIK-BRAMBLEGATE, oil_temp_alarm: true}
+    known_at: "2024-09-28T08:00:00Z"
+    resolved_at: "2024-09-28T20:00:00Z"
+    anchor_utc: "2024-09-28T20:00:00Z"
+    anchor_label: "Evening peak load on the restored feeders"
+    lead_key: silent_outage_patrol
+    if_late: "The transformer runs the evening peak with an open oil-temperature alarm."
+    rationale: "Bramblegate's main transformer raised an oil-temperature alarm after feeders FDR-AIK-2207 and 2231 came back. Draft an inspection before the evening peak."
+  # ---- Recovery: 30 Sep (notices lifted) ----------------------------------------------------------------------
+  - id: EX-26-RELEASE-SHELTER-GENERATOR
+    title: "Move MGEN-GANNET-250 from the closing shelter to the Swallowtail lift station"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [MGEN-GANNET-250]
+    params: {resource_kind: mobile_generator, resource_id: MGEN-GANNET-250, from_id: SHL-AIK-THISTLECROFT, destination_id: LS-AIK-SWALLOWTAIL, kw: 250}
+    known_at: "2024-09-30T06:00:00Z"
+    resolved_at: "2024-09-30T20:00:00Z"
+    anchor_utc: "2024-09-30T18:00:00Z"
+    anchor_label: "The bypass pump rental at Swallowtail ends"
+    lead_key: portable_generator_hookup
+    if_late: "The lift station goes back to a rented bypass pump at about 2,000 USD a day."
+    rationale: "The county closes the Thistlecroft shelter at 10:00 ET; the school is back on grid power. Swallowtail lift station is still without power and runs on a rented bypass pump. Move MGEN-GANNET-250 there."
+  - id: EX-27-STAGE-REBUILD
+    title: "Move two crews from Sandhill to Kitefield yard for the Edgefield rebuild"
+    action_type: stage_crews_small
+    step: D2
+    domain: electric
+    region: SC-45037
+    targets: [STG-EDG-KITEFIELD-YARD]
+    params: {crews: 2, crew_type: line, destination_id: STG-EDG-KITEFIELD-YARD}
+    known_at: "2024-09-30T08:00:00Z"
+    resolved_at: "2024-09-30T22:00:00Z"
+    anchor_utc: "2024-10-01T00:00:00Z"
+    anchor_label: "Edgefield rebuild crews start the night shift"
+    lead_key: crew_staging_small
+    if_late: "The Edgefield rebuild loses a night shift."
+    rationale: "Aiken is above 95% restored; Edgefield still has 1,900 customers out on broken laterals. Move two line crews from Sandhill to Kitefield yard."
+  - id: EX-28-AMI-SURVEY-RICHMOND
+    title: "Draft a meter survey work order for dark AMI meters in Richmond"
+    action_type: work_order_draft
+    step: D2
+    domain: electric
+    region: GA-13245
+    targets: [FDR-RCH-1411]
+    params: {work: meter_survey, feeder_id: FDR-RCH-1411, meters_dark: 214}
+    known_at: "2024-09-30T09:00:00Z"
+    resolved_at: "2024-10-01T00:00:00Z"
+    anchor_utc: "2024-09-30T22:00:00Z"
+    anchor_label: "End of day shift"
+    lead_key: silent_outage_patrol
+    if_late: "214 homes that may still be out stay off the outage map overnight."
+    rationale: "Feeder FDR-RCH-1411 is restored, but 214 AMI meters on it have not reported since. They may be damaged service drops. Draft a survey work order."
+  - id: EX-29-RESTORE-CLB-0817
+    title: "Restore FDR-CLB-0817 before the last Columbia County laterals"
+    action_type: cross_domain_priority
+    step: D3
+    domain: water
+    region: GA-13073
+    targets: [FDR-CLB-0817]
+    params: {first_id: FDR-CLB-0817, customers: 2740, wells_behind: 2}
+    known_at: "2024-09-30T10:00:00Z"
+    resolved_at: "2024-10-01T02:00:00Z"
+    anchor_utc: "2024-10-01T00:00:00Z"
+    anchor_label: "Two county wells on FDR-CLB-0817 run on stored water only"
+    lead_key: feeder_restoration_dispatch
+    if_late: "The two Columbia County wells stay dark a fourth night."
+    rationale: "FDR-CLB-0817 (2,740 customers) also feeds two Columbia County water wells that have run on stored water since 27 Sep. Restore it before the remaining laterals."
+  - id: EX-30-EVENT-TYPE-RECOVERY
+    title: "Step the event down to recovery"
+    action_type: set_event_type
+    step: D1
+    domain: electric
+    region: SC-45003
+    targets: [SGW-ELECTRIC-TERRITORY]
+    params: {event_type: recovery, previous: catastrophic}
+    known_at: "2024-09-30T10:00:00Z"
+    resolved_at: "2024-10-01T00:00:00Z"
+    anchor_utc: "2024-10-01T00:00:00Z"
+    anchor_label: "Shift pattern change at midnight"
+    lead_key: event_type_declaration
+    if_late: "Crews stay on 16-hour storm shifts after the emergency is over."
+    rationale: "Over 95% of customers are back, the boil-water notices are being lifted and no county asks for new mutual aid. Stepping down to recovery ends 16-hour shifts and starts the after-action review."
+  - id: EX-31-RETURN-TANKER
+    title: "Return water tanker WTK-SEDGE-4 from the Oxbow Run distribution point"
+    action_type: field_resource_order
+    step: D3
+    domain: water
+    region: SC-45003
+    targets: [WTK-SEDGE-4]
+    params: {resource_kind: potable_water_tanker, resource_id: WTK-SEDGE-4, from_id: POD-AIK-OXBOW-RUN, destination_id: DLY-AIK-MARROWSTONE, tanker_gal: 5500}
+    known_at: "2024-09-30T07:00:00Z"
+    resolved_at: "2024-09-30T19:00:00Z"
+    anchor_utc: "2024-09-30T20:00:00Z"
+    anchor_label: "The dialysis center's standby agreement restarts"
+    lead_key: potable_water_tanker
+    if_late: "The dialysis center has no standby water while the Copperleaf notice is still open."
+    rationale: "Cedarfall's notice is lifted, so the Oxbow Run distribution point closes. The Copperleaf notice is still open and the Marrowstone dialysis center is in that zone: move WTK-SEDGE-4 back to standby there."

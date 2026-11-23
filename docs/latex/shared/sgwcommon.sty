@@ -1,0 +1,13 @@
+\ProvidesPackage{sgwcommon}[2026/11/23 Commands shared by the SGW documents]
+\RequirePackage{xcolor}
+\RequirePackage{sgwnumbers}
+\newcommand{\sgwproduct}{SGW Resilience Decision Platform}
+\providecommand{\texorpdfstring}[2]{#1}
+% Page markers read by docs/build.py for page budgets.
+\newcommand{\sgwmark}[1]{\label{sgw:mark:#1}}
+
+% Pending content. Draft builds show it in a muted box; final builds stop on it.
+\newcommand{\sgwtodo}[1]{%
+  \ifsgwfinal\PackageError{sgwdoc}{Pending content left in a final build}{Fill or remove the sgwtodo.}\fi
+  \par\noindent\fcolorbox{sgwHairline}{sgwNeutral}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \scriptsize\color{sgwInkMuted}\textbf{Pending.} #1}}\par}

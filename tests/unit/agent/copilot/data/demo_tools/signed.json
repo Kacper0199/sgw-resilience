@@ -1,0 +1,1572 @@
+{
+ "get_crews|{}|2024-09-26T15:05:00+00:00|command|3": {
+  "content": "[E3] crew_summary: Crews by status at this time; trust=system; slots={E3.available} {E3.crews} {E3.people}; source=crew status events in the ledger (synthetic SGW replay data)\n[E4] crew: Crew CRW-CORMORANT-0206, available; trust=system; status=available; slots={E4.headcount}; source=crew status event (synthetic SGW replay data)\n[E5] crew: Crew CRW-EGRET-0207, available; trust=system; status=available; slots={E5.headcount}; source=crew status event (synthetic SGW replay data)\n[E6] crew: Crew CRW-GANNET-0205, available; trust=system; status=available; slots={E6.headcount}; source=crew status event (synthetic SGW replay data)\n[E7] crew: Crew CRW-GROSBEAK-0210, available; trust=system; status=available; slots={E7.headcount}; source=crew status event (synthetic SGW replay data)\n[E8] crew: Crew CRW-HARRIER-0103, available; trust=system; status=available; slots={E8.headcount}; source=crew status event (synthetic SGW replay data)\n[E9] crew: Crew CRW-HARRIER-0202, available; trust=system; status=available; slots={E9.headcount}; source=crew status event (synthetic SGW replay data)\n[E10] crew: Crew CRW-KESTREL-0101, available; trust=system; status=available; slots={E10.headcount}; source=crew status event (synthetic SGW replay data)\n[E11] crew: Crew CRW-KESTREL-02, available; trust=system; status=available; slots={E11.headcount}; source=crew status event (synthetic SGW replay data)\n[E12] crew: Crew CRW-MERLIN-0102, available; trust=system; status=available; slots={E12.headcount}; source=crew status event (synthetic SGW replay data)\n[E13] crew: Crew CRW-MERLIN-0201, available; trust=system; status=available; slots={E13.headcount}; source=crew status event (synthetic SGW replay data)\n[E14] crew: Crew CRW-OSPREY-04, available; trust=system; status=available; slots={E14.headcount}; source=crew status event (synthetic SGW replay data)\n[E15] crew: Crew CRW-OSPREY-07, available; trust=system; status=available; slots={E15.headcount}; source=crew status event (synthetic SGW replay data)\n[E16] crew: Crew CRW-PLOVER-0105, available; trust=system; status=available; slots={E16.headcount}; source=crew status event (synthetic SGW replay data)\n[E17] crew: Crew CRW-PLOVER-0204, available; trust=system; status=available; slots={E17.headcount}; source=crew status event (synthetic SGW replay data)\n[E18] crew: Crew CRW-SHRIKE-0104, available; trust=system; status=available; slots={E18.headcount}; source=crew status event (synthetic SGW replay data)\n[E19] crew: Crew CRW-SHRIKE-0203, available; trust=system; status=available; slots={E19.headcount}; source=crew status event (synthetic SGW replay data)\n[E20] crew: Crew CRW-TANAGER-0208, available; trust=system; status=available; slots={E20.headcount}; source=crew status event (synthetic SGW replay data)\n[E21] crew: Crew CRW-WARBLER-0209, available; trust=system; status=available; slots={E21.headcount}; source=crew status event (synthetic SGW replay data)\n[E22] crew_plan_option: Crew plan option P50: P50 deterministic plan; trust=system; risk=neutral; slots={E22.early_mutual_aid_persons} {E22.expected_customer_hours} {E22.mutual_aid_usd} {E22.own_groups_staged} {E22.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E23] crew_plan_option: Crew plan option COA-A: Spend-matched: the P50 request, placed for the spread; trust=system; risk=neutral; slots={E23.early_mutual_aid_persons} {E23.expected_customer_hours} {E23.mutual_aid_usd} {E23.own_groups_staged} {E23.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E24] crew_plan_option: Crew plan option COA-B: Tail hedge: P90-sized request, placed for E + CVaR90; trust=system; risk=cvar; slots={E24.early_mutual_aid_persons} {E24.expected_customer_hours} {E24.mutual_aid_usd} {E24.own_groups_staged} {E24.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E25] crew_plan_option: Crew plan option COA-C: Own crews only, request mutual aid after landfall; trust=system; risk=neutral; slots={E25.early_mutual_aid_persons} {E25.expected_customer_hours} {E25.mutual_aid_usd} {E25.own_groups_staged} {E25.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status events in the ledger (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [],
+    "hints": {},
+    "id": "E3",
+    "kind": "crew_summary",
+    "label": "Crews by status at this time",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "available": {
+      "format": "count",
+      "unit": null,
+      "value": 18
+     },
+     "crews": {
+      "format": "count",
+      "unit": null,
+      "value": 18
+     },
+     "people": {
+      "format": "count",
+      "unit": null,
+      "value": 432
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-CORMORANT-0206"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E4",
+    "kind": "crew",
+    "label": "Crew CRW-CORMORANT-0206, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-EGRET-0207"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E5",
+    "kind": "crew",
+    "label": "Crew CRW-EGRET-0207, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-GANNET-0205"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E6",
+    "kind": "crew",
+    "label": "Crew CRW-GANNET-0205, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-GROSBEAK-0210"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E7",
+    "kind": "crew",
+    "label": "Crew CRW-GROSBEAK-0210, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-HARRIER-0103"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E8",
+    "kind": "crew",
+    "label": "Crew CRW-HARRIER-0103, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-HARRIER-0202"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E9",
+    "kind": "crew",
+    "label": "Crew CRW-HARRIER-0202, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-KESTREL-0101"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E10",
+    "kind": "crew",
+    "label": "Crew CRW-KESTREL-0101, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-KESTREL-02"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E11",
+    "kind": "crew",
+    "label": "Crew CRW-KESTREL-02, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-MERLIN-0102"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E12",
+    "kind": "crew",
+    "label": "Crew CRW-MERLIN-0102, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-MERLIN-0201"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E13",
+    "kind": "crew",
+    "label": "Crew CRW-MERLIN-0201, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-OSPREY-04"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E14",
+    "kind": "crew",
+    "label": "Crew CRW-OSPREY-04, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-OSPREY-07"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E15",
+    "kind": "crew",
+    "label": "Crew CRW-OSPREY-07, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-PLOVER-0105"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E16",
+    "kind": "crew",
+    "label": "Crew CRW-PLOVER-0105, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-PLOVER-0204"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E17",
+    "kind": "crew",
+    "label": "Crew CRW-PLOVER-0204, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-SHRIKE-0104"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E18",
+    "kind": "crew",
+    "label": "Crew CRW-SHRIKE-0104, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-SHRIKE-0203"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E19",
+    "kind": "crew",
+    "label": "Crew CRW-SHRIKE-0203, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-TANAGER-0208"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E20",
+    "kind": "crew",
+    "label": "Crew CRW-TANAGER-0208, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "crew status event (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "CRW-WARBLER-0209"
+    ],
+    "hints": {
+     "status": "available"
+    },
+    "id": "E21",
+    "kind": "crew",
+    "label": "Crew CRW-WARBLER-0209, available",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "headcount": {
+      "format": "count",
+      "unit": null,
+      "value": 24
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "P50",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E22",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option P50: P50 deterministic plan",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 800
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 14094241
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 41773137
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 32907661
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-A",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E23",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-A: Spend-matched: the P50 request, placed for the spread",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 800
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 14030806
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 41779895
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 32828963
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-B",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "cvar"
+    },
+    "id": "E24",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-B: Tail hedge: P90-sized request, placed for E + CVaR90",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 6600
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 9869908
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 121328706
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 19758376
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-C",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E25",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-C: Own crews only, request mutual aid after landfall",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 15224060
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 33655116
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 35533013
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "get_forecast|{\"entity_id\": \"FDR-AIK-2207\", \"target\": \"outages\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "Nothing to show: no outages forecast for FDR-AIK-2207 issued at or before this time",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_forecast|{\"entity_id\": \"PS-17\", \"target\": \"outages\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "Nothing to show: no outages forecast for PS-17 issued at or before this time",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_forecast|{\"entity_id\": \"PS-17\", \"target\": \"pressure\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "Nothing to show: no pressure forecast is published to the copilot",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_outages|{\"feeder_ids\": []}|2024-09-26T15:05:00+00:00|command|2": {
+  "content": "[E2] outage_summary: Open outages at this time, all feeders; trust=system; slots={E2.customers_out} {E2.open_outages}; source=OMS outage events in the ledger (synthetic SGW replay data)",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "OMS outage events in the ledger (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [],
+    "hints": {},
+    "id": "E2",
+    "kind": "outage_summary",
+    "label": "Open outages at this time, all feeders",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "customers_out": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     },
+     "open_outages": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "get_risk|{\"domain\": \"water\", \"entity_ids\": [\"PS-17\"], \"level\": \"asset\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_risk|{\"entity_ids\": [\"FDR-AIK-2207\", \"PS-17\"], \"level\": \"asset\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_risk|{\"entity_ids\": [\"PS-17\"], \"level\": \"asset\"}|2024-09-26T15:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "list_decisions|{\"limit\": 50}|2024-09-26T15:05:00+00:00|command|26": {
+  "content": "[E26] decision: Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E26.decide_by} {E26.effective_decide_by}; source=decision board\n[E27] decision: Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E27.decide_by} {E27.effective_decide_by}; source=decision board\n[E28] decision: Hook up the portable generator at PS-17 (DC-D3-PS17-POWER), executed, signed by Command and Water operations, signatures so far: Command and Water operations, owned by Command; trust=system; critical_path=on; due=next_day; severity=normal; state=executed; slots={E28.decide_by} {E28.effective_decide_by}; source=decision board\n[E29] decision: Hold Cedarfall zone pressure above the state floor (DC-D3-PS17-PRESSURE), executed, signed by Water operations and Compliance, signatures so far: Water operations and Compliance, owned by Water operat; trust=system; critical_path=on; due=next_day; severity=normal; state=executed; slots={E29.decide_by} {E29.effective_decide_by}; source=decision board\n[E30] decision: Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E30.decide_by} {E30.effective_decide_by}; source=decision board",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-ACAAB29509F04D13",
+     "DC-D2-CREWS-AIK"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E26",
+    "kind": "decision",
+    "label": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T00:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T22:29:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-ZR-F2671161857D",
+     "DC-D3-PS17-FUEL"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E27",
+    "kind": "decision",
+    "label": "Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-28T14:59:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T01:59:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-E30F930647514299",
+     "DC-D3-PS17-POWER"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "normal",
+     "state": "executed"
+    },
+    "id": "E28",
+    "kind": "decision",
+    "label": "Hook up the portable generator at PS-17 (DC-D3-PS17-POWER), executed, signed by Command and Water operations, signatures so far: Command and Water operations, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T03:59:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T03:29:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-2322CCB3B8764A0E",
+     "DC-D3-PS17-PRESSURE"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "normal",
+     "state": "executed"
+    },
+    "id": "E29",
+    "kind": "decision",
+    "label": "Hold Cedarfall zone pressure above the state floor (DC-D3-PS17-PRESSURE), executed, signed by Water operations and Compliance, signatures so far: Water operations and Compliance, owned by Water operat",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T05:59:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T05:59:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-ZR-95A9C7116E79",
+     "DC-D3-HSP-TALLOWBRANCH-WATER"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E30",
+    "kind": "decision",
+    "label": "Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T10:29:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T10:29:00Z"
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "list_decisions|{\"limit\": 50}|2024-09-26T15:05:00+00:00|command|5": {
+  "content": "[E5] decision: Request 12 mutual-aid line crews from the Prairie Lakes group (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_hour; severity=severe; state=proposed; slots={E5.decide_by} {E5.effective_decide_by}; source=decision board\n[E6] decision: Pre-stage a vegetation crew on feeder FDR-AIK-2219 (DC-D2-EX-02-VEG-CREW-2219), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_three_hours; severity=elevated; state=proposed; slots={E6.decide_by} {E6.effective_decide_by}; source=decision board\n[E7] decision: Top up hypochlorite at the Hollowpine water treatment plant (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_six_hours; severity=elevated; state=proposed; slots={E7.decide_by} {E7.effective_decide_by}; source=decision board\n[E8] decision: Declare a major storm event for the SC and GA service area (DC-D1-EX-03-EVENT-TYPE-MAJOR), proposed, signed by Command and Operations, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_six_hours; severity=elevated; state=proposed; slots={E8.decide_by} {E8.effective_decide_by}; source=decision board\n[E9] decision: Pre-stage portable generator MGEN-GANNET-250 at the Thistlecroft shelter (DC-D3-EX-06-SHELTER-GENERATOR), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E9.decide_by} {E9.effective_decide_by}; source=decision board\n[E10] decision: Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E10.decide_by} {E10.effective_decide_by}; source=decision board\n[E11] decision: Fill the generator tank at the Flinthollow 911 dispatch center (DC-D3-EX-09-FUEL-DISPATCH-CENTER), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E11.decide_by} {E11.effective_decide_by}; source=decision board\n[E12] decision: Stage two crews at Reedy Shoals yard for the Upstate (DC-D2-EX-05-STAGE-UPSTATE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E12.decide_by} {E12.effective_decide_by}; source=decision board\n[E13] decision: Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E13.decide_by} {E13.effective_decide_by}; source=decision board\n[E14] decision: Put water tanker WTK-SEDGE-4 on standby for the Marrowstone dialysis center (DC-D3-EX-07-DIALYSIS-TANKER), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E14.decide_by} {E14.effective_decide_by}; source=decision board\n[E15] decision: Issue a boil water advisory for the Cedarfall zone (DC-D3-PS17-CEDARFALL-BWA), executed, signed by Water operations and Compliance, signatures so far: Water operations and Compliance, owned by Water o; trust=system; critical_path=off; due=next_day; severity=normal; state=executed; slots={E15.decide_by} {E15.effective_decide_by}; source=decision board\n[E16] decision: Hook up the portable generator at PS-17 (DC-D3-PS17-POWER), executed, signed by Command and Water operations, signatures so far: Command and Water operations, owned by Command; trust=system; critical_path=on; due=next_day; severity=normal; state=executed; slots={E16.decide_by} {E16.effective_decide_by}; source=decision board\n[E17] decision: Send portable generator MGEN-SKUA-750 to the Buttonbush Creek lift station (DC-D3-EX-08-LIFT-STATION-BUTTONBUSH), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E17.decide_by} {E17.effective_decide_by}; source=decision board\n[E18] decision: Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E18.decide_by} {E18.effective_decide_by}; source=decision board",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-6F383B10E22E",
+     "DC-D2-EX-01-MUTUAL-AID-PRAIRIE"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_hour",
+     "severity": "severe",
+     "state": "proposed"
+    },
+    "id": "E5",
+    "kind": "decision",
+    "label": "Request 12 mutual-aid line crews from the Prairie Lakes group (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T16:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T16:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-D019180EFE71",
+     "DC-D2-EX-02-VEG-CREW-2219"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_three_hours",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E6",
+    "kind": "decision",
+    "label": "Pre-stage a vegetation crew on feeder FDR-AIK-2219 (DC-D2-EX-02-VEG-CREW-2219), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T18:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T18:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-2E1F6159DE99",
+     "DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_six_hours",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E7",
+    "kind": "decision",
+    "label": "Top up hypochlorite at the Hollowpine water treatment plant (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T19:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T19:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-A0023CBBA1B6",
+     "DC-D1-EX-03-EVENT-TYPE-MAJOR"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_six_hours",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E8",
+    "kind": "decision",
+    "label": "Declare a major storm event for the SC and GA service area (DC-D1-EX-03-EVENT-TYPE-MAJOR), proposed, signed by Command and Operations, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T20:30:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T20:30:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-734239FE4542",
+     "DC-D3-EX-06-SHELTER-GENERATOR"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E9",
+    "kind": "decision",
+    "label": "Pre-stage portable generator MGEN-GANNET-250 at the Thistlecroft shelter (DC-D3-EX-06-SHELTER-GENERATOR), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T21:30:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T21:30:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-B8997CAE53944F79",
+     "DC-D2-CREWS-AIK"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E10",
+    "kind": "decision",
+    "label": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T00:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T22:29:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-4B9C91EE3958",
+     "DC-D3-EX-09-FUEL-DISPATCH-CENTER"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E11",
+    "kind": "decision",
+    "label": "Fill the generator tank at the Flinthollow 911 dispatch center (DC-D3-EX-09-FUEL-DISPATCH-CENTER), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T23:30:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T23:30:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-EC2961419C76",
+     "DC-D2-EX-05-STAGE-UPSTATE"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E12",
+    "kind": "decision",
+    "label": "Stage two crews at Reedy Shoals yard for the Upstate (DC-D2-EX-05-STAGE-UPSTATE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T00:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T00:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-ZR-F2671161857D",
+     "DC-D3-PS17-FUEL"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E13",
+    "kind": "decision",
+    "label": "Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-28T14:59:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T01:59:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-63892D5FAA5D",
+     "DC-D3-EX-07-DIALYSIS-TANKER"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E14",
+    "kind": "decision",
+    "label": "Put water tanker WTK-SEDGE-4 on standby for the Marrowstone dialysis center (DC-D3-EX-07-DIALYSIS-TANKER), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T02:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T02:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-B70AD9BC840748C7",
+     "DC-D3-PS17-CEDARFALL-BWA"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "normal",
+     "state": "executed"
+    },
+    "id": "E15",
+    "kind": "decision",
+    "label": "Issue a boil water advisory for the Cedarfall zone (DC-D3-PS17-CEDARFALL-BWA), executed, signed by Water operations and Compliance, signatures so far: Water operations and Compliance, owned by Water o",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T02:10:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T02:10:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-42EF7CAEF0394A07",
+     "DC-D3-PS17-POWER"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "normal",
+     "state": "executed"
+    },
+    "id": "E16",
+    "kind": "decision",
+    "label": "Hook up the portable generator at PS-17 (DC-D3-PS17-POWER), executed, signed by Command and Water operations, signatures so far: Command and Water operations, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T03:59:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T03:29:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-E8AC6420EB17",
+     "DC-D3-EX-08-LIFT-STATION-BUTTONBUSH"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E17",
+    "kind": "decision",
+    "label": "Send portable generator MGEN-SKUA-750 to the Buttonbush Creek lift station (DC-D3-EX-08-LIFT-STATION-BUTTONBUSH), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T04:30:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T04:30:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T15:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-ZR-95A9C7116E79",
+     "DC-D3-HSP-TALLOWBRANCH-WATER"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E18",
+    "kind": "decision",
+    "label": "Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T10:29:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T10:29:00Z"
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ }
+}

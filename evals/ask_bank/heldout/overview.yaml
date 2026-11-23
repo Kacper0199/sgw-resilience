@@ -1,0 +1,75 @@
+# Ask bank, overview: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-OVR-011
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  question: What is this platform for?
+  expect:
+    mentions_any:
+    - decision
+    - power
+    - water
+    - storm
+  judge: true
+- id: AB-OVR-012
+  lang: en
+  persona: plan_etr_01
+  moment: morning-after
+  page: forecast
+  klass: overview
+  tags:
+  - vague
+  question: How bad is it?
+  expect:
+    mentions_any:
+    - customers
+    - outage
+    - out
+- id: AB-OVR-014
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  klass: overview
+  tags:
+  - typo
+  - vague
+  question: what happend overnight
+  expect:
+    mentions_any:
+    - Cedarfall
+    - lifted
+    - notice
+- id: AB-OVR-017
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  klass: overview
+  tags:
+  - demo_moment
+  question: Summarise the morning after landfall in plain words.
+  expect:
+    mentions_any:
+    - pressure
+    - tanker
+    - Laurelspur
+  judge: true
+- id: AB-OVR-020
+  lang: pl
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: overview
+  tags:
+  - no_diacritics
+  - vague
+  question: co sie dzieje z woda
+  expect:
+    mentions_any:
+    - Cedarfall
+    - Laurelspur
+    - ciśnieni
+    - cisnieni

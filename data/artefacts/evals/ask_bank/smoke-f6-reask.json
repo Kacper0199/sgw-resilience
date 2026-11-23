@@ -1,0 +1,1845 @@
+{
+ "meta": {
+  "label": "smoke-f6-reask",
+  "commit": "0e065ca",
+  "split": "dev",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R34",
+  "started_utc": "2026-11-22T09:48:20Z",
+  "seconds": 60.2,
+  "gateway_counters_delta": {
+   "replay_hits": 5,
+   "live_cache_hits": 29,
+   "replay_misses": 0,
+   "live_calls": 15,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 9,
+  "passed": 9,
+  "pass_rate": 1.0,
+  "infra": 0,
+  "valid": {
+   "n": 9,
+   "passed": 9,
+   "pass_rate": 1.0
+  },
+  "usd": 0.3176,
+  "usd_per_item": 0.03529,
+  "live_calls": 15,
+  "latency_p50_s": 3.99,
+  "latency_p95_s": 19.35,
+  "errors": 0,
+  "grader_failures": {},
+  "paths": {
+   "llm": 4,
+   "guide": 3,
+   "not_in_documents": 2
+  },
+  "reasons": {
+   "None": 7,
+   "model_not_in_documents": 2
+  }
+ },
+ "by": {
+  "klass": {
+   "explain": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "navigate": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "near_miss": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "overview": {
+    "n": 4,
+    "passed": 4,
+    "pass_rate": 1.0
+   },
+   "photos": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "persona": {
+   "admin_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "audit_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "exec_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "ic_01": {
+    "n": 3,
+    "passed": 3,
+    "pass_rate": 1.0
+   },
+   "ml_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "wtr_comp_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "wtr_lead_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "lang": {
+   "en": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "pl": {
+    "n": 8,
+    "passed": 8,
+    "pass_rate": 1.0
+   }
+  },
+  "moment": {
+   "at-n1": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "morning-after": {
+    "n": 4,
+    "passed": 4,
+    "pass_rate": 1.0
+   },
+   "notices-lifted": {
+    "n": 3,
+    "passed": 3,
+    "pass_rate": 1.0
+   }
+  },
+  "page": {
+   "after_action": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "brief": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "crews": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "health": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "none": {
+    "n": 3,
+    "passed": 3,
+    "pass_rate": 1.0
+   },
+   "water": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 9,
+    "passed": 9,
+    "pass_rate": 1.0
+   }
+  }
+ },
+ "by_tag": {
+  "link_request": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  },
+  "no_diacritics": {
+   "n": 2,
+   "passed": 2,
+   "pass_rate": 1.0
+  },
+  "user_reported": {
+   "n": 3,
+   "passed": 3,
+   "pass_rate": 1.0
+  },
+  "vague": {
+   "n": 4,
+   "passed": 4,
+   "pass_rate": 1.0
+  }
+ },
+ "items": [
+  {
+   "id": "AB-NEAR-014",
+   "lang": "pl",
+   "persona": "wtr_lead_01",
+   "moment": "at-n1",
+   "page": "water",
+   "klass": "near_miss",
+   "tags": [],
+   "turns": [],
+   "question": "Jaki jest stan PS-99?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "PS-17",
+     "PS-23",
+     "PS-38",
+     "PS-52"
+    ],
+    "mentions_all": [
+     "PS-99"
+    ],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": true,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": true,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "not_in_documents",
+   "reason": "model_not_in_documents",
+   "text": "Na platformie nie ma stacji pomp o oznaczeniu PS-99, więc nie mogę podać jej stanu. Są cztery stacje: Cedarfall (PS-17), Laurelspur (PS-23), Copperleaf (PS-38) i Deerwater (PS-52). Ich ciśnienie, zbiorniki i stacje pomp zobaczysz na stronie Woda w zakładce Strefy, a przycisk poniżej ją otwiera. Jeśli chodziło Ci o jedną z tych stacji, podaj jej nazwę lub numer.",
+   "links": [
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-38"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-52"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [
+     "Jaki jest stan Cedarfall pump station (PS-17)?",
+     "Jaki jest stan Laurelspur pump station (PS-23)?",
+     "Jaki jest stan Copperleaf pump station (PS-38)?"
+    ],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "not_in_documents",
+    "photos": [],
+    "reason": "model_not_in_documents",
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "PS-38",
+      "kind": "asset",
+      "label": "Copperleaf pump station"
+     },
+     {
+      "id": "PS-52",
+      "kind": "asset",
+      "label": "Deerwater pump station"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Na platformie nie ma stacji pomp o oznaczeniu PS-99, więc nie mogę podać jej stanu. Są cztery stacje: Cedarfall (PS-17), Laurelspur (PS-23), Copperleaf (PS-38) i Deerwater (PS-52). Ich ciśnienie, zbiorniki i stacje pomp zobaczysz na stronie Woda w zakładce Strefy, a przycisk poniżej ją otwiera. Jeśli chodziło Ci o jedną z tych stacji, podaj jej nazwę lub numer.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-e517be033dbb"
+   ],
+   "latency_s": 2.1,
+   "usd": 0.00763,
+   "live_calls": 1
+  },
+  {
+   "id": "AB-OVR-022",
+   "lang": "pl",
+   "persona": "admin_01",
+   "moment": "at-n1",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "vague"
+   ],
+   "turns": [],
+   "question": "Do czego służy ta platforma?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "decyzj",
+     "prąd",
+     "wod",
+     "burz",
+     "huragan"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": null,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "SGW Ask to platforma, która pomaga zespołowi zakładu energetycznego i wodociągowego prowadzić odpowiedź na huragan Helene. Jest to odtworzenie scenariusza od 23 września 2024, godz. 8:00, do 6 października 2024, godz. 8:00 czasu wschodniego, na danych syntetycznych. Znajdziesz tu m.in. decyzje, mapę, prognozę, ekipy, wodę (stacje pomp i strefy wodne) oraz odprawę i podsumowanie po akcji. Jako administrator platformy możesz przez przycisk poniżej otworzyć stronę Admin (użytkownicy, zasady, integracje i ustawienia AI) oraz System health, która pokazuje, czy dane i modele są wiarygodne.",
+   "links": [
+    {
+     "page": "admin",
+     "href": "/admin"
+    },
+    {
+     "page": "health",
+     "href": "/health"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "Gdzie zarządzam użytkownikami?",
+    "Czy mogę teraz ufać danym?",
+    "Które decyzje są najpilniejsze?"
+   ],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [
+     "Jak działa ta platforma?",
+     "Jaka jest obecna sytuacja po huraganie Helene?",
+     "Gdzie na platformie znajdę dane o przerwach w dostawie prądu?"
+    ],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/admin",
+      "kind": "page",
+      "label": "Admin page",
+      "page": "admin"
+     },
+     {
+      "href": "/health",
+      "kind": "page",
+      "label": "System health page",
+      "page": "health"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "Gdzie zarządzam użytkownikami?",
+     "Czy mogę teraz ufać danym?",
+     "Które decyzje są najpilniejsze?"
+    ],
+    "tainted": false,
+    "text": "SGW Ask to platforma, która pomaga zespołowi zakładu energetycznego i wodociągowego prowadzić odpowiedź na huragan Helene. Jest to odtworzenie scenariusza od 23 września 2024, godz. 8:00, do 6 października 2024, godz. 8:00 czasu wschodniego, na danych syntetycznych. Znajdziesz tu m.in. decyzje, mapę, prognozę, ekipy, wodę (stacje pomp i strefy wodne) oraz odprawę i podsumowanie po akcji. Jako administrator platformy możesz przez przycisk poniżej otworzyć stronę Admin (użytkownicy, zasady, integracje i ustawienia AI) oraz System health, która pokazuje, czy dane i modele są wiarygodne.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-7e4ac4898838"
+   ],
+   "latency_s": 0.53,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-NAV-036",
+   "lang": "pl",
+   "persona": "ml_01",
+   "moment": "morning-after",
+   "page": "health",
+   "klass": "navigate",
+   "tags": [
+    "link_request"
+   ],
+   "turns": [],
+   "question": "Gdzie sprawdzę, czy dane spływają na czas?",
+   "expect": {
+    "answer": true,
+    "links": [
+     "health"
+    ],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": true,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "Świeżość danych, czyli to, czy źródła danych odświeżają się na czas, sprawdzisz na stronie System health, w zakładce Data. Ta strona pokazuje też, z jakich modeli korzysta platforma, wyniki kontroli czujników, aktywność AI i przyciski zatrzymania. Przycisk poniżej otwiera System health. Drugi przycisk prowadzi do strony Forecast, ale tam zobaczysz tylko prognozę awarii, a nie stan źródeł danych.",
+   "links": [
+    {
+     "page": "health",
+     "href": "/health"
+    },
+    {
+     "page": "forecast",
+     "href": "/forecast"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "Czy mogę teraz ufać danym?",
+    "Co mówi prognoza awarii?",
+    "Pokaż zdjęcia zalanych terenów"
+   ],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/health",
+      "kind": "page",
+      "label": "System health page",
+      "page": "health"
+     },
+     {
+      "href": "/forecast",
+      "kind": "page",
+      "label": "Forecast page",
+      "page": "forecast"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "Czy mogę teraz ufać danym?",
+     "Co mówi prognoza awarii?",
+     "Pokaż zdjęcia zalanych terenów"
+    ],
+    "tainted": false,
+    "text": "Świeżość danych, czyli to, czy źródła danych odświeżają się na czas, sprawdzisz na stronie System health, w zakładce Data. Ta strona pokazuje też, z jakich modeli korzysta platforma, wyniki kontroli czujników, aktywność AI i przyciski zatrzymania. Przycisk poniżej otwiera System health. Drugi przycisk prowadzi do strony Forecast, ale tam zobaczysz tylko prognozę awarii, a nie stan źródeł danych.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-30b8e8568e90"
+   ],
+   "latency_s": 1.31,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-OVR-002",
+   "lang": "en",
+   "persona": "ic_01",
+   "moment": "morning-after",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "user_reported",
+    "vague"
+   ],
+   "turns": [],
+   "question": "describe what is going on",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "pressure",
+     "Cedarfall",
+     "Laurelspur",
+     "outage",
+     "landfall"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Customers without power across the storm counties: 1,604,454, rising. For water, PS-17 and PS-23 are below the pressure floor with no backup power, and PS-38 and PS-52 run on generators. The Cedarfall boil-water notice is in force; the Laurelspur notice is waiting for signatures. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) was decided on time. Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) needs Command and Water operations to sign, due Sep 27, 09:05 ET. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) was missed.",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-38"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-52"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-POWER"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2219"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2207"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-AIK-RESTORE-ORDER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68",
+     "E69",
+     "E70",
+     "E71",
+     "E72",
+     "E73",
+     "E74",
+     "E75",
+     "E76",
+     "E77"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Briefing page",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "PS-38",
+      "kind": "asset",
+      "label": "Copperleaf pump station"
+     },
+     {
+      "id": "PS-52",
+      "kind": "asset",
+      "label": "Deerwater pump station"
+     },
+     {
+      "id": "DC-D3-PS17-POWER",
+      "kind": "decision",
+      "label": "Hook up the portable generator at PS-17"
+     },
+     {
+      "id": "FDR-AIK-2219",
+      "kind": "asset",
+      "label": "Feeder 2219"
+     },
+     {
+      "id": "FDR-AIK-2207",
+      "kind": "asset",
+      "label": "Feeder 2207 (feeds PS-17)"
+     },
+     {
+      "id": "DC-D3-AIK-RESTORE-ORDER",
+      "kind": "decision",
+      "label": "Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.customers_out": "1,604,454",
+     "E64.effective_decide_by": "Sep 27, 09:05 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Customers without power across the storm counties: 1,604,454, rising. For water, PS-17 and PS-23 are below the pressure floor with no backup power, and PS-38 and PS-52 run on generators. The Cedarfall boil-water notice is in force; the Laurelspur notice is waiting for signatures. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) was decided on time. Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) needs Command and Water operations to sign, due Sep 27, 09:05 ET. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) was missed.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-195b4fd9a74b"
+   ],
+   "latency_s": 14.61,
+   "usd": 0.05681,
+   "live_calls": 3
+  },
+  {
+   "id": "AB-OVR-018",
+   "lang": "pl",
+   "persona": "ic_01",
+   "moment": "morning-after",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "user_reported",
+    "vague"
+   ],
+   "turns": [],
+   "question": "Opisz mi szczegółowo, co się dzieje, i wyjaśnij to.",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "ciśnieni",
+     "Cedarfall",
+     "Laurelspur"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Prąd: w hrabstwach objętych burzą bez zasilania jest 1,604,454 odbiorców, w 117 hrabstwach, trend rośnie. Woda: pompownie PS-17 i PS-23 mają ciśnienie poniżej progu bez zasilania awaryjnego, a PS-38 i PS-52 pracują na generatorach. Powiadomienie o wodzie w strefie Cedarfall jest wydane. Decyzja Dostarczenie paliwa do PS-17 (DC-D3-PS17-FUEL) wygasła, a Zabezpieczenie wody dla szpitala Tallowbranch (DC-D3-HSP-TALLOWBRANCH-WATER) też. Do podpisu: Ustalenie kolejności przywracania FDR-AIK-2219 i FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) wymaga podpisu Command i Water operations, termin Sep 27, 09:05 ET. Pozostałe decyzje są na stronie Decisions.",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-38"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-52"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-HSP-TALLOWBRANCH-WATER"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2219"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2207"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-AIK-RESTORE-ORDER"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68",
+     "E69",
+     "E70",
+     "E71",
+     "E72",
+     "E73",
+     "E74",
+     "E75",
+     "E76",
+     "E77",
+     "E78",
+     "E79",
+     "E80",
+     "E81",
+     "E82",
+     "E83",
+     "E84",
+     "E85",
+     "E86",
+     "E87",
+     "E88",
+     "E89",
+     "E90",
+     "E91",
+     "E92",
+     "E93",
+     "E94",
+     "E95",
+     "E96",
+     "E97",
+     "E98",
+     "E99",
+     "E100",
+     "E101",
+     "E102",
+     "E103"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Briefing page",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "PS-38",
+      "kind": "asset",
+      "label": "Copperleaf pump station"
+     },
+     {
+      "id": "PS-52",
+      "kind": "asset",
+      "label": "Deerwater pump station"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     },
+     {
+      "id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+      "kind": "decision",
+      "label": "Secure water supply to Tallowbranch hospital"
+     },
+     {
+      "id": "FDR-AIK-2219",
+      "kind": "asset",
+      "label": "Feeder 2219"
+     },
+     {
+      "id": "FDR-AIK-2207",
+      "kind": "asset",
+      "label": "Feeder 2207 (feeds PS-17)"
+     },
+     {
+      "id": "DC-D3-AIK-RESTORE-ORDER",
+      "kind": "decision",
+      "label": "Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.counties_with_outages": "117",
+     "E2.customers_out": "1,604,454",
+     "E64.effective_decide_by": "Sep 27, 09:05 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Prąd: w hrabstwach objętych burzą bez zasilania jest 1,604,454 odbiorców, w 117 hrabstwach, trend rośnie. Woda: pompownie PS-17 i PS-23 mają ciśnienie poniżej progu bez zasilania awaryjnego, a PS-38 i PS-52 pracują na generatorach. Powiadomienie o wodzie w strefie Cedarfall jest wydane. Decyzja Dostarczenie paliwa do PS-17 (DC-D3-PS17-FUEL) wygasła, a Zabezpieczenie wody dla szpitala Tallowbranch (DC-D3-HSP-TALLOWBRANCH-WATER) też. Do podpisu: Ustalenie kolejności przywracania FDR-AIK-2219 i FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) wymaga podpisu Command i Water operations, termin Sep 27, 09:05 ET. Pozostałe decyzje są na stronie Decisions.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-b1657aa89c23"
+   ],
+   "latency_s": 19.35,
+   "usd": 0.08931,
+   "live_calls": 4
+  },
+  {
+   "id": "AB-PHO-001",
+   "lang": "pl",
+   "persona": "ic_01",
+   "moment": "morning-after",
+   "page": "crews",
+   "klass": "photos",
+   "tags": [
+    "user_reported",
+    "no_diacritics"
+   ],
+   "turns": [],
+   "question": "pokaz zdjecia powodzi",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 3
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": true
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "Poniżej widzisz 6 zdjęć powodzi z kolejki, która liczy 200 zdjęć uszkodzeń (38 z nich pokazuje zalanie). Są na nich zalane budynki, w tym przy Feeder 2238, uszkodzone drzewa przy Feeder 2219, a także gruz i budynki dotknięte powodzią. Uwaga: to zdjęcia zastępcze ze zbioru MITLL LADI-v2 (licencja CC-BY-4.0), z katastrof w USA z 2023 roku, więc nie zostały zrobione na terenie SGW podczas Heleny. Model tylko ustawia je w kolejności, a każde zdjęcie potwierdza recenzent. Przycisk poniżej otwiera zakładkę Damage photos na stronie Crews, gdzie jest cała kolejka i wyniki każdego zdjęcia.",
+   "links": [
+    {
+     "page": "crews",
+     "href": "/crews?tab=photos"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    }
+   ],
+   "photos": 6,
+   "suggestions": [
+    "Które decyzje są najpilniejsze?",
+    "Co się teraz dzieje?",
+    "Które obiekty są zagrożone?"
+   ],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/crews?tab=photos",
+      "kind": "photo",
+      "label": "Damage photos on the Crews page",
+      "page": "crews"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Crews page",
+      "page": "crews"
+     }
+    ],
+    "path": "guide",
+    "photos": [
+     {
+      "caption": "Flooding, flooded buildings near Feeder 2238",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-0924",
+      "photo_id": "ladi-v2-test-0924",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-0924"
+     },
+     {
+      "caption": "Flooding, damaged trees near Feeder 2219",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-0223",
+      "photo_id": "ladi-v2-test-0223",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-0223"
+     },
+     {
+      "caption": "Flooding, flooded buildings",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-0911",
+      "photo_id": "ladi-v2-test-0911",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-0911"
+     },
+     {
+      "caption": "Flooding, flooded buildings",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-1042",
+      "photo_id": "ladi-v2-test-1042",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-1042"
+     },
+     {
+      "caption": "Flooding, affected buildings",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-1036",
+      "photo_id": "ladi-v2-test-1036",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-1036"
+     },
+     {
+      "caption": "Flooding, debris",
+      "href": "/crews?tab=photos&photo=ladi-v2-test-1022",
+      "photo_id": "ladi-v2-test-1022",
+      "provenance": "MITLL/LADI-v2-dataset aerial photo (CC-BY-4.0); benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+      "thumb_url": "/api/damage/thumbs/ladi-v2-test-1022"
+     }
+    ],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "Które decyzje są najpilniejsze?",
+     "Co się teraz dzieje?",
+     "Które obiekty są zagrożone?"
+    ],
+    "tainted": false,
+    "text": "Poniżej widzisz 6 zdjęć powodzi z kolejki, która liczy 200 zdjęć uszkodzeń (38 z nich pokazuje zalanie). Są na nich zalane budynki, w tym przy Feeder 2238, uszkodzone drzewa przy Feeder 2219, a także gruz i budynki dotknięte powodzią. Uwaga: to zdjęcia zastępcze ze zbioru MITLL LADI-v2 (licencja CC-BY-4.0), z katastrof w USA z 2023 roku, więc nie zostały zrobione na terenie SGW podczas Heleny. Model tylko ustawia je w kolejności, a każde zdjęcie potwierdza recenzent. Przycisk poniżej otwiera zakładkę Damage photos na stronie Crews, gdzie jest cała kolejka i wyniki każdego zdjęcia.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-2b025daa032c"
+   ],
+   "latency_s": 0.17,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-EXP-034",
+   "lang": "pl",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "klass": "explain",
+   "tags": [],
+   "turns": [],
+   "question": "Na czym polega zatwierdzenie awaryjne?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "awaryj",
+     "break-glass",
+     "podpis"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "not_in_documents",
+   "reason": "model_not_in_documents",
+   "text": "Zatwierdzenie awaryjne to tryb, w którym Dowódca Incydentu (Incident Commander) może zatwierdzić decyzję samodzielnie, podając pisemne uzasadnienie. Druga drużyna musi jednak współpodpisać taką decyzję w ciągu 24 godzin, a każde zatwierdzenie awaryjne jest potem sprawdzane. Zasady dla konkretnej decyzji znajdziesz na jej karcie Signatures (Podpisy), a przycisk poniżej otwiera stronę Decisions, gdzie można wybrać decyzję i ją przeczytać.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [
+     "Które terminy zostały przekroczone?",
+     "Które decyzje są najpilniejsze?",
+     "Czy mogę teraz ufać danym?"
+    ],
+    "evidence_ids": [
+     "E1"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     }
+    ],
+    "path": "not_in_documents",
+    "photos": [],
+    "reason": "model_not_in_documents",
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Zatwierdzenie awaryjne to tryb, w którym Dowódca Incydentu (Incident Commander) może zatwierdzić decyzję samodzielnie, podając pisemne uzasadnienie. Druga drużyna musi jednak współpodpisać taką decyzję w ciągu 24 godzin, a każde zatwierdzenie awaryjne jest potem sprawdzane. Zasady dla konkretnej decyzji znajdziesz na jej karcie Signatures (Podpisy), a przycisk poniżej otwiera stronę Decisions, gdzie można wybrać decyzję i ją przeczytać.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-81a3364c77bb"
+   ],
+   "latency_s": 3.99,
+   "usd": 0.05912,
+   "live_calls": 1
+  },
+  {
+   "id": "AB-NEAR-016",
+   "lang": "pl",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "near_miss",
+   "tags": [],
+   "turns": [],
+   "question": "Czy jest komunikat o gotowaniu wody dla Millpond?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater",
+     "Cedarfall"
+    ],
+    "mentions_all": [
+     "Millpond"
+    ],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": true,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": true,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Nie ma w dokumentach informacji o komunikacie o gotowaniu wody dla strefy Millpond. Millpond występuje tylko jako zajezdnia ekip (Pre-position crews at Sandhill and Millpond yards, DC-D2-CREWS-AIK). Komunikaty o gotowaniu wody dotyczą stref Cedarfall, Laurelspur, Deerwater i Copperleaf.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-CREWS-AIK"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D2-CREWS-AIK",
+      "kind": "decision",
+      "label": "Pre-position crews at Sandhill and Millpond yards"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Nie ma w dokumentach informacji o komunikacie o gotowaniu wody dla strefy Millpond. Millpond występuje tylko jako zajezdnia ekip (Pre-position crews at Sandhill and Millpond yards, DC-D2-CREWS-AIK). Komunikaty o gotowaniu wody dotyczą stref Cedarfall, Laurelspur, Deerwater i Copperleaf.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-9b8ca200e09c"
+   ],
+   "latency_s": 12.69,
+   "usd": 0.04242,
+   "live_calls": 3
+  },
+  {
+   "id": "AB-OVR-023",
+   "lang": "pl",
+   "persona": "exec_01",
+   "moment": "notices-lifted",
+   "page": "brief",
+   "klass": "overview",
+   "tags": [
+    "no_diacritics",
+    "vague"
+   ],
+   "turns": [],
+   "question": "jak wyglada sytuacja teraz",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "komunikat",
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Sytuacja: liczba odbiorców bez prądu w hrabstwach objętych burzą to 168,598 i spada. Żadna decyzja nie czeka na podpis Executive. Woda: ciśnienie w PS-17, PS-23, PS-38 i PS-52 nie jest poniżej progu, a żadna stacja nie pracuje na zasilaniu awaryjnym. Ostrzeżenie o przegotowaniu wody dla Cedarfall zostało zniesione, dla Laurelspur i Copperleaf nadal obowiązuje, a zniesienie czeka na podpisy (Sep 30, 10:30 ET, Sep 30, 17:41 ET).",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-38"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-52"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Briefing page",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "PS-38",
+      "kind": "asset",
+      "label": "Copperleaf pump station"
+     },
+     {
+      "id": "PS-52",
+      "kind": "asset",
+      "label": "Deerwater pump station"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.customers_out": "168,598",
+     "E66.effective_decide_by": "Sep 30, 10:30 ET",
+     "E67.effective_decide_by": "Sep 30, 17:41 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Sytuacja: liczba odbiorców bez prądu w hrabstwach objętych burzą to 168,598 i spada. Żadna decyzja nie czeka na podpis Executive. Woda: ciśnienie w PS-17, PS-23, PS-38 i PS-52 nie jest poniżej progu, a żadna stacja nie pracuje na zasilaniu awaryjnym. Ostrzeżenie o przegotowaniu wody dla Cedarfall zostało zniesione, dla Laurelspur i Copperleaf nadal obowiązuje, a zniesienie czeka na podpisy (Sep 30, 10:30 ET, Sep 30, 17:41 ET).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-0bc20a0e69bc"
+   ],
+   "latency_s": 16.11,
+   "usd": 0.06234,
+   "live_calls": 3
+  }
+ ]
+}

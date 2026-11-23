@@ -1,0 +1,25 @@
+title = "SGW Resilience Decision Platform"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "anthropic-key-any"
+description = "Anthropic API key or any sk-ant- prefixed credential"
+regex = '''sk-ant-[A-Za-z0-9_-]{20,}'''
+keywords = ["sk-ant-"]
+tags = ["anthropic", "sgw"]
+
+[[rules]]
+id = "sgw-integration-token"
+description = "SGW integration API bearer token (sgwi_<token_id>_<64 hex>)"
+regex = '''sgwi_itk[0-9a-f]{12}_[0-9a-f]{64}'''
+keywords = ["sgwi_itk"]
+tags = ["sgw", "integration"]
+
+[[rules]]
+id = "sgw-webhook-secret"
+description = "SGW webhook signing secret (whsec_<43 url-safe characters>)"
+regex = '''whsec_[A-Za-z0-9_-]{43}'''
+keywords = ["whsec_"]
+tags = ["sgw", "integration"]

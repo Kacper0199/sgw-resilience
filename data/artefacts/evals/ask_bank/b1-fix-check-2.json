@@ -1,0 +1,420 @@
+{
+ "meta": {
+  "label": "b1-fix-check-2",
+  "commit": "7e4cfb3",
+  "split": "dev",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R34",
+  "started_utc": "2026-11-22T03:57:20Z",
+  "seconds": 35.2,
+  "gateway_counters_delta": {
+   "replay_hits": 0,
+   "live_cache_hits": 6,
+   "replay_misses": 0,
+   "live_calls": 10,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 2,
+  "passed": 2,
+  "pass_rate": 1.0,
+  "infra": 0,
+  "valid": {
+   "n": 2,
+   "passed": 2,
+   "pass_rate": 1.0
+  },
+  "usd": 0.0901,
+  "usd_per_item": 0.04507,
+  "live_calls": 10,
+  "latency_p50_s": 13.17,
+  "latency_p95_s": 25.76,
+  "errors": 0,
+  "grader_failures": {},
+  "paths": {
+   "guide": 1,
+   "llm": 1
+  },
+  "reasons": {
+   "None": 2
+  }
+ },
+ "by": {
+  "klass": {
+   "explain": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "followup": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "persona": {
+   "exec_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "ops_dm_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "lang": {
+   "de": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "en": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "moment": {
+   "at-n1": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   }
+  },
+  "page": {
+   "decisions": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "forecast": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   }
+  }
+ },
+ "by_tag": {
+  "link_request": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  },
+  "other_language": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  }
+ },
+ "items": [
+  {
+   "id": "AB-EXP-037",
+   "lang": "de",
+   "persona": "exec_01",
+   "moment": "at-n1",
+   "page": "forecast",
+   "klass": "explain",
+   "tags": [
+    "other_language"
+   ],
+   "turns": [],
+   "question": "Was bedeutet ETR?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Wiederherstell",
+     "wieder Strom",
+     "Restoration"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "ETR steht für \"Estimated Time of Restoration\", also den voraussichtlichen Zeitpunkt, zu dem die Kundinnen und Kunden wieder Strom haben. Die Plattform nennt dafür einen Mittelwert (Median) und einen Bereich. Es gibt eine globale ETR für das gesamte System, nämlich wenn 90 % der Kunden mit dem Spitzenwert der Ausfälle wieder versorgt sind, und eine ETR pro Gebiet für jeden Einsatzbereich. Wie genau frühere Schätzungen waren, sehen Sie im Reiter \"ETR accuracy\" auf der After-action-Seite, die der Button unten öffnet. Die tatsächlichen Werte sind dort simuliert, das ist also Übung und kein Feldnachweis.",
+   "links": [
+    {
+     "page": "after_action",
+     "href": "/after-action"
+    },
+    {
+     "page": "help",
+     "href": "/help"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "What is going on right now?",
+    "Which decisions are due next?",
+    "What does the outage forecast say?"
+   ],
+   "language_detected": "de",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/after-action",
+      "kind": "page",
+      "label": "After-action page",
+      "page": "after_action"
+     },
+     {
+      "href": "/help",
+      "kind": "help",
+      "label": "Help page",
+      "page": "help"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "What is going on right now?",
+     "Which decisions are due next?",
+     "What does the outage forecast say?"
+    ],
+    "tainted": false,
+    "text": "ETR steht für \"Estimated Time of Restoration\", also den voraussichtlichen Zeitpunkt, zu dem die Kundinnen und Kunden wieder Strom haben. Die Plattform nennt dafür einen Mittelwert (Median) und einen Bereich. Es gibt eine globale ETR für das gesamte System, nämlich wenn 90 % der Kunden mit dem Spitzenwert der Ausfälle wieder versorgt sind, und eine ETR pro Gebiet für jeden Einsatzbereich. Wie genau frühere Schätzungen waren, sehen Sie im Reiter \"ETR accuracy\" auf der After-action-Seite, die der Button unten öffnet. Die tatsächlichen Werte sind dort simuliert, das ist also Übung und kein Feldnachweis.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-de6b108edd88"
+   ],
+   "latency_s": 0.57,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-FUP-006",
+   "lang": "en",
+   "persona": "ops_dm_01",
+   "moment": "at-n1",
+   "page": "decisions",
+   "klass": "followup",
+   "tags": [
+    "link_request"
+   ],
+   "turns": [
+    "What is the most important decision right now?"
+   ],
+   "question": "Open it.",
+   "expect": {
+    "answer": true,
+    "links": [
+     "decisions"
+    ],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": true,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Opening Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) sets Sep 27, 02:29 ET in motion, and it can be decided before the next advisory. The effective decide-by is Sep 26, 23:29 ET. It is not in the decision queue, so its owner and signers are missing. It needs Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) and Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK) first; Logistics, Command and Logistics sign those, not Operations.",
+   "links": [
+    {
+     "page": "help",
+     "href": "/help"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-POWER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-CREWS-AIK"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [
+    "The most urgent decision is Hook up the portable generator at PS-17 (DC-D3-PS17-POWER): decide before the next advisory, and it is on the critical path. Operations does not sign it; it needs DC-D3-PS17-FUEL and DC-D2-CREWS-AIK first. Your decision is Declare a major storm event (DC-D1-EX-03-EVENT-TYPE-MAJOR), effective deadline Sep 26, 16:30 ET. The generator's effective deadline is Sep 26, 23:29 ET."
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/help",
+      "kind": "help",
+      "label": "Help page",
+      "page": "help"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "DC-D3-PS17-POWER",
+      "kind": "decision",
+      "label": "Hook up the portable generator at PS-17"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     },
+     {
+      "id": "DC-D2-CREWS-AIK",
+      "kind": "decision",
+      "label": "Pre-position crews at Sandhill and Millpond yards"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.consequence": "Sep 27, 02:29 ET",
+     "E2.effective_decide_by": "Sep 26, 23:29 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Opening Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) sets Sep 27, 02:29 ET in motion, and it can be decided before the next advisory. The effective decide-by is Sep 26, 23:29 ET. It is not in the decision queue, so its owner and signers are missing. It needs Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) and Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK) first; Logistics, Command and Logistics sign those, not Operations.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-a088f0e590e3",
+    "run-a4c884a6efee"
+   ],
+   "latency_s": 25.76,
+   "usd": 0.09013,
+   "live_calls": 10
+  }
+ ]
+}

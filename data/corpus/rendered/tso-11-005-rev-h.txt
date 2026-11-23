@@ -1,0 +1,190 @@
+SGW  TRANSMISSION & SUBSTATION MANUAL
+
+TSO 11.005 Rev H
+SYSTEM RESTORATION PLAN SUMMARY (EOP-005 OPERATING PLAN)
+
++----------------------------------------------------------------------------------------------+
+| Document: TSO 11.005 Rev H                                                                   |
+| Effective: 2024-03-11                                                                        |
+| Supersedes: TSO 11.005 Rev G (eff. 2023-03-06)                                               |
+| Owner: Distribution Operations                                                               |
+| Subject Matter Expert: Lumpkin, Harlan E.                                                    |
+| Periodic review due: 2025-02-28                                                              |
+| Classification: SGW Internal - Controlled                                                    |
+| Approved: Manager, Transmission Operations, Pettigrew, Anselm K., 2024-03-01                 |
+| Approved: Vice President, Emergency Management, Wingard, Lorraine T., 2024-03-04             |
+| Applies to: SC, GA systems                                                                   |
++----------------------------------------------------------------------------------------------+
+
+REVISION SUMMARY
+
++-----+------------+---------+-----------------------------------------------------------------+
+| Rev | Date       | Section | Change                                                          |
++=====+============+=========+=================================================================+
+| H   | 2024-03-11 | R1.4    | Brier Landing CT-2 Mvar capability updated after 2023 reactive  |
+|     |            |         | test.                                                           |
+| H   | 2024-03-11 | R1.5    | Cranking path CP-3 rerouted through SUB-AIK-GADSBYNECK.         |
+| H   | 2024-03-11 | R1.2    | No changes.                                                     |
++-----+------------+---------+-----------------------------------------------------------------+
+
+1.0 PURPOSE
+
+This document summarizes the SGW Transmission Operator (TOP) System Restoration Plan required by
+NERC EOP-005-3 R1. The full plan, switching sheets and cranking path drawings are held by
+Transmission Operations and provided to the Reliability Coordinator (RC). This summary is the
+version used in the EOC.
+
+2.0 SCOPE
+
+Restoration of the SGW Bulk Electric System after a total or partial system blackout in South
+Carolina and east Georgia. Distribution restoration after the transmission system is stable
+follows DOM 14.215, DOM 14.130 and the hazard annexes.
+
+3.0 RESPONSIBILITIES
+
+3.1 The TOP shift supervisor directs restoration switching until the RC assigns other direction.
+
+3.2 The Manager, Transmission Operations coordinates with the RC and the Balancing Authority
+    (BA), and keeps this plan current.
+
+3.3 The Incident Commander is told of each restoration milestone through the EOC bridge.
+
+TSO 11.005 Rev H | SGW Internal - Controlled | Page 1 of 5
+
+SGW | TSO 11.005 System Restoration Plan Summary (EOP-005 Operating Plan)                  Rev H
+
+4.0 PLAN ELEMENTS (EOP-005-3 R1.1 TO R1.9)
+
+4.1 R1.1 Strategies
+
+SGW restores from its own Blackstart Resources toward three islands (Aiken, Midlands and
+Coastal), each built from a blackstart unit along a cranking path to a large unit. Islands are
+synchronized to each other and to neighboring systems only under RC direction. The strategy
+follows the RC restoration plan and is reviewed with the RC each year.
+
+4.2 R1.2 Nuclear Off-Site Power
+
+No nuclear plant draws off-site power from the SGW transmission system. Off-site power
+arrangements of neighboring nuclear plants rest with their host TOPs. SGW confirms this each
+year in the review with the RC.
+
+4.3 R1.3 Interconnections
+
+Interconnections with neighboring TOPs are restored in the order agreed with the RC. Each tie is
+closed only after the RC confirms frequency and phase angle at both ends. Synchronizing is done
+at breakers with synchroscope or sync-check relays listed in the full plan.
+
+4.4 R1.4 Blackstart Resources
+
++--------------------+--------------------+----------+-------------------+---------------------+
+| Blackstart         | Location           | MW (net) | Mvar (lag / lead) | Type                |
+| Resource           |                    |          |                   |                     |
++====================+====================+==========+===================+=====================+
+| Kinard Shoals      | Edgefield County,  | 42       | 18 / 12           | Hydro               |
+| Hydro Unit 3       | SC                 |          |                   |                     |
+| Brier Landing CT-2 | Barnwell County,   | 68       | 31 / 22           | Combustion turbine, |
+|                    | SC                 |          |                   | diesel start        |
+| Tobias Ferry       | Columbia County,   | 11.2     | 6 / 3             | Reciprocating       |
+| Diesel Block (4    | GA                 |          |                   | diesel              |
+| units)             |                    |          |                   |                     |
++--------------------+--------------------+----------+-------------------+---------------------+
+
+Each Blackstart Resource is tested at least every 3 years under the testing requirements in
+chapter 5 of the full plan; testing records are kept by Generation Operations.
+
+4.5 R1.5 Cranking Paths and Initial Switching
+
+TSO 11.005 Rev H | SGW Internal - Controlled | Page 2 of 5
+
+SGW | TSO 11.005 System Restoration Plan Summary (EOP-005 Operating Plan)                  Rev H
+
++------+---------------------+---------------------+---------------------+---------------------+
+| Path | From                | To (unit to be      | Via                 | Initial switching   |
+|      |                     | started)            |                     | sheet               |
++======+=====================+=====================+=====================+=====================+
+| CP-1 | Kinard Shoals Hydro | Cawthorne Bluff     | SUB-AIK-BRAMBLEGATE | RS-01               |
+|      |                     | combined cycle      | 115 kV              |                     |
+| CP-2 | Brier Landing CT-2  | Brier Landing steam | Plant bus, direct   | RS-02               |
+|      |                     | unit 1              |                     |                     |
+| CP-3 | Tobias Ferry Diesel | Brier Landing CT-2  | SUB-AIK-GADSBYNECK  | RS-03               |
+|      | Block               | (alternate start)   | 115 kV              |                     |
++------+---------------------+---------------------+---------------------+---------------------+
+
+Open all breakers on the path before energizing. Pick up shunt reactors before line charging
+where listed on the switching sheet.
+
+4.6 R1.6 Voltage and Frequency Limits
+
++------------------------------------+-----------------------------------------------------+
+| Parameter                          | Limit during restoration                            |
++====================================+=====================================================+
+| Transmission voltage               | 0.90 to 1.08 per unit                               |
+| Frequency, island                  | 59.5 to 60.5 Hz before adding load                  |
+| Frequency, minimum after load step | 59.2 Hz                                             |
+| Load step size                     | not more than 5 percent of online island generation |
++------------------------------------+-----------------------------------------------------+
+
+4.7 R1.7 Loads Required to Restore the System
+
+Restore in this order: station service at blackstart and cranking path substations; station
+service for the units to be started; load to stabilize generation and frequency, chosen from
+feeders serving critical facilities (DOM 14.140, flag codes CF-1 and CF-2), including
+FDR-AIK-2207; load for voltage control.
+
+4.8 R1.8 Reconnecting Restored Areas
+
+Restored areas are reconnected to the island only when voltage and frequency are inside R1.6
+limits on both sides. Under-frequency load shedding relays are re-armed before each
+reconnection.
+
+4.9 R1.9 Transfer of Authority to the BA
+
+Authority for generation dispatch and frequency control returns to the BA when the RC criteria
+are met and the RC directs the transfer. The TOP shift supervisor logs the time.
+
+5.0 REQUIREMENT CROSS-REFERENCE
+
+TSO 11.005 Rev H | SGW Internal - Controlled | Page 3 of 5
+
+SGW | TSO 11.005 System Restoration Plan Summary (EOP-005 Operating Plan)                  Rev H
+
++--------------------------+-------------------------+---------------------------------------+
+| EOP-005-3 item           | Section of this summary | Full plan chapter                     |
++==========================+=========================+=======================================+
+| R1.1                     | 4.1                     | 2                                     |
+| R1.2                     | 4.2                     | 3                                     |
+| R1.3                     | 4.3                     | 4                                     |
+| R1.4                     | 4.4                     | 5                                     |
+| R1.5                     | 4.5                     | 6 and switching sheets RS-01 to RS-03 |
+| R1.6                     | 4.6                     | 7                                     |
+| R1.7                     | 4.7                     | 8                                     |
+| R1.8                     | 4.8                     | 9                                     |
+| R1.9                     | 4.9                     | 10                                    |
+| R3 (annual review to RC) | 6.0                     | 1                                     |
++--------------------------+-------------------------+---------------------------------------+
+
+6.0 ANNUAL REVIEW
+
+The plan is reviewed each year and submitted to the RC by 1 March. Changes to Blackstart
+Resources or cranking paths are submitted within 90 days of the change.
+
+TSO 11.005 Rev H | SGW Internal - Controlled | Page 4 of 5
+
+SGW | TSO 11.005 System Restoration Plan Summary (EOP-005 Operating Plan)                  Rev H
+
+ATTACHMENT 1 - Review Signature Sheet
+
++-------------+-------------------------+----------------------+-------------+-----------------+
+| Review year | Reviewed by (position)  | Name                 | Date signed | Submitted to RC |
++=============+=========================+======================+=============+=================+
+| 2024        | Manager, Transmission   | Pettigrew, Anselm K. | 2024-02-26  | 2024-02-28      |
+|             | Operations              |                      |             |                 |
+| 2023        | Manager, Transmission   | Pettigrew, Anselm K. | 2023-02-20  | 2023-02-24      |
+|             | Operations              |                      |             |                 |
+| 2022        | Manager, Transmission   | Pettigrew, Anselm K. | 2022-02-21  | 2022-02-25      |
+|             | Operations              |                      |             |                 |
++-------------+-------------------------+----------------------+-------------+-----------------+
+
+Printed copies are uncontrolled. Confirm the current revision in DocCtl before use.
+
+TSO 11.005 Rev H | SGW Internal - Controlled | Page 5 of 5

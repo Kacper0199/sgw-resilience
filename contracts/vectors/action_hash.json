@@ -1,0 +1,118 @@
+{
+  "algorithm": "SHA-256 over RFC 8785 canonical JSON",
+  "vectors": [
+    {
+      "name": "crews_v1",
+      "input": {
+        "material": {
+          "action_type": "preposition_crews",
+          "params": {
+            "crews_at_STG-AIK-SANDHILL-YARD": 14,
+            "crews_at_STG-RCH-MILLPOND-YARD": 9,
+            "envelope_pct": 20
+          },
+          "target_ids": [
+            "STG-AIK-SANDHILL-YARD",
+            "STG-RCH-MILLPOND-YARD"
+          ],
+          "risk_band": "high",
+          "preconditions": {
+            "roads_open_to_yards": true,
+            "mutual_aid_confirmed": false
+          },
+          "tier": "T3",
+          "escalators": [
+            "helene_scale",
+            "targets_gt_10_or_cost"
+          ],
+          "retracted_evidence_ids": []
+        },
+        "policy_version": "policy-2026.11.19-w0",
+        "tier": "T3"
+      },
+      "canonical": "{\"material\":{\"action_type\":\"preposition_crews\",\"escalators\":[\"helene_scale\",\"targets_gt_10_or_cost\"],\"params\":{\"crews_at_STG-AIK-SANDHILL-YARD\":14,\"crews_at_STG-RCH-MILLPOND-YARD\":9,\"envelope_pct\":20},\"preconditions\":{\"mutual_aid_confirmed\":false,\"roads_open_to_yards\":true},\"retracted_evidence_ids\":[],\"risk_band\":\"high\",\"target_ids\":[\"STG-AIK-SANDHILL-YARD\",\"STG-RCH-MILLPOND-YARD\"],\"tier\":\"T3\"},\"policy_version\":\"policy-2026.11.19-w0\",\"tier\":\"T3\"}",
+      "sha256": "ab96eb6660ea811c4dd9269f4a69e33ec81de01ac87c2058c4f724c138fc5eaf"
+    },
+    {
+      "name": "crews_v2",
+      "input": {
+        "material": {
+          "action_type": "preposition_crews",
+          "params": {
+            "crews_at_STG-AIK-SANDHILL-YARD": 18,
+            "crews_at_STG-RCH-MILLPOND-YARD": 9,
+            "envelope_pct": 20
+          },
+          "target_ids": [
+            "STG-AIK-SANDHILL-YARD",
+            "STG-RCH-MILLPOND-YARD"
+          ],
+          "risk_band": "high",
+          "preconditions": {
+            "roads_open_to_yards": true,
+            "mutual_aid_confirmed": false
+          },
+          "tier": "T3",
+          "escalators": [
+            "helene_scale",
+            "targets_gt_10_or_cost"
+          ],
+          "retracted_evidence_ids": []
+        },
+        "policy_version": "policy-2026.11.19-w0",
+        "tier": "T3"
+      },
+      "canonical": "{\"material\":{\"action_type\":\"preposition_crews\",\"escalators\":[\"helene_scale\",\"targets_gt_10_or_cost\"],\"params\":{\"crews_at_STG-AIK-SANDHILL-YARD\":18,\"crews_at_STG-RCH-MILLPOND-YARD\":9,\"envelope_pct\":20},\"preconditions\":{\"mutual_aid_confirmed\":false,\"roads_open_to_yards\":true},\"retracted_evidence_ids\":[],\"risk_band\":\"high\",\"target_ids\":[\"STG-AIK-SANDHILL-YARD\",\"STG-RCH-MILLPOND-YARD\"],\"tier\":\"T3\"},\"policy_version\":\"policy-2026.11.19-w0\",\"tier\":\"T3\"}",
+      "sha256": "d22bd66a89285fd2102a0e7c3a0d45178fa02896a9164508355973ff84ea737b"
+    },
+    {
+      "name": "ps17_priority",
+      "input": {
+        "material": {
+          "action_type": "cross_domain_priority",
+          "params": {
+            "restore_first": "FDR-AIK-2207",
+            "restore_after": "FDR-AIK-2219",
+            "portable_generator_kw": 500
+          },
+          "target_ids": [
+            "FDR-AIK-2207",
+            "PS-17"
+          ],
+          "risk_band": "very_high",
+          "preconditions": {
+            "hospital_on_own_generator": true,
+            "ps17_onsite_generator": false
+          },
+          "tier": "T3",
+          "escalators": [
+            "critical_facility",
+            "cross_domain"
+          ],
+          "retracted_evidence_ids": []
+        },
+        "policy_version": "policy-2026.11.19-w0",
+        "tier": "T3"
+      },
+      "canonical": "{\"material\":{\"action_type\":\"cross_domain_priority\",\"escalators\":[\"critical_facility\",\"cross_domain\"],\"params\":{\"portable_generator_kw\":500,\"restore_after\":\"FDR-AIK-2219\",\"restore_first\":\"FDR-AIK-2207\"},\"preconditions\":{\"hospital_on_own_generator\":true,\"ps17_onsite_generator\":false},\"retracted_evidence_ids\":[],\"risk_band\":\"very_high\",\"target_ids\":[\"FDR-AIK-2207\",\"PS-17\"],\"tier\":\"T3\"},\"policy_version\":\"policy-2026.11.19-w0\",\"tier\":\"T3\"}",
+      "sha256": "8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4"
+    },
+    {
+      "name": "unicode_and_ordering",
+      "input": {
+        "z": [
+          3,
+          1,
+          2
+        ],
+        "a": {
+          "é": true,
+          "b": null
+        },
+        "m": "line\n"
+      },
+      "canonical": "{\"a\":{\"b\":null,\"é\":true},\"m\":\"line\\n\",\"z\":[3,1,2]}",
+      "sha256": "092d703a980fea74ec263830465e5c9eedf7c34ba2eccb763fdb838c19b94520"
+    }
+  ]
+}

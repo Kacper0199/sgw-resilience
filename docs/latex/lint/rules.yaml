@@ -1,0 +1,74 @@
+# Prose rules for every SGW document (plain language, consistent naming).
+# Each rule: id, pattern (Python regex), severity (error | advice), case (sensitive | insensitive), message.
+rules:
+  - id: hype-word
+    pattern: '\b(leverag\w*|seamless\w*|cutting-edge|novel|groundbreaking|delv\w*|crucial|pivotal|comprehensive|furthermore|moreover|notably|utili[sz]\w*|revolutionary|game-chang\w*|synerg\w*|unlock\w*|empower\w*|best-in-class|world-class|AI-powered|next-generation)\b'
+    severity: error
+    case: insensitive
+    message: hype word; name the concrete thing instead
+  - id: weak-word
+    pattern: '\b(robust|significantly|state-of-the-art|might|very|simply|just)\b'
+    severity: advice
+    case: insensitive
+    message: weak or vague word; "significantly" only with a statistical test
+  - id: first-person-plural
+    pattern: '\b(we|We|our|Our|ours|us|ourselves)\b'
+    severity: error
+    case: sensitive
+    message: no "we" in deliverables; write about the platform, SGW or A
+  - id: em-dash
+    pattern: '(---|—|\s--\s)'
+    severity: error
+    case: sensitive
+    message: no em dashes; split the sentence or use a comma
+  - id: semicolon
+    pattern: ';'
+    severity: error
+    case: sensitive
+    message: no semicolons in prose; use two sentences
+  - id: consultancy-name
+    pattern: '\bCompany\s+"?A"?(?![\w-])'
+    severity: error
+    case: sensitive
+    message: the consultancy is only "A"
+  - id: invented-client
+    pattern: '\b(fictional|fictitious|anonymous|anonymi[sz]ed|imaginary|made-up)\b'
+    severity: error
+    case: insensitive
+    message: never call SGW or A fictional or anonymous
+  - id: product-name
+    pattern: '\bLeadtime\b'
+    severity: error
+    case: sensitive
+    message: product name is "SGW Resilience Decision Platform"; lead time is only a clock term
+  - id: module-name
+    pattern: '\bPicture\b'
+    severity: error
+    case: sensitive
+    message: the module is "Map", not "Picture"
+  - id: requirement-filler
+    pattern: '(\betc\.|\band/or\b|\bas appropriate\b|\bTBD\b)'
+    severity: error
+    case: insensitive
+    message: no "etc.", "and/or", "as appropriate" or bare TBD (use TBR with owner and date)
+  - id: planning-id
+    pattern: '\b(DC|WP|PA|NEW-[a-z]+)-\d{2,3}\b|\bD-0\d\d\b|\bO-\d\d\b'
+    severity: error
+    case: sensitive
+    message: internal planning ids stay out of deliverables
+  - id: exclamation
+    pattern: '!'
+    severity: advice
+    case: sensitive
+    message: no exclamation marks in professional prose
+
+# Digits in prose are errors: every number is a macro from data/numbers/numbers.yaml.
+# These patterns are removed before the digit check (identifiers, years, dates, standards).
+digit_allow:
+  - '\b\d{4}-\d{2}-\d{2}\b'                                  # ISO dates
+  - '\b(19|20)\d{2}\b'                                         # years
+  - '\b[A-Z][A-Za-z]*(-[A-Z]*\d+[a-z]?)+\b'                    # ids: PS-17, FR-01, CIP-007, EOP-008-2
+  - '\b[A-Z]{1,4}\d{1,3}[a-z]?\b'                              # short ids: D1, T3, A1, S16
+  - '\b(phase|phases|stage|gate|level|section|sections|appendix|page|pages|slide|table|figure|step|tier)\s*\d+(\s*(to|and|-)\s*\d+)?\b'
+  - '\b(WCAG|RMF|ISO/IEC/IEEE|ISO|NIST AI)\s*[\d.]+(:\d{4})?\b'
+  - '\bN\s?\+\s?1\b'                                           # next advisory, "advisory N+1"

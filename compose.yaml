@@ -1,0 +1,604 @@
+# SGW Resilience Decision Platform: local stack (PA 2.1).
+# Run through the CLI: `uv run sgw bootstrap` once, then `uv run sgw up` / `down` / `stats`.
+# Raw equivalent: docker compose --env-file var/compose.env --profile core up -d --wait
+# Services without a profile form `core`; `full` adds observability and fault injection (later waves).
+# Every host port binds to 127.0.0.1. Data services live on the internal `app` network only;
+# host access goes through the caddy relays (8000, 5001) and pg-port (5434).
+name: sgw
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-hardening: &hardening
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  logging: *logging
+  restart: unless-stopped
+
+x-audit-env: &audit-env
+  SGW_AUDIT_KEYRING: /var/lib/sgw/audit/keyring.json
+  SGW_AUDIT_ANCHORS_DIR: /var/lib/sgw/audit/anchors
+  SGW_AUDIT_ACTIVE_KEY: ${SGW_AUDIT_ACTIVE_KEY:-}
+
+# Only audit-checkpoint holds the Ed25519 private key and writes anchors; the api verifies with the
+# public keyring and reads anchors (read-only mount, SGW_AUDIT_SIGNING=0).
+x-audit-signer-volumes: &audit-signer-volumes
+  - ${SGW_VAR_DIR:-./var}/audit:/var/lib/sgw/audit
+  - ${SGW_SECRETS_DIR:-./var/secrets}/audit:/run/secrets/sgw-audit:ro
+
+x-audit-reader-volumes: &audit-reader-volumes
+  - ${SGW_VAR_DIR:-./var}/audit:/var/lib/sgw/audit:ro
+  - ${SGW_VAR_DIR:-./var}/cv:/app/var/cv:ro
+
+x-python: &python
+  <<: *hardening
+  image: sgw/python:${SGW_IMAGE_TAG:-dev}
+  build:
+    context: .
+    dockerfile: docker/python/Dockerfile
+    args:
+      GIT_SHA: ${SGW_GIT_SHA:-unknown}
+  read_only: true
+  tmpfs:
+    - /tmp:size=64m
+  pids_limit: 256
+  networks:
+    - app
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+  caddy:
+    <<: *hardening
+    image: sgw/caddy:${SGW_IMAGE_TAG:-dev}
+    build:
+      context: .
+      dockerfile: docker/caddy/Dockerfile
+      args:
+        GIT_SHA: ${SGW_GIT_SHA:-unknown}
+    cap_add:
+      - NET_BIND_SERVICE
+    user: "65534:65534"
+    read_only: true
+    tmpfs:
+      - /data:size=8m,uid=65534
+      - /config:size=8m,uid=65534
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8000:8000"
+    networks:
+      edge: {}
+      proxy:
+        ipv4_address: ${SGW_CADDY_PROXY_IP:-10.213.37.6}
+    mem_limit: 64m
+    memswap_limit: 64m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+      start_interval: 1s
+    depends_on:
+      api:
+        condition: service_healthy
+
+  api:
+    <<: *python
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/app.env
+        required: true
+    command: ["uvicorn", "sgw.api.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--no-server-header", "--proxy-headers", "--forwarded-allow-ips", "${SGW_CADDY_PROXY_IP:-10.213.37.6}"]
+    user: "${SGW_RUN_UID:-10001}:${SGW_RUN_GID:-10001}"
+    volumes: *audit-reader-volumes
+    networks:
+      - app
+      - proxy
+    environment:
+      <<: *audit-env
+      SGW_AUDIT_SIGNING: "0"
+      SGW_AUDIT_KEY_DIR: /run/secrets/sgw-audit
+      SGW_SERVICE: api
+      SGW_HEALTH_PORT: "8000"
+      DEMO_MODE: ${SGW_DEMO_MODE:-0}
+      SGW_COOKIE_SECURE: ${SGW_COOKIE_SECURE:-1}
+      SGW_DEMO_GOTO_DSN: ${SGW_DEMO_GOTO_DSN:-}
+      SGW_RUN_MODE: ${SGW_RUN_MODE:-replay}
+      SGW_GATEWAY_URL: http://llm-gateway:8100
+      SGW_OPA_URL: http://opa:8181
+      MLFLOW_TRACKING_URI: http://mlflow:5001
+      SGW_OPS_GATEWAY_URL: http://llm-gateway:8100
+      SGW_OPS_OPA_URL: http://opa:8181
+      SGW_OPS_FEED_PROBE: "1"
+      SGW_SCENARIO_JOBS_S: "5"
+      SGW_ZONE_RULES: "1"
+      SGW_SCENARIO_INJECTS: ${SGW_SCENARIO_INJECTS:-1}
+      SGW_INTEGRATION_KEY: ${SGW_INTEGRATION_KEY:-}
+      SGW_WEBHOOK_ALLOW_HOSTS: ${SGW_WEBHOOK_ALLOW_HOSTS:-}
+      FAULT_LLM_DOWN: ${FAULT_LLM_DOWN:-0}
+      FAULT_OPA_DOWN: ${FAULT_OPA_DOWN:-0}
+      FAULT_AUDIT_DOWN: ${FAULT_AUDIT_DOWN:-0}
+      FAULT_WEATHER_STALE: ${FAULT_WEATHER_STALE:-0}
+      FAULT_TELEMETRY_SPOOF: ${FAULT_TELEMETRY_SPOOF:-0}
+    mem_limit: 900m
+    memswap_limit: 900m
+    cpus: 2.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8000/readyz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+      start_interval: 2s
+
+  worker:
+    <<: *python
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/app.env
+        required: true
+    environment:
+      SGW_SERVICE: worker
+      SGW_HEALTH_PORT: "8001"
+      SGW_RUN_MODE: ${SGW_RUN_MODE:-replay}
+      SGW_OPA_URL: http://opa:8181
+      MLFLOW_TRACKING_URI: http://mlflow:5001
+    mem_limit: 1024m
+    memswap_limit: 1024m
+    cpus: 2.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8001/readyz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+      start_interval: 2s
+
+  webhooks:
+    <<: *python
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/app.env
+        required: true
+    command: ["python", "-m", "sgw.cli.main", "integrations", "worker"]
+    networks:
+      - app
+      - egress
+    user: "${SGW_RUN_UID:-10001}:${SGW_RUN_GID:-10001}"
+    environment:
+      SGW_SERVICE: webhooks
+      SGW_INTEGRATION_KEY: ${SGW_INTEGRATION_KEY:-}
+      SGW_WEBHOOK_ALLOW_HOSTS: ${SGW_WEBHOOK_ALLOW_HOSTS:-}
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+
+  audit-checkpoint:
+    <<: *python
+    user: "${SGW_RUN_UID:-10001}:${SGW_RUN_GID:-10001}"
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/app.env
+        required: true
+    command: ["python", "-m", "sgw.cli.main", "audit", "checkpoint", "--every", "60"]
+    environment:
+      <<: *audit-env
+      SGW_AUDIT_KEY_DIR: /run/secrets/sgw-audit
+      SGW_SERVICE: audit-checkpoint
+      SGW_AUDIT_DATABASE_URL: ${SGW_AUDIT_DATABASE_URL:-}
+    volumes: *audit-signer-volumes
+    networks:
+      - app
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import os, psycopg;
+          from sgw.approval.signer import active_signer, default_paths;
+          assert active_signer(default_paths()), 'no active key';
+          assert os.access(os.environ['SGW_AUDIT_ANCHORS_DIR'], os.W_OK), 'anchors not writable';
+          psycopg.connect(os.environ['SGW_AUDIT_DATABASE_URL'], connect_timeout=3).close()
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+      start_interval: 2s
+
+  llm-gateway:
+    <<: *python
+    user: "${SGW_RUN_UID:-10001}:${SGW_RUN_GID:-10001}"
+    command:
+      - sh
+      - -c
+      - >-
+        if [ -d /app/services/llm_gateway ];
+        then exec python -m services.llm_gateway --host 0.0.0.0 --port 8100;
+        else exec python /opt/sgw/placeholder.py; fi
+    env_file:
+      - path: ${SGW_ENV_FILE:-./var/llm.env}
+        required: false
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/gateway.env
+        required: false
+    environment:
+      SGW_SERVICE: llm-gateway
+      SGW_HEALTH_PORT: "8100"
+      LLM_MODE: ${LLM_MODE:-replay}
+      LLM_REPLAY_PACE_MAX_S: ${LLM_REPLAY_PACE_MAX_S:-0}
+      LLM_FIXTURE_DIR: /app/data/fixtures/llm
+      LLM_SPEND_CSV: /app/var/llm/llm_spend.csv
+      SGW_OPA_URL: http://opa:8181
+    volumes:
+      - ./data/fixtures/llm:/app/data/fixtures/llm:ro
+      - ${SGW_VAR_DIR:-./var}/llm:/app/var/llm
+    networks:
+      - app
+      - egress
+    depends_on:
+      opa:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    mem_limit: 192m
+    memswap_limit: 192m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8100/healthz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+      start_interval: 2s
+
+  opa:
+    <<: *hardening
+    image: openpolicyagent/opa:1.22.4-static@sha256:12cecac5a174368f7d3f09d3a19d040ebe0c91d576e520335ae7a985a26e39d3
+    user: "1000:1000"
+    read_only: true
+    labels:
+      sgw.policy-digest: ${SGW_POLICY_DIGEST:-}
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/opa.env
+        required: false
+    command:
+      - run
+      - --server
+      - --watch
+      - --addr=0.0.0.0:8181
+      - --authentication=token
+      - --authorization=basic
+      - --disable-telemetry
+      - --log-format=json
+      - --log-level=info
+      - --ignore=*_test.rego
+      - /policy
+      - /authz/authz.rego
+    volumes:
+      - ./policy:/policy:ro
+      - ./infra/opa:/authz:ro
+    networks:
+      - app
+    mem_limit: 128m
+    memswap_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test:
+        - CMD
+        - /opa
+        - eval
+        - --fail
+        - 'http.send({"method": "get", "url": "http://127.0.0.1:8181/health", "timeout": "2s"}).status_code == 200'
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+      start_interval: 1s
+
+  postgres:
+    <<: *hardening
+    image: timescale/timescaledb-ha:pg18.6-ts2.31.0@sha256:ad8b5095c9e9f19b3c97794133f1dd80f09da9566a5687f79b6208324b98a388
+    env_file:
+      - path: ${SGW_SECRETS_DIR:?run 'uv run sgw bootstrap' first}/postgres.env
+        required: true
+    environment:
+      PGDATA: /home/postgres/pgdata/data
+      NO_TS_TUNE: "true"
+      TZ: UTC
+    command:
+      - postgres
+      - -c
+      - shared_buffers=384MB
+      - -c
+      - max_connections=60
+      - -c
+      - work_mem=16MB
+      - -c
+      - maintenance_work_mem=64MB
+      - -c
+      - effective_cache_size=768MB
+      - -c
+      - idle_in_transaction_session_timeout=30s
+      - -c
+      - password_encryption=scram-sha-256
+      - -c
+      - timescaledb.telemetry_level=off
+      - -c
+      - log_min_duration_statement=500ms
+    shm_size: 256m
+    volumes:
+      - pgdata:/home/postgres/pgdata
+      - ./docker/postgres/initdb/100_sgw_roles.sh:/docker-entrypoint-initdb.d/100_sgw_roles.sh:ro
+    networks:
+      - app
+    mem_limit: 1536m
+    memswap_limit: 1536m
+    cpus: 2.0
+    pids_limit: 256
+    stop_grace_period: 30s
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          PGPASSWORD="$$POSTGRES_PASSWORD" psql -h 127.0.0.1 -U postgres -d sgw -XtAc
+          "SELECT (SELECT count(*) FROM pg_available_extensions WHERE name IN
+          ('timescaledb','postgis','vector','vectorscale','h3','pgrouting','btree_gist','pgcrypto')) = 8
+          AND current_setting('shared_preload_libraries') LIKE '%timescaledb%'" | grep -qx t
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+      start_interval: 2s
+
+  pg-port:
+    <<: *hardening
+    image: alpine/socat:1.8.0.3@sha256:beb4a68d9e4fe6b0f21ea774a0fde6c31f580dde6368939ed70100c5385b015e
+    user: "65534:65534"
+    read_only: true
+    command: ["-d", "TCP-LISTEN:5432,fork,reuseaddr", "TCP:postgres:5432"]
+    ports:
+      - "127.0.0.1:5434:5432"
+    networks:
+      - edge
+      - app
+    mem_limit: 32m
+    memswap_limit: 32m
+    cpus: 0.5
+    pids_limit: 128
+    healthcheck:
+      test: ["CMD", "nc", "-z", "postgres", "5432"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+      start_interval: 1s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  mlflow-port:
+    <<: *hardening
+    profiles: [mlflow-ui]
+    image: alpine/socat:1.8.0.3@sha256:beb4a68d9e4fe6b0f21ea774a0fde6c31f580dde6368939ed70100c5385b015e
+    user: "65534:65534"
+    read_only: true
+    command: ["-d", "TCP-LISTEN:5001,fork,reuseaddr", "TCP:mlflow:5001"]
+    ports:
+      - "127.0.0.1:5001:5001"
+    networks:
+      - edge
+      - app
+    mem_limit: 32m
+    memswap_limit: 32m
+    cpus: 0.25
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "nc", "-z", "mlflow", "5001"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+      start_interval: 1s
+    depends_on:
+      mlflow:
+        condition: service_healthy
+
+  mlflow:
+    <<: *hardening
+    image: sgw/mlflow:${SGW_IMAGE_TAG:-dev}
+    build:
+      context: docker/mlflow
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m
+    volumes:
+      - mlflow:/mlflow
+    networks:
+      - app
+    mem_limit: 768m
+    memswap_limit: 768m
+    cpus: 1.0
+    pids_limit: 128
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:5001/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+      start_interval: 2s
+
+  # Profile `obs` (WP-39, D-054): technical platform monitoring, opt-in only; not part of `core` or `make demo`.
+  # Start and stop with `uv run sgw obs up` / `uv run sgw obs down` (see ops/obs/README.md).
+  prometheus:
+    <<: *hardening
+    profiles: [obs]
+    image: prom/prometheus:v3.15.1@sha256:fa3302279710be2f21a8301ec17a8b4f2301fd829bd113839b3b6b02b6f191a2
+    user: "65534:65534"
+    read_only: true
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=3d
+      - --storage.tsdb.retention.size=512MB
+      - --web.listen-address=0.0.0.0:9090
+    volumes:
+      - ./ops/obs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "127.0.0.1:9091:9090"
+    networks:
+      - edge
+      - app
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:9090/-/ready"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+      start_interval: 1s
+
+  grafana:
+    <<: *hardening
+    profiles: [obs]
+    image: grafana/grafana:12.4.15@sha256:2894082f6cf7081aefdc1389265c04000812309208c190d75e8c65f7a30e4b7e
+    user: "472:0"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    env_file:
+      - path: ${SGW_SECRETS_DIR:-./var/secrets}/grafana.env
+        required: true
+    environment:
+      GF_SERVER_HTTP_PORT: "3000"
+      GF_SERVER_ROOT_URL: http://127.0.0.1:3001/
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_USERS_ALLOW_ORG_CREATE: "false"
+      GF_SECURITY_DISABLE_GRAVATAR: "true"
+      GF_SECURITY_COOKIE_SAMESITE: strict
+      GF_SECURITY_ALLOW_EMBEDDING: "false"
+      GF_SNAPSHOTS_EXTERNAL_ENABLED: "false"
+      GF_PUBLIC_DASHBOARDS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GF_PLUGINS_PREINSTALL_DISABLED: "true"
+      GF_NEWS_NEWS_FEED_ENABLED: "false"
+      GF_LOG_MODE: console
+      GF_LOG_LEVEL: warn
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /etc/grafana/dashboards/sgw-api.json
+    volumes:
+      - ./ops/obs/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/obs/grafana/dashboards:/etc/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "127.0.0.1:3001:3000"
+    networks:
+      - edge
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: 0.5
+    pids_limit: 128
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:3000/api/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+      start_interval: 2s
+    depends_on:
+      prometheus:
+        condition: service_healthy
+
+  cadvisor:
+    <<: *hardening
+    profiles: [obs]
+    image: ghcr.io/google/cadvisor:0.56.2@sha256:5534ae91cbf3428998d60428d107cfdd97272d80658534ac6e54d8ce3b0c4d72
+    # Not root: uid 65534 with only the sockets' group (root:root 0660 on Docker Desktop); no capabilities.
+    # The two sockets still give control of the engine: see ops/obs/README.md "cAdvisor risk".
+    user: "65534:65534"
+    group_add:
+      - "0"
+    read_only: true
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=15s
+      - --max_housekeeping_interval=30s
+      - --store_container_labels=false
+      - --whitelisted_container_labels=com.docker.compose.project,com.docker.compose.service
+      - --disable_metrics=advtcp,cpu_topology,cpuset,disk,diskIO,hugetlb,memory_numa,percpu,perf_event,process,referenced_memory,resctrl,sched,tcp,udp
+    volumes:
+      - /sys:/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /run/containerd/containerd.sock:/run/containerd/containerd.sock:ro
+    networks:
+      - app
+    mem_limit: 160m
+    memswap_limit: 160m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+      start_interval: 1s
+
+  postgres-exporter:
+    <<: *hardening
+    profiles: [obs]
+    image: prometheuscommunity/postgres-exporter:v0.20.1@sha256:ac5ec343104fae0e2d84a27bb8d69b38430a11910c5382cad85d478d2bab713e
+    user: "65534:65534"
+    read_only: true
+    env_file:
+      - path: ${SGW_SECRETS_DIR:-./var/secrets}/pg-exporter.env
+        required: true
+    command:
+      - --web.listen-address=:9187
+      - --no-collector.stat_bgwriter
+    networks:
+      - app
+    mem_limit: 48m
+    memswap_limit: 48m
+    cpus: 0.25
+    pids_limit: 32
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:9187/"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+      start_interval: 1s
+
+networks:
+  edge: {}
+  app:
+    internal: true
+  proxy:
+    internal: true
+    ipam:
+      config:
+        - subnet: ${SGW_PROXY_SUBNET:-10.213.37.0/29}
+          ip_range: ${SGW_PROXY_DYNAMIC_RANGE:-10.213.37.0/30}
+  egress: {}
+
+volumes:
+  pgdata: {}
+  mlflow: {}
+  prometheus-data: {}
+  grafana-data: {}

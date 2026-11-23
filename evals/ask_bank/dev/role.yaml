@@ -1,0 +1,165 @@
+# Ask bank, role: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-ROLE-001
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: role
+  question: What can I sign as incident commander?
+  expect:
+    mentions_any:
+    - sign
+    - PS-17
+    - command
+  judge: true
+- id: AB-ROLE-002
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: role
+  question: Which decisions can I approve?
+  expect:
+    mentions_any:
+    - approve
+    - sign
+    - operations
+- id: AB-ROLE-003
+  lang: en
+  persona: ops_dm_02
+  moment: morning-after
+  page: decisions
+  klass: role
+  question: What is my role here and what can I do?
+  expect:
+    mentions_any:
+    - operations
+    - duty
+    - sign
+- id: AB-ROLE-004
+  lang: en
+  persona: plan_etr_01
+  moment: notices-lifted
+  page: forecast
+  klass: role
+  question: What can I do as ETR specialist?
+  expect:
+    mentions_any:
+    - ETR
+    - restoration
+    - publish
+    - review
+- id: AB-ROLE-006
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: role
+  question: What do I have to sign today as water lead?
+  expect:
+    mentions_any:
+    - tanker
+    - Laurelspur
+    - boil
+    - water
+- id: AB-ROLE-007
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: role
+  question: Do I need to sign anything as compliance officer?
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - lift
+    - notice
+- id: AB-ROLE-008
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: role
+  question: What should an executive look at first?
+  expect:
+    mentions_any:
+    - brief
+    - decision
+    - customers
+- id: AB-ROLE-011
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: role
+  question: What am I responsible for as data and models owner?
+  expect:
+    mentions_any:
+    - data
+    - model
+    - feed
+- id: AB-ROLE-014
+  lang: en
+  persona: wtr_comp_01
+  moment: at-n1
+  page: decisions
+  klass: role
+  question: Which pages are useful for my job?
+  expect:
+    links:
+    - water
+- id: AB-ROLE-016
+  lang: pl
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: role
+  question: Czy jako audytor mogę podpisywać decyzje?
+  expect:
+    mentions_any:
+    - nie
+    - audyt
+    - odczyt
+- id: AB-ROLE-018
+  lang: pl
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: role
+  tags:
+  - no_diacritics
+  question: Ktore decyzje naleza do logistyki?
+  expect:
+    mentions_any:
+    - ekip
+    - paliw
+    - logist
+- id: AB-ROLE-019
+  lang: pl
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: role
+  question: Za co odpowiadam jako właściciel danych i modeli?
+  expect:
+    mentions_any:
+    - dane
+    - danych
+    - model
+- id: AB-ROLE-022
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: admin
+  klass: role
+  tags:
+  - role_limit
+  question: Can I change who is allowed to sign decisions?
+  expect:
+    mentions_any:
+    - admin
+    - administrator
+    - cannot
+    - can't

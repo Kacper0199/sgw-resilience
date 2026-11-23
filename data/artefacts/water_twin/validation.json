@@ -1,0 +1,174 @@
+{
+ "floors": {
+  "20_psi": {
+   "twin_looped_by_station": {
+    "PS-17": {
+     "max_abs_min": 0.464,
+     "mean_signed_min": 0.088,
+     "median_abs_min": 0.069,
+     "n": 573,
+     "p90_abs_min": 0.255
+    },
+    "PS-23": {
+     "max_abs_min": 0.011,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.003,
+     "n": 576,
+     "p90_abs_min": 0.005
+    },
+    "PS-38": {
+     "max_abs_min": 0.019,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.003,
+     "n": 567,
+     "p90_abs_min": 0.005
+    },
+    "PS-52": {
+     "max_abs_min": 0.021,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.003,
+     "n": 576,
+     "p90_abs_min": 0.005
+    }
+   },
+   "variants": {
+    "station_sensor_floor": {
+     "max_abs_min": 34.68,
+     "mean_signed_min": 14.522,
+     "median_abs_min": 14.515,
+     "n": 2292,
+     "p90_abs_min": 19.758
+    },
+    "twin_looped": {
+     "max_abs_min": 0.464,
+     "mean_signed_min": 0.022,
+     "median_abs_min": 0.003,
+     "n": 2292,
+     "p90_abs_min": 0.109
+    },
+    "twin_tree": {
+     "max_abs_min": 6.394,
+     "mean_signed_min": -0.833,
+     "median_abs_min": 0.347,
+     "n": 2292,
+     "p90_abs_min": 2.988
+    }
+   }
+  },
+  "25_psi": {
+   "twin_looped_by_station": {
+    "PS-17": {
+     "max_abs_min": 0.463,
+     "mean_signed_min": 0.087,
+     "median_abs_min": 0.068,
+     "n": 573,
+     "p90_abs_min": 0.252
+    },
+    "PS-23": {
+     "max_abs_min": 0.006,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.002,
+     "n": 576,
+     "p90_abs_min": 0.005
+    },
+    "PS-38": {
+     "max_abs_min": 0.007,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.003,
+     "n": 567,
+     "p90_abs_min": 0.005
+    },
+    "PS-52": {
+     "max_abs_min": 0.006,
+     "mean_signed_min": 0.0,
+     "median_abs_min": 0.002,
+     "n": 576,
+     "p90_abs_min": 0.005
+    }
+   },
+   "variants": {
+    "station_sensor_floor": {
+     "max_abs_min": 34.68,
+     "mean_signed_min": 14.508,
+     "median_abs_min": 14.37,
+     "n": 2292,
+     "p90_abs_min": 19.739
+    },
+    "twin_looped": {
+     "max_abs_min": 0.463,
+     "mean_signed_min": 0.022,
+     "median_abs_min": 0.003,
+     "n": 2292,
+     "p90_abs_min": 0.102
+    },
+    "twin_tree": {
+     "max_abs_min": 7.69,
+     "mean_signed_min": -0.829,
+     "median_abs_min": 0.337,
+     "n": 2292,
+     "p90_abs_min": 2.987
+    }
+   }
+  }
+ },
+ "kind": "verification of the reduced model against WNTR on the same networks; not a validation",
+ "label": "synthetic",
+ "networks_sha256": "3fe7bf50737985aec8eeee529ce33624fdb7d5c69908a0edf4a8051104c6d29e",
+ "passed": true,
+ "reference": "WNTR EpanetSimulator 2.2, PDD, host precompute",
+ "structural_band": {
+  "floor_psi": 25.0,
+  "leak": 1.3,
+  "stations": {
+   "PS-17": {
+    "drain_delta_vs_nominal_min": {
+     "max": 5.5,
+     "median": -1.0,
+     "min": -14.5,
+     "p10": -6.6,
+     "p90": 4.0
+    },
+    "runs": 72
+   },
+   "PS-23": {
+    "drain_delta_vs_nominal_min": {
+     "max": 3.4,
+     "median": -1.8,
+     "min": -11.7,
+     "p10": -4.3,
+     "p90": 2.3
+    },
+    "runs": 72
+   },
+   "PS-38": {
+    "drain_delta_vs_nominal_min": {
+     "max": 5.5,
+     "median": -3.8,
+     "min": -11.2,
+     "p10": -7.2,
+     "p90": 3.5
+    },
+    "runs": 72
+   },
+   "PS-52": {
+    "drain_delta_vs_nominal_min": {
+     "max": 7.9,
+     "median": -2.5,
+     "min": -11.9,
+     "p10": -9.2,
+     "p90": 3.3
+    },
+    "runs": 72
+   }
+  },
+  "twin_vs_wntr_on_band_networks": {
+   "max_abs_min": 0.313,
+   "mean_signed_min": 0.015,
+   "median_abs_min": 0.003,
+   "n": 288,
+   "p90_abs_min": 0.058
+  }
+ },
+ "tolerance_median_abs_min": 60.0,
+ "wntr_runs": 2304
+}

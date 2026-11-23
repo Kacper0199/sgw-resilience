@@ -1,0 +1,80 @@
+\ProvidesPackage{sgwdoc}[2026/11/23 SGW document style for the PRD and the briefing (KOMA scrartcl)]
+\RequirePackage[english]{babel}
+\RequirePackage{sgwfonts}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{sgwdiagrams}
+\RequirePackage{sgwnumbers}
+\RequirePackage{sgwcommon}
+\RequirePackage{graphicx,amsmath,array,booktabs,tabularx,ragged2e,enumitem,etoolbox}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{xurl}
+\RequirePackage{scrlayer-scrpage}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,
+  pdfauthor={Kacper Kozik},pdfcreator={docs/build.py}}
+\bibliographystyle{unsrtnat}
+
+\setlength{\parindent}{0pt}
+\setlist{nosep,leftmargin=1.2em,topsep=2pt}
+\setkomafont{disposition}{\sffamily\bfseries}
+\setkomafont{section}{\sffamily\bfseries\large}
+\setkomafont{subsection}{\sffamily\bfseries\normalsize}
+\setkomafont{descriptionlabel}{\sffamily\bfseries}
+\setkomafont{captionlabel}{\sffamily\bfseries\small}
+\setkomafont{caption}{\sffamily\small}
+\setkomafont{pageheadfoot}{\sffamily\footnotesize\color{black!60}}
+\setkomafont{pagenumber}{\sffamily\footnotesize}
+\RedeclareSectionCommand[beforeskip=-14pt plus -2pt minus -1pt,afterskip=4pt]{section}
+\RedeclareSectionCommand[beforeskip=-8pt plus -2pt,afterskip=2pt]{subsection}
+\setcapindent{0pt}
+\renewcommand*{\captionformat}{.\enskip}
+
+% Page head and foot: product name inside, document name outside, page number in the outer foot.
+\newcommand{\sgwheadlabel}{}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\ihead{\sgwproduct}
+\ohead{\sgwheadlabel}
+\ofoot*{\pagemark}
+
+% Tables: sans serif, booktabs rules, no fills.
+\AtBeginEnvironment{tabular}{\sffamily}
+\AtBeginEnvironment{tabularx}{\sffamily}
+\AtBeginEnvironment{xltabular}{\sffamily}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+\newcommand{\lightrowrule}{\arrayrulecolor{black!25}\specialrule{0.2pt}{0pt}{0pt}\arrayrulecolor{black}}
+\renewcommand{\arraystretch}{1.15}
+
+% Page budgets: \sgwsection{key}{budget in pages}{heading}. The build reads the
+% budgets and the start pages from the .aux file and reports each section against its budget.
+\newcommand{\sgwsection}[3]{%
+  \section{#3}\label{sgw:sec:#1}%
+  \immediate\write\@auxout{\string\sgwbudget{#1}{#2}}}
+\newcommand{\sgwbudget}[2]{}
+
+% Boxes: a thin rule on the left and a bold sans title on its own line.
+\RequirePackage{framed}
+\newenvironment{sgwbox}[1]{%
+  \par\vspace{2pt}\def\FrameCommand{{\color{black!75}\vrule width 0.8pt}\hspace{9pt}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}\small\setlength{\parskip}{3pt}%
+  {\sffamily\bfseries #1\par}\ignorespaces}
+ {\endMakeFramed\vspace{2pt}}
+
+% Decisions requested: ask, owner, the date by which it is needed, and what happens without a decision.
+\newenvironment{sgwdecisions}[1][Decisions requested from SGW]{%
+  \begin{sgwbox}{#1}\footnotesize
+  \begin{tabular}{@{}L{0.37\linewidth} L{0.16\linewidth} L{0.10\linewidth} L{0.27\linewidth}@{}}
+    \textbf{Ask} & \textbf{Owner} & \textbf{Decide by} & \textbf{If no decision} \\ \midrule}
+ {\end{tabular}\end{sgwbox}}
+
+% Title block, left aligned: document label, title, subtitle and a thin rule.
+\newcommand{\sgwdoclabel}{}
+\newcommand{\sgwdate}{23 November 2026}
+\newcommand{\sgwtitleblock}[3]{% {title}{subtitle}{audience}
+  \vspace*{-6pt}{\sffamily\small\color{black!60}\sgwdoclabel\par}\vspace{2pt}
+  {\sffamily\bfseries\LARGE #1\par}\vspace{3pt}
+  {\large\raggedright #2\par}
+  \vspace{4pt}\noindent\rule{\textwidth}{0.4pt}\par}

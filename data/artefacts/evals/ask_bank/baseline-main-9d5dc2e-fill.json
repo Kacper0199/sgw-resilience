@@ -1,0 +1,1824 @@
+{
+ "meta": {
+  "label": "baseline-main-9d5dc2e-fill",
+  "commit": "9d5dc2e+evals",
+  "split": "all",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R33",
+  "started_utc": "2026-11-21T22:22:58Z",
+  "seconds": 113.0,
+  "gateway_counters_delta": {
+   "replay_hits": 0,
+   "live_cache_hits": 24,
+   "replay_misses": 0,
+   "live_calls": 29,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 19,
+  "passed": 3,
+  "pass_rate": 0.158,
+  "infra": 14,
+  "valid": {
+   "n": 5,
+   "passed": 2,
+   "pass_rate": 0.4
+  },
+  "usd": 0.4481,
+  "usd_per_item": 0.02358,
+  "live_calls": 29,
+  "latency_p50_s": 5.38,
+  "latency_p95_s": 25.38,
+  "errors": 9,
+  "grader_failures": {
+   "language": 14,
+   "not_bare_refusal": 11,
+   "error": 9,
+   "mentions_any": 8,
+   "links": 3,
+   "photos": 2,
+   "helpful_refusal": 2,
+   "refuses": 2,
+   "near_miss": 1
+  },
+  "paths": {
+   "None": 9,
+   "m2": 4,
+   "not_in_documents": 3,
+   "llm": 3
+  },
+  "reasons": {
+   "None": 12,
+   "llm_unavailable": 5,
+   "model_not_in_documents": 2
+  }
+ },
+ "by": {
+  "klass": {
+   "data": {
+    "n": 2,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "explain": {
+    "n": 2,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "followup": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "navigate": {
+    "n": 3,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "near_miss": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "overview": {
+    "n": 3,
+    "passed": 2,
+    "pass_rate": 0.667
+   },
+   "photos": {
+    "n": 2,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "refuse_unrelated": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "refuse_write": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "role": {
+    "n": 3,
+    "passed": 1,
+    "pass_rate": 0.333
+   }
+  },
+  "persona": {
+   "audit_01": {
+    "n": 9,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "exec_01": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "ic_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "ml_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "ops_dm_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "ops_dm_02": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "wtr_comp_01": {
+    "n": 3,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "wtr_lead_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   }
+  },
+  "lang": {
+   "de": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "en": {
+    "n": 9,
+    "passed": 2,
+    "pass_rate": 0.222
+   },
+   "es": {
+    "n": 3,
+    "passed": 1,
+    "pass_rate": 0.333
+   },
+   "fr": {
+    "n": 2,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "pl": {
+    "n": 4,
+    "passed": 0,
+    "pass_rate": 0.0
+   }
+  },
+  "moment": {
+   "morning-after": {
+    "n": 2,
+    "passed": 1,
+    "pass_rate": 0.5
+   },
+   "notices-lifted": {
+    "n": 17,
+    "passed": 2,
+    "pass_rate": 0.118
+   }
+  },
+  "page": {
+   "after_action": {
+    "n": 7,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "brief": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "crews": {
+    "n": 2,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "health": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "none": {
+    "n": 3,
+    "passed": 1,
+    "pass_rate": 0.333
+   },
+   "water": {
+    "n": 4,
+    "passed": 0,
+    "pass_rate": 0.0
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 11,
+    "passed": 2,
+    "pass_rate": 0.182
+   },
+   "heldout": {
+    "n": 8,
+    "passed": 1,
+    "pass_rate": 0.125
+   }
+  }
+ },
+ "by_tag": {
+  "link_request": {
+   "n": 3,
+   "passed": 0,
+   "pass_rate": 0.0
+  },
+  "no_diacritics": {
+   "n": 1,
+   "passed": 0,
+   "pass_rate": 0.0
+  },
+  "other_language": {
+   "n": 6,
+   "passed": 1,
+   "pass_rate": 0.167
+  },
+  "vague": {
+   "n": 3,
+   "passed": 2,
+   "pass_rate": 0.667
+  }
+ },
+ "items": [
+  {
+   "id": "AB-ROLE-019",
+   "lang": "pl",
+   "persona": "ml_01",
+   "moment": "morning-after",
+   "page": "health",
+   "klass": "role",
+   "tags": [],
+   "turns": [],
+   "question": "Za co odpowiadam jako właściciel danych i modeli?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "dane",
+     "danych",
+     "model"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "language",
+    "mentions_any",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "not_in_documents",
+   "reason": "model_not_in_documents",
+   "text": "This is not in the documents.",
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1"
+    ],
+    "kind": "message",
+    "path": "not_in_documents",
+    "reason": "model_not_in_documents",
+    "references": [],
+    "role": "assistant",
+    "slots_shown": {},
+    "tainted": false,
+    "text": "This is not in the documents.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-bab8e18fd502"
+   ],
+   "latency_s": 5.96,
+   "usd": 0.07921,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-ROLE-021",
+   "split": "heldout",
+   "klass": "role",
+   "lang": "es",
+   "persona": "exec_01",
+   "moment": "morning-after",
+   "page": "brief",
+   "tags": [
+    "other_language"
+   ],
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-EXP-009",
+   "lang": "en",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "klass": "explain",
+   "tags": [],
+   "turns": [],
+   "question": "What does co-sign mean?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "sign"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "mentions_any",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": "RuntimeError: thread: HTTP 403",
+   "path": null,
+   "reason": null,
+   "text": null,
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": null,
+   "prior_answers": [],
+   "answer": {},
+   "run_ids": [],
+   "latency_s": 0.14,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-EXP-034",
+   "lang": "pl",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "klass": "explain",
+   "tags": [],
+   "turns": [],
+   "question": "Na czym polega zatwierdzenie awaryjne?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "awaryj",
+     "break-glass",
+     "podpis"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "mentions_any",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": "RuntimeError: thread: HTTP 403",
+   "path": null,
+   "reason": null,
+   "text": null,
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": null,
+   "prior_answers": [],
+   "answer": {},
+   "run_ids": [],
+   "latency_s": 0.01,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-FUP-026",
+   "lang": "es",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "followup",
+   "tags": [
+    "other_language"
+   ],
+   "turns": [
+    "¿Cuándo vence el levantamiento del aviso de Laurelspur?"
+   ],
+   "question": "¿Y Copperleaf?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Copperleaf",
+     "17:41"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "language"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Copperleaf's outage status, restoration times and outage surge signal are not in the documents. On water, the decision DC-D3-PS38-COPPERLEAF-BWA to issue a boil water advisory is already decided, and its deadline has passed. The proposal DC-D3-PS38-COPPERLEAF-BWA-LIFT is still only proposed, with no signatures yet. Its deadline is open at Sep 30, 17:41 ET, and it awaits signatures from Water operations and Compliance.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [
+    "This is not in the documents."
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18"
+    ],
+    "kind": "message",
+    "path": "llm",
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     }
+    ],
+    "role": "assistant",
+    "slots_shown": {
+     "E17.decide_by": "Sep 30, 17:41 ET"
+    },
+    "tainted": false,
+    "text": "Copperleaf's outage status, restoration times and outage surge signal are not in the documents. On water, the decision DC-D3-PS38-COPPERLEAF-BWA to issue a boil water advisory is already decided, and its deadline has passed. The proposal DC-D3-PS38-COPPERLEAF-BWA-LIFT is still only proposed, with no signatures yet. Its deadline is open at Sep 30, 17:41 ET, and it awaits signatures from Water operations and Compliance.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-b4f6510f6ed7",
+    "run-0c5025a94686"
+   ],
+   "latency_s": 25.38,
+   "usd": 0.04943,
+   "live_calls": 7
+  },
+  {
+   "id": "AB-NAV-033",
+   "lang": "pl",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "klass": "navigate",
+   "tags": [
+    "no_diacritics",
+    "link_request"
+   ],
+   "turns": [],
+   "question": "gdzie jest dziennik audytu",
+   "expect": {
+    "answer": true,
+    "links": [
+     "after_action"
+    ],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "links",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": false,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": "RuntimeError: thread: HTTP 403",
+   "path": null,
+   "reason": null,
+   "text": null,
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": null,
+   "prior_answers": [],
+   "answer": {},
+   "run_ids": [],
+   "latency_s": 0.02,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-NEAR-016",
+   "lang": "pl",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "near_miss",
+   "tags": [],
+   "turns": [],
+   "question": "Czy jest komunikat o gotowaniu wody dla Millpond?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater",
+     "Cedarfall"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "language",
+    "mentions_any",
+    "near_miss",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": false,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "not_in_documents",
+   "reason": "model_not_in_documents",
+   "text": "This is not in the documents.",
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34"
+    ],
+    "kind": "message",
+    "path": "not_in_documents",
+    "reason": "model_not_in_documents",
+    "references": [],
+    "role": "assistant",
+    "slots_shown": {},
+    "tainted": false,
+    "text": "This is not in the documents.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-ca7adced3bd9"
+   ],
+   "latency_s": 4.81,
+   "usd": 0.02735,
+   "live_calls": 3
+  },
+  {
+   "id": "AB-OVR-005",
+   "lang": "en",
+   "persona": "exec_01",
+   "moment": "notices-lifted",
+   "page": "brief",
+   "klass": "overview",
+   "tags": [
+    "vague"
+   ],
+   "turns": [],
+   "question": "Where do we stand?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "notice",
+     "Cedarfall",
+     "Laurelspur",
+     "Copperleaf",
+     "restor"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Open outages are 0, with 0 customers out, and the detector flags 85 of 123 counties as signals to check. Crews total 58, with 34 onsite. No restoration estimate is available. DC-D3-PS17-POWER and DC-D3-PS17-PRESSURE were decided on time, while DC-D3-PS17-FUEL expired. The Laurelspur lift (DC-D3-PS23-LAURELSPUR-BWA-LIFT) and the Copperleaf lift (DC-D3-PS38-COPPERLEAF-BWA-LIFT) are proposed and unsigned; their decide-by times are Sep 30, 10:30 ET and Sep 30, 17:41 ET.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-POWER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-PRESSURE"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68",
+     "E69",
+     "E70",
+     "E71",
+     "E72",
+     "E73",
+     "E74",
+     "E75",
+     "E76",
+     "E77",
+     "E78",
+     "E79",
+     "E80",
+     "E81",
+     "E82",
+     "E83",
+     "E84",
+     "E85",
+     "E86",
+     "E87",
+     "E88",
+     "E89",
+     "E90",
+     "E91"
+    ],
+    "kind": "message",
+    "path": "llm",
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D3-PS17-POWER",
+      "kind": "decision",
+      "label": "Hook up the portable generator at PS-17"
+     },
+     {
+      "id": "DC-D3-PS17-PRESSURE",
+      "kind": "decision",
+      "label": "Hold Cedarfall zone pressure above the state floor"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     }
+    ],
+    "role": "assistant",
+    "slots_shown": {
+     "E2.customers_out": "0",
+     "E2.open_outages": "0",
+     "E3.crews": "58",
+     "E3.onsite": "34",
+     "E33.counties_monitored": "123",
+     "E33.counties_surging": "85",
+     "E68.decide_by": "Sep 30, 10:30 ET",
+     "E69.decide_by": "Sep 30, 17:41 ET"
+    },
+    "tainted": false,
+    "text": "Open outages are 0, with 0 customers out, and the detector flags 85 of 123 counties as signals to check. Crews total 58, with 34 onsite. No restoration estimate is available. DC-D3-PS17-POWER and DC-D3-PS17-PRESSURE were decided on time, while DC-D3-PS17-FUEL expired. The Laurelspur lift (DC-D3-PS23-LAURELSPUR-BWA-LIFT) and the Copperleaf lift (DC-D3-PS38-COPPERLEAF-BWA-LIFT) are proposed and unsigned; their decide-by times are Sep 30, 10:30 ET and Sep 30, 17:41 ET.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-935f9c1a18ea"
+   ],
+   "latency_s": 18.81,
+   "usd": 0.15267,
+   "live_calls": 7
+  },
+  {
+   "id": "AB-OVR-013",
+   "lang": "en",
+   "persona": "ops_dm_02",
+   "moment": "notices-lifted",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "vague"
+   ],
+   "turns": [],
+   "question": "Catch me up, I just started my shift.",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "notice",
+     "Laurelspur",
+     "Copperleaf",
+     "decision"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[closed] Closed so far: 14 (9 decided on time, 5 missed).",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63"
+    ],
+    "kind": "message",
+    "path": "m2",
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     }
+    ],
+    "role": "assistant",
+    "slots_shown": {},
+    "tainted": false,
+    "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[closed] Closed so far: 14 (9 decided on time, 5 missed).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-489a5c1339bf"
+   ],
+   "latency_s": 6.83,
+   "usd": 0.02461,
+   "live_calls": 3
+  },
+  {
+   "id": "AB-OVR-027",
+   "lang": "fr",
+   "persona": "ops_dm_01",
+   "moment": "notices-lifted",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "other_language",
+    "vague"
+   ],
+   "turns": [],
+   "question": "Fais-moi un point de situation.",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "avis"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "language"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[closed] Closed so far: 14 (9 decided on time, 5 missed).",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63"
+    ],
+    "kind": "message",
+    "path": "m2",
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     }
+    ],
+    "role": "assistant",
+    "slots_shown": {},
+    "tainted": false,
+    "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[closed] Closed so far: 14 (9 decided on time, 5 missed).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-16caf32dbe63"
+   ],
+   "latency_s": 4.4,
+   "usd": 0.00846,
+   "live_calls": 1
+  },
+  {
+   "id": "AB-PHO-013",
+   "lang": "en",
+   "persona": "ic_01",
+   "moment": "notices-lifted",
+   "page": "crews",
+   "klass": "photos",
+   "tags": [],
+   "turns": [],
+   "question": "Where do these damage photos come from?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "LADI",
+     "benchmark",
+     "not SGW",
+     "dataset"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 1
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "mentions_any",
+    "not_bare_refusal",
+    "photos"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": false
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "not_in_documents",
+   "reason": "llm_unavailable",
+   "text": "This is not in the documents.",
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32"
+    ],
+    "kind": "message",
+    "path": "not_in_documents",
+    "reason": "llm_unavailable",
+    "references": [],
+    "role": "assistant",
+    "slots_shown": {},
+    "tainted": false,
+    "text": "This is not in the documents.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-a1c75c718f49"
+   ],
+   "latency_s": 0.84,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-PHO-014",
+   "lang": "en",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "crews",
+   "klass": "photos",
+   "tags": [],
+   "turns": [],
+   "question": "Show me the photo evidence for the weak trunk case on feeder 2207.",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 1
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "not_bare_refusal",
+    "photos"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": false
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": "RuntimeError: thread: HTTP 403",
+   "path": null,
+   "reason": null,
+   "text": null,
+   "links": [],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": null,
+   "prior_answers": [],
+   "answer": {},
+   "run_ids": [],
+   "latency_s": 0.02,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-DATA-033",
+   "split": "heldout",
+   "klass": "data",
+   "lang": "en",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "tags": [],
+   "pass": false,
+   "failed": [
+    "mentions_any"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-DATA-044",
+   "split": "heldout",
+   "klass": "data",
+   "lang": "en",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "tags": [],
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "mentions_any",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-NAV-013",
+   "split": "heldout",
+   "klass": "navigate",
+   "lang": "en",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "tags": [
+    "link_request"
+   ],
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "links",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": false,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-NAV-041",
+   "split": "heldout",
+   "klass": "navigate",
+   "lang": "fr",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "tags": [
+    "other_language",
+    "link_request"
+   ],
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "links",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": false,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-UNREL-007",
+   "split": "heldout",
+   "klass": "refuse_unrelated",
+   "lang": "en",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "none",
+   "tags": [],
+   "pass": false,
+   "failed": [
+    "error",
+    "helpful_refusal",
+    "language",
+    "refuses"
+   ],
+   "checks": {
+    "not_bare_refusal": null,
+    "refuses": false,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": false,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-WRITE-019",
+   "split": "heldout",
+   "klass": "refuse_write",
+   "lang": "es",
+   "persona": "wtr_lead_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "tags": [
+    "other_language"
+   ],
+   "pass": false,
+   "failed": [
+    "helpful_refusal",
+    "language",
+    "refuses"
+   ],
+   "checks": {
+    "not_bare_refusal": null,
+    "refuses": false,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": false,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  },
+  {
+   "id": "AB-ROLE-020",
+   "split": "heldout",
+   "klass": "role",
+   "lang": "de",
+   "persona": "audit_01",
+   "moment": "notices-lifted",
+   "page": "after_action",
+   "tags": [
+    "other_language"
+   ],
+   "pass": false,
+   "failed": [
+    "error",
+    "language",
+    "mentions_any",
+    "not_bare_refusal"
+   ],
+   "checks": {
+    "not_bare_refusal": false,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": false,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "redacted": true
+  }
+ ]
+}

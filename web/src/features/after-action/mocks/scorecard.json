@@ -1,0 +1,213 @@
+{
+  "name": "etr_story_scorecard",
+  "label": "S",
+  "actual_label": "simulated actual, not the replay curve",
+  "metrics": [
+    {
+      "metric": "etr90.story_scorecard.global.p50_abs_error_h_median",
+      "value": 0.3,
+      "unit": "hours",
+      "n": 1,
+      "baseline_value": 1.5,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "lower_is_better",
+      "passed": true
+    },
+    {
+      "metric": "etr90.story_scorecard.global.within_p25_p75",
+      "value": 1.0,
+      "unit": "share",
+      "n": 1,
+      "baseline_value": 0.5,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "higher_is_better",
+      "passed": true
+    },
+    {
+      "metric": "etr90.story_scorecard.global.within_p10_p90",
+      "value": 1.0,
+      "unit": "share",
+      "n": 1,
+      "baseline_value": 0.8,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "higher_is_better",
+      "passed": true
+    },
+    {
+      "metric": "etr90.story_scorecard.region.p50_abs_error_h_median",
+      "value": 4.3,
+      "unit": "hours",
+      "n": 11,
+      "baseline_value": 29.8,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "lower_is_better",
+      "passed": true
+    },
+    {
+      "metric": "etr90.story_scorecard.region.within_p25_p75",
+      "value": 0.4545,
+      "unit": "share",
+      "n": 11,
+      "baseline_value": 0.5,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "higher_is_better",
+      "passed": true
+    },
+    {
+      "metric": "etr90.story_scorecard.region.within_p10_p90",
+      "value": 0.7273,
+      "unit": "share",
+      "n": 11,
+      "baseline_value": 0.8,
+      "baseline_name": "historical analog (Helene county median t90 from the peak); simulated actual, not the replay curve",
+      "direction": "higher_is_better",
+      "passed": true
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "ETR-HELENE-GLOBAL-20240928T1730Z",
+      "region_id": "GLOBAL",
+      "scope": "global",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-02T01:15:00Z",
+      "p50_error_h": -0.3,
+      "abs_error_h": 0.3,
+      "analog_abs_error_h": 1.5,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-AIK-SANDHILL-20240928T1730Z",
+      "region_id": "OPA-AIK-SANDHILL",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-09-30T16:15:00Z",
+      "p50_error_h": 3.1,
+      "abs_error_h": 3.1,
+      "analog_abs_error_h": 29.8,
+      "in_p25_p75": false,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-CHS-ASHLEYFERRY-20240928T1730Z",
+      "region_id": "OPA-CHS-ASHLEYFERRY",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-09-30T10:15:00Z",
+      "p50_error_h": -9.6,
+      "abs_error_h": 9.6,
+      "analog_abs_error_h": 35.8,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-CHT-OGEECHEEWHARF-20240928T1730Z",
+      "region_id": "OPA-CHT-OGEECHEEWHARF",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-01T10:15:00Z",
+      "p50_error_h": 3.2,
+      "abs_error_h": 3.2,
+      "analog_abs_error_h": 9.8,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-CLK-NORTHOCONEE-20240928T1730Z",
+      "region_id": "OPA-CLK-NORTHOCONEE",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-01T14:00:00Z",
+      "p50_error_h": 4.3,
+      "abs_error_h": 4.3,
+      "analog_abs_error_h": 9.0,
+      "in_p25_p75": false,
+      "in_p10_p90": false
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-FLO-LYNCHESRUN-20240928T1730Z",
+      "region_id": "OPA-FLO-LYNCHESRUN",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-09-29T18:45:00Z",
+      "p50_error_h": -0.4,
+      "abs_error_h": 0.4,
+      "analog_abs_error_h": 52.8,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-GVL-REEDYSHOALS-20240928T1730Z",
+      "region_id": "OPA-GVL-REEDYSHOALS",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-03T20:15:00Z",
+      "p50_error_h": -10.5,
+      "abs_error_h": 10.5,
+      "analog_abs_error_h": 44.5,
+      "in_p25_p75": false,
+      "in_p10_p90": false
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-LAU-OCONEEFLATS-20240928T1730Z",
+      "region_id": "OPA-LAU-OCONEEFLATS",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-02T19:30:00Z",
+      "p50_error_h": -1.7,
+      "abs_error_h": 1.7,
+      "analog_abs_error_h": 23.0,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-RCH-MILLPOND-20240928T1730Z",
+      "region_id": "OPA-RCH-MILLPOND",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-02T22:00:00Z",
+      "p50_error_h": -6.8,
+      "abs_error_h": 6.8,
+      "analog_abs_error_h": 24.5,
+      "in_p25_p75": false,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-RLD-CONGAREEBEND-20240928T1730Z",
+      "region_id": "OPA-RLD-CONGAREEBEND",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-09-30T11:30:00Z",
+      "p50_error_h": 3.4,
+      "abs_error_h": 3.4,
+      "analog_abs_error_h": 34.8,
+      "in_p25_p75": false,
+      "in_p10_p90": false
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-WRE-OKEFENOKEEGATE-20240928T1730Z",
+      "region_id": "OPA-WRE-OKEFENOKEEGATE",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-03T10:15:00Z",
+      "p50_error_h": -8.5,
+      "abs_error_h": 8.5,
+      "analog_abs_error_h": 40.2,
+      "in_p25_p75": false,
+      "in_p10_p90": true
+    },
+    {
+      "estimate_id": "ETR-HELENE-OPA-YRK-CATAWBALANDING-20240928T1730Z",
+      "region_id": "OPA-YRK-CATAWBALANDING",
+      "scope": "region",
+      "as_of_utc": "2024-09-28T17:30:00Z",
+      "actual_utc": "2024-10-02T11:00:00Z",
+      "p50_error_h": -6.7,
+      "abs_error_h": 6.7,
+      "analog_abs_error_h": 11.0,
+      "in_p25_p75": true,
+      "in_p10_p90": true
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+---
+doc_id: "DOM 14.206"
+title: "Estimated Time of Restoration (ETR) Development and Release"
+family: sop
+layout: controlled
+owner_function: planning
+sme: "Okonkwo, Adaeze N."
+revision: "K"
+effective: 2024-06-10
+supersedes: "DOM 14.206 Rev J/2 (eff. 2022-06-13)"
+next_review: 2025-05-30
+approvals:
+  - {function: planning, position: "Manager, Storm Planning", name: "Okonkwo, Adaeze N.", date: 2024-06-03}
+  - {function: operations, position: "Director, Distribution Operations", name: "Thibodeaux, Marcus R.", date: 2024-06-03}
+  - {function: command, position: "Vice President, Emergency Management", name: "Wingard, Lorraine T.", date: 2024-06-05}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D4]
+states: [SC, GA]
+changes:
+  - {rev: "K", date: 2024-06-10, section: "6.2.1", change: "Global ETR due within 24 h of all-clear (was 36 h)."}
+  - {rev: "K", date: 2024-06-10, section: "Throughout", change: "Storm Desk Lead renamed Duty Manager per GEP 03.020 Rev D."}
+  - {rev: "J/2", date: 2022-06-13, section: "Att. B", change: "Contact roster updated."}
+---
+# 1.0 PURPOSE
+
+This procedure sets how SGW develops, approves, releases and revises estimated times of restoration (ETRs)
+after a storm.
+
+# 2.0 SCOPE
+
+Applies to distribution outages in Event Types 1, 2 and 3 (GEP 00.010 section 4.2). Does not apply to Event
+Type 4 events, where the outage management system default ETRs stand.
+
+# 3.0 RESPONSIBILITIES
+
+| Position | Responsibility |
+|---|---|
+| ETR Specialist (Planning Section) | Runs the restoration model; proposes global and regional ETRs |
+| Duty Manager (Electric Operations) | Checks crew counts and assumptions; approves before release |
+| Incident Commander | Approves before release |
+| Public Information Officer | Releases approved ETRs using PCN 02.044 wording |
+| Damage Assessment Coordinator | Reports patrol completion by region (DOM 14.110) |
+
+# 4.0 DEFINITIONS
+
+Global ETR: the time by which 90 percent of affected customers are restored, system-wide.
+
+Regional ETR: the same 90 percent measure for one operating region.
+
+P25, P50, P75: the 25th, 50th and 75th percentiles of the modelled 90 percent restoration time.
+
+All-clear: as defined in GEP 2H.01 section 3.0.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 Do not release an ETR that has not been approved per 6.2.4.
+
+5.2 Model runs use crew counts on property or confirmed en route, not requested crews.
+
+5.3 A model run older than 6 h shall not be used for release.
+
+# 6.0 PROCEDURE
+
+## 6.1 Before All-Clear
+
+6.1.1 Run the pre-landfall model at each NHC advisory once the Event Type is 1 or 2.
+
+6.1.2 Share the run with the Duty Manager for staffing decisions. Do not publish it.
+
+## 6.2 Global ETR
+
+6.2.1 Publish the global ETR within 24 h after the all-clear.
+
+6.2.2 State the global ETR as a range: P25, P50 and P75 (range of the 25th, 50th and 75th percentiles).
+
+6.2.3 The ETR Specialist proposes the global ETR on F-DOM-121 with the model inputs attached.
+
+6.2.4 The Incident Commander and the Duty Manager approve the global ETR before release. Both signatures go on
+F-DOM-121.
+
+6.2.5 Send the approved range to the Public Information Officer. Release wording follows PCN 02.044.
+
+NOTE: The P50 is the headline time in media statements. P25 and P75 are given as the range.
+
+## 6.3 Regional ETRs
+
+6.3.1 Regional ETRs follow once damage assessment has patrolled 80 percent of circuits in the region.
+
+6.3.2 Use the patrol completion count from the Damage Assessment Coordinator, not crew estimates.
+
+6.3.3 Approve and release regional ETRs as in 6.2.3 to 6.2.5.
+
+## 6.4 Revision
+
+6.4.1 Re-run the model at each operational period change.
+
+6.4.2 Revise a published ETR when the P50 moves by more than 12 h.
+
+6.4.3 A move of 12 h or less is logged but not released.
+
+6.4.4 Revised ETRs need the same approvals as in 6.2.4.
+
+6.4.5 Release wording for a revision follows PCN 02.044 section 4.
+
+# 7.0 RECORDS
+
+| Record | Form | Retention |
+|---|---|---|
+| ETR proposal and approval | F-DOM-121 | 7 years |
+| Model inputs and run log | Planning share, incident folder | 7 years |
+| Released statements | PCN log | 7 years |
+
+# 8.0 REFERENCES
+
+GEP 00.010, GEP 03.020, GEP 2H.01, DOM 14.110, PCN 02.044, SC 103-314.
+
+<<PAGEBREAK>>
+# ATTACHMENT A - Release Decision Table
+
+| Condition | Action |
+|---|---|
+| All-clear declared, Event Type 1-3 | Global ETR due within 24 h |
+| Region patrol at 80 percent of circuits | Regional ETR due at next operational period |
+| P50 change above 12 h | Revise and re-release |
+| P50 change of 12 h or less | Log only |
+
+# ATTACHMENT B - Contacts
+
+| Position | Day | After hours |
+|---|---|---|
+| ETR Specialist | Planning Section, EOC | Storm Planning on-call, ext. 3318 |
+| Duty Manager | Storm room desk 2 | Distribution Control Center, ext. 2262 |
+| Public Information Officer | Media desk | Communications on-call, ext. 6104 |

@@ -1,0 +1,18 @@
+# K14 per-node LLM config (values; schema in src/sgw/contracts/llm_nodes.py). The gateway reads the same file
+# for its egress node rules. Model and effort per node come from the small evals in evals/reports/ named in
+# eval_result; working-rules 4: Sonnet 5.5 at medium by default, Haiku 5.5 only where its eval passes.
+version: 1
+nodes:
+  - node: narrate
+    model: sonnet
+    effort: medium
+    max_tokens: 2000
+    prompt_version: v2
+    class_ceiling: C1
+  - node: draft_rationale
+    model: sonnet
+    effort: medium
+    max_tokens: 1500
+    prompt_version: v1
+    output_schema: sgw.agent.nodes.text_nodes.RationaleOut
+    class_ceiling: C1

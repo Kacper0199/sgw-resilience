@@ -1,0 +1,107 @@
+[
+  {
+    "name": "ingest.feeds",
+    "description": "Pull every adapter from its last cursor; outbox rows and observations commit together per page.",
+    "upstream": [],
+    "downstream": ["ledger.reconcile", "ledger.relay", "observations"],
+    "freshness_limit_s": 900,
+    "last_run": {
+      "run_id": "RUN-INGEST-FEEDS-0912",
+      "status": "success",
+      "started_at": "2026-11-20T09:12:04Z",
+      "finished_at": "2026-11-20T09:12:41Z",
+      "rows_in": 2148,
+      "rows_out": 2131,
+      "rows_quarantined": 17,
+      "dq": {
+        "checks": 14,
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  },
+  {
+    "name": "ledger.reconcile",
+    "description": "Every event fetched in this run is in the ledger exactly once.",
+    "upstream": ["ledger.relay", "ingest.feeds"],
+    "downstream": [],
+    "freshness_limit_s": null,
+    "last_run": {
+      "run_id": "RUN-LEDGER-RECONCILE-0912",
+      "status": "success",
+      "started_at": "2026-11-20T09:12:45Z",
+      "finished_at": "2026-11-20T09:12:46Z",
+      "rows_in": 2131,
+      "rows_out": 2131,
+      "rows_quarantined": 0,
+      "dq": {
+        "checks": 3,
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  },
+  {
+    "name": "ledger.relay",
+    "description": "Drain the outbox into the ledger and prove the sequence is gapless; runs even when ingest raised,\n    since committed outbox rows must never wait on a feed.",
+    "upstream": ["ingest.feeds"],
+    "downstream": ["ledger.reconcile", "risk.snapshot"],
+    "freshness_limit_s": null,
+    "last_run": {
+      "run_id": "RUN-LEDGER-RELAY-0912",
+      "status": "success",
+      "started_at": "2026-11-20T09:12:42Z",
+      "finished_at": "2026-11-20T09:12:45Z",
+      "rows_in": 2131,
+      "rows_out": 2131,
+      "rows_quarantined": 0,
+      "dq": {
+        "checks": 4,
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  },
+  {
+    "name": "observations",
+    "description": "This run's numeric DeviceState readings: finite values, units, and no two different values for one\n    reading known at the same instant (later revisions are allowed, K1).",
+    "upstream": ["ingest.feeds"],
+    "downstream": [],
+    "freshness_limit_s": 900,
+    "last_run": {
+      "run_id": "RUN-OBSERVATIONS-0912",
+      "status": "partial",
+      "started_at": "2026-11-20T09:12:46Z",
+      "finished_at": "2026-11-20T09:12:58Z",
+      "rows_in": 1874,
+      "rows_out": 1862,
+      "rows_quarantined": 12,
+      "dq": {
+        "checks": 6,
+        "errors": 0,
+        "warnings": 1
+      }
+    }
+  },
+  {
+    "name": "risk.snapshot",
+    "description": "County fans, asset risk and no-regret shares of the advisory in force (RiskSnapshotPublished).",
+    "upstream": ["ledger.relay"],
+    "downstream": [],
+    "freshness_limit_s": 900,
+    "last_run": {
+      "run_id": "RUN-RISK-SNAPSHOT-0912",
+      "status": "success",
+      "started_at": "2026-11-20T09:13:01Z",
+      "finished_at": "2026-11-20T09:13:19Z",
+      "rows_in": 123,
+      "rows_out": 123,
+      "rows_quarantined": 0,
+      "dq": {
+        "checks": 5,
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  }
+]

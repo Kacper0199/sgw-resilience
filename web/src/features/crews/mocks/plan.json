@@ -1,0 +1,665 @@
+{
+  "engine_version": "a5-saa-1.1",
+  "scenario": "helene",
+  "advisory": "N",
+  "issued_utc": "2024-09-26T09:00:00Z",
+  "landfall_utc": "2024-09-27T03:10:00Z",
+  "objective": "customer-hours of crew-arrival delay (travel, yard hold, aid arrival); synthetic",
+  "size": {
+    "yards": 11,
+    "clusters": 40,
+    "scenarios": 50,
+    "out_of_sample": 2000
+  },
+  "crews": {
+    "own_groups": 177,
+    "own_group_persons": 24,
+    "mutual_aid_group_persons": 40,
+    "persons_per_1000_outages": 13.3
+  },
+  "planning_band_check": {
+    "synthetic_truth_requirement_over_p50": 4.26,
+    "inside_planning_band": false,
+    "note": "the generator's realised requirement is 4.3x the P50 forecast, outside the planning band [0.45, 2.21]; no plan sized from this forecast covers it, the gap is filled by post-landfall mutual aid"
+  },
+  "staging_rules": {
+    "home_share_min": 0.5,
+    "site_cap_persons": 1000,
+    "label": "Assumed SGW policy; replace the site cap with the logistics site list"
+  },
+  "vss": {
+    "ev": {
+      "value": 91834.61052889613,
+      "ci_low": 83284.5812778555,
+      "ci_high": 100384.63977993676,
+      "n": 2000,
+      "share_scenarios_better": 0.589
+    },
+    "p50": {
+      "value": 63434.86940559237,
+      "ci_low": 55036.0774190041,
+      "ci_high": 71833.66139218064,
+      "n": 2000,
+      "share_scenarios_better": 0.5825
+    }
+  },
+  "evpi": {
+    "in_sample": 193165.46889558062,
+    "out_of_sample": 186843.68253501505,
+    "out_of_sample_n": 200,
+    "in_sample_n": 50,
+    "wait_and_see_in_sample": 11436920.573602004,
+    "wait_and_see_out_of_sample": 13946495.437959649,
+    "wait_and_see_mip_gap": 0.0001
+  },
+  "recommendation": null,
+  "recommendation_note": "the optimiser does not pick: the trade-off (committed spend and idle crews against tail customer-hours) is the T3 approvers' call",
+  "forecast_scale_band": {
+    "k_low": 0.4527,
+    "k_high": 2.2088,
+    "observed_scale_stress_k": 3.064
+  },
+  "plans": [
+    {
+      "plan_id": "P50",
+      "title": "P50 deterministic plan",
+      "trade_off": "A5 baseline: plans for the median forecast only.",
+      "risk": "neutral",
+      "early_mutual_aid_groups": 20,
+      "early_mutual_aid_persons": 800,
+      "own_groups_staged": 177,
+      "committed_early_mutual_aid_usd_per_day": 1792000,
+      "expected_cost": {
+        "early_mutual_aid_person_days": 6033,
+        "post_landfall_mutual_aid_person_days": 12616,
+        "total_mutual_aid_person_days": 18649,
+        "total_mutual_aid_usd": 41773137,
+        "usd_per_customer_hour_avoided_vs_p50": null
+      },
+      "yards": {
+        "STG-AIK-SANDHILL-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 0,
+          "persons": 72
+        },
+        "STG-CHS-ASHLEYFERRY-YARD": {
+          "home_groups": 22,
+          "own_groups": 31,
+          "mutual_aid_groups": 0,
+          "persons": 744
+        },
+        "STG-CHT-OGEECHEEWHARF-YARD": {
+          "home_groups": 19,
+          "own_groups": 9,
+          "mutual_aid_groups": 0,
+          "persons": 216
+        },
+        "STG-CLK-NORTHOCONEE-YARD": {
+          "home_groups": 15,
+          "own_groups": 29,
+          "mutual_aid_groups": 0,
+          "persons": 696
+        },
+        "STG-FLO-LYNCHESRUN-YARD": {
+          "home_groups": 20,
+          "own_groups": 41,
+          "mutual_aid_groups": 0,
+          "persons": 984
+        },
+        "STG-GVL-REEDYSHOALS-YARD": {
+          "home_groups": 28,
+          "own_groups": 14,
+          "mutual_aid_groups": 0,
+          "persons": 336
+        },
+        "STG-LAU-OCONEEFLATS-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 20,
+          "persons": 872
+        },
+        "STG-RCH-MILLPOND-YARD": {
+          "home_groups": 10,
+          "own_groups": 5,
+          "mutual_aid_groups": 0,
+          "persons": 120
+        },
+        "STG-RLD-CONGAREEBEND-YARD": {
+          "home_groups": 23,
+          "own_groups": 11,
+          "mutual_aid_groups": 0,
+          "persons": 264
+        },
+        "STG-WRE-OKEFENOKEEGATE-YARD": {
+          "home_groups": 13,
+          "own_groups": 6,
+          "mutual_aid_groups": 0,
+          "persons": 144
+        },
+        "STG-YRK-CATAWBALANDING-YARD": {
+          "home_groups": 13,
+          "own_groups": 25,
+          "mutual_aid_groups": 0,
+          "persons": 600
+        }
+      },
+      "out_of_sample": {
+        "n": 2000,
+        "expected_customer_hours": 14094241,
+        "p90_customer_hours": 32907661,
+        "cvar90_customer_hours": 59500413,
+        "expected_idle_early_mutual_aid_persons": 359.9,
+        "expected_late_mutual_aid_persons": 1895.9,
+        "expected_second_rotation_mutual_aid_persons": 196.1
+      },
+      "synthetic_truth_customer_hours": 150055841,
+      "observed_scale_stress_customer_hours": 70699921
+    },
+    {
+      "plan_id": "COA-A",
+      "title": "Spend-matched: the P50 request, placed for the spread",
+      "trade_off": "Same early mutual-aid request as the P50 plan; crews placed for all scenarios. Still short when the storm is bigger than the P50.",
+      "risk": "neutral",
+      "early_mutual_aid_groups": 20,
+      "early_mutual_aid_persons": 800,
+      "own_groups_staged": 177,
+      "committed_early_mutual_aid_usd_per_day": 1792000,
+      "expected_cost": {
+        "early_mutual_aid_person_days": 6033,
+        "post_landfall_mutual_aid_person_days": 12619,
+        "total_mutual_aid_person_days": 18652,
+        "total_mutual_aid_usd": 41779895,
+        "usd_per_customer_hour_avoided_vs_p50": 0.11
+      },
+      "yards": {
+        "STG-AIK-SANDHILL-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 5,
+          "persons": 272
+        },
+        "STG-CHS-ASHLEYFERRY-YARD": {
+          "home_groups": 22,
+          "own_groups": 38,
+          "mutual_aid_groups": 2,
+          "persons": 992
+        },
+        "STG-CHT-OGEECHEEWHARF-YARD": {
+          "home_groups": 19,
+          "own_groups": 9,
+          "mutual_aid_groups": 0,
+          "persons": 216
+        },
+        "STG-CLK-NORTHOCONEE-YARD": {
+          "home_groups": 15,
+          "own_groups": 7,
+          "mutual_aid_groups": 11,
+          "persons": 608
+        },
+        "STG-FLO-LYNCHESRUN-YARD": {
+          "home_groups": 20,
+          "own_groups": 41,
+          "mutual_aid_groups": 0,
+          "persons": 984
+        },
+        "STG-GVL-REEDYSHOALS-YARD": {
+          "home_groups": 28,
+          "own_groups": 14,
+          "mutual_aid_groups": 0,
+          "persons": 336
+        },
+        "STG-LAU-OCONEEFLATS-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 0,
+          "persons": 72
+        },
+        "STG-RCH-MILLPOND-YARD": {
+          "home_groups": 10,
+          "own_groups": 5,
+          "mutual_aid_groups": 0,
+          "persons": 120
+        },
+        "STG-RLD-CONGAREEBEND-YARD": {
+          "home_groups": 23,
+          "own_groups": 11,
+          "mutual_aid_groups": 2,
+          "persons": 344
+        },
+        "STG-WRE-OKEFENOKEEGATE-YARD": {
+          "home_groups": 13,
+          "own_groups": 6,
+          "mutual_aid_groups": 0,
+          "persons": 144
+        },
+        "STG-YRK-CATAWBALANDING-YARD": {
+          "home_groups": 13,
+          "own_groups": 40,
+          "mutual_aid_groups": 0,
+          "persons": 960
+        }
+      },
+      "out_of_sample": {
+        "n": 2000,
+        "expected_customer_hours": 14030806,
+        "p90_customer_hours": 32828963,
+        "cvar90_customer_hours": 59296835,
+        "expected_idle_early_mutual_aid_persons": 329.4,
+        "expected_late_mutual_aid_persons": 1896.7,
+        "expected_second_rotation_mutual_aid_persons": 196.1
+      },
+      "synthetic_truth_customer_hours": 149974004,
+      "observed_scale_stress_customer_hours": 70591415,
+      "params": {
+        "crew_groups.STG-AIK-SANDHILL-YARD": 8,
+        "crew_groups.STG-CHS-ASHLEYFERRY-YARD": 40,
+        "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": 9,
+        "crew_groups.STG-CLK-NORTHOCONEE-YARD": 18,
+        "crew_groups.STG-FLO-LYNCHESRUN-YARD": 41,
+        "crew_groups.STG-GVL-REEDYSHOALS-YARD": 14,
+        "crew_groups.STG-LAU-OCONEEFLATS-YARD": 3,
+        "crew_groups.STG-RCH-MILLPOND-YARD": 5,
+        "crew_groups.STG-RLD-CONGAREEBEND-YARD": 13,
+        "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": 6,
+        "crew_groups.STG-YRK-CATAWBALANDING-YARD": 40,
+        "mutual_aid_groups": 20
+      },
+      "envelope": {
+        "pct": 20,
+        "bounds": {
+          "crew_groups.STG-AIK-SANDHILL-YARD": {
+            "min": 7,
+            "max": 9
+          },
+          "crew_groups.STG-CHS-ASHLEYFERRY-YARD": {
+            "min": 32,
+            "max": 48
+          },
+          "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": {
+            "min": 8,
+            "max": 10
+          },
+          "crew_groups.STG-CLK-NORTHOCONEE-YARD": {
+            "min": 15,
+            "max": 21
+          },
+          "crew_groups.STG-FLO-LYNCHESRUN-YARD": {
+            "min": 33,
+            "max": 49
+          },
+          "crew_groups.STG-GVL-REEDYSHOALS-YARD": {
+            "min": 12,
+            "max": 16
+          },
+          "crew_groups.STG-LAU-OCONEEFLATS-YARD": {
+            "min": 3,
+            "max": 3
+          },
+          "crew_groups.STG-RCH-MILLPOND-YARD": {
+            "min": 4,
+            "max": 6
+          },
+          "crew_groups.STG-RLD-CONGAREEBEND-YARD": {
+            "min": 11,
+            "max": 15
+          },
+          "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": {
+            "min": 5,
+            "max": 7
+          },
+          "crew_groups.STG-YRK-CATAWBALANDING-YARD": {
+            "min": 32,
+            "max": 48
+          },
+          "mutual_aid_groups": {
+            "min": 16,
+            "max": 24
+          }
+        },
+        "rule": "re-optimisation inside these bounds is T1; outside or after expiry T3 again (O-04)",
+        "pinned_yards": ["crew_groups.STG-LAU-OCONEEFLATS-YARD"],
+        "note": "+-20% of fewer than 5 groups rounds to 0: those yards are pinned and any change there is T3"
+      },
+      "resource_request_id": "RM-HELENE-N-COA-A-5a792bce"
+    },
+    {
+      "plan_id": "COA-B",
+      "title": "Tail hedge: P90-sized request, placed for E + CVaR90",
+      "trade_off": "Commits far more mutual aid before landfall and leaves crews idle in small storms, to cut customer-hours in Helene-scale scenarios that the forecast under-predicts.",
+      "risk": "cvar",
+      "early_mutual_aid_groups": 165,
+      "early_mutual_aid_persons": 6600,
+      "own_groups_staged": 177,
+      "committed_early_mutual_aid_usd_per_day": 14784000,
+      "expected_cost": {
+        "early_mutual_aid_person_days": 49768,
+        "post_landfall_mutual_aid_person_days": 4396,
+        "total_mutual_aid_person_days": 54165,
+        "total_mutual_aid_usd": 121328706,
+        "usd_per_customer_hour_avoided_vs_p50": 18.83
+      },
+      "yards": {
+        "STG-AIK-SANDHILL-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 23,
+          "persons": 992
+        },
+        "STG-CHS-ASHLEYFERRY-YARD": {
+          "home_groups": 22,
+          "own_groups": 32,
+          "mutual_aid_groups": 5,
+          "persons": 968
+        },
+        "STG-CHT-OGEECHEEWHARF-YARD": {
+          "home_groups": 19,
+          "own_groups": 10,
+          "mutual_aid_groups": 19,
+          "persons": 1000
+        },
+        "STG-CLK-NORTHOCONEE-YARD": {
+          "home_groups": 15,
+          "own_groups": 8,
+          "mutual_aid_groups": 20,
+          "persons": 992
+        },
+        "STG-FLO-LYNCHESRUN-YARD": {
+          "home_groups": 20,
+          "own_groups": 41,
+          "mutual_aid_groups": 0,
+          "persons": 984
+        },
+        "STG-GVL-REEDYSHOALS-YARD": {
+          "home_groups": 28,
+          "own_groups": 15,
+          "mutual_aid_groups": 16,
+          "persons": 1000
+        },
+        "STG-LAU-OCONEEFLATS-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 23,
+          "persons": 992
+        },
+        "STG-RCH-MILLPOND-YARD": {
+          "home_groups": 10,
+          "own_groups": 5,
+          "mutual_aid_groups": 22,
+          "persons": 1000
+        },
+        "STG-RLD-CONGAREEBEND-YARD": {
+          "home_groups": 23,
+          "own_groups": 12,
+          "mutual_aid_groups": 17,
+          "persons": 968
+        },
+        "STG-WRE-OKEFENOKEEGATE-YARD": {
+          "home_groups": 13,
+          "own_groups": 7,
+          "mutual_aid_groups": 20,
+          "persons": 968
+        },
+        "STG-YRK-CATAWBALANDING-YARD": {
+          "home_groups": 13,
+          "own_groups": 41,
+          "mutual_aid_groups": 0,
+          "persons": 984
+        }
+      },
+      "out_of_sample": {
+        "n": 2000,
+        "expected_customer_hours": 9869908,
+        "p90_customer_hours": 19758376,
+        "cvar90_customer_hours": 39259625,
+        "expected_idle_early_mutual_aid_persons": 4480.4,
+        "expected_late_mutual_aid_persons": 640.1,
+        "expected_second_rotation_mutual_aid_persons": 39.1
+      },
+      "synthetic_truth_customer_hours": 90796313,
+      "observed_scale_stress_customer_hours": 41398676,
+      "params": {
+        "crew_groups.STG-AIK-SANDHILL-YARD": 26,
+        "crew_groups.STG-CHS-ASHLEYFERRY-YARD": 37,
+        "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": 29,
+        "crew_groups.STG-CLK-NORTHOCONEE-YARD": 28,
+        "crew_groups.STG-FLO-LYNCHESRUN-YARD": 41,
+        "crew_groups.STG-GVL-REEDYSHOALS-YARD": 31,
+        "crew_groups.STG-LAU-OCONEEFLATS-YARD": 26,
+        "crew_groups.STG-RCH-MILLPOND-YARD": 27,
+        "crew_groups.STG-RLD-CONGAREEBEND-YARD": 29,
+        "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": 27,
+        "crew_groups.STG-YRK-CATAWBALANDING-YARD": 41,
+        "mutual_aid_groups": 165
+      },
+      "envelope": {
+        "pct": 20,
+        "bounds": {
+          "crew_groups.STG-AIK-SANDHILL-YARD": {
+            "min": 21,
+            "max": 31
+          },
+          "crew_groups.STG-CHS-ASHLEYFERRY-YARD": {
+            "min": 30,
+            "max": 44
+          },
+          "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": {
+            "min": 24,
+            "max": 34
+          },
+          "crew_groups.STG-CLK-NORTHOCONEE-YARD": {
+            "min": 23,
+            "max": 33
+          },
+          "crew_groups.STG-FLO-LYNCHESRUN-YARD": {
+            "min": 33,
+            "max": 49
+          },
+          "crew_groups.STG-GVL-REEDYSHOALS-YARD": {
+            "min": 25,
+            "max": 37
+          },
+          "crew_groups.STG-LAU-OCONEEFLATS-YARD": {
+            "min": 21,
+            "max": 31
+          },
+          "crew_groups.STG-RCH-MILLPOND-YARD": {
+            "min": 22,
+            "max": 32
+          },
+          "crew_groups.STG-RLD-CONGAREEBEND-YARD": {
+            "min": 24,
+            "max": 34
+          },
+          "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": {
+            "min": 22,
+            "max": 32
+          },
+          "crew_groups.STG-YRK-CATAWBALANDING-YARD": {
+            "min": 33,
+            "max": 49
+          },
+          "mutual_aid_groups": {
+            "min": 132,
+            "max": 198
+          }
+        },
+        "rule": "re-optimisation inside these bounds is T1; outside or after expiry T3 again (O-04)",
+        "pinned_yards": [],
+        "note": "+-20% of fewer than 5 groups rounds to 0: those yards are pinned and any change there is T3"
+      },
+      "resource_request_id": "RM-HELENE-N-COA-B-44e56f2c"
+    },
+    {
+      "plan_id": "COA-C",
+      "title": "Own crews only, request mutual aid after landfall",
+      "trade_off": "No early request and no idle crews; post-landfall aid arrives a day or more later and is scarcer in big storms, so the most customer-hours. Post-landfall aid is still paid.",
+      "risk": "neutral",
+      "early_mutual_aid_groups": 0,
+      "early_mutual_aid_persons": 0,
+      "own_groups_staged": 177,
+      "committed_early_mutual_aid_usd_per_day": 0,
+      "expected_cost": {
+        "early_mutual_aid_person_days": 0,
+        "post_landfall_mutual_aid_person_days": 15025,
+        "total_mutual_aid_person_days": 15025,
+        "total_mutual_aid_usd": 33655116,
+        "usd_per_customer_hour_avoided_vs_p50": null
+      },
+      "yards": {
+        "STG-AIK-SANDHILL-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 0,
+          "persons": 72
+        },
+        "STG-CHS-ASHLEYFERRY-YARD": {
+          "home_groups": 22,
+          "own_groups": 38,
+          "mutual_aid_groups": 0,
+          "persons": 912
+        },
+        "STG-CHT-OGEECHEEWHARF-YARD": {
+          "home_groups": 19,
+          "own_groups": 9,
+          "mutual_aid_groups": 0,
+          "persons": 216
+        },
+        "STG-CLK-NORTHOCONEE-YARD": {
+          "home_groups": 15,
+          "own_groups": 7,
+          "mutual_aid_groups": 0,
+          "persons": 168
+        },
+        "STG-FLO-LYNCHESRUN-YARD": {
+          "home_groups": 20,
+          "own_groups": 40,
+          "mutual_aid_groups": 0,
+          "persons": 960
+        },
+        "STG-GVL-REEDYSHOALS-YARD": {
+          "home_groups": 28,
+          "own_groups": 14,
+          "mutual_aid_groups": 0,
+          "persons": 336
+        },
+        "STG-LAU-OCONEEFLATS-YARD": {
+          "home_groups": 7,
+          "own_groups": 3,
+          "mutual_aid_groups": 0,
+          "persons": 72
+        },
+        "STG-RCH-MILLPOND-YARD": {
+          "home_groups": 10,
+          "own_groups": 5,
+          "mutual_aid_groups": 0,
+          "persons": 120
+        },
+        "STG-RLD-CONGAREEBEND-YARD": {
+          "home_groups": 23,
+          "own_groups": 12,
+          "mutual_aid_groups": 0,
+          "persons": 288
+        },
+        "STG-WRE-OKEFENOKEEGATE-YARD": {
+          "home_groups": 13,
+          "own_groups": 6,
+          "mutual_aid_groups": 0,
+          "persons": 144
+        },
+        "STG-YRK-CATAWBALANDING-YARD": {
+          "home_groups": 13,
+          "own_groups": 40,
+          "mutual_aid_groups": 0,
+          "persons": 960
+        }
+      },
+      "out_of_sample": {
+        "n": 2000,
+        "expected_customer_hours": 15224060,
+        "p90_customer_hours": 35533013,
+        "cvar90_customer_hours": 63475610,
+        "expected_idle_early_mutual_aid_persons": 0.0,
+        "expected_late_mutual_aid_persons": 2258.9,
+        "expected_second_rotation_mutual_aid_persons": 241.3
+      },
+      "synthetic_truth_customer_hours": 158196916,
+      "observed_scale_stress_customer_hours": 75821378,
+      "params": {
+        "crew_groups.STG-AIK-SANDHILL-YARD": 3,
+        "crew_groups.STG-CHS-ASHLEYFERRY-YARD": 38,
+        "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": 9,
+        "crew_groups.STG-CLK-NORTHOCONEE-YARD": 7,
+        "crew_groups.STG-FLO-LYNCHESRUN-YARD": 40,
+        "crew_groups.STG-GVL-REEDYSHOALS-YARD": 14,
+        "crew_groups.STG-LAU-OCONEEFLATS-YARD": 3,
+        "crew_groups.STG-RCH-MILLPOND-YARD": 5,
+        "crew_groups.STG-RLD-CONGAREEBEND-YARD": 12,
+        "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": 6,
+        "crew_groups.STG-YRK-CATAWBALANDING-YARD": 40,
+        "mutual_aid_groups": 0
+      },
+      "envelope": {
+        "pct": 20,
+        "bounds": {
+          "crew_groups.STG-AIK-SANDHILL-YARD": {
+            "min": 3,
+            "max": 3
+          },
+          "crew_groups.STG-CHS-ASHLEYFERRY-YARD": {
+            "min": 31,
+            "max": 45
+          },
+          "crew_groups.STG-CHT-OGEECHEEWHARF-YARD": {
+            "min": 8,
+            "max": 10
+          },
+          "crew_groups.STG-CLK-NORTHOCONEE-YARD": {
+            "min": 6,
+            "max": 8
+          },
+          "crew_groups.STG-FLO-LYNCHESRUN-YARD": {
+            "min": 32,
+            "max": 48
+          },
+          "crew_groups.STG-GVL-REEDYSHOALS-YARD": {
+            "min": 12,
+            "max": 16
+          },
+          "crew_groups.STG-LAU-OCONEEFLATS-YARD": {
+            "min": 3,
+            "max": 3
+          },
+          "crew_groups.STG-RCH-MILLPOND-YARD": {
+            "min": 4,
+            "max": 6
+          },
+          "crew_groups.STG-RLD-CONGAREEBEND-YARD": {
+            "min": 10,
+            "max": 14
+          },
+          "crew_groups.STG-WRE-OKEFENOKEEGATE-YARD": {
+            "min": 5,
+            "max": 7
+          },
+          "crew_groups.STG-YRK-CATAWBALANDING-YARD": {
+            "min": 32,
+            "max": 48
+          },
+          "mutual_aid_groups": {
+            "min": 0,
+            "max": 0
+          }
+        },
+        "rule": "re-optimisation inside these bounds is T1; outside or after expiry T3 again (O-04)",
+        "pinned_yards": [
+          "crew_groups.STG-AIK-SANDHILL-YARD",
+          "crew_groups.STG-LAU-OCONEEFLATS-YARD",
+          "mutual_aid_groups"
+        ],
+        "note": "+-20% of fewer than 5 groups rounds to 0: those yards are pinned and any change there is T3"
+      },
+      "resource_request_id": null
+    }
+  ]
+}

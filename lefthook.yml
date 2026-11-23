@@ -1,0 +1,20 @@
+no_auto_install: true
+glob_matcher: doublestar
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: forbidden-paths
+      run: uv run --frozen python scripts/guards.py forbidden-paths --staged
+
+    - name: secrets
+      run: bash scripts/secret-scan.sh staged
+
+    - name: ruff
+      glob: "**/*.py"
+      run: uv run --frozen ruff check {staged_files} && uv run --frozen ruff format --check {staged_files}
+
+    - name: web
+      root: "web/"
+      glob: "web/**/*.{js,mjs,cjs,ts,tsx,jsx,json,jsonc,css}"
+      run: pnpm exec biome check --no-errors-on-unmatched {staged_files}

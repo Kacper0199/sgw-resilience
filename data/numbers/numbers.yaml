@@ -1,0 +1,3557 @@
+# K10 numbers and policy parameters: the only numbers deliverables and the UI may quote.
+# Facts and computed values come from the project fact base. Policy parameters carry
+# kind=policy and render the chip "SGW policy · assumed" (O-05). Generated outputs: `uv run sgw numbers`.
+# Fields: value, unit, label (F sourced, C computed, A assumption, U unknown), kind, source, caveat,
+# allowed_in (prd, briefing, deck, video, web, code), handoff_s3 (row name in the fact base, or null).
+version: 1
+numbers:
+  footprint_counties:
+    value: 123
+    unit: counties
+    label: F
+    kind: fact
+    source: DS 1; DC-12
+    caveat: SC + GA east of 83.6 W; frozen default
+    allowed_in: [prd, briefing, deck, video, web, code]
+    handoff_s3: Footprint
+  residents_total:
+    tex_key: footprint.residents
+    value: 8140000
+    unit: people
+    label: F
+    kind: fact
+    source: ROI A; VD-01
+    caveat: cite as "Census Vintage 2024 estimate"
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: Residents
+  residents_sc:
+    value: 5478831
+    unit: people
+    label: F
+    kind: fact
+    source: ROI A; VD-01
+    caveat: Census Vintage 2024 estimate
+    allowed_in: [prd, briefing]
+    handoff_s3: Residents
+  residents_ga_east:
+    value: 2661974
+    unit: people
+    label: F
+    kind: fact
+    source: ROI A; VD-01
+    caveat: Census Vintage 2024 estimate
+    allowed_in: [prd, briefing]
+    handoff_s3: Residents
+  electric_customers_total:
+    tex_key: footprint.customers_electric
+    value: 4248290
+    unit: customers
+    label: F
+    kind: fact
+    source: ROI A (EAGLE-I MCC.csv)
+    caveat: modelled 2022 customers; never use total_customers 7.2 M
+    allowed_in: [prd, briefing, deck, video, web, code]
+    handoff_s3: Electric customers
+  electric_customers_sc:
+    value: 2832284
+    unit: customers
+    label: F
+    kind: fact
+    source: ROI A (EAGLE-I MCC.csv)
+    caveat: modelled 2022 customers
+    allowed_in: [prd, briefing, code]
+    handoff_s3: Electric customers
+  electric_customers_ga_east:
+    value: 1416006
+    unit: customers
+    label: F
+    kind: fact
+    source: ROI A (EAGLE-I MCC.csv)
+    caveat: modelled 2022 customers
+    allowed_in: [prd, briefing, code]
+    handoff_s3: Electric customers
+  residential_share_pct:
+    value: 86.8
+    unit: percent
+    label: F
+    kind: fact
+    source: ROI A (EIA-861 2024)
+    caveat: GA statewide share applied to GA east [A]
+    allowed_in: [prd, briefing]
+    handoff_s3: Residential share
+  water_population_served:
+    tex_key: footprint.water_population
+    value: 2000000
+    unit: people
+    label: A
+    kind: assumption
+    source: BR A2 (base); DS 8.2 gives 1.5 M
+    caveat: quote "2.0 M [A] (alternative 1.5 M)"; ROI is sensitive (X-15)
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: Water population served
+  water_population_served_alt:
+    value: 1500000
+    unit: people
+    label: A
+    kind: assumption
+    source: DS 8.2
+    caveat: alternative to the 2.0 M base
+    allowed_in: [prd, briefing]
+    handoff_s3: Water population served
+  helene_footprint_peak_out:
+    tex_key: storm.helene.peak_customers_out
+    value: 2230592
+    unit: customers
+    label: C
+    kind: computed
+    source: DS 1.2; VD-02, VD-05
+    caveat: own EAGLE-I aggregation over 123 counties at 2024-09-27 14:00 UTC; not a DOE figure
+    allowed_in: [prd, briefing, deck, video, web, code]
+    handoff_s3: Helene footprint peak out
+  helene_statewide_peak_out:
+    value: 2467790
+    unit: customers
+    label: F
+    kind: fact
+    source: MT A
+    caveat: SC+GA whole states, simultaneous at 2024-09-27 13:15 UTC
+    allowed_in: [prd, briefing]
+    handoff_s3: Helene SC+GA statewide peak
+  helene_hours_to_ninety_pct_restored:
+    tex_key: storm.helene.hours_to_90pct
+    value: 204
+    unit: hours
+    label: C
+    kind: computed
+    source: MT A
+    caveat: proxy from the peak, not cumulative affected
+    allowed_in: [prd, briefing, deck, video, web, code]
+    handoff_s3: Helene restoration
+  helene_hours_to_ninety_nine_five_pct_restored:
+    value: 390.5
+    unit: hours
+    label: C
+    kind: computed
+    source: MT A
+    caveat: model metric only
+    allowed_in: [prd]
+    handoff_s3: Helene restoration
+  michael_peak_out:
+    value: 412885
+    unit: customers
+    label: F
+    kind: fact
+    source: MT A
+    caveat: SC+GA statewide
+    allowed_in: [prd, briefing]
+    handoff_s3: Other storms, SC+GA
+  ian_peak_out:
+    value: 249387
+    unit: customers
+    label: F
+    kind: fact
+    source: MT A
+    caveat: SC+GA statewide
+    allowed_in: [prd, briefing]
+    handoff_s3: Other storms, SC+GA
+  helene_hours_first_record_to_landfall:
+    value: 87
+    unit: hours
+    label: F
+    kind: fact
+    source: CR2 C-47
+    caveat: first HURDAT2 record 2024-09-23 12:00 UTC; landfall 2024-09-27 03:10 UTC
+    allowed_in: [prd, briefing, deck, video, code]
+    handoff_s3: Helene timeline
+  helene_restoration_t50_hours:
+    value: 35.5
+    unit: hours
+    label: F
+    kind: fact
+    source: DS V06
+    caveat: median; calibrate Hazus means to it
+    allowed_in: [prd, code]
+    handoff_s3: Helene restoration t50
+  mutual_aid_arrival_median_hours:
+    value: 36
+    unit: hours
+    label: A
+    kind: assumption
+    source: SP G13
+    caveat: lognormal, sigma 0.5
+    allowed_in: [prd, code]
+    handoff_s3: Mutual-aid arrival
+  saidi_baseline_sc_min:
+    value: 115.8
+    unit: minutes
+    label: C
+    kind: computed
+    source: MT A
+    caveat: SAIDI without MED, 3-year mean 2022-24, customer-weighted EIA-861
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: SAIDI w/o MED baseline, SC
+  saidi_baseline_ga_min:
+    value: 134
+    unit: minutes
+    label: C
+    kind: computed
+    source: SR 5
+    caveat: about 134 (2024 excluding Altamaha EMC 133.6); never 157 or 210.9
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: SAIDI w/o MED baseline, GA
+  major_event_minutes_median:
+    tex_key: reliability.major_event_median
+    value: 162.6
+    unit: minutes
+    label: C
+    kind: computed
+    source: ROI A
+    caveat: EIA Table 11.4 2015-2025, SC 0.667 / GA 0.333
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Footprint major-event minutes
+  major_event_minutes_helene_year:
+    tex_key: reliability.major_event_minutes
+    value: 2358
+    unit: minutes
+    label: C
+    kind: computed
+    source: ROI A
+    caveat: "Helene year 2024"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: Footprint major-event minutes
+  major_event_minutes_ratio:
+    value: 14.5
+    unit: ratio
+    label: C
+    kind: computed
+    source: project fact base row "Major-event minutes ratio" (2,358 / 162.6)
+    caveat: say "about 14 times the median year"; never "twentyfold" (N-04)
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: Major-event minutes ratio
+  roi_utility_npv_musd:
+    tex_key: roi.cash.npv
+    value: -17.6
+    unit: MUSD
+    label: C
+    kind: computed
+    source: ROI Use-first 1
+    caveat: 10 years, 8%; every effect size and platform cost assumed
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, utility cash
+  roi_utility_bcr:
+    tex_key: roi.cash.bcr
+    value: 0.84
+    unit: ratio
+    label: C
+    kind: computed
+    source: ROI Use-first 1
+    caveat: no cash payback in base
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, utility cash
+  roi_customer_npv_musd:
+    tex_key: roi.customer.npv
+    value: 220.1
+    unit: MUSD
+    label: C
+    kind: computed
+    source: ROI Use-first 2
+    caveat: marginal ICE; upper-leaning
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, with customer value
+  roi_customer_bcr:
+    tex_key: roi.customer.bcr
+    value: 2.99
+    unit: ratio
+    label: C
+    kind: computed
+    source: ROI Use-first 2
+    caveat: marginal ICE; upper-leaning
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, with customer value
+  roi_customer_payback_years:
+    tex_key: roi.customer.payback
+    value: 3.4
+    unit: years
+    label: C
+    kind: computed
+    source: ROI Use-first 2
+    caveat: marginal ICE; upper-leaning
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, with customer value
+  roi_breakeven_effect_multiple:
+    tex_key: roi.breakeven_effect_multiple
+    value: 1.19
+    unit: x effect sizes
+    label: C
+    kind: computed
+    source: ROI Use-first 1
+    caveat: utility cash view breaks even at 1.19 times the assumed effect sizes
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI, utility cash
+  platform_cost_one_time_musd:
+    value: 35.0
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: ROI table lines 65-66 (roi-sc-ga.md)
+    caveat: conservative 52.0, optimistic 23.5; assumption until a pilot measures it
+    allowed_in: [prd, briefing]
+    handoff_s3: Platform cost in the ROI model
+  platform_run_cost_musd_per_year:
+    value: 12.7
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: ROI table lines 65-66 (roi-sc-ga.md)
+    caveat: 19.7 conservative / 8.6 optimistic
+    allowed_in: [prd, briefing]
+    handoff_s3: Platform cost in the ROI model
+  sc_pressure_floor_psi:
+    value: 25
+    unit: psi
+    label: F
+    kind: fact
+    source: SR 1 (SC R.61-58.7.E(7))
+    caveat: normal operation; 20 psi under heavy flow
+    allowed_in: [prd, briefing, deck, video, web, code]
+    handoff_s3: Water pressure rules
+  sc_pressure_floor_heavy_flow_psi:
+    value: 20
+    unit: psi
+    label: F
+    kind: fact
+    source: SR 1 (SC R.61-58.7.E(7))
+    caveat: heavy flow
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_pressure_floor_psi:
+    value: 20
+    unit: psi
+    label: F
+    kind: fact
+    source: SR 1 (GA 391-3-5-.10)
+    caveat: at all times
+    allowed_in: [prd, briefing, web, code]
+    handoff_s3: Water pressure rules
+  sc_outage_full_report_hours:
+    value: 6
+    unit: hours
+    label: F
+    kind: fact
+    source: SR 2 (SC 103-314)
+    caveat: full report if an interruption lasts longer
+    allowed_in: [prd, web, code]
+    handoff_s3: SC outage reporting
+  fragility_median_gust_ms:
+    value: 50
+    unit: m/s
+    label: C
+    kind: computed
+    source: VD-13/14; HZ 9.7
+    caveat: lognormal on gust, beta about 0.4
+    allowed_in: [prd, code]
+    handoff_s3: Fragility
+  rto_hours:
+    value: 2
+    unit: hours
+    label: A
+    kind: assumption
+    source: INFR D.9
+    caveat: storm mode; availability 99.9%
+    allowed_in: [prd]
+    handoff_s3: Availability, RTO, RPO
+  rpo_minutes_approvals:
+    value: 15
+    unit: minutes
+    label: A
+    kind: assumption
+    source: INFR D.9
+    caveat: approvals and audit
+    allowed_in: [prd]
+    handoff_s3: Availability, RTO, RPO
+  price_sonnet_input_usd_per_mtok:
+    value: 2
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: BR E47; VT-14 (pricing page read 2026-11-19)
+    caveat: WP-04 P-1 re-checks
+    allowed_in: [prd, code]
+    handoff_s3: LLM prices
+  price_sonnet_output_usd_per_mtok:
+    value: 10
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: BR E47; VT-14
+    caveat: thinking tokens bill as output
+    allowed_in: [prd, code]
+    handoff_s3: LLM prices
+  price_sonnet_cache_read_usd_per_mtok:
+    value: 0.10
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: BR E47; VT-14
+    caveat: ""
+    allowed_in: [code]
+    handoff_s3: LLM prices
+  price_opus_input_usd_per_mtok:
+    value: 4
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: BR E47; VT-14
+    caveat: set effort explicitly on Opus 5.5
+    allowed_in: [prd, code]
+    handoff_s3: LLM prices
+  price_opus_output_usd_per_mtok:
+    value: 20
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: BR E47; VT-14
+    caveat: ""
+    allowed_in: [prd, code]
+    handoff_s3: LLM prices
+  price_haiku_input_usd_per_mtok:
+    value: 0.10
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: Anthropic model and pricing documentation (checked 2026-11-03)
+    caveat: prompts up to 100K tokens (0.50 beyond); WP-04 re-checks the live page
+    allowed_in: [prd, code]
+    handoff_s3: Haiku 5.5 price (added R06, 2026-11-19)
+  price_haiku_output_usd_per_mtok:
+    value: 0.50
+    unit: USD per M tokens
+    label: F
+    kind: fact
+    source: Anthropic model and pricing documentation (checked 2026-11-03)
+    caveat: prompts up to 100K tokens (2.50 beyond)
+    allowed_in: [prd, code]
+    handoff_s3: Haiku 5.5 price (added R06, 2026-11-19)
+  batch_discount_pct:
+    value: 50
+    unit: percent
+    label: F
+    kind: fact
+    source: BR E47; VT-14
+    caveat: Batch is outside ZDR; synthetic data only
+    allowed_in: [prd, code]
+    handoff_s3: LLM prices
+  # ---- SGW policy parameters (kind=policy; chip "SGW policy · assumed") ----
+  policy_equity_weight:
+    value: 0
+    unit: weight
+    label: A
+    kind: policy
+    source: RESOLUTION O-05 (supersedes PS DC-52 default 0.5)
+    caveat: policy option that requires a PSC-filed priority policy
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_ce_weight_hospital:
+    value: 2000
+    unit: weight per facility
+    label: A
+    kind: policy
+    source: PS DC-52; CONFLICTS N-06
+    caveat: design parameter; quotable only as an assumed policy parameter
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_no_regret_act_now_ppm:
+    value: 800000
+    unit: ppm of scenarios
+    label: A
+    kind: policy
+    source: Contract default (no-regret feature)
+    caveat: act now when acting is not regretted in at least this share of ensemble scenarios
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_envelope_pct:
+    tex_key: policy.envelope_crew_band
+    value: 20
+    unit: percent
+    label: A
+    kind: policy
+    source: RESOLUTION O-04 (example +-20% crews per site)
+    caveat: re-optimisation inside the envelope is T1, outside T3
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_break_glass_cosign_hours:
+    tex_key: policy.breakglass_cosign_window
+    value: 24
+    unit: hours
+    label: A
+    kind: policy
+    source: RESOLUTION O-04
+    caveat: second function co-signs within this window; auto-flag in after-action
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_evidence_age_t1_min:
+    value: 60
+    unit: minutes
+    label: A
+    kind: policy
+    source: PA DC-42 (STM 6.2)
+    caveat: evidence age = scenario_now - last_confirmed_latest_at
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_evidence_age_t2_min:
+    value: 30
+    unit: minutes
+    label: A
+    kind: policy
+    source: PA DC-42 (STM 6.2)
+    caveat: ""
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_evidence_age_t3_min:
+    value: 15
+    unit: minutes
+    label: A
+    kind: policy
+    source: PA DC-42 (STM 6.2)
+    caveat: ""
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_commitment_drift_tolerance_min:
+    value: 15
+    unit: minutes
+    label: A
+    kind: policy
+    source: "SGW policy: one quarter-hour, the SCADA and work-order reporting cadence of the Helene world"
+    caveat: "a commitment drifts when its projected finish passes the promise by more than this"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_learning_credibility_prior_n:
+    value: 3
+    unit: observations
+    label: A
+    kind: policy
+    source: "SGW policy: credibility weighting z = n / (n + k)"
+    caveat: "the assumed lead time counts as this many observations"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_learning_min_change_min:
+    value: 15
+    unit: minutes
+    label: A
+    kind: policy
+    source: "SGW policy"
+    caveat: "a lead-time change smaller than this is not proposed"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_learning_rounding_min:
+    value: 15
+    unit: minutes
+    label: A
+    kind: policy
+    source: "SGW policy: the quarter-hour step of SOP tables"
+    caveat: "proposed lead times round up to this step"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_approval_ttl_t1_min:
+    value: 240
+    unit: minutes
+    label: A
+    kind: policy
+    source: Contract default for DC-09 (5) tier TTL
+    caveat: expires_at also bounded by evidence expiry, next forecast issue and shift end
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_approval_ttl_t2_min:
+    value: 120
+    unit: minutes
+    label: A
+    kind: policy
+    source: Contract default for DC-09 (5)
+    caveat: ""
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_approval_ttl_t3_min:
+    value: 60
+    unit: minutes
+    label: A
+    kind: policy
+    source: Contract default for DC-09 (5)
+    caveat: ""
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_decision_severe_within_min:
+    value: 60
+    unit: minutes
+    label: A
+    kind: policy
+    source: "SGW policy (DESIGN.md Clock): an open decision is Severe in its last hour before the effective decide-by, when the clock turns amber"
+    caveat: "queue severity only; a missed decide-by is Critical"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_decision_elevated_within_min:
+    value: 360
+    unit: minutes
+    label: A
+    kind: policy
+    source: "SGW policy: one NHC advisory cycle (6 h); an open decision inside it, or on the critical path, is Elevated"
+    caveat: "queue severity only"
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_c3_aggregation_assets:
+    value: 25
+    unit: assets
+    label: A
+    kind: policy
+    source: PA DC-39 (STM 3.2)
+    caveat: aggregation of more than this many ranked assets is C3
+    allowed_in: [prd, code]
+    handoff_s3: null
+  policy_small_staging_customer_limit:
+    value: 1000
+    unit: customers
+    label: A
+    kind: policy
+    source: PLAN section 2 tier table
+    caveat: T2 small staging below this and at most 10 targets
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_webhook_tolerance_s:
+    value: 300
+    unit: seconds
+    label: A
+    kind: policy
+    source: Webhook contract
+    caveat: receivers reject signatures older than this
+    allowed_in: [prd, code]
+    handoff_s3: null
+
+  # PRD story values and water twin results.
+  context_ga_storm_underrecovered_musd:
+    tex_key: context.ga_storm_underrecovered_musd
+    value: 912
+    unit: million USD
+    label: F
+    kind: fact
+    source: 'project fact base, Georgia Power storm case (SR 4)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Georgia Power storm case
+  context_ga_storm_helene_musd:
+    tex_key: context.ga_storm_helene_musd
+    value: 800
+    unit: million USD
+    label: F
+    kind: fact
+    source: 'project fact base, Georgia Power storm case (SR 4)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Georgia Power storm case
+  context_ga_storm_rev_req_filed_musd:
+    tex_key: context.ga_storm_rev_req_filed_musd
+    value: 270
+    unit: million USD
+    label: F
+    kind: fact
+    source: 'project fact base, Georgia Power storm case (SR 4)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Georgia Power storm case
+  context_ga_storm_rev_req_agreed_musd:
+    tex_key: context.ga_storm_rev_req_agreed_musd
+    value: 109
+    unit: million USD
+    label: F
+    kind: fact
+    source: 'project fact base, Georgia Power storm case (SR 4)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Georgia Power storm case
+  context_storm_cost_low_usd:
+    tex_key: context.storm_cost_low_usd
+    value: 36.0
+    unit: USD per customer-year
+    label: C
+    kind: computed
+    source: 'project fact base, Storm cost per customer per year (ROI A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Storm cost per customer per year
+  context_storm_cost_base_usd:
+    tex_key: context.storm_cost_base_usd
+    value: 60.2
+    unit: USD per customer-year
+    label: C
+    kind: computed
+    source: 'project fact base, Storm cost per customer per year (ROI A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Storm cost per customer per year
+  context_storm_cost_high_usd:
+    tex_key: context.storm_cost_high_usd
+    value: 131.1
+    unit: USD per customer-year
+    label: C
+    kind: computed
+    source: 'project fact base, Storm cost per customer per year (ROI A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Storm cost per customer per year
+  storm_michael_hours_to_90pct:
+    tex_key: storm.michael.hours_to_90pct
+    value: 61.8
+    unit: hours
+    label: C
+    kind: computed
+    source: 'project fact base, Other storms (MT A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other storms
+  storm_ian_hours_to_90pct:
+    tex_key: storm.ian.hours_to_90pct
+    value: 22.0
+    unit: hours
+    label: C
+    kind: computed
+    source: 'project fact base, Other storms (MT A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other storms
+  reliability_saidi_med_sc_min:
+    tex_key: reliability.saidi_med_sc_min
+    value: 1170
+    unit: minutes
+    label: C
+    kind: computed
+    source: 'project fact base, SAIDI with MED, 3-yr mean (MT A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: SAIDI with MED
+  reliability_saidi_med_ga_min:
+    tex_key: reliability.saidi_med_ga_min
+    value: 582
+    unit: minutes
+    label: C
+    kind: computed
+    source: 'project fact base, SAIDI with MED, 3-yr mean (MT A)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: SAIDI with MED
+  context_ami_share_sc_pct:
+    tex_key: context.ami_share_sc_pct
+    value: 88
+    unit: percent
+    label: F
+    kind: fact
+    source: 'project fact base, Other calibrations (SP 5d)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other calibrations
+  context_ami_share_ga_pct:
+    tex_key: context.ami_share_ga_pct
+    value: 92
+    unit: percent
+    label: F
+    kind: fact
+    source: 'project fact base, Other calibrations (SP 5d)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other calibrations
+  context_cell_sites_out_sc_pct:
+    tex_key: context.cell_sites_out_sc_pct
+    value: 9.3
+    unit: percent
+    label: F
+    kind: fact
+    source: 'project fact base, Other calibrations (SP 5d)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other calibrations
+  context_cell_sites_out_ga_pct:
+    tex_key: context.cell_sites_out_ga_pct
+    value: 6.0
+    unit: percent
+    label: F
+    kind: fact
+    source: 'project fact base, Other calibrations (SP 5d)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: Other calibrations
+  roi_horizon_years:
+    tex_key: roi.horizon_years
+    value: 10
+    unit: years
+    label: A
+    kind: assumption
+    source: 'project fact base, ROI, utility cash (10 years, 8%)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI
+  roi_discount_pct:
+    tex_key: roi.discount_pct
+    value: 8
+    unit: percent
+    label: A
+    kind: assumption
+    source: 'project fact base, ROI, utility cash (10 years, 8%)'
+    caveat: ''
+    allowed_in: [prd, briefing]
+    handoff_s3: ROI
+  policy_etr_restore_fraction_pct:
+    tex_key: policy.etr_restore_fraction_pct
+    value: 90
+    unit: percent
+    label: A
+    kind: policy
+    source: 'project fact base, Global ETR (time to restore 90% of affected customers)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: null
+  policy_etr_revise_publish_within_h:
+    tex_key: policy.etr_revise_publish_within_h
+    value: 4
+    unit: hours
+    label: A
+    kind: policy
+    source: 'SGW policy (assumed, synthetic): a revised global ETR is published within 4 h of finding the drift, the window of the first publication'
+    caveat: 'the revision clock starts when the planner drafts the revision, not at the original deadline'
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  nfr_availability_storm_pct:
+    tex_key: nfr.availability_storm_pct
+    value: 99.9
+    unit: percent
+    label: A
+    kind: assumption
+    source: 'project fact base, Availability, RTO, RPO (INFR D.9)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Availability
+  nfr_availability_normal_pct:
+    tex_key: nfr.availability_normal_pct
+    value: 99.5
+    unit: percent
+    label: A
+    kind: assumption
+    source: 'project fact base, Availability, RTO, RPO (INFR B.2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Availability
+  nfr_latency_qa_first_token_s:
+    tex_key: nfr.latency_qa_first_token_s
+    value: 3
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_qa_answer_s:
+    tex_key: nfr.latency_qa_answer_s
+    value: 20
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_assessment_s:
+    tex_key: nfr.latency_assessment_s
+    value: 90
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_async_job_s:
+    tex_key: nfr.latency_async_job_s
+    value: 120
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_whatif_s:
+    tex_key: nfr.latency_whatif_s
+    value: 60
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_reforecast_min:
+    tex_key: nfr.latency_reforecast_min
+    value: 10
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (CR2 C-32)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_page_p95_s:
+    tex_key: nfr.latency_page_p95_s
+    value: 2
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (INFR B.2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_latency_percentile:
+    tex_key: nfr.latency_percentile
+    value: 95
+    unit: 'percentile'
+    label: A
+    kind: assumption
+    source: 'project fact base, Latency per request class (p95 page interaction)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Latency per request class
+  nfr_freshness_ops_min:
+    tex_key: nfr.freshness_ops_min
+    value: 5
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (NWS alerts, OMS, AMI, crews)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_forecast_h:
+    tex_key: nfr.freshness_forecast_h
+    value: 1
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (forecasts)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_historian_min:
+    tex_key: nfr.freshness_historian_min
+    value: 1
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (historian)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_eam_min:
+    tex_key: nfr.freshness_eam_min
+    value: 15
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (EAM)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_daily_h:
+    tex_key: nfr.freshness_daily_h
+    value: 24
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (GIS, LIMS)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_alarm_factor:
+    tex_key: nfr.freshness_alarm_factor
+    value: 2
+    unit: times
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (alarm at 2x)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_freshness_map_s:
+    tex_key: nfr.freshness_map_s
+    value: 30
+    unit: s
+    label: A
+    kind: assumption
+    source: 'project fact base, Freshness (map from ingest)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Freshness
+  nfr_load_users:
+    tex_key: nfr.load_users
+    value: 150
+    unit: concurrent users
+    label: A
+    kind: assumption
+    source: 'project fact base, Load design point (INFR B.2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Load design point
+  nfr_load_events_low:
+    tex_key: nfr.load_events_low
+    value: 50
+    unit: 'events/s'
+    label: A
+    kind: assumption
+    source: 'project fact base, Load design point (INFR B.2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Load design point
+  nfr_load_events_high:
+    tex_key: nfr.load_events_high
+    value: 200
+    unit: events/s
+    label: A
+    kind: assumption
+    source: 'project fact base, Load design point (INFR B.2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Load design point
+  nfr_load_events_burst:
+    tex_key: nfr.load_events_burst
+    value: 2000
+    unit: events/s
+    label: A
+    kind: assumption
+    source: 'project fact base, Load design point (INFR D.10)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Load design point
+  nfr_cip_log_days:
+    tex_key: nfr.cip_log_days
+    value: 90
+    unit: days
+    label: F
+    kind: fact
+    source: 'project fact base, Sourced NFR anchors (CIP-007-6)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Sourced NFR anchors
+  nfr_cip_review_days:
+    tex_key: nfr.cip_review_days
+    value: 15
+    unit: days
+    label: F
+    kind: fact
+    source: 'project fact base, Sourced NFR anchors (CIP-007-6)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Sourced NFR anchors
+  policy_audit_retention_years:
+    tex_key: policy.audit_retention_years
+    value: 7
+    unit: years
+    label: A
+    kind: policy
+    source: 'project fact base, Retention floors (7-year audit is SGW policy)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: null
+  metric_m04_mvp_pct:
+    tex_key: metric.m04.mvp_pct
+    value: 35
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-04'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m04_m12_pct:
+    tex_key: metric.m04.m12_pct
+    value: 25
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-04'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m06_mvp_pct:
+    tex_key: metric.m06.mvp_pct
+    value: 25
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-06'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m06_m12_pct:
+    tex_key: metric.m06.m12_pct
+    value: 15
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-06'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m06_inband_pct:
+    tex_key: metric.m06.inband_pct
+    value: 80
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-06'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m07_baseline_h:
+    tex_key: metric.m07.baseline_h
+    value: 24
+    unit: h
+    label: F
+    kind: fact
+    source: 'project fact base, Metrics table, M-07 (Duke, ADS A7)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m07_mvp_h:
+    tex_key: metric.m07.mvp_h
+    value: 2
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-07'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m07_m12_h:
+    tex_key: metric.m07.m12_h
+    value: 12
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-07'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m08_mvp_h:
+    tex_key: metric.m08.mvp_h
+    value: 1
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-08'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m08_m12_h:
+    tex_key: metric.m08.m12_h
+    value: 16
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-08'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m03_mvp_pct:
+    tex_key: metric.m03.mvp_pct
+    value: 10
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-03'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m03_m12_pct:
+    tex_key: metric.m03.m12_pct
+    value: 5
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-03'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m05_m12_pct:
+    tex_key: metric.m05.m12_pct
+    value: 10
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-05'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m09_mvp_pct:
+    tex_key: metric.m09.mvp_pct
+    value: 10
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-09'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m09_m12_points:
+    tex_key: metric.m09.m12_points
+    value: 10
+    unit: points
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-09'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m10_m12_pct:
+    tex_key: metric.m10.m12_pct
+    value: 15
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-10'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m11_flag_min:
+    tex_key: metric.m11.flag_min
+    value: 15
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-11'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m11_median_h:
+    tex_key: metric.m11.median_h
+    value: 12
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-11'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m11_p90_h:
+    tex_key: metric.m11.p90_h
+    value: 48
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-11'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m12_warn_h:
+    tex_key: metric.m12.warn_h
+    value: 6
+    unit: h
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-12'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m12_m12_pct:
+    tex_key: metric.m12.m12_pct
+    value: 20
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-12'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m13_baseline_days:
+    tex_key: metric.m13.baseline_days
+    value: 5
+    unit: days
+    label: F
+    kind: fact
+    source: 'project fact base, Metrics table, M-13 (Kentucky, ADS C2)'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m13_mvp_min:
+    tex_key: metric.m13.mvp_min
+    value: 30
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-13'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m14_t2_min:
+    tex_key: metric.m14.t2_min
+    value: 15
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-14'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m14_t3_min:
+    tex_key: metric.m14.t3_min
+    value: 30
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-14'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m14_m12_pct:
+    tex_key: metric.m14.m12_pct
+    value: 30
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-14'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m15_t2_min:
+    tex_key: metric.m15.t2_min
+    value: 10
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-15'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m15_t3_min:
+    tex_key: metric.m15.t3_min
+    value: 20
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-15'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m15_dwell_pct:
+    tex_key: metric.m15.dwell_pct
+    value: 5
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-15'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m16_low_pct:
+    tex_key: metric.m16.low_pct
+    value: 60
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-16'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m16_high_pct:
+    tex_key: metric.m16.high_pct
+    value: 90
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-16'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m17_m12_pct:
+    tex_key: metric.m17.m12_pct
+    value: 20
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-17'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m18_m12_pct:
+    tex_key: metric.m18.m12_pct
+    value: 5
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-18'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m19_ttx_pct:
+    tex_key: metric.m19.ttx_pct
+    value: 90
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-19'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m19_fe_pct:
+    tex_key: metric.m19.fe_pct
+    value: 75
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-19'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m20_m12_pct:
+    tex_key: metric.m20.m12_pct
+    value: 80
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-20'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m21_mvp:
+    tex_key: metric.m21.mvp
+    value: 68
+    unit: 'SUS score'
+    label: U
+    kind: assumption
+    source: 'project fact base, Metrics table, M-21'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m21_m12:
+    tex_key: metric.m21.m12
+    value: 75
+    unit: 'SUS score'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-21'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m22_mvp:
+    tex_key: metric.m22.mvp
+    value: 0.1
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-22'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m22_m12:
+    tex_key: metric.m22.m12
+    value: 0.2
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-22'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m23_low:
+    tex_key: metric.m23.low
+    value: 0.75
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-23'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m23_high:
+    tex_key: metric.m23.high
+    value: 0.9
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-23'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m24_mvp_pct:
+    tex_key: metric.m24.mvp_pct
+    value: 50
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-24'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m24_m12_pct:
+    tex_key: metric.m24.m12_pct
+    value: 35
+    unit: '%'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-24'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m25_mvp:
+    tex_key: metric.m25.mvp
+    value: 0.7
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-25'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m25_m12:
+    tex_key: metric.m25.m12
+    value: 0.8
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-25'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m26_recall:
+    tex_key: metric.m26.recall
+    value: 0.8
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-26'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m27_mvp:
+    tex_key: metric.m27.mvp
+    value: 1
+    unit: per 100 asset-days
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-27'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m27_m12:
+    tex_key: metric.m27.m12
+    value: 0.5
+    unit: per 100 asset-days
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-27'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m28_min:
+    tex_key: metric.m28.min
+    value: 15
+    unit: min
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-28'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m29_mvp:
+    tex_key: metric.m29.mvp
+    value: 0.95
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-29'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m29_m12:
+    tex_key: metric.m29.m12
+    value: 0.97
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-29'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m30_recall:
+    tex_key: metric.m30.recall
+    value: 0.9
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-30'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m31_mvp:
+    tex_key: metric.m31.mvp
+    value: 0.85
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-31'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  metric_m31_m12:
+    tex_key: metric.m31.m12
+    value: 0.9
+    unit: 'ratio'
+    label: A
+    kind: assumption
+    source: 'project fact base, Metrics table, M-31'
+    caveat: ''
+    allowed_in: [prd]
+    handoff_s3: Metrics table
+  demo_ps17_decide_by_n_min:
+    tex_key: demo.ps17.decide_by_n_min
+    value: 285
+    unit: min after 00:00 UTC on 2024-09-27
+    label: S
+    kind: computed
+    source: water twin
+    caveat: effective decide-by at advisory N, 04:45Z
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  demo_ps17_decide_by_n1_min:
+    tex_key: demo.ps17.decide_by_n1_min
+    value: 209
+    unit: min after 00:00 UTC on 2024-09-27
+    label: S
+    kind: computed
+    source: water twin
+    caveat: effective decide-by at advisory N+1, 03:29Z
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  demo_ps17_shift_min:
+    tex_key: demo.ps17.shift_min
+    value: -76
+    unit: min
+    label: S
+    kind: computed
+    source: water twin
+    caveat: N to N+1 shift; verdict wait -> decide_now
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  demo_ps17_truck_lead_min:
+    tex_key: demo.ps17.truck_lead
+    value: 90
+    unit: min
+    label: S
+    kind: computed
+    source: water twin, data/artefacts/water_twin/ps17_clock_members.json (fuel.truck_lead_min)
+    caveat: ''
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  demo_ps17_generator_lead_min:
+    tex_key: demo.ps17.generator_lead
+    value: 150
+    unit: min
+    label: S
+    kind: computed
+    source: water twin, data/artefacts/water_twin/ps17_clock_members.json (generator.hookup_lead_min)
+    caveat: ''
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  demo_ps17_storage_hours:
+    tex_key: demo.ps17.storage_hours
+    value: 6
+    unit: h
+    label: S
+    kind: computed
+    source: water twin, data/artefacts/water_twin/ps17_clock_members.json (hospital_storage_h)
+    caveat: ''
+    allowed_in: [prd, briefing, deck, video, web]
+    handoff_s3: not in section 3; D-075
+  eval_anomaly_recall_dev:
+    tex_key: eval.anomaly.recall_dev
+    value: 0.713
+    unit: 'recall'
+    label: S
+    kind: computed
+    source: Dev bench, raw recall 82/115, data/artefacts/water_twin/anomaly_dev.json
+    caveat: not met against the 0.8 target; synthetic dev bench; held-out decision with WP-15
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: not in section 3; WP-13 measured
+  eval_water_wntr_runs:
+    tex_key: eval.water.wntr_runs
+    value: 2304
+    unit: runs
+    label: S
+    kind: computed
+    source: WNTR EPANET 2.2 precompute, data/artefacts/water_twin/validation.json
+    caveat: reduced twin vs WNTR median abs error 0.003 min
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: not in section 3; WP-13 measured
+  # prd-evidence (R13): measured values from evals/reports and data/artefacts, quoted in the PRD and briefing.
+  # forecast evidence (D-093): the fitted wind-fragility curve leads; v2 = 24-storm LOSO, v3 = pre-registered test.
+  eval_outage_storms_n:
+    tex_key: eval.outage.storms_n
+    value: 24
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.n of every summary row)"
+    caveat: "leave-one-storm-out hindcast on observed tracks, real EAGLE-I outages, 24 storms in GA and SC 2016-2025"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_storms_won:
+    tex_key: eval.outage.storms_won
+    value: 21
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.versus.B1.wins_county_mae 21); same count in evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.storms_s2_beats_wind_threshold_county_mae)"
+    caveat: "fitted wind-fragility curve (two parameters, refitted without the held-out storm); storms of 24 where county error is strictly below a fitted wind-threshold rule. Unit changed from the WP-11 value (total error on 4 storms); the result is the curve's, the boosted model adds nothing measurable"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_median_mae_reduction_pct:
+    tex_key: eval.outage.median_mae_reduction_pct
+    value: 54
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.s2_median_county_mae_ratio_vs_wind_threshold 0.4561); data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.versus.B1.median_county_mae_ratio 0.4561)"
+    caveat: "median county error of the curve against the wind rule, 1 - 0.4561. Always quoted with the 2018-on refit (31) beside it"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_median_mae_reduction_2018_on_pct:
+    tex_key: eval.outage.median_mae_reduction_2018_on_pct
+    value: 31
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.sensitivity_2018_on_refit.fragility_fitted.median_county_mae_ratio_vs_wind_threshold 0.6869)"
+    caveat: "2016-2017 storms (sparser EAGLE-I reporting) dropped from training and testing, full nested rerun on 19 storms"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_storms_won_2018_on:
+    tex_key: eval.outage.storms_won_2018_on
+    value: 15
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.sensitivity_2018_on_refit.fragility_fitted.storms_beats_wind_threshold_county_mae)"
+    caveat: "of 19 storms from 2018 on; curve against the wind rule on county error"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_storms_2018_on_n:
+    tex_key: eval.outage.storms_2018_on_n
+    value: 19
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.n of sensitivity_2018_on_refit rows)"
+    caveat: "storms from 2018 on"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_storms_underpredicted:
+    tex_key: eval.outage.storms_underpredicted
+    value: 18
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.storms_under_predicted 18); S2 also 18 in evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.storms_s2_under_predicted_total)"
+    caveat: "storms of 24 where the curve's storm total is below the observed total; under-prediction is the costly direction for crew sizing"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_share_forecast_pct:
+    tex_key: eval.outage.share_forecast_pct
+    value: 41
+    unit: "%"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.pooled_p_over_o 0.4065, rounded)"
+    caveat: "sum of the curve's storm totals over the sum of observed totals, all 24 storms. The WP-11v2 draft quoted 43 (S2, curve plus model); the reviewer's final wording quotes the curve"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_helene_forecast_m:
+    tex_key: eval.outage.helene_forecast_m
+    value: 0.4
+    unit: "M customers"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (storms[helene].B3.predicted_total 398,639, rounded)"
+    caveat: "curve forecast of Helene's outages (sum of county peaks), Helene held out. S2 forecast 0.36 M (outage_loso_v2 helene.rel_total_error 0.8452)"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_helene_observed_m:
+    tex_key: eval.outage.helene_observed_m
+    value: 2.3
+    unit: "M customers"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (storms[helene].observed_total 2,311,982, rounded)"
+    caveat: "EAGLE-I sum of county peaks over the storm window, capped at modelled customers"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_model_adds_better:
+    tex_key: eval.outage.model_adds_better
+    value: 4
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.storms_s2_beats_fragility_fitted_county_mae)"
+    caveat: "curve plus boosted model (S2) against the curve alone: better on 4, worse on 3, same on 17 of 24; Wilcoxon p 1.0 on the 7 untied"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_model_adds_worse:
+    tex_key: eval.outage.model_adds_worse
+    value: 3
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.storms_s2_worse_as_fragility_fitted_county_mae)"
+    caveat: "see eval_outage_model_adds_better"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_model_adds_same:
+    tex_key: eval.outage.model_adds_same
+    value: 17
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.storms_s2_same_as_fragility_fitted_county_mae)"
+    caveat: "blend weight 0, so S2 equals the curve"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_preregistered_storms_won:
+    tex_key: eval.outage.preregistered_storms_won
+    value: 20
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.pre_registered_s.storms_beats_wind_threshold_county_mae)"
+    caveat: "the round-1 pre-registered model S against the wind rule, of 24"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_preregistered_median_ratio:
+    tex_key: eval.outage.preregistered_median_ratio
+    value: 0.66
+    unit: "ratio"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v2.json (outage_loso_v2.hindcast_observed_track.pre_registered_s.median_county_mae_ratio_vs_wind_threshold 0.6611, rounded)"
+    caveat: "median county error of S over the wind rule"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v2 measured"
+  eval_outage_v3_ml_bar_met:
+    tex_key: eval.outage.prereg.ml_bar_met
+    value: 0
+    unit: "1 = met"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.ml_bar_M1_passed 0, ml_bar_M1w_passed 0)"
+    caveat: "pre-registered bar for the machine-learning residual models (docs/models/outage-v3-preregistration.md), committed before any result"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_curve_bar_met:
+    tex_key: eval.outage.prereg.curve_bar_met
+    value: 0
+    unit: "1 = met"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.curve_bar_F2_passed 0, curve_bar_F2w_passed 0)"
+    caveat: "pre-registered bar for the statistical (probit) model with more drivers"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_ml_county_error_change_pct:
+    tex_key: eval.outage.prereg.ml_county_error_change_pct
+    value: 31
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1.median_county_mae_ratio_vs_b3 1.3112, rounded)"
+    caveat: "boosted residual model M1: median county error 31% above the curve (worse)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_mlw_county_error_change_pct:
+    tex_key: eval.outage.prereg.mlw_county_error_change_pct
+    value: 13
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1w.median_county_mae_ratio_vs_b3 1.1346, rounded)"
+    caveat: "boosted residual model on calibrated wind M1w: 13% above the curve (worse)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_ml_storms_better:
+    tex_key: eval.outage.prereg.ml_storms_better
+    value: 8
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1.storms_beats_b3_county_mae)"
+    caveat: "storms of 24 where M1 beats the curve on county error"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_mlw_storms_better:
+    tex_key: eval.outage.prereg.mlw_storms_better
+    value: 9
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1w.storms_beats_b3_county_mae)"
+    caveat: "storms of 24 where M1w beats the curve on county error"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glm_county_error_change_pct:
+    tex_key: eval.outage.prereg.glm_county_error_change_pct
+    value: 39
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.median_county_mae_ratio_vs_b3 1.389, rounded)"
+    caveat: "statistical model with more drivers F2: 39% above the curve (worse)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glmw_county_error_change_pct:
+    tex_key: eval.outage.prereg.glmw_county_error_change_pct
+    value: 27
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2w.median_county_mae_ratio_vs_b3 1.2677, rounded)"
+    caveat: "F2 on calibrated wind F2w: 27% above the curve (worse)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_selection_picks_curve:
+    tex_key: eval.outage.prereg.selection_picks_curve
+    value: 23
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (storms[].S5.variant; summary: S5 picks B3 on 23 of 24, M1w on 1)"
+    caveat: "nested selection on training storms only chose the plain curve"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_large8_share_pct:
+    tex_key: eval.outage.prereg.large8_share_pct
+    value: 30
+    unit: "%"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.pooled_p_over_o_large8 0.2992, rounded)"
+    caveat: "curve: forecast over observed outages, pooled over the eight largest storms (>= 300,000 observed)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glm_large8_share_pct:
+    tex_key: eval.outage.prereg.glm_large8_share_pct
+    value: 43
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.pooled_forecast_over_observed_large8 0.4327, rounded)"
+    caveat: "lowest of the richer models (F2); quote with the highest (49)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_richer_large8_share_max_pct:
+    tex_key: eval.outage.prereg.richer_large8_share_max_pct
+    value: 49
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1w.pooled_forecast_over_observed_large8 0.4878, rounded)"
+    caveat: "highest of the richer models (M1w); F2 0.43, M1 0.45, F2w 0.46"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glm_small16_share_pct:
+    tex_key: eval.outage.prereg.glm_small16_share_pct
+    value: 330
+    unit: "%"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.pooled_forecast_over_observed_other 3.3033, rounded)"
+    caveat: "F2 over-calls the 16 smaller storms about threefold. The pooled 97% of F2 is offsetting errors and is quoted only with this split, never alone"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glm_total_in_band_storms:
+    tex_key: eval.outage.prereg.glm_total_in_band_storms
+    value: 20
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.storm_total_in_80_band)"
+    caveat: "quote only with the band width (20.6x) and the three largest storms it missed"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_band_misses:
+    tex_key: eval.outage.prereg.band_misses
+    value: 3
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.label of F2.storm_total_in_80_band)"
+    caveat: "Helene, Irma and Matthew, all above the band (Nestor below)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_band_width:
+    tex_key: eval.outage.prereg.band_width
+    value: 20.6
+    unit: "times"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.median_total_band_width_hi_over_lo 20.62, rounded)"
+    caveat: "median upper over lower end of the F2 storm-total 80% band"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_curve_total_error:
+    tex_key: eval.outage.prereg.curve_total_error
+    value: 0.82
+    unit: "|ln(forecast/observed)|"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (summary_all.B3.median_abs_ln_po 0.8211, rounded)"
+    caveat: "median over storms; a factor of 2.3"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_windcal_total_error:
+    tex_key: eval.outage.prereg.windcal_total_error
+    value: 0.54
+    unit: "|ln(forecast/observed)|"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.B3w.median_abs_ln_total_ratio 0.5434, rounded)"
+    caveat: "descriptive, not a pre-registered test; a factor of 1.7. Still under-calls (pooled 45%, eight largest 34%)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_curve_miss:
+    tex_key: eval.outage.prereg.curve_miss
+    value: 2.3
+    unit: "times"
+    label: C
+    kind: computed
+    source: "data/artefacts/models/outage/loso_v3_detail.json (exp(summary_all.B3.median_abs_ln_po 0.8211) 2.27, rounded)"
+    caveat: "typical storm-total miss of the curve (median over storms)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_windcal_miss:
+    tex_key: eval.outage.prereg.windcal_miss
+    value: 1.7
+    unit: "times"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.exp(B3w.median_abs_ln_total_ratio 0.5434) 1.72, rounded)"
+    caveat: "curve on wind calibrated against airport gust records (label-free); descriptive, not tested"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_windcal_storms_closer:
+    tex_key: eval.outage.prereg.windcal_storms_closer
+    value: 15
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.B3w.storms_closer_total_than_b3)"
+    caveat: "of 24; one-sided Wilcoxon p 0.15, sign test p 0.15; descriptive"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_glm_rank_better_storms:
+    tex_key: eval.outage.prereg.glm_rank_better_storms
+    value: 18
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.F2.storms_spearman_better_than_b3)"
+    caveat: "descriptive: county ranking (Spearman) better than the curve; the loss is in level, not ranking"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  eval_outage_v3_ml_rank_better_storms:
+    tex_key: eval.outage.prereg.ml_rank_better_storms
+    value: 19
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso_v3.json (outage_loso_v3.hindcast_observed_track.M1.storms_spearman_better_than_b3)"
+    caveat: "descriptive, as above (M1w also 19)"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11v3 measured"
+  # replay model (unchanged, D-093): WP-11 four-storm figures.
+  eval_outage_replay_storms_won:
+    tex_key: eval.outage.replay_storms_won
+    value: 3
+    unit: "storms"
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso.json (outage_loso.hindcast_observed_track.storms_model_beats_baseline_rel_total_error)"
+    caveat: "replay model a2-excl-helene (WP-11, boosted quantile model trained on Debby, Ian and Michael, still serving the Helene replay); storms of four where its total-outage error is strictly below a fitted wind-threshold rule; no significance claim"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11 measured"
+  eval_outage_helene_miss_pct:
+    tex_key: eval.outage.helene_miss_pct
+    value: 67
+    unit: '%'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso.json (outage_loso.hindcast_observed_track.helene.rel_total_error 0.6736, rounded)"
+    caveat: "replay model a2-excl-helene (WP-11, boosted quantile model trained on Debby, Ian and Michael, still serving the Helene replay); model total 0.75 M against 2.31 M observed (capped at modelled customers); hindcast"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-11 measured"
+  eval_outage_helene_cover_inner_pct:
+    tex_key: eval.outage.helene_cover_inner_pct
+    value: 29
+    unit: '%'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso.json (outage_loso.hindcast_observed_track.helene.coverage_80 0.2927, rounded)"
+    caveat: "replay model a2-excl-helene (WP-11, boosted quantile model trained on Debby, Ian and Michael, still serving the Helene replay); share of Helene counties inside the 80% range; n 123 counties"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11 measured"
+  eval_outage_helene_cover_outer_pct:
+    tex_key: eval.outage.helene_cover_outer_pct
+    value: 57
+    unit: '%'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_loso.json (outage_loso.hindcast_observed_track.helene.coverage_95 0.5691, rounded)"
+    caveat: "replay model a2-excl-helene (WP-11, boosted quantile model trained on Debby, Ian and Michael, still serving the Helene replay); share of Helene counties inside the 95% range; n 123 counties"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-11 measured"
+  eval_saa_vss_customer_hours:
+    tex_key: eval.saa.vss_customer_hours
+    value: 63435
+    unit: 'customer-hours'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_a.vss_vs_p50_out_of_sample 63434.87, rounded)"
+    caveat: "value of planning for uncertainty against the median-forecast plan; synthetic Helene replay, advisory N, out of sample, dev"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_vss_ci_low:
+    tex_key: eval.saa.vss_ci_low
+    value: 55036
+    unit: 'customer-hours'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_a.vss_vs_p50_out_of_sample ci_low)"
+    caveat: "95% interval, synthetic"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_vss_ci_high:
+    tex_key: eval.saa.vss_ci_high
+    value: 71834
+    unit: 'customer-hours'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_a.vss_vs_p50_out_of_sample ci_high)"
+    caveat: "95% interval, synthetic"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_scenarios:
+    tex_key: eval.saa.scenarios
+    value: 2000
+    unit: 'scenarios'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (n of the out-of-sample rows)"
+    caveat: "out-of-sample forecast scenarios, synthetic"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_gap_upper_pct:
+    tex_key: eval.saa.gap_upper_pct
+    value: 0.07
+    unit: '%'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_a.optimality_gap_rel_upper95_paired_mak_morton_wood 0.000703, rounded)"
+    caveat: "one-sided 95% upper bound of the sampling optimality gap, ten replications"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_median_plan_delay_mch:
+    tex_key: eval.saa.median_plan_delay_mch
+    value: 14.09
+    unit: 'million customer-hours'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (baseline_value of saa.coa_b.expected_customer_hours_out_of_sample)"
+    caveat: "expected crew-arrival delay of the median-forecast plan; synthetic"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_tail_hedge_delay_mch:
+    tex_key: eval.saa.tail_hedge_delay_mch
+    value: 9.87
+    unit: 'million customer-hours'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_b.expected_customer_hours_out_of_sample)"
+    caveat: "expected crew-arrival delay of the tail-hedge course of action; synthetic"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_median_plan_aid_musd:
+    tex_key: eval.saa.median_plan_aid_musd
+    value: 41.8
+    unit: 'million USD'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (baseline_value of saa.coa_b.expected_mutual_aid_usd)"
+    caveat: "expected mutual-aid spend of the median-forecast plan at the assumed day rate; synthetic"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_saa_tail_hedge_aid_musd:
+    tex_key: eval.saa.tail_hedge_aid_musd
+    value: 121.3
+    unit: 'million USD'
+    label: S
+    kind: computed
+    source: "evals/reports/saa.json (saa.coa_b.expected_mutual_aid_usd)"
+    caveat: "expected mutual-aid spend of the tail-hedge course of action at the assumed day rate; synthetic"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-16 measured"
+  eval_etr_cover_regional_pct:
+    tex_key: eval.etr.cover_regional_pct
+    value: 81
+    unit: '%'
+    label: S
+    kind: computed
+    source: "evals/reports/etr.json (etr90.family_a_test.regional.issue_declared_peak_plus_0h.coverage80 0.8106, rounded)"
+    caveat: "80% range coverage, operating areas, n 660, synthetic Helene-like test storms; Wilson interval contains 80%"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-17 measured"
+  eval_etr_cover_global_pct:
+    tex_key: eval.etr.cover_global_pct
+    value: 88
+    unit: '%'
+    label: S
+    kind: computed
+    source: "evals/reports/etr.json (etr90.family_a_test.global.issue_declared_peak_plus_0h.coverage80 0.8833, rounded)"
+    caveat: "80% range coverage, global, n 60, synthetic; over-covers"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-17 measured"
+  eval_etr_test_storms:
+    tex_key: eval.etr.test_storms
+    value: 60
+    unit: 'storms'
+    label: S
+    kind: computed
+    source: "evals/reports/etr.json (n of the global rows)"
+    caveat: "synthetic Helene-like test storms (family A); no real storm"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; WP-17 measured"
+  eval_etr_global_error_pct:
+    tex_key: eval.etr.global_error_pct
+    value: 8.2
+    unit: '%'
+    label: S
+    kind: computed
+    source: "evals/reports/etr.json (etr90.family_a_test.global.issue_declared_peak_plus_0h.p50_median_abs_pct_error 0.0823, rounded)"
+    caveat: "median absolute P50 error, global, issue at the declared peak, synthetic"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-17 measured"
+  eval_etr_global_analog_error_pct:
+    tex_key: eval.etr.global_analog_error_pct
+    value: 17.1
+    unit: '%'
+    label: S
+    kind: computed
+    source: "evals/reports/etr.json (baseline_value of the same row 0.1714, rounded)"
+    caveat: "historical analog baseline on the same storms"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-17 measured"
+  eval_etr_story_area_error_h:
+    tex_key: eval.etr.story_area_error_h
+    value: 4.3
+    unit: 'h'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/etr_story_scorecard.json (etr90.story_scorecard.region.p50_abs_error_h_median)"
+    caveat: "in-sample: the story storm is one of the simulator calibration worlds; simulated actual, not the replay curve; one storm"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-25 measured"
+  eval_etr_story_area_analog_error_h:
+    tex_key: eval.etr.story_area_analog_error_h
+    value: 29.8
+    unit: 'h'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/etr_story_scorecard.json (baseline_value of the same row)"
+    caveat: "historical analog on the same storm, in-sample"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-25 measured"
+  eval_etr_story_areas:
+    tex_key: eval.etr.story_areas
+    value: 11
+    unit: 'operating areas'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/etr_story_scorecard.json (n of the region rows)"
+    caveat: "one storm, descriptive"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-25 measured"
+  eval_cv_map_test:
+    tex_key: eval.cv.map_test
+    value: 91.1
+    unit: 'mAP'
+    label: F
+    kind: computed
+    source: "evals/reports/ladi_reference.json (ladi_v2.small_reference.test_map; arXiv 2406.02780 Table 2)"
+    caveat: "published reference value, mean over 12 labels incl. easy non-damage labels; not measured by A"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "CV metrics"
+  eval_cv_map_val:
+    tex_key: eval.cv.map_val
+    value: 93.3
+    unit: 'mAP'
+    label: F
+    kind: computed
+    source: "evals/reports/ladi_reference.json (validation; arXiv 2406.02780 Table 2)"
+    caveat: "published reference value"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "CV metrics"
+  eval_cv_test_n:
+    tex_key: eval.cv.test_n
+    value: 1049
+    unit: 'images'
+    label: F
+    kind: computed
+    source: "evals/reports/ladi_reference.json (n of the test row)"
+    caveat: "LADI v2 test split"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "CV metrics"
+  eval_cv_val_n:
+    tex_key: eval.cv.val_n
+    value: 890
+    unit: 'images'
+    label: F
+    kind: computed
+    source: "evals/reports/ladi_reference.json (n of the validation row)"
+    caveat: "LADI v2 validation split"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "CV metrics"
+  eval_anomaly_dev_faults:
+    tex_key: eval.anomaly.dev_faults
+    value: 115
+    unit: 'seeded faults'
+    label: S
+    kind: computed
+    source: "data/artefacts/water_twin/anomaly_dev.json (results.dev_bench.metrics.faults)"
+    caveat: "synthetic dev bench, dev-tuned"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-13 measured"
+  eval_anomaly_baseline_recall_dev:
+    tex_key: eval.anomaly.baseline_recall_dev
+    value: 0.148
+    unit: 'recall'
+    label: S
+    kind: computed
+    source: "data/artefacts/water_twin/anomaly_dev.json (results.dev_bench.baseline_metrics.recall 0.1478, rounded)"
+    caveat: "station low-pressure alarm alone on the same bench"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-13 measured"
+  eval_copilot_dev_passed:
+    tex_key: eval.copilot.dev_passed
+    value: 7
+    unit: 'tasks'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_copilot_eval_v3.json (summary.passed)"
+    caveat: "dev set, builder-written, small n; held-out pending"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_copilot_dev_n:
+    tex_key: eval.copilot.dev_n
+    value: 7
+    unit: 'tasks'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_copilot_eval_v3.json (summary.items)"
+    caveat: "dev set size"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_extract_dev_passed:
+    tex_key: eval.extract.dev_passed
+    value: 13
+    unit: 'notes'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_extract_eval_v2.json (models.sonnet.summary.passed)"
+    caveat: "dev set, Sonnet; Haiku 12 of 13; held-out pending"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_extract_dev_n:
+    tex_key: eval.extract.dev_n
+    value: 13
+    unit: 'notes'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_extract_eval_v2.json (summary.items)"
+    caveat: "dev set size"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_route_dev_passed:
+    tex_key: eval.route.dev_passed
+    value: 30
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_route_eval_v1.json (models.*.summary.intent_correct)"
+    caveat: "dev builder set, both models; held-out pending"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_route_dev_n:
+    tex_key: eval.route.dev_n
+    value: 30
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_route_eval_v1.json (summary.items)"
+    caveat: "dev set size"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  eval_route_keyword_passed:
+    tex_key: eval.route.keyword_passed
+    value: 20
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/wp21_route_eval_v1.json (baseline_keyword_rules rows correct)"
+    caveat: "keyword-rule baseline on the same set"
+    allowed_in: [prd, deck]
+    handoff_s3: "not in section 3; WP-21 measured"
+  # WP-31: ROI values reproduced in code (src/sgw/roi, data/roi/roi_results.json). tests/unit/roi checks equality.
+  roi_cash_npv_conservative_musd:
+    value: -144.8
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "all inputs at conservative values together; an extreme corner"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_cash_npv_optimistic_musd:
+    value: 173.4
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "all inputs at optimistic values together; an extreme corner"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_cash_npv_structural_low_musd:
+    value: -54.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "strict cash: no staff time, vegetation or insurance line"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_cash_npv_structural_high_musd:
+    value: 4.7
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "overhead miles per customer 0.03"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_customer_npv_conservative_musd:
+    value: -106.5
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "every input conservative at once"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, with customer value
+  roi_customer_npv_range_low_musd:
+    value: 125
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "one-at-a-time range, low end; upper-leaning view"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, with customer value
+  roi_customer_npv_range_high_musd:
+    value: 331
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "one-at-a-time range, high end; upper-leaning view"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, with customer value
+  roi_breakeven_strict_multiple:
+    value: 1.99
+    unit: x effect sizes
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "strict cash break-even"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_cash_benefit_steady_musd:
+    value: 20.4
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "steady-state utility cash benefit, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_customer_value_steady_musd:
+    value: 52.2
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "steady-state customer value, base; not SGW revenue"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_cash_npv_storm_spread_low_musd:
+    value: -30.8
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "storm-year sequences, 10th percentile; spread only, never a probability of success"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  roi_cash_npv_storm_spread_high_musd:
+    value: -3.1
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "storm-year sequences, 90th percentile; spread only"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI, utility cash
+  platform_cost_one_time_conservative_musd:
+    value: 52
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "conservative platform cost"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Platform cost in the ROI model
+  platform_cost_one_time_optimistic_musd:
+    value: 23.5
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "optimistic platform cost"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Platform cost in the ROI model
+  platform_run_cost_conservative_musd:
+    value: 19.7
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "conservative run cost"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Platform cost in the ROI model
+  platform_run_cost_optimistic_musd:
+    value: 8.6
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "optimistic run cost"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Platform cost in the ROI model
+  cost_build_musd:
+    value: 20
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "integrator and product build, one-time, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_data_integration_musd:
+    value: 8
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "connectors and data quality, one-time, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_security_setup_musd:
+    value: 4
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "security and compliance set-up, one-time, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_change_management_musd:
+    value: 3
+    unit: MUSD
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "training and exercises, one-time, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_team_musd:
+    value: 3.8
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "platform team, run, base (20 FTE at 0.19 M loaded)"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_cloud_musd:
+    value: 3
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "cloud and data platform, run, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_licences_musd:
+    value: 2
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "licences and data feeds, run, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_ai_usage_musd:
+    value: 0.2
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "AI model usage, run, base; scales with storm events and users"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_assurance_musd:
+    value: 0.7
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "assurance and audits, run, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_vendor_support_musd:
+    value: 3.0
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "vendor support at 15% of build a year, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  cost_run_team_fte:
+    value: 20
+    unit: FTE
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "platform team size, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  benefit_storm_restoration_musd:
+    value: 6.4
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "storm restoration efficiency line, base, steady state; effect size assumed"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  benefit_vegetation_musd:
+    value: 4.9
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "vegetation line, base, steady state; effect size assumed"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  benefit_staff_time_musd:
+    value: 3.0
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "released staff time counted as cash, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  benefit_maintenance_musd:
+    value: 2.6
+    unit: MUSD/year
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "predictive maintenance line, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  stage_one_price_musd:
+    value: 15.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "phase 0 + phase 1: first 8 months of programme spend in the cost model; computed from assumed costs"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  stage_one_price_low_musd:
+    value: 10.7
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "optimistic cost scenario; computed from assumed costs"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  stage_one_price_high_musd:
+    value: 23.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "conservative cost scenario; the cap; computed from assumed costs"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  stage_one_phase_zero_price_musd:
+    value: 4.0
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "phase 0, 2 months; computed from assumed costs"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  stage_one_phase_one_price_musd:
+    value: 11.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "phase 1, 6 months; computed from assumed costs"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  stage_one_months:
+    value: 8
+    unit: months
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "phase 0 (2) + phase 1 (6), roadmap durations"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  gate_storm_cost_reduction_pct:
+    value: 4.0
+    unit: percent
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "storm restoration cost reduction at which the cash view breaks even, other inputs at base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  gate_storm_cost_reduction_assumed_pct:
+    value: 2.5
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga cost table)
+    caveat: "assumed storm restoration effect in the base case"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  gate_storm_cost_reduction_strict_pct:
+    value: 7.2
+    unit: percent
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "same bar under strict cash"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  gate_storm_cost_reduction_low_cost_pct:
+    value: 6.9
+    unit: percent
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "same bar if SGW storm cost is at the low end (36 USD per customer a year)"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: Stage 1 price and gates (added WP-31)
+  roi_struct_staff_time_cash_musd:
+    value: -31.2
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: released staff time not counted as cash"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_staff_time_customer_musd:
+    value: 206.5
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_vegetation_cash_musd:
+    value: -39.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: vegetation line removed"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_vegetation_customer_musd:
+    value: 197.8
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_om_share_cash_musd:
+    value: -28.9
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: storm O&M share 0.61"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_om_share_customer_musd:
+    value: 208.8
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_run_cost_cash_musd:
+    value: -2.4
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: run cost 25% lower"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_run_cost_customer_musd:
+    value: 235.3
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_discount_cash_musd:
+    value: -14.3
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: discount rate 5.5% real"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_discount_customer_musd:
+    value: 261.5
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_median_minutes_customer_musd:
+    value: 160.1
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: major-event minutes at the median year"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  roi_struct_strict_customer_musd:
+    value: 182.8
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: strict cash, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  input_storm_saving_low_pct:
+    value: 1.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "assumed storm restoration saving, conservative"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_storm_saving_high_pct:
+    value: 4.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "assumed storm restoration saving, optimistic"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_major_minutes_avoided_pct:
+    value: 3.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "share of major-event customer minutes avoided, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_major_minutes_avoided_low_pct:
+    value: 1.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "same, conservative"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_major_minutes_avoided_high_pct:
+    value: 5.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "same, optimistic"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_routine_minutes_avoided_pct:
+    value: 1.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "share of routine customer minutes avoided, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_routine_minutes_avoided_low_pct:
+    value: 0.5
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "same, conservative"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_routine_minutes_avoided_high_pct:
+    value: 2.0
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "same, optimistic"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_staff_released_fte:
+    value: 25
+    unit: FTE
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "staff time released, counted as cash, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_vegetation_saving_pct:
+    value: 2.5
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "share of tree-trimming spend saved, base"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_insurance_premium_musd:
+    value: 60
+    unit: MUSD/year
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "SGW insurance premium a year, unknown"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  input_insurance_saving_pct:
+    value: 0.5
+    unit: percent
+    label: A
+    kind: assumption
+    source: data/roi/roi_results.json inputs (roi-sc-ga input table)
+    caveat: "premium effect, base; unproven, zero in the conservative case"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI inputs still assumed
+  roi_struct_oh_miles_customer_musd:
+    value: 242.4
+    unit: MUSD
+    label: C
+    kind: computed
+    source: data/roi/roi_results.json (uv run python -m sgw.roi)
+    caveat: "structural test: overhead miles per customer 0.03, with customer value"
+    allowed_in: [prd, briefing, deck]
+    handoff_s3: ROI cost drivers and structural tests (added WP-31)
+  policy_pre_landfall_breach_p:
+    value: 0.10
+    unit: probability
+    label: A
+    kind: policy
+    source: assumed; water twin rule (src/sgw/models/water/water_twin.yaml rule.pre_landfall_breach_p)
+    caveat: an SC zone counts as at risk for the pre-landfall precautionary advisory when P(service floor breach within the continuity horizon) reaches this; same risk tolerance as the clocks' material-loss threshold
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_water_continuity_horizon_h:
+    value: 72
+    unit: hours
+    label: A
+    kind: policy
+    source: assumed; water twin rule (src/sgw/models/water/water_twin.yaml rule.horizon_h)
+    caveat: continuity horizon after landfall over which the water twin reports breach probability
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  mutual_aid_usd_per_person_day:
+    value: 2240
+    unit: USD per lineworker-day
+    label: C
+    kind: computed
+    source: project fact base, Costs (SP 5, 7); mutual-aid total [C from A]
+    caveat: wage is a secondary BLS figure [U]; display only, the WP-16 optimiser never minimises against it
+    allowed_in: [prd, briefing, web, code]
+    handoff_s3: Costs
+  policy_saa_cvar_alpha:
+    value: 0.9
+    unit: "-"
+    label: A
+    kind: policy
+    source: assumed; COA-B tail measure (Rockafellar-Uryasev CVaR of the worst 10% of scenarios)
+    caveat: CVaR level of the tail-hedge course of action
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_saa_cvar_weight:
+    value: 1.0
+    unit: "-"
+    label: A
+    kind: policy
+    source: assumed; COA-B objective E[customer-hours] + w CVaR90[customer-hours]
+    caveat: weight on the tail term of the tail-hedge objective
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_saa_tail_spend_quantile:
+    value: 0.9
+    unit: "-"
+    label: A
+    kind: policy
+    source: assumed; COA-B sizes its early mutual-aid request for the P90 scenario requirement
+    caveat: P90 sizing of the early request
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_staging_site_cap_persons:
+    value: 1000
+    unit: persons per staging yard
+    label: A
+    kind: policy
+    source: assumed; replace with the logistics site list (lodging, parking, fuel per yard)
+    caveat: placeholder capacity per yard, not a measured site limit
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_staging_home_share_min:
+    value: 0.5
+    unit: share of each yard's home crew groups
+    label: A
+    kind: policy
+    source: assumed
+    caveat: at least half of each yard's own crews stay at their home yard for local work and safety
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  late_aid_first_wave_persons:
+    value: 8000
+    unit: persons
+    label: A
+    kind: assumption
+    source: assumed; order of magnitude from project fact base, Crews (6,000 to 10,000 crews for all of Helene across the region)
+    caveat: first-wave post-landfall mutual aid available to SGW; beyond it crews arrive one arrival time later
+    allowed_in: [prd, code]
+    handoff_s3: Crews for a Helene replay
+  late_aid_scarcity_exponent:
+    value: 0.5
+    unit: "-"
+    label: A
+    kind: assumption
+    source: assumed (Helene-scale events compete for the same RMAG crews)
+    caveat: late arrival time scales with max(1, k)^0.5; early requests are filled before the competition
+    allowed_in: [prd, code]
+    handoff_s3: not in section 3; WP-16 assumed
+  policy_wildfire_ffwi_min:
+    value: 35
+    unit: index
+    label: A
+    kind: policy
+    source: "assumed; project fact base, Wildfire trigger (SP 3), FFWI >= about 35, local P99"
+    caveat: Fosberg fire weather index threshold of the wildfire trigger; GSP 2023-24 hourly P99 34.4 (R05 1.3)
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_wildfire_rh_max_pct:
+    value: 25
+    unit: percent
+    label: A
+    kind: policy
+    source: assumed; project fact base, Wildfire trigger (SP 3)
+    caveat: relative humidity at or below this together with the FFWI threshold
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_wildfire_min_hours:
+    value: 3
+    unit: hours
+    label: A
+    kind: policy
+    source: assumed; project fact base, Wildfire trigger (SP 3); SPC critical fire weather duration
+    caveat: hours the FFWI and RH conditions must hold
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_wildfire_kbdi_min:
+    value: 500
+    unit: index
+    label: A
+    kind: policy
+    source: assumed; project fact base, Wildfire trigger (SP 3), KBDI branch
+    caveat: Keetch-Byram drought index branch of the trigger; KBDI alone misses Table Rock
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_heat_tmax_percentile:
+    value: 95
+    unit: percentile
+    label: A
+    kind: policy
+    source: assumed; heat rule (hot day = station-mean daily Tmax at or above its JJA P95, 1.3)
+    caveat: percentile of summer daily maximum temperature that makes a hot day
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_heat_consecutive_days:
+    value: 2
+    unit: days
+    label: A
+    kind: policy
+    source: assumed; heat rule (oil does not recover overnight, 8 H1)
+    caveat: hot days in a row before the heat watch
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_transformer_hot_spot_watch_c:
+    value: 110
+    unit: C
+    label: A
+    kind: policy
+    source: assumed; transformer hot-spot alarm levels
+    caveat: watch level; not verified against a standard
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_transformer_hot_spot_warning_c:
+    value: 120
+    unit: C
+    label: A
+    kind: policy
+    source: assumed; transformer hot-spot alarm levels
+    caveat: warning level; not verified against a standard
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  policy_transformer_hot_spot_emergency_c:
+    value: 140
+    unit: C
+    label: A
+    kind: policy
+    source: assumed; transformer hot-spot alarm levels
+    caveat: emergency level; not verified against a standard
+    allowed_in: [prd, web, code]
+    handoff_s3: null
+  sc_bwn_lift_sample_set_gap_h:
+    value: 24
+    unit: hours
+    label: F
+    kind: fact
+    source: "SC DES Boil Water Notices and Advisories (2024), suggested actions (state-rules s1)"
+    caveat: "notice after positive samples: sample sets at least this far apart"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  sc_bwn_lift_sample_sets:
+    value: 2
+    unit: sets
+    label: F
+    kind: fact
+    source: "SC DES Boil Water Notices and Advisories (2024), suggested actions (state-rules s1)"
+    caveat: "negative sample sets needed to repeal a notice"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  dom_etr_revise_margin_h:
+    value: 12
+    unit: hours
+    label: F
+    kind: fact
+    source: "DOM 14.206 Rev K section 6.4.2 (synthetic SGW procedure): revise a published ETR when the P50 moves by more than 12 h"
+    caveat: "a move of 12 h or less is logged but not released (section 6.4.3)"
+    allowed_in: [prd, web, code]
+    handoff_s3: "not in section 3; R30 PL ETR revision rule"
+  sc_bwa_written_notice_h:
+    value: 4
+    unit: hours
+    label: F
+    kind: fact
+    source: "SGW WQC 07.120 Rev C section 6.3.3 (synthetic SGW procedure)"
+    caveat: "written notice after the verbal notice"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_rescission_site_share:
+    value: 0.5
+    unit: share
+    label: A
+    kind: fact
+    source: "GA EPD boil water protocol (A-085); SGW WQC 07.114 6.4.1(c)"
+    caveat: "share of the system's coliform sample sites for rescission"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_rescission_samples_min:
+    value: 15
+    unit: samples
+    label: A
+    kind: fact
+    source: "GA EPD boil water protocol (A-085); SGW WQC 07.114 6.4.1(c)"
+    caveat: "lower end of the sample count the EPD inspector may accept instead of the site share"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_rescission_samples_max:
+    value: 20
+    unit: samples
+    label: A
+    kind: fact
+    source: "GA EPD boil water protocol (A-085); SGW WQC 07.114 6.4.1(c)"
+    caveat: "upper end of the sample count the EPD inspector may accept"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_sampling_after_flush_h:
+    value: 24
+    unit: hours
+    label: F
+    kind: fact
+    source: "SGW WQC 07.114 Rev E section 6.4.2 (synthetic SGW procedure)"
+    caveat: "rescission samples no sooner than this after flushing"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_release_h:
+    value: 2
+    unit: hours
+    label: F
+    kind: fact
+    source: "SGW WQC 07.114 Rev E section 6.3.3 (synthetic SGW procedure)"
+    caveat: "notice release after the decision"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  ga_bwa_written_copy_h:
+    value: 24
+    unit: hours
+    label: F
+    kind: fact
+    source: "SGW WQC 07.114 Rev E section 6.2.4 (synthetic SGW procedure)"
+    caveat: "written notice copy to the EPD district office"
+    allowed_in: [prd, web, code]
+    handoff_s3: Water pressure rules
+  eval_surge_test_recall:
+    tex_key: eval.surge.test_recall
+    value: 0.479
+    unit: 'recall'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (test 2022-2025 recall of NCEI wind episodes (n 1,456), robust CUSUM with neighbour corroboration)"
+    caveat: "did not pass its pre-registered bar (false alarms above both tuned baselines); NCEI labels are incomplete"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_recall_fixed_share:
+    tex_key: eval.surge.test_recall_fixed_share
+    value: 0.258
+    unit: 'recall'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (tuned fixed-share baseline (8% of customers out), same test)"
+    caveat: "baseline tuned on 2016-2021 with the same search"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_recall_rolling_z:
+    tex_key: eval.surge.test_recall_rolling_z
+    value: 0.315
+    unit: 'recall'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (tuned rolling z baseline (z >= 6, gate 1,500 customers and 1%), same test)"
+    caveat: "baseline tuned on 2016-2021 with the same search"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_fa_per_county_month:
+    tex_key: eval.surge.test_fa
+    value: 0.41
+    unit: 'false alarms per county-month'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (surges matching no NCEI event, model, test)"
+    caveat: "upper bound: NCEI misses non-severe storms; baselines 0.35 and 0.37"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_fa_fixed_share:
+    tex_key: eval.surge.test_fa_fixed_share
+    value: 0.35
+    unit: 'false alarms per county-month'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (tuned fixed-share baseline, test)"
+    caveat: "upper bound, as for the model"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_fa_rolling_z:
+    tex_key: eval.surge.test_fa_rolling_z
+    value: 0.37
+    unit: 'false alarms per county-month'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (tuned rolling z baseline, test)"
+    caveat: "upper bound, as for the model"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_test_recall_neighbour_ablation:
+    tex_key: eval.surge.test_recall_neighbour_ablation
+    value: 0.436
+    unit: 'recall'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (fixed share with the model's neighbour rule (ablation), test)"
+    caveat: "the neighbour rule carries most of the gain; CUSUM without it 0.332"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_helene_counties:
+    tex_key: eval.surge.helene_counties
+    value: 121
+    unit: 'counties'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (footprint counties with a surge by 27 Sep 10:00 ET in the Helene replay (of 123))"
+    caveat: "real 2024 EAGLE-I data, not the synthetic outages"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_surge_helene_tropical_recall:
+    tex_key: eval.surge.helene_tropical_recall
+    value: 0.81
+    unit: 'recall'
+    label: C
+    kind: computed
+    source: "evals/reports/outage_surge.json (Helene NCEI tropical county episodes detected (n 109))"
+    caveat: "tuned fixed share 0.97 on this row; 20 of 21 misses were flagged more than 3 h before the NCEI begin"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_batadal_family_score:
+    tex_key: eval.batadal.family_score
+    value: 0.75
+    unit: 'BATADAL score S'
+    label: C
+    kind: computed
+    source: "evals/reports/anomaly_batadal.json (A7/A8 detector family as configured on BATADAL dataset04 (evals/reports/anomaly_batadal.json))"
+    caveat: "does not transfer: alarms on nearly all normal hours (TNR 0.002); static limits score 0.791"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_batadal_limits_score:
+    tex_key: eval.batadal.limits_score
+    value: 0.791
+    unit: 'BATADAL score S'
+    label: C
+    kind: computed
+    source: "evals/reports/anomaly_batadal.json (static SCADA limits from dataset03 on BATADAL dataset04 (baseline))"
+    caveat: "public research benchmark, research-use data not committed"
+    allowed_in: [prd, briefing, deck, web]
+    handoff_s3: "not in section 3; R27 SU measured"
+  eval_ask_bank_items:
+    tex_key: eval.askbank.items
+    value: 373
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "evals/ask_bank/dev + evals/ask_bank/heldout (bank v1.3: 263 dev, 110 held-out; EN, PL, DE, ES, FR; 11 personas; 3 moments)"
+    caveat: "builder-written question bank, graded by code graders"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C2 measured"
+  eval_ask_bank_heldout_n:
+    tex_key: eval.askbank.heldout_n
+    value: 110
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/heldout-f8-complete.md (items)"
+    caveat: "36 held-out questions were exposed in an early report that the builder's branch merged before redaction (disclosed, review Q-10 A)"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C2 measured"
+  eval_ask_bank_heldout_passed:
+    tex_key: eval.askbank.heldout_passed
+    value: 110
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/heldout-f8-complete.md (pass 110/110: the R1 run 100/110 on f9a48f7, the items the F4 and F6 fixes change asked again (heldout-f6-complete 109/110), then the 30 items at the after-storm moments that the changes reach (missed-deadline counting, notice line) asked again on fcf1634 after the final re-record: 29 measured, all pass; merged by id; injects on, replay_then_live)"
+    caveat: "no longer blind for 10 items: the R1 run's 10 failures were read to find root causes and fixed (AB-DATA-044/090, AB-NEAR-002/015/017, AB-ROLE-009/012, AB-OVR-014, AB-INJ-010, AB-WRITE-019; AB-NEAR-015's expectation was corrected for Polish inflection); the 100 items not read all pass; 36 held-out questions were exposed earlier (disclosed, review Q-10 A); before the fixes 100/110; AB-DATA-033 was cut by the R35 re-ask spend cap and keeps its earlier pass (heldout-f6-complete)"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C2 measured"
+  eval_ask_bank_heldout_pct:
+    tex_key: eval.askbank.heldout_pct
+    value: 100
+    unit: '%'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/heldout-f8-complete.md (1.00; 0.91 before the F4 fixes)"
+    caveat: "see eval_ask_bank_heldout_n"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C2 measured"
+  eval_ask_bank_smoke_passed:
+    tex_key: eval.askbank.smoke.passed
+    value: 39
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/smoke-f8-complete.md (39/40 dev smoke: smoke-f6-complete 40/40, then the 12 items at the after-storm moments the changes reach asked again on fcf1634, 11 measured, 10 pass; merged by id; injects on; AB-FUP-015 now fails: the follow-up about the forecast names the stale feed but not the forecast)"
+    caveat: "dev questions the builders tuned on; 8 items cut by the run's spend cap were asked again on the same code and merged by id; AB-NEAR-016 was cut by the R35 re-ask spend cap and keeps its earlier pass"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 R1 measured"
+  eval_ask_bank_smoke_n:
+    tex_key: eval.askbank.smoke.n
+    value: 40
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/smoke-f8-complete.md (items)"
+    caveat: "smoke subset of the dev split"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 R1 measured"
+  eval_ask_bank_baseline_pct:
+    tex_key: eval.askbank.baseline_pct
+    value: 36
+    unit: '%'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/baseline-main-9d5dc2e-merged.md (36/100 stratified dev + held-out sample on main 9d5dc2e, before the agentic increment)"
+    caveat: "different sample from the held-out run; paired on 36 held-out items: 12 before, 26 after"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C2 measured"
+  eval_ask_bank_baseline_n:
+    tex_key: eval.askbank.baseline_n
+    value: 100
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/baseline-main-9d5dc2e-merged.md (36/100 stratified dev + held-out sample on main 9d5dc2e, before the agentic increment)"
+    caveat: "size of the sample behind eval_ask_bank_baseline_pct, a different sample from the held-out run"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R37 validator caveat from docs/05"
+  eval_ask_bank_heldout_exposed:
+    tex_key: eval.askbank.heldout_exposed
+    value: 36
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "registry caveat of eval_ask_bank_heldout_n; docs/05-ask-ai-agent-system.md Limits"
+    caveat: "held-out questions exposed in an early report before redaction"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R37 validator caveat from docs/05"
+  eval_ask_bank_devsample_passed:
+    tex_key: eval.askbank.devsample.passed
+    value: 70
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/c1-dev80-2.md (70/80 on a1e03c9)"
+    caveat: "dev questions the builder tuned on"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C1 measured"
+  eval_ask_bank_devsample_n:
+    tex_key: eval.askbank.devsample.n
+    value: 80
+    unit: 'questions'
+    label: S
+    kind: computed
+    source: "data/artefacts/evals/ask_bank/c1-dev80-2.md (items)"
+    caveat: "dev sample size"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R33 C1 measured"
+  scenario_ian_decisions:
+    tex_key: scenario.ian.decisions
+    value: 11
+    unit: 'decisions'
+    label: S
+    kind: computed
+    source: "data/scenarios/ian-2022/msel.yaml (IAN-01 .. IAN-11)"
+    caveat: "scripted exercise data (synthetic) on the real HURDAT2 track of Ian 2022"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 B2 built"
+  scenario_ian_moments:
+    tex_key: scenario.ian.moments
+    value: 3
+    unit: 'moments'
+    label: S
+    kind: computed
+    source: "data/scenarios/ian-2022/pack.yaml moments (day before landfall, landfall near Georgetown, morning after landfall)"
+    caveat: "scripted exercise clock"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 B2 built"
+  scenario_ian_crews:
+    tex_key: scenario.ian.crews
+    value: 54
+    unit: 'crews'
+    label: S
+    kind: computed
+    source: "data/scenarios/ian-2022/pack.yaml crew_groups (scripted roster, read-only on Crews)"
+    caveat: "scripted exercise data (synthetic)"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 B2b built"
+  validation_r34_findings:
+    tex_key: validation.r34.findings
+    value: 66
+    unit: 'findings'
+    label: S
+    kind: computed
+    source: "pre-release walkthrough: every persona on every page (29 findings) and every signing workflow (37 findings); all fixed"
+    caveat: "builder-run validation on the demo stack, not an independent test; all rows fixed, each fix checked on screen by its fixer"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 V1/V2 measured"
+  validation_r34_pages_findings:
+    tex_key: validation.r34.pages_findings
+    value: 29
+    unit: 'findings'
+    label: S
+    kind: computed
+    source: "pre-release walkthrough: every persona on every page, tab and control at three Helene moments"
+    caveat: "fixed in F2 and F3"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 V1 measured"
+  validation_r34_workflow_findings:
+    tex_key: validation.r34.workflow_findings
+    value: 37
+    unit: 'findings'
+    label: S
+    kind: computed
+    source: "pre-release walkthrough: every state-changing workflow per role on a local stack"
+    caveat: "fixed in F1 and F1b"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 V2 measured"
+  ask_model_cards:
+    tex_key: ask.model_cards
+    value: 7
+    unit: 'models'
+    label: S
+    kind: computed
+    source: "src/sgw/agent/copilot/model_cards.yaml (outage forecast, surge detector, water anomalies, photo triage, crew plan, water twin, ETR)"
+    caveat: "Ask describes existing models; it calls none of them for a decision"
+    allowed_in: [prd, briefing, deck, video]
+    handoff_s3: "not in section 3; R34 B1 built"

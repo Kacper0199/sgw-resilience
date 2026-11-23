@@ -1,0 +1,102 @@
+# Ask bank, near_miss: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-NEAR-002
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: map
+  klass: near_miss
+  question: Is feeder FDR-AIK-9999 out?
+  expect:
+    mentions_any:
+    - '2207'
+    - '2214'
+    - '2219'
+    - '2225'
+    - '2231'
+    - '2238'
+    mentions_all:
+    - '9999'
+- id: AB-NEAR-007
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  klass: near_miss
+  question: Show me the drone video of the flooding.
+  expect:
+    mentions_any:
+    - photo
+    mentions_all:
+    - video
+- id: AB-NEAR-008
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  klass: near_miss
+  question: What's the gas pipeline pressure in Aiken?
+  expect:
+    mentions_any:
+    - water
+    - pressure
+    - power
+    - electric
+    mentions_all:
+    - gas
+- id: AB-NEAR-012
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: near_miss
+  question: Is the second fuel truck on its way to PS-17?
+  expect:
+    mentions_any:
+    - FTK-WREN-3
+    - fuel truck
+    - one
+    mentions_all:
+    - fuel truck
+- id: AB-NEAR-015
+  lang: pl
+  persona: ic_01
+  moment: morning-after
+  klass: near_miss
+  question: Kiedy tornado uderzyło w Aiken?
+  expect:
+    mentions_any:
+    - Helene
+    - huragan
+    mentions_all:
+    - tornad
+- id: AB-NEAR-017
+  lang: de
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: near_miss
+  tags:
+  - other_language
+  question: Wo ist die Crew CRW-EAGLE-01?
+  expect:
+    mentions_any:
+    - Talon
+    - Bittern
+    - Cormorant
+    - Egret
+    - Gannet
+    - Grosbeak
+    - Harrier
+    - Heron
+    - Kestrel
+    - Merlin
+    - Nightjar
+    - Osprey
+    - Petrel
+    - Plover
+    - Shrike
+    - CRW-SWIFT
+    - Tanager
+    - CRW-TERN
+    - Warbler
+    mentions_all:
+    - EAGLE

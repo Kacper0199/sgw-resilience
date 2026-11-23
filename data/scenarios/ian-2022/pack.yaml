@@ -1,0 +1,84 @@
+# Hurricane Ian 2022 scenario pack (R34 B2, design R33 C3 step 2 option B): a scripted exercise on the real storm
+# track. Only the track is real: NOAA NHC HURDAT2 best track AL092022 (public domain, US Government work), fixes
+# from 28 Sep 00Z to 1 Oct 06Z, landfall near Georgetown, SC, 30 Sep 2022 18:05Z. No NHC cone archive is shipped
+# offline for Ian, so the map draws the track only. Everything else here is SYNTHETIC and scripted for the
+# exercise (D-065 names): the customers out per county, the critical facilities affected, the crew counts and the
+# decisions of msel.yaml. Times are UTC.
+id: ian
+title: "Hurricane Ian"
+label: "Scripted exercise data (synthetic)"
+incident_id: INC-IAN-2022
+proposal_prefix: PRP-IAN-
+window: {start: "2022-09-28T12:00:00Z", end: "2022-10-03T12:00:00Z"}
+bookmarks: {landfall: "2022-09-30T18:05:00Z", peak: "2022-09-30T23:00:00Z", etr: "2022-10-02T16:00:00Z"}
+moments:
+  - {id: ian-day-before, label: "Day before landfall", at: "2022-09-29T15:00:00Z"}
+  - {id: ian-landfall, label: "Landfall near Georgetown", at: "2022-09-30T18:05:00Z"}
+  - {id: ian-morning-after, label: "Morning after landfall", at: "2022-10-01T12:00:00Z"}
+track_source: "NOAA NHC HURDAT2 best track AL092022 (public domain)"
+# [time UTC, lat, lon, max wind kt]
+track:
+  - ["2022-09-28T00:00:00Z", 24.4, -83.0, 105]
+  - ["2022-09-28T06:00:00Z", 25.2, -82.9, 120]
+  - ["2022-09-28T12:00:00Z", 26.0, -82.7, 140]
+  - ["2022-09-28T18:00:00Z", 26.6, -82.4, 135]
+  - ["2022-09-29T00:00:00Z", 27.2, -81.7, 100]
+  - ["2022-09-29T06:00:00Z", 27.7, -81.1, 65]
+  - ["2022-09-29T12:00:00Z", 28.4, -80.6, 60]
+  - ["2022-09-29T18:00:00Z", 28.9, -80.1, 65]
+  - ["2022-09-30T00:00:00Z", 29.6, -79.4, 70]
+  - ["2022-09-30T06:00:00Z", 30.3, -79.1, 75]
+  - ["2022-09-30T12:00:00Z", 31.5, -79.0, 75]
+  - ["2022-09-30T18:00:00Z", 33.3, -79.2, 70]
+  - ["2022-09-30T18:05:00Z", 33.3, -79.2, 70]
+  - ["2022-10-01T00:00:00Z", 34.4, -79.3, 50]
+  - ["2022-10-01T06:00:00Z", 35.3, -79.7, 30]
+# Scripted outage curve: customers out in the SGW territory (piecewise linear), split by county share.
+outages:
+  total:
+    - ["2022-09-28T12:00:00Z", 0]
+    - ["2022-09-30T06:00:00Z", 0]
+    - ["2022-09-30T12:00:00Z", 6400]
+    - ["2022-09-30T18:00:00Z", 118500]
+    - ["2022-09-30T23:00:00Z", 171900]
+    - ["2022-10-01T06:00:00Z", 142300]
+    - ["2022-10-01T12:00:00Z", 98700]
+    - ["2022-10-01T18:00:00Z", 61200]
+    - ["2022-10-02T06:00:00Z", 29400]
+    - ["2022-10-02T16:00:00Z", 17100]
+    - ["2022-10-03T06:00:00Z", 3800]
+    - ["2022-10-03T12:00:00Z", 1200]
+  county_share:
+    "45043": 0.27
+    "45051": 0.31
+    "45089": 0.10
+    "45019": 0.12
+    "45015": 0.07
+    "45041": 0.08
+    "45067": 0.05
+# Critical facilities that lose grid power (scripted).
+critical_facilities:
+  - {asset: HSP-GTN-TIDEWRACK, from: "2022-09-30T17:20:00Z", to: "2022-10-01T19:00:00Z"}
+  - {asset: WTP-GTN-COQUINA-BEND, from: "2022-09-30T18:40:00Z", to: "2022-10-01T15:00:00Z"}
+  - {asset: ECC-HRY-WHELKSTONE, from: "2022-09-30T19:10:00Z", to: "2022-10-01T04:00:00Z"}
+  - {asset: NRS-GTN-SALTMEADOW, from: "2022-09-30T20:30:00Z", to: "2022-10-02T02:00:00Z"}
+# Scripted crew counts by status (step function: each row holds until the next).
+crews:
+  - {at: "2022-09-28T12:00:00Z", available: 38, staged: 0, enroute: 0, onsite: 0}
+  - {at: "2022-09-29T18:00:00Z", available: 22, staged: 16, enroute: 0, onsite: 0}
+  - {at: "2022-09-30T12:00:00Z", available: 6, staged: 48, enroute: 0, onsite: 0}
+  - {at: "2022-09-30T21:00:00Z", available: 4, staged: 20, enroute: 18, onsite: 12}
+  - {at: "2022-10-01T06:00:00Z", available: 2, staged: 4, enroute: 14, onsite: 34}
+  - {at: "2022-10-02T12:00:00Z", available: 10, staged: 0, enroute: 8, onsite: 36}
+  - {at: "2022-10-03T06:00:00Z", available: 40, staged: 0, enroute: 2, onsite: 12}
+# Scripted crew roster: the counts above are filled in this order (onsite first, then en route, staged, available);
+# the roster grows from the 38 local crews to all 54 when the 16 mutual-aid crews (MA) arrive.
+crew_groups:
+  - {prefix: CRW-SALTGRASS, first: 1, count: 9, headcount: 4, region: SC-45043}
+  - {prefix: CRW-MARSHWREN, first: 1, count: 9, headcount: 4, region: SC-45051}
+  - {prefix: CRW-SPARTINA, first: 1, count: 9, headcount: 4, region: SC-45043}
+  - {prefix: CRW-OYSTERCATCHER, first: 1, count: 9, headcount: 4, region: SC-45089}
+  - {prefix: CRW-SEAOATS, first: 1, count: 2, headcount: 4, region: SC-45041}
+  - {prefix: CRW-MA-TIDEWATER, first: 1, count: 8, headcount: 8, region: SC-45043}
+  - {prefix: CRW-MA-BRACKWATER, first: 1, count: 8, headcount: 8, region: SC-45051}
+crew_yards: [STG-GTN-SAMPIT-BLUFF-YARD, STG-HRY-BRACKENLOUGH-YARD]

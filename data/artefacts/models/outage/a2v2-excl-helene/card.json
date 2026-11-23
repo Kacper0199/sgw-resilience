@@ -1,0 +1,125 @@
+{
+  "alphas": [
+    0.025,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.975
+  ],
+  "blend": {
+    "beta": 0.35,
+    "median_ms": 64.0,
+    "weight": 0.25
+  },
+  "conformal_offsets": {
+    "50": {
+      "0": 0.21539639361947405,
+      "1": 0.30692314993652303,
+      "2": 0.24014784329874184,
+      "pooled": 0.2451218094141181
+    },
+    "80": {
+      "0": 0.3093831002457206,
+      "1": 0.5055696900895095,
+      "2": 0.432184411824454,
+      "pooled": 0.40333210880022374
+    },
+    "95": {
+      "0": 0.206529578649004,
+      "1": 0.8592200253176338,
+      "2": 0.6913655656287022,
+      "pooled": 0.5204973992005097
+    }
+  },
+  "data_sha256": "a48df36f3064839e4ae3ed294551206714cf94e0bb465ff8a65109accf9d27db",
+  "features": [
+    "peak_gust_ms",
+    "hours_gust_ge_20",
+    "hours_ts",
+    "min_dist_km",
+    "speed_kmh_closest",
+    "vmax_ms_closest",
+    "log_customers",
+    "hours_centre_within_200km"
+  ],
+  "interval_method": "storm-grouped CQR, uncalibrated across storm types (coverage reported per storm)",
+  "interval_space": "log",
+  "intervals": {
+    "50": [
+      0.25,
+      0.75
+    ],
+    "80": [
+      0.1,
+      0.9
+    ],
+    "95": [
+      0.025,
+      0.975
+    ]
+  },
+  "name": "a2v2-excl-helene",
+  "params": {
+    "colsample_bytree": 0.9,
+    "deterministic": true,
+    "force_row_wise": true,
+    "learning_rate": 0.03,
+    "mean": {
+      "objective": "tweedie",
+      "tweedie_variance_power": 1.3
+    },
+    "min_child_samples": 15,
+    "monotone": {
+      "hours_centre_within_200km": 1,
+      "hours_gust_ge_20": 1,
+      "hours_ts": 1,
+      "log_customers": 0,
+      "min_dist_km": -1,
+      "peak_gust_ms": 1,
+      "rain_antecedent_14d_mm": 1,
+      "rain_window_mm": 1,
+      "speed_kmh_closest": 0,
+      "vmax_ms_closest": 0
+    },
+    "n_estimators": 300,
+    "n_jobs": 2,
+    "num_leaves": 7,
+    "random_state": 20241,
+    "reg_lambda": 1.0,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "verbose": -1
+  },
+  "prior_offset": false,
+  "trained_on": [
+    "bertha",
+    "claudette",
+    "colin_2016",
+    "colin_2022",
+    "danny",
+    "debby",
+    "dorian",
+    "elsa",
+    "eta",
+    "florence",
+    "hermine",
+    "ian",
+    "idalia",
+    "irma",
+    "isaias",
+    "julia",
+    "matthew",
+    "michael",
+    "mindy",
+    "nestor",
+    "nicole",
+    "zeta"
+  ],
+  "version": "2.0-candidate",
+  "wind_bands_ms": [
+    20.0,
+    30.0
+  ]
+}

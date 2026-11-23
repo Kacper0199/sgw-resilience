@@ -1,0 +1,36 @@
+# Heat trigger, load, transformer and conductor parameters (WP-22). Labels: F sourced, C computed,
+# A assumption; kind=policy are SGW policy parameters (proposed for numbers.yaml as policy_heat_*).
+version: "1.0"
+trigger:
+  percentile: {value: 95.0, unit: "%", label: A, kind: policy, source: "hot day = station-mean daily Tmax at or above its JJA P95 (R05 1.3 window choice used the same statistic)"}
+  calibration_year: {value: 2023, unit: "year", label: A, kind: policy, source: "threshold computed on summer 2023 only, so the 2024 heatwave is out of sample"}
+  consecutive_days: {value: 2, unit: "days", label: A, kind: policy, source: "WP-22 assumption: two hot days in a row; oil does not recover overnight (R02 8 H1)"}
+  stations: {value: ["AGS", "CAE", "CHS", "GSP", "SAV"], unit: "ICAO", label: F, kind: model, source: "planner-handoff s3 Weather anchor"}
+load:
+  cooling_slope_pct_per_c: {value: 5.8, unit: "%/C", label: C, kind: fact, source: "planner-handoff s3 Load temperature slope, SCEG (fit window EIA-930 2023 H2 + 2024 Aug-Oct); Aiken detail area"}
+  reference_daily_mean_c: {value: 21.0, unit: "C", label: A, kind: model, source: "R05 G2 feeder load model (1 + slope (Tmean - 21)+)"}
+  diurnal_amplitude: {value: 0.25, unit: "-", label: A, kind: model, source: "R05 5b summer hourly factors 0.73-0.79 at 04-05 and 1.22-1.27 at 17 local"}
+  peak_hour_local: {value: 17, unit: "h", label: A, kind: model, source: "R05 5b"}
+alarms:
+  watch_c: {value: 110.0, unit: "C", label: A, kind: policy, source: "R02 1.1 alarm levels (not verified against a standard)"}
+  warning_c: {value: 120.0, unit: "C", label: A, kind: policy, source: "R02 1.1"}
+  emergency_c: {value: 140.0, unit: "C", label: A, kind: policy, source: "R02 1.1"}
+solar:
+  clear_sky_w_m2: {value: 1000.0, unit: "W/m2", label: A, kind: model, source: "WP-22 assumption: clear-sky normal irradiance scaled by sin(solar elevation)"}
+  latitude_deg: {value: 33.56, unit: "deg", label: F, kind: model, source: "Aiken detail area (helene.yaml named PS-17)"}
+wind:
+  still_air_ms: {value: 0.3, unit: "m/s", label: A, kind: model, source: "R02 8 H2: same load, wind 0.3 m/s"}
+  rating_basis_ms: {value: 0.61, unit: "m/s", label: A, kind: model, source: "2 ft/s perpendicular, the common static-rating wind (IEEE 738 example)"}
+units:
+  - {asset_id: TX-BRAMBLEGATE-T1, site: SUB-AIK-BRAMBLEGATE, cooling: onaf, rating_kva: 28000, k_base: 0.68, feeders: [FDR-AIK-2207, FDR-AIK-2231, FDR-AIK-2225], protected_load: true}
+  - {asset_id: TX-BRAMBLEGATE-T2, site: SUB-AIK-BRAMBLEGATE, cooling: onaf, rating_kva: 28000, k_base: 0.74, feeders: [FDR-AIK-2219, FDR-AIK-2214, FDR-AIK-2238]}
+  - {asset_id: DT-AIK-2231-TALLOWBRANCH, site: HSP-AIK-TALLOWBRANCH, cooling: distribution_onan, rating_kva: 2500, k_base: 0.76, feeders: [FDR-AIK-2231], protected_load: true}
+  - {asset_id: DT-AIK-2207-CEDARFALL, site: PS-17, cooling: distribution_onan, rating_kva: 750, k_base: 0.70, feeders: [FDR-AIK-2207], protected_load: true}
+  - {asset_id: DT-AIK-2238-COPPERLEAF, site: FDR-AIK-2238, cooling: distribution_onan, rating_kva: 167, k_base: 0.82, feeders: [FDR-AIK-2238]}
+units_source: "synthetic stressed units of the Aiken detail area (ids per D-065); k_base = loading at the 17:00 local peak of a day with daily mean 21 C [A]"
+line:
+  feeder_id: FDR-AIK-2219
+  transformer_id: TX-BRAMBLEGATE-T2
+  conductor: {name: "336.4 kcmil ACSR (Linnet class)", diameter_m: 0.01831, r25_ohm_per_m: 1.727e-4, r75_ohm_per_m: 2.063e-4, emissivity: 0.5, absorptivity: 0.5, max_temp_c: 75.0}
+  conductor_source: "typical catalogue values [A]; 75 C maximum operating temperature [A]"
+  current_base_a: {value: 300.0, unit: "A", label: A, kind: model, source: "trunk current at the 17:00 local peak of a 21 C day; scales with the same load factor as TX-BRAMBLEGATE-T2"}

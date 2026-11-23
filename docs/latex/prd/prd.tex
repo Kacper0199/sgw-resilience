@@ -1,0 +1,370 @@
+\documentclass[fontsize=10pt,a4paper,DIV=12,parskip=half-,numbers=noenddot,headsepline,captions=tableheading]{scrartcl}
+\usepackage{sgwdoc}
+\renewcommand{\sgwheadlabel}{Product requirements}
+\renewcommand{\sgwdoclabel}{Product requirements document}
+\usepackage{xltabular}
+\usepackage{float}
+\newcommand{\sgwtwodigits}[1]{\ifnum#1<10 0\fi#1}
+\newcommand{\sgwclockfmt}[1]{\sgwtwodigits{\the\numexpr(#1-30)/60\relax}:\sgwtwodigits{\the\numexpr#1-60*((#1-30)/60)\relax}\,UTC}
+\newcommand{\sgwclock}[1]{\sgwclockfmt{\csname sgwnum@v@#1\endcsname}}
+\newcommand{\clockN}{\sgwclock{demo.ps17.decide_by_n_min}}
+\newcommand{\clockNone}{\sgwclock{demo.ps17.decide_by_n1_min}}
+\newcommand{\tgroup}[1]{\multicolumn{4}{@{}l}{\rule{0pt}{2.6ex}\textbf{#1}}\\}
+\setlength{\tabcolsep}{4pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.85}
+
+\begin{document}
+
+\thispagestyle{plain.scrheadings}
+\sgwmark{bodystart}
+\sgwtitleblock{\sgwproduct}{Product requirements for one decision queue for power and water, in which every decision has a deadline}{the technical delivery team of SGW}
+
+\sgwsection{summary}{1.0}{Summary}
+
+\begin{sgwbox}{Problem}
+During a storm, SGW decides where crews, fuel and generators go without seeing how much time is left before each decision stops mattering. Power and water decisions that depend on each other are taken on separate desks.
+\end{sgwbox}
+
+\textbf{Product.} The \sgwproduct{} is a decision queue for a utility that runs both power and water.
+Each open decision carries a deadline (shown on screen as Decide by) with its basis, the chain of actions that sets it, and a timing signal (Act now, Before next advisory, Can wait).
+Deadlines are computed by code from model outputs. The AI assistant explains them, and a person signs every action with high impact.
+In a footprint of \sgwnum{footprint.residents}, Hurricane Helene left \sgwnum{storm.helene.peak_customers_out} without power at its peak.
+
+\textbf{MVP.} Five decisions in one storm replay. D1 sets the event type, D2 stages crews before landfall, D3 decides pump station power and the boil water notice, D4 publishes the global estimated time of restoration (ETR) with a range, and D5 reviews the event. Unsafe actions, bypassed approvals and invented identifiers stay at zero.
+The pilot aims to cut the time from the all clear to the first approved global ETR from \sgwnum{metric.m07.baseline_h} at a peer utility to at most \sgwnum{metric.m07.m12_h}, to keep the median error of the global ETR at most \sgwnum{metric.m06.m12_pct}, and to flag every critical site with its time to empty within \sgwnum{metric.m11.flag_min}. These targets are assumed (Section~\ref{sgw:sec:metrics}).
+
+\textbf{Prototype.} A working prototype replays Hurricane Helene on synthetic SGW data and real public storm data. A scripted exercise on the real track of Hurricane Ian adds \sgwval{scenario.ian.decisions} timed decisions. The code repository delivered with this document holds the prototype with its tests and evaluation reports, and a video walks through it at \url{https://www.youtube.com/watch?v=zSRUEBEpw7Y}.
+
+\begin{sgwdecisions}
+  Grant read access to outage and meter history of two past storms & CIO & 2026-12-11 & Backtest on public county data only \\ \lightrowrule
+  Name the owners of storm water decisions & COO & 2026-12-11 & Signing pair stays assumed \\ \lightrowrule
+  Confirm the pairs that sign at the highest approval level & Emergency management & 2026-12-18 & Pilot uses assumed roles \\ \lightrowrule
+  Rule on the platform outside the electronic security perimeter & CIP compliance owner & 2026-12-18 & Control system feeds stay out of phase 1 \\
+\end{sgwdecisions}
+
+{\footnotesize\textbf{How to read this document.} \textbf{shall} marks a binding requirement and \textbf{should} a goal that is verified but not binding. Priority follows MoSCoW (Must, Should, Could or not this time). M-nn identifies a success metric (Table~\ref{tab:metrics} lists the main ones, the numbers registry holds the full set) and FR-nn or NFR-nn a requirement (Table~\ref{tab:requirements}). Numbers are labelled fact, computed, assumed, SGW policy or synthetic.\par}
+\sgwmark{summaryend}
+
+\sgwsection{problem}{1.25}{Problem and business context}
+
+\textbf{The baseline story.}
+In the Helene replay used throughout this document, pump station PS-17 keeps the pressure zone of a hospital above the state floor of \sgwnum{sc_pressure_floor_psi} \citep{sc_r61_58}.
+When the feeder of the station trips, a portable generator must be connected within its lead time of \sgwnum{demo.ps17.generator_lead}, or the zone drains below the floor at the service connection of the hospital.
+The fuel truck that keeps the generator running must leave before the roads close, so the chain runs from truck to generator to pressure (Figure~\ref{fig:critpath}).
+At one forecast advisory the effective deadline of the generator decision is \clockN{} and the signal says that the decision can wait.
+The next advisory moves it earlier, to \clockNone, and the signal turns to Before next advisory, because waiting for one more advisory would be too late.
+The consequence time comes from a water model checked against full hydraulic runs, so these are synthetic values, not SGW measurements.
+Today no desk sees this deadline. Electric operations sees a feeder, water operations sees a tank, and the hospital calls.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.8\textwidth}{!}{\input{critpath}}
+  \caption{The deadline for the hospital is set by the first action on its path. Deadlines propagate backwards from the consequence. Synthetic scenario values.}
+  \label{fig:critpath}
+\end{figure}
+
+\textbf{Why now.}
+\begin{itemize}
+  \item \textbf{Storm scale.} Helene left \sgwnum{storm.helene.peak_customers_out} out at the peak in the footprint \citep{doe_eaglei}. Restoring \sgwnum{policy.etr_restore_fraction_pct} of them took \sgwnum{storm.helene.hours_to_90pct} from the peak, against \sgwnum{storm.michael.hours_to_90pct} for Michael and \sgwnum{storm.ian.hours_to_90pct} for Ian. Outage minutes per customer from major events in 2024 were \sgwnum{reliability.major_event_minutes}, against \sgwnum{reliability.major_event_median} in a median year.
+  \item \textbf{Scrutiny of storm costs.} The Georgia commission cut a request of Georgia Power to recover storm costs from \sgwnum{context.ga_storm_rev_req_filed_musd} to \sgwnum{context.ga_storm_rev_req_agreed_musd} and opened a review of how storm costs are recorded \citep{ga_psc_44280}.
+  \item \textbf{Rules with deadlines.} South Carolina lists the period before landfall as a trigger for a boil water advisory and requires immediate notice \citep{sc_des_bwn}. Interruptions longer than \sgwnum{sc_outage_full_report_hours} need a full report to the commission \citep{sc_psc_103}.
+\end{itemize}
+GIS, outage, asset, historian, meter, field, laboratory and weather systems each hold part of the picture, and field links fail when they are needed most.
+
+\IfFileExists{prd_helene_counties.pdf}{%
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{prd_helene_counties.pdf}
+  \caption{Restoration after Helene was slow and uneven. Half of the hard hit counties in the footprint needed more than five days to reach \sgwnum{policy.etr_restore_fraction_pct} restored. Real data, EAGLE-I county outages \citep{doe_eaglei}.}
+  \label{fig:helene}
+\end{figure}}{\sgwtodo{Figure of Helene restoration per footprint county. Run docs/figures/prd\_helene\_counties.py.}}
+
+\begin{table}[tb]\footnotesize
+\caption{Business pressures, the decision each one strains, and the feature and metric that answer it.}\label{tab:pressure}
+\begin{tabularx}{\textwidth}{@{}L{3.6cm} L{3.8cm} Y L{3.4cm}@{}}
+  \toprule
+  \textbf{Business pressure} & \textbf{Decision it strains} & \textbf{Feature} & \textbf{Metric} \\ \midrule
+  Hospital zones lose pressure after feeder losses & Generator and fuel priority of a pump station (D3) & Chain of actions with an effective deadline & Critical sites flagged in time (M-11) \\ \lightrowrule
+  Forecasts change with every advisory & Commit crews now or wait (D1, D2) & Signal to act now or wait & Outage forecast error (M-24) \\ \lightrowrule
+  Storm costs face review in rate cases & Crew staging and mutual aid (D2) & Signatures of two functions on one plan version & Idle crew days of mutual aid (M-10) \\ \lightrowrule
+  Customers need a credible restoration date & Publish the global ETR (D4) & ETR with a range, signed by command & ETR error (M-06), first ETR (M-07) \\ \lightrowrule
+  Boil water rules set hard deadlines & Issue or hold a notice (D3) & Deadline taken from the rule, draft citing the clause & Notice package after the trigger (M-13) \\ \bottomrule
+\end{tabularx}
+\end{table}
+
+\sgwsection{assumptions}{0.75}{Assumptions and unknowns}
+Each assumption below names what it changes in the design and how phase 0 checks it. The eight rows with a named owner are the unknowns that stay open until phase 0. Confidence is H for high, M for medium and L for low.
+{\footnotesize
+\begin{xltabular}{\textwidth}{@{}L{1.05cm} L{4.6cm} L{0.55cm} Y L{3.0cm}@{}}
+  \caption{Key assumptions and unknowns.}\label{tab:assumptions}\\
+  \toprule
+  \textbf{ID} & \textbf{Assumption} & \textbf{C.} & \textbf{What it changes in the design} & \textbf{Phase 0 check and owner} \\ \midrule
+  \endfirsthead
+  \toprule
+  \textbf{ID} & \textbf{Assumption} & \textbf{C.} & \textbf{What it changes in the design} & \textbf{Phase 0 check and owner} \\ \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+  A-002 & The territory is South Carolina and eastern Georgia, \sgwval{footprint_counties} counties & H & Public data calibrates and replays storms. State rules apply per county & Map against service areas \\ \lightrowrule
+  A-003 & SGW water serves about \sgwnum{footprint.water_population} through six to ten systems (alternative \sgwnum{water_population_served_alt}) & L & The water module and its value lines scale with it & System inventory. Water operations \\ \lightrowrule
+  A-004 & SGW is a NERC registered entity. The platform is advisory and outside the security perimeter & M & Feeds flow in one direction, no write path. Asset risk rankings are class C3. If in scope, phase 1 carries a CIP programme & Scoping ruling. CIP compliance owner \\ \lightrowrule
+  A-005 & GIS, asset, outage, historian, meter, field and laboratory systems offer read access. How fast and how far back the outage system exports events is unknown & M & One adapter interface per source, data age on every number. Export speed sets how fresh deadlines are and how deep the backtest goes & Export test on two past storms. Outage management system owner \\ \lightrowrule
+  A-006 & One primary cloud, managed AI allowed up to class C2 & L & One gateway to the model. The provider is configuration & Security review. CISO \\ \lightrowrule
+  A-007 & Storms run under the incident command system (ICS). Command approves the global ETR. A certified operator owns boil water decisions & M & Approval levels T0 to T4, signatures of two functions at T3. Signing pairs are policy configuration & Workshop on decision rights. Emergency management \\ \lightrowrule
+  A-010 & The baselines of SGW for ETR error, crew use and critical restoration are not known to A & H & Targets labelled assumed, baselines frozen in phase 0. No outcome target is promised without them & Data pull. Operations analytics \\ \lightrowrule
+  A-013 & A register of critical customers with backup power data exists & M & Weight of critical facilities and alerts on time to empty depend on it. The register loads through the asset adapter & Obtain the register. Customer operations \\ \lightrowrule
+  A-018 & Real lead times of fuel delivery, generator connection and crew moves are not known & n/a & Every deadline is consequence time minus lead time. Lead times are labelled policy values, updated after each event & Review of storm logs. Logistics chief \\ \lightrowrule
+  A-052 & Deadlines are estimates, except where a rule sets them & H & Each deadline shows whether a rule or a model set it & Exercise feedback \\ \lightrowrule
+  A-057, A-064 & Phase 1 only reads from SGW systems. Only synthetic or public data reaches an external model in the prototype & H & Writing back exists only as proposals that a person approves. The gateway denies C3 and C4 content & Review by system owners. Security test in every build \\ \lightrowrule
+  A-015, A-068 & Prototype results are verification on synthetic or replayed data, from a network calibrated to public data & H & Every figure labelled. No claim on SGW accuracy & By design \\
+\end{xltabular}}
+Data classes C0 to C4 are defined in Section~\ref{sgw:sec:data} and approval levels T0 to T4 in Section~\ref{sgw:sec:security}. The full register, with the assumptions of the value case, is kept in the repository (\url{docs/12-assumptions-limitations-and-improvements.md} and \url{docs/limitations.md}).
+
+\sgwsection{users}{0.75}{Users, pain points and the storm workflow}
+Six roles take storm decisions and the Executive follows them. The pain points below are confirmed with each desk in phase 0.
+{\footnotesize\par\noindent
+\begin{tabularx}{\textwidth}{@{}L{2.9cm} L{4.2cm} Y L{3.2cm}@{}}
+  \toprule
+  \textbf{Role (function)} & \textbf{Proposes or signs} & \textbf{Question on arrival} & \textbf{Pain point} \\ \midrule
+  Incident Commander (command) & Sets the event type. Countersigns crew staging, pump priority and the global ETR. Emergency approval & What must I decide this hour, and what happens if I wait? & Decisions arrive by phone, without the time left \\ \lightrowrule
+  Duty Manager (operations) & Proposes the event type, crew staging and pump priority. Signs small staging moves & Does the new advisory move my crews? & Plans redone by hand after each advisory \\ \lightrowrule
+  Logistics Section Chief & Countersigns crew staging and mutual aid & How many crews, where, and at what cost? & Cost reviewed only after the event \\ \lightrowrule
+  ETR Specialist (planning) & Proposes the global and regional ETR & When is the target share back, and how certain is it? & About a day of assessment first \\ \lightrowrule
+  Water Incident Lead & Proposes generator and fuel moves. Countersigns pump priority and notices & Which zones fall below the floor, and when? & No view of feeder state \\ \lightrowrule
+  Water Compliance Officer & Countersigns boil water notices & Does the rule apply, and is the notice on time? & Deadlines tracked by hand \\ \lightrowrule
+  Executive (COO) & Reads the Briefing & Is the response on track, and what needs me? & Long status reports \\ \bottomrule
+\end{tabularx}}\par
+A relief Duty Manager covers the second shift, the Auditor checks the record of approvals, the Platform Admin manages users, policies and integrations, and the Data and Models Owner watches data feeds and model quality.
+Before landfall the queue holds D1 and D2, and at landfall the decisions where power and water depend on each other (D3) rise. After the all clear the ETR (D4) leads, after demobilisation D5 closes each deadline as met or missed, and outside storms a Readiness mode holds the decisions due before the season.
+
+\begin{figure}[tb]
+  \centering
+  \resizebox{0.7\textwidth}{!}{\input{swimlane}}
+  \caption{A storm day in the future state, with the pain points of today on top. Each signature binds two functions to one version of the plan. Synthetic scenario.}
+  \label{fig:swimlane}
+\end{figure}
+
+\sgwsection{scope}{0.25}{Goals and out of scope}
+\noindent\begin{minipage}{\linewidth}
+\begin{enumerate}\setlength{\itemsep}{0pt}
+  \item[G1] Every open storm decision shows a deadline with its basis (M-14, M-15).
+  \item[G2] Dependencies between power and water are visible before the consequence (M-11, M-12).
+  \item[G3] Actions with high impact carry two signatures from two functions on one plan version (guardrails).
+  \item[G4] The global ETR carries a range and the signature of command (M-06, M-07).
+  \item[G5] Every number on screen shows its source, data age and label.
+\end{enumerate}
+\end{minipage}\par
+\textbf{Out of scope.} The platform does not write to SCADA, ADMS switching or any control system, which keeps it advisory and outside the security perimeter. It does not send customer or public notices but drafts them for the certified operator and compliance. There is no public chatbot, because public answers carry legal weight, and no modelling of fire spread or floods, because SGW uses agency products. The MVP has no mobile field app, because field links fail in major storms. Reinforcement learning for dispatch is not built, because too few real storms exist to validate it. It may return as a challenger run in shadow behind a statistical gate.
+Beyond the MVP the prototype also holds a what if comparison over a precomputed scenario grid and the triggers and ranking tables for red flag warning days and heat emergencies.
+
+\sgwsection{requirements}{1.25}{Requirements}
+Each requirement keeps its identifier, so that the trace into the repository still works. The last column states what the delivered prototype does today.
+{\footnotesize
+\begin{xltabular}{\textwidth}{@{}L{1.55cm} Y L{1.05cm} L{2.6cm}@{}}
+  \caption{Functional and non functional requirements with their prototype status.}\label{tab:requirements}\\
+  \toprule
+  \textbf{ID} & \textbf{The platform shall} & \textbf{Priority} & \textbf{Prototype} \\ \midrule
+  \endfirsthead
+  \toprule
+  \textbf{ID} & \textbf{The platform shall} & \textbf{Priority} & \textbf{Prototype} \\ \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+  \tgroup{Decision queue and deadlines}
+  \mbox{FR-01} to \mbox{FR-03} & compute each deadline as consequence time minus action lead time, show its basis, propagate it backwards along prerequisite actions and mark the critical path & Must & Built on synthetic data \\ \lightrowrule
+  \mbox{FR-04} & say act now or wait, from the share of forecast scenarios in which acting now is not regretted & Must & Built on synthetic data \\ \lightrowrule
+  \mbox{FR-05}, \mbox{FR-06} & rank open decisions by deadline, then by consequence in customer equivalents, and mark each deadline as set by a rule or estimated by a model & Must & Built on synthetic data \\
+  \tgroup{Risk and forecasting}
+  \mbox{FR-08}, \mbox{FR-09} & forecast county outages with nested ranges, tested on unseen storms against a wind threshold rule, and recommend an event type that the Incident Commander then sets & Must & Built, forecast tested on real storms \\ \lightrowrule
+  \mbox{FR-10} & detect outage surges and water pressure anomalies, and flag readings that neighbouring sensors contradict & Should & Partial \\
+  \tgroup{Coordination and authority}
+  \mbox{FR-11} & propose crew staging as two or three courses of action beside a plan for the median forecast & Must & Built on synthetic data \\ \lightrowrule
+  \mbox{FR-12}, \mbox{FR-07} & require two approvers from two functions, neither of them the proposer, bound to one plan version, and void pending signatures when a material field changes & Must & Built \\ \lightrowrule
+  \mbox{FR-13}, \mbox{FR-14} & accept a new optimisation inside an approved envelope at a lower level, and let the Incident Commander sign alone under emergency approval, with a reason and a countersignature within \sgwnum{policy.breakglass_cosign_window} & Must & Built \\ \lightrowrule
+  \mbox{FR-15} & keep every proposal, signature and data version in a chained record with a verifier that reveals any later change & Must & Built \\
+  \tgroup{Water continuity and restoration}
+  \mbox{FR-16}, \mbox{FR-17} & estimate per station the time until the tank is empty and until pressure falls below the state floor, and propose a boil water notice citing the clause when a state rule triggers & Must & Built on synthetic data \\ \lightrowrule
+  \mbox{FR-18} & estimate the global and regional ETR as P25, P50 and P75 of the time to restore \sgwnum{policy.etr_restore_fraction_pct} of affected customers & Must & Built on synthetic data \\ \lightrowrule
+  \mbox{FR-19} & order damage photos for human review by computer vision scores & Should & Built on public photos \\
+  \tgroup{AI assistant}
+  \mbox{FR-22} to \mbox{FR-24}, \mbox{NFR-11} & answer from platform data and SGW documents with citations, or abstain. Fill every number in model text from computed values, reject invented identifiers, and keep working without the AI model through templates that show the same values & Must & Built \\
+  \tgroup{Non functional, stated for storm mode}
+  \mbox{NFR-01}, \mbox{NFR-02} & reach availability of at least \sgwnum{nfr.availability_storm_pct}, recover within \sgwnum{rto_hours} and lose at most \sgwnum{rpo_minutes_approvals} of approvals and audit & Must & Not measured \\ \lightrowrule
+  \mbox{NFR-03} & answer with a first token within \sgwnum{nfr.latency_qa_first_token_s}, a page interaction within \sgwnum{nfr.latency_page_p95_s} and a new forecast within \sgwnum{nfr.latency_reforecast_min}, at percentile \sgwval{nfr.latency_percentile} & Must & Event to screen measured, the rest in the pilot \\ \lightrowrule
+  \mbox{NFR-04} & keep operations feeds within \sgwnum{nfr.freshness_ops_min} and forecasts within \sgwnum{nfr.freshness_forecast_h} of their source, with a stale alarm at \sgwnum{nfr.freshness_alarm_factor} the target & Must & Measured in the pilot \\ \lightrowrule
+  \mbox{NFR-07} to \mbox{NFR-09}, \mbox{FR-30} & hold sessions on the server, with the single sign on of SGW in production. Send only C0 and C1 content to an external model in the prototype, allow C2 only after the CISO review of A-006, and deny C3 and C4 always. Keep decision records \sgwnum{policy.audit_retention_years} (assumed SGW policy) and security logs \sgwnum{nfr.cip_log_days} \citep{nerc_cip} & Must & Built, single sign on only in production \\
+\end{xltabular}}
+Further requirements cover a live event stream to open screens, the executive Briefing, a versioned integration interface with signed webhooks, the commitment watch and the learning loop on lead times, the record after the event, one adapter per source, load, the age of the evidence behind a signature, accessibility to WCAG 2.2 AA \citep{w3c_wcag22} and an install with one command. They are described in the platform guide (\url{docs/02-roles-and-decision-workflow.md}, \url{docs/03-architecture.md}, \url{docs/04-data.md} and \url{docs/11-security-governance-and-human-oversight.md}). Each built requirement traces to the test or evaluation report that proves its status, and \url{docs/code-tour.md} names the code and tests behind it.
+
+\sgwsection{ai}{1.25}{AI capabilities}
+Each capability below names the decision it improves, how it works, what the evaluation measured and what happens when it fails. Deadlines, the critical path and the timing signal are computed by code from model outputs, never by the language model. The assistant drafts, a person promotes drafts, and the approval level decides who signs.
+{\footnotesize
+\begin{xltabular}{\textwidth}{@{}L{2.2cm} L{1.1cm} L{3.6cm} Y L{3.0cm}@{}}
+  \caption{AI capabilities. Measured values come from the evaluation reports in the repository and are not SGW performance.}\label{tab:ai}\\
+  \toprule
+  \textbf{Capability} & \textbf{Decision} & \textbf{Method} & \textbf{Measured result} & \textbf{Failure and fallback} \\ \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Capability} & \textbf{Decision} & \textbf{Method} & \textbf{Measured result} & \textbf{Failure and fallback} \\ \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+  Outage forecast & D1, D2 & Wind fragility curve fitted on past storms, with its range. Richer models were tested and were not better & Real storms. Beat a fitted wind threshold rule on county error for \sgwval{eval.outage.storms_won} of \sgwval{eval.outage.storms_n}. For Helene \sgwval{eval.outage.helene_forecast_m} million customers out forecast against \sgwval{eval.outage.helene_observed_m} million observed & Large storms underestimated. Range shown, crews not sized on it alone \\ \lightrowrule
+  Outage surge detection & D1 & Robust change detection on real county outage series, confirmed by neighbouring counties & Real data, later test seasons. Recall \sgwval{eval.surge.test_recall} against \sgwval{eval.surge.test_recall_rolling_z} for the best tuned baseline. Surges in \sgwval{eval.surge.helene_counties} of \sgwval{footprint_counties} counties in the Helene replay & Alarm shown and read. No detector signs or sends anything \\ \lightrowrule
+  Water anomaly detection and spoof guard & D3 & Robust residual against weather and load, change detection, consistency with neighbours & Synthetic. Recall \sgwval{eval.anomaly.recall_dev} on \sgwval{eval.anomaly.dev_faults} seeded faults, below the target of \sgwval{metric.m26.recall}. Pressure alarm alone \sgwval{eval.anomaly.baseline_recall_dev} & Missing data marked suspect, alarm suppressed \\ \lightrowrule
+  Water network model and boil water rules & D3 & Tank drain to the pressure floor for each forecast scenario. Rules turn readings and samples into notice proposals that cite the state clause & Synthetic. Checked against \sgwnum{eval.water.wntr_runs} of full hydraulic models & Synthetic networks, not the pipes of SGW. Issuing a notice stays a human decision \\ \lightrowrule
+  Crew optimisation & D2 & Stochastic optimisation in two stages over forecast scenarios & Synthetic. Saves \sgwval{eval.saa.vss_customer_hours} customer hours of delay against the plan for the median forecast, with the same request for mutual aid. Gap under \sgwnum{eval.saa.gap_upper_pct} & Solver timeout. Plan for the median forecast \\ \lightrowrule
+  Restoration estimate (ETR) & D4 & Failure time model with crew capacity, calibrated ranges & Synthetic. Median error \sgwnum{eval.etr.global_error_pct}, area ranges held the outcome \sgwnum{eval.etr.cover_regional_pct} of the time & Range widens, the Incident Commander decides \\ \lightrowrule
+  Damage photo triage (computer vision) & D4 & Public reference model on aerial images & Published mean average precision \sgwval{eval.cv.map_test}, not measured by A & Ordering only, the assessor reviews every photo \\ \lightrowrule
+  Ask AI & All & Planner, up to three analysts with read access only, one checked answer & \sgwval{eval.askbank.heldout_passed} of \sgwval{eval.askbank.heldout_n} held out questions passed, merged over several runs after fixes. \sgwval{eval.askbank.heldout_exposed} of them were exposed during development, and the bank was written by A. On a separate sample of \sgwval{eval.askbank.baseline_n} questions, \sgwnum{eval.askbank.baseline_pct} passed before the agent team. Target at least \sgwval{metric.m31.mvp} & Answer rendered by code from the same evidence \\
+\end{xltabular}}
+
+\textbf{How Ask AI answers and is checked.} Ask AI answers questions about the storm in plain words and supports every decision only as a reader. A planner splits the question into tasks for one to three analysts, which read platform data and SGW documents through tools without side effects. The model may not type a number. It writes slots that point to evidence, and code fills in the values. A verifier rejects an answer with an invented number, an unknown identifier or no citation. The writer is then asked to rewrite, and if the answer still fails, code renders the evidence as a short plain answer. Ask AI never drafts, proposes, approves or sends anything, and every step, tool call and rejection is written to the audit trail of the run. The question bank holds \sgwval{eval.askbank.items} questions in five languages.
+
+\textbf{What the evaluations show.} Each of \sgwval{eval.outage.storms_n} real storms was forecast by a model fitted on the other storms only, and richer models tested with a plan fixed in advance did not beat the wind curve. It underestimates large storms, most of all inland storms such as Helene, so phase 1 adds a rainfall forecast and a new test on storms the model has never seen (\url{docs/06-outage-forecast.md}). For crews, a plan that also buys more mutual aid to hedge against the worst scenarios cut the delay from \sgwval{eval.saa.median_plan_delay_mch} to \sgwval{eval.saa.tail_hedge_delay_mch} million customer hours, for \sgwval{eval.saa.tail_hedge_aid_musd} instead of \sgwnum{eval.saa.median_plan_aid_musd} of mutual aid.
+
+\sgwsection{architecture}{0.75}{Architecture and integrations}
+A small core of services reads SGW systems and never writes to control systems. The only path to an external AI model passes through one gateway (Figure~\ref{fig:container}). Phase 1 only reads from every source, and writing back waits for the agreement of the owners in phase 3.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.8\textwidth}{!}{\input{container}}
+  \caption{Container view of the core profile. Approvals are signed inside the interface process, and the gateway is the only way out for AI calls.}
+  \label{fig:container}
+\end{figure}
+
+{\footnotesize
+\captionof{table}{Sources, interfaces and data. Prototype data is real, replayed or synthetic.}\label{tab:sources}
+\begin{tabularx}{\textwidth}{@{}L{3.2cm} L{4.0cm} L{2.4cm} L{2.4cm} Y@{}}
+  \toprule
+  \textbf{System or dataset} & \textbf{Interface} & \textbf{SGW owner} & \textbf{Prototype data} & \textbf{Fallback} \\ \midrule
+  Weather and hurricane tracks (NWS, NHC, vendor) & NWS interface with alerts in CAP, vendor grids & Emergency management & Real, live or replayed \citep{noaa_hurdat2} & Last advisory with a stale badge \\ \lightrowrule
+  GIS, network, assets and pump stations & Feature and trace services, REST or OData & GIS owner & Synthetic, calibrated to public data & Last snapshot, nightly batch \\ \lightrowrule
+  Outage management, ADMS and meters (AMI) & Common information model messages or a read replica, meter event messages & Outage and field owners & Replay and synthetic & Last gasp events of meters and the model estimate \\ \lightrowrule
+  Field service and crews & REST & Outage and field owners & Synthetic crews & Last known position, flagged \\ \lightrowrule
+  SCADA historian and water telemetry & Historian web interface on a replica in the demilitarised zone (DMZ), fed in one direction & Water operations & Synthetic telemetry & Quality marked missing \\ \lightrowrule
+  Laboratory information system (LIMS) & REST or file export & To confirm in phase 0 & Synthetic & Entry by compliance \\ \lightrowrule
+  Register of critical customers, procedures and plans & Through the asset adapter, versioned documents & Customer operations, emergency management & Synthetic and public federal & Ask AI abstains without a source \\ \lightrowrule
+  Public outage and damage data (EAGLE-I, LADI) & County outages every quarter hour, aerial images & Electric operations, field assessment & Real, for backtests and triage \citep{doe_eaglei} & n/a \\ \lightrowrule
+  Outbound to SGW systems & Versioned interface, signed webhooks, event stream & n/a & Partial & Polling the interface \\ \bottomrule
+\end{tabularx}}
+
+\textbf{Alternatives considered.}
+A dashboard and chatbot over a data lake was rejected, because it shows data but not the time by which a decision must be taken, and authority stays unrecorded.
+Extending the suite of the outage vendor was rejected for the MVP, because it covers electric operations only and leaves the decisions between power and water out.
+
+\textbf{Model hosting.} Production reaches a managed Claude model through the existing cloud provider of SGW, behind the gateway, and adds a second zone, a separate evidence store and a monitoring stack.
+
+\sgwsection{data}{0.5}{Data requirements and quality}
+Table~\ref{tab:sources} lists each dataset with its owner and prototype source. Each dataset has an owner, a freshness rule and a provenance label (real, derived or synthetic). Phase 0 depends on read access to the outage and meter history of two past storms, the first decision asked of SGW in the summary, and on the register of critical customers (A-013).
+
+\textbf{Quality rules.} Every feed is checked against its schema on arrival. Each record carries a quality flag (good, suspect, bad or missing), its coverage and its data age. Every ingest run and every check is recorded for the Health page. Signals from one physical cause count as one piece of evidence.
+
+\textbf{What the AI model may see.} Data classes run from C0 (public) to C4 (most sensitive). The model receives views of the evidence in which telemetry values stay in slots and never enter the prompt, so those prompts are class C1. C3 and C4 content, such as ranked lists of asset risk and the network topology, never reaches an external model, and the gateway denies a call whose class header does not match its content.
+
+\sgwsection{security}{1.0}{Security, governance and human oversight}
+The approval level of an action decides who signs. Emergency approval and envelopes are the only two exceptions, and both leave a trace.
+{\footnotesize\par\noindent
+\begin{tabularx}{\textwidth}{@{}L{1.0cm} Y L{1.1cm} L{5.0cm}@{}}
+  \toprule
+  \textbf{Step} & \textbf{Action} & \textbf{Level} & \textbf{Signs (functions)} \\ \midrule
+  D1 & Event type & T2 & Command \\ \lightrowrule
+  D2 & Crew staging at storm scale with an envelope, request for mutual aid & T3 & Command and logistics \\ \lightrowrule
+  D2 & New optimisation inside an approved envelope (\sgwnum{policy.envelope_crew_band} crews per site), or small staging outside the hazard zone under \sgwnum{policy_small_staging_customer_limit} & T1, T2 & A person promotes it (T1). Operations, not the proposer (T2) \\ \lightrowrule
+  D3 & Feeder or generator priority for a pump station that serves a hospital zone & T3 & Command and water operations \\ \lightrowrule
+  D3 & Public boil water notice & T3 & Water operations and compliance \\ \lightrowrule
+  D4 & Publish the global ETR & T3 & Command and operations \\ \lightrowrule
+  Any & Emergency approval of a T3 action & T3 & Incident Commander alone with a reason. Countersignature within \sgwnum{policy.breakglass_cosign_window}, flagged in the review after the event \\ \lightrowrule
+  Any & Control system action & T4 & No tool. Referred to the system owner \\ \bottomrule
+\end{tabularx}}\par
+Risk views, what if results and questions are T0 and only logged. A signature binds one proposal version and one action hash, and any material change voids it. Neither signer may be the proposer. The language model can propose and draft, but it can never sign.
+A kill switch removes capabilities step by step. The Incident Commander, the Duty Manager, the Water Incident Lead and the Executive may raise it, and lowering it again needs two people from command and compliance. The Auditor has read access only and checks the record of approvals.
+
+\begin{figure}[tb]
+  \centering
+  \resizebox{0.62\textwidth}{!}{\input{signoff}}
+  \caption{Approval levels, emergency approval and envelopes. Policy values are assumed SGW policy.}
+  \label{fig:signoff}
+\end{figure}
+
+\textbf{Position under NERC CIP.} SGW is assumed to be a NERC registered entity. The platform is decision support outside any electronic security perimeter and not a cyber system of the bulk electric system (BES), which matches the mode that NERC calls decision making support \citep{nerc_aiml_2024}. It reads control system data only through feeds that flow in one direction from an existing historian in the DMZ of the network, and it has no write path back \citep{nerc_cip}. Asset risk rankings are class C3, and if the CIP owner of SGW rules otherwise, the change of scope becomes a gate item in phase 0.
+
+\textbf{Other regulation.} The pressure floors are \sgwnum{sc_pressure_floor_psi} in South Carolina \citep{sc_r61_58} and \sgwnum{ga_pressure_floor_psi} at all times in Georgia \citep{ga_391_3_5_10}, and storm decision records feed the risk and resilience assessment and the emergency response plan of each water system \citep{epa_awia_2013}.
+
+\textbf{NIST AI Risk Management Framework.} The four functions of the framework \citep{nist2023airmf} map as follows. Govern rests on the approval policy, named owners and the kill switch, Map names the decision, data class and failure mode of each capability, Measure uses reserved test sets, backtests on unseen storms and guardrails at zero, and Manage uses degraded modes, templates and the learning loop.
+
+{\footnotesize\par\noindent
+\begin{tabularx}{\textwidth}{@{}L{4.4cm} Y@{}}
+  \toprule
+  \textbf{Main threat} & \textbf{Control} \\ \midrule
+  Instructions hidden in field notes or alerts & Extractor without tools, run marked as tainted, approval level raised \\ \lightrowrule
+  Signatures become routine clicks & Evidence on every signature, reason codes, time spent on each approval tracked \\ \lightrowrule
+  Sensitive data sent to an external model & Class gate in the gateway, canary checks in both directions \\ \lightrowrule
+  Records altered after the event & Ledger that only accepts inserts, chained records, a verifier that names the first altered entry \\ \lightrowrule
+  Spoofed or stale sensor data & Check against neighbouring sensors, data age on every number, stale alarms \\ \bottomrule
+\end{tabularx}}\par
+\textbf{Workforce.} The platform changes no staffing rule, no switching or clearance authority and no performance evaluation. Crew location serves dispatch and safety only.
+
+\sgwsection{metrics}{1.0}{Success metrics, MVP scope and delivery plan}
+{\footnotesize
+\begin{xltabular}{\textwidth}{@{}L{1.45cm} Y L{2.4cm} L{2.2cm} L{2.3cm} L{2.4cm}@{}}
+  \caption{Success metrics. All targets are assumed. MVP targets are verification on replayed or synthetic data.}\label{tab:metrics}\\
+  \toprule
+  \textbf{ID} & \textbf{Metric} & \textbf{Baseline} & \textbf{MVP (replay)} & \textbf{Pilot, first year} & \textbf{Measured} \\ \midrule
+  \endfirsthead
+  \toprule
+  \textbf{ID} & \textbf{Metric} & \textbf{Baseline} & \textbf{MVP (replay)} & \textbf{Pilot, first year} & \textbf{Measured} \\ \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+  M-03 & Storm customer minutes per event & Replays of Helene, Michael and Ian & \sgwnum{metric.m03.mvp_pct} lower in the plan curve & \sgwnum{metric.m03.m12_pct} lower than similar storms & In the pilot \\ \lightrowrule
+  M-06 & Global ETR error & Unknown & at most \sgwnum{metric.m06.mvp_pct} & at most \sgwnum{metric.m06.m12_pct} & \sgwnum{eval.etr.global_error_pct}, synthetic \\ \lightrowrule
+  M-07 & From the all clear to the first global ETR & about \sgwnum{metric.m07.baseline_h} & first ETR with a range within \sgwnum{metric.m07.mvp_h} & at most \sgwnum{metric.m07.m12_h} & In the pilot \\ \lightrowrule
+  M-11 & Critical sites flagged with their time to empty & Not measured & all within \sgwnum{metric.m11.flag_min} & median restoration \sgwnum{metric.m11.median_h} & In the pilot \\ \lightrowrule
+  M-13 & Boil water package after the trigger & A notice lasts about \sgwnum{metric.m13.baseline_days} & within \sgwnum{metric.m13.mvp_min} & one day shorter & In an exercise \\ \lightrowrule
+  M-15 & Approval time at T3 & Not measured & median \sgwnum{metric.m15.t3_min} & under \sgwnum{metric.m15.dwell_pct} signed without reading & In an exercise \\ \lightrowrule
+  M-24 & County error of the outage model & Wind threshold rule & at most \sgwnum{metric.m24.mvp_pct} & at most \sgwnum{metric.m24.m12_pct} & Rule beaten on \sgwval{eval.outage.storms_won} of \sgwval{eval.outage.storms_n} \\ \lightrowrule
+  M-29, M-31 & Groundedness of answers, agent task success with guardrails at zero & None & at least \sgwval{metric.m29.mvp} and \sgwval{metric.m31.mvp} & at least \sgwval{metric.m29.m12} and \sgwval{metric.m31.m12} & \sgwval{eval.askbank.heldout_passed} of \sgwval{eval.askbank.heldout_n}, see Table~\ref{tab:ai} \\ \lightrowrule
+  Guardrails & Unsafe actions, bypassed approvals, invented identifiers & n/a & zero & zero & Security tests in each release \\
+\end{xltabular}}
+The full metric set with baselines and targets is held in the numbers registry of the repository (\url{data/numbers/numbers.yaml}, keys \texttt{metric}). Cost and return are in the executive briefing.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.8\textwidth}{!}{\input{roadmap}}
+  \caption{Roadmap with the exit criteria of each gate. A light bar is preparation paid by the phase before. Durations are assumed.}
+  \label{fig:roadmap}
+\end{figure}
+
+\textbf{MVP scope and delivery priorities.} P0 is the MVP of Section~\ref{sgw:sec:summary} in replay, together with the backtest (phase 0). P1 is the pilot with read access only in one South Carolina area with one water system, single sign on, Readiness, Health, degraded modes and rainfall in the outage forecast (phase 1). Phase 2 is a shadow season followed by assisted use. Phase 3 adds all water systems, laboratory data and proposals to write back to SGW systems after the owners agree. Phase 4 adds the Georgia region and the wildfire and heat desks. Phases 3 and 4 start with preparation paid by the phase before, and their gate releases the rest.
+
+\textbf{Adoption.} A tabletop exercise comes first, then a functional exercise with seeded wrong advice, a shadow season and finally assisted use \citep{fema_hseep}. Both too much and too little trust in the advice are measured.
+
+\sgwsection{risks}{0.5}{Risks and open questions}
+The four decisions asked of SGW in the summary are the first open questions. Each risk has an owner.
+{\footnotesize\par\noindent
+\begin{tabularx}{\textwidth}{@{}L{5.0cm} L{2.0cm} Y L{3.4cm}@{}}
+  \toprule
+  \textbf{Risk} & \textbf{Likelihood, impact} & \textbf{Mitigation} & \textbf{Owner} \\ \midrule
+  Outage and meter history arrives late & High, high & Backtest on public county data first & CIO \\ \lightrowrule
+  Signatures become routine & Medium, high & Evidence, time spent per approval, drills with wrong advice & Emergency management \\ \lightrowrule
+  The forecast underestimates large storms & Medium, high & Ranges, a shadow season first & Data and models owner \\ \lightrowrule
+  A CIP ruling puts the platform in scope & Low, high & Feeds in one direction only, no write path & CIP compliance owner \\ \bottomrule
+\end{tabularx}}
+
+\textbf{Open questions for regulatory affairs.} Does a state rule fix the share of customers behind the global ETR (answer needed by 2026-12-18)? Should an equity weight enter the ranking (answer needed before phase 1)?
+\sgwmark{bodyend}
+
+\sgwmark{appendixstart}
+{\footnotesize\bibliography{references,prd-references}}
+\sgwmark{appendixend}
+\end{document}

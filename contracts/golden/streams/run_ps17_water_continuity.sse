@@ -1,0 +1,44 @@
+id: run:run_ps17_water_continuity_01.1.1
+event: run_start
+data: {"classification":"C2","ledger_seq":null,"ns":[],"payload":{"graph":"water_continuity","graph_version":"0.1"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:01Z","seq":1,"ts":"2026-11-20T15:30:01Z","type":"run_start","v":1}
+
+id: run:run_ps17_water_continuity_01.1.2
+event: agent_start
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"node":"narrate"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:02Z","seq":2,"ts":"2026-11-20T15:30:02Z","type":"agent_start","v":1}
+
+id: run:run_ps17_water_continuity_01.1.3
+event: tool_start
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"args":{"zone_ids":["WZ-PS17-CEDARFALL"]},"tool":"get_water_status"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:03Z","seq":3,"ts":"2026-11-20T15:30:03Z","type":"tool_start","v":1}
+
+id: run:run_ps17_water_continuity_01.1.4
+event: tool_end
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"evidence_ids":["E1","E2"],"tool":"get_water_status"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:04Z","seq":4,"ts":"2026-11-20T15:30:04Z","type":"tool_end","v":1}
+
+id: run:run_ps17_water_continuity_01.1.5
+event: text_delta
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"text":"PS-17 decide-by moved to {E1.decide_by} after advisory N+1. "},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:05Z","seq":5,"ts":"2026-11-20T15:30:05Z","type":"text_delta","v":1}
+
+id: run:run_ps17_water_continuity_01.1.6
+event: text_delta
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"text":"Hospital zone pressure reaches the floor at {E2.consequence}."},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:06Z","seq":6,"ts":"2026-11-20T15:30:06Z","type":"text_delta","v":1}
+
+id: run:run_ps17_water_continuity_01.1.7
+event: agent_end
+data: {"classification":"C2","ledger_seq":null,"ns":["water_continuity"],"payload":{"node":"narrate"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:07Z","seq":7,"ts":"2026-11-20T15:30:07Z","type":"agent_end","v":1}
+
+id: run:run_ps17_water_continuity_01.1.8
+event: artifact
+data: {"classification":"C2","ledger_seq":null,"ns":[],"payload":{"kind":"proposal_card","proposal_id":"PRP-PS17-FDR2207-PRIO"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:08Z","seq":8,"ts":"2026-11-20T15:30:08Z","type":"artifact","v":1}
+
+id: run:run_ps17_water_continuity_01.1.9
+event: approval_required
+data: {"classification":"C2","ledger_seq":null,"ns":[],"payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","functions_required":["command","water_operations"],"proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"tier":"T3"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:09Z","seq":9,"ts":"2026-11-20T15:30:09Z","type":"approval_required","v":1}
+
+id: run:run_ps17_water_continuity_01.1.10
+event: run_paused
+data: {"classification":"C2","ledger_seq":null,"ns":[],"payload":{"reason":"approval_required"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:10Z","seq":10,"ts":"2026-11-20T15:30:10Z","type":"run_paused","v":1}
+
+id: run:run_ps17_water_continuity_01.1.11
+event: run_end
+data: {"classification":"C2","ledger_seq":null,"ns":[],"payload":{"status":"paused_for_approval"},"run_id":"run_ps17_water_continuity_01","run_mode":"replay","scenario_time":"2024-09-26T15:30:11Z","seq":11,"ts":"2026-11-20T15:30:11Z","type":"run_end","v":1}
+

@@ -1,0 +1,31 @@
+---
+doc_id: IAP-HEL-24-OP07/202
+title: ICS 202 Incident Objectives, Helene, Operational Period 7
+family: form_record
+layout: record
+owner_function: command
+effective: '2024-09-28'
+classification: SGW Internal - Controlled
+trust: internal_free_text
+status: in_force
+decisions:
+- D1
+- D2
+---
+# INCIDENT OBJECTIVES (ICS 202)
+1. Incident Name: SGW-INC-24-0031 "HELENE"
+2. Operational Period: Date From: 2024-09-28  Date To: 2024-09-28  Time From: 0700  Time To: 1900 (EDT)
+# 3. Objective(s)
+a. Release the global ETR as a range per DOM 14.206 and PCN 02.044.
+b. Restore Priority 3 water and wastewater facilities; demobilise portable generators as grid returns.
+c. Begin partial rescission sampling for boil water zones where integrity is restored.
+d. Track crew rest periods (DOM 12.050) for crews on their third consecutive shift.
+# 4. Operational Period Command Emphasis
+Fatigue is the hazard today. Check rest hours before every assignment.
+General Situational Awareness: Clear, 84 F high; heat index near 95 F in the afternoon.
+5. Site Safety Plan Required? Yes [X]  No [ ]   Approved Site Safety Plan(s) Located at: EOC Safety desk, binder S-7
+# 6. Incident Action Plan (the items checked below are included in this Incident Action Plan)
+[X] ICS 203  [X] ICS 204  [X] ICS 205  [ ] ICS 205A  [X] ICS 206  [X] ICS 208  [X] Map/Chart  [ ] Weather Forecast/Tides/Currents
+7. Prepared by: Name: Okonkwo, Adaeze N.  Position/Title: Planning Section Chief  Signature: A. Okonkwo
+8. Approved by Incident Commander: Name: Wingard, Lorraine T.  Signature: L. T. Wingard
+ICS 202 | IAP Page 1 | Date/Time: 2024-09-28 0700

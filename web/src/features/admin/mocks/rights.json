@@ -1,0 +1,180 @@
+[
+  {
+    "user_id": "ic_01",
+    "function": "command",
+    "can_approve": true,
+    "break_glass_eligible": true,
+    "may_approve": [
+      {
+        "action_type": "set_event_type",
+        "tier": "T2",
+        "role": "approver"
+      },
+      {
+        "action_type": "preposition_crews",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "mutual_aid_request",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "stage_crews_small",
+        "tier": "T2",
+        "role": "escalation_approver"
+      },
+      {
+        "action_type": "cross_domain_priority",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "publish_global_etr",
+        "tier": "T3",
+        "role": "approver"
+      }
+    ]
+  },
+  {
+    "user_id": "ops_dm_01",
+    "function": "operations",
+    "can_approve": true,
+    "break_glass_eligible": false,
+    "may_approve": [
+      {
+        "action_type": "set_event_type",
+        "tier": "T2",
+        "role": "escalation_approver"
+      },
+      {
+        "action_type": "stage_crews_small",
+        "tier": "T2",
+        "role": "approver"
+      },
+      {
+        "action_type": "publish_global_etr",
+        "tier": "T3",
+        "role": "approver"
+      }
+    ]
+  },
+  {
+    "user_id": "ops_dm_02",
+    "function": "operations",
+    "can_approve": true,
+    "break_glass_eligible": false,
+    "may_approve": [
+      {
+        "action_type": "set_event_type",
+        "tier": "T2",
+        "role": "escalation_approver"
+      },
+      {
+        "action_type": "stage_crews_small",
+        "tier": "T2",
+        "role": "approver"
+      },
+      {
+        "action_type": "publish_global_etr",
+        "tier": "T3",
+        "role": "approver"
+      }
+    ]
+  },
+  {
+    "user_id": "plan_etr_01",
+    "function": "planning",
+    "can_approve": false,
+    "break_glass_eligible": false,
+    "may_approve": []
+  },
+  {
+    "user_id": "log_01",
+    "function": "logistics",
+    "can_approve": true,
+    "break_glass_eligible": false,
+    "may_approve": [
+      {
+        "action_type": "preposition_crews",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "mutual_aid_request",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "stage_crews_small",
+        "tier": "T2",
+        "role": "escalation_approver"
+      }
+    ]
+  },
+  {
+    "user_id": "wtr_lead_01",
+    "function": "water_operations",
+    "can_approve": true,
+    "break_glass_eligible": false,
+    "may_approve": [
+      {
+        "action_type": "cross_domain_priority",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "boil_water_notice",
+        "tier": "T3",
+        "role": "approver"
+      }
+    ]
+  },
+  {
+    "user_id": "wtr_comp_01",
+    "function": "compliance",
+    "can_approve": true,
+    "break_glass_eligible": false,
+    "may_approve": [
+      {
+        "action_type": "boil_water_notice",
+        "tier": "T3",
+        "role": "approver"
+      },
+      {
+        "action_type": "policy_change",
+        "tier": "T2",
+        "role": "approver"
+      }
+    ]
+  },
+  {
+    "user_id": "exec_01",
+    "function": "executive",
+    "can_approve": false,
+    "break_glass_eligible": false,
+    "may_approve": []
+  },
+  {
+    "user_id": "audit_01",
+    "function": "audit",
+    "can_approve": false,
+    "break_glass_eligible": false,
+    "may_approve": []
+  },
+  {
+    "user_id": "admin_01",
+    "function": "platform",
+    "can_approve": false,
+    "break_glass_eligible": false,
+    "may_approve": []
+  },
+  {
+    "user_id": "ml_01",
+    "function": "data",
+    "can_approve": false,
+    "break_glass_eligible": false,
+    "may_approve": []
+  }
+]

@@ -1,0 +1,53 @@
+% Decision and sign-off workflow: src/sgw/approval/service.py (create, decide, revise, burn, expire_due),
+% policy/approval.rego, src/sgw/approval/breakglass.py, src/sgw/models/clocks/advisory.py, zone_cases.py.
+\begin{tikzpicture}[sgw,font=\small\sffamily,
+    wstep/.style={sgw/service,minimum width=5.6cm,minimum height=1.05cm,font=\small\sffamily,text width=5.3cm},
+    st/.style={rectangle,rounded corners=6pt,draw=sgwSecondary,line width=0.9pt,fill=sgwSevAdvisoryFill,
+      font=\small\sffamily\bfseries,text=sgwInk,minimum height=0.7cm,minimum width=2.2cm,inner sep=3pt},
+    side/.style={sgw/box,minimum width=3.9cm,text width=3.6cm,font=\footnotesize\sffamily,minimum height=1.0cm},
+    lbl/.style={font=\footnotesize\sffamily,text=sgwInk,fill=sgwSurface,inner sep=1.5pt,align=center},
+    num/.style={circle,fill=sgwPrimary,text=sgwOnPrimary,font=\footnotesize\sffamily\bfseries,inner sep=0pt,minimum size=0.5cm}]
+  % main column x = 4
+  \node[wstep] (clock) at (4,0) {\textbf{Decision clock}\sgwsub{decide-by P10, P50, P90 from model}\sgwsub{outputs; code only, no AI}};
+  \node[wstep] (draft) at (4,-1.85) {\textbf{Proposal}\sgwsub{drafted by a person or a zone rule}\sgwsub{(\texttt{system:rule:...})}};
+  \node[sgw/gate,font=\footnotesize\sffamily,text width=2.6cm] (tier) at (4,-4.1) {OPA sets tier\\T1 to T4 and\\signing functions};
+  \node[st] (sdraft) at (0.6,-6.4) {draft};
+  \node[st] (sprop) at (4,-6.4) {proposed};
+  \node[sgw/consequence,font=\footnotesize\sffamily,minimum width=2.2cm] (t4) at (8.2,-4.1) {T4: refused\sgwsub{stays in SCADA}};
+  \node[wstep] (queue) at (4,-8.1) {\textbf{Decision queue}\sgwsub{severity from the clock: Advisory,}\sgwsub{Elevated, Severe, Critical}};
+  \node[wstep] (sign) at (4,-10.2) {\textbf{Sign dialog}\sgwsub{bound to version and action hash}\sgwsub{(If-Match); password if asked}};
+  \node[sgw/gate,font=\footnotesize\sffamily,text width=2.7cm] (check) at (4,-12.6) {OPA deny-list,\\then database\\triggers check again};
+  \node[st] (srev) at (4,-14.9) {in\_review};
+  \node[st] (sapp) at (4,-16.5) {approved};
+  \node[wstep] (token) at (4,-18.2) {\textbf{Execution token}\sgwsub{single use, bound to version and hash}};
+  \node[st] (sexe) at (4,-19.9) {executed};
+
+  \draw[sgw/flow] (clock) -- (draft);
+  \draw[sgw/flow] (draft) -- (tier);
+  \draw[sgw/flow] (tier) -- node[lbl] {T2, T3} (sprop);
+  \draw[sgw/flow] (tier.west) -| node[lbl,pos=0.75] {T1} (sdraft.north);
+  \draw[sgw/flow] (tier) -- (t4);
+  \draw[sgw/flow] (sprop) -- (queue);
+  \draw[sgw/flow] (sdraft.south) |- ([yshift=1.5mm]queue.west);
+  \draw[sgw/flow] (queue) -- (sign);
+  \draw[sgw/flow] (sign) -- (check);
+  \draw[sgw/flow] (check) -- node[lbl] {allowed} (srev);
+  \draw[sgw/flow] (srev) -- node[lbl] {all functions signed} (sapp);
+  \draw[sgw/feedback] (srev.west) -- ++(-1.2,0) |- node[lbl,pos=0.25] {next\\signer} (sign.west);
+  \draw[sgw/flow] (sapp) -- (token);
+  \draw[sgw/flow] (token) -- node[lbl] {burned once} (sexe);
+
+  % right column: exceptions
+  \node[side,sgw/consequence] (deny) at (9.6,-12.6) {\textbf{Refused}\\self-approval, proposer, off shift, function not required or already signed, expired, evidence too old};
+  \draw[sgw/flow] (check) -- node[lbl] {deny} (deny);
+  \node[side,sgw/decision] (move) at (9.6,-8.1) {\textbf{Clock moved}\\re-planner revises: version rises, signatures void};
+  \draw[sgw/feedback] (move.west) -- (queue.east);
+  \node[side] (exp) at (9.6,-10.2) {\textbf{expired}\\decide-by passed without the signatures (missed)};
+  \draw[sgw/flow muted] (sign.east) -- (exp.west);
+  \node[side,sgw/decision] (bg) at (9.6,-15.7) {\textbf{Break-glass (T3)}\\Incident Commander signs alone with a reason; co-sign due in 24 h};
+  \draw[sgw/flow muted] (bg.west) -- ++(-0.6,0) |- (sapp.east);
+  \node[side] (rej) at (9.6,-18.2) {\textbf{rejected, withdrawn}\\a signer rejects, or the proposer withdraws};
+
+  \node[side,minimum width=11.4cm,text width=11.1cm,align=left,anchor=north west,fill=sgwNeutral] (aud) at (0,-20.9)
+    {\textbf{Audit:} create, sign, revise, withdraw and execute each write an audit record (hash chain, signed checkpoints) and queue ledger events through the outbox in the same transaction.};
+\end{tikzpicture}

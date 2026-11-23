@@ -1,0 +1,110 @@
+[
+  {
+    "check_id": "DQ-001",
+    "asset": "ingest.feeds",
+    "name": "ingest_envelope",
+    "severity": "error",
+    "passed": true,
+    "observed": "2148 rows, schema valid",
+    "checked_at": "2026-11-20T09:12:41Z"
+  },
+  {
+    "check_id": "DQ-002",
+    "asset": "ingest.feeds",
+    "name": "known_at_not_before_event_time",
+    "severity": "error",
+    "passed": true,
+    "observed": "0 violations",
+    "checked_at": "2026-11-20T09:12:41Z"
+  },
+  {
+    "check_id": "DQ-003",
+    "asset": "ingest.feeds",
+    "name": "freshness_within_limit",
+    "severity": "warn",
+    "passed": true,
+    "observed": "newest record 4 min old",
+    "checked_at": "2026-11-20T09:12:41Z"
+  },
+  {
+    "check_id": "DQ-004",
+    "asset": "ledger.relay",
+    "name": "ledger_gapless",
+    "severity": "error",
+    "passed": true,
+    "observed": "sequence 1..2131, no gap",
+    "checked_at": "2026-11-20T09:12:45Z"
+  },
+  {
+    "check_id": "DQ-005",
+    "asset": "ledger.reconcile",
+    "name": "events_in_ledger_once",
+    "severity": "error",
+    "passed": true,
+    "observed": "2131 of 2131 present once",
+    "checked_at": "2026-11-20T09:12:46Z"
+  },
+  {
+    "check_id": "DQ-006",
+    "asset": "observations",
+    "name": "observation",
+    "severity": "error",
+    "passed": true,
+    "observed": "1862 rows, schema valid",
+    "checked_at": "2026-11-20T09:12:58Z"
+  },
+  {
+    "check_id": "DQ-007",
+    "asset": "observations",
+    "name": "no_conflicting_readings",
+    "severity": "error",
+    "passed": true,
+    "observed": "0 conflicts",
+    "checked_at": "2026-11-20T09:12:58Z"
+  },
+  {
+    "check_id": "DQ-008",
+    "asset": "observations",
+    "name": "values_finite_with_units",
+    "severity": "error",
+    "passed": true,
+    "observed": "12 rows set aside",
+    "checked_at": "2026-11-20T09:12:58Z"
+  },
+  {
+    "check_id": "DQ-009",
+    "asset": "observations",
+    "name": "pressure_within_sensor_range",
+    "severity": "warn",
+    "passed": false,
+    "observed": "3 readings above 150 psi at PT-PS23-DISCH",
+    "checked_at": "2026-11-20T09:12:58Z"
+  },
+  {
+    "check_id": "DQ-010",
+    "asset": "risk.snapshot",
+    "name": "fans_monotone",
+    "severity": "error",
+    "passed": true,
+    "observed": "123 of 123 counties",
+    "checked_at": "2026-11-20T09:13:19Z"
+  },
+  {
+    "check_id": "DQ-011",
+    "asset": "risk.snapshot",
+    "name": "county_totals_match_assets",
+    "severity": "error",
+    "passed": true,
+    "observed": "difference 0 customers",
+    "checked_at": "2026-11-20T09:13:19Z"
+  },
+  {
+    "check_id": "DQ-012",
+    "asset": "risk.snapshot",
+    "name": "advisory_in_force",
+    "severity": "warn",
+    "passed": true,
+    "observed": "advisory N+1 in force",
+    "checked_at": "2026-11-20T09:13:19Z"
+  }
+]

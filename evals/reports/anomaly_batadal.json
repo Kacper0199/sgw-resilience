@@ -1,0 +1,70 @@
+{
+  "name": "anomaly_batadal",
+  "schema_version": 1,
+  "created_at": "2026-11-21T01:38:57Z",
+  "code_version": "3875d41",
+  "llm_mode": "replay",
+  "command": "uv run python -m sgw.models.anomaly.batadal --raw-dir raw/data/bench_water",
+  "metrics": [
+    {
+      "metric": "anomaly_batadal.family_as_is.score_s",
+      "value": 0.7504,
+      "unit": "BATADAL S = (S_TTD + S_CLF) / 2",
+      "n": 5,
+      "split": "heldout",
+      "label": "C",
+      "baseline_name": "static SCADA limits from dataset03",
+      "baseline_value": 0.7913,
+      "threshold": 0.7913,
+      "direction": "higher_is_better",
+      "passed": false,
+      "ci_low": null,
+      "ci_high": null
+    },
+    {
+      "metric": "anomaly_batadal.family_as_is.tnr_lower_bound",
+      "value": 0.0018,
+      "unit": "share of unlabelled hours without alarm",
+      "n": 3958,
+      "split": "heldout",
+      "label": "C",
+      "baseline_name": "static SCADA limits from dataset03",
+      "baseline_value": 0.8022,
+      "threshold": 0.8022,
+      "direction": "higher_is_better",
+      "passed": false,
+      "ci_low": null,
+      "ci_high": null
+    },
+    {
+      "metric": "anomaly_batadal.residual_cusum_h_recalibrated.score_s",
+      "value": 0.758,
+      "unit": "BATADAL S = (S_TTD + S_CLF) / 2",
+      "n": 5,
+      "split": "heldout",
+      "label": "C",
+      "baseline_name": "static SCADA limits from dataset03",
+      "baseline_value": 0.7913,
+      "threshold": 0.7913,
+      "direction": "higher_is_better",
+      "passed": false,
+      "ci_low": null,
+      "ci_high": null
+    },
+    {
+      "metric": "anomaly_batadal.residual_cusum_h_recalibrated.tnr_lower_bound",
+      "value": 0.0318,
+      "unit": "share of unlabelled hours without alarm",
+      "n": 3958,
+      "split": "heldout",
+      "label": "C",
+      "baseline_name": "static SCADA limits from dataset03",
+      "baseline_value": 0.8022,
+      "threshold": 0.8022,
+      "direction": "higher_is_better",
+      "passed": false,
+      "ci_low": null,
+      "ci_high": null
+    }
+  ]
+}

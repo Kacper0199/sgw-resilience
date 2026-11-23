@@ -1,0 +1,202 @@
+SGW  TRANSMISSION & SUBSTATION MANUAL
+
+TSO 11.002 Rev D
+LOAD SHED PLAN (EOP-011 OPERATING PLAN)
+
++----------------------------------------------------------------------------------------------+
+| Document: TSO 11.002 Rev D                                                                   |
+| Effective: 2024-01-29                                                                        |
+| Supersedes: TSO 11.002 Rev C (eff. 2023-03-27)                                               |
+| Owner: Distribution Operations                                                               |
+| Subject Matter Expert: Strom, Booker J.                                                      |
+| Periodic review due: 2025-01-31                                                              |
+| Classification: SGW Internal - Controlled                                                    |
+| Approved: Manager, Transmission Operations, Pettigrew, Anselm K., 2024-01-22                 |
+| Approved: Director, Distribution Operations, Thibodeaux, Marcus R., 2024-01-22               |
+| Approved: Vice President, Emergency Management, Wingard, Lorraine T., 2024-01-24             |
+| Applies to: SC, GA systems                                                                   |
++----------------------------------------------------------------------------------------------+
+
+REVISION SUMMARY
+
++-----+------------+---------+-----------------------------------------------------------------+
+| Rev | Date       | Section | Change                                                          |
++=====+============+=========+=================================================================+
+| D   | 2024-01-29 | 5.5     | Extreme cold weather impact provisions added for EOP-011-2      |
+|     |            |         | R1.2.6.                                                         |
+| D   | 2024-01-29 | Att. 1  | FDR-AIK-2231 added to the excluded feeder list.                 |
+| D   | 2024-01-29 | Att. 3  | 2024 annual review signed.                                      |
++-----+------------+---------+-----------------------------------------------------------------+
+
+1.0 PURPOSE
+
+This is the SGW Transmission Operator Operating Plan to mitigate operating Emergencies under
+NERC EOP-011-2 Requirement R1. It covers manual load shed. It is reviewed by the Reliability
+Coordinator (RC) each year.
+
+2.0 SCOPE
+
+Applies to the SGW Transmission Operator Area in SC and GA and to distribution feeders assigned
+to load-shed blocks. Automatic underfrequency load shed (UFLS) settings are in TSO 11.005
+Attachment 6 and are not changed by this plan.
+
+3.0 ROLES AND RESPONSIBILITIES
+
+TSO 11.002 Rev D | SGW Internal - Controlled | Page 1 of 5
+
+SGW | TSO 11.002 Load Shed Plan (EOP-011 Operating Plan)                                   Rev D
+
++-----------------------------------------+----------------------------------------------------+
+| Position                                | Role in an Emergency                               |
++=========================================+====================================================+
+| Transmission System Operator (on shift) | Declares the Emergency; orders load shed blocks    |
+| Manager, Transmission Operations        | Activates this plan; reports to the RC             |
+| Distribution System Operator            | Opens and restores block feeders on TSO order      |
+| Duty Manager (Electric Operations)      | Informed at once; keeps critical-load feeders out  |
+|                                         | of rotation                                        |
+| Incident Commander                      | Informed when shed exceeds 30 minutes or 2 blocks  |
++-----------------------------------------+----------------------------------------------------+
+
+4.0 NOTIFICATIONS
+
+4.1 Notify the RC before shedding load, or at once if shed is automatic or immediate.
+
+4.2 Notify neighbouring TOPs and the Balancing Authority on the RC call.
+
+4.3 Notify the Duty Manager and the PIO within 15 minutes.
+
+5.0 MITIGATION STEPS
+
+5.1 Outage Recall
+
+Cancel or recall planned transmission and generation outages where this relieves the Emergency.
+
+5.2 Reconfiguration
+
+Reconfigure the transmission system per TSO 06.110 switching rules.
+
+5.3 Redispatch
+
+Request generation redispatch from the Balancing Authority.
+
+5.4 Manual Load Shed
+
+5.4.1 Shed load in rotating blocks from Attachment 2. Each block shall be shed within 10 minutes
+      of the order.
+
+5.4.2 Rotate blocks every 30 to 45 minutes to limit customer outage time.
+
+5.4.3 Feeders serving hospitals and water pump stations are excluded from rotating load-shed
+      blocks. Attachment 1 lists FDR-AIK-2207 and FDR-AIK-2231.
+
+5.4.4 Feeders with UFLS or UVLS relays are kept out of manual blocks where possible. Overlap is
+      listed in Attachment 2, column 5.
+
+CAUTION: Do not place an excluded feeder in a block to meet a MW target. Use the next block
+         instead.
+
+TSO 11.002 Rev D | SGW Internal - Controlled | Page 2 of 5
+
+SGW | TSO 11.002 Load Shed Plan (EOP-011 Operating Plan)                                   Rev D
+
+5.5 Cold and Extreme Weather
+
+Before a forecast cold snap below 20 F or a hurricane, the Manager, Transmission Operations
+reviews block MW values against the forecast load and reissues Attachment 2 if any block changes
+by more than 15 percent.
+
+6.0 RECORDS
+
+Operator logs, RC call recordings and block rotation logs are kept for 3 years plus the current
+year.
+
+7.0 REFERENCES
+
+NERC EOP-011-2 R1. TSO 11.005. TSO 06.110. DOM 14.215 Attachment A. DOM 14.140.
+
+TSO 11.002 Rev D | SGW Internal - Controlled | Page 3 of 5
+
+SGW | TSO 11.002 Load Shed Plan (EOP-011 Operating Plan)                                   Rev D
+
+ATTACHMENT 1 - Feeders Excluded from Rotating Load Shed (Aiken district)
+
++--------------+---------------------+----------------------------+----------------------------+
+| Feeder       | Substation          | Critical load              | Basis                      |
++==============+=====================+============================+============================+
+| FDR-AIK-2207 | SUB-AIK-BRAMBLEGATE | PS-17 Pellicott Road       | Hospital and water pump    |
+|              |                     | Booster; Tallow Branch     | station                    |
+|              |                     | hospital zone              |                            |
+|              |                     | (HSP-AIK-TALLOWBRANCH)     |                            |
+| FDR-AIK-2231 | SUB-AIK-BRAMBLEGATE | PS-38 Copperleaf pump      | Water pump station         |
+|              |                     | station                    |                            |
++--------------+---------------------+----------------------------+----------------------------+
+
+Other districts: see DOM 14.140 registry extract held by the Transmission Control Center.
+
+ATTACHMENT 2 - Rotating Block Summary
+
++-------+-----------------+----------------------+----------------------+----------------------+
+| Block | Feeders (count) | Load at winter peak  | Load at summer peak  | UFLS overlap         |
+|       |                 | (MW)                 | (MW)                 | (feeders)            |
++=======+=================+======================+======================+======================+
+| 1     | 23              | 148                  | 131                  | 0                    |
+| 2     | 21              | 139                  | 126                  | 1                    |
+| 3     | 24              | 152                  | 137                  | 0                    |
+| 4     | 19              | 127                  | 118                  | 2                    |
+| 5     | 22              | 144                  | 129                  | 0                    |
+| 6     | 20              | 133                  | 121                  | 1                    |
++-------+-----------------+----------------------+----------------------+----------------------+
+
+ATTACHMENT 3 - Requirement Cross-Reference and Review Signature Sheet
+
+Requirement cross-reference (EOP-011-2 R1)
+
++----------------+----------------------------------------------------+------------------------+
+| EOP-011-2 item | Subject                                            | Plan section           |
++================+====================================================+========================+
+| R1.1           | Roles and responsibilities for activating the      | 3.0                    |
+|                | Operating Plan                                     |                        |
+| R1.2.1         | Notification to the RC                             | 4.1, 4.2               |
+| R1.2.2         | Cancellation or recall of transmission and         | 5.1                    |
+|                | generation outages                                 |                        |
+| R1.2.3         | Transmission system reconfiguration                | 5.2                    |
+| R1.2.4         | Redispatch of generation request                   | 5.3                    |
+| R1.2.5.1       | Manual load shed in an adequate timeframe          | 5.4.1                  |
+| R1.2.5.2       | Minimize overlap with circuits serving critical    | 5.4.3, Att. 1          |
+|                | loads                                              |                        |
+| R1.2.5.3       | Minimize overlap with UFLS and UVLS circuits       | 5.4.4, Att. 2          |
+| R1.2.6         | Reliability impacts of cold and extreme weather    | 5.5                    |
+| R1 (RC review) | Plan reviewed by the RC                            | Att. 3 signature sheet |
++----------------+----------------------------------------------------+------------------------+
+
+TSO 11.002 Rev D | SGW Internal - Controlled | Page 4 of 5
+
+SGW | TSO 11.002 Load Shed Plan (EOP-011 Operating Plan)                                   Rev D
+
+Annual Review Signature Sheet
+
++-------------+------------------------------+----------------------+-------------+------------+
+| Review year | Reviewed by (position)       | Name                 | Date signed | Sent to RC |
++=============+==============================+======================+=============+============+
+| 2022        | Manager, Transmission        | Pettigrew, Anselm K. | 2022-01-18  | 2022-01-21 |
+|             | Operations                   |                      |             |            |
+| 2023        | Manager, Transmission        | Pettigrew, Anselm K. | 2023-01-24  | 2023-01-26 |
+|             | Operations                   |                      |             |            |
+| 2024        | Manager, Transmission        | Pettigrew, Anselm K. | 2024-01-22  | 2024-01-25 |
+|             | Operations                   |                      |             |            |
++-------------+------------------------------+----------------------+-------------+------------+
+
+ATTACHMENT 4 - Contacts
+
++------------------------------+-------------------------------+-------------------------------+
+| Position                     | Day                           | After hours                   |
++==============================+===============================+===============================+
+| Transmission System Operator | Transmission Control Center,  | Same, staffed 24 h, ext. 2100 |
+|                              | console 1                     |                               |
+| Manager, Transmission        | TCC office                    | Transmission on-call, ext.    |
+| Operations                   |                               | 2104                          |
++------------------------------+-------------------------------+-------------------------------+
+
+Printed copies are uncontrolled. Confirm the current revision in DocCtl before use.
+
+TSO 11.002 Rev D | SGW Internal - Controlled | Page 5 of 5

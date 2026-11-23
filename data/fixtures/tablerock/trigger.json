@@ -1,0 +1,236 @@
+{
+ "episodes": [
+  {
+   "active_hours": 6,
+   "branches": [
+    "ffwi_rh"
+   ],
+   "end_utc": "2025-03-19T22:00:00Z",
+   "ffwi_max": 60.4,
+   "rh_min_pct": 10.4,
+   "start_utc": "2025-03-19T17:00:00Z"
+  },
+  {
+   "active_hours": 5,
+   "branches": [
+    "ffwi_rh"
+   ],
+   "end_utc": "2025-03-22T22:00:00Z",
+   "ffwi_max": 42.3,
+   "rh_min_pct": 12.9,
+   "start_utc": "2025-03-22T18:00:00Z"
+  }
+ ],
+ "fired_in_window": true,
+ "first_fire_utc": "2025-03-19T17:00:00Z",
+ "ignition_anchors": {
+  "fires": [
+   {
+    "acres": 13845,
+    "county_fips": "45077",
+    "discovered_utc": "2025-03-22T13:26:00Z",
+    "name": "Table Rock"
+   },
+   {
+    "acres": 15973,
+    "county_fips": "45045",
+    "discovered_utc": "2025-03-24T15:05:00Z",
+    "name": "Table Rock Complex"
+   }
+  ],
+  "source": "NIFC WFIGS incidents; cause undetermined; shown for context, not modelled"
+ },
+ "kbdi_branch_would_fire": false,
+ "kbdi_window": {
+  "2025-03-19": 65.2,
+  "2025-03-20": 72.3,
+  "2025-03-21": 76.8,
+  "2025-03-22": 86.6,
+  "2025-03-23": 96.2,
+  "2025-03-24": 103.5,
+  "2025-03-25": 114.8
+ },
+ "label": "synthetic ranking on real GSP weather",
+ "protocol": [
+  {
+   "action": "red_flag_crew_restrictions",
+   "applies_to": "top 10 circuits",
+   "recommended": true,
+   "text": "Red Flag work rules on the listed circuits: no hot work, patrol before re-energising after a trip",
+   "tier": "T2"
+  },
+  {
+   "action": "recloser_one_shot_settings",
+   "applies_to": "top 10 circuits",
+   "recommended": true,
+   "text": "Refer to the qualified protection operator: one-shot reclosing on the listed circuits",
+   "tier": "T4"
+  },
+  {
+   "action": "targeted_de_energisation",
+   "applies_to": "rank 1 only, last resort",
+   "recommended": false,
+   "text": "Shown as the last-resort option; not recommended here: expected ignitions stay far below one per circuit and de-energisation removes power from customers for certain",
+   "tier": "T3"
+  }
+ ],
+ "ranking": {
+  "calibration": {
+   "base_rate_per_100km_year": 0.022,
+   "hours": 17286,
+   "intercept": -4.597861,
+   "leave_one_month_out": [
+    {
+     "error_points": 0.9,
+     "ffwi_coef": 2.0,
+     "fit_on": [
+      3,
+      4
+     ],
+     "held_out": 2,
+     "kbdi_coef": 0.0,
+     "observed_pct": 10.6,
+     "predicted_pct": 11.5,
+     "within_tolerance": true
+    },
+    {
+     "error_points": -4.6,
+     "ffwi_coef": 2.0,
+     "fit_on": [
+      2,
+      4
+     ],
+     "held_out": 3,
+     "kbdi_coef": 0.0,
+     "observed_pct": 17.5,
+     "predicted_pct": 12.9,
+     "within_tolerance": true
+    },
+    {
+     "error_points": 13.0,
+     "ffwi_coef": 4.0,
+     "fit_on": [
+      2,
+      3
+     ],
+     "held_out": 4,
+     "kbdi_coef": 0.25,
+     "observed_pct": 14.5,
+     "predicted_pct": 27.5,
+     "within_tolerance": false
+    }
+   ],
+   "mean_annual_rain_in": 54.08,
+   "month_share_check": "in-sample: the weights were fitted to these same shares",
+   "month_share_pct": {
+    "1": 8.5,
+    "10": 6.7,
+    "11": 6.2,
+    "12": 8.1,
+    "2": 11.5,
+    "3": 12.9,
+    "4": 14.6,
+    "5": 8.7,
+    "6": 6.2,
+    "7": 5.2,
+    "8": 5.6,
+    "9": 5.8
+   },
+   "observed_month_share_pct": {
+    "2": 10.6,
+    "3": 17.5,
+    "4": 14.5
+   },
+   "p0": 0.033243,
+   "veg_mean": 0.4965
+  },
+  "circuits": 169,
+  "counties": [
+   "45045",
+   "45073",
+   "45077"
+  ],
+  "drought_signal": "none: the fitted KBDI weight is 0, so on KBDI-only trigger days the ranking reflects wind and FFWI only and does not rank drought exposure",
+  "expected_ignitions_all_circuits": 0.6939,
+  "ffwi_weight_dependence": {
+   "note": "the window score is driven by the FFWI logit weight (in-sample fit 2.0); mean-feeder ratio to an average window recomputed at other weights",
+   "ratio_by_ffwi_coef": {
+    "0.8": 2.3,
+    "2": 8.9,
+    "2.8": 17.8
+   }
+  },
+  "ratio_to_average_window_all": 8.9,
+  "top": [
+   {
+    "feeder_id": "FDR-PICS-2218",
+    "p_ignition_window": 0.013486,
+    "rank": 1,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-GVL-2228",
+    "p_ignition_window": 0.010662,
+    "rank": 2,
+    "ratio_to_average_window": 8.7
+   },
+   {
+    "feeder_id": "FDR-GVL-2205",
+    "p_ignition_window": 0.010625,
+    "rank": 3,
+    "ratio_to_average_window": 8.7
+   },
+   {
+    "feeder_id": "FDR-GVL-2208",
+    "p_ignition_window": 0.010123,
+    "rank": 4,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-GVL-2293",
+    "p_ignition_window": 0.009671,
+    "rank": 5,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-PICS-2204",
+    "p_ignition_window": 0.009348,
+    "rank": 6,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-PICS-2211",
+    "p_ignition_window": 0.009084,
+    "rank": 7,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-GVL-2308",
+    "p_ignition_window": 0.00895,
+    "rank": 8,
+    "ratio_to_average_window": 8.8
+   },
+   {
+    "feeder_id": "FDR-GVL-2282",
+    "p_ignition_window": 0.008772,
+    "rank": 9,
+    "ratio_to_average_window": 8.9
+   },
+   {
+    "feeder_id": "FDR-GVL-2292",
+    "p_ignition_window": 0.008308,
+    "rank": 10,
+    "ratio_to_average_window": 8.8
+   }
+  ],
+  "weather_station": "GSP"
+ },
+ "rule_id": "rule.wildfire.red_flag(ffwi>=35 & rh<=25 for 3h | kbdi>=500)",
+ "scenario": "tablerock",
+ "weather_body_sha256": "fffcedc75b94ad4a447464c745fc9369847bfcfaca418af0fcd94385885ebb54",
+ "weather_events": 2,
+ "window_utc": [
+  "2025-03-19T04:00:00Z",
+  "2025-03-25T04:00:00Z"
+ ]
+}

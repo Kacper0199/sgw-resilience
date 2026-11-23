@@ -1,0 +1,208 @@
+{
+  "approval_tiers": [
+    "T2",
+    "T3"
+  ],
+  "escalation": {
+    "customer_limit": 1000,
+    "flags": [
+      "customers_unknown",
+      "critical_facility",
+      "hazard_zone_entry",
+      "irreversible",
+      "untrusted_evidence_only",
+      "conflicting_sources",
+      "telemetry_unverified",
+      "model_out_of_range",
+      "contradicts_sop"
+    ],
+    "normal_degraded_mode": "M0",
+    "target_limit": 10
+  },
+  "evidence_age_limit_s": {
+    "T1": 3600,
+    "T2": 1800,
+    "T3": 900
+  },
+  "generated_from": "sgw.contracts.approval.TIER_TABLE (PLAN section 2) and data/numbers/numbers.yaml",
+  "policy_version": "policy-2026.11.19-w0",
+  "reviewable_states": [
+    "proposed",
+    "in_review"
+  ],
+  "rules": {
+    "boil_water_notice": {
+      "approver_functions": [
+        "water_operations",
+        "compliance"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "system:rule:bwa_pressure_loss",
+        "system:rule:bwa_pre_landfall"
+      ],
+      "step": "D3",
+      "tier": "T3"
+    },
+    "cross_domain_priority": {
+      "approver_functions": [
+        "command",
+        "water_operations"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "system:rule:ps17_pressure_floor",
+        "system:rule:zone_restoration_order",
+        "ops_dm_01",
+        "ops_dm_02",
+        "system:rule:exercise_inject"
+      ],
+      "step": "D3",
+      "tier": "T3"
+    },
+    "field_resource_order": {
+      "approver_functions": [
+        "logistics"
+      ],
+      "escalated_functions": [
+        "command",
+        "logistics"
+      ],
+      "proposers": [
+        "system:rule:zone_hospital_tanker",
+        "system:rule:zone_fuel_dispatch",
+        "system:rule:zone_fuel_reroute",
+        "system:rule:zone_mobile_generator",
+        "system:rule:exercise_inject"
+      ],
+      "step": "D3",
+      "tier": "T2"
+    },
+    "lift_boil_water_notice": {
+      "approver_functions": [
+        "water_operations",
+        "compliance"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "system:rule:bwa_lift_clean_samples"
+      ],
+      "step": "D3",
+      "tier": "T3"
+    },
+    "mutual_aid_request": {
+      "approver_functions": [
+        "command",
+        "logistics"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "ops_dm_01",
+        "ops_dm_02",
+        "system:rule:exercise_inject"
+      ],
+      "step": "D2",
+      "tier": "T3"
+    },
+    "policy_change": {
+      "approver_functions": [
+        "compliance"
+      ],
+      "escalated_functions": [
+        "command",
+        "compliance"
+      ],
+      "proposers": [
+        "system:learning-loop"
+      ],
+      "step": null,
+      "tier": "T2"
+    },
+    "preposition_crews": {
+      "approver_functions": [
+        "command",
+        "logistics"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "ops_dm_01",
+        "ops_dm_02"
+      ],
+      "step": "D2",
+      "tier": "T3"
+    },
+    "publish_global_etr": {
+      "approver_functions": [
+        "command",
+        "operations"
+      ],
+      "escalated_functions": [],
+      "proposers": [
+        "plan_etr_01"
+      ],
+      "step": "D4",
+      "tier": "T3"
+    },
+    "reoptimise_within_envelope": {
+      "approver_functions": [],
+      "escalated_functions": [],
+      "proposers": [
+        "system:optimiser"
+      ],
+      "step": "D2",
+      "tier": "T1"
+    },
+    "set_event_type": {
+      "approver_functions": [
+        "command"
+      ],
+      "escalated_functions": [
+        "command",
+        "operations"
+      ],
+      "proposers": [
+        "ops_dm_01",
+        "ops_dm_02",
+        "system:rule:exercise_inject"
+      ],
+      "step": "D1",
+      "tier": "T2"
+    },
+    "sitrep_draft": {
+      "approver_functions": [],
+      "escalated_functions": [],
+      "proposers": [
+        "agent"
+      ],
+      "step": null,
+      "tier": "T1"
+    },
+    "stage_crews_small": {
+      "approver_functions": [
+        "operations"
+      ],
+      "escalated_functions": [
+        "command",
+        "logistics"
+      ],
+      "proposers": [
+        "ops_dm_01",
+        "ops_dm_02",
+        "system:rule:exercise_inject"
+      ],
+      "step": "D2",
+      "tier": "T2"
+    },
+    "work_order_draft": {
+      "approver_functions": [],
+      "escalated_functions": [],
+      "proposers": [
+        "agent",
+        "system:rule:ami_dark_section",
+        "system:rule:exercise_inject"
+      ],
+      "step": null,
+      "tier": "T1"
+    }
+  }
+}

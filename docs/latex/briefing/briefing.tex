@@ -1,0 +1,114 @@
+\documentclass[fontsize=10pt,a4paper,DIV=12,parskip=half-,numbers=noenddot,headsepline,captions=tableheading]{scrartcl}
+% Executive briefing: three pages. Page one stands alone.
+% Plain-language lexicon enforced (docs/latex/lint/lexicon.yaml): no technique names.
+% Every number is a macro from data/numbers/numbers.yaml. ROI values come from data/roi/roi_results.json
+% (uv run python -m sgw.roi); tests/unit/roi asserts the two agree.
+\usepackage{sgwdoc}
+\renewcommand{\sgwheadlabel}{Executive briefing}
+\renewcommand{\sgwdoclabel}{Executive briefing}
+\newcommand{\usd}[1]{USD\,\sgwval{#1}\,M}
+\newcommand{\pct}[1]{\sgwval{#1}\,\%}
+\setlength{\tabcolsep}{4pt}
+
+\begin{document}
+
+\thispagestyle{plain.scrheadings}
+\sgwmark{bodystart}
+\sgwtitleblock{\sgwproduct}{A capped first stage that measures the storm benefit before SGW pays for scale}{SGW senior leadership}
+
+\sgwsection{decision}{1}{Decision asked}
+
+\textbf{Situation.} The SGW footprint holds \sgwval{footprint.residents} residents. SGW supplies power across it and water to about \sgwnum{footprint.water_population}. Each customer lost \sgwnum{reliability.major_event_minutes} of supply to major events in 2024, \sgwval{major_event_minutes_ratio} times the median year of \sgwnum{reliability.major_event_median}.
+
+\textbf{Complication.} The decisions that protect customers in a storm sit on separate desks, with no shared view of how much time is left. A pump station can lose power hours before the hospital it feeds loses water pressure, and nobody owns that clock. The Georgia commission cut a request to recover storm costs from \sgwnum{context.ga_storm_rev_req_filed_musd} to \sgwnum{context.ga_storm_rev_req_agreed_musd} and ordered a review of storm record keeping \citep{ga_psc_44280}, so a complete storm record now supports cost recovery.
+
+\textbf{Question.} Can SGW decide earlier, and prove it decided well, without handing authority to software?
+
+\textbf{Answer.} One decision queue for power and water. Each open decision shows when it must be taken and why, and the people who sign today still sign. On assumed benefits the cash case of SGW itself is slightly negative, so Stage 1 measures the benefit before the larger spend. Stage 1 covers phase 0 and phase 1 with a cap of \usd{stage_one_price_musd} (estimate \usd{stage_one_price_low_musd} to \sgwval{stage_one_price_high_musd}\,M), of which phase 0 is \usd{stage_one_phase_zero_price_musd} and phase 1 is \usd{stage_one_phase_one_price_musd}. The cap may not be exceeded without a new decision. The cash of SGW breaks even only if the benefit is \sgwval{roi.breakeven_effect_multiple} times the estimate. Money figures are model outputs from assumed inputs.
+
+\textbf{Options.} Doing nothing leaves the next large storm on the current process. Separate tools per desk keep power and water apart, so the clock from pump station to hospital still has no owner. The full programme at once carries the same risk as the staged platform, found after the money is spent, and its cash value falls to \usd{roi_cash_npv_conservative_musd} if every input is conservative.
+
+\begin{sgwbox}{Two tests at gate 1, after \sgwval{stage_one_months} months}
+\textbf{Benefit.} Replayed on past storms and tried in the pilot area, the plans of the platform cut storm restoration cost by at least \pct{gate_storm_cost_reduction_pct}, with the other benefits at their estimate. The model assumes \pct{gate_storm_cost_reduction_assumed_pct}, within an assumed range of \pct{input_storm_saving_low_pct} to \pct{input_storm_saving_high_pct}. Below the bar, the cash case of SGW does not break even.\\[2pt]
+\textbf{Price.} Fixed quotes keep the full programme within an initial investment of \usd{platform_cost_one_time_musd} and a running cost of \usd{platform_run_cost_musd_per_year} a year, the cost that the bar above assumes.\\[2pt]
+If either test fails, SGW stops. It keeps the results of the storm replay, its own cost baselines and the decision record, and has spent no more than the cap.
+\end{sgwbox}
+
+\begin{sgwdecisions}[Decision requested from SGW]
+  Fund Stage 1 with a cap of \usd{stage_one_price_musd}. Gate 1 decides Stage 2 & VP Operations, accountable for both tests & 2026-12-18 & No pilot in the 2027 hurricane season, so gate 1 and the first shadow season slip by one year \\
+\end{sgwdecisions}
+\sgwmark{page1end}
+\clearpage
+
+\sgwsection{value}{0.5}{Value}
+Outage minutes from major events in 2024 were \sgwval{major_event_minutes_ratio} times the median year, and plans sized for a median year fail in the years that cost most. Most of the value comes from staging crews earlier and from seeing on one screen how power failures put water supply at risk.
+
+\par\noindent\begin{minipage}{\linewidth}\centering\footnotesize
+  \captionof{table}{What changes for the people who run a storm.}\label{tab:value}
+  \begin{tabularx}{\textwidth}{@{}L{1.9cm} Y Y L{3.2cm}@{}}
+    \toprule
+    \textbf{When} & \textbf{Today} & \textbf{With the platform} & \textbf{Measured by} \\ \midrule
+    Before landfall & Crew and mutual aid calls rest on judgement and phone rounds. Each desk keeps its own list & Every open decision shows the time by which it must be taken, its reasons and the forecast range it rests on & Restoration cost per storm (gate test) \\ \lightrowrule
+    During the storm & Power and water desks learn late about failures on the other side. A pump station on backup power has no owner for its clock & The pump station, its backup fuel and the hospital it feeds share one clock. The water lead sees it before the pressure falls & Hours of low water pressure at critical sites \\ \lightrowrule
+    Restoration & Estimated restoration times are revised by hand. Critical customers wait in a general queue & Restoration estimates come with a range. Critical customers are flagged with a reason a person can check & Error of the first public restoration time \\ \lightrowrule
+    After the storm & The file for cost recovery is rebuilt from email and logs, months later & Every proposal, signature and data version is already on file in a record that reveals any later change & Share of storm cost with complete evidence \\ \bottomrule
+  \end{tabularx}
+\end{minipage}\par
+
+\textbf{Prototype evidence so far}, on simulated or public data and not SGW performance. In a Helene replay the pump station decision for the hospital turns from wait to act when the next forecast arrives. Plans that weigh many forecast outcomes cut expected crew delay from \sgwval{eval.saa.median_plan_delay_mch} to \sgwval{eval.saa.tail_hedge_delay_mch} million customer hours, at \sgwval{eval.saa.tail_hedge_aid_musd} instead of \sgwnum{eval.saa.median_plan_aid_musd} of mutual aid. On \sgwval{eval.outage.storms_n} past storms a fitted outage curve beat a wind rule on \sgwval{eval.outage.storms_won}. The prototype is in the code repository delivered with this briefing, with a video at \url{https://www.youtube.com/watch?v=zSRUEBEpw7Y}.
+
+\sgwsection{finance}{0.5}{Cost and return}
+\textbf{Findings.} On utility cash alone, the platform does not pay back at base. Breaking even needs \sgwval{roi.breakeven_effect_multiple} times the base benefit, or \sgwval{roi_breakeven_strict_multiple} times if only strictly bankable savings count. Customer interruption cost avoided goes to customers, mostly businesses, not to SGW as revenue, and it leans high.
+
+\par\noindent\begin{minipage}{\linewidth}\centering\footnotesize
+  \captionof{table}{Two views of \sgwnum{roi.horizon_years} at \sgwnum{roi.discount_pct}, USD million of 2026, computed from assumed inputs. Customer value is not SGW revenue.}\label{tab:roi}
+  \begin{tabularx}{\textwidth}{@{}Y L{3.9cm} L{3.9cm}@{}}
+    \toprule
+    \textbf{Measure} & \textbf{Utility cash (funds the plan)} & \textbf{With customer value} \\ \midrule
+    Net present value, base & \textbf{\sgwval{roi.cash.npv}} & \sgwval{roi.customer.npv} \\ \lightrowrule
+    One input changed at a time & \sgwval{roi_cash_npv_structural_low_musd} to \sgwval{roi_cash_npv_structural_high_musd} & \sgwval{roi_customer_npv_range_low_musd} to \sgwval{roi_customer_npv_range_high_musd} \\ \lightrowrule
+    Every input conservative at once & \sgwval{roi_cash_npv_conservative_musd} & \sgwval{roi_customer_npv_conservative_musd} \\ \lightrowrule
+    Ratio of benefits to costs, base & \sgwval{roi.cash.bcr} & \sgwval{roi.customer.bcr} \\ \lightrowrule
+    Payback & not reached in ten years & \sgwnum{roi.customer.payback} \\ \bottomrule
+  \end{tabularx}
+\end{minipage}\par
+
+\textbf{Cost drivers}, all assumed. The initial investment of \usd{platform_cost_one_time_musd} is led by the build (\usd{cost_build_musd}) and by connecting and cleaning SGW data (\usd{cost_data_integration_musd}). The running cost of \usd{platform_run_cost_musd_per_year} a year is led by a platform team of \sgwval{cost_run_team_fte} people (\usd{cost_run_team_musd}). AI model use (\usd{cost_run_ai_usage_musd} a year) grows with storms and users, not customers. The largest cash benefit is storm restoration, at \usd{benefit_storm_restoration_musd} a year.
+
+\textbf{Assumed until Stage 1 measures them.} The storm restoration saving is assumed between \pct{input_storm_saving_low_pct} and \pct{input_storm_saving_high_pct}, and the storm cost per customer of SGW between USD \sgwval{context.storm_cost_low_usd} and \sgwval{context.storm_cost_high_usd} a year (base \sgwval{context.storm_cost_base_usd}). Every figure in this briefing is reproduced in code from the value model in the repository.
+
+\sgwsection{roadmap}{1}{Delivery plan and gates}
+\par\noindent\begin{minipage}{\linewidth}\centering
+  \resizebox{\textwidth}{!}{\input{roadmap}}
+  \captionof{figure}{Stages and gates. Stage 1 ends at gate 1. Light bars are preparation paid by the phase before. Durations assumed.}
+  \label{fig:roadmap}
+\end{minipage}\par
+
+\textbf{Dependencies.} The plan needs read access to the outage, meter, asset and map systems under a data sharing agreement each, a ruling of the grid security compliance owner in phase 0, and a briefing for the field workforce and its union before the pilot. SGW receives its storm cost per customer, frozen baselines and fixed quotes at gate 0, and the replay and exercise results at gate 1. The export speed of its outage system sets the depth of the replay, and its storm cost per customer sets the bar at gate 1, which rises to \pct{gate_storm_cost_reduction_low_cost_pct} at the low end of public filings.
+
+\textbf{Outage forecast.} It still underestimates the biggest storms, so crews are never sized on it alone. Stage 1 adds rainfall and tests it on unseen storms, with the test fixed in advance.
+
+\sgwsection{governance}{0.5}{Governance, compliance and risks}
+\par\noindent\begin{minipage}{\linewidth}\centering\footnotesize
+  \captionof{table}{Enterprise risks. Each has one owner.}\label{tab:risks}
+  \begin{tabularx}{\textwidth}{@{}L{3.2cm} Y L{3.0cm}@{}}
+    \toprule
+    \textbf{Risk} & \textbf{Control} & \textbf{Owner} \\ \midrule
+    Wrong advice in a storm & Ranges on all estimates, a person signs, template plans if the AI is down & VP Operations \\ \lightrowrule
+    Staff overtrust the screen & Reasons and data age shown, exercises, first season with read access only & Emergency management \\ \lightrowrule
+    Grid data leaves SGW & One gateway checks the data class of every call, grid details stay inside & CISO \\ \lightrowrule
+    Desks keep the old process & Built with the desks in exercises, adoption measured at every gate & Storm director \\ \lightrowrule
+    Cost overrun & Stage cap, fixed quotes at gate 0, the price test at gate 1 & CFO \\ \bottomrule
+  \end{tabularx}
+\end{minipage}\par
+
+Every signature is filed with the evidence shown at the time. Actions that endanger crews or affect many customers need signatures from two functions. The controls follow the voluntary NIST AI Risk Management Framework \citep{nist2023airmf}. The platform sits outside the security perimeter of critical grid assets, with feeds in one direction and no write path back, pending a ruling of the compliance owner \citep{nerc_cip}. The storm record feeds the risk and resilience assessment that the federal water infrastructure act of 2018 requires \citep{epa_awia_2013}, and the state pressure floors (\sgwnum{sc_pressure_floor_psi} in South Carolina, \sgwnum{ga_pressure_floor_psi} in Georgia) are built in.
+
+\sgwsection{scale}{0.25}{Scalability}
+The pilot area comes first, then the rest of South Carolina, then eastern Georgia. Each region adds its rules and crews as settings, not code, and connects its systems through one adapter per source. Water follows power, and wildfire and heat desks come last. Beyond hurricanes, the same queue serves red flag warnings, heatwave load and readiness deadlines. Run cost grows with users and storms, not customers.
+\sgwmark{bodyend}
+\clearpage
+\sgwmark{appendixstart}
+{\footnotesize\bibliography{references,prd-references}}
+\sgwmark{appendixend}
+\end{document}

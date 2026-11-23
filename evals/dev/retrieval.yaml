@@ -1,0 +1,17 @@
+# Dev retrieval items: developers may read and tune on these. Same schema and grader as the held-out set.
+set: retrieval
+split: dev
+version: 1
+k: 8
+default_as_of: "2024-09-27T12:00:00Z"
+items:
+  - {id: RET-D-01, kind: semantic, query: "percentiles used for the global ETR range", relevant: [{doc_id: "DOM 14.206", revision: "K", facts: [d07.f3]}], must_not_retrieve: [{doc_id: "DOM 14.206", revision: "J"}]}
+  - {id: RET-D-02, kind: semantic, query: "who approves a boil water public notice in Georgia", relevant: [{doc_id: "WQC 07.114", revision: "E", facts: [d19.f5]}], must_not_retrieve: [{doc_id: "WQC 07.114", revision: "D"}]}
+  - {id: RET-D-03, kind: semantic, query: "repeat-back rule for switching instructions", relevant: [{doc_id: "TSO 06.110", revision: "F", facts: [d27.f1]}]}
+  - {id: RET-D-04, kind: semantic, query: "who can release a Hot Line Hold", relevant: [{doc_id: "TSO 06.110", revision: "F", facts: [d27.f2]}]}
+  - {id: RET-D-05, kind: semantic, query: "definition of a catastrophic event type", relevant: [{doc_id: "GEP 00.010", revision: "G", facts: [d01.f2]}]}
+  - {id: RET-D-06, kind: semantic, query: "difference between activation level and event type", relevant: [{doc_id: "GEP 00.010", revision: "G", facts: [d01.f5]}]}
+  - {id: RET-D-07, kind: semantic, query: "what goes into a mutual assistance request to SEE", relevant: [{doc_id: "MAL 05.012", revision: "C", facts: [d12.f1]}]}
+  - {id: RET-D-08, kind: semantic, query: "planning assumption for mutual aid crew arrival time", relevant: [{doc_id: "MAL 05.012", revision: "C", facts: [d12.f3]}]}
+  - {id: RET-D-09, kind: semantic, query: "boil water advisory wording on how long to boil", relevant: [{doc_id: "PCN 02.031", revision: "D", facts: [d23.f2]}]}
+  - {id: RET-D-10, kind: semantic, query: "time to connect a water tanker at a hospital", relevant: [{doc_id: "WDS 03.240", revision: "B", facts: [d18.f2]}]}

@@ -1,0 +1,33 @@
+---
+doc_id: SR-HEL-24-02
+title: 'SGW Situation Report #2, Hurricane Helene, 2024-09-26 17:00 EDT'
+family: sitrep
+layout: record
+owner_function: planning
+effective: '2024-09-26'
+classification: SGW Internal - Controlled
+trust: verified_internal
+status: in_force
+decisions:
+- D4
+---
+TLP:CLEAR
+SGW Situation Report #2 | 2024-09-26 | 17:00 EDT
+Incident: SGW-INC-24-0031 "HELENE"    REPORT DISTRIBUTION: SGW EOC, county EOC liaisons, SC and GA state EOCs
+# Executive Summary
+Event Type 1 (Catastrophic) set by the IC at 05:45 EDT; Activation Level 1 since 12:00 EDT.
+Crews pre-staged outside the forecast 34-kt swath; shelter by H-12 (approx. 23:00 EDT).
+MGEN-HALBERD-500 load-tested at DEP-AIK-GRANITEVILLE, ready.
+# Weather
+Helene inland over north Florida, moving north-northeast at 23 mph.
+# Electric
+About 41,000 customers out from outer bands, mostly Richmond district.
+# Water
+Pump stations on grid; PS-38 and PS-52 tanks full, fuel pre-delivered.
+# Resources
+Staging: STG-AIK-SANDHILL-YARD and STG-RCH-MILLPOND-YARD open. Fuel: Altamaha Fuel & Lube on call (MAL-CTR-0447).
+# Safety
+No recordable injuries this period. Carbon monoxide reminder issued for all portable generator sites.
+# Next report
+SR-HEL-24-03 at 07:00 EDT 2024-09-27.
+TLP:CLEAR

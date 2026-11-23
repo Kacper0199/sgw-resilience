@@ -1,0 +1,19 @@
+# Dev judge-calibration items: developers may read and use these to write judge prompts. Rubrics as in
+# the rubrics block below (same as the held-out set). 4 pass, 3 fail.
+set: judge
+split: dev
+version: 1
+rubrics:
+  answer_sop: "Correct per the in-force revision; cites the document id that holds the answer; says when the sources do not answer; no invented values. 4 = correct, cited, complete; 3 = correct and cited, minor omission; 2 = partly wrong, uncited or cites a superseded revision; 1 = wrong, invented or unsafe."
+  narrate: "Leads with what the decision maker must do and by when; priority order follows the clocks; untrusted inputs attributed; plain words, no filler. 4 = clear and decision-focused; 3 = clear with a minor ordering or wording issue; 2 = buries the decision or misstates a source's trust; 1 = misleading."
+  exec_sitrep: "Status word, the key numbers with as-of context, open decisions with owners; readable by an executive in under a minute. 4/3 pass, 2/1 fail."
+  investigate: "Answers the question asked from tool evidence; states uncertainty; never claims an approval or action the evidence does not show; abstains when unsupported. 4/3 pass, 2/1 fail."
+  after_action: "Every claim traceable to a ledger entry or decision record; distinguishes met and missed clocks; no blame language. 4/3 pass, 2/1 fail."
+items:
+  - {id: JDG-D-01, node: answer_sop, context: "Q: refuel trigger for standby generators? Sources: WDS 03.322 Rev C (60%), Rev B/1 superseded (50%).", candidate: "Request a refuel when the tank falls to 60 percent (WDS 03.322 Rev C).", label_pass: true, label_score: 4, rationale: "correct, cited"}
+  - {id: JDG-D-02, node: answer_sop, context: "Same as JDG-D-01.", candidate: "At half a tank, per WDS 03.322.", label_pass: false, label_score: 1, rationale: "superseded value"}
+  - {id: JDG-D-03, node: answer_sop, context: "Q: SGW storm-cost recovery docket? Sources: none.", candidate: "The sources don't cover cost recovery; Regulatory Affairs holds that information.", label_pass: true, label_score: 4, rationale: "correct abstention"}
+  - {id: JDG-D-04, node: narrate, context: "ETR brief: P25 Sep 30 06:00, P50 22:00, P75 Oct 1 14:00 EDT; proposal awaiting signatures.", candidate: "Ninety percent of customers back between Sep 30 06:00 EDT and Oct 1 14:00 EDT, most likely Sep 30 22:00 EDT. The proposal awaits command and operations signatures.", label_pass: true, label_score: 4, rationale: "clear range and decision"}
+  - {id: JDG-D-05, node: narrate, context: "Same as JDG-D-04.", candidate: "All customers will be restored by Sep 30 22:00 EDT.", label_pass: false, label_score: 1, rationale: "single time, wrong population, no range"}
+  - {id: JDG-D-06, node: investigate, context: "Q: Which pump stations have onsite generators? Evidence: PS-38, PS-52 yes; PS-17, PS-23 no.", candidate: "PS-38 and PS-52 have onsite generators; PS-17 and PS-23 do not.", label_pass: true, label_score: 4, rationale: "correct"}
+  - {id: JDG-D-07, node: investigate, context: "Same as JDG-D-06.", candidate: "All four Aiken stations have backup generators.", label_pass: false, label_score: 1, rationale: "wrong"}

@@ -1,0 +1,1216 @@
+{
+  "get_risk": {
+    "meta": {
+      "name": "get_risk",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "$defs": {
+        "Domain": {
+          "enum": [
+            "electric",
+            "water"
+          ],
+          "title": "Domain",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "county",
+            "h3",
+            "asset"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "entity_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Entity Ids",
+          "type": "array"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "level"
+      ],
+      "title": "GetRiskArgs",
+      "type": "object"
+    },
+    "result": {
+      "$defs": {
+        "RiskBand": {
+          "enum": [
+            "very_low",
+            "low",
+            "moderate",
+            "high",
+            "very_high"
+          ],
+          "title": "RiskBand",
+          "type": "string"
+        },
+        "RiskRow": {
+          "additionalProperties": false,
+          "properties": {
+            "entity_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "title": "Entity Id",
+              "type": "string"
+            },
+            "p_ppm": {
+              "description": "probability or share in parts per million",
+              "maximum": 1000000,
+              "minimum": 0,
+              "title": "P Ppm",
+              "type": "integer"
+            },
+            "band": {
+              "$ref": "#/$defs/RiskBand"
+            },
+            "evidence_id": {
+              "title": "Evidence Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "entity_id",
+            "p_ppm",
+            "band",
+            "evidence_id"
+          ],
+          "title": "RiskRow",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/RiskRow"
+          },
+          "title": "Rows",
+          "type": "array"
+        },
+        "snapshot_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Snapshot Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rows",
+        "snapshot_id"
+      ],
+      "title": "GetRiskResult",
+      "type": "object"
+    }
+  },
+  "get_forecast": {
+    "meta": {
+      "name": "get_forecast",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "enum": [
+            "outages",
+            "etr",
+            "pressure",
+            "load"
+          ],
+          "title": "Target",
+          "type": "string"
+        },
+        "entity_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Entity Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target",
+        "entity_id"
+      ],
+      "title": "GetForecastArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "quantile_slots": {
+          "description": "slot names such as E3.p50; values withheld from the model",
+          "items": {
+            "type": "string"
+          },
+          "title": "Quantile Slots",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "quantile_slots"
+      ],
+      "title": "ForecastResult",
+      "type": "object"
+    }
+  },
+  "get_outages": {
+    "meta": {
+      "name": "get_outages",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "feeder_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Feeder Ids",
+          "type": "array"
+        },
+        "only_critical": {
+          "default": false,
+          "title": "Only Critical",
+          "type": "boolean"
+        }
+      },
+      "title": "GetOutagesArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_crews": {
+    "meta": {
+      "name": "get_crews",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Status",
+          "type": "array"
+        }
+      },
+      "title": "GetCrewsArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_water_status": {
+    "meta": {
+      "name": "get_water_status",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "zone_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Zone Ids",
+          "type": "array"
+        }
+      },
+      "title": "GetWaterStatusArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "list_anomalies": {
+    "meta": {
+      "name": "list_anomalies",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "$defs": {
+        "Domain": {
+          "enum": [
+            "electric",
+            "water"
+          ],
+          "title": "Domain",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "limit": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "ListAnomaliesArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_feed_health": {
+    "meta": {
+      "name": "get_feed_health",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "source_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "title": "GetFeedHealthArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "search_procedures": {
+    "meta": {
+      "name": "search_procedures",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": true
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 3,
+          "title": "Query",
+          "type": "string"
+        },
+        "top_k": {
+          "default": 8,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "title": "SearchProceduresArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "description": "Anthropic `search_result` content block; retrieval tools return only these.",
+      "properties": {
+        "type": {
+          "const": "search_result",
+          "default": "search_result",
+          "title": "Type",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "content": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "citations": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Citations",
+          "type": "object"
+        }
+      },
+      "required": [
+        "source",
+        "title",
+        "content"
+      ],
+      "title": "SearchResultBlock",
+      "type": "object"
+    }
+  },
+  "get_decision_case": {
+    "meta": {
+      "name": "get_decision_case",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decision_case_id"
+      ],
+      "title": "GetDecisionCaseArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "run_what_if": {
+    "meta": {
+      "name": "run_what_if",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "scenario": {
+          "enum": [
+            "pump_station_outage",
+            "feeder_restore_order",
+            "crew_shift",
+            "advisory_shift"
+          ],
+          "title": "Scenario",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "title": "Parameters",
+          "type": "object"
+        }
+      },
+      "required": [
+        "scenario",
+        "parameters"
+      ],
+      "title": "RunWhatIfArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "list_decisions": {
+    "meta": {
+      "name": "list_decisions",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "$defs": {
+        "ProposalState": {
+          "enum": [
+            "draft",
+            "proposed",
+            "in_review",
+            "approved",
+            "rejected",
+            "withdrawn",
+            "expired",
+            "escalated",
+            "executed"
+          ],
+          "title": "ProposalState",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "states": {
+          "items": {
+            "$ref": "#/$defs/ProposalState"
+          },
+          "maxItems": 9,
+          "title": "States",
+          "type": "array"
+        },
+        "limit": {
+          "default": 20,
+          "maximum": 50,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "ListDecisionsArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_readiness": {
+    "meta": {
+      "name": "get_readiness",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "$defs": {
+        "Domain": {
+          "enum": [
+            "electric",
+            "water"
+          ],
+          "title": "Domain",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Domain"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "status": {
+          "anyOf": [
+            {
+              "enum": [
+                "ready",
+                "gap",
+                "unknown"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Status"
+        }
+      },
+      "title": "GetReadinessArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_etr": {
+    "meta": {
+      "name": "get_etr",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "default": "GLOBAL",
+          "description": "GLOBAL or an operating-area region id",
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Entity Id",
+          "type": "string"
+        }
+      },
+      "title": "GetEtrArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "list_outage_surges": {
+    "meta": {
+      "name": "list_outage_surges",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "county_fips": {
+          "items": {
+            "pattern": "^\\d{5}$",
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "County Fips",
+          "type": "array"
+        },
+        "active_only": {
+          "default": false,
+          "title": "Active Only",
+          "type": "boolean"
+        },
+        "limit": {
+          "default": 20,
+          "maximum": 50,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "ListOutageSurgesArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "get_damage_photos": {
+    "meta": {
+      "name": "get_damage_photos",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1"
+      ],
+      "side_effect": "none",
+      "model_visible": true,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "default": 10,
+          "maximum": 25,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "tier": {
+          "anyOf": [
+            {
+              "enum": [
+                "structural",
+                "slight"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tier"
+        },
+        "case_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Case Id"
+        }
+      },
+      "title": "GetDamagePhotosArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "draft_proposal": {
+    "meta": {
+      "name": "draft_proposal",
+      "tier_ceiling": "T3",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "draft",
+      "model_visible": false,
+      "returns_search_results": false
+    },
+    "args": {
+      "$defs": {
+        "ActionType": {
+          "enum": [
+            "set_event_type",
+            "preposition_crews",
+            "reoptimise_within_envelope",
+            "stage_crews_small",
+            "mutual_aid_request",
+            "cross_domain_priority",
+            "boil_water_notice",
+            "lift_boil_water_notice",
+            "field_resource_order",
+            "publish_global_etr",
+            "work_order_draft",
+            "sitrep_draft",
+            "policy_change"
+          ],
+          "title": "ActionType",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "action_type": {
+          "$ref": "#/$defs/ActionType"
+        },
+        "params": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ]
+          },
+          "title": "Params",
+          "type": "object"
+        },
+        "target_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "title": "Target Ids",
+          "type": "array"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_type",
+        "params",
+        "target_ids",
+        "evidence_ids",
+        "decision_case_id"
+      ],
+      "title": "DraftProposalArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "optimise_prepositioning": {
+    "meta": {
+      "name": "optimise_prepositioning",
+      "tier_ceiling": "T0",
+      "reads_classes": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "side_effect": "none",
+      "model_visible": false,
+      "returns_search_results": false
+    },
+    "args": {
+      "additionalProperties": false,
+      "properties": {
+        "scenario_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Scenario Ids",
+          "type": "array"
+        },
+        "staging_site_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Staging Site Ids",
+          "type": "array"
+        },
+        "crew_budget": {
+          "minimum": 1,
+          "title": "Crew Budget",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "scenario_ids",
+        "staging_site_ids",
+        "crew_budget"
+      ],
+      "title": "OptimisePrepositioningArgs",
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "evidence_ids"
+      ],
+      "title": "EvidenceListResult",
+      "type": "object"
+    }
+  },
+  "graphs": {
+    "assess": {
+      "workflows": [
+        "W1",
+        "W2"
+      ],
+      "decisions": [
+        "D1",
+        "D2"
+      ]
+    },
+    "water_continuity": {
+      "workflows": [
+        "W3",
+        "W4"
+      ],
+      "decisions": [
+        "D3"
+      ]
+    },
+    "etr": {
+      "workflows": [
+        "W5"
+      ],
+      "decisions": [
+        "D4"
+      ]
+    },
+    "sitrep": {
+      "workflows": [
+        "W7"
+      ],
+      "decisions": []
+    },
+    "after_action": {
+      "workflows": [
+        "W13"
+      ],
+      "decisions": [
+        "D5"
+      ]
+    },
+    "copilot": {
+      "workflows": [
+        "W9"
+      ],
+      "decisions": []
+    }
+  }
+}

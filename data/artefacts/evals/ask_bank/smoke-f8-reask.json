@@ -1,0 +1,2539 @@
+{
+ "meta": {
+  "label": "smoke-f8-reask",
+  "commit": "fcf1634",
+  "split": "dev",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R35",
+  "started_utc": "2026-11-22T12:26:27Z",
+  "seconds": 84.8,
+  "gateway_counters_delta": {
+   "replay_hits": 7,
+   "live_cache_hits": 42,
+   "replay_misses": 0,
+   "live_calls": 35,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 12,
+  "passed": 10,
+  "pass_rate": 0.833,
+  "infra": 5,
+  "valid": {
+   "n": 7,
+   "passed": 6,
+   "pass_rate": 0.857
+  },
+  "usd": 0.4778,
+  "usd_per_item": 0.03981,
+  "live_calls": 35,
+  "latency_p50_s": 10.34,
+  "latency_p95_s": 21.97,
+  "errors": 0,
+  "grader_failures": {
+   "mentions_any": 2
+  },
+  "paths": {
+   "m2": 6,
+   "llm": 5,
+   "guide": 1
+  },
+  "reasons": {
+   "None": 7,
+   "llm_unavailable": 5
+  }
+ },
+ "by": {
+  "klass": {
+   "data": {
+    "n": 4,
+    "passed": 4,
+    "pass_rate": 1.0
+   },
+   "followup": {
+    "n": 3,
+    "passed": 2,
+    "pass_rate": 0.667
+   },
+   "near_miss": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "overview": {
+    "n": 3,
+    "passed": 3,
+    "pass_rate": 1.0
+   },
+   "role": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "persona": {
+   "exec_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "ic_01": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "ml_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "ops_dm_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "ops_dm_02": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "plan_etr_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "wtr_comp_01": {
+    "n": 3,
+    "passed": 2,
+    "pass_rate": 0.667
+   },
+   "wtr_lead_01": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   }
+  },
+  "lang": {
+   "en": {
+    "n": 9,
+    "passed": 8,
+    "pass_rate": 0.889
+   },
+   "pl": {
+    "n": 3,
+    "passed": 2,
+    "pass_rate": 0.667
+   }
+  },
+  "moment": {
+   "morning-after": {
+    "n": 6,
+    "passed": 5,
+    "pass_rate": 0.833
+   },
+   "notices-lifted": {
+    "n": 6,
+    "passed": 5,
+    "pass_rate": 0.833
+   }
+  },
+  "page": {
+   "brief": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "decisions": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "forecast": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "health": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "none": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "water": {
+    "n": 5,
+    "passed": 4,
+    "pass_rate": 0.8
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 12,
+    "passed": 10,
+    "pass_rate": 0.833
+   }
+  }
+ },
+ "by_tag": {
+  "demo_moment": {
+   "n": 4,
+   "passed": 4,
+   "pass_rate": 1.0
+  },
+  "no_diacritics": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  },
+  "user_reported": {
+   "n": 2,
+   "passed": 2,
+   "pass_rate": 1.0
+  },
+  "vague": {
+   "n": 4,
+   "passed": 4,
+   "pass_rate": 1.0
+  }
+ },
+ "items": [
+  {
+   "id": "AB-DATA-026",
+   "lang": "en",
+   "persona": "wtr_lead_01",
+   "moment": "morning-after",
+   "page": "water",
+   "klass": "data",
+   "tags": [
+    "demo_moment"
+   ],
+   "turns": [],
+   "question": "Which water zones are below the pressure floor this morning?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Cedarfall",
+     "Laurelspur"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Cedarfall (PS-17) and Laurelspur (PS-23) are below the pressure floor: Cedarfall reads 4 psi against floor 25 psi, and Laurelspur reads 8 psi against floor 25 psi. Neither has an onsite generator. Copperleaf and Deerwater are not below the floor. Laurelspur's boil water advisory, Issue a boil water advisory for the Laurelspur zone (DC-D3-PS23-LAURELSPUR-BWA), is still open and needs Water operations and Compliance to sign, with effective decide-by Sep 27, 09:17 ET.",
+   "links": [
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E23.effective_decide_by": "Sep 27, 09:17 ET",
+     "E4.pressure": "4 psi",
+     "E4.pressure_floor": "25 psi",
+     "E5.pressure": "8 psi",
+     "E5.pressure_floor": "25 psi"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Cedarfall (PS-17) and Laurelspur (PS-23) are below the pressure floor: Cedarfall reads 4 psi against floor 25 psi, and Laurelspur reads 8 psi against floor 25 psi. Neither has an onsite generator. Copperleaf and Deerwater are not below the floor. Laurelspur's boil water advisory, Issue a boil water advisory for the Laurelspur zone (DC-D3-PS23-LAURELSPUR-BWA), is still open and needs Water operations and Compliance to sign, with effective decide-by Sep 27, 09:17 ET.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-e9694a9574dc"
+   ],
+   "latency_s": 9.77,
+   "usd": 0.04227,
+   "live_calls": 3
+  },
+  {
+   "id": "AB-DATA-027",
+   "lang": "en",
+   "persona": "wtr_lead_01",
+   "moment": "morning-after",
+   "page": "water",
+   "klass": "data",
+   "tags": [
+    "demo_moment"
+   ],
+   "turns": [],
+   "question": "When must we decide on the tanker for Tallowbranch hospital?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "10:05",
+     "tanker"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "The decision on the tanker, Send a potable water tanker to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-TANKER), must be made by Sep 27, 10:05 ET. That deadline is still open and the decision is only proposed, with no signatures yet. It needs Logistics to sign, so it is not yours to sign. The related decision Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER) passed its deadline and expired.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-HSP-TALLOWBRANCH-TANKER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-HSP-TALLOWBRANCH-WATER"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D3-HSP-TALLOWBRANCH-TANKER",
+      "kind": "decision",
+      "label": "Send a potable water tanker to Tallowbranch hospital"
+     },
+     {
+      "id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+      "kind": "decision",
+      "label": "Secure water supply to Tallowbranch hospital"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E23.effective_decide_by": "Sep 27, 10:05 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "The decision on the tanker, Send a potable water tanker to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-TANKER), must be made by Sep 27, 10:05 ET. That deadline is still open and the decision is only proposed, with no signatures yet. It needs Logistics to sign, so it is not yours to sign. The related decision Secure water supply to Tallowbranch hospital (DC-D3-HSP-TALLOWBRANCH-WATER) passed its deadline and expired.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-b7b060f5b937"
+   ],
+   "latency_s": 9.89,
+   "usd": 0.02916,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-FUP-013",
+   "lang": "en",
+   "persona": "ops_dm_02",
+   "moment": "morning-after",
+   "page": "decisions",
+   "klass": "followup",
+   "tags": [
+    "vague"
+   ],
+   "turns": [
+    "What is the next decision deadline?"
+   ],
+   "question": "and the one after that?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "decide",
+     "deadline",
+     "due"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "I can't see a list of deadlines in order here, so I can't tell you which one comes after the 09:05 ET deadline for the restoration order of feeder 2219 and feeder 2207. That deadline is still open at 08:00 ET. The Decisions page lists every waiting decision with its decide-by time and who must sign, so you can read the next one there. The first button below opens the restoration order decision directly, and the After-action page shows which deadlines were met or missed.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/?d=PRP-ZR-D591591B1702"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    },
+    {
+     "page": "after_action",
+     "href": "/after-action"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "Which decisions are due next?",
+    "Which assets are at risk?",
+    "Show the photos of flooded areas"
+   ],
+   "language_detected": "en",
+   "prior_answers": [
+    "The next open deadline is for Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER): Sep 27, 09:05 ET. It is still proposed and needs Command and Water operations to sign. Nothing open needs Operations to sign. Close behind are Issue a boil water advisory for the Laurelspur zone (DC-D3-PS23-LAURELSPUR-BWA), with deadline Sep 27, 09:17 ET, and Swap the failing generator at the Flinthollow 911 center (DC-D3-EX-17-GENERATOR-DISPATCH-CENTER), with deadline Sep 27, 09:30 ET. The rest are on the Decisions page."
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [
+     "What is the decision deadline after the next open deadline?",
+     "What is the status of the restoration order decision for FDR-AIK-2219 and FDR-AIK-2207?",
+     "When is the restoration order decision for FDR-AIK-2219 and FDR-AIK-2207 due?"
+    ],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/?d=PRP-ZR-D591591B1702",
+      "kind": "decision",
+      "label": "Set the restoration order of feeder 2219 and feeder 2207",
+      "page": "decisions"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Crews page",
+      "page": "crews"
+     },
+     {
+      "href": "/after-action",
+      "kind": "page",
+      "label": "After-action page",
+      "page": "after_action"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "Which decisions are due next?",
+     "Which assets are at risk?",
+     "Show the photos of flooded areas"
+    ],
+    "tainted": false,
+    "text": "I can't see a list of deadlines in order here, so I can't tell you which one comes after the 09:05 ET deadline for the restoration order of feeder 2219 and feeder 2207. That deadline is still open at 08:00 ET. The Decisions page lists every waiting decision with its decide-by time and who must sign, so you can read the next one there. The first button below opens the restoration order decision directly, and the After-action page shows which deadlines were met or missed.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-e21d648d7161",
+    "run-63f6a3a1ee63"
+   ],
+   "latency_s": 21.97,
+   "usd": 0.06284,
+   "live_calls": 7
+  },
+  {
+   "id": "AB-FUP-015",
+   "lang": "en",
+   "persona": "ml_01",
+   "moment": "morning-after",
+   "page": "health",
+   "klass": "followup",
+   "tags": [],
+   "turns": [
+    "Are any data feeds late?"
+   ],
+   "question": "Is that a problem for the forecast?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "forecast",
+     "model",
+     "data"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "mentions_any"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "The Network map feed (gis-trace) is flagged stale: its age is 1,590 min against a freshness limit of 1,440 min, with an ingest lag of 0 min. It is also synthetic, so I can't call it trustworthy for the feeder and asset inputs while it is stale.",
+   "links": [
+    {
+     "page": "map",
+     "href": "/map"
+    },
+    {
+     "page": "forecast",
+     "href": "/forecast"
+    },
+    {
+     "page": "health",
+     "href": "/health"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [
+    "Yes, the Network map feed (gis-trace) is late: it is past its freshness limit of 1,440 min, with an ingest lag of 0 min and a product age of 1,590 min. Every other feed, including the sensor feeds and the outage feed, is not stale. Separately, the surge detector flags a data-quality dropout in Long, McIntosh, Tattnall, Tift and Glynn counties, so treat their surge signals as signals to check."
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/map",
+      "kind": "page",
+      "label": "Map page",
+      "page": "map"
+     },
+     {
+      "href": "/forecast",
+      "kind": "page",
+      "label": "Forecast page",
+      "page": "forecast"
+     },
+     {
+      "href": "/health",
+      "kind": "page",
+      "label": "System health page",
+      "page": "health"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E1.freshness_limit": "1,440 min",
+     "E1.ingest_lag": "0 min",
+     "E1.product_age": "1,590 min"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "The Network map feed (gis-trace) is flagged stale: its age is 1,590 min against a freshness limit of 1,440 min, with an ingest lag of 0 min. It is also synthetic, so I can't call it trustworthy for the feeder and asset inputs while it is stale.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-8cd080e380ad",
+    "run-46bf7ecd6307"
+   ],
+   "latency_s": 18.54,
+   "usd": 0.10309,
+   "live_calls": 11
+  },
+  {
+   "id": "AB-OVR-002",
+   "lang": "en",
+   "persona": "ic_01",
+   "moment": "morning-after",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "user_reported",
+    "vague"
+   ],
+   "turns": [],
+   "question": "describe what is going on",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "pressure",
+     "Cedarfall",
+     "Laurelspur",
+     "outage",
+     "landfall"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Customers without power across the storm counties: 1,604,454, rising. For water, PS-17 and PS-23 are below the pressure floor with no backup power, and PS-38 and PS-52 run on generators. The Cedarfall boil-water notice is in force; the Laurelspur notice is waiting for signatures. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) was decided on time. Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) needs Command and Water operations to sign, due Sep 27, 09:05 ET. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) was missed.",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-38"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-52"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-POWER"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2219"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=FDR-AIK-2207"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-AIK-RESTORE-ORDER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68",
+     "E69",
+     "E70",
+     "E71",
+     "E72",
+     "E73",
+     "E74",
+     "E75",
+     "E76",
+     "E77"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Briefing page",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "PS-38",
+      "kind": "asset",
+      "label": "Copperleaf pump station"
+     },
+     {
+      "id": "PS-52",
+      "kind": "asset",
+      "label": "Deerwater pump station"
+     },
+     {
+      "id": "DC-D3-PS17-POWER",
+      "kind": "decision",
+      "label": "Hook up the portable generator at PS-17"
+     },
+     {
+      "id": "FDR-AIK-2219",
+      "kind": "asset",
+      "label": "Feeder 2219"
+     },
+     {
+      "id": "FDR-AIK-2207",
+      "kind": "asset",
+      "label": "Feeder 2207 (feeds PS-17)"
+     },
+     {
+      "id": "DC-D3-AIK-RESTORE-ORDER",
+      "kind": "decision",
+      "label": "Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.customers_out": "1,604,454",
+     "E64.effective_decide_by": "Sep 27, 09:05 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Customers without power across the storm counties: 1,604,454, rising. For water, PS-17 and PS-23 are below the pressure floor with no backup power, and PS-38 and PS-52 run on generators. The Cedarfall boil-water notice is in force; the Laurelspur notice is waiting for signatures. Hook up the portable generator at PS-17 (DC-D3-PS17-POWER) was decided on time. Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207 (DC-D3-AIK-RESTORE-ORDER) needs Command and Water operations to sign, due Sep 27, 09:05 ET. Dispatch the fuel truck to PS-17 (DC-D3-PS17-FUEL) was missed.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-113f5c89ca1f"
+   ],
+   "latency_s": 0.64,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-OVR-018",
+   "lang": "pl",
+   "persona": "ic_01",
+   "moment": "morning-after",
+   "page": "none",
+   "klass": "overview",
+   "tags": [
+    "user_reported",
+    "vague"
+   ],
+   "turns": [],
+   "question": "Opisz mi szczegółowo, co się dzieje, i wyjaśnij to.",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "ciśnieni",
+     "Cedarfall",
+     "Laurelspur"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": true,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Brak prądu dotyczy 1,604,454 klientów w 117 hrabstwach i liczba nadal rośnie. Pompownie PS-17 i PS-23 są poniżej progu ciśnienia, bez zasilania awaryjnego. Do Pana decyzji, Dowódco: Ustalenie kolejności przywracania zasilania (DC-D3-AIK-RESTORE-ORDER) czeka na podpisy Command i Water operations, termin Sep 27, 09:05 ET jest otwarty. Drugą falę pomocy wzajemnej (DC-D2-EX-11-MUTUAL-AID-SECOND-WAVE) podpisują Command i Logistics, termin Sep 27, 13:00 ET jest otwarty. Dostawę paliwa do PS-17 (DC-D3-PS17-FUEL) pominięto, termin minął. Pozostałe decyzje są na stronie Decisions. Komunikaty o gotowaniu wody: Cedarfall – nadal obowiązuje; Laurelspur – czeka na podpisy.",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-23"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-AIK-RESTORE-ORDER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-EX-11-MUTUAL-AID-SECOND-WAVE"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68",
+     "E69",
+     "E70",
+     "E71",
+     "E72",
+     "E73",
+     "E74",
+     "E75",
+     "E76",
+     "E77",
+     "E78",
+     "E79",
+     "E80",
+     "E81",
+     "E82",
+     "E83",
+     "E84",
+     "E85",
+     "E86",
+     "E87",
+     "E88",
+     "E89",
+     "E90",
+     "E91",
+     "E92",
+     "E93",
+     "E94",
+     "E95",
+     "E96",
+     "E97",
+     "E98",
+     "E99",
+     "E100",
+     "E101",
+     "E102",
+     "E103"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Strona Briefing",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Strona Decisions",
+      "page": "decisions"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station na mapie",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station na mapie",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "PS-23",
+      "kind": "asset",
+      "label": "Laurelspur pump station"
+     },
+     {
+      "id": "DC-D3-AIK-RESTORE-ORDER",
+      "kind": "decision",
+      "label": "Set the restoration order of FDR-AIK-2219 and FDR-AIK-2207"
+     },
+     {
+      "id": "DC-D2-EX-11-MUTUAL-AID-SECOND-WAVE",
+      "kind": "decision",
+      "label": "Request a second wave of 20 mutual-aid crews"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E2.counties_with_outages": "117",
+     "E2.customers_out": "1,604,454",
+     "E64.effective_decide_by": "Sep 27, 09:05 ET",
+     "E69.effective_decide_by": "Sep 27, 13:00 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Brak prądu dotyczy 1,604,454 klientów w 117 hrabstwach i liczba nadal rośnie. Pompownie PS-17 i PS-23 są poniżej progu ciśnienia, bez zasilania awaryjnego. Do Pana decyzji, Dowódco: Ustalenie kolejności przywracania zasilania (DC-D3-AIK-RESTORE-ORDER) czeka na podpisy Command i Water operations, termin Sep 27, 09:05 ET jest otwarty. Drugą falę pomocy wzajemnej (DC-D2-EX-11-MUTUAL-AID-SECOND-WAVE) podpisują Command i Logistics, termin Sep 27, 13:00 ET jest otwarty. Dostawę paliwa do PS-17 (DC-D3-PS17-FUEL) pominięto, termin minął. Pozostałe decyzje są na stronie Decisions. Komunikaty o gotowaniu wody: Cedarfall – nadal obowiązuje; Laurelspur – czeka na podpisy.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-7c242c7b95cc"
+   ],
+   "latency_s": 10.78,
+   "usd": 0.05951,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-DATA-007",
+   "lang": "en",
+   "persona": "ops_dm_01",
+   "moment": "notices-lifted",
+   "page": "decisions",
+   "klass": "data",
+   "tags": [
+    "demo_moment"
+   ],
+   "turns": [],
+   "question": "What do I need to decide in the next 6 hours?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "lift"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": null,
+   "text": "Answer from platform data.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: open, decide by Sep 30, 11:30 ET (in 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: open, decide by Sep 30, 14:00 ET (in 6 h).\n[closed] Closed so far: 37 (31 decided on time, 6 missed).",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-26-RELEASE-SHELTER-GENERATOR"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-31-RETURN-TANKER"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [],
+    "path": "m2",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-EX-26-RELEASE-SHELTER-GENERATOR",
+      "kind": "decision",
+      "label": "Move Gannet from the closing shelter to the Swallowtail lift station"
+     },
+     {
+      "id": "DC-D3-EX-31-RETURN-TANKER",
+      "kind": "decision",
+      "label": "Return water tanker Sedge 4 from the Oxbow Run distribution point"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Answer from platform data.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: open, decide by Sep 30, 11:30 ET (in 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: open, decide by Sep 30, 14:00 ET (in 6 h).\n[closed] Closed so far: 37 (31 decided on time, 6 missed).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-e34125087a32"
+   ],
+   "latency_s": 1.73,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-DATA-032",
+   "lang": "en",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "data",
+   "tags": [
+    "demo_moment"
+   ],
+   "turns": [],
+   "question": "Which boil-water notices are still in force?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[DC-D3-PS17-CEDARFALL-BWA] DC-D3-PS17-CEDARFALL-BWA: decided on time.\n[DC-D3-PS23-LAURELSPUR-BWA] DC-D3-PS23-LAURELSPUR-BWA: decided on time.\n[more] It also depends on 3 more decisions: 3 decided on time.",
+   "links": [
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS38-COPPERLEAF-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-CEDARFALL-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     }
+    ],
+    "path": "m2",
+    "photos": [],
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS38-COPPERLEAF-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Copperleaf zone"
+     },
+     {
+      "id": "DC-D3-PS17-CEDARFALL-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Cedarfall zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-PS38-COPPERLEAF-BWA-LIFT] DC-D3-PS38-COPPERLEAF-BWA-LIFT: open, decide by Sep 30, 17:41 ET (in 9 h 41 m).\n[DC-D3-PS17-CEDARFALL-BWA] DC-D3-PS17-CEDARFALL-BWA: decided on time.\n[DC-D3-PS23-LAURELSPUR-BWA] DC-D3-PS23-LAURELSPUR-BWA: decided on time.\n[more] It also depends on 3 more decisions: 3 decided on time.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-0b7dd120d2de"
+   ],
+   "latency_s": 15.11,
+   "usd": 0.03675,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-FUP-007",
+   "lang": "en",
+   "persona": "plan_etr_01",
+   "moment": "notices-lifted",
+   "page": "forecast",
+   "klass": "followup",
+   "tags": [],
+   "turns": [
+    "Should the published ETR be revised?"
+   ],
+   "question": "Why?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "ETR",
+     "DOM 14.206",
+     "revis"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Answer from platform data. The AI is not available right now.\n[DC-D4-ETR-GLOBAL] DC-D4-ETR-GLOBAL: decided on time.",
+   "links": [
+    {
+     "page": "map",
+     "href": "/map"
+    },
+    {
+     "page": "forecast",
+     "href": "/forecast"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    },
+    {
+     "page": "health",
+     "href": "/health"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D4-ETR-GLOBAL"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [
+    "The evidence does not show a revision is due, because it holds nothing newer than the published estimate to compare against. The published global ETR was issued at Sep 28, 13:30 ET, with a median restoration estimate of 79.4 h. DOM 14.206 calls for a revision when the median moves beyond its set margin; smaller moves are logged, not released. [1] You would propose a revision on F-DOM-121, and it needs the Incident Commander and the Duty Manager to sign. [2][3]\n\nSources:\n[1] DOM 14.206 Rev K, Revision Summary; 1.0 PURPOSE; 6.0 PROCEDURE, pp. 1-3: \"6.4.2 Revise a published ETR when the P50 moves by more than 12 h.6.4.3 A move of 12 h or less is logged but not released.\"\n[2] DOM 14.206 Rev K, Revision Summary; 1.0 PURPOSE; 6.0 PROCEDURE, pp. 1-3: \"6.2.3 The ETR Specialist proposes the global ETR on F-DOM-121 with the model inputs attached.\"\n[3] DOM 14.206 Rev K, Revision Summary; 1.0 PURPOSE; 6.0 PROCEDURE, pp. 1-3: \"6.4.4 Revised ETRs need the same approvals as in 6.2.4.\""
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/map",
+      "kind": "page",
+      "label": "Map page",
+      "page": "map"
+     },
+     {
+      "href": "/forecast",
+      "kind": "page",
+      "label": "Forecast page",
+      "page": "forecast"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Crews page",
+      "page": "crews"
+     },
+     {
+      "href": "/health",
+      "kind": "page",
+      "label": "System health page",
+      "page": "health"
+     }
+    ],
+    "path": "m2",
+    "photos": [],
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D4-ETR-GLOBAL",
+      "kind": "decision",
+      "label": "Publish the global estimated time of restoration (90 percent restored)"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Answer from platform data. The AI is not available right now.\n[DC-D4-ETR-GLOBAL] DC-D4-ETR-GLOBAL: decided on time.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-bcf6763f10a1",
+    "run-c12163fd9eda"
+   ],
+   "latency_s": 23.86,
+   "usd": 0.10822,
+   "live_calls": 6
+  },
+  {
+   "id": "AB-NEAR-016",
+   "lang": "pl",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "near_miss",
+   "tags": [],
+   "turns": [],
+   "question": "Czy jest komunikat o gotowaniu wody dla Millpond?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater",
+     "Cedarfall"
+    ],
+    "mentions_all": [
+     "Millpond"
+    ],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "mentions_any"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": true,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": true,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Odpowiedź z danych platformy. AI jest teraz niedostępne.\n[DC-D2-CREWS-AIK] DC-D2-CREWS-AIK: podjęta w terminie.\n[DC-D2-EX-12-STAGE-MILLPOND] DC-D2-EX-12-STAGE-MILLPOND: podjęta w terminie.\n[DC-D3-EX-23-BULK-FUEL-YARDS] DC-D3-EX-23-BULK-FUEL-YARDS: podjęta w terminie.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-CREWS-AIK"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-EX-12-STAGE-MILLPOND"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-23-BULK-FUEL-YARDS"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Strona Decisions",
+      "page": "decisions"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Strona Water",
+      "page": "water"
+     }
+    ],
+    "path": "m2",
+    "photos": [],
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D2-CREWS-AIK",
+      "kind": "decision",
+      "label": "Pre-position crews at Sandhill and Millpond yards"
+     },
+     {
+      "id": "DC-D2-EX-12-STAGE-MILLPOND",
+      "kind": "decision",
+      "label": "Move three crews to Millpond yard for Augusta"
+     },
+     {
+      "id": "DC-D3-EX-23-BULK-FUEL-YARDS",
+      "kind": "decision",
+      "label": "Order bulk diesel for Sandhill and Millpond yards"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Odpowiedź z danych platformy. AI jest teraz niedostępne.\n[DC-D2-CREWS-AIK] DC-D2-CREWS-AIK: podjęta w terminie.\n[DC-D2-EX-12-STAGE-MILLPOND] DC-D2-EX-12-STAGE-MILLPOND: podjęta w terminie.\n[DC-D3-EX-23-BULK-FUEL-YARDS] DC-D3-EX-23-BULK-FUEL-YARDS: podjęta w terminie.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-3c9ac5e16e7d"
+   ],
+   "latency_s": 11.43,
+   "usd": 0.03593,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-OVR-023",
+   "lang": "pl",
+   "persona": "exec_01",
+   "moment": "notices-lifted",
+   "page": "brief",
+   "klass": "overview",
+   "tags": [
+    "no_diacritics",
+    "vague"
+   ],
+   "turns": [],
+   "question": "jak wyglada sytuacja teraz",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "komunikat",
+     "Laurelspur",
+     "Copperleaf",
+     "Deerwater"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Odpowiedź z danych platformy. AI jest teraz niedostępne.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: otwarta, decyzja do Sep 30, 10:30 ET (za 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: otwarta, decyzja do Sep 30, 11:30 ET (za 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: otwarta, decyzja do Sep 30, 14:00 ET (za 6 h).\n[DC-D3-EX-29-RESTORE-CLB-0817] DC-D3-EX-29-RESTORE-CLB-0817: otwarta, decyzja do Sep 30, 17:00 ET (za 9 h).\n[more] Kolejne otwarte decyzje (3) są na stronie Decisions. Zamknięte dotąd: 37 (31 w terminie, 6 przegapione).",
+   "links": [
+    {
+     "page": "brief",
+     "href": "/brief"
+    },
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-26-RELEASE-SHELTER-GENERATOR"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-31-RETURN-TANKER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-29-RESTORE-CLB-0817"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51",
+     "E52",
+     "E53",
+     "E54",
+     "E55",
+     "E56",
+     "E57",
+     "E58",
+     "E59",
+     "E60",
+     "E61",
+     "E62",
+     "E63",
+     "E64",
+     "E65",
+     "E66",
+     "E67",
+     "E68"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/brief",
+      "kind": "page",
+      "label": "Strona Briefing",
+      "page": "brief"
+     },
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Strona Decisions",
+      "page": "decisions"
+     },
+     {
+      "href": "/map",
+      "kind": "page",
+      "label": "Strona Map",
+      "page": "map"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Strona Crews",
+      "page": "crews"
+     }
+    ],
+    "path": "m2",
+    "photos": [],
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-EX-26-RELEASE-SHELTER-GENERATOR",
+      "kind": "decision",
+      "label": "Move Gannet from the closing shelter to the Swallowtail lift station"
+     },
+     {
+      "id": "DC-D3-EX-31-RETURN-TANKER",
+      "kind": "decision",
+      "label": "Return water tanker Sedge 4 from the Oxbow Run distribution point"
+     },
+     {
+      "id": "DC-D3-EX-29-RESTORE-CLB-0817",
+      "kind": "decision",
+      "label": "Restore feeder 0817 before the last Columbia County laterals"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Odpowiedź z danych platformy. AI jest teraz niedostępne.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: otwarta, decyzja do Sep 30, 10:30 ET (za 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: otwarta, decyzja do Sep 30, 11:30 ET (za 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: otwarta, decyzja do Sep 30, 14:00 ET (za 6 h).\n[DC-D3-EX-29-RESTORE-CLB-0817] DC-D3-EX-29-RESTORE-CLB-0817: otwarta, decyzja do Sep 30, 17:00 ET (za 9 h).\n[more] Kolejne otwarte decyzje (3) są na stronie Decisions. Zamknięte dotąd: 37 (31 w terminie, 6 przegapione).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-426b4192298b"
+   ],
+   "latency_s": 1.18,
+   "usd": 0,
+   "live_calls": 0
+  },
+  {
+   "id": "AB-ROLE-007",
+   "lang": "en",
+   "persona": "wtr_comp_01",
+   "moment": "notices-lifted",
+   "page": "water",
+   "klass": "role",
+   "tags": [],
+   "turns": [],
+   "question": "Do I need to sign anything as compliance officer?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Laurelspur",
+     "Copperleaf",
+     "lift",
+     "notice"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": false,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "m2",
+   "reason": "llm_unavailable",
+   "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: open, decide by Sep 30, 11:30 ET (in 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: open, decide by Sep 30, 14:00 ET (in 6 h).\n[DC-D3-EX-29-RESTORE-CLB-0817] DC-D3-EX-29-RESTORE-CLB-0817: open, decide by Sep 30, 17:00 ET (in 9 h).\n[more] 3 more open decisions are on the Decisions page. Closed so far: 37 (31 decided on time, 6 missed).",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "water",
+     "href": "/water"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA-LIFT"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS23-LAURELSPUR-BWA"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-26-RELEASE-SHELTER-GENERATOR"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-31-RETURN-TANKER"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-29-RESTORE-CLB-0817"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50",
+     "E51"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/water",
+      "kind": "page",
+      "label": "Water page",
+      "page": "water"
+     }
+    ],
+    "path": "m2",
+    "photos": [],
+    "reason": "llm_unavailable",
+    "references": [
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA-LIFT",
+      "kind": "decision",
+      "label": "Lift the boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-PS23-LAURELSPUR-BWA",
+      "kind": "decision",
+      "label": "Issue a boil water advisory for the Laurelspur zone"
+     },
+     {
+      "id": "DC-D3-EX-26-RELEASE-SHELTER-GENERATOR",
+      "kind": "decision",
+      "label": "Move Gannet from the closing shelter to the Swallowtail lift station"
+     },
+     {
+      "id": "DC-D3-EX-31-RETURN-TANKER",
+      "kind": "decision",
+      "label": "Return water tanker Sedge 4 from the Oxbow Run distribution point"
+     },
+     {
+      "id": "DC-D3-EX-29-RESTORE-CLB-0817",
+      "kind": "decision",
+      "label": "Restore feeder 0817 before the last Columbia County laterals"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "Answer from platform data. The AI is not available right now.\n[DC-D3-PS23-LAURELSPUR-BWA-LIFT] DC-D3-PS23-LAURELSPUR-BWA-LIFT: open, decide by Sep 30, 10:30 ET (in 2 h 30 m).\n[DC-D3-EX-26-RELEASE-SHELTER-GENERATOR] DC-D3-EX-26-RELEASE-SHELTER-GENERATOR: open, decide by Sep 30, 11:30 ET (in 3 h 30 m).\n[DC-D3-EX-31-RETURN-TANKER] DC-D3-EX-31-RETURN-TANKER: open, decide by Sep 30, 14:00 ET (in 6 h).\n[DC-D3-EX-29-RESTORE-CLB-0817] DC-D3-EX-29-RESTORE-CLB-0817: open, decide by Sep 30, 17:00 ET (in 9 h).\n[more] 3 more open decisions are on the Decisions page. Closed so far: 37 (31 decided on time, 6 missed).",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-80e38a70b8cb"
+   ],
+   "latency_s": 0.86,
+   "usd": 0,
+   "live_calls": 0
+  }
+ ]
+}

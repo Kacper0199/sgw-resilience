@@ -1,0 +1,94 @@
+# Ask bank, clarify: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-CLAR-001
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  question: What about the station?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+    - PS-38
+    - PS-52
+  judge: true
+- id: AB-CLAR-003
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  question: What's the status of the notice?
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+    - Cedarfall
+- id: AB-CLAR-007
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  question: Is the zone ok?
+  expect:
+    mentions_any:
+    - Cedarfall
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+- id: AB-CLAR-009
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  klass: clarify
+  tags:
+  - vague
+  question: Is it safe?
+  expect:
+    mentions_any:
+    - water
+    - power
+    - hospital
+    - PS-17
+    - storm
+- id: AB-CLAR-012
+  lang: en
+  persona: ops_dm_02
+  moment: notices-lifted
+  page: decisions
+  klass: clarify
+  tags:
+  - vague
+  question: Is it done?
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - Cedarfall
+    - decision
+- id: AB-CLAR-015
+  lang: pl
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  - no_diacritics
+  question: jaki jest status komunikatu
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+    - Cedarfall

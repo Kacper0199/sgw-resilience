@@ -1,0 +1,46 @@
+\begin{tikzpicture}[sgw,
+  w/.style={text width=#1,minimum width=0pt},
+  lbl/.style={sgw/note,fill=white,inner sep=1pt}]
+  % Training (offline)
+  \node[sgw/source,w=3.6cm] (eaglei) at (0,0) {EAGLE-I county outages\sgwsub{target: peak\_frac of customers}};
+  \node[sgw/source,w=3.6cm] (hurdat) at (4.3,0) {HURDAT2 storm tracks\sgwsub{Michael, Ian, Debby, Helene}};
+  \node[sgw/service,w=3.6cm] (loso) at (8.6,0) {Leave-one-storm-out\sgwsub{serving fold a2-excl-helene}\sgwsub{trained on 3 storms}};
+  \node[sgw/core,w=12.2cm,minimum height=1.6cm,align=left] (a2) at (4.3,-2.05)
+    {A2 county model (LightGBM), features: peak\_gust\_ms, hours\_gust\_ge\_20, hours\_ts,\\[-1pt]
+     \mdseries min\_dist\_km, speed\_kmh\_closest, vmax\_ms\_closest, log\_customers\\[2pt]
+     \mdseries Mean: Tweedie (power 1.3), monotone in wind and distance\quad TreeSHAP drivers\\[-1pt]
+     \mdseries 7 quantiles 0.025 to 0.975, rearranged \quad CQR conformal 50/80/95\%, by wind band};
+  \sgwzone{train}{sgwNeutral}{(eaglei)(hurdat)(loso)(a2)}{Training, offline (backtest.py, model.py)}
+
+  % Per advisory
+  \node[sgw/source,w=3.6cm] (adv) at (0,-4.55) {NHC advisory in force\sgwsub{at the scenario clock}};
+  \node[sgw/service,w=12.2cm] (ens) at (4.3,-5.85) {A1 hazard ensemble: 40 members per advisory, wind series per county and asset\sgwsub{official track (member 0) left out of every distribution}};
+  \node[sgw/service,w=3.6cm,minimum height=1.55cm] (fan) at (0,-7.75) {County fan\sgwsub{mix of member CDFs}\sgwsub{risk = P(out $\geq$ 10\%)}};
+  \node[sgw/service,w=3.6cm,minimum height=1.55cm] (asset) at (4.3,-7.75) {Asset risk\sgwsub{P(section fails),}\sgwsub{mean over members, top 500}};
+  \node[sgw/service,w=3.6cm,minimum height=1.55cm] (share) at (8.6,-7.75) {No-regret share\sgwsub{members with}\sgwsub{P(PS-17 loss) $\geq$ 0.3}};
+  \sgwzone{tick}{sgwSevAdvisoryFill}{(adv)(ens)(fan)(asset)(share)}{Each advisory (forecast.py advisory\_risk)}
+
+  % Outputs
+  \node[sgw/store,w=3.6cm] (snap) at (0,-10.75) {Risk snapshot\sgwsub{forecast rows, plan diff}};
+  \node[sgw/decision,w=3.6cm,minimum height=1.3cm] (clock) at (8.6,-10.75) {Decision clocks\sgwsub{P10/P50/P90 decide-by}\sgwsub{decide now or wait}};
+  \node[sgw/box,w=3.6cm,minimum height=1.3cm] (event) at (4.3,-10.75) {RiskSnapshot\-Published\sgwsub{event via outbox}};
+  \node[sgw/person,w=3.6cm] (screens) at (0,-12.75) {Forecast tab, map};
+  \node[sgw/person,w=3.6cm] (queue) at (8.6,-12.75) {Decision queue};
+  \begin{pgfonlayer}{background}\node[sgw/zone=sgwOkFill,fit=(snap)(clock)(event)(screens)(queue)] (out) {};\end{pgfonlayer}
+  \node[sgw/zone title,anchor=south] at ([xshift=-2mm,yshift=1pt]out.north) {Outputs (publisher.py, clocks/service.py)};
+
+  \draw[sgw/flow] (eaglei) -- (eaglei |- a2.north);
+  \draw[sgw/flow] (hurdat) -- (hurdat |- a2.north);
+  \draw[sgw/flow] (loso) -- (loso |- a2.north);
+  \draw[sgw/flow] (adv) -- (adv |- ens.north);
+  \draw[sgw/flow] (a2.south) -- node[lbl,right=2pt,pos=0.3] {serving model, run once per member} (a2.south |- ens.north);
+  \draw[sgw/flow] (ens.south -| fan) -- (fan);
+  \draw[sgw/flow] (ens.south -| asset) -- (asset);
+  \draw[sgw/flow] (ens.south -| share) -- (share);
+  \draw[sgw/flow] (fan) -- (snap);
+  \draw[sgw/flow] (asset.south) -- ++(0,-0.18) -| ([xshift=6mm]snap.north);
+  \draw[sgw/flow] (share) -- (clock);
+  \draw[sgw/flow] (snap) -- (event);
+  \draw[sgw/flow] (snap) -- (screens);
+  \draw[sgw/flow] (clock) -- (queue);
+\end{tikzpicture}

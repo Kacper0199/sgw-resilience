@@ -1,0 +1,8 @@
+\ProvidesPackage{sgwfonts}[2026/11/23 SGW font selection: Charter body, Fira Sans for headings, captions and tables]
+\RequirePackage[T1]{fontenc}
+\RequirePackage{charter}
+\IfFileExists{FiraSans.sty}{\RequirePackage[scale=0.92,lining]{FiraSans}\def\sgwsansfamily{Fira Sans}}{\RequirePackage[scaled=0.9]{helvet}\def\sgwsansfamily{Helvetica}}
+\renewcommand{\familydefault}{\rmdefault}
+\def\sgwfontfamily{Charter with \sgwsansfamily}
+\PackageInfo{sgwfonts}{font family: \sgwfontfamily}
+\typeout{SGW-FONT: \sgwfontfamily}

@@ -1,0 +1,88 @@
+# Generator family A (build and train). Family B (held out, WP-15) lives in family_b.yaml and is never read
+# by family-A runs. Each parameter: value (or `number`, a key of data/numbers/numbers.yaml), unit, label
+# (F sourced, C computed, A assumption, I inference), source. Every output of these parameters is synthetic.
+family: A
+version: 1
+params:
+  wind.holland_b: {value: 1.5, unit: "-", label: A, source: "R02 hazard-interdependency 9.7 (B = 1.5 in the Helene wind-to-outage calibration)"}
+  wind.inner_exponent: {value: 0.5, unit: "-", label: F, source: "Holland, Belanger and Fritz 2010, Mon. Wea. Rev. 138:4393 (x = 0.5 inside the RMW)"}
+  wind.r34_fallback_rmw_multiple: {value: 1.5, unit: "-", label: A, source: "used only where a HURDAT2 34-kt quadrant radius is 0"}
+  wind.r34_extent_factor: {value: 0.85, unit: "-", label: A, source: "HURDAT2 34-kt radii are maximum extents per quadrant; mean extent taken as 0.85x (WP-06 review fix, R08)"}
+  wind.taper_start_r34: {value: 1.5, unit: "R34", label: A, source: "outer taper start (WP-06 review fix, R08)"}
+  wind.taper_end_r34: {value: 2.5, unit: "R34", label: A, source: "no storm wind beyond this multiple of R34"}
+  wind.gust_factor: {value: 1.49, unit: "-", label: F, source: "WMO 2010 Table 1.1 in-land 3-s/60-s; planner-handoff s3 Gust factors"}
+  wind.site_gust_sigma: {value: 0.08, unit: "log", label: A, source: "R02 hazard-interdependency 3.1 and 7.5"}
+  wind.step_min: {value: 15, unit: "min", label: A, source: "R02 7.2 hazard step 10 to 15 min near the gust front"}
+  forecast.cone_lead_h: {value: [0, 12, 24, 36, 48, 60, 72, 96, 120], unit: "h", label: F, source: "NHC 2025 Atlantic cone leads (R05 synthetic-params G10)"}
+  forecast.cone_radius_nmi: {value: [0, 26, 39, 52, 67, 83, 100, 142, 213], unit: "n mi", label: F, source: "NHC 2025 Atlantic cone two-thirds radii (R05 G10)"}
+  forecast.cone_to_sigma: {value: 1.48, unit: "-", label: C, source: "sqrt(2 ln 3): two-thirds of Rayleigh errors inside the cone (R05 G10)"}
+  forecast.lead_ar1_rho_per_12h: {value: 0.8, unit: "-", label: A, source: "R05 G10"}
+  forecast.intensity_sigma_kt: {value: 10.0, unit: "kt", label: A, source: "R05 G10 (NHC 2024 verification intensity errors 6 to 11 kt at 24-48 h)"}
+  forecast.members: {value: 40, unit: "members", label: A, source: "WP-06 brief 20-50; R02 7.5 default 50 cut for fixture size"}
+  forecast.horizon_h: {value: 96, unit: "h", label: A, source: "covers issue to footprint wind for every advisory in the window"}
+  fragility.median_gust_ms: {number: fragility_median_gust_ms, unit: "m/s", label: C, source: "numbers.yaml (VD-13/14; HZ 9.7)"}
+  fragility.beta: {value: 0.4, unit: "log", label: A, source: "planner-handoff s3 Fragility (beta about 0.4)"}
+  fragility.county_effect_sigma: {value: 0.25, unit: "log", label: A, source: "R02 7.5 cell fragility effect"}
+  fragility.feeder_effect_sigma: {value: 0.15, unit: "log", label: A, source: "R02 oss-analogs 3.1 step 4 (area random effect)"}
+  fragility.age_points_years: {value: [10, 30, 50], unit: "years", label: F, source: "Bjarnadottir southern pine poles via R02 oss-analogs 3.2"}
+  fragility.age_median_ratio: {value: [1.19, 1.0, 0.805], unit: "-", label: I, source: "Bjarnadottir medians 50.0 / 42.0 / 33.8 m/s normalised at 30 years (R02 oss-analogs 3.2)"}
+  fragility.veg_median_reduction: {value: 0.15, unit: "-", label: A, source: "dense right-of-way lowers the median by up to 15 percent; R02 3.3 tree multipliers 0.85 to 1.15"}
+  fragility.capacity_floor_gust_ms: {value: 20.0, unit: "m/s", label: A, source: "storm-curve domain of validity: below about 20 m/s gust, outages are blue-sky background (not modelled)"}
+  fragility.ds_median_multipliers: {value: [1.0, 1.3, 1.7, 2.2], unit: "-", label: A, source: "slight, moderate, extensive, complete medians relative to failure (Hazus-style ordered states, R02 oss-analogs 3.1 step 3)"}
+  network.customers_per_feeder: {value: 1900, unit: "customers", label: A, source: "typical 12 kV distribution feeder 1,500 to 2,500 customers"}
+  network.feeders_per_substation: {value: 6, unit: "feeders", label: A, source: "WP-06 assumption"}
+  network.sections_per_feeder: {value: 4, unit: "sections", label: A, source: "breaker zone plus three recloser zones"}
+  network.section_dirichlet_alpha: {value: 2.0, unit: "-", label: A, source: "WP-06 assumption"}
+  network.feeder_jitter_deg: {value: 0.15, unit: "deg", label: A, source: "feeder centroid spread around the county bbox midpoint"}
+  network.pole_age_range_years: {value: [12, 55], unit: "years", label: A, source: "WP-06 assumption"}
+  network.veg_beta_ab: {value: [2.0, 2.0], unit: "-", label: A, source: "WP-06 assumption"}
+  network.ami_beta_sc: {value: [88, 12], unit: "-", label: A, source: "R05 G8: SC AMI share 88.4 percent (EIA-861 2024)"}
+  network.ami_beta_ga: {value: [92, 8], unit: "-", label: A, source: "R05 G8: GA AMI share 92.4 percent (EIA-861 2024)"}
+  restoration.hazus_days_mean: {value: [0.3, 1.0, 3.0, 7.0], unit: "days", label: F, source: "Hazus Earthquake 6.1 Table 8-1 distribution circuits (R02 oss-analogs 3.4)"}
+  restoration.hazus_days_sigma: {value: [0.2, 0.5, 1.5, 3.0], unit: "days", label: F, source: "Hazus Earthquake 6.1 Table 8-1 distribution circuits (R02 oss-analogs 3.4)"}
+  restoration.repair_scale: {value: 0.251, unit: "-", label: C, source: "uv run sgw data calibrate --scenario helene (bisection, 9 steps): county t50 median 35.5 h vs 35.5 h target (numbers.yaml helene_restoration_t50_hours); refit after the R34 mean-extent fix"}
+  restoration.access_tree_median_gust_ms: {value: 62.0, unit: "m/s", label: A, source: "R02 hazard-interdependency 3.3 tree failure median (anchored on Isabel 2003), times the scenario soil multiplier"}
+  restoration.access_tree_beta: {value: 0.35, unit: "log", label: A, source: "R02 hazard-interdependency 3.3"}
+  restoration.access_clearance_median_h: {value: 8.0, unit: "h", label: A, source: "R05 synthetic-params G4 debris clearance lognormal median 8 h"}
+  restoration.access_clearance_sigma: {value: 0.8, unit: "log", label: A, source: "R05 synthetic-params G4"}
+  restoration.min_repair_h: {value: 0.5, unit: "h", label: A, source: "WP-06 assumption"}
+  restoration.bucket_limit_sustained_ms: {value: 13.4, unit: "m/s", label: A, source: "30 mph aerial-lift wind limit used in storm SOPs"}
+  restoration.travel_kmh: {value: 50.0, unit: "km/h", label: A, source: "R05 G13 convoy speed"}
+  restoration.internal_personnel_per_1000_customers: {value: 1.0, unit: "persons", label: A, source: "WP-06 assumption"}
+  restoration.personnel_per_1000_outages: {value: 13.3, unit: "persons", label: C, source: "planner-handoff s3 Crews (Georgia Power Helene ratio)"}
+  restoration.internal_group_headcount: {value: 24, unit: "persons", label: A, source: "helene_micro crew groups"}
+  restoration.mutual_aid_group_headcount: {value: 40, unit: "persons", label: A, source: "helene_micro CRW-MA-TALON-11; handoff s3 crew groups of about 10 crews"}
+  restoration.mutual_aid_median_h: {number: mutual_aid_arrival_median_hours, unit: "h", label: A, source: "numbers.yaml (SP G13)"}
+  restoration.mutual_aid_sigma: {value: 0.5, unit: "log", label: A, source: "planner-handoff s3 Mutual-aid arrival"}
+  water.floor_psi: {number: sc_pressure_floor_psi, unit: "psi", label: F, source: "numbers.yaml SC R.61-58.7.E(7)"}
+  water.standpipe_diameter_ft: {value: 20.0, unit: "ft", label: A, source: "WP-06 assumption"}
+  water.level_full_ft: {value: 124.0, unit: "ft", label: A, source: "WP-06 assumption (62 psi at full level, helene_micro)"}
+  water.empty_residual_psi: {value: 8.0, unit: "psi", label: A, source: "helene_micro residual pressure"}
+  water.avg_demand_mgd: {value: 1.6, unit: "MGD", label: A, source: "WP-06 assumption (booster zone with a hospital)"}
+  water.pump_capacity_mgd: {value: 3.0, unit: "MGD", label: A, source: "WP-06 assumption"}
+  water.storm_leak_multiplier: {value: 1.3, unit: "-", label: A, source: "R02 5.4 leakage 1.1 to 2.0 after hurricanes"}
+  water.diurnal_factor: {value: [0.62, 0.58, 0.56, 0.56, 0.6, 0.75, 1.05, 1.3, 1.32, 1.25, 1.18, 1.15, 1.12, 1.1, 1.08, 1.08, 1.1, 1.2, 1.32, 1.3, 1.2, 1.02, 0.85, 0.72], unit: "-", label: A, source: "residential diurnal curve, local hour 0-23"}
+  water.pressure_noise_psi: {value: 0.3, unit: "psi", label: A, source: "R02 7.5 pressure +-1 psi"}
+  water.level_noise_ft: {value: 0.4, unit: "ft", label: A, source: "R02 7.5 tank +-2 percent"}
+  water.hospital_pressure_offset_psi: {value: 4.0, unit: "psi", label: A, source: "hospital service node 9 ft above the PS-17 sensor"}
+  water.low_pressure_alarm_psi: {value: 40.0, unit: "psi", label: A, source: "WP-06 assumption"}
+  generator.burn_coeff: {value: 0.07, unit: "gal/kWh", label: F, source: "planner-handoff s3 Generators: 0.07*kW*(0.25+0.75*LF) gal/h"}
+  generator.load_fraction: {value: 0.7, unit: "-", label: A, source: "planner-handoff s3 Generators (tank 5 days at 70 percent)"}
+  generator.portable_tank_gal: {value: 1000.0, unit: "gal", label: A, source: "trailer belly tank"}
+  generator.onsite_kw: {value: 350.0, unit: "kW", label: A, source: "R05 3.2 pump station 150 to 1,000 kW"}
+  generator.fail_to_start_good: {value: 0.0013, unit: "-", label: F, source: "planner-handoff s3 Generators (Marqusee et al. 2020)"}
+  generator.run_mttf_good_h: {value: 1662.0, unit: "h", label: F, source: "planner-handoff s3 Generators"}
+  generator.hookup_lead_min: {value: 150, unit: "min", label: A, source: "helene_micro PS17_LEAD_MIN (SOP-WTR-4.2, synthetic)"}
+  generator.ats_delay_s: {value: 30, unit: "s", label: A, source: "R05 3.2 ATS 10 to 60 s"}
+  fuel.truck_lead_min: {value: 90, unit: "min", label: A, source: "WP-06 assumption (load and drive)"}
+  fuel.refuel_trigger_frac: {value: 0.25, unit: "-", label: A, source: "R05 3.2 refuel trigger 25 percent"}
+  clocks.crews_lead_min: {value: 300, unit: "min", label: A, source: "helene_micro CREWS_LEAD_MIN (SOP-ELE-2.1, synthetic)"}
+  clocks.pressure_restart_lead_min: {value: 30, unit: "min", label: A, source: "WP-06 assumption: pump restart and refill above the floor"}
+  clocks.hospital_tanker_lead_min: {value: 120, unit: "min", label: A, source: "WP-06 assumption: potable-water tanker to the hospital"}
+  clocks.hospital_storage_h: {value: 6.0, unit: "h", label: A, source: "WP-06 assumption: hospital onsite storage after the zone floor"}
+  clocks.material_loss_p: {value: 0.1, unit: "-", label: A, source: "risk tolerance for a critical facility: PS-17 counts as exposed from the first time a member gives P(power loss) >= 0.1"}
+  clocks.no_regret_member_p_loss: {value: 0.3, unit: "-", label: A, source: "reference rule: acting now is not regretted in a member when P(PS-17 power loss) >= 0.3"}
+  telemetry.latency_s: {value: {nws-alerts: 30, nhc-advisory-synthetic: 30, oms: 120, scada-electric: 30, scada-water: 30, ami-headend: 90, fsm-crews: 300, eam: 600, lims: 3600, gis-trace: 30}, unit: "s", label: A, source: "within planner-handoff s3 Freshness bounds"}
+  telemetry.ami_last_gasp_lost: {value: 0.1, unit: "-", label: A, source: "R05 G8: 5 to 15 percent of last gasps lost"}
+  telemetry.evidence_shared_draw_rho: {value: 0.3, unit: "-", label: A, source: "OSR dependence dial (DC-15); family B uses 0.7"}
+  telemetry.meters_per_section: {value: 4, unit: "meters", label: A, source: "fixture-size sample of AMI meters per section"}

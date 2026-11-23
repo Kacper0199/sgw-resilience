@@ -1,0 +1,24 @@
+# R27 P1 dev set for the team nodes (builders may read and tune on it; the held-out set is P5's evals/ask/).
+# plan: gold workers; a plan passes when it holds every gold worker and at most one extra.
+# workers: required ids in the checked worker text; policy items also need a citation.
+as_of: "2024-09-26T15:05:00Z"
+plan:
+  - {id: PL-01, question: "What does the latest advisory mean for PS-17's deadline?", gold: [water]}
+  - {id: PL-02, question: "Which decisions keep Tallowbranch hospital supplied with water?", gold: [water]}
+  - {id: PL-03, question: "Which of our Aiken pump stations have their own generator?", gold: [water]}
+  - {id: PL-04, question: "When do I have to revise a global ETR that is already out?", gold: [policy]}
+  - {id: PL-05, question: "Which crews are staged at the Sandhill yard and when must we decide on them?", gold: [grid]}
+  - {id: PL-06, question: "Is FDR-AIK-2207 out, and how long can PS-17 run without it?", gold: [grid, water]}
+  - {id: PL-07, question: "PS-17 pressure is falling: is the reading real, and do we need a crew there before landfall?", gold: [water, data_quality, grid]}
+  - {id: PL-08, question: "Who approves a boil-water notice, and is one due for the Cedarfall zone?", gold: [policy, water]}
+  - {id: PL-09, question: "How many customers in Aiken will be out of power tomorrow?", gold: [forecast]}
+  - {id: PL-10, question: "Can we trust the SCADA feed from PS-23 right now?", gold: [data_quality]}
+  - {id: PL-11, question: "What does the mutual-aid contract say about lodging for crews?", gold: [policy]}
+  - {id: PL-12, question: "Is this storm happening today?", gold: [forecast]}
+workers:
+  - {id: WK-W1, worker: water, task: "PS-17 deadline under the latest advisory: decide now or wait?", entity_ids: [PS-17], required: [DC-D3-PS17-POWER]}
+  - {id: WK-W2, worker: water, task: "Which decisions protect the water supply to Tallowbranch hospital?", entity_ids: [], required: [DC-D3-HSP-TALLOWBRANCH-WATER]}
+  - {id: WK-W3, worker: water, task: "Which Aiken pump stations have an onsite generator?", entity_ids: [], required: [GEN-PS38-COPPERLEAF, GEN-PS52-DEERWATER]}
+  - {id: WK-P1, worker: policy, task: "When must a published global ETR be revised?", entity_ids: [], required: [], cite: true}
+  - {id: WK-P2, worker: policy, task: "Who approves the release of a global ETR?", entity_ids: [], required: [], cite: true}
+  - {id: WK-P3, worker: policy, task: "What must be recorded for a diesel delivery to a pump station generator?", entity_ids: [], required: [], cite: true}

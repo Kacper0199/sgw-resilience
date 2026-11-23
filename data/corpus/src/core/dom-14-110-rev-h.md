@@ -1,0 +1,142 @@
+---
+doc_id: "DOM 14.110"
+legacy_id: "DSP-31"
+title: "Damage Assessment and Patrol"
+family: sop
+layout: controlled
+owner_function: operations
+sme: "Dukes, Merritt A."
+revision: "H"
+effective: 2024-03-18
+supersedes: "DOM 14.110 Rev G (eff. 2022-03-07)"
+next_review: 2025-03-31
+approvals:
+  - {function: operations, position: "Director, Distribution Operations", name: "Thibodeaux, Marcus R.", date: 2024-03-11}
+  - {function: planning, position: "Manager, Storm Planning", name: "Okonkwo, Adaeze N.", date: 2024-03-11}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D2, D4]
+states: [SC, GA]
+changes:
+  - {rev: "H", date: 2024-03-18, section: "6.5", change: "Photo review queue ordered by image-model damage score; person confirms every damage state."}
+  - {rev: "H", date: 2024-03-18, section: "4.0", change: "Damage states aligned to slight, moderate, extensive, complete."}
+  - {rev: "H", date: 2024-03-18, section: "7.0", change: "No Changes."}
+---
+# 1.0 PURPOSE
+
+This procedure sets how SGW patrols the electric system after a storm and records damage. Patrol results feed
+crew assignment and the ETR model (DOM 14.206).
+
+# 2.0 SCOPE
+
+Applies to overhead and underground distribution, substations and transmission lines in SC and GA after any
+Event Type 1, 2 or 3 event. Does not apply to generation plants or to water facilities, which are inspected
+under the WDS manual.
+
+# 3.0 RESPONSIBILITIES
+
+| Position | Responsibility |
+|---|---|
+| Damage Assessment Coordinator (Planning Section) | Assigns patrol areas; tracks percent of circuits patrolled by region |
+| Damage assessor | Patrols, records damage on F-DOM-118, uploads photos |
+| Photo reviewer (Planning Section) | Reviews queued photos; confirms or corrects the damage state |
+| Duty Manager (Electric Operations) | Sets patrol start after the all-clear; releases crews to work found damage |
+| Transmission Branch Director | Directs transmission and substation patrols |
+
+# 4.0 DEFINITIONS
+
+Damage state: the condition of a damaged asset, recorded as slight, moderate, extensive or complete.
+
+| Damage state | Pole or structure | Conductor | Typical crew action |
+|---|---|---|---|
+| Slight | Leaning under 15 degrees | Sagged, intact | Re-tension, re-fuse |
+| Moderate | Leaning 15 degrees or more; crossarm broken | One phase down | Repair in place |
+| Extensive | Broken pole | Two or more spans down | Pole replacement per DOM 14.180 |
+| Complete | Multiple poles down | Line section destroyed | Rebuild; temporary construction |
+
+Image-model damage score: a score from 0 to 100 that the photo triage model assigns to each uploaded photo.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 Aerial-lift (bucket) work stops when sustained wind exceeds 30 mph (13.4 m/s).
+
+5.2 Treat every downed conductor as energized. Make-safe follows DOM 14.120.
+
+5.3 Do not drive through water over a roadway. Report closures to Logistics on F-MAL-030.
+
+5.4 Patrol on foot where a vehicle cannot pass. Patrol in pairs after dark.
+
+CAUTION: Wind gusts may exceed the sustained value. The crew leader may stop bucket work below 30 mph.
+
+# 6.0 PROCEDURE
+
+## 6.1 Start of Patrol
+
+6.1.1 The Duty Manager orders patrol start after the all-clear.
+
+6.1.2 The Damage Assessment Coordinator issues patrol areas on the ICS 204.
+
+## 6.2 Patrol Order
+
+Patrol in this order:
+
+a. Transmission lines.
+b. Substations.
+c. Feeder trunks serving critical facilities (DOM 14.140 registry; DOM 14.215 Attachment A).
+d. Laterals.
+
+The order may change only on Duty Manager instruction, recorded on the ICS 214.
+
+## 6.3 Recording
+
+6.3.1 Record each damaged asset on F-DOM-118 with the asset id, location and damage state.
+
+6.3.2 Record the damage state as slight, moderate, extensive or complete.
+
+6.3.3 Take at least two photos per asset: one wide, one close.
+
+6.3.4 Upload records at least every 2 h, or when signal allows.
+
+## 6.4 Progress Reporting
+
+6.4.1 Report percent of circuits patrolled by region at each operational period.
+
+6.4.2 Notify the ETR Specialist when a region reaches 80 percent of circuits patrolled (DOM 14.206 section 6.3).
+
+## 6.5 Photo Review
+
+6.5.1 Damage-assessment photos are queued for review in order of the image-model damage score, highest first.
+
+6.5.2 A person confirms every damage state. The model score orders the queue only; it never sets a damage
+state.
+
+6.5.3 Where the reviewer disagrees with the assessor, the reviewer's state stands and the change is noted on
+F-DOM-118.
+
+6.5.4 Hold the queue at 400 photos or more per reviewer and call in relief reviewers.
+
+# 7.0 RECORDS
+
+F-DOM-118 Damage Assessment Record, retained 7 years with photos. ICS 214 logs per GEP 00.010 section 7.0.
+
+# 8.0 REFERENCES
+
+DOM 14.120, DOM 14.140, DOM 14.180, DOM 14.206, DOM 14.215, GEP 2H.01, TSO 06.110, F-MAL-030.
+
+<<PAGEBREAK>>
+# ATTACHMENT A - Assessor Kit
+
+| Item | Qty |
+|---|---|
+| Hot stick, 8 ft | 1 |
+| Reflective cones | 6 |
+| Tablet with F-DOM-118 app | 1 |
+| Spare battery pack | 2 |
+
+# ATTACHMENT B - Contacts
+
+| Position | Day | After hours |
+|---|---|---|
+| Damage Assessment Coordinator | Planning Section, EOC | Storm Planning on-call, ext. 3318 |
+| Duty Manager | Storm room desk 2 | Distribution Control Center, ext. 2262 |

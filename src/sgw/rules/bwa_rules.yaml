@@ -1,0 +1,130 @@
+# WP-24 boil-water rules: one entry per clause the engine applies. Each clause names its regulation or
+# guidance text and, where SGW's controlled procedure restates it, the SOP section (resolved against the corpus
+# revision in force at the decision time). Labels: F sourced (R04 state-rules s1, raw/documents/state-rules/),
+# A SGW policy or assumption. Pressure floors are not repeated here: they come from numbers.yaml through
+# sgw.models.water.floors. Rule parameters name their numbers.yaml key (values live there only).
+version: "1.0"
+clauses:
+  SC-P1:
+    state: SC
+    rule_id: rule.sc_service_pressure_normal
+    summary: "25 psi at every service connection under normal operating conditions"
+    citation: "S.C. Code Regs. R.61-58.7.E(7)"
+    sop: {doc_id: "WQC 07.120", section: "5.1"}
+    supports: ["25 psi", "service connections", "normal operation"]
+    label: F
+  SC-P2:
+    state: SC
+    rule_id: rule.sc_service_pressure_heavy_flow
+    summary: "20 psi at all service connections during unusually heavy flows (fire, flushing)"
+    citation: "S.C. Code Regs. R.61-58.7.E(7)"
+    sop: {doc_id: "WQC 07.120", section: "5.1"}
+    supports: ["20 psi", "heavy flow"]
+    label: F
+  SC-A1:
+    state: SC
+    rule_id: rule.sc_bwa_pressure_loss
+    summary: "a boil water advisory (precautionary) for loss of pressure in the distribution system or a significant portion of it"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), advisory situations"
+    sop: {doc_id: "WQC 07.120", section: "6.1.2"}
+    supports: ["Issue a BWN", "pressure at a service connection falls below"]
+    label: F
+  SC-A2:
+    state: SC
+    rule_id: rule.sc_bwa_pre_landfall
+    summary: "a precautionary boil water advisory prior to a hurricane making landfall, for a zone at risk of losing pressure"
+    citation: "SC DES, Boil Water Notices and Advisories (2024): advisory prior to a hurricane making landfall"
+    sop: null  # WQC 07.120 Rev C has no pre-landfall section; the DES guidance is the only source
+    label: F
+  SC-N1:
+    state: SC
+    rule_id: rule.sc_bwn_confirmed
+    summary: "a boil water notice when sampling confirms a threat (fecal-positive routine and repeat sample)"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), notice situations"
+    label: F
+  SC-C1:
+    state: SC
+    rule_id: rule.sc_bwa_regulator_notice
+    summary: "notify the Department immediately on issue and on repeal; forward a copy of each notice as soon as possible"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), communication with the Department (R.61-58)"
+    sop: {doc_id: "WQC 07.120", section: "6.2.1"}
+    supports: ["SCDES"]
+    label: F
+  SC-I1:
+    state: SC
+    rule_id: rule.sc_bwa_written_release
+    summary: "verbal notice may go first to critical customers and the county EMA; written notice within the release window"
+    citation: "SGW WQC 07.120 section 6.3.3"
+    sop: {doc_id: "WQC 07.120", section: "6.3.3"}
+    supports: ["verbal notice", "critical customers", "written notice within 4 h"]
+    label: F
+  SC-L1:
+    state: SC
+    rule_id: rule.sc_bwa_lift_pressure_loss
+    summary: "after a pressure loss: intense flushing once pressure is restored, then coliform samples across the area; repeal if coliform is absent"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), suggested actions after issuance"
+    sop: {doc_id: "WQC 07.120", section: "6.4.1"}
+    supports: ["Restore pressure", "Flush"]
+    label: F
+  SC-L2:
+    state: SC
+    rule_id: rule.sc_bwn_lift_two_sets
+    summary: "a notice after positive samples lifts when at least two sample sets taken at least 24 hours apart show no coliform"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), suggested actions after issuance"
+    label: F
+  SC-L3:
+    state: SC
+    rule_id: rule.sc_bwa_lift_pre_hurricane
+    summary: "a pre-hurricane advisory is repealed if the system did not lose pressure and water quality was maintained; otherwise the pressure-loss actions apply"
+    citation: "SC DES, Boil Water Notices and Advisories (2024), hurricane advisories"
+    label: F
+  SC-L4:
+    state: SC
+    rule_id: rule.sc_bwa_lift_concurrence
+    summary: "lift only when all total coliform results are negative and SCDES agrees"
+    citation: "SGW WQC 07.120 section 6.4.3"
+    sop: {doc_id: "WQC 07.120", section: "6.4.3"}
+    supports: ["total coliform results are negative", "SCDES agrees"]
+    label: F
+  GA-P1:
+    state: GA
+    rule_id: rule.ga_bwa_pressure_loss
+    summary: "20 psi at each service connection under all conditions of flow; a boil water advisory when pressure falls below it or integrity is lost"
+    citation: "Ga. Comp. R. & Regs. 391-3-5-.10"
+    sop: {doc_id: "WQC 07.114", section: "6.1.2"}
+    supports: ["below 20 psi"]
+    label: F
+  GA-C1:
+    state: GA
+    rule_id: rule.ga_bwa_regulator_notice
+    summary: "notify the EPD district inspector before the public notice where possible; written copy to the district office within the copy window"
+    citation: "SGW WQC 07.114 sections 6.2.1 and 6.2.4"
+    sop: {doc_id: "WQC 07.114", section: "6.2.4"}
+    supports: ["written notice copy", "within 24 h"]
+    label: F
+  GA-I1:
+    state: GA
+    rule_id: rule.ga_bwa_release
+    summary: "release the approved notice within the release window; phone hospitals, dialysis centres, nursing homes and schools directly"
+    citation: "SGW WQC 07.114 sections 6.3.3 and 6.3.4"
+    sop: {doc_id: "WQC 07.114", section: "6.3.3"}
+    supports: ["within 2 h of the decision"]
+    label: F
+  GA-L1:
+    state: GA
+    rule_id: rule.ga_bwa_rescission
+    summary: "rescission: integrity restored and positive pressure held, mains flushed, samples from at least half of the coliform sites (or the 15 to 20 samples the EPD inspector accepts), all total coliform negative, sampled no sooner than 24 hours after flushing, EPD concurrence"
+    citation: "GA EPD boil water protocol (A-085); SGW WQC 07.114 sections 6.4.1 to 6.4.4"
+    sop: {doc_id: "WQC 07.114", section: "6.4.1"}
+    supports: ["50 percent", "15 to 20 samples", "total coliform results negative", "flushed"]
+    label: A
+params:
+  sc_lift_sample_set_gap_h: {number: sc_bwn_lift_sample_set_gap_h, clause: SC-L2}
+  sc_lift_sample_sets: {number: sc_bwn_lift_sample_sets, clause: SC-L2}
+  sc_written_notice_h: {number: sc_bwa_written_notice_h, clause: SC-I1}
+  ga_rescission_site_share: {number: ga_bwa_rescission_site_share, clause: GA-L1}
+  ga_rescission_samples_min: {number: ga_bwa_rescission_samples_min, clause: GA-L1}
+  ga_rescission_samples_max: {number: ga_bwa_rescission_samples_max, clause: GA-L1}
+  ga_sampling_after_flush_h: {number: ga_bwa_sampling_after_flush_h, clause: GA-L1}
+  ga_release_h: {number: ga_bwa_release_h, clause: GA-I1}
+  ga_written_copy_h: {number: ga_bwa_written_copy_h, clause: GA-C1}

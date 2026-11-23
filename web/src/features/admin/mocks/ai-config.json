@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "source": "src/sgw/agent/llm_nodes.yaml",
+  "nodes": [
+    {
+      "node": "narrate",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2000,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/node_eval_v3.json",
+        "metric": "cases_passed_share_provisional_n2",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "draft_rationale",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 1500,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/node_eval_v3.json",
+        "metric": "cases_passed_share_provisional_n2",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "rag_chunk_header",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 3000,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "answer_sop",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 1500,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": true,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": null
+    },
+    {
+      "node": "extract_note",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 3000,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/wp21_extract_eval_v2.json",
+        "metric": "dev_items_passed_share_haiku_provisional_n13",
+        "value_ppm": 923077,
+        "passed": true
+      }
+    },
+    {
+      "node": "route_intent",
+      "model": "haiku",
+      "effort": "low",
+      "max_tokens": 1500,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/wp21_route_eval_v1.json",
+        "metric": "intent_correct_share_haiku_provisional_n30",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "investigate",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 4000,
+      "prompt_version": "v3",
+      "class_ceiling": "C1",
+      "citations": true,
+      "routes": ["R1"],
+      "allowed_tools": ["get_decision_case", "get_water_status", "get_forecast", "search_procedures"],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/wp21_copilot_eval_v3.json",
+        "metric": "dev_items_passed_share_provisional_n7",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "etr_brief",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2000,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/report_node_eval.json",
+        "metric": "cases_passed_share_provisional_n4",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "sitrep",
+      "model": "haiku",
+      "effort": "medium",
+      "max_tokens": 4000,
+      "prompt_version": "v2",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/report_node_eval.json",
+        "metric": "cases_passed_share_provisional_n4",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    },
+    {
+      "node": "after_action_summary",
+      "model": "sonnet",
+      "effort": "medium",
+      "max_tokens": 2500,
+      "prompt_version": "v1",
+      "class_ceiling": "C1",
+      "citations": false,
+      "routes": ["R1"],
+      "allowed_tools": [],
+      "tool_types": [],
+      "eval_result": {
+        "report": "data/artefacts/evals/report_node_eval.json",
+        "metric": "cases_passed_share_provisional_n4",
+        "value_ppm": 1000000,
+        "passed": true
+      }
+    }
+  ]
+}

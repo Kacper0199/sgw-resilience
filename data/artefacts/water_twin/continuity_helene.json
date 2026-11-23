@@ -1,0 +1,168 @@
+{
+ "floor": {
+  "citation": "SC R.61-58.7.E(7) 25 psi normal operation",
+  "psi": 25.0,
+  "rule_id": "rule.sc_service_pressure_normal"
+ },
+ "label": "synthetic",
+ "model_id": "water_twin.station_survival_mc",
+ "ps17_hookup_curve": [
+  {
+   "hookup_after_loss_min": 0,
+   "mean_minutes_below_floor": 368.0,
+   "p_breach": 0.216
+  },
+  {
+   "hookup_after_loss_min": 60,
+   "mean_minutes_below_floor": 365.3,
+   "p_breach": 0.215
+  },
+  {
+   "hookup_after_loss_min": 120,
+   "mean_minutes_below_floor": 382.9,
+   "p_breach": 0.2165
+  },
+  {
+   "hookup_after_loss_min": 150,
+   "mean_minutes_below_floor": 434.4,
+   "p_breach": 0.255
+  },
+  {
+   "hookup_after_loss_min": 180,
+   "mean_minutes_below_floor": 528.1,
+   "p_breach": 0.4485
+  },
+  {
+   "hookup_after_loss_min": 240,
+   "mean_minutes_below_floor": 824.2,
+   "p_breach": 0.9765
+  },
+  {
+   "hookup_after_loss_min": 300,
+   "mean_minutes_below_floor": 1032.4,
+   "p_breach": 1.0
+  },
+  {
+   "hookup_after_loss_min": 360,
+   "mean_minutes_below_floor": 1071.5,
+   "p_breach": 1.0
+  }
+ ],
+ "samples": 2000,
+ "seed": 1913,
+ "stations": [
+  {
+   "as_of_utc": "2024-09-27T05:30:00Z",
+   "assumed_hookup_after_loss_min": 150.0,
+   "breach_after_loss_min_p10_p50_p90": [
+    135.0,
+    434.5,
+    1034.4
+   ],
+   "cause_share": {
+    "awaiting_hookup": 0.107,
+    "demand": 0.107,
+    "fail_to_start": 0.0055,
+    "run_failure": 0.0355
+   },
+   "floor_psi": 25.0,
+   "generator": "portable",
+   "grid_loss_utc": "2024-09-27T05:30:00Z",
+   "grid_restore_utc": "2024-09-28T02:29:28Z",
+   "horizon_h": 72.0,
+   "mean_deliveries": 0.0,
+   "mean_minutes_below_floor": 434.4,
+   "p_breach": 0.255,
+   "p_breach_se": 0.0097,
+   "pre_landfall_advisory_due_utc": "2024-09-27T03:10:00Z",
+   "realised_below_floor_utc_station_sensor": "2024-09-27T10:05:00Z",
+   "samples": 2000,
+   "station": "PS-17",
+   "tank_gal": 1000.0
+  },
+  {
+   "as_of_utc": "2024-09-27T06:00:00Z",
+   "assumed_hookup_after_loss_min": null,
+   "breach_after_loss_min_p10_p50_p90": [
+    163.0,
+    199.0,
+    237.0
+   ],
+   "cause_share": {
+    "no_backup": 1.0
+   },
+   "floor_psi": 25.0,
+   "generator": "none",
+   "grid_loss_utc": "2024-09-27T06:00:00Z",
+   "grid_restore_utc": "2024-09-27T23:18:21Z",
+   "horizon_h": 72.0,
+   "mean_deliveries": 0.0,
+   "mean_minutes_below_floor": 1290.8,
+   "p_breach": 1.0,
+   "p_breach_se": 0.0,
+   "pre_landfall_advisory_due_utc": "2024-09-27T03:10:00Z",
+   "realised_below_floor_utc_station_sensor": "2024-09-27T10:17:00Z",
+   "samples": 2000,
+   "station": "PS-23",
+   "tank_gal": 0.0
+  },
+  {
+   "as_of_utc": "2024-09-27T09:00:30Z",
+   "assumed_hookup_after_loss_min": null,
+   "breach_after_loss_min_p10_p50_p90": [
+    306.4,
+    825.0,
+    1281.0
+   ],
+   "cause_share": {
+    "demand": 0.1585,
+    "fail_to_start": 0.006,
+    "out_of_fuel": 0.0815,
+    "run_failure": 0.0555
+   },
+   "floor_psi": 25.0,
+   "generator": "onsite",
+   "grid_loss_utc": "2024-09-27T08:15:00Z",
+   "grid_restore_utc": "2024-09-28T12:46:22Z",
+   "horizon_h": 72.0,
+   "mean_deliveries": 0.918,
+   "mean_minutes_below_floor": 457.4,
+   "p_breach": 0.3015,
+   "p_breach_se": 0.0103,
+   "pre_landfall_advisory_due_utc": "2024-09-27T03:10:00Z",
+   "realised_below_floor_utc_station_sensor": "2024-09-28T05:38:00Z",
+   "samples": 2000,
+   "station": "PS-38",
+   "tank_gal": 343.0
+  },
+  {
+   "as_of_utc": "2024-09-27T09:00:30Z",
+   "assumed_hookup_after_loss_min": null,
+   "breach_after_loss_min_p10_p50_p90": [
+    245.0,
+    764.0,
+    1952.0
+   ],
+   "cause_share": {
+    "demand": 0.1645,
+    "fail_to_start": 0.0055,
+    "run_failure": 0.0875
+   },
+   "floor_psi": 25.0,
+   "generator": "onsite",
+   "grid_loss_utc": "2024-09-27T08:45:00Z",
+   "grid_restore_utc": "2024-09-29T09:18:14Z",
+   "horizon_h": 72.0,
+   "mean_deliveries": 0.0,
+   "mean_minutes_below_floor": 508.3,
+   "p_breach": 0.2575,
+   "p_breach_se": 0.0098,
+   "pre_landfall_advisory_due_utc": "2024-09-27T03:10:00Z",
+   "realised_below_floor_utc_station_sensor": "2024-09-28T16:45:00Z",
+   "samples": 2000,
+   "station": "PS-52",
+   "tank_gal": 2058.0
+  }
+ ],
+ "version": "1.2-synthetic"
+}

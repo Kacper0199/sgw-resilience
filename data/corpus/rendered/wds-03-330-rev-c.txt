@@ -1,0 +1,168 @@
+SGW  WATER DISTRIBUTION & SUPPLY MANUAL
+
+WDS 03.330 Rev C
+BPS-46 TANYARD BRANCH BOOSTER: STANDBY GENERATOR OPERATION
+
++----------------------------------------------------------------------------------------------+
+| Document: WDS 03.330 Rev C                                                                   |
+| Effective: 2023-04-17                                                                        |
+| Supersedes: WDS 03.330 Rev B (eff. 2020-09-14)                                               |
+| Owner: Water Distribution                                                                    |
+| Subject Matter Expert: Strom, Booker J.                                                      |
+| Periodic review due: 2024-03-31                                                              |
+| Classification: SGW Internal - Controlled                                                    |
+| Approved: Water Incident Lead; Manager, Water Distribution, Sistrunk, Odell M., 2023-04-10   |
+| Approved: Water Compliance Officer, Quattlebaum, Rhea D., 2023-04-11                         |
+| Applies to: GA systems                                                                       |
++----------------------------------------------------------------------------------------------+
+
+REVISION SUMMARY
+
++-----+------------+---------+-----------------------------------------------------------------+
+| Rev | Date       | Section | Change                                                          |
++=====+============+=========+=================================================================+
+| C   | 2023-04-17 | 6.3     | Manual bypass of the ATS added for controller failure; load     |
+|     |            |         | bank step removed from storm start.                             |
+| C   | 2023-04-17 | Att. A  | Run-time table updated after 2022 fuel tank recalibration       |
+|     |            |         | (usable volume 1,060 gal).                                      |
+| B   | 2020-09-14 | All     | First issue in WDS layout.                                      |
++-----+------------+---------+-----------------------------------------------------------------+
+
+1.0 PURPOSE
+
+This procedure sets how the onsite standby generator at BPS-46 Tanyard Branch Booster is
+started, loaded, watched and returned to standby when grid supply is lost.
+
+2.0 SCOPE
+
+Applies to BPS-46 Tanyard Branch Booster, Richmond district, Georgia. Does not apply to PS-17,
+which has no onsite generator (see WDS 03.318).
+
+3.0 RESPONSIBILITIES
+
+3.1 Water Incident Lead: directs station start-up and shutdown during declared events; approves
+    any manual transfer.
+
+3.2 Station Operator (Richmond pump crew): performs the steps in section 6 and keeps the run
+    log.
+
+3.3 Water Control Room Operator: watches station status, zone pressure and tank level on SCADA;
+    calls the Station Operator on any alarm.
+
+WDS 03.330 Rev C | SGW Internal - Controlled | Page 1 of 4
+
+SGW | WDS 03.330 BPS-46 Tanyard Branch Booster: Standby Generator Operation                Rev C
+
+3.4 Logistics Section Chief: arranges fuel on request under MAL 05.040.
+
+4.0 DEFINITIONS AND ABBREVIATIONS
+
+ATS: automatic transfer switch. GEN-BPS46-TANYARDBRANCH: 350 kW diesel standby generator, 480 V,
+sub-base tank. WZ-BPS46-TANYARDBRANCH: pressure zone served by BPS-46. TNK-BPS46-TANYARDBRANCH:
+0.5 MG elevated tank floating on the zone.
+
+5.0 PRECAUTIONS AND LIMITS
+
+5.1 The generator shall not run above 90 percent of nameplate (315 kW) for more than 2 h. Pump 3
+    shall stay locked out while on generator power.
+
+5.2 Do not open the enclosure doors with the unit running in winds above 40 mph.
+
+5.3 Georgia minimum pressure is 20 psi at all times (Ga. Comp. R. & Regs. 391-3-5-.10). Zone
+    pressure below that floor is handled per WDS 03.105.
+
+5.4 CAUTION: The ATS cabinet holds utility-side voltage even when the generator breaker is open.
+    Treat both sides as live.
+
+6.0 PROCEDURE
+
+6.1 Automatic start on loss of grid supply
+
+6.1.1 Confirm on SCADA that the ATS transferred within 15 s of utility loss.
+
+6.1.2 Confirm pumps 1 and 2 restarted on the lead-lag sequence. Allow 45 s stagger.
+
+6.1.3 Log start time, kW and fuel level on F-WDS-207.
+
+6.1.4 Notify the Water Incident Lead by phone. During business hours also notify the Richmond
+      district supervisor.
+
+6.1.5 Dispatch the Station Operator to site within 2 h to verify local readings.
+
+6.2 Run-time monitoring
+
+6.2.1 Read the fuel gauge and log kW, coolant temperature and oil pressure every 4 h on
+      F-WDS-207.
+
+6.2.2 Raise the refuel request at the tank level set in WDS 03.322. Use F-MAL-022.
+
+6.2.3 Compare remaining run time against vendor delivery time. If remaining run time is shorter,
+      ask Logistics for the SGW fuel truck first (MAL 05.040).
+
+6.2.4 Record any alarm, shutdown or restart with the time in 24-hour format.
+
+WDS 03.330 Rev C | SGW Internal - Controlled | Page 2 of 4
+
+SGW | WDS 03.330 BPS-46 Tanyard Branch Booster: Standby Generator Operation                Rev C
+
+6.3 Failure of automatic transfer
+
+NOTE: Use this subsection only on the Water Incident Lead's order.
+
+6.3.1 Confirm the generator is running at rated voltage and frequency.
+
+6.3.2 Place the ATS controller in OFF.
+
+6.3.3 Operate the manual bypass handle to EMERGENCY. Observe the position flag.
+
+6.3.4 Start pump 1 locally. Wait 60 s. Start pump 2.
+
+6.3.5 Report the manual transfer to the Water Control Room Operator and log it.
+
+6.4 Return to grid supply
+
+6.4.1 Wait until utility voltage has been stable for 30 min, or as the Water Incident Lead
+      directs.
+
+6.4.2 Allow the ATS to retransfer. If in bypass, reverse steps 6.3.3 and 6.3.2.
+
+6.4.3 Let the generator run unloaded for its 5 min cooldown.
+
+6.4.4 Log stop time and fuel level. Leave the unit in AUTO.
+
+7.0 RECORDS
+
+F-WDS-207 run log, retained 5 years. F-MAL-022 fuel requests are kept by Logistics.
+
+8.0 REFERENCES
+
+WDS 03.105; WDS 03.322; WDS 03.350; MAL 05.040; Ga. Comp. R. & Regs. 391-3-5-.10.
+
+ATTACHMENT A RUN-TIME TABLE
+
++-------------------------+------------------+----------------------------------+
+| Load (kW)               | Fuel use (gal/h) | Run time on 1,060 gal usable (h) |
++=========================+==================+==================================+
+| 175 (2 pumps, low head) | 12.7             | 83                               |
+| 262 (2 pumps, normal)   | 18.9             | 56                               |
+| 315 (90 percent limit)  | 22.4             | 47                               |
++-------------------------+------------------+----------------------------------+
+
+ATTACHMENT B CONTACTS
+
+WDS 03.330 Rev C | SGW Internal - Controlled | Page 3 of 4
+
+SGW | WDS 03.330 BPS-46 Tanyard Branch Booster: Standby Generator Operation                Rev C
+
++------------------------------+---------------------------+-----------------------------------+
+| Position                     | Day                       | After hours                       |
++==============================+===========================+===================================+
+| Water Incident Lead          | Water Distribution office | Water Control Room, ask for       |
+|                              |                           | on-call manager                   |
+| Richmond district supervisor | Millpond office           | Richmond on-call pager            |
+| Logistics Section Chief      | Supply Chain desk         | Storm Room logistics line         |
++------------------------------+---------------------------+-----------------------------------+
+
+Printed copies are uncontrolled. Confirm the current revision in DocCtl before use.
+
+WDS 03.330 Rev C | SGW Internal - Controlled | Page 4 of 4

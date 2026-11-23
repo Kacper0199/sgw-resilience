@@ -1,0 +1,70 @@
+---
+doc_id: "SR-HEL-24-04"
+title: "SGW Situation Report #4, Hurricane Helene, 2024-09-27 17:00 EDT"
+family: sitrep
+layout: record
+owner_function: planning
+sme: "Okonkwo, Adaeze N."
+effective: 2024-09-27
+classification: "SGW Internal - Controlled"
+trust: internal_free_text
+status: in_force
+decisions: [D3, D4]
+states: [SC, GA]
+---
+SGW RESTRICTED - OPERATIONS
+
+SGW Situation Report #4 | Friday, September 27, 2024 | 17:00 EDT
+Incident: SGW-INC-24-0031 "HELENE" | Event Type 1 | Activation Level 1
+DISTRIBUTION: EOC Command and General Staff; District Operations Managers; Water Branch; Corporate Communications; Compliance
+Prepared by: Planning Section, Situation Unit. Times are EDT unless marked Z (UTC).
+
+# EXECUTIVE SUMMARY
+
+As of 16:30, about 1,388,000 SGW electric customers are without power, down from the system peak of 1,612,400 at 09:15.
+As of 16:30, damage assessment has started on 61 percent of Aiken and Richmond district feeders; Edgefield and Barnwell assessment begins at first light Saturday.
+Water: pressure in the PS-17 Cedarfall zone fell below the 25 psi floor at 10:05Z after FDR-AIK-2207 tripped at 05:30Z.
+Portable generator MGEN-HALBERD-500 was dispatched to PS-17 at 15:45Z and running at 18:15Z; zone pressure is recovering.
+Tallow Branch hospital (HSP-AIK-TALLOWBRANCH) is on its own standby generator GEN-HSP-TALLOWBRANCH for power; its water supply depends on PS-17.
+No global ETR has been released. Planning Section targets a first range for Incident Commander review by 2024-09-28 12:00.
+
+# ELECTRIC
+
+| District | Customers out (as of 16:30) | Peak out | Feeders locked out | Transmission lines out |
+|---|---|---|---|---|
+| Aiken | 214,600 | 241,300 | 87 | 4 |
+| Richmond | 196,200 | 228,900 | 71 | 3 |
+| Columbia (Richland) | 402,700 | 451,800 | 133 | 6 |
+| Greenville | 318,900 | 382,100 | 109 | 2 |
+| Charleston | 255,600 | 308,300 | 64 | 1 |
+| Total | 1,388,000 | 1,612,400 | 464 | 16 |
+
+SUB-AIK-BRAMBLEGATE lost both 115 kV sources at 05:22Z; one source restored 19:40Z. FDR-AIK-2207 remains locked out pending trunk patrol (OP05 ICS 204, IAP-HEL-24-OP05/204-02). FDR-AIK-2214 and FDR-AIK-2231 restored 20:05Z.
+
+# WATER
+
+As of 16:45, PS-17 Pellicott Road Booster is on MGEN-HALBERD-500. Zone WZ-PS17-CEDARFALL low reading was 8.0 psi; readings are rising but remain under 25 psi.
+TNK-PS17-CEDARFALL level is recovering after drawdown overnight.
+Water Compliance Officer and Water Incident Lead are assessing a boil water notice for WZ-PS17-CEDARFALL; SCDES contact made 13:10.
+PS-38 Copperleaf and PS-52 Deerwater are on site generators. Diesel to GEN-PS38-COPPERLEAF is scheduled; Copperleaf Road open at 15:30 per F-MAL-030 log.
+PS-23 Laurel Spur on utility power; pump 1 low-suction alarm 15:31, Water Ops crew on site, inspection note to follow.
+
+# RESOURCES
+
+| Resource | As of 16:00 |
+|---|---|
+| SGW line crews | 412 |
+| Mutual-aid line crews on site | 286 |
+| Mutual-aid crews en route (SEE) | 540 |
+| Vegetation crews | 318 |
+| Staging yards open | STG-AIK-SANDHILL-YARD, STG-RCH-MILLPOND-YARD, STG-RLD-CONGAREEBEND-YARD |
+
+Fuel: FTK-WREN-3 assigned to water facilities in Aiken district. Altamaha Fuel & Lube deliveries under MAL-CTR-0447 running to plan.
+
+# SAFETY
+
+No lost-time injuries reported this period. Two vehicle contacts with debris, no injuries. Bucket work limited by wind until 13:00. Crews reminded: do not drive through water over a roadway (GEP 2F.01 section 6.1).
+
+# NEXT REPORT
+
+Situation Report #5: Saturday, September 28, 2024, 07:00 EDT.

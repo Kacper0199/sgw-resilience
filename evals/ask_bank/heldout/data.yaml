@@ -1,0 +1,332 @@
+# Ask bank, data: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-DATA-002
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: data
+  tags:
+  - starter
+  question: Which decisions keep Tallowbranch hospital supplied with water?
+  expect:
+    mentions_any:
+    - Tallowbranch
+- id: AB-DATA-005
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: decisions
+  klass: data
+  tags:
+  - starter
+  - demo_moment
+  question: What do I need to decide in the next 3 hours?
+  expect:
+    mentions_any:
+    - tanker
+    - Laurelspur
+    - restoration
+    - fuel
+  judge: true
+- id: AB-DATA-006
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: decisions
+  klass: data
+  tags:
+  - demo_moment
+  question: What do I need to decide in the next 2 hours?
+  expect:
+    mentions_any:
+    - tanker
+    - Laurelspur
+    - restoration
+    - fuel
+    - patrol
+- id: AB-DATA-011
+  lang: en
+  persona: plan_etr_01
+  moment: at-n1
+  page: forecast
+  klass: data
+  tags:
+  - user_reported
+  question: Should we revise the ETR now?
+  expect:
+    mentions_any:
+    - ETR
+    - revise
+    - revision
+- id: AB-DATA-012
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: data
+  tags:
+  - user_reported
+  question: List the hospitals served by the Cedarfall zone.
+  expect:
+    mentions_any:
+    - Tallowbranch
+- id: AB-DATA-016
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: data
+  question: Is this storm happening today?
+  expect:
+    forbid:
+    - '2025'
+    - '2026'
+- id: AB-DATA-019
+  lang: en
+  persona: ml_01
+  moment: at-n1
+  page: health
+  klass: data
+  question: Can we trust the SCADA feed right now?
+  expect:
+    mentions_any:
+    - SCADA
+- id: AB-DATA-020
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: data
+  question: Are any of our data feeds late?
+  expect:
+    mentions_any:
+    - feed
+    - SCADA
+    - OMS
+    - AMI
+    - late
+    - on time
+- id: AB-DATA-022
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: data
+  question: Where are the mutual-aid crews now?
+  expect:
+    mentions_any:
+    - TALON
+    - Talon
+    - Millpond
+- id: AB-DATA-023
+  lang: en
+  persona: ops_dm_02
+  moment: at-n1
+  page: decisions
+  klass: data
+  question: Which decisions are waiting for signatures?
+  expect:
+    mentions_any:
+    - PS-17
+    - crew
+    - sign
+- id: AB-DATA-028
+  lang: en
+  persona: wtr_comp_01
+  moment: morning-after
+  page: water
+  klass: data
+  question: Is a boil-water advisory proposed for Laurelspur?
+  expect:
+    mentions_any:
+    - Laurelspur
+- id: AB-DATA-031
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: map
+  klass: data
+  question: Why is a patrol proposed for a dark AMI section?
+  expect:
+    mentions_any:
+    - AMI
+    - patrol
+    - '2231'
+- id: AB-DATA-033
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: data
+  question: When was the Cedarfall notice lifted and why?
+  expect:
+    mentions_any:
+    - 04:45
+    - coliform
+    - clean
+    - lifted
+- id: AB-DATA-034
+  lang: en
+  persona: wtr_lead_01
+  moment: notices-lifted
+  page: water
+  klass: data
+  question: What is due for the Laurelspur notice today?
+  expect:
+    mentions_any:
+    - '10:30'
+    - lift
+    - Laurelspur
+- id: AB-DATA-035
+  lang: en
+  persona: wtr_lead_01
+  moment: notices-lifted
+  page: water
+  klass: data
+  question: Is Deerwater still sampling?
+  expect:
+    mentions_any:
+    - Deerwater
+    - sampl
+- id: AB-DATA-039
+  lang: en
+  persona: ops_dm_02
+  moment: morning-after
+  page: map
+  klass: data
+  question: Which feeder serves PS-17 and is it energised?
+  expect:
+    mentions_any:
+    - '2207'
+- id: AB-DATA-044
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: data
+  question: Which decisions were signed late?
+  expect:
+    mentions_any:
+    - late
+    - missed
+    - on time
+    - decided
+- id: AB-DATA-045
+  lang: en
+  persona: ml_01
+  moment: at-n1
+  page: health
+  klass: data
+  question: Which models are in use for the outage forecast?
+  expect:
+    mentions_any:
+    - model
+    - outage
+- id: AB-DATA-046
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: data
+  question: 'PS-17 pressure is falling: is the reading real, and do we need a crew there before landfall?'
+  expect:
+    mentions_any:
+    - PS-17
+- id: AB-DATA-064
+  lang: pl
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: data
+  question: Ilu klientów nie ma prądu?
+  expect:
+    mentions_any:
+    - klient
+    - odbiorc
+- id: AB-DATA-066
+  lang: pl
+  persona: ops_dm_01
+  moment: at-n1
+  page: map
+  klass: data
+  tags:
+  - no_diacritics
+  - typo
+  question: jakie fidery w aiken sa wylaczone
+  expect:
+    mentions_any:
+    - '2207'
+    - '2219'
+    - fider
+    - feeder
+    - linii
+- id: AB-DATA-068
+  lang: pl
+  persona: ml_01
+  moment: at-n1
+  page: health
+  klass: data
+  question: Czy dane ze SCADA są aktualne?
+  expect:
+    mentions_any:
+    - SCADA
+- id: AB-DATA-069
+  lang: pl
+  persona: wtr_lead_01
+  moment: notices-lifted
+  page: water
+  klass: data
+  question: Kiedy zniesiono komunikat w Cedarfall?
+  expect:
+    mentions_any:
+    - 04:45
+    - Cedarfall
+- id: AB-DATA-072
+  lang: de
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: data
+  tags:
+  - other_language
+  question: Welche Entscheidung ist jetzt am wichtigsten?
+  expect:
+    mentions_any:
+    - PS-17
+- id: AB-DATA-074
+  lang: fr
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: data
+  tags:
+  - other_language
+  question: Combien de clients sont privés d'électricité ?
+  expect:
+    mentions_any:
+    - client
+- id: AB-DATA-084
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  page: admin
+  klass: data
+  question: Who can approve alone?
+  expect:
+    mentions_any:
+    - approve
+    - alone
+    - sign
+- id: AB-DATA-090
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: data
+  question: Which decisions need two teams?
+  expect:
+    mentions_any:
+    - two
+    - PS-17
+    - team

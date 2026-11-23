@@ -1,0 +1,884 @@
+{
+ "baseline": "station low-pressure alarm alone (water.low_pressure_alarm_psi; no A8, no status check)",
+ "command": "uv run sgw water anomaly",
+ "label": "synthetic",
+ "limitations": [
+  "replayed_sequence needs 8 equal readings: a 1.5-3 h level replay at 30-min sampling gives 3-6 readings, so steady-state level replays are missed; a 4-reading window would cost about 0.07^4 x 336 lags x 48 windows = 0.4 chance matches per sensor-day (40 per 100 asset-days), far above the 1/100 target, so the window stays at 8 and this is a documented limitation",
+  "a leak while the tank is held full by the pump changes neither pressure nor level; it needs flow metering",
+  "pairwise A8 alarms cannot say which of the two sensors is wrong (except with a third sensor)"
+ ],
+ "post_hoc_subset": "recall_physically_detectable and spoof_consequential are a post-hoc subset, defined after the first bench run from the true state with margins taken from the detector's own settings (0.5 / 1.5 ft level band, 4 windows before and 2 after a leak, 3 sigma for a replay); context only, never a pass",
+ "quoted_metric": "raw recall over every seeded fault (passed_raw); nothing else is a pass criterion",
+ "results": {
+  "dev_bench": {
+   "acceptance": "not met on raw; WP-15 decides",
+   "baseline_metrics": {
+    "asset_days": 400.0,
+    "by_kind": {
+     "drift_pressure": {
+      "detected": 0,
+      "n": 18
+     },
+     "leak": {
+      "detected": 0,
+      "n": 23
+     },
+     "pump_trip": {
+      "detected": 17,
+      "n": 23
+     },
+     "replay_level": {
+      "detected": 0,
+      "n": 15
+     },
+     "replay_pressure": {
+      "detected": 0,
+      "n": 21
+     },
+     "stuck_level": {
+      "detected": 0,
+      "n": 15
+     }
+    },
+    "detected": 17,
+    "fa_per_100_asset_days": 0.5,
+    "false_alarms": 2,
+    "false_alarms_a7": 2,
+    "false_alarms_a8": 0,
+    "faults": 115,
+    "median_delay_min": 94.0,
+    "physically_detectable_faults": 71,
+    "recall": 0.14782608695652175,
+    "recall_physically_detectable": 0.23943661971830985,
+    "recall_physically_detectable_wilson95": [
+     0.1552,
+     0.3504
+    ],
+    "recall_wilson95": [
+     0.0944,
+     0.224
+    ],
+    "spoof_cases": 36,
+    "spoof_consequential": 10,
+    "spoof_consequential_flagged": 0,
+    "spoof_flagged": 0
+   },
+   "false_alarms": [],
+   "metrics": {
+    "asset_days": 400.0,
+    "by_kind": {
+     "drift_pressure": {
+      "detected": 17,
+      "n": 18
+     },
+     "leak": {
+      "detected": 4,
+      "n": 23
+     },
+     "pump_trip": {
+      "detected": 23,
+      "n": 23
+     },
+     "replay_level": {
+      "detected": 5,
+      "n": 15
+     },
+     "replay_pressure": {
+      "detected": 19,
+      "n": 21
+     },
+     "stuck_level": {
+      "detected": 14,
+      "n": 15
+     }
+    },
+    "detected": 82,
+    "fa_per_100_asset_days": 0.0,
+    "false_alarms": 0,
+    "false_alarms_a7": 0,
+    "false_alarms_a8": 0,
+    "faults": 115,
+    "median_delay_min": 105.0,
+    "physically_detectable_faults": 71,
+    "recall": 0.7130434782608696,
+    "recall_physically_detectable": 0.9577464788732394,
+    "recall_physically_detectable_wilson95": [
+     0.883,
+     0.9855
+    ],
+    "recall_wilson95": [
+     0.6245,
+     0.7878
+    ],
+    "spoof_cases": 36,
+    "spoof_consequential": 10,
+    "spoof_consequential_flagged": 10,
+    "spoof_flagged": 24
+   },
+   "missed": [
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0004"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0015"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0018"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0018"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0024"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0025"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0026"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "drift_pressure",
+     "observable": true,
+     "station": "BENCH-0027"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0029"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0030"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0031"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0033"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "stuck_level",
+     "observable": true,
+     "station": "BENCH-0034"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0036"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0041"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": true,
+     "station": "BENCH-0043"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0045"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0054"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_pressure",
+     "observable": true,
+     "station": "BENCH-0055"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0056"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0057"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0059"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0059"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0061"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0064"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0065"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0066"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0076"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0078"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_level",
+     "observable": true,
+     "station": "BENCH-0081"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0083"
+    },
+    {
+     "by": null,
+     "consequential": false,
+     "delay_min": null,
+     "detected": false,
+     "family": "A8",
+     "id": null,
+     "kind": "replay_pressure",
+     "observable": true,
+     "station": "BENCH-0084"
+    },
+    {
+     "by": null,
+     "consequential": true,
+     "delay_min": null,
+     "detected": false,
+     "family": "A7",
+     "id": null,
+     "kind": "leak",
+     "observable": false,
+     "station": "BENCH-0090"
+    }
+   ],
+   "passed_raw": false,
+   "runs": 100,
+   "seed": 20260,
+   "split": "dev"
+  },
+  "helene_dev": {
+   "acceptance": "met on raw",
+   "alarms": [
+    {
+     "detail": {
+      "explanation": "power_loss",
+      "min_psi": 7.3
+     },
+     "detected_utc": "2024-09-27T09:00:00Z",
+     "devices": [
+      "PT-PS17-DISCH"
+     ],
+     "end_utc": "2024-09-28T01:30:00Z",
+     "family": "A7",
+     "kind": "pressure_loss",
+     "score": 0.8175,
+     "start_utc": "2024-09-27T08:45:00Z",
+     "station": "PS-17"
+    },
+    {
+     "detail": {
+      "baseline_ratio": 0.951,
+      "cusum_peak_sigma": 174.327,
+      "ratio_at_alarm": 1.379
+     },
+     "detected_utc": "2024-09-27T11:00:00Z",
+     "devices": [
+      "LT-TNK-PS17-CEDARFALL"
+     ],
+     "end_utc": "2024-09-28T03:30:00Z",
+     "family": "A7",
+     "kind": "demand_increase",
+     "score": 0.954109,
+     "start_utc": "2024-09-27T10:30:00Z",
+     "station": "PS-17"
+    },
+    {
+     "detail": {
+      "explanation": "power_loss",
+      "min_psi": 7.2
+     },
+     "detected_utc": "2024-09-27T09:30:00Z",
+     "devices": [
+      "PT-PS23-DISCH"
+     ],
+     "end_utc": "2024-09-28T03:45:00Z",
+     "family": "A7",
+     "kind": "pressure_loss",
+     "score": 0.82,
+     "start_utc": "2024-09-27T09:15:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {
+      "baseline_ratio": 1.027,
+      "cusum_peak_sigma": 214.803,
+      "ratio_at_alarm": 1.296
+     },
+     "detected_utc": "2024-09-28T00:00:00Z",
+     "devices": [
+      "LT-TNK-PS23-LAURELSPUR"
+     ],
+     "end_utc": "2024-09-29T02:00:00Z",
+     "family": "A7",
+     "kind": "demand_increase",
+     "score": 0.962756,
+     "start_utc": "2024-09-27T11:00:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {},
+     "detected_utc": "2024-09-28T14:00:00Z",
+     "devices": [
+      "PMP-PS-23-1"
+     ],
+     "end_utc": "2024-09-28T16:30:00Z",
+     "family": "A7",
+     "kind": "pump_trip",
+     "score": 1.0,
+     "start_utc": "2024-09-28T14:00:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {
+      "explanation": "pump_trip",
+      "min_psi": 15.5
+     },
+     "detected_utc": "2024-09-28T15:30:00Z",
+     "devices": [
+      "PT-PS23-DISCH"
+     ],
+     "end_utc": "2024-09-28T20:45:00Z",
+     "family": "A7",
+     "kind": "pressure_loss",
+     "score": 0.6125,
+     "start_utc": "2024-09-28T15:15:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {
+      "cusum_peak_sigma": 385.067,
+      "direction": "down",
+      "max_abs_residual_psi": 39.18
+     },
+     "detected_utc": "2024-09-29T02:00:00Z",
+     "devices": [
+      "PT-PS23-DISCH",
+      "LT-TNK-PS23-LAURELSPUR"
+     ],
+     "end_utc": "2024-09-30T00:00:00Z",
+     "family": "A8",
+     "kind": "pressure_level_inconsistent",
+     "score": 0.974031,
+     "start_utc": "2024-09-29T01:30:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {},
+     "detected_utc": "2024-09-29T03:45:00Z",
+     "devices": [
+      "PT-PS23-DISCH"
+     ],
+     "end_utc": "2024-09-29T03:45:00Z",
+     "family": "A8",
+     "kind": "replayed_sequence",
+     "score": 1.0,
+     "start_utc": "2024-09-29T02:00:00Z",
+     "station": "PS-23"
+    },
+    {
+     "detail": {
+      "explanation": "generator_failure",
+      "min_psi": 7.7
+     },
+     "detected_utc": "2024-09-28T04:30:00Z",
+     "devices": [
+      "PT-PS38-DISCH"
+     ],
+     "end_utc": "2024-09-28T13:00:00Z",
+     "family": "A7",
+     "kind": "pressure_loss",
+     "score": 0.8075,
+     "start_utc": "2024-09-28T04:15:00Z",
+     "station": "PS-38"
+    },
+    {
+     "detail": {
+      "readings": 24,
+      "value": 123.6
+     },
+     "detected_utc": "2024-09-29T08:30:00Z",
+     "devices": [
+      "LT-TNK-PS38-COPPERLEAF"
+     ],
+     "end_utc": "2024-09-29T17:30:00Z",
+     "family": "A8",
+     "kind": "frozen_reading",
+     "score": 0.791667,
+     "start_utc": "2024-09-29T06:00:00Z",
+     "station": "PS-38"
+    },
+    {
+     "detail": {
+      "explanation": "generator_failure",
+      "min_psi": 7.4
+     },
+     "detected_utc": "2024-09-28T16:15:00Z",
+     "devices": [
+      "PT-PS52-DISCH"
+     ],
+     "end_utc": "2024-09-29T08:15:00Z",
+     "family": "A7",
+     "kind": "pressure_loss",
+     "score": 0.815,
+     "start_utc": "2024-09-28T16:00:00Z",
+     "station": "PS-52"
+    },
+    {
+     "detail": {
+      "cusum_peak_sigma": 201.041,
+      "direction": "up",
+      "max_abs_residual_psi": 3.73
+     },
+     "detected_utc": "2024-09-29T08:30:00Z",
+     "devices": [
+      "PT-PS52-DISCH",
+      "LT-TNK-PS52-DEERWATER"
+     ],
+     "end_utc": "2024-09-30T00:00:00Z",
+     "family": "A8",
+     "kind": "pressure_level_inconsistent",
+     "score": 0.950259,
+     "start_utc": "2024-09-29T04:30:00Z",
+     "station": "PS-52"
+    },
+    {
+     "detail": {
+      "baseline_ratio": 1.31,
+      "cusum_peak_sigma": 80.385,
+      "ratio_at_alarm": 1.494
+     },
+     "detected_utc": "2024-09-29T13:30:00Z",
+     "devices": [
+      "LT-TNK-PS52-DEERWATER"
+     ],
+     "end_utc": "2024-09-30T00:00:00Z",
+     "family": "A7",
+     "kind": "demand_increase",
+     "score": 0.900479,
+     "start_utc": "2024-09-29T12:30:00Z",
+     "station": "PS-52"
+    }
+   ],
+   "baseline_metrics": {
+    "asset_days": 16.0,
+    "by_kind": {
+     "drift_pressure": {
+      "detected": 0,
+      "n": 1
+     },
+     "leak": {
+      "detected": 0,
+      "n": 1
+     },
+     "pump_trip": {
+      "detected": 1,
+      "n": 1
+     },
+     "replay_pressure": {
+      "detected": 0,
+      "n": 1
+     },
+     "stuck_level": {
+      "detected": 0,
+      "n": 1
+     }
+    },
+    "detected": 1,
+    "fa_per_100_asset_days": 6.25,
+    "false_alarms": 1,
+    "false_alarms_a7": 1,
+    "false_alarms_a8": 0,
+    "faults": 5,
+    "median_delay_min": 90.0,
+    "physically_detectable_faults": 5,
+    "recall": 0.2,
+    "recall_physically_detectable": 0.2,
+    "recall_physically_detectable_wilson95": [
+     0.0362,
+     0.6245
+    ],
+    "recall_wilson95": [
+     0.0362,
+     0.6245
+    ],
+    "spoof_cases": 1,
+    "spoof_consequential": 1,
+    "spoof_consequential_flagged": 0,
+    "spoof_flagged": 0
+   },
+   "false_alarms": [],
+   "faults": [
+    {
+     "by": "pump_trip",
+     "consequential": true,
+     "delay_min": 0.0,
+     "detected": true,
+     "family": "A7",
+     "id": "FAULT-PS23-PUMP-TRIP",
+     "kind": "pump_trip",
+     "observable": true,
+     "station": "PS-23"
+    },
+    {
+     "by": "pressure_level_inconsistent",
+     "consequential": true,
+     "delay_min": 0.0,
+     "detected": true,
+     "family": "A8",
+     "id": "FAULT-PS23-REPLAY-SPOOF",
+     "kind": "replay_pressure",
+     "observable": true,
+     "station": "PS-23"
+    },
+    {
+     "by": "frozen_reading",
+     "consequential": true,
+     "delay_min": 150.0,
+     "detected": true,
+     "family": "A8",
+     "id": "FAULT-PS38-STUCK-LEVEL",
+     "kind": "stuck_level",
+     "observable": true,
+     "station": "PS-38"
+    },
+    {
+     "by": "pressure_level_inconsistent",
+     "consequential": true,
+     "delay_min": 510.0,
+     "detected": true,
+     "family": "A8",
+     "id": "FAULT-PS52-DRIFT",
+     "kind": "drift_pressure",
+     "observable": true,
+     "station": "PS-52"
+    },
+    {
+     "by": "demand_increase",
+     "consequential": true,
+     "delay_min": 90.0,
+     "detected": true,
+     "family": "A7",
+     "id": "FAULT-PS52-LEAK",
+     "kind": "leak",
+     "observable": true,
+     "station": "PS-52"
+    }
+   ],
+   "metrics": {
+    "asset_days": 16.0,
+    "by_kind": {
+     "drift_pressure": {
+      "detected": 1,
+      "n": 1
+     },
+     "leak": {
+      "detected": 1,
+      "n": 1
+     },
+     "pump_trip": {
+      "detected": 1,
+      "n": 1
+     },
+     "replay_pressure": {
+      "detected": 1,
+      "n": 1
+     },
+     "stuck_level": {
+      "detected": 1,
+      "n": 1
+     }
+    },
+    "detected": 5,
+    "fa_per_100_asset_days": 0.0,
+    "false_alarms": 0,
+    "false_alarms_a7": 0,
+    "false_alarms_a8": 0,
+    "faults": 5,
+    "median_delay_min": 90.0,
+    "physically_detectable_faults": 5,
+    "recall": 1.0,
+    "recall_physically_detectable": 1.0,
+    "recall_physically_detectable_wilson95": [
+     0.5655,
+     1.0
+    ],
+    "recall_wilson95": [
+     0.5655,
+     1.0
+    ],
+    "spoof_cases": 1,
+    "spoof_consequential": 1,
+    "spoof_consequential_flagged": 1,
+    "spoof_flagged": 1
+   },
+   "passed_raw": true,
+   "split": "dev"
+  }
+ },
+ "sensor_noise": {
+  "level_ft": 0.4,
+  "pressure_psi": 0.3
+ },
+ "settings": {
+  "cusum.h_sigma": 10.0,
+  "cusum.k_sigma": 0.5,
+  "episode.merge_gap_h": 1.0,
+  "frozen.level_range_end_ft": 0.05,
+  "frozen.level_run": 6,
+  "frozen.pressure_run": 8,
+  "pressure.confirm_readings": 2,
+  "refill.baseline_windows": 8,
+  "refill.empty_margin_ft": 0.5,
+  "refill.full_margin_ft": 1.5,
+  "refill.h_sigma": 8.0,
+  "refill.k_sigma": 1.0,
+  "replay.max_lag_h": 168.0,
+  "replay.min_lag_h": 4.0,
+  "replay.window": 8
+ },
+ "split": "dev",
+ "targets": {
+  "fa_per_100_asset_days": 1.0,
+  "recall": 0.8,
+  "spoof": "all flagged"
+ }
+}

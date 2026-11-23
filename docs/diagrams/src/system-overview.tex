@@ -1,0 +1,61 @@
+% The whole system at a glance, top to bottom: people, the web app and API, the decision core, the data
+% and models below it, and the two outbound paths. Details: containers-networks, data-flow,
+% decision-workflow, ask-ai-graph.
+\begin{tikzpicture}[sgw,font=\small\sffamily,
+    b/.style={sgw/service,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily},
+    lbl/.style={font=\footnotesize\sffamily,text=sgwInk,fill=sgwSurface,inner sep=1.5pt,align=center},
+    num/.style={circle,fill=sgwSecondary,text=white,font=\footnotesize\sffamily\bfseries,inner sep=0pt,minimum size=0.5cm}]
+  % people
+  \node[sgw/person,minimum width=13.2cm,minimum height=0.95cm,font=\small\sffamily\bfseries] (people) at (4.6,0)
+    {Operators in a browser\sgwsub{command, operations, planning, logistics, water operations, compliance, executive, audit}};
+
+  % platform
+  \node[b] (web) at (0,-2.2) {\textbf{Web app}\sgwsub{map, decision queue,}\sgwsub{sign dialog, Ask AI panel}};
+  \node[sgw/core,minimum width=4.0cm,minimum height=1.1cm,text width=3.8cm,font=\small\sffamily\bfseries] (api) at (4.6,-2.2)
+    {API\sgwsub{\color{sgwHairline}sessions, roles, reads,}\sgwsub{\color{sgwHairline}scenario clock}};
+  \node[b] (ask) at (9.2,-2.2) {\textbf{Ask AI}\sgwsub{LangGraph team of agents,}\sgwsub{read-only tools}};
+  \node[sgw/decision,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily] (queue) at (0,-4.3)
+    {\textbf{Decision queue}\sgwsub{what to decide, by when}};
+  \node[b] (approval) at (4.6,-4.3) {\textbf{Sign-off}\sgwsub{tiers, two functions,}\sgwsub{execution token}};
+  \node[b] (opa) at (9.2,-4.3) {\textbf{OPA policy}\sgwsub{who may sign; what may}\sgwsub{leave for the model}};
+  \sgwzone{zp}{sgwSurface}{(web)(api)(ask)(queue)(approval)(opa)}{Platform (Docker Compose on one host)}
+  \draw[sgw/flow] (people.south -| web) -- (web);
+  \draw[sgw/flow] (web) -- (api);
+  \draw[sgw/flow] (api) -- (ask);
+  \draw[sgw/flow] (queue) -- (approval);
+  \draw[sgw/flow] (approval) -- (opa);
+  \draw[sgw/flow] (api) -- (approval);
+
+  % data and models
+  \node[sgw/service,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily] (feeds) at (0,-7.4)
+    {\textbf{Feeds and ingest}\sgwsub{synthetic SGW systems,}\sgwsub{real Helene open data}};
+  \node[sgw/store,minimum width=4.0cm,minimum height=1.35cm,font=\small\sffamily] (db) at (4.6,-7.4)
+    {\textbf{Postgres}\sgwsub{event ledger, cases,}\sgwsub{audit hash chain}};
+  \node[b] (models) at (9.2,-7.4) {\textbf{Models and rules}\sgwsub{forecast, detectors, vision,}\sgwsub{water, crews; no AI}};
+  \node[sgw/core,minimum width=8.6cm,minimum height=1.1cm,font=\small\sffamily\bfseries] (clock) at (6.9,-9.5)
+    {Decision clocks\sgwsub{\color{sgwHairline}decide-by times with P10, P50, P90; wait or act now}};
+  \sgwzone{zd}{sgwNeutral}{(feeds)(db)(models)(clock)}{Data, models and decision clocks}
+  \draw[sgw/flow] (feeds) -- (db);
+  \draw[sgw/flow] (db) -- (models);
+  \draw[sgw/flow] (models.south) -- (models.south |- clock.north);
+  \draw[sgw/flow] (clock.west) -- node[lbl] {cases} (-2.55,-9.5) |- (queue.west);
+  \draw[sgw/flow] (approval) -- (db);
+
+  % outbound
+  \node[sgw/core,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily\bfseries] (gw) at (9.2,-12.2)
+    {LLM gateway\sgwsub{\color{sgwHairline}replay by default, spend cap}};
+  \node[sgw/service,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily] (hooks) at (4.6,-12.2)
+    {\textbf{Webhooks}\sgwsub{signed ledger events}};
+  \node[sgw/external,minimum width=4.0cm,text width=3.8cm,minimum height=1.0cm,font=\small\sffamily] (llm) at (9.2,-14.3)
+    {Anthropic API\sgwsub{Claude Sonnet, Haiku}};
+  \node[sgw/external,minimum width=4.0cm,text width=3.8cm,minimum height=1.0cm,font=\small\sffamily] (ext) at (4.6,-14.3)
+    {Webhook receivers\sgwsub{public HTTPS hosts}};
+  \node[sgw/box,minimum width=4.0cm,text width=3.8cm,minimum height=1.1cm,font=\small\sffamily] (field) at (0,-12.2)
+    {\textbf{SCADA and ADMS}\sgwsub{switching stays there:}\sgwsub{T4 proposals are refused}};
+  \sgwzone{zo}{sgwSevCriticalFill}{(gw)(hooks)}{}
+  \node[sgw/zone title,anchor=south east] at ([xshift=-2pt,yshift=1pt]zo.north east) {Only two paths leave the host};
+  \draw[sgw/flow] (ask.east) -- ++(0.45,0) |- (gw.east);
+  \draw[sgw/critical] (gw) -- (llm);
+  \draw[sgw/flow] (zd.south -| hooks) -- node[lbl,left=2pt,pos=0.45] {ledger events} (hooks);
+  \draw[sgw/critical] (hooks) -- (ext);
+\end{tikzpicture}

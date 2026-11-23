@@ -1,0 +1,440 @@
+{
+  "$defs": {
+    "CaseChainStep": {
+      "additionalProperties": false,
+      "description": "One decision of the chain around a case, in the order the chain has to be decided (read side).",
+      "properties": {
+        "order": {
+          "description": "1 is decided first",
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "decision_case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+          "title": "Decision Case Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "effective_decide_by_utc": {
+          "format": "date-time",
+          "title": "Effective Decide By Utc",
+          "type": "string"
+        },
+        "on_critical_path": {
+          "title": "On Critical Path",
+          "type": "boolean"
+        },
+        "proposal_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "the latest proposal on this case; null when none",
+          "title": "Proposal Id"
+        },
+        "place_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "the assets where this step happens, for a step whose own targets are vehicles or that has no proposal yet (the pump station a generator is hooked up at, the hospital a tanker serves)",
+          "title": "Place Ids"
+        }
+      },
+      "required": [
+        "order",
+        "decision_case_id",
+        "title",
+        "effective_decide_by_utc",
+        "on_critical_path",
+        "proposal_id"
+      ],
+      "title": "CaseChainStep",
+      "type": "object"
+    },
+    "ClockBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/ClockKind"
+        },
+        "basis_id": {
+          "description": "model id or rule id",
+          "title": "Basis Id",
+          "type": "string"
+        },
+        "basis_version": {
+          "title": "Basis Version",
+          "type": "string"
+        },
+        "citation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "rule clause, e.g. SC R.61-58.7.E(7)",
+          "title": "Citation"
+        }
+      },
+      "required": [
+        "kind",
+        "basis_id",
+        "basis_version"
+      ],
+      "title": "ClockBasis",
+      "type": "object"
+    },
+    "ClockKind": {
+      "enum": [
+        "rule_deadline",
+        "model_estimate"
+      ],
+      "title": "ClockKind",
+      "type": "string"
+    },
+    "DecisionClock": {
+      "additionalProperties": false,
+      "properties": {
+        "decide_by_utc": {
+          "description": "P50 decide-by",
+          "format": "date-time",
+          "title": "Decide By Utc",
+          "type": "string"
+        },
+        "decide_by_p10_utc": {
+          "format": "date-time",
+          "title": "Decide By P10 Utc",
+          "type": "string"
+        },
+        "decide_by_p90_utc": {
+          "format": "date-time",
+          "title": "Decide By P90 Utc",
+          "type": "string"
+        },
+        "consequence_utc": {
+          "format": "date-time",
+          "title": "Consequence Utc",
+          "type": "string"
+        },
+        "consequence_p10_utc": {
+          "format": "date-time",
+          "title": "Consequence P10 Utc",
+          "type": "string"
+        },
+        "consequence_p90_utc": {
+          "format": "date-time",
+          "title": "Consequence P90 Utc",
+          "type": "string"
+        },
+        "consequence_basis": {
+          "$ref": "#/$defs/ClockBasis"
+        },
+        "action_lead_time_min": {
+          "maximum": 20160,
+          "minimum": 0,
+          "title": "Action Lead Time Min",
+          "type": "integer"
+        },
+        "lead_time_basis": {
+          "$ref": "#/$defs/ClockBasis"
+        },
+        "clock_kind": {
+          "$ref": "#/$defs/ClockKind"
+        },
+        "if_late": {
+          "minLength": 1,
+          "title": "If Late",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decide_by_utc",
+        "decide_by_p10_utc",
+        "decide_by_p90_utc",
+        "consequence_utc",
+        "consequence_p10_utc",
+        "consequence_p90_utc",
+        "consequence_basis",
+        "action_lead_time_min",
+        "lead_time_basis",
+        "clock_kind",
+        "if_late"
+      ],
+      "title": "DecisionClock",
+      "type": "object"
+    },
+    "DecisionStep": {
+      "enum": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "title": "DecisionStep",
+      "type": "string"
+    },
+    "Domain": {
+      "enum": [
+        "electric",
+        "water"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "NoRegretVerdict": {
+      "enum": [
+        "act_now",
+        "wait_for_next_advisory",
+        "n/a",
+        "decide_now"
+      ],
+      "title": "NoRegretVerdict",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "decision_case_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+      "title": "Decision Case Id",
+      "type": "string"
+    },
+    "step": {
+      "$ref": "#/$defs/DecisionStep"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "region_id": {
+      "title": "Region Id",
+      "type": "string"
+    },
+    "clock": {
+      "$ref": "#/$defs/DecisionClock"
+    },
+    "prerequisite_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+        "type": "string"
+      },
+      "title": "Prerequisite Ids",
+      "type": "array"
+    },
+    "effective_decide_by_utc": {
+      "format": "date-time",
+      "title": "Effective Decide By Utc",
+      "type": "string"
+    },
+    "on_critical_path": {
+      "default": false,
+      "title": "On Critical Path",
+      "type": "boolean"
+    },
+    "no_regret_share_ppm": {
+      "anyOf": [
+        {
+          "description": "probability or share in parts per million",
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "No Regret Share Ppm"
+    },
+    "no_regret_verdict": {
+      "$ref": "#/$defs/NoRegretVerdict",
+      "default": "n/a"
+    },
+    "next_advisory_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Advisory Utc"
+    },
+    "no_regret_members": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "ensemble members in which the action is needed (share numerator); omitted when unknown",
+      "title": "No Regret Members"
+    },
+    "ensemble_members": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "members in the ensemble behind the no-regret share; omitted when unknown",
+      "title": "Ensemble Members"
+    },
+    "blocked_by": {
+      "anyOf": [
+        {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "cases that must be decided before this one (stored prerequisite edges); API read side",
+      "title": "Blocked By"
+    },
+    "blocks": {
+      "anyOf": [
+        {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "cases that cannot be decided before this one; API read side",
+      "title": "Blocks"
+    },
+    "chain": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CaseChainStep"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "every case linked to this one, in decision order; empty when the case is not linked",
+      "title": "Chain"
+    },
+    "chain_order": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "this case's position in `chain`; null if unlinked",
+      "title": "Chain Order"
+    },
+    "timing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NoRegretVerdict"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "the Timing shown: the case's own verdict, else the verdict of the linked case whose ensemble share covers it, decide_now once the decide-by has passed; `n/a` only when no ensemble covers the chain (then `timing_reason` says so)"
+    },
+    "timing_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "plain sentence when `timing` is not the case's own verdict; null otherwise",
+      "title": "Timing Reason"
+    },
+    "timing_basis": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "plain sentence with the scenario times behind an act-or-wait Timing: the next advisory, the time needed to act on it and the earliest likely deadline of the plan; null for Act now, without an ensemble, or once that advisory or the decide-by has passed",
+      "title": "Timing Basis"
+    }
+  },
+  "required": [
+    "decision_case_id",
+    "step",
+    "title",
+    "domain",
+    "region_id",
+    "clock",
+    "effective_decide_by_utc"
+  ],
+  "title": "SGW K16 decision case",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

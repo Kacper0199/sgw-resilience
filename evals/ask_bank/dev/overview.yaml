@@ -1,0 +1,316 @@
+# Ask bank, overview: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-OVR-001
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - user_reported
+  - vague
+  question: Describe in detail what is going on and explain it to me.
+  expect:
+    mentions_any:
+    - Helene
+    - PS-17
+    - advisory
+  judge: true
+- id: AB-OVR-002
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  klass: overview
+  tags:
+  - user_reported
+  - vague
+  question: describe what is going on
+  expect:
+    mentions_any:
+    - pressure
+    - Cedarfall
+    - Laurelspur
+    - outage
+    - landfall
+  judge: true
+- id: AB-OVR-003
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: overview
+  tags:
+  - vague
+  question: Give me a quick summary of the situation.
+  expect:
+    mentions_any:
+    - Helene
+    - PS-17
+    - advisory
+  judge: true
+- id: AB-OVR-004
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: overview
+  tags:
+  - vague
+  question: What's the situation this morning?
+  expect:
+    mentions_any:
+    - pressure
+    - outage
+    - landfall
+    - customers
+- id: AB-OVR-005
+  lang: en
+  persona: exec_01
+  moment: notices-lifted
+  page: brief
+  klass: overview
+  tags:
+  - vague
+  question: Where do we stand?
+  expect:
+    mentions_any:
+    - notice
+    - Cedarfall
+    - Laurelspur
+    - Copperleaf
+    - restor
+- id: AB-OVR-006
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  question: Anything I should worry about?
+  expect:
+    mentions_any:
+    - PS-17
+    - deadline
+    - decide
+- id: AB-OVR-007
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: overview
+  tags:
+  - vague
+  question: How is the water side doing?
+  expect:
+    mentions_any:
+    - Cedarfall
+    - Laurelspur
+    - pressure
+- id: AB-OVR-008
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: overview
+  tags:
+  - vague
+  question: How are the crews doing?
+  expect:
+    mentions_any:
+    - crew
+- id: AB-OVR-009
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: overview
+  tags:
+  - vague
+  question: What has happened so far in this storm?
+  expect:
+    mentions_any:
+    - Helene
+    - notice
+    - decision
+    - landfall
+- id: AB-OVR-010
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: overview
+  tags:
+  - vague
+  question: Is the platform healthy?
+  expect:
+    mentions_any:
+    - data
+    - feed
+    - model
+    - mode
+- id: AB-OVR-013
+  lang: en
+  persona: ops_dm_02
+  moment: notices-lifted
+  klass: overview
+  tags:
+  - vague
+  question: Catch me up, I just started my shift.
+  expect:
+    mentions_any:
+    - notice
+    - Laurelspur
+    - Copperleaf
+    - decision
+  judge: true
+- id: AB-OVR-015
+  lang: en
+  persona: wtr_comp_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  - greeting
+  question: hi
+- id: AB-OVR-016
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  question: What are the biggest risks right now?
+  expect:
+    mentions_any:
+    - PS-17
+    - hospital
+    - outage
+    - risk
+- id: AB-OVR-018
+  lang: pl
+  persona: ic_01
+  moment: morning-after
+  klass: overview
+  tags:
+  - user_reported
+  - vague
+  question: Opisz mi szczegółowo, co się dzieje, i wyjaśnij to.
+  expect:
+    mentions_any:
+    - ciśnieni
+    - Cedarfall
+    - Laurelspur
+  judge: true
+- id: AB-OVR-019
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: overview
+  tags:
+  - vague
+  question: Jaka jest sytuacja?
+  expect:
+    mentions_any:
+    - Helene
+    - PS-17
+    - huragan
+- id: AB-OVR-021
+  lang: pl
+  persona: ops_dm_01
+  moment: notices-lifted
+  klass: overview
+  tags:
+  - vague
+  question: Podsumuj mi ostatnią dobę.
+  expect:
+    mentions_any:
+    - Cedarfall
+    - komunikat
+    - Laurelspur
+- id: AB-OVR-022
+  lang: pl
+  persona: admin_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  question: Do czego służy ta platforma?
+  expect:
+    mentions_any:
+    - decyzj
+    - prąd
+    - wod
+    - burz
+    - huragan
+- id: AB-OVR-023
+  lang: pl
+  persona: exec_01
+  moment: notices-lifted
+  page: brief
+  klass: overview
+  tags:
+  - no_diacritics
+  - vague
+  question: jak wyglada sytuacja teraz
+  expect:
+    mentions_any:
+    - komunikat
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+- id: AB-OVR-024
+  lang: pl
+  persona: log_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - vague
+  question: Na co powinienem teraz uważać?
+  expect:
+    mentions_any:
+    - PS-17
+    - ekip
+    - termin
+- id: AB-OVR-025
+  lang: de
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: overview
+  tags:
+  - other_language
+  - vague
+  question: Wie ist die Lage heute Morgen?
+  expect:
+    mentions_any:
+    - Cedarfall
+    - Laurelspur
+    - Druck
+    - Kunden
+- id: AB-OVR-026
+  lang: es
+  persona: ic_01
+  moment: at-n1
+  klass: overview
+  tags:
+  - other_language
+  - vague
+  question: Explícame qué está pasando.
+  expect:
+    mentions_any:
+    - Helene
+    - PS-17
+- id: AB-OVR-027
+  lang: fr
+  persona: ops_dm_01
+  moment: notices-lifted
+  klass: overview
+  tags:
+  - other_language
+  - vague
+  question: Fais-moi un point de situation.
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - avis

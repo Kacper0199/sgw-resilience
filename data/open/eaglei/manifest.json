@@ -1,0 +1,86 @@
+{
+  "dataset": "eaglei_county_storm_outages",
+  "label": "C (own aggregation of EAGLE-I; not a utility or DOE figure)",
+  "source": "EAGLE-I, ORNL, figshare doi:10.6084/m9.figshare.24237376.v4",
+  "licence": "CC BY 4.0",
+  "figshare_files": {
+    "2016": "42547825",
+    "2017": "42547828",
+    "2018": "42547879",
+    "2019": "42547885",
+    "2020": "42547894",
+    "2021": "42547891",
+    "2022": "42547897",
+    "2023": "44574907",
+    "2024": "53581661",
+    "2025": "62164877"
+  },
+  "hurdat2": "NHC HURDAT2 hurdat2-1851-2025-092326.txt (US federal work, public domain)",
+  "derived_utc": "2026-11-20T12:10:32Z",
+  "inputs_sha256": {
+    "eaglei_gasc_2016_may-nov.csv.gz": "3eee80fe5d6ed52d1bdd7a635bb1392142cb360a964198378ca4ce8768638abe",
+    "eaglei_gasc_2017_may-nov.csv.gz": "7e22d19b26e9ea0a1ff7fe5a1bc09af89fd9f93acf0e15408b946976a8ef5fef",
+    "eaglei_gasc_2018_may-nov.csv.gz": "80e15678520c3407bfd25e88254f4da4dbf7557668124e9ebc7856b7424df77f",
+    "eaglei_gasc_2019_may-nov.csv.gz": "79a1f2456375f5d68a925e988ac9e3c75e5968bd557a55644ba9e64fc344c243",
+    "eaglei_gasc_2020_may-nov.csv.gz": "143f6b4805d12d766a3ecbbc88e46c1f83cafd0389e601c96a69a23db11f7ac9",
+    "eaglei_gasc_2021_may-nov.csv.gz": "e16e9fd7c4d6491eb4bcac4230569a674b342c760f162bdcb30690884e0cbc8e",
+    "eaglei_gasc_2022_may-nov.csv.gz": "e3aba37c2131528ab601ea50223b1151e7eb8e3f44da2120ae7ad498a57d2792",
+    "eaglei_gasc_2023_may-nov.csv.gz": "7173d5f88fab9714f1f535c4e5517c476102619058e55c4a0db6df9b55d3ed97",
+    "eaglei_gasc_2025_may-nov.csv.gz": "d4a79e3339c17318c7b3311ea93fa70b78382de27ebe4fcf463a50761c0e850d",
+    "eaglei_se_2018_sep-oct.csv.gz": "120d63a51cff26ad934d968a9fc89e0ed39ba37559fda2e8962981643511b041",
+    "eaglei_se_2022_sep-oct.csv.gz": "3cec31b0c085e1568d1e22f57993fd7badc811a88c9435de921871d0ced766e3",
+    "eaglei_se_2024_aug-oct.csv.gz": "3c37362d4e2257ead82f376986fd381dcbdc5d8f259226417d59b41d50066080",
+    "MCC.csv": "d7fbe0d60ea71273f68bd744408059491fbc7f85b6254882d17783d7762bf65e",
+    "hurdat2-1851-2025-092326.txt": "75202780ce56c8458f16fbef5fb8a026b99b00878dbb95c458211b3e6ef125b4"
+  },
+  "outputs_sha256": {
+    "county_storm_outages.csv": "b15cd430be4abcab03d65cc8cbab7a26914e4eecd4a0eff65ab275dcf35b9364",
+    "county_storm_outages_extended.csv": "7c71cca9f82460c7cb8374e25afe83ddb1526d7a4ef5179210ccc4b042352138",
+    "storm_tracks.csv": "c4a66df0630532c207a79cfc6cc9bba496abe503431b367651c4c1f3f30b2dce"
+  },
+  "rows": 492,
+  "rows_extended": 2952,
+  "storms_extended": [
+    "colin_2016",
+    "hermine",
+    "julia",
+    "matthew",
+    "irma",
+    "florence",
+    "michael",
+    "dorian",
+    "nestor",
+    "bertha",
+    "isaias",
+    "zeta",
+    "eta",
+    "claudette",
+    "danny",
+    "elsa",
+    "mindy",
+    "colin_2022",
+    "ian",
+    "nicole",
+    "idalia",
+    "debby",
+    "helene",
+    "chantal"
+  ],
+  "method": "EAGLE-I county outages for the backtest storms: derived target tables (A2 real labels).\n\n`county_storm_outages.csv` keeps the four WP-11 storms from their original slices (byte-identical);\n`county_storm_outages_extended.csv` adds every storm of `EXTENDED_STORMS` (WP-11v2), the new ones from GA+SC\nMay-Nov extracts of the yearly files.\n\nSource: EAGLE-I (ORNL), figshare doi:10.6084/m9.figshare.24237376.v4, CC BY 4.0 (Brelsford et al. 2024,\nScientific Data). The 2023 file names the count column `sum` (read as `customers_out`). Timestamps are UTC;\na missing 15-min row means zero customers out or a collection gap (the descriptor does not distinguish), so\nmissing rows (and empty counts, seen in older years) count as zero. Denominator: EAGLE-I `MCC.csv`\n(modelled 2022 customers per county), never `total_customers`.\n\nStorm window: from 12 h before the storm centre first comes within `WINDOW_KM` of a footprint county to 72 h\nafter it last is; the pre-storm level is the median over the 72 h before the window and is subtracted.\nTarget: `peak_frac` = (window peak - pre-storm level) / MCC customers, cut to [0, 1] (`frac_capped` = 1 when\ncut; EAGLE-I peaks above MCC exist, R03 V-data-03).\n",
+  "wp11v3_derived": {
+    "derived_utc": "2026-11-20T13:46:24Z",
+    "outputs_sha256": {
+      "asos_storm_peak_gust.csv": "4042ff191b4b40f03cf941be797bcd9c47934916ad9e098a1e95c93a964762af",
+      "county_static.csv": "61b7507eb7c8fd865fbb6e1d8ed71f530580258310fcc11efa2b609fd8277705",
+      "county_storm_rain_ante30.csv": "424d10129e865fbb66972fa7d3d24471b2100812ed06bfe7794ceedde9e9bcdf",
+      "county_storm_labels_v3.csv": "72a0f406c3b3e72007f0699757f0d372df4ef8e983b5b44a49bfac30a343b5c0"
+    },
+    "inputs": {
+      "census_tiger/cb_2023_us_county_5m.zip": "13b2bcdd81fee8476220793dd1023c4f1d2887945b5f66eef52afa98c99d2485",
+      "cdc_svi/SVI_2022_US_county.csv": "bc47d244153e359d5c09f621a4bf344a1e593159c16fbd3c28a15461b70a6c0f",
+      "iem_asos": "raw/data/iem_asos/storms/<storm>_<network>.csv (48 files) + stations_<network>.geojson",
+      "iem_iemre_ante30": "raw/data/iem_iemre_ante30/<storm>_<fips>.json (2,952 files)"
+    },
+    "rebuild": "make outage-v3-data"
+  }
+}

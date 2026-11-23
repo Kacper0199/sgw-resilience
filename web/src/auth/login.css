@@ -1,0 +1,198 @@
+/* Sign-in page only (DESIGN.md, Elevation & Depth): the glow and the card shadow exist nowhere else in the app. */
+.lg-root {
+  --login-page: #ffffff;
+  --login-line: #7f8ca3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--login-page);
+  color: var(--ink);
+}
+:root[data-theme="dark"] .lg-root {
+  --login-page: var(--canvas);
+  --login-line: #5c6c88;
+}
+
+.lg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, #000 0, #000 58%, transparent 100%);
+}
+.lg-glow i {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(96px);
+  will-change: transform;
+}
+.lg-navy {
+  inset-inline-start: -12%;
+  inset-block-end: -18%;
+  width: 52vw;
+  height: 66vh;
+  background: #35609f;
+  opacity: 0.2;
+  animation: lg-drift-a 48s ease-in-out infinite alternate;
+}
+.lg-blue {
+  inset-inline-start: 18%;
+  inset-block-end: -22%;
+  width: 48vw;
+  height: 64vh;
+  background: #2f6fe0;
+  opacity: 0.24;
+  animation: lg-drift-b 56s ease-in-out infinite alternate;
+}
+.lg-teal {
+  inset-inline-start: 42%;
+  inset-block-end: -22%;
+  width: 44vw;
+  height: 60vh;
+  background: #13a3b5;
+  opacity: 0.26;
+  animation: lg-drift-a 62s ease-in-out infinite alternate-reverse;
+}
+.lg-violet {
+  inset-inline-end: -10%;
+  inset-block-end: -18%;
+  width: 40vw;
+  height: 62vh;
+  background: #8b6fd0;
+  opacity: 0.22;
+  animation: lg-drift-b 52s ease-in-out infinite alternate-reverse;
+}
+:root[data-theme="dark"] .lg-glow {
+  mask-image: linear-gradient(to top, #000 0, #000 60%, transparent 100%);
+}
+:root[data-theme="dark"] .lg-navy {
+  background: #2a4f94;
+  opacity: 0.55;
+}
+:root[data-theme="dark"] .lg-blue {
+  opacity: 0.42;
+}
+:root[data-theme="dark"] .lg-teal,
+:root[data-theme="dark"] .lg-violet {
+  opacity: 0.34;
+}
+@keyframes lg-drift-a {
+  from {
+    transform: translate3d(-3%, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(5%, -6%, 0) scale(1.08);
+  }
+}
+@keyframes lg-drift-b {
+  from {
+    transform: translate3d(4%, -2%, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(-5%, 3%, 0) scale(0.96);
+  }
+}
+@keyframes lg-sheet-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Reduced transparency (system, high contrast, or the in-app setting) swaps the glow for a flat tint. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .lg-glow i {
+    display: none;
+  }
+  .lg-glow {
+    mask-image: none;
+    background: linear-gradient(to top, #eaf1fd 0, rgba(234, 241, 253, 0) 45%);
+  }
+  :root[data-theme="dark"] .lg-glow {
+    background: linear-gradient(to top, #16294a 0, rgba(22, 41, 74, 0) 45%);
+  }
+}
+:root[data-transparency="reduced"] .lg-glow i {
+  display: none;
+}
+:root[data-transparency="reduced"] .lg-glow {
+  mask-image: none;
+  background: linear-gradient(to top, #eaf1fd 0, rgba(234, 241, 253, 0) 45%);
+}
+:root[data-transparency="reduced"][data-theme="dark"] .lg-glow {
+  background: linear-gradient(to top, #16294a 0, rgba(22, 41, 74, 0) 45%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-glow i {
+    animation: none;
+  }
+}
+
+.lg-card {
+  box-shadow:
+    0 1px 0 rgba(19, 27, 42, 0.04),
+    0 18px 48px rgba(31, 58, 104, 0.14);
+}
+:root[data-theme="dark"] .lg-card {
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.45);
+}
+
+.lg-pop {
+  position: absolute;
+  z-index: 20;
+  inset-inline: 0;
+  top: calc(100% + 6px);
+  overflow: auto;
+  max-height: max(240px, calc(100dvh - 440px));
+  padding: 6px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--e-pop);
+  animation: sgw-fade 120ms var(--ease) both;
+}
+.lg-scrim {
+  display: none;
+}
+@media (max-width: 520px) {
+  .lg-glow i {
+    inset-block-end: -10%;
+    width: 80vw;
+    height: 60vh;
+  }
+  .lg-navy {
+    inset-inline-start: -30%;
+    opacity: 0.28;
+  }
+  .lg-blue {
+    inset-inline-start: 0;
+  }
+  .lg-teal {
+    inset-inline-start: 20%;
+    opacity: 0.32;
+  }
+  .lg-violet {
+    inset-inline-end: -30%;
+    opacity: 0.3;
+  }
+  .lg-pop {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    top: auto;
+    z-index: 40;
+    max-height: 72dvh;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    border-radius: 16px 16px 0 0;
+    animation: lg-sheet-up 220ms var(--ease) both;
+  }
+  .lg-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+  }
+}

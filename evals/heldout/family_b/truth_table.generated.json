@@ -1,0 +1,4996 @@
+{
+ "alerts": {
+  "warning_utc": "2024-08-04T09:20:00Z",
+  "watch_utc": "2024-08-04T09:20:00Z"
+ },
+ "clocks_by_advisory": {
+  "N": {
+   "advisory_label": "N",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T02:00:00Z",
+      "consequence_p90_utc": "2024-08-08T02:30:00Z",
+      "consequence_utc": "2024-08-06T06:00:00Z",
+      "decide_by_p10_utc": "2024-08-05T21:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T21:30:00Z",
+      "decide_by_utc": "2024-08-06T01:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T17:56:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:08:00Z",
+      "consequence_p90_utc": "2024-08-06T19:10:00Z",
+      "consequence_utc": "2024-08-06T07:56:00Z",
+      "decide_by_p10_utc": "2024-08-06T03:08:00Z",
+      "decide_by_p90_utc": "2024-08-06T17:10:00Z",
+      "decide_by_utc": "2024-08-06T05:56:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T05:56:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T10:34:00Z",
+      "consequence_p90_utc": "2024-08-08T00:37:00Z",
+      "consequence_utc": "2024-08-07T13:07:00Z",
+      "decide_by_p10_utc": "2024-08-07T09:04:00Z",
+      "decide_by_p90_utc": "2024-08-07T23:07:00Z",
+      "decide_by_utc": "2024-08-07T11:37:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T21:26:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:08:00Z",
+      "consequence_p90_utc": "2024-08-06T13:10:00Z",
+      "consequence_utc": "2024-08-06T01:56:00Z",
+      "decide_by_p10_utc": "2024-08-05T20:38:00Z",
+      "decide_by_p90_utc": "2024-08-06T10:40:00Z",
+      "decide_by_utc": "2024-08-05T23:26:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "next_advisory_utc": "2024-08-05T15:00:00Z",
+     "no_regret_share_ppm": 975000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:08:00Z",
+      "consequence_p90_utc": "2024-08-06T13:10:00Z",
+      "consequence_utc": "2024-08-06T01:56:00Z",
+      "decide_by_p10_utc": "2024-08-05T22:38:00Z",
+      "decide_by_p90_utc": "2024-08-06T12:40:00Z",
+      "decide_by_utc": "2024-08-06T01:26:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T01:26:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-05T09:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T21:42:00Z",
+    "2024-08-06T00:15:00Z",
+    "2024-08-06T11:45:00Z"
+   ],
+   "ps17_p_loss_ppm": 500904
+  },
+  "N+1": {
+   "advisory_label": "N+1",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T03:02:00Z",
+      "consequence_p90_utc": "2024-08-06T19:32:00Z",
+      "consequence_utc": "2024-08-06T05:45:00Z",
+      "decide_by_p10_utc": "2024-08-05T22:02:00Z",
+      "decide_by_p90_utc": "2024-08-06T14:32:00Z",
+      "decide_by_utc": "2024-08-06T00:45:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T19:10:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T06:44:00Z",
+      "consequence_p90_utc": "2024-08-06T12:54:00Z",
+      "consequence_utc": "2024-08-06T09:10:00Z",
+      "decide_by_p10_utc": "2024-08-06T04:44:00Z",
+      "decide_by_p90_utc": "2024-08-06T10:54:00Z",
+      "decide_by_utc": "2024-08-06T07:10:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T07:10:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T12:07:00Z",
+      "consequence_p90_utc": "2024-08-07T16:38:00Z",
+      "consequence_utc": "2024-08-07T13:59:00Z",
+      "decide_by_p10_utc": "2024-08-07T10:37:00Z",
+      "decide_by_p90_utc": "2024-08-07T15:08:00Z",
+      "decide_by_utc": "2024-08-07T12:29:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T22:40:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T00:44:00Z",
+      "consequence_p90_utc": "2024-08-06T06:54:00Z",
+      "consequence_utc": "2024-08-06T03:10:00Z",
+      "decide_by_p10_utc": "2024-08-05T22:14:00Z",
+      "decide_by_p90_utc": "2024-08-06T04:24:00Z",
+      "decide_by_utc": "2024-08-06T00:40:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T00:10:00Z",
+     "next_advisory_utc": "2024-08-05T21:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T00:44:00Z",
+      "consequence_p90_utc": "2024-08-06T06:54:00Z",
+      "consequence_utc": "2024-08-06T03:10:00Z",
+      "decide_by_p10_utc": "2024-08-06T00:14:00Z",
+      "decide_by_p90_utc": "2024-08-06T06:24:00Z",
+      "decide_by_utc": "2024-08-06T02:40:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T02:40:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-05T15:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T23:15:00Z",
+    "2024-08-06T01:08:00Z",
+    "2024-08-06T03:46:00Z"
+   ],
+   "ps17_p_loss_ppm": 614633
+  },
+  "N+10": {
+   "advisory_label": "N+10",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T21:00:00Z",
+      "consequence_p90_utc": "2024-08-07T21:00:00Z",
+      "consequence_utc": "2024-08-07T21:00:00Z",
+      "decide_by_p10_utc": "2024-08-07T16:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T16:00:00Z",
+      "decide_by_utc": "2024-08-07T16:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-07T14:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T04:30:00Z",
+      "consequence_p90_utc": "2024-08-08T04:30:00Z",
+      "consequence_utc": "2024-08-08T04:30:00Z",
+      "decide_by_p10_utc": "2024-08-08T02:30:00Z",
+      "decide_by_p90_utc": "2024-08-08T02:30:00Z",
+      "decide_by_utc": "2024-08-08T02:30:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T02:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-09T09:52:00Z",
+      "consequence_p90_utc": "2024-08-09T09:52:00Z",
+      "consequence_utc": "2024-08-09T09:52:00Z",
+      "decide_by_p10_utc": "2024-08-09T08:22:00Z",
+      "decide_by_p90_utc": "2024-08-09T08:22:00Z",
+      "decide_by_utc": "2024-08-09T08:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T18:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T22:30:00Z",
+      "consequence_p90_utc": "2024-08-07T22:30:00Z",
+      "consequence_utc": "2024-08-07T22:30:00Z",
+      "decide_by_p10_utc": "2024-08-07T20:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T20:00:00Z",
+      "decide_by_utc": "2024-08-07T20:00:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T19:30:00Z",
+     "next_advisory_utc": "2024-08-08T03:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T22:30:00Z",
+      "consequence_p90_utc": "2024-08-07T22:30:00Z",
+      "consequence_utc": "2024-08-07T22:30:00Z",
+      "decide_by_p10_utc": "2024-08-07T22:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T22:00:00Z",
+      "decide_by_utc": "2024-08-07T22:00:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T22:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-07T21:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-07T21:00:00Z",
+    "2024-08-07T21:00:00Z",
+    "2024-08-07T21:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 542734
+  },
+  "N+11": {
+   "advisory_label": "N+11",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T03:00:00Z",
+      "consequence_p90_utc": "2024-08-08T03:00:00Z",
+      "consequence_utc": "2024-08-08T03:00:00Z",
+      "decide_by_p10_utc": "2024-08-07T22:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T22:00:00Z",
+      "decide_by_utc": "2024-08-07T22:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-07T21:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T11:54:00Z",
+      "consequence_p90_utc": "2024-08-08T11:54:00Z",
+      "consequence_utc": "2024-08-08T11:54:00Z",
+      "decide_by_p10_utc": "2024-08-08T09:54:00Z",
+      "decide_by_p90_utc": "2024-08-08T09:54:00Z",
+      "decide_by_utc": "2024-08-08T09:54:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T09:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-09T15:52:00Z",
+      "consequence_p90_utc": "2024-08-09T15:52:00Z",
+      "consequence_utc": "2024-08-09T15:52:00Z",
+      "decide_by_p10_utc": "2024-08-09T14:22:00Z",
+      "decide_by_p90_utc": "2024-08-09T14:22:00Z",
+      "decide_by_utc": "2024-08-09T14:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T01:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T05:54:00Z",
+      "consequence_p90_utc": "2024-08-08T05:54:00Z",
+      "consequence_utc": "2024-08-08T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-08T03:24:00Z",
+      "decide_by_p90_utc": "2024-08-08T03:24:00Z",
+      "decide_by_utc": "2024-08-08T03:24:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T02:54:00Z",
+     "next_advisory_utc": "2024-08-08T09:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T05:54:00Z",
+      "consequence_p90_utc": "2024-08-08T05:54:00Z",
+      "consequence_utc": "2024-08-08T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-08T05:24:00Z",
+      "decide_by_p90_utc": "2024-08-08T05:24:00Z",
+      "decide_by_utc": "2024-08-08T05:24:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T05:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-08T03:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-08T03:00:00Z",
+    "2024-08-08T03:00:00Z",
+    "2024-08-08T03:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 540633
+  },
+  "N+12": {
+   "advisory_label": "N+12",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T09:00:00Z",
+      "consequence_p90_utc": "2024-08-08T09:00:00Z",
+      "consequence_utc": "2024-08-08T09:00:00Z",
+      "decide_by_p10_utc": "2024-08-08T04:00:00Z",
+      "decide_by_p90_utc": "2024-08-08T04:00:00Z",
+      "decide_by_utc": "2024-08-08T04:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-08T03:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T17:03:00Z",
+      "consequence_p90_utc": "2024-08-08T17:03:00Z",
+      "consequence_utc": "2024-08-08T17:03:00Z",
+      "decide_by_p10_utc": "2024-08-08T15:03:00Z",
+      "decide_by_p90_utc": "2024-08-08T15:03:00Z",
+      "decide_by_utc": "2024-08-08T15:03:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T15:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-09T21:52:00Z",
+      "consequence_p90_utc": "2024-08-09T21:52:00Z",
+      "consequence_utc": "2024-08-09T21:52:00Z",
+      "decide_by_p10_utc": "2024-08-09T20:22:00Z",
+      "decide_by_p90_utc": "2024-08-09T20:22:00Z",
+      "decide_by_utc": "2024-08-09T20:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T06:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T11:03:00Z",
+      "consequence_p90_utc": "2024-08-08T11:03:00Z",
+      "consequence_utc": "2024-08-08T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-08T08:33:00Z",
+      "decide_by_p90_utc": "2024-08-08T08:33:00Z",
+      "decide_by_utc": "2024-08-08T08:33:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T08:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T11:03:00Z",
+      "consequence_p90_utc": "2024-08-08T11:03:00Z",
+      "consequence_utc": "2024-08-08T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-08T10:33:00Z",
+      "decide_by_p90_utc": "2024-08-08T10:33:00Z",
+      "decide_by_utc": "2024-08-08T10:33:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-08T10:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-08T09:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-08T09:00:00Z",
+    "2024-08-08T09:00:00Z",
+    "2024-08-08T09:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 510967
+  },
+  "N+2": {
+   "advisory_label": "N+2",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T04:27:00Z",
+      "consequence_p90_utc": "2024-08-06T09:30:00Z",
+      "consequence_utc": "2024-08-06T06:00:00Z",
+      "decide_by_p10_utc": "2024-08-05T23:27:00Z",
+      "decide_by_p90_utc": "2024-08-06T04:30:00Z",
+      "decide_by_utc": "2024-08-06T01:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T19:42:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T08:17:00Z",
+      "consequence_p90_utc": "2024-08-06T11:32:00Z",
+      "consequence_utc": "2024-08-06T09:42:00Z",
+      "decide_by_p10_utc": "2024-08-06T06:17:00Z",
+      "decide_by_p90_utc": "2024-08-06T09:32:00Z",
+      "decide_by_utc": "2024-08-06T07:42:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T07:42:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T13:22:00Z",
+      "consequence_p90_utc": "2024-08-07T15:37:00Z",
+      "consequence_utc": "2024-08-07T14:22:00Z",
+      "decide_by_p10_utc": "2024-08-07T11:52:00Z",
+      "decide_by_p90_utc": "2024-08-07T14:07:00Z",
+      "decide_by_utc": "2024-08-07T12:52:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T23:12:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T02:17:00Z",
+      "consequence_p90_utc": "2024-08-06T05:32:00Z",
+      "consequence_utc": "2024-08-06T03:42:00Z",
+      "decide_by_p10_utc": "2024-08-05T23:47:00Z",
+      "decide_by_p90_utc": "2024-08-06T03:02:00Z",
+      "decide_by_utc": "2024-08-06T01:12:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T00:42:00Z",
+     "next_advisory_utc": "2024-08-06T03:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T02:17:00Z",
+      "consequence_p90_utc": "2024-08-06T05:32:00Z",
+      "consequence_utc": "2024-08-06T03:42:00Z",
+      "decide_by_p10_utc": "2024-08-06T01:47:00Z",
+      "decide_by_p90_utc": "2024-08-06T05:02:00Z",
+      "decide_by_utc": "2024-08-06T03:12:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T03:12:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-05T21:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T00:30:00Z",
+    "2024-08-06T01:30:00Z",
+    "2024-08-06T02:45:00Z"
+   ],
+   "ps17_p_loss_ppm": 498001
+  },
+  "N+3": {
+   "advisory_label": "N+3",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:45:00Z",
+      "consequence_p90_utc": "2024-08-06T07:46:00Z",
+      "consequence_utc": "2024-08-06T06:30:00Z",
+      "decide_by_p10_utc": "2024-08-06T00:45:00Z",
+      "decide_by_p90_utc": "2024-08-06T02:46:00Z",
+      "decide_by_utc": "2024-08-06T01:30:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T21:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T11:54:00Z",
+      "consequence_p90_utc": "2024-08-06T11:54:00Z",
+      "consequence_utc": "2024-08-06T11:54:00Z",
+      "decide_by_p10_utc": "2024-08-06T09:54:00Z",
+      "decide_by_p90_utc": "2024-08-06T09:54:00Z",
+      "decide_by_utc": "2024-08-06T09:54:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T09:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T15:52:00Z",
+      "consequence_p90_utc": "2024-08-07T15:52:00Z",
+      "consequence_utc": "2024-08-07T15:52:00Z",
+      "decide_by_p10_utc": "2024-08-07T14:22:00Z",
+      "decide_by_p90_utc": "2024-08-07T14:22:00Z",
+      "decide_by_utc": "2024-08-07T14:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T01:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:54:00Z",
+      "consequence_p90_utc": "2024-08-06T05:54:00Z",
+      "consequence_utc": "2024-08-06T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-06T03:24:00Z",
+      "decide_by_p90_utc": "2024-08-06T03:24:00Z",
+      "decide_by_utc": "2024-08-06T03:24:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T02:54:00Z",
+     "next_advisory_utc": "2024-08-06T09:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:54:00Z",
+      "consequence_p90_utc": "2024-08-06T05:54:00Z",
+      "consequence_utc": "2024-08-06T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-06T05:24:00Z",
+      "decide_by_p90_utc": "2024-08-06T05:24:00Z",
+      "decide_by_utc": "2024-08-06T05:24:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T05:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-06T03:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T03:00:00Z",
+    "2024-08-06T03:00:00Z",
+    "2024-08-06T03:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 710408
+  },
+  "N+4": {
+   "advisory_label": "N+4",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T09:00:00Z",
+      "consequence_p90_utc": "2024-08-06T09:00:00Z",
+      "consequence_utc": "2024-08-06T09:00:00Z",
+      "decide_by_p10_utc": "2024-08-06T04:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T04:00:00Z",
+      "decide_by_utc": "2024-08-06T04:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-06T03:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T17:03:00Z",
+      "consequence_p90_utc": "2024-08-06T17:03:00Z",
+      "consequence_utc": "2024-08-06T17:03:00Z",
+      "decide_by_p10_utc": "2024-08-06T15:03:00Z",
+      "decide_by_p90_utc": "2024-08-06T15:03:00Z",
+      "decide_by_utc": "2024-08-06T15:03:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T15:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T21:52:00Z",
+      "consequence_p90_utc": "2024-08-07T21:52:00Z",
+      "consequence_utc": "2024-08-07T21:52:00Z",
+      "decide_by_p10_utc": "2024-08-07T20:22:00Z",
+      "decide_by_p90_utc": "2024-08-07T20:22:00Z",
+      "decide_by_utc": "2024-08-07T20:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T06:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T11:03:00Z",
+      "consequence_p90_utc": "2024-08-06T11:03:00Z",
+      "consequence_utc": "2024-08-06T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-06T08:33:00Z",
+      "decide_by_p90_utc": "2024-08-06T08:33:00Z",
+      "decide_by_utc": "2024-08-06T08:33:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T08:03:00Z",
+     "next_advisory_utc": "2024-08-06T15:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T11:03:00Z",
+      "consequence_p90_utc": "2024-08-06T11:03:00Z",
+      "consequence_utc": "2024-08-06T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-06T10:33:00Z",
+      "decide_by_p90_utc": "2024-08-06T10:33:00Z",
+      "decide_by_utc": "2024-08-06T10:33:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T10:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-06T09:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T09:00:00Z",
+    "2024-08-06T09:00:00Z",
+    "2024-08-06T09:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 556009
+  },
+  "N+5": {
+   "advisory_label": "N+5",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T15:00:00Z",
+      "consequence_p90_utc": "2024-08-06T15:00:00Z",
+      "consequence_utc": "2024-08-06T15:00:00Z",
+      "decide_by_p10_utc": "2024-08-06T10:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T10:00:00Z",
+      "decide_by_utc": "2024-08-06T10:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-06T08:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T22:38:00Z",
+      "consequence_p90_utc": "2024-08-06T22:38:00Z",
+      "consequence_utc": "2024-08-06T22:38:00Z",
+      "decide_by_p10_utc": "2024-08-06T20:38:00Z",
+      "decide_by_p90_utc": "2024-08-06T20:38:00Z",
+      "decide_by_utc": "2024-08-06T20:38:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T20:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T03:52:00Z",
+      "consequence_p90_utc": "2024-08-08T03:52:00Z",
+      "consequence_utc": "2024-08-08T03:52:00Z",
+      "decide_by_p10_utc": "2024-08-08T02:22:00Z",
+      "decide_by_p90_utc": "2024-08-08T02:22:00Z",
+      "decide_by_utc": "2024-08-08T02:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T12:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T16:38:00Z",
+      "consequence_p90_utc": "2024-08-06T16:38:00Z",
+      "consequence_utc": "2024-08-06T16:38:00Z",
+      "decide_by_p10_utc": "2024-08-06T14:08:00Z",
+      "decide_by_p90_utc": "2024-08-06T14:08:00Z",
+      "decide_by_utc": "2024-08-06T14:08:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T13:38:00Z",
+     "next_advisory_utc": "2024-08-06T21:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T16:38:00Z",
+      "consequence_p90_utc": "2024-08-06T16:38:00Z",
+      "consequence_utc": "2024-08-06T16:38:00Z",
+      "decide_by_p10_utc": "2024-08-06T16:08:00Z",
+      "decide_by_p90_utc": "2024-08-06T16:08:00Z",
+      "decide_by_utc": "2024-08-06T16:08:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T16:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-06T15:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T15:00:00Z",
+    "2024-08-06T15:00:00Z",
+    "2024-08-06T15:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 664255
+  },
+  "N+6": {
+   "advisory_label": "N+6",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T21:00:00Z",
+      "consequence_p90_utc": "2024-08-06T21:00:00Z",
+      "consequence_utc": "2024-08-06T21:00:00Z",
+      "decide_by_p10_utc": "2024-08-06T16:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T16:00:00Z",
+      "decide_by_utc": "2024-08-06T16:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-06T14:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T04:30:00Z",
+      "consequence_p90_utc": "2024-08-07T04:30:00Z",
+      "consequence_utc": "2024-08-07T04:30:00Z",
+      "decide_by_p10_utc": "2024-08-07T02:30:00Z",
+      "decide_by_p90_utc": "2024-08-07T02:30:00Z",
+      "decide_by_utc": "2024-08-07T02:30:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T02:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T09:52:00Z",
+      "consequence_p90_utc": "2024-08-08T09:52:00Z",
+      "consequence_utc": "2024-08-08T09:52:00Z",
+      "decide_by_p10_utc": "2024-08-08T08:22:00Z",
+      "decide_by_p90_utc": "2024-08-08T08:22:00Z",
+      "decide_by_utc": "2024-08-08T08:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T18:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T22:30:00Z",
+      "consequence_p90_utc": "2024-08-06T22:30:00Z",
+      "consequence_utc": "2024-08-06T22:30:00Z",
+      "decide_by_p10_utc": "2024-08-06T20:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T20:00:00Z",
+      "decide_by_utc": "2024-08-06T20:00:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T19:30:00Z",
+     "next_advisory_utc": "2024-08-07T03:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T22:30:00Z",
+      "consequence_p90_utc": "2024-08-06T22:30:00Z",
+      "consequence_utc": "2024-08-06T22:30:00Z",
+      "decide_by_p10_utc": "2024-08-06T22:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T22:00:00Z",
+      "decide_by_utc": "2024-08-06T22:00:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T22:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-06T21:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T21:00:00Z",
+    "2024-08-06T21:00:00Z",
+    "2024-08-06T21:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 595935
+  },
+  "N+7": {
+   "advisory_label": "N+7",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T03:00:00Z",
+      "consequence_p90_utc": "2024-08-07T03:00:00Z",
+      "consequence_utc": "2024-08-07T03:00:00Z",
+      "decide_by_p10_utc": "2024-08-06T22:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T22:00:00Z",
+      "decide_by_utc": "2024-08-06T22:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-06T21:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T11:54:00Z",
+      "consequence_p90_utc": "2024-08-07T11:54:00Z",
+      "consequence_utc": "2024-08-07T11:54:00Z",
+      "decide_by_p10_utc": "2024-08-07T09:54:00Z",
+      "decide_by_p90_utc": "2024-08-07T09:54:00Z",
+      "decide_by_utc": "2024-08-07T09:54:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T09:54:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T15:52:00Z",
+      "consequence_p90_utc": "2024-08-08T15:52:00Z",
+      "consequence_utc": "2024-08-08T15:52:00Z",
+      "decide_by_p10_utc": "2024-08-08T14:22:00Z",
+      "decide_by_p90_utc": "2024-08-08T14:22:00Z",
+      "decide_by_utc": "2024-08-08T14:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T01:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T05:54:00Z",
+      "consequence_p90_utc": "2024-08-07T05:54:00Z",
+      "consequence_utc": "2024-08-07T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-07T03:24:00Z",
+      "decide_by_p90_utc": "2024-08-07T03:24:00Z",
+      "decide_by_utc": "2024-08-07T03:24:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T02:54:00Z",
+     "next_advisory_utc": "2024-08-07T09:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T05:54:00Z",
+      "consequence_p90_utc": "2024-08-07T05:54:00Z",
+      "consequence_utc": "2024-08-07T05:54:00Z",
+      "decide_by_p10_utc": "2024-08-07T05:24:00Z",
+      "decide_by_p90_utc": "2024-08-07T05:24:00Z",
+      "decide_by_utc": "2024-08-07T05:24:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T05:24:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-07T03:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-07T03:00:00Z",
+    "2024-08-07T03:00:00Z",
+    "2024-08-07T03:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 522218
+  },
+  "N+8": {
+   "advisory_label": "N+8",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T09:00:00Z",
+      "consequence_p90_utc": "2024-08-07T09:00:00Z",
+      "consequence_utc": "2024-08-07T09:00:00Z",
+      "decide_by_p10_utc": "2024-08-07T04:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T04:00:00Z",
+      "decide_by_utc": "2024-08-07T04:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-07T03:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T17:03:00Z",
+      "consequence_p90_utc": "2024-08-07T17:03:00Z",
+      "consequence_utc": "2024-08-07T17:03:00Z",
+      "decide_by_p10_utc": "2024-08-07T15:03:00Z",
+      "decide_by_p90_utc": "2024-08-07T15:03:00Z",
+      "decide_by_utc": "2024-08-07T15:03:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T15:03:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-08T21:52:00Z",
+      "consequence_p90_utc": "2024-08-08T21:52:00Z",
+      "consequence_utc": "2024-08-08T21:52:00Z",
+      "decide_by_p10_utc": "2024-08-08T20:22:00Z",
+      "decide_by_p90_utc": "2024-08-08T20:22:00Z",
+      "decide_by_utc": "2024-08-08T20:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T06:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T11:03:00Z",
+      "consequence_p90_utc": "2024-08-07T11:03:00Z",
+      "consequence_utc": "2024-08-07T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-07T08:33:00Z",
+      "decide_by_p90_utc": "2024-08-07T08:33:00Z",
+      "decide_by_utc": "2024-08-07T08:33:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T08:03:00Z",
+     "next_advisory_utc": "2024-08-07T15:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T11:03:00Z",
+      "consequence_p90_utc": "2024-08-07T11:03:00Z",
+      "consequence_utc": "2024-08-07T11:03:00Z",
+      "decide_by_p10_utc": "2024-08-07T10:33:00Z",
+      "decide_by_p90_utc": "2024-08-07T10:33:00Z",
+      "decide_by_utc": "2024-08-07T10:33:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T10:33:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-07T09:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-07T09:00:00Z",
+    "2024-08-07T09:00:00Z",
+    "2024-08-07T09:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 724508
+  },
+  "N+9": {
+   "advisory_label": "N+9",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T15:00:00Z",
+      "consequence_p90_utc": "2024-08-07T15:00:00Z",
+      "consequence_utc": "2024-08-07T15:00:00Z",
+      "decide_by_p10_utc": "2024-08-07T10:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T10:00:00Z",
+      "decide_by_utc": "2024-08-07T10:00:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-07T08:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T22:38:00Z",
+      "consequence_p90_utc": "2024-08-07T22:38:00Z",
+      "consequence_utc": "2024-08-07T22:38:00Z",
+      "decide_by_p10_utc": "2024-08-07T20:38:00Z",
+      "decide_by_p90_utc": "2024-08-07T20:38:00Z",
+      "decide_by_utc": "2024-08-07T20:38:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T20:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-09T03:52:00Z",
+      "consequence_p90_utc": "2024-08-09T03:52:00Z",
+      "consequence_utc": "2024-08-09T03:52:00Z",
+      "decide_by_p10_utc": "2024-08-09T02:22:00Z",
+      "decide_by_p90_utc": "2024-08-09T02:22:00Z",
+      "decide_by_utc": "2024-08-09T02:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T12:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T16:38:00Z",
+      "consequence_p90_utc": "2024-08-07T16:38:00Z",
+      "consequence_utc": "2024-08-07T16:38:00Z",
+      "decide_by_p10_utc": "2024-08-07T14:08:00Z",
+      "decide_by_p90_utc": "2024-08-07T14:08:00Z",
+      "decide_by_utc": "2024-08-07T14:08:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T13:38:00Z",
+     "next_advisory_utc": "2024-08-07T21:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "decide_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T16:38:00Z",
+      "consequence_p90_utc": "2024-08-07T16:38:00Z",
+      "consequence_utc": "2024-08-07T16:38:00Z",
+      "decide_by_p10_utc": "2024-08-07T16:08:00Z",
+      "decide_by_p90_utc": "2024-08-07T16:08:00Z",
+      "decide_by_utc": "2024-08-07T16:08:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-07T16:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-07T15:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-07T15:00:00Z",
+    "2024-08-07T15:00:00Z",
+    "2024-08-07T15:00:00Z"
+   ],
+   "ps17_p_loss_ppm": 604979
+  },
+  "N-1": {
+   "advisory_label": "N-1",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:06:00Z",
+      "consequence_p90_utc": "2024-08-07T01:08:00Z",
+      "consequence_utc": "2024-08-06T03:38:00Z",
+      "decide_by_p10_utc": "2024-08-05T18:06:00Z",
+      "decide_by_p90_utc": "2024-08-06T20:08:00Z",
+      "decide_by_utc": "2024-08-05T22:38:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T16:04:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T03:36:00Z",
+      "consequence_p90_utc": "2024-08-06T15:22:00Z",
+      "consequence_utc": "2024-08-06T06:04:00Z",
+      "decide_by_p10_utc": "2024-08-06T01:36:00Z",
+      "decide_by_p90_utc": "2024-08-06T13:22:00Z",
+      "decide_by_utc": "2024-08-06T04:04:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T04:04:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T08:50:00Z",
+      "consequence_p90_utc": "2024-08-07T19:05:00Z",
+      "consequence_utc": "2024-08-07T11:29:00Z",
+      "decide_by_p10_utc": "2024-08-07T07:20:00Z",
+      "decide_by_p90_utc": "2024-08-07T17:35:00Z",
+      "decide_by_utc": "2024-08-07T09:59:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T19:34:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T21:36:00Z",
+      "consequence_p90_utc": "2024-08-06T09:22:00Z",
+      "consequence_utc": "2024-08-06T00:04:00Z",
+      "decide_by_p10_utc": "2024-08-05T19:06:00Z",
+      "decide_by_p90_utc": "2024-08-06T06:52:00Z",
+      "decide_by_utc": "2024-08-05T21:34:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T21:04:00Z",
+     "next_advisory_utc": "2024-08-05T09:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T21:36:00Z",
+      "consequence_p90_utc": "2024-08-06T09:22:00Z",
+      "consequence_utc": "2024-08-06T00:04:00Z",
+      "decide_by_p10_utc": "2024-08-05T21:06:00Z",
+      "decide_by_p90_utc": "2024-08-06T08:52:00Z",
+      "decide_by_utc": "2024-08-05T23:34:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T23:34:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-05T03:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T19:58:00Z",
+    "2024-08-05T22:38:00Z",
+    "2024-08-06T06:14:00Z"
+   ],
+   "ps17_p_loss_ppm": 639666
+  },
+  "N-2": {
+   "advisory_label": "N-2",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T00:03:00Z",
+      "consequence_p90_utc": "2024-08-07T12:36:00Z",
+      "consequence_utc": "2024-08-06T02:45:00Z",
+      "decide_by_p10_utc": "2024-08-05T19:03:00Z",
+      "decide_by_p90_utc": "2024-08-07T07:36:00Z",
+      "decide_by_utc": "2024-08-05T21:45:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T17:56:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T04:42:00Z",
+      "consequence_p90_utc": "2024-08-06T13:06:00Z",
+      "consequence_utc": "2024-08-06T07:56:00Z",
+      "decide_by_p10_utc": "2024-08-06T02:42:00Z",
+      "decide_by_p90_utc": "2024-08-06T11:06:00Z",
+      "decide_by_utc": "2024-08-06T05:56:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T05:56:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T10:05:00Z",
+      "consequence_p90_utc": "2024-08-07T16:47:00Z",
+      "consequence_utc": "2024-08-07T13:07:00Z",
+      "decide_by_p10_utc": "2024-08-07T08:35:00Z",
+      "decide_by_p90_utc": "2024-08-07T15:17:00Z",
+      "decide_by_utc": "2024-08-07T11:37:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T21:26:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T22:42:00Z",
+      "consequence_p90_utc": "2024-08-06T07:06:00Z",
+      "consequence_utc": "2024-08-06T01:56:00Z",
+      "decide_by_p10_utc": "2024-08-05T20:12:00Z",
+      "decide_by_p90_utc": "2024-08-06T04:36:00Z",
+      "decide_by_utc": "2024-08-05T23:26:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "next_advisory_utc": "2024-08-05T03:00:00Z",
+     "no_regret_share_ppm": 1000000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T22:42:00Z",
+      "consequence_p90_utc": "2024-08-06T07:06:00Z",
+      "consequence_utc": "2024-08-06T01:56:00Z",
+      "decide_by_p10_utc": "2024-08-05T22:12:00Z",
+      "decide_by_p90_utc": "2024-08-06T06:36:00Z",
+      "decide_by_utc": "2024-08-06T01:26:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T01:26:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-04T21:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T21:14:00Z",
+    "2024-08-06T00:15:00Z",
+    "2024-08-06T03:56:00Z"
+   ],
+   "ps17_p_loss_ppm": 682765
+  },
+  "N-3": {
+   "advisory_label": "N-3",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T03:00:00Z",
+      "consequence_p90_utc": "2024-08-07T01:15:00Z",
+      "consequence_utc": "2024-08-06T06:30:00Z",
+      "decide_by_p10_utc": "2024-08-05T22:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T20:15:00Z",
+      "decide_by_utc": "2024-08-06T01:30:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T23:11:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T08:00:00Z",
+      "consequence_p90_utc": "2024-08-06T17:57:00Z",
+      "consequence_utc": "2024-08-06T13:11:00Z",
+      "decide_by_p10_utc": "2024-08-06T06:00:00Z",
+      "decide_by_p90_utc": "2024-08-06T15:57:00Z",
+      "decide_by_utc": "2024-08-06T11:11:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T11:11:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T13:10:00Z",
+      "consequence_p90_utc": "2024-08-07T23:16:00Z",
+      "consequence_utc": "2024-08-07T16:52:00Z",
+      "decide_by_p10_utc": "2024-08-07T11:40:00Z",
+      "decide_by_p90_utc": "2024-08-07T21:46:00Z",
+      "decide_by_utc": "2024-08-07T15:22:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T02:41:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T02:00:00Z",
+      "consequence_p90_utc": "2024-08-06T11:57:00Z",
+      "consequence_utc": "2024-08-06T07:11:00Z",
+      "decide_by_p10_utc": "2024-08-05T23:30:00Z",
+      "decide_by_p90_utc": "2024-08-06T09:27:00Z",
+      "decide_by_utc": "2024-08-06T04:41:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T04:11:00Z",
+     "next_advisory_utc": "2024-08-04T21:00:00Z",
+     "no_regret_share_ppm": 950000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T02:00:00Z",
+      "consequence_p90_utc": "2024-08-06T11:57:00Z",
+      "consequence_utc": "2024-08-06T07:11:00Z",
+      "decide_by_p10_utc": "2024-08-06T01:30:00Z",
+      "decide_by_p90_utc": "2024-08-06T11:27:00Z",
+      "decide_by_utc": "2024-08-06T06:41:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T06:41:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-04T15:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T00:18:00Z",
+    "2024-08-06T04:00:00Z",
+    "2024-08-06T10:24:00Z"
+   ],
+   "ps17_p_loss_ppm": 590463
+  },
+  "N-4": {
+   "advisory_label": "N-4",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:54:00Z",
+      "consequence_p90_utc": "2024-08-07T00:52:00Z",
+      "consequence_utc": "2024-08-06T05:22:00Z",
+      "decide_by_p10_utc": "2024-08-05T18:54:00Z",
+      "decide_by_p90_utc": "2024-08-06T19:52:00Z",
+      "decide_by_utc": "2024-08-06T00:22:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T19:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T03:32:00Z",
+      "consequence_p90_utc": "2024-08-06T18:40:00Z",
+      "consequence_utc": "2024-08-06T09:30:00Z",
+      "decide_by_p10_utc": "2024-08-06T01:32:00Z",
+      "decide_by_p90_utc": "2024-08-06T16:40:00Z",
+      "decide_by_utc": "2024-08-06T07:30:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T07:30:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T08:44:00Z",
+      "consequence_p90_utc": "2024-08-08T00:07:00Z",
+      "consequence_utc": "2024-08-07T14:14:00Z",
+      "decide_by_p10_utc": "2024-08-07T07:14:00Z",
+      "decide_by_p90_utc": "2024-08-07T22:37:00Z",
+      "decide_by_utc": "2024-08-07T12:44:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-05T23:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T21:32:00Z",
+      "consequence_p90_utc": "2024-08-06T12:40:00Z",
+      "consequence_utc": "2024-08-06T03:30:00Z",
+      "decide_by_p10_utc": "2024-08-05T19:02:00Z",
+      "decide_by_p90_utc": "2024-08-06T10:10:00Z",
+      "decide_by_utc": "2024-08-06T01:00:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T00:30:00Z",
+     "next_advisory_utc": "2024-08-04T15:00:00Z",
+     "no_regret_share_ppm": 900000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T21:32:00Z",
+      "consequence_p90_utc": "2024-08-06T12:40:00Z",
+      "consequence_utc": "2024-08-06T03:30:00Z",
+      "decide_by_p10_utc": "2024-08-05T21:02:00Z",
+      "decide_by_p90_utc": "2024-08-06T12:10:00Z",
+      "decide_by_utc": "2024-08-06T03:00:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T03:00:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-04T09:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T19:52:00Z",
+    "2024-08-06T01:22:00Z",
+    "2024-08-06T11:15:00Z"
+   ],
+   "ps17_p_loss_ppm": 522129
+  },
+  "N-5": {
+   "advisory_label": "N-5",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:00:00Z",
+      "consequence_p90_utc": "2024-08-07T08:22:00Z",
+      "consequence_utc": "2024-08-06T09:52:00Z",
+      "decide_by_p10_utc": "2024-08-06T00:00:00Z",
+      "decide_by_p90_utc": "2024-08-07T03:22:00Z",
+      "decide_by_utc": "2024-08-06T04:52:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-06T03:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T12:42:00Z",
+      "consequence_p90_utc": "2024-08-07T05:55:00Z",
+      "consequence_utc": "2024-08-06T17:08:00Z",
+      "decide_by_p10_utc": "2024-08-06T10:42:00Z",
+      "decide_by_p90_utc": "2024-08-07T03:55:00Z",
+      "decide_by_utc": "2024-08-06T15:08:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T15:08:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T16:29:00Z",
+      "consequence_p90_utc": "2024-08-08T11:22:00Z",
+      "consequence_utc": "2024-08-07T21:59:00Z",
+      "decide_by_p10_utc": "2024-08-07T14:59:00Z",
+      "decide_by_p90_utc": "2024-08-08T09:52:00Z",
+      "decide_by_utc": "2024-08-07T20:29:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T06:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T06:42:00Z",
+      "consequence_p90_utc": "2024-08-06T23:55:00Z",
+      "consequence_utc": "2024-08-06T11:08:00Z",
+      "decide_by_p10_utc": "2024-08-06T04:12:00Z",
+      "decide_by_p90_utc": "2024-08-06T21:25:00Z",
+      "decide_by_utc": "2024-08-06T08:38:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T08:08:00Z",
+     "next_advisory_utc": "2024-08-04T09:00:00Z",
+     "no_regret_share_ppm": 900000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T06:42:00Z",
+      "consequence_p90_utc": "2024-08-06T23:55:00Z",
+      "consequence_utc": "2024-08-06T11:08:00Z",
+      "decide_by_p10_utc": "2024-08-06T06:12:00Z",
+      "decide_by_p90_utc": "2024-08-06T23:25:00Z",
+      "decide_by_utc": "2024-08-06T10:38:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T10:38:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-04T03:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-06T03:38:00Z",
+    "2024-08-06T09:08:00Z",
+    "2024-08-06T22:30:00Z"
+   ],
+   "ps17_p_loss_ppm": 472022
+  },
+  "N-6": {
+   "advisory_label": "N-6",
+   "bound_by": {
+    "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+    "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+    "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+    "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+    "DC-D3-PS17-PRESSURE": null
+   },
+   "cases": {
+    "DC-D2-CREWS-AIK": {
+     "clock": {
+      "action_lead_time_min": 300,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "hazard.ts_wind_onset",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T00:27:00Z",
+      "consequence_p90_utc": "2024-08-07T12:00:00Z",
+      "consequence_utc": "2024-08-06T06:15:00Z",
+      "decide_by_p10_utc": "2024-08-05T19:27:00Z",
+      "decide_by_p90_utc": "2024-08-07T07:00:00Z",
+      "decide_by_utc": "2024-08-06T01:15:00Z",
+      "if_late": "Crews travel into tropical-storm winds or arrive after the first feeder trips.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.crew_mobilise_and_stage",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-ELE-2.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D2-CREWS-AIK",
+     "domain": "electric",
+     "effective_decide_by_utc": "2024-08-05T22:32:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D2",
+     "title": "Pre-position crews at Sandhill and Millpond yards"
+    },
+    "DC-D3-HSP-TALLOWBRANCH-WATER": {
+     "clock": {
+      "action_lead_time_min": 120,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.hospital_storage",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-06T05:50:00Z",
+      "consequence_p90_utc": "2024-08-07T04:41:00Z",
+      "consequence_utc": "2024-08-06T12:32:00Z",
+      "decide_by_p10_utc": "2024-08-06T03:50:00Z",
+      "decide_by_p90_utc": "2024-08-07T02:41:00Z",
+      "decide_by_utc": "2024-08-06T10:32:00Z",
+      "if_late": "Tallowbranch hospital exhausts onsite water storage without a tanker.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.potable_water_tanker",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-6.1",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-HSP-TALLOWBRANCH-WATER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T10:32:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": false,
+     "prerequisite_ids": [
+      "DC-D3-PS17-PRESSURE"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Secure water supply to Tallowbranch hospital"
+    },
+    "DC-D3-PS17-FUEL": {
+     "clock": {
+      "action_lead_time_min": 90,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.portable_generator_fuel",
+       "basis_version": "1.0-synthetic",
+       "citation": null,
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-07T11:17:00Z",
+      "consequence_p90_utc": "2024-08-08T10:04:00Z",
+      "consequence_utc": "2024-08-07T16:22:00Z",
+      "decide_by_p10_utc": "2024-08-07T09:47:00Z",
+      "decide_by_p90_utc": "2024-08-08T08:34:00Z",
+      "decide_by_utc": "2024-08-07T14:52:00Z",
+      "if_late": "The PS-17 portable generator runs dry before the fuel truck arrives.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.fuel_truck_dispatch",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.4",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-FUEL",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T02:02:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Dispatch the fuel truck to PS-17"
+    },
+    "DC-D3-PS17-POWER": {
+     "clock": {
+      "action_lead_time_min": 150,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:50:00Z",
+      "consequence_p90_utc": "2024-08-06T22:41:00Z",
+      "consequence_utc": "2024-08-06T06:32:00Z",
+      "decide_by_p10_utc": "2024-08-05T21:20:00Z",
+      "decide_by_p90_utc": "2024-08-06T20:11:00Z",
+      "decide_by_utc": "2024-08-06T04:02:00Z",
+      "if_late": "Hospital zone pressure falls below the 25 psi floor before a generator runs at PS-17.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.portable_generator_hookup",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-POWER",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T03:32:00Z",
+     "next_advisory_utc": "2024-08-04T03:00:00Z",
+     "no_regret_share_ppm": 900000,
+     "no_regret_verdict": "act_now",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-FUEL",
+      "DC-D2-CREWS-AIK"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hook up the portable generator at PS-17"
+    },
+    "DC-D3-PS17-PRESSURE": {
+     "clock": {
+      "action_lead_time_min": 30,
+      "clock_kind": "model_estimate",
+      "consequence_basis": {
+       "basis_id": "water_twin.ps17_pressure_floor",
+       "basis_version": "1.0-synthetic",
+       "citation": "SC R.61-58.7.E(7) 25 psi floor",
+       "kind": "model_estimate"
+      },
+      "consequence_p10_utc": "2024-08-05T23:50:00Z",
+      "consequence_p90_utc": "2024-08-06T22:41:00Z",
+      "consequence_utc": "2024-08-06T06:32:00Z",
+      "decide_by_p10_utc": "2024-08-05T23:20:00Z",
+      "decide_by_p90_utc": "2024-08-06T22:11:00Z",
+      "decide_by_utc": "2024-08-06T06:02:00Z",
+      "if_late": "The Cedarfall zone drops below the state floor; a boil-water decision follows.",
+      "lead_time_basis": {
+       "basis_id": "lead_time.pump_restart_refill",
+       "basis_version": "1.0-synthetic",
+       "citation": "SOP-WTR-4.2",
+       "kind": "model_estimate"
+      }
+     },
+     "decision_case_id": "DC-D3-PS17-PRESSURE",
+     "domain": "water",
+     "effective_decide_by_utc": "2024-08-06T06:02:00Z",
+     "next_advisory_utc": null,
+     "no_regret_share_ppm": null,
+     "no_regret_verdict": "n/a",
+     "on_critical_path": true,
+     "prerequisite_ids": [
+      "DC-D3-PS17-POWER"
+     ],
+     "region_id": "SC-45003",
+     "step": "D3",
+     "title": "Hold Cedarfall zone pressure above the state floor"
+    }
+   },
+   "issued_utc": "2024-08-03T21:00:00Z",
+   "ps17_loss_p10_p50_p90_utc": [
+    "2024-08-05T22:26:00Z",
+    "2024-08-06T03:30:00Z",
+    "2024-08-06T21:12:00Z"
+   ],
+   "ps17_p_loss_ppm": 458097
+  }
+ },
+ "crews": {
+  "blocked_events": 35,
+  "detail_crews": [
+   "CRW-CORMORANT-0206",
+   "CRW-EGRET-0207",
+   "CRW-GANNET-0205",
+   "CRW-GROSBEAK-0210",
+   "CRW-HARRIER-0103",
+   "CRW-HARRIER-0202",
+   "CRW-KESTREL-0101",
+   "CRW-KESTREL-02",
+   "CRW-MA-CORMORANT-0203",
+   "CRW-MA-EGRET-0104",
+   "CRW-MA-GANNET-0103",
+   "CRW-MA-GROSBEAK-0205",
+   "CRW-MA-HARRIER-0201",
+   "CRW-MA-MERLIN-0101",
+   "CRW-MA-PLOVER-0202",
+   "CRW-MA-SHRIKE-0102",
+   "CRW-MA-SWIFT-0206",
+   "CRW-MA-TALON-11",
+   "CRW-MA-TANAGER-0204",
+   "CRW-MA-TERN-0207",
+   "CRW-MA-WARBLER-0105",
+   "CRW-MERLIN-0102",
+   "CRW-MERLIN-0201",
+   "CRW-OSPREY-04",
+   "CRW-OSPREY-07",
+   "CRW-PLOVER-0105",
+   "CRW-PLOVER-0204",
+   "CRW-SHRIKE-0104",
+   "CRW-SHRIKE-0203",
+   "CRW-TANAGER-0208",
+   "CRW-WARBLER-0209"
+  ]
+ },
+ "critical_path": {
+  "edges": [
+   [
+    "DC-D3-PS17-FUEL",
+    "DC-D3-PS17-POWER"
+   ],
+   [
+    "DC-D2-CREWS-AIK",
+    "DC-D3-PS17-POWER"
+   ],
+   [
+    "DC-D3-PS17-POWER",
+    "DC-D3-PS17-PRESSURE"
+   ],
+   [
+    "DC-D3-PS17-PRESSURE",
+    "DC-D3-HSP-TALLOWBRANCH-WATER"
+   ]
+  ],
+  "nodes": [
+   "DC-D2-CREWS-AIK",
+   "DC-D3-PS17-FUEL",
+   "DC-D3-PS17-POWER",
+   "DC-D3-PS17-PRESSURE",
+   "DC-D3-HSP-TALLOWBRANCH-WATER"
+  ]
+ },
+ "family": "B",
+ "generator": "sgw.generator",
+ "generator_version": "1.0.0",
+ "hinge_robustness": {
+  "exposure_sensitivity": [
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:26:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "N+1": {
+     "decide_by_utc": "2024-08-06T00:40:00Z",
+     "effective_decide_by_utc": "2024-08-06T00:10:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "material_loss_p": 0.05,
+    "shift_min": 74.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:26:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "N+1": {
+     "decide_by_utc": "2024-08-06T00:40:00Z",
+     "effective_decide_by_utc": "2024-08-06T00:10:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "material_loss_p": 0.1,
+    "shift_min": 74.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:26:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "N+1": {
+     "decide_by_utc": "2024-08-06T00:40:00Z",
+     "effective_decide_by_utc": "2024-08-06T00:10:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "material_loss_p": 0.2,
+    "shift_min": 74.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-06T00:29:00Z",
+     "effective_decide_by_utc": "2024-08-05T23:59:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "N+1": {
+     "decide_by_utc": "2024-08-06T02:40:00Z",
+     "effective_decide_by_utc": "2024-08-06T02:10:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "material_loss_p": 0.3,
+    "shift_min": 131.0
+   }
+  ],
+  "flip_holds_for_member_p_loss": [
+   0.5,
+   0.5
+  ],
+  "member_threshold_band": [
+   {
+    "flip": false,
+    "member_p_loss": 0.1,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.15,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.2,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.25,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.3,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.35,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": false,
+    "member_p_loss": 0.4,
+    "verdict_N": "act_now",
+    "verdict_N1": "act_now"
+   },
+   {
+    "flip": true,
+    "member_p_loss": 0.5,
+    "verdict_N": "wait_for_next_advisory",
+    "verdict_N1": "act_now"
+   }
+  ],
+  "min_pin_scale_for_flip": null,
+  "pin_sweep": [
+   {
+    "N": {
+     "decide_by_utc": "2024-08-06T01:12:00Z",
+     "effective_decide_by_utc": "2024-08-06T00:42:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "scale": 0.0,
+    "shift_min": -32.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-06T00:40:00Z",
+     "effective_decide_by_utc": "2024-08-06T00:10:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "scale": 0.25,
+    "shift_min": 0.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-06T00:18:00Z",
+     "effective_decide_by_utc": "2024-08-05T23:48:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "scale": 0.5,
+    "shift_min": 22.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:47:00Z",
+     "effective_decide_by_utc": "2024-08-05T23:17:00Z",
+     "share_ppm": 1000000,
+     "verdict": "act_now"
+    },
+    "scale": 0.75,
+    "shift_min": 53.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:26:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:56:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "scale": 1.0,
+    "shift_min": 74.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:09:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:39:00Z",
+     "share_ppm": 975000,
+     "verdict": "act_now"
+    },
+    "scale": 1.25,
+    "shift_min": 91.0
+   },
+   {
+    "N": {
+     "decide_by_utc": "2024-08-05T23:09:00Z",
+     "effective_decide_by_utc": "2024-08-05T22:39:00Z",
+     "share_ppm": 925000,
+     "verdict": "act_now"
+    },
+    "scale": 1.5,
+    "shift_min": 91.0
+   }
+  ]
+ },
+ "ids": {
+  "advisories": [
+   "ADV-HELENE-SYN-N-6",
+   "ADV-HELENE-SYN-N-5",
+   "ADV-HELENE-SYN-N-4",
+   "ADV-HELENE-SYN-N-3",
+   "ADV-HELENE-SYN-N-2",
+   "ADV-HELENE-SYN-N-1",
+   "ADV-HELENE-SYN-N",
+   "ADV-HELENE-SYN-NP1",
+   "ADV-HELENE-SYN-NP2",
+   "ADV-HELENE-SYN-NP3",
+   "ADV-HELENE-SYN-NP4",
+   "ADV-HELENE-SYN-NP5",
+   "ADV-HELENE-SYN-NP6",
+   "ADV-HELENE-SYN-NP7",
+   "ADV-HELENE-SYN-NP8",
+   "ADV-HELENE-SYN-NP9",
+   "ADV-HELENE-SYN-NP10",
+   "ADV-HELENE-SYN-NP11",
+   "ADV-HELENE-SYN-NP12"
+  ],
+  "detail_feeders": [
+   "FDR-AIK-2201",
+   "FDR-AIK-2202",
+   "FDR-AIK-2203",
+   "FDR-AIK-2204",
+   "FDR-AIK-2205",
+   "FDR-AIK-2206",
+   "FDR-AIK-2207",
+   "FDR-AIK-2208",
+   "FDR-AIK-2209",
+   "FDR-AIK-2210",
+   "FDR-AIK-2211",
+   "FDR-AIK-2212",
+   "FDR-AIK-2213",
+   "FDR-AIK-2214",
+   "FDR-AIK-2215",
+   "FDR-AIK-2216",
+   "FDR-AIK-2217",
+   "FDR-AIK-2218",
+   "FDR-AIK-2219",
+   "FDR-AIK-2220",
+   "FDR-AIK-2221",
+   "FDR-AIK-2222",
+   "FDR-AIK-2223",
+   "FDR-AIK-2224",
+   "FDR-AIK-2225",
+   "FDR-AIK-2226",
+   "FDR-AIK-2227",
+   "FDR-AIK-2228",
+   "FDR-AIK-2229",
+   "FDR-AIK-2230",
+   "FDR-AIK-2231",
+   "FDR-AIK-2232",
+   "FDR-AIK-2233",
+   "FDR-AIK-2234",
+   "FDR-AIK-2235",
+   "FDR-AIK-2236",
+   "FDR-AIK-2237",
+   "FDR-AIK-2238",
+   "FDR-AIK-2239",
+   "FDR-AIK-2240",
+   "FDR-AIK-2241",
+   "FDR-AIK-2242"
+  ],
+  "pump_stations": [
+   "PS-17",
+   "PS-23",
+   "PS-38",
+   "PS-52"
+  ]
+ },
+ "label": "synthetic",
+ "metrics": {
+  "counties_with_outage": 114,
+  "county_t50_median_h": 67.25,
+  "county_t50_target_h": 35.5,
+  "county_t90_median_h": 115.75,
+  "crew_groups_internal": 184,
+  "crew_groups_mutual_aid": 143,
+  "cumulative_customers_out": 1651119,
+  "events": 6505,
+  "events_outside_window_dropped": 266,
+  "personnel_total": 10136,
+  "sections_failed": 3492
+ },
+ "scenario": "family_b/debby_b",
+ "seed": 80527,
+ "seeded_cases": [
+  {
+   "entities": [
+    "ADV-DEBBY-SYN-N",
+    "ADV-DEBBY-SYN-NP1",
+    "PS-17",
+    "FDR-AIK-2207"
+   ],
+   "id": "HINGE-PS17-N-N1",
+   "kind": "forecast_hinge",
+   "must_see": true,
+   "outcome": {
+    "consequence_N1_p10_p50_p90_utc": [
+     "2024-08-06T00:44:00Z",
+     "2024-08-06T03:10:00Z",
+     "2024-08-06T06:54:00Z"
+    ],
+    "decide_by_N1_utc": "2024-08-06T00:40:00Z",
+    "decide_by_N_utc": "2024-08-05T23:26:00Z",
+    "effective_decide_by_N1_utc": "2024-08-06T00:10:00Z",
+    "effective_decide_by_N_utc": "2024-08-05T22:56:00Z",
+    "effective_shift_min": 74.0,
+    "no_regret_share_ppm": [
+     975000,
+     1000000
+    ],
+    "note": "forecast exposure (P(loss) >= material_loss_p) precedes the realized trip, so the reference clock is conservative against this truth draw",
+    "official_error_pinned": [
+     true,
+     true
+    ],
+    "ps17_p_loss_ppm": [
+     500904,
+     614633
+    ],
+    "quoted": "effective",
+    "quoted_note": "the generated helene scenario is the story of record (UI, documents, video); quote the effective, critical-path-bound decide-by; helene_micro is for thin-slice tests only",
+    "realized_floor_crossing_utc": "2024-08-06T04:38:00Z",
+    "realized_power_loss_utc": "2024-08-06T01:00:00Z",
+    "shift_min": 74.0,
+    "verdict": [
+     "act_now",
+     "act_now"
+    ]
+   },
+   "pin": "advisories.official_error_overrides"
+  },
+  {
+   "entities": [
+    "DC-D3-PS17-FUEL",
+    "DC-D3-PS17-POWER",
+    "DC-D3-PS17-PRESSURE",
+    "DC-D3-HSP-TALLOWBRANCH-WATER",
+    "DC-D2-CREWS-AIK"
+   ],
+   "id": "CP-PS17-CHAIN",
+   "kind": "critical_path",
+   "must_see": true,
+   "outcome": {
+    "bound_by_N1": {
+     "DC-D2-CREWS-AIK": "DC-D3-PS17-POWER",
+     "DC-D3-HSP-TALLOWBRANCH-WATER": null,
+     "DC-D3-PS17-FUEL": "DC-D3-PS17-POWER",
+     "DC-D3-PS17-POWER": "DC-D3-PS17-PRESSURE",
+     "DC-D3-PS17-PRESSURE": null
+    },
+    "edges": [
+     [
+      "DC-D3-PS17-FUEL",
+      "DC-D3-PS17-POWER"
+     ],
+     [
+      "DC-D2-CREWS-AIK",
+      "DC-D3-PS17-POWER"
+     ],
+     [
+      "DC-D3-PS17-POWER",
+      "DC-D3-PS17-PRESSURE"
+     ],
+     [
+      "DC-D3-PS17-PRESSURE",
+      "DC-D3-HSP-TALLOWBRANCH-WATER"
+     ]
+    ],
+    "effective_decide_by_N1_utc": {
+     "DC-D2-CREWS-AIK": "2024-08-05T19:10:00Z",
+     "DC-D3-HSP-TALLOWBRANCH-WATER": "2024-08-06T07:10:00Z",
+     "DC-D3-PS17-FUEL": "2024-08-05T22:40:00Z",
+     "DC-D3-PS17-POWER": "2024-08-06T00:10:00Z",
+     "DC-D3-PS17-PRESSURE": "2024-08-06T02:40:00Z"
+    },
+    "on_critical_path_N1": {
+     "DC-D2-CREWS-AIK": true,
+     "DC-D3-HSP-TALLOWBRANCH-WATER": false,
+     "DC-D3-PS17-FUEL": true,
+     "DC-D3-PS17-POWER": true,
+     "DC-D3-PS17-PRESSURE": true
+    }
+   },
+   "pin": "prerequisite edges fuel truck -> generator hookup -> pressure hold -> hospital supply; crews -> generator hookup"
+  },
+  {
+   "entities": [
+    "FDR-AIK-2207",
+    "BRK-FDR-AIK-2207",
+    "PS-17"
+   ],
+   "id": "FDR2207-WEAK-TRUNK",
+   "kind": "fragility_pin",
+   "must_see": true,
+   "outcome": {
+    "capacity_ms": 20.0,
+    "customers_back_utc": "2024-08-11T07:15:59Z",
+    "damage_state": "slight",
+    "fault_utc": "2024-08-06T01:00:00Z",
+    "peak_gust_ms": 32.6,
+    "repaired_utc": "2024-08-11T07:15:59Z",
+    "section": "FDR-AIK-2207-S1"
+   },
+   "pin": {
+    "capacity_quantile": 0.12,
+    "section": "FDR-AIK-2207-S1"
+   }
+  },
+  {
+   "entities": [
+    "FDR-AIK-2219",
+    "FDR-AIK-2207",
+    "HSP-AIK-TALLOWBRANCH"
+   ],
+   "id": "D7-PRIORITY-CONFLICT",
+   "kind": "fragility_pin",
+   "must_see": true,
+   "outcome": {
+    "capacity_ms": 20.0,
+    "customers_back_utc": "2024-08-09T20:24:41Z",
+    "damage_state": "moderate",
+    "fault_utc": "2024-08-06T00:15:00Z",
+    "peak_gust_ms": 34.0,
+    "ps17_feeder": {
+     "capacity_ms": 20.0,
+     "customers_back_utc": "2024-08-11T07:15:59Z",
+     "damage_state": "slight",
+     "fault_utc": "2024-08-06T01:00:00Z",
+     "peak_gust_ms": 32.6,
+     "repaired_utc": "2024-08-11T07:15:59Z",
+     "section": "FDR-AIK-2207-S1"
+    },
+    "repaired_utc": "2024-08-09T20:24:41Z",
+    "section": "FDR-AIK-2219-S1"
+   },
+   "pin": {
+    "capacity_quantile": 0.18,
+    "section": "FDR-AIK-2219-S1"
+   }
+  },
+  {
+   "entities": [
+    "HSP-AIK-TALLOWBRANCH",
+    "GEN-HSP-TALLOWBRANCH",
+    "PT-HSP-TALLOWBRANCH",
+    "WZ-PS17-CEDARFALL"
+   ],
+   "id": "D6-HOSPITAL-POWER-NO-PRESSURE",
+   "kind": "emergent",
+   "must_see": true,
+   "outcome": {
+    "hospital": {
+     "generator": "standby",
+     "grid_loss_utc": null
+    },
+    "zone": {
+     "back_above_floor_utc": "2024-08-09T03:51:00Z",
+     "below_floor_utc": "2024-08-06T04:38:00Z",
+     "generator_events": [
+      [
+       "2024-08-08T20:15:00Z",
+       "MGEN-HALBERD-500",
+       "dispatched"
+      ],
+      [
+       "2024-08-08T22:45:00Z",
+       "MGEN-HALBERD-500",
+       "running"
+      ],
+      [
+       "2024-08-10T02:23:00Z",
+       "FTK-WREN-3",
+       "requested:MGEN-HALBERD-500"
+      ],
+      [
+       "2024-08-10T03:53:00Z",
+       "FTK-WREN-3",
+       "delivered:MGEN-HALBERD-500"
+      ],
+      [
+       "2024-08-11T07:16:00Z",
+       "MGEN-HALBERD-500",
+       "demobilised"
+      ]
+     ],
+     "grid_loss_utc": "2024-08-06T01:00:00Z",
+     "grid_restore_utc": "2024-08-11T07:15:59Z",
+     "min_pressure_psi": 8.0
+    }
+   },
+   "pin": "hospital on own generator; PS-17 without onsite generator; reactive portable generator"
+  },
+  {
+   "entities": [
+    "GEN-PS52-DEERWATER",
+    "PS-52",
+    "FDR-AIK-2214"
+   ],
+   "id": "D2-GENERATOR-FAILS-H30",
+   "kind": "generator_pin",
+   "must_see": true,
+   "outcome": {
+    "feeder": {
+     "capacity_ms": 20.0,
+     "customers_back_utc": "2024-08-11T11:04:48Z",
+     "damage_state": "extensive",
+     "fault_utc": "2024-08-06T02:15:00Z",
+     "peak_gust_ms": 31.1,
+     "repaired_utc": "2024-08-11T11:04:48Z",
+     "section": "FDR-AIK-2214-S1"
+    },
+    "zone": {
+     "back_above_floor_utc": null,
+     "below_floor_utc": "2024-08-06T22:43:00Z",
+     "generator_events": [
+      [
+       "2024-08-06T02:16:00Z",
+       "GEN-PS52-DEERWATER",
+       "running"
+      ],
+      [
+       "2024-08-06T20:15:00Z",
+       "GEN-PS52-DEERWATER",
+       "failed_run"
+      ],
+      [
+       "2024-08-11T11:05:00Z",
+       "GEN-PS52-DEERWATER",
+       "standby"
+      ]
+     ],
+     "grid_loss_utc": "2024-08-06T02:15:00Z",
+     "grid_restore_utc": "2024-08-11T11:04:48Z",
+     "min_pressure_psi": 8.0
+    }
+   },
+   "pin": {
+    "capacity_quantile": 0.1,
+    "damage_state": 3,
+    "fail_after_run_h": 18,
+    "generator": "GEN-PS52-DEERWATER",
+    "section": "FDR-AIK-2214-S1"
+   }
+  },
+  {
+   "entities": [
+    "FTK-WREN-3",
+    "GEN-PS38-COPPERLEAF",
+    "PS-38",
+    "FDR-AIK-2238"
+   ],
+   "id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "kind": "logistics_pin",
+   "must_see": true,
+   "outcome": {
+    "feeder": {
+     "capacity_ms": 20.0,
+     "customers_back_utc": "2024-08-09T16:16:10Z",
+     "damage_state": "extensive",
+     "fault_utc": "2024-08-06T01:45:00Z",
+     "peak_gust_ms": 30.5,
+     "repaired_utc": "2024-08-09T16:16:10Z",
+     "section": "FDR-AIK-2238-S1"
+    },
+    "zone": {
+     "back_above_floor_utc": "2024-08-07T05:11:00Z",
+     "below_floor_utc": "2024-08-06T18:56:00Z",
+     "generator_events": [
+      [
+       "2024-08-06T01:46:00Z",
+       "GEN-PS38-COPPERLEAF",
+       "running"
+      ],
+      [
+       "2024-08-06T12:36:00Z",
+       "FTK-WREN-3",
+       "requested:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-06T16:13:00Z",
+       "GEN-PS38-COPPERLEAF",
+       "out_of_fuel"
+      ],
+      [
+       "2024-08-07T04:06:00Z",
+       "FTK-WREN-3",
+       "delivered:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-07T04:06:00Z",
+       "GEN-PS38-COPPERLEAF",
+       "running"
+      ],
+      [
+       "2024-08-07T14:57:00Z",
+       "FTK-WREN-3",
+       "requested:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-07T16:27:00Z",
+       "FTK-WREN-3",
+       "delivered:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-08T03:18:00Z",
+       "FTK-WREN-3",
+       "requested:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-08T04:48:00Z",
+       "FTK-WREN-3",
+       "delivered:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-08T15:39:00Z",
+       "FTK-WREN-3",
+       "requested:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-08T17:09:00Z",
+       "FTK-WREN-3",
+       "delivered:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-09T04:00:00Z",
+       "FTK-WREN-3",
+       "requested:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-09T05:30:00Z",
+       "FTK-WREN-3",
+       "delivered:GEN-PS38-COPPERLEAF"
+      ],
+      [
+       "2024-08-09T16:17:00Z",
+       "GEN-PS38-COPPERLEAF",
+       "standby"
+      ]
+     ],
+     "grid_loss_utc": "2024-08-06T01:45:00Z",
+     "grid_restore_utc": "2024-08-09T16:16:10Z",
+     "min_pressure_psi": 8.0
+    }
+   },
+   "pin": {
+    "capacity_quantile": 0.1,
+    "damage_state": 3,
+    "generator": "GEN-PS38-COPPERLEAF",
+    "refuel_blocked_h": 14,
+    "section": "FDR-AIK-2238-S1",
+    "tank_h": 16
+   }
+  },
+  {
+   "entities": [
+    "FDR-AIK-2231"
+   ],
+   "id": "W9-AMI-DARK-SECTION",
+   "kind": "telemetry_pin",
+   "must_see": true,
+   "outcome": {
+    "capacity_ms": 20.0,
+    "customers_back_utc": "2024-08-18T21:24:16Z",
+    "damage_state": "complete",
+    "fault_utc": "2024-08-05T23:30:00Z",
+    "last_gasps_emitted": 0,
+    "meters_suppressed": 4,
+    "peak_gust_ms": 36.0,
+    "repaired_utc": "2024-08-18T21:24:16Z",
+    "section": "FDR-AIK-2231-S2"
+   },
+   "pin": {
+    "ami_lost": true,
+    "capacity_quantile": 0.1,
+    "section": "FDR-AIK-2231-S2"
+   }
+  },
+  {
+   "entities": [
+    "FDR-AIK-2219"
+   ],
+   "id": "AMI-FLOOD-ONE-RECLOSER",
+   "kind": "telemetry_pin",
+   "must_see": false,
+   "outcome": {
+    "capacity_ms": 20.0,
+    "customers_back_utc": "2024-08-09T23:49:18Z",
+    "damage_state": "slight",
+    "fault_utc": "2024-08-06T02:45:00Z",
+    "last_gasps_emitted": 65,
+    "peak_gust_ms": 29.6,
+    "repaired_utc": "2024-08-09T23:49:18Z",
+    "section": "FDR-AIK-2219-S3"
+   },
+   "pin": {
+    "capacity_quantile": 0.15,
+    "last_gasps": 75,
+    "section": "FDR-AIK-2219-S3"
+   }
+  },
+  {
+   "entities": [
+    "ami-headend"
+   ],
+   "id": "LATE-AMI-BACKLOG",
+   "kind": "telemetry_pin",
+   "must_see": false,
+   "outcome": {
+    "events_delayed": 179,
+    "extra_latency_min": 70
+   },
+   "pin": {
+    "extra_latency_min": 70,
+    "from_utc": "2024-08-06T00:00:00Z",
+    "to_utc": "2024-08-06T03:30:00Z"
+   }
+  },
+  {
+   "entities": [
+    "ADV-DEBBY-SYN-NP1",
+    "PRP-CREW-AIK-0805A",
+    "APR-CREW-V1-IC"
+   ],
+   "id": "GOV-ADVISORY-DURING-T3",
+   "kind": "governance",
+   "must_see": true,
+   "outcome": {
+    "advisory_N1_issued_utc": "2024-08-05T15:00:00Z",
+    "expected": "material proposal update voids APR-CREW-V1-IC (platform, helene_micro)"
+   },
+   "pin": "advisory N+1 issued while the crew proposal holds one T3 signature"
+  },
+  {
+   "entities": [
+    "PMP-PS-38-1",
+    "PS-38",
+    "PT-PS38-DISCH"
+   ],
+   "id": "FAULT-PS38-PUMP-TRIP",
+   "kind": "water_fault",
+   "must_see": false,
+   "outcome": {
+    "duration_h": 1.5,
+    "window_from_utc": "2024-08-09T19:00:00Z"
+   },
+   "pin": {
+    "duration_h": 1.5,
+    "from_utc": "2024-08-09T19:00:00Z"
+   }
+  },
+  {
+   "entities": [
+    "PT-PS17-DISCH"
+   ],
+   "id": "FAULT-PS17-REPLAY-SPOOF",
+   "kind": "water_fault",
+   "must_see": false,
+   "outcome": {
+    "duration_h": 3.0,
+    "window_from_utc": "2024-08-10T09:00:00Z"
+   },
+   "pin": {
+    "duration_h": 3.0,
+    "from_utc": "2024-08-10T09:00:00Z",
+    "replay_of_utc": "2024-08-09T09:00:00Z"
+   }
+  },
+  {
+   "entities": [
+    "LT-TNK-PS23-LAURELSPUR"
+   ],
+   "id": "FAULT-PS23-STUCK-LEVEL",
+   "kind": "water_fault",
+   "must_see": false,
+   "outcome": {
+    "duration_h": 7,
+    "window_from_utc": "2024-08-10T02:00:00Z"
+   },
+   "pin": {
+    "duration_h": 7,
+    "from_utc": "2024-08-10T02:00:00Z"
+   }
+  },
+  {
+   "entities": [
+    "PT-PS23-DISCH"
+   ],
+   "id": "FAULT-PS23-DRIFT",
+   "kind": "water_fault",
+   "must_see": false,
+   "outcome": {
+    "duration_h": 36,
+    "window_from_utc": "2024-08-09T12:00:00Z"
+   },
+   "pin": {
+    "duration_h": 36,
+    "from_utc": "2024-08-09T12:00:00Z",
+    "psi_per_h": -0.08
+   }
+  },
+  {
+   "entities": [
+    "WZ-PS38-COPPERLEAF",
+    "LT-TNK-PS38-COPPERLEAF"
+   ],
+   "id": "FAULT-PS38-LEAK",
+   "kind": "water_fault",
+   "must_see": false,
+   "outcome": {
+    "duration_h": null,
+    "window_from_utc": "2024-08-10T18:00:00Z"
+   },
+   "pin": {
+    "demand_multiplier": 1.08,
+    "from_utc": "2024-08-10T18:00:00Z"
+   }
+  }
+ ],
+ "validation": {
+  "asos_peak_gust": {
+   "AGS": {
+    "bias_pct": -16.0,
+    "model_peak_gust_ms": 30.7,
+    "model_peak_utc": "2024-08-08T08:45:00Z",
+    "observed_peak_gust_ms": 36.5,
+    "observed_peak_utc": "2024-09-27T09:00:00Z"
+   },
+   "SAV": {
+    "bias_pct": 12.7,
+    "model_peak_gust_ms": 38.3,
+    "model_peak_utc": "2024-08-07T15:00:00Z",
+    "observed_peak_gust_ms": 34.0,
+    "observed_peak_utc": "2024-09-27T07:00:00Z"
+   }
+  },
+  "county_peak_fraction": {
+   "mae": 0.357,
+   "n": 114,
+   "observed_capped_counties": 11,
+   "observed_median": 0.398,
+   "spearman": -0.03,
+   "synthetic_median": 0.569
+  },
+  "county_t90_h": {
+   "observed_median": 104.8,
+   "synthetic_median": 115.8,
+   "within_25pct": true
+  },
+  "footprint_peak_out": {
+   "error_pct": -11.6,
+   "observed": 2230592,
+   "observed_source": "numbers.yaml helene_footprint_peak_out",
+   "synthetic": 1972542,
+   "synthetic_utc": "2024-08-08T12:30:00Z"
+  },
+  "note": "validation, not calibration: EAGLE-I Helene county table and ASOS peaks fit no parameter (t50 is the one calibration target)"
+ },
+ "water": {
+  "PS-17": {
+   "back_above_floor_utc": "2024-08-09T03:51:00Z",
+   "below_floor_utc": "2024-08-06T04:38:00Z",
+   "generator_events": [
+    [
+     "2024-08-08T20:15:00Z",
+     "MGEN-HALBERD-500",
+     "dispatched"
+    ],
+    [
+     "2024-08-08T22:45:00Z",
+     "MGEN-HALBERD-500",
+     "running"
+    ],
+    [
+     "2024-08-10T02:23:00Z",
+     "FTK-WREN-3",
+     "requested:MGEN-HALBERD-500"
+    ],
+    [
+     "2024-08-10T03:53:00Z",
+     "FTK-WREN-3",
+     "delivered:MGEN-HALBERD-500"
+    ],
+    [
+     "2024-08-11T07:16:00Z",
+     "MGEN-HALBERD-500",
+     "demobilised"
+    ]
+   ],
+   "grid_loss_utc": "2024-08-06T01:00:00Z",
+   "grid_restore_utc": "2024-08-11T07:15:59Z",
+   "min_pressure_psi": 8.0
+  },
+  "PS-23": {
+   "back_above_floor_utc": null,
+   "below_floor_utc": null,
+   "generator_events": [],
+   "grid_loss_utc": null,
+   "grid_restore_utc": null,
+   "min_pressure_psi": 54.6
+  },
+  "PS-38": {
+   "back_above_floor_utc": "2024-08-07T05:11:00Z",
+   "below_floor_utc": "2024-08-06T18:56:00Z",
+   "generator_events": [
+    [
+     "2024-08-06T01:46:00Z",
+     "GEN-PS38-COPPERLEAF",
+     "running"
+    ],
+    [
+     "2024-08-06T12:36:00Z",
+     "FTK-WREN-3",
+     "requested:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-06T16:13:00Z",
+     "GEN-PS38-COPPERLEAF",
+     "out_of_fuel"
+    ],
+    [
+     "2024-08-07T04:06:00Z",
+     "FTK-WREN-3",
+     "delivered:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-07T04:06:00Z",
+     "GEN-PS38-COPPERLEAF",
+     "running"
+    ],
+    [
+     "2024-08-07T14:57:00Z",
+     "FTK-WREN-3",
+     "requested:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-07T16:27:00Z",
+     "FTK-WREN-3",
+     "delivered:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-08T03:18:00Z",
+     "FTK-WREN-3",
+     "requested:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-08T04:48:00Z",
+     "FTK-WREN-3",
+     "delivered:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-08T15:39:00Z",
+     "FTK-WREN-3",
+     "requested:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-08T17:09:00Z",
+     "FTK-WREN-3",
+     "delivered:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-09T04:00:00Z",
+     "FTK-WREN-3",
+     "requested:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-09T05:30:00Z",
+     "FTK-WREN-3",
+     "delivered:GEN-PS38-COPPERLEAF"
+    ],
+    [
+     "2024-08-09T16:17:00Z",
+     "GEN-PS38-COPPERLEAF",
+     "standby"
+    ]
+   ],
+   "grid_loss_utc": "2024-08-06T01:45:00Z",
+   "grid_restore_utc": "2024-08-09T16:16:10Z",
+   "min_pressure_psi": 8.0
+  },
+  "PS-52": {
+   "back_above_floor_utc": null,
+   "below_floor_utc": "2024-08-06T22:43:00Z",
+   "generator_events": [
+    [
+     "2024-08-06T02:16:00Z",
+     "GEN-PS52-DEERWATER",
+     "running"
+    ],
+    [
+     "2024-08-06T20:15:00Z",
+     "GEN-PS52-DEERWATER",
+     "failed_run"
+    ],
+    [
+     "2024-08-11T11:05:00Z",
+     "GEN-PS52-DEERWATER",
+     "standby"
+    ]
+   ],
+   "grid_loss_utc": "2024-08-06T02:15:00Z",
+   "grid_restore_utc": "2024-08-11T11:04:48Z",
+   "min_pressure_psi": 8.0
+  },
+  "hospital": {
+   "generator": "standby",
+   "grid_loss_utc": null
+  }
+ }
+}

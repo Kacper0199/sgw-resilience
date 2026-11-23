@@ -1,0 +1,767 @@
+{
+ "meta": {
+  "label": "b1-fix-check",
+  "commit": "6b01f39",
+  "split": "dev",
+  "smoke": false,
+  "gateway_mode": "replay_then_live",
+  "wave": "R34",
+  "started_utc": "2026-11-22T03:54:42Z",
+  "seconds": 39.5,
+  "gateway_counters_delta": {
+   "replay_hits": 0,
+   "live_cache_hits": 21,
+   "replay_misses": 0,
+   "live_calls": 10,
+   "egress_denied": 0,
+   "output_blocked": 0
+  }
+ },
+ "summary": {
+  "n": 4,
+  "passed": 3,
+  "pass_rate": 0.75,
+  "infra": 0,
+  "valid": {
+   "n": 4,
+   "passed": 3,
+   "pass_rate": 0.75
+  },
+  "usd": 0.0851,
+  "usd_per_item": 0.02127,
+  "live_calls": 10,
+  "latency_p50_s": 8.56,
+  "latency_p95_s": 10.87,
+  "errors": 0,
+  "grader_failures": {
+   "mentions_any": 1
+  },
+  "paths": {
+   "guide": 2,
+   "llm": 2
+  },
+  "reasons": {
+   "None": 4
+  }
+ },
+ "by": {
+  "klass": {
+   "explain": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "followup": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "navigate": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "role": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "persona": {
+   "exec_01": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "log_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "ops_dm_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "plan_etr_01": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "lang": {
+   "de": {
+    "n": 1,
+    "passed": 0,
+    "pass_rate": 0.0
+   },
+   "en": {
+    "n": 2,
+    "passed": 2,
+    "pass_rate": 1.0
+   },
+   "pl": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   }
+  },
+  "moment": {
+   "at-n1": {
+    "n": 4,
+    "passed": 3,
+    "pass_rate": 0.75
+   }
+  },
+  "page": {
+   "crews": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "decisions": {
+    "n": 1,
+    "passed": 1,
+    "pass_rate": 1.0
+   },
+   "forecast": {
+    "n": 2,
+    "passed": 1,
+    "pass_rate": 0.5
+   }
+  },
+  "split": {
+   "dev": {
+    "n": 4,
+    "passed": 3,
+    "pass_rate": 0.75
+   }
+  }
+ },
+ "by_tag": {
+  "link_request": {
+   "n": 2,
+   "passed": 2,
+   "pass_rate": 1.0
+  },
+  "no_diacritics": {
+   "n": 1,
+   "passed": 1,
+   "pass_rate": 1.0
+  },
+  "other_language": {
+   "n": 1,
+   "passed": 0,
+   "pass_rate": 0.0
+  }
+ },
+ "items": [
+  {
+   "id": "AB-EXP-037",
+   "lang": "de",
+   "persona": "exec_01",
+   "moment": "at-n1",
+   "page": "forecast",
+   "klass": "explain",
+   "tags": [
+    "other_language"
+   ],
+   "turns": [],
+   "question": "Was bedeutet ETR?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "Wiederherstell"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": false,
+   "failed": [
+    "mentions_any"
+   ],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": false,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "ETR steht für \"Estimated Time of Restoration\", also den voraussichtlichen Zeitpunkt, zu dem die Kundinnen und Kunden wieder Strom haben. Die Plattform nennt dafür einen Mittelwert (Median) und einen Bereich. Es gibt eine globale ETR für das gesamte System, nämlich wenn 90 % der Kunden mit dem Spitzenwert der Ausfälle wieder versorgt sind, und eine ETR pro Gebiet für jeden Einsatzbereich. Wie genau frühere Schätzungen waren, sehen Sie im Reiter \"ETR accuracy\" auf der After-action-Seite, die der Button unten öffnet. Die tatsächlichen Werte sind dort simuliert, das ist also Übung und kein Feldnachweis.",
+   "links": [
+    {
+     "page": "after_action",
+     "href": "/after-action"
+    },
+    {
+     "page": "help",
+     "href": "/help"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "What is going on right now?",
+    "Which decisions are due next?",
+    "What does the outage forecast say?"
+   ],
+   "language_detected": "de",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/after-action",
+      "kind": "page",
+      "label": "After-action page",
+      "page": "after_action"
+     },
+     {
+      "href": "/help",
+      "kind": "help",
+      "label": "Help page",
+      "page": "help"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "What is going on right now?",
+     "Which decisions are due next?",
+     "What does the outage forecast say?"
+    ],
+    "tainted": false,
+    "text": "ETR steht für \"Estimated Time of Restoration\", also den voraussichtlichen Zeitpunkt, zu dem die Kundinnen und Kunden wieder Strom haben. Die Plattform nennt dafür einen Mittelwert (Median) und einen Bereich. Es gibt eine globale ETR für das gesamte System, nämlich wenn 90 % der Kunden mit dem Spitzenwert der Ausfälle wieder versorgt sind, und eine ETR pro Gebiet für jeden Einsatzbereich. Wie genau frühere Schätzungen waren, sehen Sie im Reiter \"ETR accuracy\" auf der After-action-Seite, die der Button unten öffnet. Die tatsächlichen Werte sind dort simuliert, das ist also Übung und kein Feldnachweis.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-e66b3e0acb1e"
+   ],
+   "latency_s": 3.47,
+   "usd": 0.00549,
+   "live_calls": 1
+  },
+  {
+   "id": "AB-FUP-006",
+   "lang": "en",
+   "persona": "ops_dm_01",
+   "moment": "at-n1",
+   "page": "decisions",
+   "klass": "followup",
+   "tags": [
+    "link_request"
+   ],
+   "turns": [
+    "What is the most important decision right now?"
+   ],
+   "question": "Open it.",
+   "expect": {
+    "answer": true,
+    "links": [
+     "decisions"
+    ],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": true,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "guide",
+   "reason": null,
+   "text": "I can't open a single decision by its id from here, and the facts I have don't show that decision's details. The Decisions page lists every decision waiting for a signature with its decide-by time, who must sign and the evidence behind it, and each decision opens on its own page, so look there for the generator at PS-17 (Cedarfall pump station). The button below opens the Decisions page. If your team must sign, you can sign or reject it there, otherwise you can read it. The Crews page also has the portable generators if you want to see what is available.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    },
+    {
+     "page": "help",
+     "href": "/help"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [
+    "Which decisions are due next?",
+    "Which assets are at risk?",
+    "Show the photos of flooded areas"
+   ],
+   "language_detected": "en",
+   "prior_answers": [
+    "Decide before the next advisory: Hook up the portable generator at PS-17 (DC-D3-PS17-POWER). Logistics signs it, not Operations, and it needs DC-D3-PS17-FUEL and DC-D2-CREWS-AIK first. Its effective decide-by is Sep 26, 23:29 ET. Your own decision is Declare a major storm event for the SC and GA service area (DC-D1-EX-03-EVENT-TYPE-MAJOR), effective decide-by Sep 26, 16:30 ET, which Command also signs."
+   ],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Crews page",
+      "page": "crews"
+     },
+     {
+      "href": "/help",
+      "kind": "help",
+      "label": "Help page",
+      "page": "help"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     }
+    ],
+    "path": "guide",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [
+     "Which decisions are due next?",
+     "Which assets are at risk?",
+     "Show the photos of flooded areas"
+    ],
+    "tainted": false,
+    "text": "I can't open a single decision by its id from here, and the facts I have don't show that decision's details. The Decisions page lists every decision waiting for a signature with its decide-by time, who must sign and the evidence behind it, and each decision opens on its own page, so look there for the generator at PS-17 (Cedarfall pump station). The button below opens the Decisions page. If your team must sign, you can sign or reject it there, otherwise you can read it. The Crews page also has the portable generators if you want to see what is available.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-1e50452b783d",
+    "run-72f882d51bdf"
+   ],
+   "latency_s": 10.25,
+   "usd": 0.02285,
+   "live_calls": 5
+  },
+  {
+   "id": "AB-NAV-026",
+   "lang": "en",
+   "persona": "plan_etr_01",
+   "moment": "at-n1",
+   "page": "forecast",
+   "klass": "navigate",
+   "tags": [
+    "link_request"
+   ],
+   "turns": [],
+   "question": "Where are the what-if storm scenarios?",
+   "expect": {
+    "answer": true,
+    "links": [
+     "forecast"
+    ],
+    "mentions_any": [],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": true,
+    "role_links": true,
+    "mentions_any": null,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "The forecast tools offer precomputed what-if scenarios named pump_station_outage, feeder_restore_order, crew_shift and advisory_shift. What is missing is which platform page displays them, so I can't point the ETR Specialist in Planning to a page. The evidence I hold, such as E1 and E2, is county outage-risk snapshots, and it contains no what-if results.",
+   "links": [
+    {
+     "page": "forecast",
+     "href": "/forecast"
+    },
+    {
+     "page": "map",
+     "href": "/map"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "en",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/forecast",
+      "kind": "page",
+      "label": "Forecast page",
+      "page": "forecast"
+     },
+     {
+      "href": "/map",
+      "kind": "page",
+      "label": "Map page",
+      "page": "map"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {},
+    "suggestions": [],
+    "tainted": false,
+    "text": "The forecast tools offer precomputed what-if scenarios named pump_station_outage, feeder_restore_order, crew_shift and advisory_shift. What is missing is which platform page displays them, so I can't point the ETR Specialist in Planning to a page. The evidence I hold, such as E1 and E2, is county outage-risk snapshots, and it contains no what-if results.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-9390bec5066d"
+   ],
+   "latency_s": 6.87,
+   "usd": 0.01276,
+   "live_calls": 2
+  },
+  {
+   "id": "AB-ROLE-018",
+   "lang": "pl",
+   "persona": "log_01",
+   "moment": "at-n1",
+   "page": "crews",
+   "klass": "role",
+   "tags": [
+    "no_diacritics"
+   ],
+   "turns": [],
+   "question": "Ktore decyzje naleza do logistyki?",
+   "expect": {
+    "answer": true,
+    "links": [],
+    "mentions_any": [
+     "ekip",
+     "paliw",
+     "logist"
+    ],
+    "mentions_all": [],
+    "forbid": [],
+    "photos": 0
+   },
+   "judge": false,
+   "split": "dev",
+   "pass": true,
+   "failed": [],
+   "checks": {
+    "not_bare_refusal": true,
+    "refuses": null,
+    "clarifies": null,
+    "near_miss": null,
+    "helpful_refusal": null,
+    "no_write": true,
+    "language": true,
+    "links": null,
+    "role_links": true,
+    "mentions_any": true,
+    "mentions_all": null,
+    "forbid": null,
+    "photos": null
+   },
+   "info": {
+    "answered": true,
+    "refusal_kind": null
+   },
+   "error": null,
+   "path": "llm",
+   "reason": null,
+   "text": "Do logistyki należą decyzje, które podpisuje sama, oraz te wspólne z Command; żadna nie ma jeszcze podpisów. Najpilniejsza jest prośba o załogi pomocy wzajemnej od grupy Prairie Lakes (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), termin Sep 26, 12:00 ET. Dalej: załoga do wycinki przy feederze (DC-D2-EX-02-VEG-CREW-2219), Sep 26, 14:00 ET; hipochloryn w Hollowpine (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), Sep 26, 15:00 ET; paliwo do PS-17 (DC-D3-PS17-FUEL), Sep 28, 10:59 ET; załogi w Sandhill i Millpond (DC-D2-CREWS-AIK), Sep 26, 20:00 ET. Reszta jest na stronie Decisions.",
+   "links": [
+    {
+     "page": "decisions",
+     "href": "/"
+    },
+    {
+     "page": "map",
+     "href": "/map"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "crews",
+     "href": "/crews"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-EX-01-MUTUAL-AID-PRAIRIE"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-EX-02-VEG-CREW-2219"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE"
+    },
+    {
+     "page": "map",
+     "href": "/map?asset=PS-17"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D3-PS17-FUEL"
+    },
+    {
+     "page": "decisions",
+     "href": "/decisions?case=DC-D2-CREWS-AIK"
+    }
+   ],
+   "photos": 0,
+   "suggestions": [],
+   "language_detected": "pl",
+   "prior_answers": [],
+   "answer": {
+    "citation_details": [],
+    "citations": [],
+    "did_you_mean": [],
+    "evidence_ids": [
+     "E1",
+     "E2",
+     "E3",
+     "E4",
+     "E5",
+     "E6",
+     "E7",
+     "E8",
+     "E9",
+     "E10",
+     "E11",
+     "E12",
+     "E13",
+     "E14",
+     "E15",
+     "E16",
+     "E17",
+     "E18",
+     "E19",
+     "E20",
+     "E21",
+     "E22",
+     "E23",
+     "E24",
+     "E25",
+     "E26",
+     "E27",
+     "E28",
+     "E29",
+     "E30",
+     "E31",
+     "E32",
+     "E33",
+     "E34",
+     "E35",
+     "E36",
+     "E37",
+     "E38",
+     "E39",
+     "E40",
+     "E41",
+     "E42",
+     "E43",
+     "E44",
+     "E45",
+     "E46",
+     "E47",
+     "E48",
+     "E49",
+     "E50"
+    ],
+    "kind": "message",
+    "links": [
+     {
+      "href": "/",
+      "kind": "page",
+      "label": "Decisions page",
+      "page": "decisions"
+     },
+     {
+      "href": "/map",
+      "kind": "page",
+      "label": "Map page",
+      "page": "map"
+     },
+     {
+      "href": "/map?asset=PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station on the map",
+      "page": "map"
+     },
+     {
+      "href": "/crews",
+      "kind": "page",
+      "label": "Crews page",
+      "page": "crews"
+     }
+    ],
+    "path": "llm",
+    "photos": [],
+    "reason": null,
+    "references": [
+     {
+      "id": "DC-D2-EX-01-MUTUAL-AID-PRAIRIE",
+      "kind": "decision",
+      "label": "Request 12 mutual-aid line crews from the Prairie Lakes group"
+     },
+     {
+      "id": "DC-D2-EX-02-VEG-CREW-2219",
+      "kind": "decision",
+      "label": "Pre-stage a vegetation crew on feeder FDR-AIK-2219"
+     },
+     {
+      "id": "DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE",
+      "kind": "decision",
+      "label": "Top up hypochlorite at the Hollowpine water treatment plant"
+     },
+     {
+      "id": "PS-17",
+      "kind": "asset",
+      "label": "Cedarfall pump station"
+     },
+     {
+      "id": "DC-D3-PS17-FUEL",
+      "kind": "decision",
+      "label": "Dispatch the fuel truck to PS-17"
+     },
+     {
+      "id": "DC-D2-CREWS-AIK",
+      "kind": "decision",
+      "label": "Pre-position crews at Sandhill and Millpond yards"
+     }
+    ],
+    "refusal": null,
+    "role": "assistant",
+    "slots_shown": {
+     "E30.decide_by": "Sep 26, 12:00 ET",
+     "E31.decide_by": "Sep 26, 14:00 ET",
+     "E32.decide_by": "Sep 26, 15:00 ET",
+     "E35.decide_by": "Sep 26, 20:00 ET",
+     "E38.decide_by": "Sep 28, 10:59 ET"
+    },
+    "suggestions": [],
+    "tainted": false,
+    "text": "Do logistyki należą decyzje, które podpisuje sama, oraz te wspólne z Command; żadna nie ma jeszcze podpisów. Najpilniejsza jest prośba o załogi pomocy wzajemnej od grupy Prairie Lakes (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), termin Sep 26, 12:00 ET. Dalej: załoga do wycinki przy feederze (DC-D2-EX-02-VEG-CREW-2219), Sep 26, 14:00 ET; hipochloryn w Hollowpine (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), Sep 26, 15:00 ET; paliwo do PS-17 (DC-D3-PS17-FUEL), Sep 28, 10:59 ET; załogi w Sandhill i Millpond (DC-D2-CREWS-AIK), Sep 26, 20:00 ET. Reszta jest na stronie Decisions.",
+    "write_attempts": 0
+   },
+   "run_ids": [
+    "run-af72f69cbaee"
+   ],
+   "latency_s": 10.87,
+   "usd": 0.04397,
+   "live_calls": 2
+  }
+ ]
+}

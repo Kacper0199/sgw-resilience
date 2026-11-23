@@ -1,0 +1,124 @@
+{
+  "$defs": {
+    "ApprovalFunction": {
+      "description": "X-01: PS DC-10 functions plus `communications`, reserved and unused in seeds.",
+      "enum": [
+        "command",
+        "operations",
+        "planning",
+        "logistics",
+        "water_operations",
+        "compliance",
+        "executive",
+        "audit",
+        "platform",
+        "data",
+        "communications"
+      ],
+      "title": "ApprovalFunction",
+      "type": "string"
+    },
+    "Domain": {
+      "enum": [
+        "electric",
+        "water"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "SeedUser": {
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {
+          "pattern": "^[a-z][a-z_]*_\\d{2}$",
+          "title": "User Id",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "persona": {
+          "title": "Persona",
+          "type": "string"
+        },
+        "function": {
+          "$ref": "#/$defs/ApprovalFunction"
+        },
+        "roles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Roles",
+          "type": "array"
+        },
+        "regions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Regions",
+          "type": "array"
+        },
+        "domains": {
+          "items": {
+            "$ref": "#/$defs/Domain"
+          },
+          "title": "Domains",
+          "type": "array"
+        },
+        "can_approve": {
+          "title": "Can Approve",
+          "type": "boolean"
+        },
+        "break_glass_eligible": {
+          "default": false,
+          "title": "Break Glass Eligible",
+          "type": "boolean"
+        },
+        "kill_trigger": {
+          "default": false,
+          "title": "Kill Trigger",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "user_id",
+        "display_name",
+        "persona",
+        "function",
+        "roles",
+        "regions",
+        "domains",
+        "can_approve"
+      ],
+      "title": "SeedUser",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "title": "Version",
+      "type": "integer"
+    },
+    "password_env": {
+      "title": "Password Env",
+      "type": "string"
+    },
+    "users": {
+      "items": {
+        "$ref": "#/$defs/SeedUser"
+      },
+      "title": "Users",
+      "type": "array"
+    }
+  },
+  "required": [
+    "version",
+    "password_env",
+    "users"
+  ],
+  "title": "SGW K18 seeded identities",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

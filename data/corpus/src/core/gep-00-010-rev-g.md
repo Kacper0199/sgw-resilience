@@ -1,0 +1,166 @@
+---
+doc_id: "GEP 00.010"
+title: "Base Emergency Response Plan: Activation, Event Types and Activation Levels"
+family: erp_section
+layout: controlled
+owner_function: command
+sme: "Ravenel, Cyrus B."
+revision: "G"
+effective: 2024-05-13
+supersedes: "GEP 00.010 Rev F/1 (eff. 2023-08-14)"
+next_review: 2025-04-30
+approvals:
+  - {function: command, position: "Vice President, Emergency Management", name: "Wingard, Lorraine T.", date: 2024-05-06}
+  - {function: operations, position: "Director, Distribution Operations", name: "Thibodeaux, Marcus R.", date: 2024-05-03}
+  - {function: water_operations, position: "Manager, Water Distribution", name: "Sistrunk, Odell M.", date: 2024-05-03}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D1]
+states: [SC, GA]
+changes:
+  - {rev: "G", date: 2024-05-13, section: "4.3", change: "Event Type review after each NHC advisory made mandatory while a hurricane watch or warning covers any part of the service area."}
+  - {rev: "G", date: 2024-05-13, section: "Att. 3", change: "Water Branch staffing added to the Storm Classification and Staffing Matrix."}
+  - {rev: "G", date: 2024-05-13, section: "5.0", change: "No Changes."}
+  - {rev: "F/1", date: 2023-08-14, section: "Att. 5", change: "EOC telephone bridge numbers updated."}
+---
+# 1.0 PURPOSE
+
+This section of the SGW Emergency Response Plan (ERP) sets how an emergency is classified and how the
+organization is activated. It separates two decisions that were combined before Rev E: the Event Type, which
+describes the event, and the Activation Level, which describes staffing.
+
+# 2.0 SCOPE
+
+Applies to all electric and water operations of SGW in South Carolina and east Georgia.
+
+Does not apply to nuclear plant emergency plans or to Transmission Operator load-shed actions, which follow
+TSO 11.002.
+
+# 3.0 AUTHORITY AND RESPONSIBILITIES
+
+## 3.1 Incident Commander
+
+The Incident Commander (IC) sets the Event Type and the Activation Level. Outside a declared event the IC
+is the Vice President, Emergency Management, or the on-call designee listed in GEP 04.010 Attachment 2.
+
+## 3.2 Duty Manager
+
+The Duty Manager (Electric Operations) prepares the Event Type recommendation for the IC. The recommendation
+uses the projected peak outage and the projected restoration duration from the Planning Section outage model.
+
+## 3.3 Water Incident Lead
+
+The Water Incident Lead advises the IC on water-system impact. A water event alone may justify Activation
+Level 3 even when the electric Event Type is 4.
+
+## 3.4 Planning Section Chief
+
+The Planning Section Chief provides the projections in 3.2 and records the decision on F-GEP-012.
+
+# 4.0 EVENT TYPES
+
+## 4.1 Basis
+
+The Event Type is based on the larger of two projections: the projected peak share of SGW electric
+customers out of service, and the projected time to restore 90 percent of affected customers, counted from
+the all-clear. SGW serves about 4.25 million electric customers; the customer counts in the matrix are
+rounded from that base.
+
+## 4.2 Event Type Matrix
+
+| Event Type | Name | Projected peak customers out (%) | Approx. customers out | Projected 90 % restoration after all-clear (h) |
+|---|---|---|---|---|
+| 1 | Catastrophic | above 35 | above 1,487,000 | later than 120 |
+| 2 | Major | 15 to 35 | 637,500 to 1,487,000 | 48 to 120 |
+| 3 | Significant | 5 to 15 | 212,500 to 637,500 | 24 to 48 |
+| 4 | Routine storm | below 5 | below 212,500 | below 24 |
+
+Event Type 1 (Catastrophic) applies when the projected peak is above 35 percent of SGW electric customers out,
+or when projected 90 percent restoration is later than 120 h after all-clear. Event Type 2 (Major) applies at a
+projected peak of 15 to 35 percent of customers out, or projected 90 percent restoration 48 to 120 h after
+all-clear. Event Type 3 (Significant) applies at 5 to 15 percent, or 24 to 48 h. Event Type 4 (Routine storm)
+covers any event below Type 3.
+
+## 4.3 Review of the Event Type
+
+4.3.1 The Duty Manager shall re-run the recommendation at each change of operational period.
+
+4.3.2 While a hurricane watch or warning covers any part of the service area, the IC shall review the Event
+Type after each National Hurricane Center (NHC) advisory, including intermediate advisories.
+
+4.3.3 The IC may raise the Event Type at any time. Lowering it requires a fresh Duty Manager recommendation.
+
+4.3.4 Record each review on F-GEP-012, with the advisory number and time (EDT).
+
+NOTE: a review that leaves the Event Type unchanged is still recorded.
+
+# 5.0 ACTIVATION LEVELS
+
+## 5.1 Basis
+
+Activation Levels 5 (Normal) to 1 (Full Activation) describe staffing. They are set separately from the Event
+Type. A Type 3 forecast with high track uncertainty may justify Level 2 staffing; a Type 2 event late in
+restoration may drop to Level 3.
+
+## 5.2 Activation Level Matrix
+
+| Level | Name | EOC status | Storm room | Minimum ICS positions filled |
+|---|---|---|---|---|
+| 5 | Normal | Not activated | Day shift only | None |
+| 4 | Monitoring | Virtual; weather calls twice daily | Day shift plus on-call | IC designee, Duty Manager |
+| 3 | Partial Activation | Partial; 12 h shifts | 12 h shifts | IC, Duty Manager, Planning, Logistics, Water Incident Lead |
+| 2 | Elevated Activation | Staffed 24 h | 24 h, two shifts | All Section Chiefs, ETR Specialist, PIO |
+| 1 | Full Activation | Staffed 24 h, all branches | 24 h, two shifts plus relief | Full ICS structure per GEP 03.020 |
+
+## 5.3 Notification
+
+5.3.1 The IC announces each Activation Level change through the EOC notification list in GEP 04.010.
+
+5.3.2 Storm room shift turnover follows DOM 14.105.
+
+5.3.3 County EOC liaisons are assigned from Level 2.
+
+# 6.0 DEACTIVATION
+
+Deactivation and return to normal operations follow GEP 07.010.
+
+# 7.0 RECORDS
+
+F-GEP-012 Event Type and Activation Log, retained 7 years. ICS 201 and ICS 202 for each operational period,
+retained with the incident file.
+
+# 8.0 REFERENCES
+
+GEP 00.005 Promulgation and Record of Changes. GEP 03.020 Storm Organization and ICS Position Descriptions.
+GEP 2H.01 Hurricane Annex. DOM 14.206 ETR Development and Release. SC 103-314 (utility emergency reporting).
+
+<<PAGEBREAK>>
+# ATTACHMENT 1 - Event Type Recommendation Worksheet
+
+Use F-GEP-012 Part A. The worksheet is not reproduced here.
+
+# ATTACHMENT 2 - Reserved
+
+# ATTACHMENT 3 - Storm Classification and Staffing Matrix
+
+Default staffing by Event Type. The IC may set a different Activation Level per 5.1.
+
+| Event Type | Default Activation Level | Storm room shift (h) | Line crews targeted (native plus mutual aid) | Damage assessors | Water Branch |
+|---|---|---|---|---|---|
+| 1 Catastrophic | 1 | 16 on / 8 off | 3,600 or more | 420 | Full Water Branch; generator task force |
+| 2 Major | 2 | 16 on / 8 off | 1,400 to 3,600 | 260 | Water Incident Lead plus 2 Group Supervisors |
+| 3 Significant | 3 | 12 on / 12 off | 450 to 1,400 | 110 | Water Incident Lead on call in EOC |
+| 4 Routine storm | 4 or 5 | Normal | Native crews | District staff | District supervisor |
+
+Crew targets are planning figures. Mutual-aid requests follow MAL 05.012.
+
+# ATTACHMENT 4 - Reserved
+
+# ATTACHMENT 5 - EOC Contacts
+
+| Position | Contact | After hours |
+|---|---|---|
+| Incident Commander (on-call designee) | EOC bridge, line 1 | EM on-call phone, ext. 4417 |
+| Duty Manager | Storm room desk 2 | Distribution Control Center, ext. 2262 |
+| Water Incident Lead | Water Operations Center | Water on-call, ext. 7128 |

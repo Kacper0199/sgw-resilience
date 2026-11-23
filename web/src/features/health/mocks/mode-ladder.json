@@ -1,0 +1,32 @@
+[
+  {
+    "mode": "M0",
+    "name": "Normal",
+    "available": "everything allowed by policy",
+    "disabled": "nothing"
+  },
+  {
+    "mode": "M1",
+    "name": "Reduced AI",
+    "available": "maps, ML, deterministic rules, retrieval without generation, template sitreps",
+    "disabled": "new free-form agent plans"
+  },
+  {
+    "mode": "M2",
+    "name": "Deterministic only",
+    "available": "dashboards, stored forecasts, risk scores, SOP search, manual work orders and approvals",
+    "disabled": "all LLM calls"
+  },
+  {
+    "mode": "M3",
+    "name": "Local continuity",
+    "available": "last signed snapshot, offline SOP pack, cached crew and critical customer lists",
+    "disabled": "new external data, pipeline runs, LLM calls"
+  },
+  {
+    "mode": "M4",
+    "name": "Off",
+    "available": "nothing; existing ICS and control-room procedures",
+    "disabled": "everything"
+  }
+]

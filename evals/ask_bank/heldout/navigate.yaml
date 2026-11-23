@@ -1,0 +1,101 @@
+# Ask bank, navigate: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-NAV-013
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the audit log?
+  expect:
+    links:
+    - after_action
+- id: AB-NAV-015
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: navigate
+  tags:
+  - link_request
+  question: Where can I check whether data feeds are late?
+  expect:
+    links:
+    - health
+- id: AB-NAV-027
+  lang: en
+  persona: exec_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - link_request
+  - typo
+  question: where do i find the PSC report draft
+  expect:
+    links:
+    - after_action
+- id: AB-NAV-032
+  lang: pl
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: navigate
+  tags:
+  - link_request
+  question: Gdzie są zdjęcia szkód?
+  expect:
+    links:
+    - crews
+- id: AB-NAV-035
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: brief
+  klass: navigate
+  tags:
+  - link_request
+  question: Pokaż mi briefing dla zarządu.
+  expect:
+    links:
+    - brief
+- id: AB-NAV-040
+  lang: es
+  persona: ops_dm_01
+  moment: at-n1
+  page: map
+  klass: navigate
+  tags:
+  - other_language
+  - link_request
+  question: ¿Dónde veo la trayectoria de la tormenta?
+  expect:
+    links:
+    - map
+- id: AB-NAV-041
+  lang: fr
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - other_language
+  - link_request
+  question: Où se trouve le journal d'audit ?
+  expect:
+    links:
+    - after_action
+- id: AB-NAV-046
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: navigate
+  tags:
+  - link_request
+  question: Where is the ETR accuracy scorecard?
+  expect:
+    links:
+    - after_action

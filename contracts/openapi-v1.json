@@ -1,0 +1,1578 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SGW Resilience Decision Platform Integration API",
+    "version": "1.0.0+schema1",
+    "description": "Versioned read API, webhook subscriptions and an SSE subscription for external systems. Authenticate with `Authorization: Bearer sgwi_...` (scoped, expiring, revocable). No scope can approve a decision."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "security": [
+    {
+      "apiToken": []
+    }
+  ],
+  "paths": {
+    "/api/admin/tokens": {
+      "post": {
+        "operationId": "createApiToken",
+        "tags": [
+          "admin"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiTokenCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiTokenCreated"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "listApiTokens",
+        "tags": [
+          "admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApiTokenOut"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/tokens/{token_id}": {
+      "delete": {
+        "operationId": "revokeApiToken",
+        "tags": [
+          "admin"
+        ],
+        "description": "Revokes the token and disables its webhook subscriptions.",
+        "parameters": [
+          {
+            "name": "token_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/commitments": {
+      "get": {
+        "operationId": "v1ListCommitments",
+        "tags": [
+          "integration"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommitmentV1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/decisions": {
+      "get": {
+        "operationId": "v1ListDecisions",
+        "tags": [
+          "integration"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DecisionV1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/decisions/{decision_case_id}": {
+      "get": {
+        "operationId": "v1GetDecision",
+        "tags": [
+          "integration"
+        ],
+        "parameters": [
+          {
+            "name": "decision_case_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionV1"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/events": {
+      "get": {
+        "operationId": "v1StreamEvents",
+        "tags": [
+          "integration"
+        ],
+        "description": "Server-sent events of the webhook event types the token may read. Frames: `id: v1.<epoch>.<seq>`, `event: <type>`, `data: <WebhookEventV1>`; `Last-Event-ID` resumes from the ledger; an id the server cannot honour gets one `event: resync` frame. Comment heartbeats every 10 s; a revoked or expired token ends the stream.",
+        "parameters": [
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SSE stream of WebhookEventV1",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookEventV1"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden by policy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/webhooks": {
+      "post": {
+        "operationId": "v1CreateWebhook",
+        "tags": [
+          "integration"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookSubscriptionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookSubscriptionV1"
+                }
+              }
+            },
+            "headers": {
+              "SGW-Webhook-Secret": {
+                "description": "the signing secret, shown once (the body carries only its last 4 characters)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "v1ListWebhooks",
+        "tags": [
+          "integration"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebhookSubscriptionV1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/webhooks/{subscription_id}": {
+      "delete": {
+        "operationId": "v1DeleteWebhook",
+        "tags": [
+          "integration"
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/webhooks/{subscription_id}/deliveries": {
+      "get": {
+        "operationId": "v1ListWebhookDeliveries",
+        "tags": [
+          "integration"
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebhookDeliveryV1"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/v1/webhooks/{subscription_id}/rotate-secret": {
+      "post": {
+        "operationId": "v1RotateWebhookSecret",
+        "tags": [
+          "integration"
+        ],
+        "description": "Adds a new signing secret; the previous one keeps signing for `overlap_s` seconds.",
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "overlap_s",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 604800,
+              "default": 86400
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookSecretRotated"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    }
+  },
+  "webhooks": {
+    "ClockBreached": {
+      "post": {
+        "operationId": "webhookClockBreached",
+        "summary": "ClockBreached (needs scope clocks:read)",
+        "description": "Signed POST to the subscription URL. `SGW-Signature: t=<unix s>,v1=<hex>`[,v1=...] with v1 = HMAC-SHA256(secret, `<t>.<SGW-Webhook-Id>.<raw body>`), one v1 per active secret during rotation. Reject timestamps more than 300 s from your clock and de-duplicate on `SGW-Webhook-Id` (stable across retries). Answer 2xx within 10 s; anything else is retried with exponential backoff and dead-lettered after 8 attempts; 410 disables the subscription.",
+        "parameters": [
+          {
+            "name": "SGW-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Attempt",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "SGW-Webhooks/1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebhookEventV1"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "const": "ClockBreached"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/ClockBreached"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "2XX": {
+            "description": "Accepted by the receiver"
+          }
+        }
+      }
+    },
+    "CommitmentCreated": {
+      "post": {
+        "operationId": "webhookCommitmentCreated",
+        "summary": "CommitmentCreated (needs scope commitments:read)",
+        "description": "Signed POST to the subscription URL. `SGW-Signature: t=<unix s>,v1=<hex>`[,v1=...] with v1 = HMAC-SHA256(secret, `<t>.<SGW-Webhook-Id>.<raw body>`), one v1 per active secret during rotation. Reject timestamps more than 300 s from your clock and de-duplicate on `SGW-Webhook-Id` (stable across retries). Answer 2xx within 10 s; anything else is retried with exponential backoff and dead-lettered after 8 attempts; 410 disables the subscription.",
+        "parameters": [
+          {
+            "name": "SGW-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Attempt",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "SGW-Webhooks/1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebhookEventV1"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "const": "CommitmentCreated"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/CommitmentCreated"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "2XX": {
+            "description": "Accepted by the receiver"
+          }
+        }
+      }
+    },
+    "CommitmentDrifted": {
+      "post": {
+        "operationId": "webhookCommitmentDrifted",
+        "summary": "CommitmentDrifted (needs scope commitments:read)",
+        "description": "Signed POST to the subscription URL. `SGW-Signature: t=<unix s>,v1=<hex>`[,v1=...] with v1 = HMAC-SHA256(secret, `<t>.<SGW-Webhook-Id>.<raw body>`), one v1 per active secret during rotation. Reject timestamps more than 300 s from your clock and de-duplicate on `SGW-Webhook-Id` (stable across retries). Answer 2xx within 10 s; anything else is retried with exponential backoff and dead-lettered after 8 attempts; 410 disables the subscription.",
+        "parameters": [
+          {
+            "name": "SGW-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Attempt",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "SGW-Webhooks/1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebhookEventV1"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "const": "CommitmentDrifted"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/CommitmentDrifted"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "2XX": {
+            "description": "Accepted by the receiver"
+          }
+        }
+      }
+    },
+    "DecisionApproved": {
+      "post": {
+        "operationId": "webhookDecisionApproved",
+        "summary": "DecisionApproved (needs scope decisions:read)",
+        "description": "Signed POST to the subscription URL. `SGW-Signature: t=<unix s>,v1=<hex>`[,v1=...] with v1 = HMAC-SHA256(secret, `<t>.<SGW-Webhook-Id>.<raw body>`), one v1 per active secret during rotation. Reject timestamps more than 300 s from your clock and de-duplicate on `SGW-Webhook-Id` (stable across retries). Answer 2xx within 10 s; anything else is retried with exponential backoff and dead-lettered after 8 attempts; 410 disables the subscription.",
+        "parameters": [
+          {
+            "name": "SGW-Signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SGW-Webhook-Attempt",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "SGW-Webhooks/1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebhookEventV1"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "const": "DecisionApproved"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/DecisionApproved"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "2XX": {
+            "description": "Accepted by the receiver"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiScope": {
+        "enum": [
+          "decisions:read",
+          "clocks:read",
+          "commitments:read",
+          "webhooks:manage"
+        ],
+        "title": "ApiScope",
+        "type": "string"
+      },
+      "ApiTokenCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 3,
+            "title": "Name",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "$ref": "#/components/schemas/ApiScope"
+            },
+            "minItems": 1,
+            "title": "Scopes",
+            "type": "array"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "scopes",
+          "expires_at"
+        ],
+        "title": "ApiTokenCreate",
+        "type": "object"
+      },
+      "ApiTokenCreated": {
+        "additionalProperties": false,
+        "properties": {
+          "token_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Token Id",
+            "type": "string"
+          },
+          "token": {
+            "description": "shown once; stored only as SHA-256",
+            "title": "Token",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "$ref": "#/components/schemas/ApiScope"
+            },
+            "title": "Scopes",
+            "type": "array"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "token_id",
+          "token",
+          "scopes",
+          "expires_at"
+        ],
+        "title": "ApiTokenCreated",
+        "type": "object"
+      },
+      "ApiTokenOut": {
+        "additionalProperties": false,
+        "properties": {
+          "token_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Token Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "$ref": "#/components/schemas/ApiScope"
+            },
+            "title": "Scopes",
+            "type": "array"
+          },
+          "created_by": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Created By",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "revoked_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revoked At"
+          },
+          "last_used_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Used At"
+          }
+        },
+        "required": [
+          "token_id",
+          "name",
+          "scopes",
+          "created_by",
+          "created_at",
+          "expires_at",
+          "revoked_at",
+          "last_used_at"
+        ],
+        "title": "ApiTokenOut",
+        "type": "object"
+      },
+      "ClockBreached": {
+        "additionalProperties": false,
+        "properties": {
+          "decision_case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Decision Case Id",
+            "type": "string"
+          },
+          "proposal_id": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Proposal Id"
+          },
+          "effective_decide_by_utc": {
+            "format": "date-time",
+            "title": "Effective Decide By Utc",
+            "type": "string"
+          },
+          "breached_at_utc": {
+            "format": "date-time",
+            "title": "Breached At Utc",
+            "type": "string"
+          },
+          "clock_kind": {
+            "$ref": "#/components/schemas/ClockKind"
+          }
+        },
+        "required": [
+          "decision_case_id",
+          "effective_decide_by_utc",
+          "breached_at_utc",
+          "clock_kind"
+        ],
+        "title": "ClockBreached",
+        "type": "object"
+      },
+      "ClockKind": {
+        "enum": [
+          "rule_deadline",
+          "model_estimate"
+        ],
+        "title": "ClockKind",
+        "type": "string"
+      },
+      "CommitmentCreated": {
+        "additionalProperties": false,
+        "properties": {
+          "commitment_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Commitment Id",
+            "type": "string"
+          },
+          "decision_case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Decision Case Id",
+            "type": "string"
+          },
+          "proposal_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Proposal Id",
+            "type": "string"
+          },
+          "promised_by_utc": {
+            "format": "date-time",
+            "title": "Promised By Utc",
+            "type": "string"
+          },
+          "milestones": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Milestones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "commitment_id",
+          "decision_case_id",
+          "proposal_id",
+          "promised_by_utc",
+          "milestones"
+        ],
+        "title": "CommitmentCreated",
+        "type": "object"
+      },
+      "CommitmentDrifted": {
+        "additionalProperties": false,
+        "properties": {
+          "commitment_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Commitment Id",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CommitmentState"
+          },
+          "promised_by_utc": {
+            "format": "date-time",
+            "title": "Promised By Utc",
+            "type": "string"
+          },
+          "projected_utc": {
+            "format": "date-time",
+            "title": "Projected Utc",
+            "type": "string"
+          },
+          "drift_min": {
+            "title": "Drift Min",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "commitment_id",
+          "state",
+          "promised_by_utc",
+          "projected_utc",
+          "drift_min"
+        ],
+        "title": "CommitmentDrifted",
+        "type": "object"
+      },
+      "CommitmentMilestoneV1": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "due_utc": {
+            "format": "date-time",
+            "title": "Due Utc",
+            "type": "string"
+          },
+          "met_utc": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Met Utc"
+          }
+        },
+        "required": [
+          "name",
+          "due_utc",
+          "met_utc"
+        ],
+        "title": "CommitmentMilestoneV1",
+        "type": "object"
+      },
+      "CommitmentState": {
+        "enum": [
+          "on_track",
+          "at_risk",
+          "drifted",
+          "met",
+          "missed",
+          "cancelled"
+        ],
+        "title": "CommitmentState",
+        "type": "string"
+      },
+      "CommitmentV1": {
+        "additionalProperties": false,
+        "properties": {
+          "commitment_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Commitment Id",
+            "type": "string"
+          },
+          "decision_case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Decision Case Id",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CommitmentState"
+          },
+          "promised_by_utc": {
+            "format": "date-time",
+            "title": "Promised By Utc",
+            "type": "string"
+          },
+          "projected_utc": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Projected Utc"
+          },
+          "milestones": {
+            "items": {
+              "$ref": "#/components/schemas/CommitmentMilestoneV1"
+            },
+            "title": "Milestones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "commitment_id",
+          "decision_case_id",
+          "state",
+          "promised_by_utc",
+          "projected_utc",
+          "milestones"
+        ],
+        "title": "CommitmentV1",
+        "type": "object"
+      },
+      "DecisionApproved": {
+        "additionalProperties": false,
+        "properties": {
+          "decision_case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Decision Case Id",
+            "type": "string"
+          },
+          "proposal_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Proposal Id",
+            "type": "string"
+          },
+          "proposal_version": {
+            "minimum": 1,
+            "title": "Proposal Version",
+            "type": "integer"
+          },
+          "action_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Action Hash",
+            "type": "string"
+          },
+          "tier": {
+            "$ref": "#/components/schemas/Tier"
+          },
+          "approver_ids": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Approver Ids",
+            "type": "array"
+          },
+          "break_glass": {
+            "default": false,
+            "title": "Break Glass",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "decision_case_id",
+          "proposal_id",
+          "proposal_version",
+          "action_hash",
+          "tier",
+          "approver_ids"
+        ],
+        "title": "DecisionApproved",
+        "type": "object"
+      },
+      "DecisionV1": {
+        "additionalProperties": false,
+        "properties": {
+          "decision_case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Decision Case Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "tier": {
+            "$ref": "#/components/schemas/Tier"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ProposalState"
+          },
+          "decide_by_utc": {
+            "format": "date-time",
+            "title": "Decide By Utc",
+            "type": "string"
+          },
+          "effective_decide_by_utc": {
+            "format": "date-time",
+            "title": "Effective Decide By Utc",
+            "type": "string"
+          },
+          "on_critical_path": {
+            "title": "On Critical Path",
+            "type": "boolean"
+          },
+          "schema_version": {
+            "default": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "decision_case_id",
+          "title",
+          "tier",
+          "state",
+          "decide_by_utc",
+          "effective_decide_by_utc",
+          "on_critical_path"
+        ],
+        "title": "DecisionV1",
+        "type": "object"
+      },
+      "ErrorBody": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorBody",
+        "type": "object"
+      },
+      "ErrorDetail": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[A-Z][A-Z0-9_]*$",
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "details": {
+            "additionalProperties": true,
+            "title": "Details",
+            "type": "object"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorDetail",
+        "type": "object"
+      },
+      "ProposalState": {
+        "enum": [
+          "draft",
+          "proposed",
+          "in_review",
+          "approved",
+          "rejected",
+          "withdrawn",
+          "expired",
+          "escalated",
+          "executed"
+        ],
+        "title": "ProposalState",
+        "type": "string"
+      },
+      "Tier": {
+        "enum": [
+          "T0",
+          "T1",
+          "T2",
+          "T3",
+          "T4"
+        ],
+        "title": "Tier",
+        "type": "string"
+      },
+      "WebhookDeliveryState": {
+        "enum": [
+          "pending",
+          "delivered",
+          "retrying",
+          "failed",
+          "disabled"
+        ],
+        "title": "WebhookDeliveryState",
+        "type": "string"
+      },
+      "WebhookDeliveryV1": {
+        "additionalProperties": false,
+        "properties": {
+          "delivery_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Delivery Id",
+            "type": "string"
+          },
+          "subscription_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Subscription Id",
+            "type": "string"
+          },
+          "event_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WebhookDeliveryState"
+          },
+          "attempts": {
+            "title": "Attempts",
+            "type": "integer"
+          },
+          "last_status": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Status"
+          }
+        },
+        "required": [
+          "delivery_id",
+          "subscription_id",
+          "event_id",
+          "state",
+          "attempts",
+          "last_status"
+        ],
+        "title": "WebhookDeliveryV1",
+        "type": "object"
+      },
+      "WebhookEventV1": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Id",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "ClockBreached",
+              "CommitmentCreated",
+              "CommitmentDrifted",
+              "DecisionApproved"
+            ],
+            "title": "Type",
+            "type": "string"
+          },
+          "schema_version": {
+            "default": 1,
+            "minimum": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "ledger_seq": {
+            "minimum": 1,
+            "title": "Ledger Seq",
+            "type": "integer"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "created_at",
+          "ledger_seq",
+          "data"
+        ],
+        "title": "WebhookEventV1",
+        "type": "object"
+      },
+      "WebhookSecretRotated": {
+        "additionalProperties": false,
+        "properties": {
+          "subscription_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Subscription Id",
+            "type": "string"
+          },
+          "secret": {
+            "description": "shown once; the previous secret keeps signing until previous_retires_at",
+            "title": "Secret",
+            "type": "string"
+          },
+          "secret_hint": {
+            "title": "Secret Hint",
+            "type": "string"
+          },
+          "previous_retires_at": {
+            "format": "date-time",
+            "title": "Previous Retires At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subscription_id",
+          "secret",
+          "secret_hint",
+          "previous_retires_at"
+        ],
+        "title": "WebhookSecretRotated",
+        "type": "object"
+      },
+      "WebhookSubscriptionCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "maxLength": 2048,
+            "pattern": "^https://",
+            "title": "Url",
+            "type": "string"
+          },
+          "event_types": {
+            "items": {
+              "enum": [
+                "ClockBreached",
+                "CommitmentCreated",
+                "CommitmentDrifted",
+                "DecisionApproved"
+              ],
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Event Types",
+            "type": "array"
+          }
+        },
+        "required": [
+          "url",
+          "event_types"
+        ],
+        "title": "WebhookSubscriptionCreate",
+        "type": "object"
+      },
+      "WebhookSubscriptionV1": {
+        "additionalProperties": false,
+        "properties": {
+          "subscription_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:\\-]*$",
+            "title": "Subscription Id",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "event_types": {
+            "items": {
+              "enum": [
+                "ClockBreached",
+                "CommitmentCreated",
+                "CommitmentDrifted",
+                "DecisionApproved"
+              ],
+              "type": "string"
+            },
+            "title": "Event Types",
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "active": {
+            "title": "Active",
+            "type": "boolean"
+          },
+          "secret_hint": {
+            "description": "last 4 characters only; the secret is shown once at creation",
+            "title": "Secret Hint",
+            "type": "string"
+          }
+        },
+        "required": [
+          "subscription_id",
+          "url",
+          "event_types",
+          "created_at",
+          "active",
+          "secret_hint"
+        ],
+        "title": "WebhookSubscriptionV1",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "apiToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "sgwi_<token_id>_<64 hex>"
+      },
+      "session": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sgw_session"
+      }
+    }
+  }
+}

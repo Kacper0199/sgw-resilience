@@ -1,0 +1,40 @@
+{
+ "code_version": "c60eaf4",
+ "command": "uv run python -m sgw.models.cv build",
+ "created_at": "2026-11-20T00:20:13Z",
+ "llm_mode": "replay",
+ "metrics": [
+  {
+   "baseline_name": "untuned BiT-50 (Scheele, Picchione, Liu (2024) LADI v2, arXiv:2406.02780, Table 2)",
+   "baseline_value": 89.0,
+   "ci_high": null,
+   "ci_low": null,
+   "direction": "higher_is_better",
+   "label": "F",
+   "metric": "ladi_v2.small_reference.test_map",
+   "n": 1049,
+   "passed": true,
+   "split": "ladi_reference",
+   "threshold": 89.0,
+   "unit": "mAP percent, 12 labels",
+   "value": 91.1
+  },
+  {
+   "baseline_name": "untuned BiT-50 (Scheele, Picchione, Liu (2024) LADI v2, arXiv:2406.02780, Table 2)",
+   "baseline_value": 89.6,
+   "ci_high": null,
+   "ci_low": null,
+   "direction": "higher_is_better",
+   "label": "F",
+   "metric": "ladi_v2.small_reference.validation_map",
+   "n": 890,
+   "passed": true,
+   "split": "ladi_reference",
+   "threshold": 89.6,
+   "unit": "mAP percent, 12 labels",
+   "value": 93.3
+  }
+ ],
+ "name": "ladi_reference",
+ "schema_version": 1
+}

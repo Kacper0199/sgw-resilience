@@ -1,0 +1,54 @@
+% Ask AI LangGraph graph as built in src/sgw/agent/copilot/graph.py build(); models per node from
+% src/sgw/agent/llm_nodes.yaml. Filled boxes call a model, white boxes are code only.
+\begin{tikzpicture}[sgw,font=\small\sffamily,node distance=0.7cm,
+    llm/.style={sgw/core,minimum width=3.3cm,minimum height=1.05cm,font=\small\sffamily\bfseries},
+    code/.style={sgw/service,minimum width=3.3cm,minimum height=1.05cm,font=\small\sffamily\bfseries},
+    term/.style={circle,fill=sgwInk,text=white,font=\footnotesize\sffamily\bfseries,inner sep=2pt,minimum size=0.75cm},
+    lbl/.style={font=\footnotesize\sffamily,text=sgwInk,fill=sgwSurface,inner sep=1.5pt,align=center},
+    num/.style={circle,draw=sgwSecondary,fill=sgwSurface,text=sgwSecondary,font=\footnotesize\sffamily\bfseries,inner sep=0pt,minimum size=0.5cm}]
+  \node[term] (start) at (6.5,0.1) {start};
+  \node[code] (load) at (6.5,-1.4) {load\_context\sgwsub{role, scenario time, history}};
+  \node[code] (plat) at (11.4,-1.4) {platform\_answer\sgwsub{decision lists by code}};
+  \node[llm] (route) at (6.5,-3.3) {route\_intent\sgwsub{\color{sgwHairline}Haiku: rewrite follow-up,}\sgwsub{\color{sgwHairline}intent, scope gate}};
+  \node[llm] (guide) at (1.6,-3.3) {guide\sgwsub{\color{sgwHairline}Sonnet: how to use}\sgwsub{\color{sgwHairline}the platform}};
+  \node[llm] (inv) at (11.4,-3.3) {investigate\sgwsub{\color{sgwHairline}Sonnet: one tool loop}};
+  \node[code] (oos) at (1.6,-5.75) {out\_of\_scope\sgwsub{reply by code}};
+  \node[llm] (plan) at (6.5,-5.75) {plan\sgwsub{\color{sgwHairline}Haiku: up to 3 workers}};
+
+  \node[llm,minimum width=2.15cm,font=\footnotesize\sffamily\bfseries] (wf) at (4.1,-8.1) {forecast};
+  \node[llm,minimum width=2.15cm,font=\footnotesize\sffamily\bfseries] (wg) at (6.5,-8.1) {grid};
+  \node[llm,minimum width=2.15cm,font=\footnotesize\sffamily\bfseries] (ww) at (8.9,-8.1) {water};
+  \node[llm,minimum width=2.15cm,font=\footnotesize\sffamily\bfseries] (wp) at (5.3,-9.45) {policy};
+  \node[llm,minimum width=2.15cm,font=\footnotesize\sffamily\bfseries] (wd) at (7.7,-9.45) {data quality};
+  \sgwzone{wz}{sgwSevAdvisoryFill}{(wf)(wg)(ww)(wp)(wd)}{Sonnet workers}
+  \node[code] (gather) at (6.5,-11.5) {gather\sgwsub{collect findings}};
+  \node[llm] (synth) at (6.5,-13.3) {synthesise\sgwsub{\color{sgwHairline}Sonnet: one answer}\sgwsub{\color{sgwHairline}with citations}};
+  \node[code] (link) at (6.5,-15.2) {link\sgwsub{references, page links}};
+  \node[code] (respond) at (6.5,-16.9) {respond\sgwsub{stream answer to browser}};
+  \node[code] (audit) at (6.5,-18.6) {audit\sgwsub{run record}};
+  \node[term] (end) at (6.5,-20.0) {end};
+
+  \draw[sgw/flow] (start) -- (load);
+  \draw[sgw/flow] (load) -- node[lbl] {other questions} (route);
+  \draw[sgw/flow] (load) -- node[lbl,above=1pt] {lists} (plat);
+  \draw[sgw/flow] (route) -- node[lbl,above=1pt] {guided} (guide);
+  \draw[sgw/flow] (route) -- node[lbl,above=1pt] {single} (inv);
+  \draw[sgw/flow] ([xshift=-1.2cm]route.south) |- ++(0,-0.75) -| node[lbl,pos=0.25] {out of scope} (oos.north);
+  \draw[sgw/flow] (route) -- node[lbl] {team (default)} (plan);
+  \draw[sgw/flow] (plan) -- node[lbl,right=2pt,pos=0.4] {fan out} (wz.north);
+  \draw[sgw/flow] (wz.south) -- (gather);
+  \draw[sgw/feedback] (gather.east) -- ++(2.7,0) |- node[lbl,pos=0.25] {second wave\\(max 2)} (wz.east);
+  \draw[sgw/flow] (gather) -- (synth);
+  \draw[sgw/flow] (synth) -- (link);
+  \draw[sgw/flow] (link) -- (respond);
+  \draw[sgw/flow] (respond) -- (audit);
+  \draw[sgw/flow] (audit) -- (end);
+  \draw[sgw/flow] (plat.east) -- ++(0.4,0) |- ([yshift=2mm]link.east);
+  \draw[sgw/flow] (inv.east) -- ++(0.4,0) |- ([yshift=2mm]link.east);
+  \draw[sgw/flow] (guide.west) -- ++(-0.4,0) |- ([yshift=2mm]link.west);
+  \draw[sgw/flow] (oos.west) -- ++(-0.4,0) |- ([yshift=2mm]link.west);
+
+  \node[sgw/note,font=\footnotesize\sffamily,align=left,anchor=north west,text width=14.2cm] at (-0.6,-20.6)
+    {Dark boxes call a model through the LLM gateway, white boxes are code. One turn: at most 12 model calls,
+     \$0.25 and 30 s. A plan with no worker task goes straight to synthesise. Tools only read; none writes.};
+\end{tikzpicture}

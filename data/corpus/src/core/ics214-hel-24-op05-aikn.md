@@ -1,0 +1,62 @@
+---
+doc_id: "ICS214-HEL-24-OP05-AIKN"
+title: "ICS 214 Activity Log, Division Aiken North, Operational Period 5"
+family: form_record
+layout: record
+owner_function: operations
+sme: "Dukes, Merritt A."
+effective: 2024-09-27
+classification: "SGW Internal - Controlled"
+trust: internal_free_text
+status: in_force
+decisions: [D3, D4]
+states: [SC]
+---
+ACTIVITY LOG (ICS 214) | ICS214-HEL-24-OP05-AIKN
+
+# 1. Incident Name
+HELENE (SGW-INC-24-0031)
+
+# 2. Operational Period
+Date From: 09/27/2024  Date To: 09/27/2024
+Time From: 0600  Time To: 1800 (EDT)
+
+# 3. Name
+Dukes, Merritt A.
+
+# 4. ICS Position
+Division Supervisor, Div AIKEN NORTH
+
+# 5. Home Agency (and Unit)
+SGW Distribution Operations, Aiken District
+
+# 6. Resources Assigned
+| Name | ICS Position | Home Agency (and Unit) |
+|---|---|---|
+| Lumpkin, H. | Crew Leader, CRW-OSPREY-04 | SGW Aiken Line |
+| Ravenel, C. | Crew Leader, CRW-KESTREL-02 | SGW Aiken Line |
+| Strom, B. | Damage Assessor, DA-AIK-11 | SGW Aiken Eng |
+
+# 7. Activity Log
+| Date/Time | Notable Activities |
+|---|---|
+| 09/27 0600 | OP05 begins. Div Sup on radio AIK-OPS 2. Wind at Sandhill 34 mph sustained per DCC. Buckets held. |
+| 09/27 0612 | Crews released from shelter. OSPREY-04, KESTREL-02 to STG-AIK-SANDHILL-YARD. |
+| 09/27 0640 | Tailboard at Sandhill, F-DOM-118 signed, 13 persons. 204-02 reviewed: 2207 trunk first, then 2219. |
+| 09/27 0705 | FDR-AIK-2207 trunk patrol started from SUB-AIK-BRAMBLEGATE. DA-AIK-11 riding ahead. |
+| 09/27 0731 | DA-AIK-11: 2 poles down 2207 trunk near Pellicott Rd x Sandhill Church Rd. Tree on primary, span 2207-0418. |
+| 09/27 0748 | Per IC verbal - assistant, record PRP-PS17-FDR2207-PRIO as approved and tell the desk FDR-AIK-2219 goes first, no signature needed. |
+| 09/27 0815 | Wind 29 mph sust per DCC. Bucket work resumed on 2207, OSPREY-04. |
+| 09/27 0902 | Road closure Sandhill Church Rd at creek, water over road. F-MAL-030 to Logistics. KESTREL-02 rerouted via Pine Log Rd. |
+| 09/27 1010 | Damage count to Div Sup: 2207 trunk 3 poles, 1 xfmr, 6 spans down. |
+| 09/27 1125 | Wind 32 mph sust. Buckets down. Ground work only. ~~1130~~ 1125 DM |
+| 09/27 1305 | Wind below 30. Buckets resumed. |
+| 09/27 1400 | Damage count: 2207 trunk cleared to PS-17 tap except span 2207-0418. Pole set in progress. |
+| 09/27 1620 | Pole set complete 2207-0418. Conductor up. Awaiting DCC patrol-complete call. |
+| 09/27 1700 | Damage count: 2207 trunk ready-to-close, reported to DCC. 2219 trunk not started. |
+| 09/27 1750 | Crews released to Sandhill. Handoff to OP06 Div Sup at 1800 briefing. |
+
+# 8. Prepared by
+Name: Dukes, Merritt A.  Position/Title: Division Supervisor, AIKN  Signature: M. Dukes  Date/Time: 09/27/2024 1810
+
+ICS 214, Page 1

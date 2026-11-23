@@ -1,0 +1,52 @@
+\begin{tikzpicture}[sgw,
+  w/.style={text width=#1,minimum width=0pt}]
+  % Inputs
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (i1) at (0,0) {Hazard members\sgwsub{through the A2 outage}\sgwsub{model, not Helene-trained}};
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (i2) at (4.3,0) {Storm-scale factor k\sgwsub{log-uniform, band from}\sgwsub{Michael, Ian, Debby errors}};
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (i3) at (8.6,0) {11 yards, crews\sgwsub{40 demand clusters,}\sgwsub{mutual-aid arrival draws}};
+  \sgwzone{inp}{sgwNeutral}{(i1)(i2)(i3)}{Scenarios (optimise/scenarios.py)}
+
+  % SAA MILP
+  \node[sgw/service,w=7.9cm,minimum height=1.25cm] (m1) at (2.15,-2.55) {First stage, at the advisory (integer)\sgwsub{own crew groups per yard; early mutual-aid groups per yard}};
+  \node[sgw/service,w=7.9cm,minimum height=1.25cm] (m2) at (2.15,-4.2) {Second stage, per scenario (persons)\sgwsub{own, early, first-wave and later mutual aid to each cluster}};
+  \node[sgw/consequence,w=3.6cm,minimum height=2.9cm] (m3) at (8.6,-3.375) {Constraints\sgwsub{early groups $\leq$ spend cap}\sgwsub{$\geq$ 50\% of home crews}\sgwsub{stay at each yard}\sgwsub{$\leq$ 1000 persons per yard}\sgwsub{need met per cluster}};
+  \node[sgw/core,w=12.2cm,minimum height=1.3cm] (m4) at (4.3,-6.05) {Minimise mean customer-hours of crew-arrival delay\sgwsub{\color{sgwHairline}+ CVaR90 for the tail plan (500 scenarios); HiGHS, 50 scenarios $\times$ 10 replications, gap 1\%, 120 s limit}};
+  \sgwzone{saa}{sgwSevAdvisoryFill}{(m1)(m2)(m3)(m4)}{Two-stage stochastic MILP, sample average approximation (optimise/saa.py)}
+  \draw[sgw/flow] (i1.south) -- (i1.south |- m1.north);
+  \draw[sgw/flow] (i2.south) -- (i2.south |- m1.north);
+  \draw[sgw/flow] (i3) -- (m3);
+  \draw[sgw/flow] (m1) -- (m2);
+  \draw[sgw/flow] (m2.south) -- (m2.south |- m4.north);
+  \draw[sgw/flow] (m3.south) -- (m3.south |- m4.north);
+
+  % Courses of action
+  \node[sgw/decision,w=3.6cm,minimum height=1.5cm] (c1) at (0,-8.8) {COA-A\sgwsub{spend-matched: P50}\sgwsub{request, all scenarios}};
+  \node[sgw/decision,w=3.6cm,minimum height=1.5cm] (c2) at (4.3,-8.8) {COA-B\sgwsub{tail hedge: request}\sgwsub{sized for P90}};
+  \node[sgw/decision,w=3.6cm,minimum height=1.5cm] (c3) at (8.6,-8.8) {COA-C\sgwsub{own crews first,}\sgwsub{request when damage seen}};
+  \node[sgw/note,w=12.2cm] (c4) at (4.3,-10.0) {Checked against the P50 and expected-value plans on 2000 fresh scenarios: VSS, EVPI, optimality gap};
+  \begin{pgfonlayer}{background}\node[sgw/zone=sgwOkFill,fit=(c1)(c2)(c3)(c4)] (coa) {};\end{pgfonlayer}
+  \node[sgw/zone title,anchor=south] at ([xshift=2.15cm,yshift=1pt]coa.north west) {Courses of action (coa.py)};
+  \draw[sgw/flow] (m4.south -| c1) -- (c1);
+  \draw[sgw/flow] (m4.south -| c2) -- (c2);
+  \draw[sgw/flow] (m4.south -| c3) -- (c3);
+
+  % Output
+  \node[sgw/store,w=3.4cm] (o1) at (0,-12.45) {crew\_plan snapshot\sgwsub{async job optimise.saa}};
+  \node[sgw/service,w=3.6cm,minimum height=1.3cm] (o2) at (4.3,-12.45) {Crews screen\sgwsub{plan options}};
+  \node[sgw/person,w=3.6cm,minimum height=1.3cm] (o3) at (8.6,-12.45) {Sign-off\sgwsub{\mdseries envelope $\pm$20\%,}\sgwsub{\mdseries EDXL-RM request}};
+  \begin{pgfonlayer}{background}\node[sgw/zone=sgwNeutral,fit=(o1)(o2)(o3)] (out) {};\end{pgfonlayer}
+  \node[sgw/zone title,anchor=south] at ([yshift=1pt]out.north) {Crew plan output (optimise/job.py, plan.py)};
+  \draw[sgw/flow] (c4.south -| o1) -- (o1);
+  \draw[sgw/flow] (o1) -- (o2);
+  \draw[sgw/flow] (o2) -- (o3);
+
+  % ETR
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (e1) at (0,-15.25) {What the EOC sees\sgwsub{faults, restored sections,}\sgwsub{crews, customers out}};
+  \node[sgw/service,w=3.6cm,minimum height=1.75cm] (e2) at (4.3,-15.25) {120 Monte Carlo\\members\sgwsub{log-normal AFT work,}\sgwsub{fluid queue per area}};
+  \node[sgw/service,w=3.6cm,minimum height=1.75cm] (e3) at (8.6,-15.25) {P10 to P90 time\\to 90\% restored\sgwsub{split conformal}};
+  \node[sgw/person,w=7.9cm] (e4) at (6.45,-17.1) {EOC approves the global ETR (D4, T3); ETR screen};
+  \sgwzone{etr}{sgwSevAdvisoryFill}{(e1)(e2)(e3)(e4)}{Restoration time estimates, sgw-etr-a6 (restoration/etr.py)}
+  \draw[sgw/flow] (e1) -- (e2);
+  \draw[sgw/flow] (e2) -- (e3);
+  \draw[sgw/flow] (e3.south) -- (e3.south |- e4.north);
+\end{tikzpicture}

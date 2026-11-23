@@ -1,0 +1,170 @@
+# Ask bank, explain: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-EXP-002
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  question: What is an ETR?
+  expect:
+    mentions_any:
+    - restoration
+  judge: true
+- id: AB-EXP-004
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: What does 'Can wait' mean on a decision?
+  expect:
+    mentions_any:
+    - advisory
+    - waiting
+    - next
+- id: AB-EXP-006
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: explain
+  question: What is the pressure floor and why does it matter?
+  expect:
+    mentions_any:
+    - pressure
+    - psi
+    - minimum
+    - floor
+- id: AB-EXP-013
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: explain
+  question: What does SGW mode mean on the health page?
+  expect:
+    mentions_any:
+    - mode
+- id: AB-EXP-018
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: map
+  klass: explain
+  question: What is AMI?
+  expect:
+    mentions_any:
+    - meter
+- id: AB-EXP-020
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  question: What is an advisory and who issues it?
+  expect:
+    mentions_any:
+    - Hurricane Center
+    - NHC
+    - advisor
+- id: AB-EXP-022
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: explain
+  question: What are lifelines?
+  expect:
+    mentions_any:
+    - water
+    - power
+    - hospital
+    - lifeline
+- id: AB-EXP-028
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: ask
+  klass: explain
+  question: How does Ask AI decide what to answer?
+  expect:
+    mentions_any:
+    - data
+    - platform
+    - source
+    - tool
+  judge: true
+- id: AB-EXP-032
+  lang: pl
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: Wyjaśnij, co znaczy 'Can wait'.
+  expect:
+    mentions_any:
+    - czek
+    - poczek
+    - termin
+- id: AB-EXP-033
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: Co znaczy 'decide by'?
+  expect:
+    mentions_any:
+    - termin
+    - decyz
+- id: AB-EXP-036
+  lang: pl
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: explain
+  question: Dlaczego ciśnienie poniżej minimum jest groźne?
+  expect:
+    mentions_any:
+    - ciśnieni
+    - zanieczyszcz
+    - skażeni
+    - bakteri
+- id: AB-EXP-038
+  lang: es
+  persona: wtr_comp_01
+  moment: morning-after
+  page: water
+  klass: explain
+  tags:
+  - other_language
+  question: ¿Qué es un aviso de hervir el agua?
+  expect:
+    mentions_any:
+    - hervir
+- id: AB-EXP-041
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: help
+  klass: explain
+  question: What does the Help page contain?
+  expect:
+    mentions_any:
+    - term
+    - definition
+    - glossary
+- id: AB-EXP-042
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: explain
+  question: What does 'Data age' mean on System health?
+  expect:
+    mentions_any:
+    - age
+    - last
+    - fresh
+    - minutes

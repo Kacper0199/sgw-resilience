@@ -1,0 +1,19 @@
+# Copyleft packages reviewed and allowed (DC-29). Format: <py|npm> <name> <reason>
+py psycopg LGPL-3.0-only, imported at run time, never vendored or modified
+py psycopg-binary LGPL-3.0-only, binary wheel of psycopg, imported, never vendored
+py psycopg-pool LGPL-3.0-only, imported, never vendored
+# Packages without licence metadata, reviewed by hand (unknown is a failure under --strict-unknown)
+py cuda-toolkit NVIDIA CUDA EULA, Linux wheel pulled by torch in the host group only, never in images
+py nvidia-cublas NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cuda-cupti NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cuda-nvrtc NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cuda-runtime NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cudnn-cu13 NVIDIA cuDNN EULA, torch host group only, never in images
+py nvidia-cufft NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cufile NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cusolver NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-cusparse NVIDIA CUDA EULA, torch host group only, never in images
+py nvidia-nccl-cu13 BSD-3-Clause upstream (NCCL), no PyPI metadata, torch host group only
+py nvidia-nvshmem-cu13 NVIDIA EULA, torch host group only, never in images
+py nvidia-nvtx Apache-2.0 upstream (NVTX), no PyPI metadata, torch host group only
+py py-rust-stemmers MIT upstream (rust-stemmers), no PyPI metadata, fastembed dependency

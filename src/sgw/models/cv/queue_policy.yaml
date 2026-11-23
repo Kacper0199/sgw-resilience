@@ -1,0 +1,63 @@
+# SGW policy parameters for the CV damage-assessment review queue (O-06; label A, kind policy,
+# chip "Assumed SGW policy"). The queue is a prioritisation aid: a reviewer confirms every photo.
+# Candidates for policy_cv_* entries in data/numbers/numbers.yaml.
+version: "1.0"
+kind: policy
+label: A
+triage_weights:
+  source: R05 cv-datasets section 5.3 (label to SGW action mapping); weights assumed
+  # Weighted mean of the damage-label probabilities. roads_damage has weight 0: the reference AP for it is
+  # weak, so road damage is flagged for human review and never moves the order (R05 recommendation 3).
+  values:
+    buildings_affected_or_greater: 1.0
+    buildings_minor_or_greater: 1.0
+    debris_any: 0.9
+    flooding_structures: 0.9
+    trees_damage: 0.8
+    flooding_any: 0.7
+    roads_damage: 0.0
+signal_threshold:
+  source: assumed; a probability at or above it shows as a signal on the row
+  value: 0.5
+actions:
+  source: R05 cv-datasets section 5.3
+  values:
+    trees_damage: line-clearance crew
+    debris_any: line-clearance crew
+    flooding_any: access check (routing penalty)
+    flooding_structures: access check (routing penalty)
+    buildings_affected_or_greater: raise restoration priority
+    buildings_minor_or_greater: raise restoration priority
+human_only:
+  source: R05 cv-datasets recommendation 3
+  values:
+    roads_damage: road damage, human review only
+seeded_case_photos:
+  source: assumed demo device; photos are chosen by CAP volunteer labels only, never by model score
+  # A set of stand-in photos for each seeded damage case of the helene truth table: the lowest row_idx
+  # values in the sample whose CAP labels include every `require` label and none of the `forbid` labels. Cases whose id
+  # names a flood swap debris_any for flooding_any in `require` and drop flooding_any from `forbid`.
+  # Each case gets a set of photos (several frames of one flight leg); its score is their mean triage score.
+  photos_per_case: 5
+  severity: {slight: 1, moderate: 2, extensive: 3, complete: 4}
+  # The paper merged building-damage levels because the classifier separates them poorly, so the queue is
+  # held to two tiers: moderate or worse above slight, and above every no-damage control group.
+  structural_tier_min_severity: 2
+  profiles:
+    complete:
+      require: [buildings_minor_or_greater, debris_any, trees_damage]
+      forbid: []
+    extensive:
+      require: [buildings_affected_or_greater, trees_damage]
+      forbid: [buildings_minor_or_greater]
+    moderate:
+      require: [trees_damage, debris_any]
+      forbid: [buildings_minor_or_greater, flooding_any]
+    slight:
+      require: [trees_damage]
+      forbid: [buildings_affected_or_greater, buildings_minor_or_greater, debris_any, flooding_any,
+        flooding_structures, roads_damage]
+  flood_swap: {from: debris_any, to: flooding_any}
+# A photo whose CAP labels hold none of these is a no-damage control.
+damage_labels: [buildings_affected_or_greater, buildings_minor_or_greater, debris_any, flooding_any,
+  flooding_structures, roads_damage, trees_damage]

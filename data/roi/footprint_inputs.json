@@ -1,0 +1,81 @@
+{
+ "_about": "Footprint inputs of the ROI model: South Carolina plus Georgia east of 83.6 W (123 counties). Public data, our own aggregation (label C where derived).",
+ "_sources": {
+  "residents": "US Census Bureau, Vintage 2024 county population estimates",
+  "customers": "EAGLE-I modelled customers per county (MCC.csv), ORNL, CC BY 4.0",
+  "residential_share": "EIA-861 2024 Sales_Ult_Cust_2024.xlsx, States sheet; GA statewide share applied to GA east",
+  "saidi_series": "EIA Electric Power Annual Table 11.4, SAIDI with and without major event days, 2025 back to 2015 (https://www.eia.gov/electricity/annual/table.php?t=epa_11_04.html)"
+ },
+ "residents_footprint": 8140805,
+ "customers_sc": 2832284,
+ "customers_ga_east": 1416006,
+ "customers_footprint": 4248290,
+ "weight_sc": 0.6666880085869844,
+ "residential_share": 0.8680067229341754,
+ "georgia_power_customers_m": 2.804103,
+ "saidi_years": [
+  2025,
+  2024,
+  2023,
+  2022,
+  2021,
+  2020,
+  2019,
+  2018,
+  2017,
+  2016,
+  2015
+ ],
+ "saidi_with_med_sc": [
+  153.0,
+  3155.0,
+  169.8,
+  302.4,
+  122.9,
+  332.6,
+  338.2,
+  488.6,
+  386.9,
+  1698.8,
+  234.3
+ ],
+ "saidi_without_med_sc": [
+  103.4,
+  115.9,
+  126.5,
+  114.8,
+  101.3,
+  121.3,
+  106.3,
+  138.8,
+  119.4,
+  122.1,
+  121.9
+ ],
+ "saidi_with_med_ga": [
+  268.9,
+  1208.1,
+  342.7,
+  212.4,
+  140.5,
+  521.7,
+  149.8,
+  230.7,
+  1030.8,
+  424.0,
+  248.2
+ ],
+ "saidi_without_med_ga": [
+  145.5,
+  211.4,
+  133.4,
+  129.3,
+  123.8,
+  130.5,
+  125.8,
+  118.8,
+  115.2,
+  120.6,
+  108.5
+ ]
+}

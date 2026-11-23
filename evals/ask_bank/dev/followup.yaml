@@ -1,0 +1,288 @@
+# Ask bank, followup: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-FUP-001
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: followup
+  tags:
+  - user_reported
+  - link_request
+  turns:
+  - show the photos from flooded area from hurricane helene
+  question: or the link
+  expect:
+    links:
+    - crews
+  judge: true
+- id: AB-FUP-002
+  lang: pl
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: followup
+  tags:
+  - user_reported
+  - link_request
+  turns:
+  - pokaz zdjecia powodzi
+  question: albo link
+  expect:
+    links:
+    - crews
+- id: AB-FUP-003
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: followup
+  turns:
+  - What does the latest advisory mean for PS-17's deadline?
+  question: and for PS-23?
+  expect:
+    mentions_any:
+    - PS-23
+    - Laurelspur
+  judge: true
+- id: AB-FUP-004
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: followup
+  turns:
+  - Which pump stations do we have in Aiken?
+  question: And which of them has no generator?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+- id: AB-FUP-005
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: followup
+  turns:
+  - Tell me about the PS-17 generator hookup decision.
+  question: Who has to sign it?
+  expect:
+    mentions_any:
+    - command
+    - water
+    - operations
+    - sign
+- id: AB-FUP-006
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: followup
+  tags:
+  - link_request
+  turns:
+  - What is the most important decision right now?
+  question: Open it.
+  expect:
+    links:
+    - decisions
+- id: AB-FUP-007
+  lang: en
+  persona: plan_etr_01
+  moment: notices-lifted
+  page: forecast
+  klass: followup
+  turns:
+  - Should the published ETR be revised?
+  question: Why?
+  expect:
+    mentions_any:
+    - ETR
+    - DOM 14.206
+    - revis
+- id: AB-FUP-008
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: followup
+  turns:
+  - When is the Laurelspur notice lift due?
+  question: And Copperleaf?
+  expect:
+    mentions_any:
+    - Copperleaf
+    - '17:41'
+- id: AB-FUP-009
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: followup
+  turns:
+  - Which crews are mutual aid?
+  question: Where are they now?
+  expect:
+    mentions_any:
+    - Millpond
+    - Talon
+    - TALON
+- id: AB-FUP-010
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: followup
+  turns:
+  - What is the status of the Cedarfall zone?
+  question: Explain that in simpler words.
+  expect:
+    mentions_any:
+    - Cedarfall
+    - water
+    - pressure
+  judge: true
+- id: AB-FUP-013
+  lang: en
+  persona: ops_dm_02
+  moment: morning-after
+  page: decisions
+  klass: followup
+  tags:
+  - vague
+  turns:
+  - What is the next decision deadline?
+  question: and the one after that?
+  expect:
+    mentions_any:
+    - decide
+    - deadline
+    - due
+- id: AB-FUP-014
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: followup
+  turns:
+  - Is Cedarfall pressure below the floor?
+  question: What does that mean for the hospital?
+  expect:
+    mentions_any:
+    - Tallowbranch
+    - hospital
+- id: AB-FUP-015
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: health
+  klass: followup
+  turns:
+  - Are any data feeds late?
+  question: Is that a problem for the forecast?
+  expect:
+    mentions_any:
+    - forecast
+    - model
+    - data
+- id: AB-FUP-016
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: followup
+  turns:
+  - When was the Cedarfall boil-water notice lifted?
+  question: Who approved it?
+  expect:
+    mentions_any:
+    - compliance
+    - water
+    - sign
+    - approv
+- id: AB-FUP-017
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: decisions
+  klass: followup
+  turns:
+  - What is the most important decision right now?
+  question: Thanks. And what should I tell the mayor?
+  expect:
+    mentions_any:
+    - PS-17
+    - water
+    - hospital
+    - power
+  judge: true
+- id: AB-FUP-018
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: followup
+  turns:
+  - Which damage case should we review first?
+  question: Show me the photos.
+  expect:
+    photos: 1
+- id: AB-FUP-021
+  lang: pl
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: followup
+  turns:
+  - Kiedy mija termin zniesienia komunikatu w Laurelspur?
+  question: A Copperleaf?
+  expect:
+    mentions_any:
+    - Copperleaf
+    - '17:41'
+- id: AB-FUP-022
+  lang: pl
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: followup
+  turns:
+  - Jaki jest stan strefy Cedarfall?
+  question: Wytłumacz to prościej.
+  expect:
+    mentions_any:
+    - Cedarfall
+    - wod
+    - ciśnieni
+- id: AB-FUP-024
+  lang: pl
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: followup
+  tags:
+  - no_diacritics
+  turns:
+  - Które ekipy są z pomocy wzajemnej?
+  question: a gdzie sa teraz
+  expect:
+    mentions_any:
+    - Millpond
+    - Talon
+    - TALON
+- id: AB-FUP-026
+  lang: es
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: followup
+  tags:
+  - other_language
+  turns:
+  - ¿Cuándo vence el levantamiento del aviso de Laurelspur?
+  question: ¿Y Copperleaf?
+  expect:
+    mentions_any:
+    - Copperleaf
+    - '17:41'

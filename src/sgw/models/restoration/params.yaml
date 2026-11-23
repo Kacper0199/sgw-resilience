@@ -1,0 +1,155 @@
+# WP-17 restoration process and ETR model parameters. Labels: F sourced, C computed (by a named command),
+# A assumption, P policy. Values quoted in documents come from data/numbers/numbers.yaml, not from here.
+process:
+  section_scale:
+    value: 0.1519
+    unit: "-"
+    label: C
+    source: "uv run sgw restoration calibrate: Hazus distribution-circuit days x scale = line-crew work per section on a 24-person group; fitted with secondary_per_100 to the EAGLE-I Helene county t50 and t90 medians (in-sample)"
+  secondary_per_100:
+    value: 5.8414
+    unit: "jobs per 100 customers"
+    label: C
+    source: "uv run sgw restoration calibrate (fitted jointly with section_scale; in-sample)"
+  county_sigma:
+    value: 0.5
+    unit: log
+    label: A
+    source: "county rebuild-severity spread (log work multiplier shared by every job in a county). A 3-parameter fit to the county t90 p75 as well needed 1.82 (work x6 per sd; counties out past 45 days): rejected as unphysical, see the WP-17 round file; tail parameter, needs utility job and crew data"
+  county_z_max:
+    value: 2.0
+    unit: "sd"
+    label: A
+    source: "county draws truncated at +-2 sd (work at most exp(2 sigma), about 2.7x, of the median)"
+  secondary_severity:
+    value: [0.5, 1.0, 1.5, 2.0]
+    unit: "-"
+    label: A
+    source: "more transformer and service-drop jobs behind heavier section damage (slight..complete); tail parameter, needs utility job and crew data"
+  secondary_customers_median:
+    value: 6.0
+    unit: customers
+    label: A
+    source: "one distribution transformer serves about 4-10 residential customers; tail parameter, needs utility job and crew data"
+  secondary_customers_sigma:
+    value: 0.7
+    unit: log
+    label: A
+    source: "WP-17 assumption; tail parameter, needs utility job and crew data"
+  secondary_max_share:
+    value: 0.6
+    unit: "-"
+    label: A
+    source: "secondary jobs never hold more than this share of a section's customers; tail parameter, needs utility job and crew data"
+  secondary_work_median_h:
+    value: 3.0
+    unit: "line-crew h"
+    label: A
+    source: "transformer or service-drop replacement, 2-4 crew hours; tail parameter, needs utility job and crew data"
+  secondary_work_sigma:
+    value: 0.5
+    unit: log
+    label: A
+    source: "WP-17 assumption; tail parameter, needs utility job and crew data"
+  persons_per_line_crew:
+    value: 4
+    unit: persons
+    label: A
+    source: "bucket-truck line crew of 3-5"
+  reference_group_lines:
+    value: 6
+    unit: "line crews"
+    label: A
+    source: "24-person internal group (generator restoration.internal_group_headcount) / 4"
+  shift_on_h:
+    value: 16
+    unit: h
+    label: A
+    source: "16 h on / 8 h rest storm-shift practice; tail parameter, needs utility job and crew data"
+  shift_start_utc_h:
+    value: 10
+    unit: "h UTC"
+    label: A
+    source: "06:00 EDT shift start"
+  setup_h:
+    value: 0.25
+    unit: h
+    label: A
+    source: "generator restoration setup per job"
+  productivity_sigma:
+    value: 0.2
+    unit: log
+    label: A
+    source: "storm-level productivity effect (fatigue, weather, material); family-A truth draws only"
+  secondary_rate_sigma:
+    value: 0.25
+    unit: log
+    label: A
+    source: "storm-level secondary-damage effect; family-A truth draws only"
+  horizon_days:
+    value: 45
+    unit: d
+    label: A
+    source: "simulation horizon after the window start"
+  step_s:
+    value: 900
+    unit: s
+    label: A
+    source: "15-min series, same as EAGLE-I and the generator"
+etr:
+  members:
+    value: 120
+    unit: members
+    label: A
+    source: "Monte Carlo members per issue; quantile noise below the conformal step"
+  restored_share:
+    value: 0.9
+    unit: "-"
+    label: P
+    source: "ETR target: 90 percent of the peak customers out restored (PLAN SC-4, D4)"
+  issue_offsets_h:
+    value: [0, 24]
+    unit: h
+    label: P
+    source: "ETR issued when the footprint peak is declared live and 24 h later (after first damage assessment)"
+  peak_hold_h:
+    value: 6
+    unit: h
+    label: P
+    source: "the footprint peak is declared once customers out stayed below the running maximum for this long"
+  min_region_peak:
+    value: 500
+    unit: customers
+    label: P
+    source: "a region needs at least this peak out to get a regional ETR"
+  hazard_gust_sigma:
+    value: 0.15
+    unit: log
+    label: A
+    source: "error of the hazard-estimated section peak gust the model sees (not the truth gust)"
+  coverage_target:
+    value: 0.8
+    unit: "-"
+    label: P
+    source: "PLAN WP-17 Verify: 80 percent interval"
+  coverage_tolerance:
+    value: 0.05
+    unit: "-"
+    label: P
+    source: "PLAN WP-17 Verify: +-5 pp"
+splits:
+  train_seeds:
+    value: [1000, 1030]
+    unit: "seed range"
+    label: A
+    source: "AFT, travel and storm-effect fit"
+  calibration_seeds:
+    value: [2000, 2060]
+    unit: "seed range"
+    label: A
+    source: "split-conformal calibration"
+  test_seeds:
+    value: [3000, 3060]
+    unit: "seed range"
+    label: A
+    source: "coverage test (never seen by fit or calibration)"

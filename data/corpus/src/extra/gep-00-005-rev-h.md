@@ -1,0 +1,125 @@
+---
+doc_id: "GEP 00.005"
+title: "Promulgation and Record of Changes"
+family: erp_section
+layout: controlled
+owner_function: command
+sme: "Varnadoe, Celeste M."
+revision: "H"
+effective: 2024-05-13
+supersedes: "GEP 00.005 Rev G (eff. 2023-05-15)"
+next_review: 2025-04-30
+approvals:
+  - {function: command, position: "Vice President, Emergency Management", name: "Wingard, Lorraine T.", date: 2024-05-06}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D1]
+states: [SC, GA]
+changes:
+  - {rev: "H", date: 2024-05-13, section: "1.0", change: "Letter of Promulgation reissued for GEP 00.010 Rev G and GEP 03.020 Rev D."}
+  - {rev: "H", date: 2024-05-13, section: "2.0", change: "Plan structure table updated: GEP 2X.01 Extreme Heat Annex added."}
+  - {rev: "H", date: 2024-05-13, section: "5.0", change: "No changes."}
+---
+# 1.0 LETTER OF PROMULGATION
+
+To all SGW employees, contractors and mutual-assistance partners working under SGW direction:
+
+The SGW Emergency Response Plan (ERP) is hereby promulgated as the governing plan for emergencies that
+affect SGW electric and water service in South Carolina and east Georgia.
+
+The ERP consists of the base plan chapters (GEP 00 to GEP 09), the hazard annexes (GEP 2F, 2H, 2T, 2W and
+2X) and the owner-manual procedures they call. It applies to every district, from Aiken and Richmond to the
+coastal service area.
+
+The ERP adopts the Incident Command System (ICS). Positions named in the plan are ICS positions and act with
+the authority the plan gives them, regardless of normal reporting lines.
+
+The ERP supersedes all prior editions and any district storm plan that conflicts with it. District
+supplements remain valid where they add local detail and do not change a threshold, role or time limit.
+
+Each manual owner shall review the documents in their manual before 30 April of each year. The review is
+complete when the owner has signed the review entry in DocCtl, whether or not a change results.
+
+Every person assigned an ERP position shall read the base plan and the annexes for their function before
+1 June of each year, and confirm that reading in the Learning Management System.
+
+This promulgation remains in effect until reissued.
+
+Signed: Vice President, Emergency Management (Wingard, Lorraine T.), 2024-05-06.
+Concurred: Chief Operating Officer, 2024-05-08 (signature on file in DocCtl).
+
+# 2.0 PLAN STRUCTURE
+
+| Document | Title | Owner function |
+|---|---|---|
+| GEP 00.005 | Promulgation and Record of Changes | Command |
+| GEP 00.010 | Base Emergency Response Plan: Activation, Event Types and Activation Levels | Command |
+| GEP 03.020 | Storm Organization and ICS Position Descriptions | Command |
+| GEP 04.010 | EOC Activation and Communications | Command |
+| GEP 07.010 | Demobilization and Return to Normal Operations | Command |
+| GEP 2F.01 | Flood Annex | Logistics |
+| GEP 2H.01 | Hurricane Annex | Command |
+| GEP 2T.01 | Tornado and Severe Thunderstorm Annex | Command |
+| GEP 2W.01 | Winter Weather Annex | Command |
+| GEP 2X.01 | Extreme Heat Annex | Command |
+
+Chapters 01, 02, 05, 06, 08 and 09 are Reserved. Procedures called by the ERP sit in the owner manuals: DOM
+(Distribution Operations), TSO (Transmission and Substation), WDS (Water Distribution and Supply), WQC (Water
+Quality and Compliance), MAL (Mutual Assistance and Logistics) and PCN (Corporate Communications).
+
+# 3.0 REVISION AND CHANGE CONTROL
+
+3.1 A revision advances the letter, carries a new effective date and requires new approvals. Letters I, O, Q
+and S are not used.
+
+3.2 A change (Chg) replaces limited pages only. It keeps the revision letter and the original effective date
+and needs no new signatures. Cite it as revision and change, as in GEP 2H.01 Rev E/1.
+
+3.3 A change shall not alter a threshold, a time limit, an approver or an Event Type criterion. Those need a
+revision.
+
+3.4 The superseded revision stays in DocCtl marked SUPERSEDED and is retained for record for 10 years.
+
+3.5 Interim instructions during an event are issued as Operations Bulletins (OB-yy-nn) with an expiry date.
+A bulletin overrides the named procedure section only until it expires.
+
+3.6 After-action corrective actions that change the ERP are tracked to the revision that closes them (see
+GEP 07.010 section 6).
+
+# 4.0 RECORD OF CHANGES
+
+Entries since the 2019 consolidation of the district storm plans. Changes (Chg) are entered here by the
+Emergency Management document coordinator; revisions are listed for completeness.
+
+| No. | Date | Pages | Entered by |
+|---|---|---|---|
+| 31 | 2024-05-13 | GEP 00.010 Rev G, all pages | Varnadoe, C. M. |
+| 30 | 2024-05-13 | GEP 03.020 Rev D, all pages (Storm Desk Lead renamed Duty Manager) | Varnadoe, C. M. |
+| 29 | 2024-04-08 | GEP 2F.01 Rev C, all pages | Varnadoe, C. M. |
+| 28 | 2024-02-19 | GEP 2T.01 Rev C, all pages | Varnadoe, C. M. |
+| 27 | 2023-11-06 | GEP 2W.01 Rev D, all pages | Faircloth, N. S. |
+| 26 | 2023-10-02 | GEP 07.010 Rev C, all pages | Faircloth, N. S. |
+| 25 | 2023-08-14 | GEP 00.010 Rev F/1, Att. 5 page 9 | Faircloth, N. S. |
+| 24 | 2023-05-30 | GEP 2H.01 Rev E/1, pages 4 and 11 | Faircloth, N. S. |
+| 23 | 2023-05-15 | GEP 00.005 Rev G, pages 1 to 3 | Faircloth, N. S. |
+| 22 | 2022-04-25 | GEP 03.020 Rev C, all pages | Lumpkin, H. E. |
+
+Entries 1 to 21 are held in the archived Rev F of this document.
+
+# 5.0 DISTRIBUTION
+
+| Holder | Copy type | Format |
+|---|---|---|
+| EOC, Columbia | Controlled | Printed binder and DocCtl |
+| Distribution Control Center | Controlled | DocCtl |
+| District offices (Aiken, Richmond and others) | Controlled | DocCtl; printed binder in storm room |
+| Water Operations Center | Controlled | DocCtl |
+| County EOC liaisons | Uncontrolled | PDF issued at activation |
+
+Printed binders are refreshed within 10 working days of a revision. The district storm room coordinator
+removes the superseded pages and signs the binder sheet.
+
+# 6.0 REFERENCES
+
+GEP 00.010 section 5 (Activation Levels). GEP 04.010 (EOC notification list). SC 103-314.

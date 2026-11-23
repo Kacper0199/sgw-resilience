@@ -1,0 +1,33 @@
+% Roadmap: phases as rows, adoption gates as diamonds, gate exit criteria straight below each gate.
+% Bar lengths show assumed durations in months (label A); they are layout, the text quotes them as macros.
+% A light segment is preparation paid by the phase before; the gate at its end releases the rest of the phase.
+\begin{tikzpicture}[sgw,x=0.44cm,y=0.72cm,
+    crit/.style={sgw/box,font=\scriptsize\sffamily,text width=2.2cm,minimum width=2.4cm,align=left,anchor=north,inner sep=3pt}]
+  \foreach \m in {0,6,...,36}{
+    \draw[sgwHairline,line width=0.4pt] (\m,0) -- (\m,-5);
+    \node[font=\scriptsize\sffamily,text=sgwInkMuted,anchor=south] at (\m,0.02) {M\m};}
+  \foreach \r/\t in {0/2,1/8,2/20,3/26,4/36}{
+    \draw[sgw/feedback,-] (\t,-\r-0.5) -- (\t,-5.45);}
+  \sgwrowlabel{0}{0\enspace Discovery and prototype}
+  \sgwrowlabel{1}{1\enspace Pilot with read access, one area}
+  \sgwrowlabel{2}{2\enspace Operational season}
+  \sgwrowlabel{3}{3\enspace All water systems, write back}
+  \sgwrowlabel{4}{4\enspace Scale to regions and hazards}
+  \sgwphase{0}{0}{2}{}
+  \sgwphase[sgwSecondary]{1}{2}{8}{one SC area}
+  \sgwphase[sgwSecondary]{2}{8}{20}{shadow season, then assisted use}
+  \fill[sgwInkMuted!30,rounded corners=1pt] (14,-3.84) rectangle (20,-3.16);
+  \node[font=\scriptsize\sffamily,text=sgwInk] at (17,-3.5) {preparation};
+  \sgwphase[sgwInkMuted]{3}{20}{26}{LIMS, write back}
+  \fill[sgwInkMuted!30,rounded corners=1pt] (20,-4.84) rectangle (26,-4.16);
+  \node[font=\scriptsize\sffamily,text=sgwInk] at (23,-4.5) {preparation};
+  \sgwphase[sgwInkMuted]{4}{26}{36}{GA region, wildfire, heat}
+  \foreach \r/\t/\g in {0/2/G0,1/8/G1,2/20/G2,3/26/G3,4/36/G4}{
+    \node[diamond,fill=sgwSevCritical,draw=white,inner sep=2.4pt] at (\t,-\r-0.5) {};
+    \node[font=\scriptsize\sffamily\bfseries,text=sgwSevCritical,anchor=south] at (\t,-\r-0.28) {\g};}
+  \node[crit] at (2,-5.45) {\textbf{G0 start pilot}\\sponsor named, baseline metrics frozen};
+  \node[crit] at (8,-5.45) {\textbf{G1 go to operations}\\backtest on past storms, tabletop and functional exercise};
+  \node[crit] at (20,-5.45) {\textbf{G2 fund water and scale}\\shadow season meets the targets of the first year};
+  \node[crit] at (26,-5.45) {\textbf{G3 fund the GA region}\\assisted use on the water desks};
+  \node[crit] at (36,-5.45) {\textbf{G4 treatment in the rate case}\\adoption scaled and reinforced};
+\end{tikzpicture}

@@ -1,0 +1,1054 @@
+{
+ "meta": {
+  "diurnal": [
+   0.62,
+   0.58,
+   0.56,
+   0.56,
+   0.6,
+   0.75,
+   1.05,
+   1.3,
+   1.32,
+   1.25,
+   1.18,
+   1.15,
+   1.12,
+   1.1,
+   1.08,
+   1.08,
+   1.1,
+   1.2,
+   1.32,
+   1.3,
+   1.2,
+   1.02,
+   0.85,
+   0.72
+  ],
+  "diurnal_clock": "local EDT hour 0-23 (UTC-4)",
+  "label": "synthetic",
+  "source": "sgw.models.water.network.build_zone_network, family A plant data, water_twin.yaml layout",
+  "version": "1.2-synthetic"
+ },
+ "networks": {
+  "PS-17": {
+   "avg_demand_gpm": 1111.111111,
+   "nodes": [
+    {
+     "demand_share": 0.0,
+     "elevation_ft": 420.0,
+     "id": "J-CF-STATION",
+     "role": "station"
+    },
+    {
+     "demand_share": 0.050401,
+     "elevation_ft": 414.18,
+     "id": "J-CF-01",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.120004,
+     "elevation_ft": 398.39,
+     "id": "J-CF-02",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.051524,
+     "elevation_ft": 414.7,
+     "id": "J-CF-03",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.105088,
+     "elevation_ft": 421.2,
+     "id": "J-CF-04",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.044466,
+     "elevation_ft": 404.85,
+     "id": "J-CF-05",
+     "role": "service"
+    },
+    {
+     "asset_id": "HSP-AIK-TALLOWBRANCH",
+     "demand_share": 0.04,
+     "elevation_ft": 429.24,
+     "id": "J-CF-TALLOWBRANCH",
+     "pattern": "flat",
+     "role": "hospital"
+    },
+    {
+     "demand_share": 0.043626,
+     "elevation_ft": 405.88,
+     "id": "J-CF-07",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.067014,
+     "elevation_ft": 418.66,
+     "id": "J-CF-08",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.12044,
+     "elevation_ft": 408.59,
+     "id": "J-CF-09",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.062351,
+     "elevation_ft": 411.4,
+     "id": "J-CF-10",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.062526,
+     "elevation_ft": 400.12,
+     "id": "J-CF-11",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.079055,
+     "elevation_ft": 424.94,
+     "id": "J-CF-12",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.074093,
+     "elevation_ft": 418.93,
+     "id": "J-CF-13",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.079412,
+     "elevation_ft": 422.85,
+     "id": "J-CF-14",
+     "role": "service"
+    }
+   ],
+   "pipes": [
+    {
+     "c": 110.0,
+     "diameter_in": 20.0,
+     "from": "J-CF-STATION",
+     "id": "P-CF-01",
+     "length_ft": 962.1,
+     "to": "J-CF-01",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-CF-01",
+     "id": "P-CF-02",
+     "length_ft": 958.1,
+     "to": "J-CF-02",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-CF-02",
+     "id": "P-CF-03",
+     "length_ft": 2133.9,
+     "to": "J-CF-03",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CF-03",
+     "id": "P-CF-04",
+     "length_ft": 1554.9,
+     "to": "J-CF-04",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CF-02",
+     "id": "P-CF-05",
+     "length_ft": 2853.4,
+     "to": "J-CF-05",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CF-01",
+     "id": "P-CF-06",
+     "length_ft": 1772.0,
+     "to": "J-CF-TALLOWBRANCH",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CF-01",
+     "id": "P-CF-07",
+     "length_ft": 1132.7,
+     "to": "J-CF-07",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CF-05",
+     "id": "P-CF-08",
+     "length_ft": 1865.8,
+     "to": "J-CF-08",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CF-02",
+     "id": "P-CF-09",
+     "length_ft": 2089.3,
+     "to": "J-CF-09",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-CF-04",
+     "id": "P-CF-10",
+     "length_ft": 2340.0,
+     "to": "J-CF-10",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CF-05",
+     "id": "P-CF-11",
+     "length_ft": 2605.0,
+     "to": "J-CF-11",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CF-01",
+     "id": "P-CF-12",
+     "length_ft": 1818.5,
+     "to": "J-CF-12",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CF-02",
+     "id": "P-CF-13",
+     "length_ft": 2738.6,
+     "to": "J-CF-13",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-CF-10",
+     "id": "P-CF-14",
+     "length_ft": 1858.5,
+     "to": "J-CF-14",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-CF-12",
+     "id": "P-CF-15",
+     "length_ft": 2917.0,
+     "to": "J-CF-TALLOWBRANCH",
+     "tree": false
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-CF-07",
+     "id": "P-CF-16",
+     "length_ft": 2589.2,
+     "to": "J-CF-TALLOWBRANCH",
+     "tree": false
+    }
+   ],
+   "pump_capacity_gpm": 2083.333333,
+   "sensor_node": "J-CF-STATION",
+   "station": "PS-17",
+   "tank": "TNK-PS17-CEDARFALL",
+   "tank_bottom_elevation_ft": 438.476,
+   "tank_diameter_ft": 20.0,
+   "tank_max_level_ft": 124.0,
+   "tank_pipe": {
+    "c": 110.0,
+    "diameter_in": 24.0,
+    "length_ft": 60.0
+   },
+   "zone": "WZ-PS17-CEDARFALL"
+  },
+  "PS-23": {
+   "avg_demand_gpm": 1111.111111,
+   "nodes": [
+    {
+     "demand_share": 0.0,
+     "elevation_ft": 420.0,
+     "id": "J-LS-STATION",
+     "role": "station"
+    },
+    {
+     "demand_share": 0.051295,
+     "elevation_ft": 396.79,
+     "id": "J-LS-01",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.042367,
+     "elevation_ft": 411.53,
+     "id": "J-LS-02",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.048871,
+     "elevation_ft": 418.37,
+     "id": "J-LS-03",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.047137,
+     "elevation_ft": 408.53,
+     "id": "J-LS-04",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.076632,
+     "elevation_ft": 410.41,
+     "id": "J-LS-05",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.092965,
+     "elevation_ft": 411.18,
+     "id": "J-LS-06",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.089686,
+     "elevation_ft": 421.57,
+     "id": "J-LS-07",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.095856,
+     "elevation_ft": 401.29,
+     "id": "J-LS-08",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.101499,
+     "elevation_ft": 402.24,
+     "id": "J-LS-09",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.050988,
+     "elevation_ft": 405.14,
+     "id": "J-LS-10",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.047415,
+     "elevation_ft": 412.81,
+     "id": "J-LS-11",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.071444,
+     "elevation_ft": 403.64,
+     "id": "J-LS-12",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.110107,
+     "elevation_ft": 420.77,
+     "id": "J-LS-13",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.073738,
+     "elevation_ft": 397.87,
+     "id": "J-LS-14",
+     "role": "service"
+    }
+   ],
+   "pipes": [
+    {
+     "c": 110.0,
+     "diameter_in": 20.0,
+     "from": "J-LS-STATION",
+     "id": "P-LS-01",
+     "length_ft": 2451.0,
+     "to": "J-LS-01",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-LS-01",
+     "id": "P-LS-02",
+     "length_ft": 2416.5,
+     "to": "J-LS-02",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-LS-02",
+     "id": "P-LS-03",
+     "length_ft": 935.7,
+     "to": "J-LS-03",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-LS-03",
+     "id": "P-LS-04",
+     "length_ft": 2687.3,
+     "to": "J-LS-04",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-LS-01",
+     "id": "P-LS-05",
+     "length_ft": 2431.8,
+     "to": "J-LS-05",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-LS-04",
+     "id": "P-LS-06",
+     "length_ft": 1881.1,
+     "to": "J-LS-06",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-LS-01",
+     "id": "P-LS-07",
+     "length_ft": 2129.0,
+     "to": "J-LS-07",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-02",
+     "id": "P-LS-08",
+     "length_ft": 2522.6,
+     "to": "J-LS-08",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-02",
+     "id": "P-LS-09",
+     "length_ft": 2730.1,
+     "to": "J-LS-09",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-09",
+     "id": "P-LS-10",
+     "length_ft": 1172.2,
+     "to": "J-LS-10",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-05",
+     "id": "P-LS-11",
+     "length_ft": 2153.1,
+     "to": "J-LS-11",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-03",
+     "id": "P-LS-12",
+     "length_ft": 2127.9,
+     "to": "J-LS-12",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-02",
+     "id": "P-LS-13",
+     "length_ft": 1641.2,
+     "to": "J-LS-13",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-LS-03",
+     "id": "P-LS-14",
+     "length_ft": 1147.7,
+     "to": "J-LS-14",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-LS-13",
+     "id": "P-LS-15",
+     "length_ft": 924.3,
+     "to": "J-LS-04",
+     "tree": false
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-LS-10",
+     "id": "P-LS-16",
+     "length_ft": 1727.8,
+     "to": "J-LS-03",
+     "tree": false
+    }
+   ],
+   "pump_capacity_gpm": 2083.333333,
+   "sensor_node": "J-LS-STATION",
+   "station": "PS-23",
+   "tank": "TNK-PS23-LAURELSPUR",
+   "tank_bottom_elevation_ft": 438.476,
+   "tank_diameter_ft": 20.0,
+   "tank_max_level_ft": 124.0,
+   "tank_pipe": {
+    "c": 110.0,
+    "diameter_in": 24.0,
+    "length_ft": 60.0
+   },
+   "zone": "WZ-PS23-LAURELSPUR"
+  },
+  "PS-38": {
+   "avg_demand_gpm": 1111.111111,
+   "nodes": [
+    {
+     "demand_share": 0.0,
+     "elevation_ft": 420.0,
+     "id": "J-CL-STATION",
+     "role": "station"
+    },
+    {
+     "demand_share": 0.082774,
+     "elevation_ft": 411.1,
+     "id": "J-CL-01",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.038393,
+     "elevation_ft": 414.68,
+     "id": "J-CL-02",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.088243,
+     "elevation_ft": 409.82,
+     "id": "J-CL-03",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.089948,
+     "elevation_ft": 416.47,
+     "id": "J-CL-04",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.048842,
+     "elevation_ft": 401.82,
+     "id": "J-CL-05",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.056896,
+     "elevation_ft": 404.87,
+     "id": "J-CL-06",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.094678,
+     "elevation_ft": 419.81,
+     "id": "J-CL-07",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.076069,
+     "elevation_ft": 409.68,
+     "id": "J-CL-08",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.09264,
+     "elevation_ft": 423.22,
+     "id": "J-CL-09",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.059799,
+     "elevation_ft": 406.86,
+     "id": "J-CL-10",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.062762,
+     "elevation_ft": 420.98,
+     "id": "J-CL-11",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.082061,
+     "elevation_ft": 406.18,
+     "id": "J-CL-12",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.042707,
+     "elevation_ft": 411.89,
+     "id": "J-CL-13",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.084187,
+     "elevation_ft": 420.82,
+     "id": "J-CL-14",
+     "role": "service"
+    }
+   ],
+   "pipes": [
+    {
+     "c": 110.0,
+     "diameter_in": 20.0,
+     "from": "J-CL-STATION",
+     "id": "P-CL-01",
+     "length_ft": 2200.1,
+     "to": "J-CL-01",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-CL-01",
+     "id": "P-CL-02",
+     "length_ft": 1533.0,
+     "to": "J-CL-02",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-CL-02",
+     "id": "P-CL-03",
+     "length_ft": 2681.4,
+     "to": "J-CL-03",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-03",
+     "id": "P-CL-04",
+     "length_ft": 1982.2,
+     "to": "J-CL-04",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-01",
+     "id": "P-CL-05",
+     "length_ft": 1230.0,
+     "to": "J-CL-05",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-01",
+     "id": "P-CL-06",
+     "length_ft": 1048.8,
+     "to": "J-CL-06",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-CL-04",
+     "id": "P-CL-07",
+     "length_ft": 1294.8,
+     "to": "J-CL-07",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CL-03",
+     "id": "P-CL-08",
+     "length_ft": 1071.7,
+     "to": "J-CL-08",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-CL-04",
+     "id": "P-CL-09",
+     "length_ft": 823.8,
+     "to": "J-CL-09",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CL-03",
+     "id": "P-CL-10",
+     "length_ft": 1441.5,
+     "to": "J-CL-10",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-CL-02",
+     "id": "P-CL-11",
+     "length_ft": 2471.1,
+     "to": "J-CL-11",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-01",
+     "id": "P-CL-12",
+     "length_ft": 2576.9,
+     "to": "J-CL-12",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-01",
+     "id": "P-CL-13",
+     "length_ft": 1563.2,
+     "to": "J-CL-13",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-CL-01",
+     "id": "P-CL-14",
+     "length_ft": 2889.5,
+     "to": "J-CL-14",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-CL-13",
+     "id": "P-CL-15",
+     "length_ft": 1066.0,
+     "to": "J-CL-08",
+     "tree": false
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-CL-09",
+     "id": "P-CL-16",
+     "length_ft": 2559.4,
+     "to": "J-CL-14",
+     "tree": false
+    }
+   ],
+   "pump_capacity_gpm": 2083.333333,
+   "sensor_node": "J-CL-STATION",
+   "station": "PS-38",
+   "tank": "TNK-PS38-COPPERLEAF",
+   "tank_bottom_elevation_ft": 438.476,
+   "tank_diameter_ft": 20.0,
+   "tank_max_level_ft": 124.0,
+   "tank_pipe": {
+    "c": 110.0,
+    "diameter_in": 24.0,
+    "length_ft": 60.0
+   },
+   "zone": "WZ-PS38-COPPERLEAF"
+  },
+  "PS-52": {
+   "avg_demand_gpm": 1111.111111,
+   "nodes": [
+    {
+     "demand_share": 0.0,
+     "elevation_ft": 420.0,
+     "id": "J-DW-STATION",
+     "role": "station"
+    },
+    {
+     "demand_share": 0.076438,
+     "elevation_ft": 417.02,
+     "id": "J-DW-01",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.094669,
+     "elevation_ft": 421.11,
+     "id": "J-DW-02",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.063313,
+     "elevation_ft": 395.12,
+     "id": "J-DW-03",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.072826,
+     "elevation_ft": 408.82,
+     "id": "J-DW-04",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.086112,
+     "elevation_ft": 421.54,
+     "id": "J-DW-05",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.098482,
+     "elevation_ft": 404.23,
+     "id": "J-DW-06",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.053331,
+     "elevation_ft": 414.84,
+     "id": "J-DW-07",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.047789,
+     "elevation_ft": 404.07,
+     "id": "J-DW-08",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.044128,
+     "elevation_ft": 414.62,
+     "id": "J-DW-09",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.069345,
+     "elevation_ft": 397.25,
+     "id": "J-DW-10",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.051396,
+     "elevation_ft": 418.21,
+     "id": "J-DW-11",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.097864,
+     "elevation_ft": 424.79,
+     "id": "J-DW-12",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.048933,
+     "elevation_ft": 411.76,
+     "id": "J-DW-13",
+     "role": "service"
+    },
+    {
+     "demand_share": 0.095375,
+     "elevation_ft": 414.19,
+     "id": "J-DW-14",
+     "role": "service"
+    }
+   ],
+   "pipes": [
+    {
+     "c": 110.0,
+     "diameter_in": 20.0,
+     "from": "J-DW-STATION",
+     "id": "P-DW-01",
+     "length_ft": 2561.1,
+     "to": "J-DW-01",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-DW-01",
+     "id": "P-DW-02",
+     "length_ft": 1503.0,
+     "to": "J-DW-02",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 16.0,
+     "from": "J-DW-02",
+     "id": "P-DW-03",
+     "length_ft": 1650.6,
+     "to": "J-DW-03",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-DW-03",
+     "id": "P-DW-04",
+     "length_ft": 2159.9,
+     "to": "J-DW-04",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-DW-03",
+     "id": "P-DW-05",
+     "length_ft": 828.2,
+     "to": "J-DW-05",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-DW-01",
+     "id": "P-DW-06",
+     "length_ft": 1938.0,
+     "to": "J-DW-06",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-DW-03",
+     "id": "P-DW-07",
+     "length_ft": 1211.8,
+     "to": "J-DW-07",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-DW-05",
+     "id": "P-DW-08",
+     "length_ft": 2388.6,
+     "to": "J-DW-08",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-DW-03",
+     "id": "P-DW-09",
+     "length_ft": 2458.5,
+     "to": "J-DW-09",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 10.0,
+     "from": "J-DW-03",
+     "id": "P-DW-10",
+     "length_ft": 1526.9,
+     "to": "J-DW-10",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 12.0,
+     "from": "J-DW-01",
+     "id": "P-DW-11",
+     "length_ft": 1079.9,
+     "to": "J-DW-11",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-DW-05",
+     "id": "P-DW-12",
+     "length_ft": 1090.3,
+     "to": "J-DW-12",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-DW-04",
+     "id": "P-DW-13",
+     "length_ft": 2620.4,
+     "to": "J-DW-13",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 8.0,
+     "from": "J-DW-04",
+     "id": "P-DW-14",
+     "length_ft": 2795.5,
+     "to": "J-DW-14",
+     "tree": true
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-DW-13",
+     "id": "P-DW-15",
+     "length_ft": 2408.3,
+     "to": "J-DW-07",
+     "tree": false
+    },
+    {
+     "c": 110.0,
+     "diameter_in": 6.0,
+     "from": "J-DW-10",
+     "id": "P-DW-16",
+     "length_ft": 2374.5,
+     "to": "J-DW-11",
+     "tree": false
+    }
+   ],
+   "pump_capacity_gpm": 2083.333333,
+   "sensor_node": "J-DW-STATION",
+   "station": "PS-52",
+   "tank": "TNK-PS52-DEERWATER",
+   "tank_bottom_elevation_ft": 438.476,
+   "tank_diameter_ft": 20.0,
+   "tank_max_level_ft": 124.0,
+   "tank_pipe": {
+    "c": 110.0,
+    "diameter_in": 24.0,
+    "length_ft": 60.0
+   },
+   "zone": "WZ-PS52-DEERWATER"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+# Ask bank, refuse_unrelated: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-UNREL-001
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Give me a recipe for pierogi.
+  expect:
+    answer: false
+  judge: true
+- id: AB-UNREL-007
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  klass: refuse_unrelated
+  question: Tell me a joke.
+  expect:
+    answer: false
+- id: AB-UNREL-010
+  lang: en
+  persona: ops_dm_02
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Help me with my chemistry homework.
+  expect:
+    answer: false
+- id: AB-UNREL-014
+  lang: pl
+  persona: wtr_lead_01
+  moment: at-n1
+  klass: refuse_unrelated
+  tags:
+  - no_diacritics
+  question: kto wygral mundial
+  expect:
+    answer: false
+- id: AB-UNREL-015
+  lang: pl
+  persona: audit_01
+  moment: morning-after
+  klass: refuse_unrelated
+  question: Opowiedz dowcip.
+  expect:
+    answer: false

@@ -1,0 +1,131 @@
+---
+doc_id: "WDS 03.105"
+title: "Distribution Pressure Monitoring and Low-Pressure Response"
+family: sop
+layout: controlled
+owner_function: water_operations
+sme: "Lumpkin, Harlan E."
+revision: "G"
+effective: 2024-02-12
+supersedes: "WDS 03.105 Rev F (eff. 2022-03-07)"
+next_review: 2025-01-31
+approvals:
+  - {function: water_operations, position: "Water Incident Lead; Manager, Water Distribution", name: "Sistrunk, Odell M.", date: 2024-01-30}
+  - {function: compliance, position: "Water Compliance Officer", name: "Quattlebaum, Rhea D.", date: 2024-02-01}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D3]
+states: [SC, GA]
+changes:
+  - {rev: "G", date: 2024-02-12, section: "6.4", change: "Water Compliance Officer notification within 1 h of a reading below the state minimum."}
+  - {rev: "G", date: 2024-02-12, section: "5.3", change: "SCADA low-pressure alarm raised from 35 to 40 psi."}
+  - {rev: "G", date: 2024-02-12, section: "Att. B", change: "No Changes."}
+---
+# 1.0 PURPOSE
+
+This procedure sets pressure limits for the SGW distribution systems and the response to low pressure.
+
+# 2.0 SCOPE
+
+All SGW potable-water pressure zones in South Carolina and Georgia. It does not apply to raw-water mains or to fire-line testing.
+
+# 3.0 RESPONSIBILITIES
+
+Water SCADA Operator: acknowledges pressure alarms and starts section 6.
+
+Water Distribution Supervisor (on call): sends a crew to verify the reading in the field.
+
+Water Incident Lead: directs station, tank and generator actions during an event.
+
+Water Compliance Officer: decides, with the Water Incident Lead, whether a boil water advisory or notice is issued.
+
+# 4.0 DEFINITIONS AND ABBREVIATIONS
+
+Service connection: the point where the customer service line meets the SGW main.
+
+Heavy flow: fire flow, main flushing or a main break draining the zone.
+
+Low-pressure event: any verified reading below the state minimum in 5.1 or 5.2.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 South Carolina systems: minimum 25 psi at service connections in normal operation, and 20 psi under heavy flow (SC R.61-58.7.E(7)).
+
+5.2 Georgia systems: minimum 20 psi at all times (Ga. Comp. R. & Regs. 391-3-5-.10).
+
+5.3 The SCADA low-pressure alarm is set at 40 psi at every zone critical point. Do not lower it without Water Incident Lead approval.
+
+5.4 The high-pressure alarm is 110 psi. Above 120 psi, isolate the PRV station.
+
+5.5 A SCADA reading alone is not a verified low-pressure event. Confirm it with a field gauge or a second sensor.
+
+# 6.0 PROCEDURE
+
+## 6.1 Alarm
+
+6.1.1 Acknowledge the alarm within 5 min.
+
+6.1.2 Check station status, tank level and any active main break in the zone.
+
+6.1.3 Trend the zone critical point for the past 2 h.
+
+## 6.2 Field Verification
+
+6.2.1 Send the on-call crew with a calibrated gauge.
+
+6.2.2 Read at the hydrant nearest the critical point. Record the reading, time and hydrant id.
+
+6.2.3 For zones fed by a booster on generator power, read at the station discharge too.
+
+## 6.3 Restore Pressure
+
+6.3.1 Start standby pumps if available.
+
+6.3.2 If the station has lost power, follow WDS 03.322 (fixed generator) or WDS 03.318 (PS-17 portable hookup).
+
+6.3.3 Track tank drawdown per WDS 03.240.
+
+6.3.4 Notify critical customers in the zone using DOM 14.140.
+
+## 6.4 Below the State Minimum
+
+6.4.1 When pressure at a service connection falls below the state minimum, notify the Water Compliance Officer within 1 h.
+
+6.4.2 The Water Compliance Officer starts the boil water evaluation under WQC 07.114 (Georgia) or WQC 07.120 (South Carolina).
+
+6.4.3 Record the affected streets and zones on the advisory map. Use the zone ids from Attachment A.
+
+6.4.4 Keep reading the critical point every 30 min until pressure is above the minimum for 2 h.
+
+CAUTION: Do not start flushing before the boil water decision is made. Flushing can pull pressure lower.
+
+6.4.5 Hand the readings to the Water Compliance Officer for the regulator report.
+
+# 7.0 RECORDS
+
+SCADA alarm history (kept 3 years by the historian). Field readings on F-WDS-212. Retain 5 years.
+
+# 8.0 REFERENCES
+
+SC R.61-58.7.E(7); Ga. Comp. R. & Regs. 391-3-5-.10
+WQC 07.114; WQC 07.120; WDS 03.240; WDS 03.318; WDS 03.322; DOM 14.140
+WDS 03.115 SCADA Communication Loss: Local Manual Operation
+
+<<PAGEBREAK>>
+# ATTACHMENT A ZONE CRITICAL POINTS
+
+| Zone | State | Critical point | Normal range (psi) | Floor (psi) |
+|---|---|---|---|---|
+| WZ-PS17-CEDARFALL | SC | Hyd. H-17-044, Cedar Fall Court | 52-61 | 25 (20 heavy flow) |
+| WZ-PS23-LAURELSPUR | SC | Hyd. H-23-018, Laurel Spur Lane | 47-58 | 25 (20 heavy flow) |
+| WZ-PS38-COPPERLEAF | GA | Hyd. H-38-102, Copperleaf Road | 49-63 | 20 |
+| WZ-PS52-DEERWATER | GA | Hyd. H-52-007, Deerwater Spur | 44-55 | 20 |
+
+# ATTACHMENT B CONTACTS
+
+| Position | Day | After hours |
+|---|---|---|
+| Water SCADA Operator | Water Control Room 803-641-2299 | same, 24 h |
+| Water Compliance Officer | 803-641-2245 | via Water Control Room |
+| Water Incident Lead | 803-641-2270 | via Water Control Room |

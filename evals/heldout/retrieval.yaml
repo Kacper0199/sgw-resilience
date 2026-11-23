@@ -1,0 +1,153 @@
+# Held-out retrieval items. Grader: code; metric definitions in evals/README.md (recall@8 as the
+# fraction of relevant documents found per item, superseded-hit rate, exact-ID hit rate). Items without as_of
+# use default_as_of; "in force" is decided at that time. Corpus facts: evals/heldout/corpus_requirements.yaml.
+set: retrieval
+split: heldout
+version: 1
+k: 8
+default_as_of: "2024-09-27T12:00:00Z"
+items:
+  - id: RET-H-01
+    kind: exact_id
+    query: "WDS 03.318 portable generator hookup steps"
+    relevant: [{doc_id: "WDS 03.318", revision: "E", facts: [d14.f4]}]
+  - id: RET-H-02
+    kind: legacy_id
+    query: "What does WOP-118 say about the transfer switch at PS-17?"
+    relevant: [{doc_id: "WDS 03.318", revision: "E", facts: [d14.f5, d14.f7]}]
+  - id: RET-H-03
+    kind: exact_id
+    query: "DOM 14.206 deadline for the global ETR after all-clear"
+    relevant: [{doc_id: "DOM 14.206", revision: "K", facts: [d07.f2]}]
+    must_not_retrieve: [{doc_id: "DOM 14.206", revision: "J"}]
+  - id: RET-H-04
+    kind: superseded
+    query: "how many hours after the all clear do we have to put out the system-wide restoration estimate"
+    relevant: [{doc_id: "DOM 14.206", revision: "K", facts: [d07.f2]}]
+    must_not_retrieve: [{doc_id: "DOM 14.206", revision: "J"}]
+  - id: RET-H-05
+    kind: superseded
+    query: "tank level at which we call for a refuel on a standby generator"
+    relevant: [{doc_id: "WDS 03.322", revision: "C", facts: [d15.f1]}]
+    must_not_retrieve: [{doc_id: "WDS 03.322", revision: "B"}]
+  - id: RET-H-06
+    kind: superseded
+    query: "share of coliform sample sites needed before lifting a Georgia boil water advisory"
+    relevant: [{doc_id: "WQC 07.114", revision: "E", facts: [d19.f3]}]
+    must_not_retrieve: [{doc_id: "WQC 07.114", revision: "D"}]
+  - id: RET-H-07
+    kind: superseded
+    query: "which state agency is named in a South Carolina boil water notice"
+    relevant: [{doc_id: "WQC 07.120", revision: "C", facts: [d21.f1]}]
+    must_not_retrieve: [{doc_id: "WQC 07.120", revision: "B"}]
+  - id: RET-H-08
+    kind: superseded
+    query: "at what H-hour is the mutual aid request decided for a hurricane"
+    relevant: [{doc_id: "GEP 2H.01", revision: "F", facts: [d04.f1]}]
+    must_not_retrieve: [{doc_id: "GEP 2H.01", revision: "E"}]
+  - id: RET-H-09
+    kind: superseded
+    query: "who brings the event type recommendation to the Incident Commander"
+    relevant:
+      - {doc_id: "GEP 03.020", revision: "D", facts: [d02.f1]}
+      - {doc_id: "GEP 00.010", revision: "G", facts: [d01.f1]}
+    must_not_retrieve: [{doc_id: "GEP 03.020", revision: "C"}]
+  - id: RET-H-10
+    kind: semantic
+    query: "minimum distribution pressure for our Georgia water systems"
+    relevant: [{doc_id: "WDS 03.105", revision: "G", facts: [d17.f2]}]
+  - id: RET-H-11
+    kind: semantic
+    query: "South Carolina pressure requirement when there is heavy flow, like fire flow or main breaks"
+    relevant: [{doc_id: "WDS 03.105", revision: "G", facts: [d17.f1]}]
+  - id: RET-H-12
+    kind: semantic
+    query: "when do bucket trucks have to come down because of wind"
+    relevant:
+      - {doc_id: "DOM 14.110", revision: "H", facts: [d09.f1]}
+      - {doc_id: "IAP-HEL-24-OP05/204-02", facts: [d29.f3]}
+  - id: RET-H-13
+    kind: table
+    query: "staging yards listed for the Aiken and Richmond districts in the hurricane annex"
+    relevant: [{doc_id: "GEP 2H.01", revision: "F", facts: [d04.f5]}]
+    must_not_retrieve: [{doc_id: "GEP 2H.01", revision: "E"}]
+  - id: RET-H-14
+    kind: table
+    query: "how many crews fit at Sandhill Yard"
+    relevant: [{doc_id: "DOM 12.040", revision: "D", facts: [d11.f3]}]
+  - id: RET-H-15
+    kind: semantic
+    query: "who signs off a crew pre-positioning plan before a major hurricane"
+    relevant:
+      - {doc_id: "GEP 2H.01", revision: "F", facts: [d04.f3]}
+      - {doc_id: "GEP 03.020", revision: "D", facts: [d02.f2]}
+  - id: RET-H-16
+    kind: semantic
+    query: "can the duty manager shift crews between yards after the staging plan is approved"
+    relevant: [{doc_id: "GEP 2H.01", revision: "F", facts: [d04.f4]}]
+  - id: RET-H-17
+    kind: cross_reference
+    query: "low pressure in a South Carolina system: which procedure covers the boil water evaluation"
+    relevant:
+      - {doc_id: "WDS 03.105", revision: "G", facts: [d17.f4]}
+      - {doc_id: "WQC 07.120", revision: "C", facts: [d21.f1]}
+    must_not_retrieve: [{doc_id: "WQC 07.120", revision: "B"}]
+  - id: RET-H-18
+    kind: form
+    query: "form to request a portable generator dispatch"
+    relevant: [{doc_id: "MAL 05.040", revision: "F", facts: [d13.f4]}]
+  - id: RET-H-19
+    kind: form
+    query: "boil water advisory field checklist rows"
+    relevant:
+      - {doc_id: "F-WQC-031", revision: "C", facts: [d32.f1]}
+      - {doc_id: "WQC 07.114", revision: "E", facts: [d19.f6]}
+  - id: RET-H-20
+    kind: temporal_override
+    query: "how soon must arriving mutual aid crews get their onboarding briefing during Helene"
+    as_of: "2024-09-27T12:00:00Z"
+    relevant:
+      - {doc_id: "OB-24-07", facts: [d31.f1]}
+      - {doc_id: "DOM 12.040", revision: "D", facts: [d11.f1]}
+  - id: RET-H-21
+    kind: semantic
+    query: "restoration priority of pump stations that feed a hospital"
+    relevant: [{doc_id: "DOM 14.215", revision: "E", facts: [d10.f1]}]
+  - id: RET-H-22
+    kind: semantic
+    query: "approval needed to restore a smaller feeder first because it powers the hospital's water booster"
+    relevant: [{doc_id: "DOM 14.215", revision: "E", facts: [d10.f2]}]
+  - id: RET-H-23
+    kind: exact_id
+    query: "SR-HEL-24-04 PS-17 generator status"
+    relevant: [{doc_id: "SR-HEL-24-04", facts: [d28.f2]}]
+  - id: RET-H-24
+    kind: semantic
+    query: "which crews were assigned to Aiken North in operational period 5"
+    relevant: [{doc_id: "IAP-HEL-24-OP05/204-02", facts: [d29.f1]}]
+  - id: RET-H-25
+    kind: semantic
+    query: "diesel vendor delivery commitment during a declared emergency"
+    relevant: [{doc_id: "MAL 05.040", revision: "F", facts: [d13.f1]}]
+  - id: RET-H-26
+    kind: semantic
+    query: "fuel deliveries over roads that flood: what do we do before the water comes up"
+    relevant:
+      - {doc_id: "GEP 2F.01", revision: "C", facts: [d06.f1]}
+      - {doc_id: "AAR-DEB-24", facts: [d30.f1]}
+  - id: RET-H-27
+    kind: semantic
+    query: "lessons from Debby about when to ask for mutual aid"
+    relevant: [{doc_id: "AAR-DEB-24", facts: [d30.f2]}]
+  - id: RET-H-28
+    kind: semantic
+    query: "are hospital feeders part of rotating load shed"
+    relevant: [{doc_id: "TSO 11.002", revision: "D", facts: [d26.f1]}]
+  - id: RET-H-29
+    kind: semantic
+    query: "when does an outage need a full report to the South Carolina commission"
+    relevant: [{doc_id: "PCN 04.010", revision: "B", facts: [d25.f1]}]
+  - id: RET-H-30
+    kind: semantic
+    query: "how must the restoration estimate be worded for the public"
+    relevant: [{doc_id: "PCN 02.044", revision: "C", facts: [d24.f1]}]

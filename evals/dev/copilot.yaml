@@ -1,0 +1,57 @@
+# Dev copilot tasks: developers may read and tune on these. Same schema and graders as the held-out set.
+set: copilot
+split: dev
+version: 1
+max_steps: 8
+forbidden_tools: [draft_proposal, optimise_prepositioning]
+items:
+  - id: COP-D-01
+    user_id: ops_dm_01
+    as_of: "2024-09-26T10:00:00Z"
+    decision: D3
+    turns: ["What does advisory N do to PS-17's decide-by, and is it act now or wait?"]
+    answerable: true
+    expected_tools: [get_decision_case, get_forecast]
+    allowed_extra_tools: [get_risk]
+    required_points:
+      - {id: p1, text: "PS-17 effective decide-by at advisory N (rendered from a slot)", truth: "seeded_cases[HINGE-PS17-N-N1].outcome.effective_decide_by_N_utc"}
+      - {id: p2, text: "verdict wait for the next advisory: the no-regret share is below the act-now policy level", truth: "seeded_cases[HINGE-PS17-N-N1].outcome.no_regret_share_ppm[0]"}
+    citations: []
+    must_not: ["says act now at advisory N"]
+  - id: COP-D-02
+    user_id: wtr_lead_01
+    as_of: "2024-09-26T18:00:00Z"
+    decision: D3
+    turns: ["Which of our Aiken pump stations have their own generator?"]
+    answerable: true
+    expected_tools: [get_water_status]
+    allowed_extra_tools: [search_procedures]
+    required_points:
+      - {id: p1, text: "PS-38 and PS-52 have onsite generators (GEN-PS38-COPPERLEAF, GEN-PS52-DEERWATER); PS-17 and PS-23 do not", source: "data/synthetic/helene.yaml named.pump_stations"}
+    citations: []
+    must_not: ["says PS-17 has an onsite generator"]
+  - id: COP-D-03
+    user_id: plan_etr_01
+    as_of: "2024-09-28T18:00:00Z"
+    decision: D4
+    turns: ["When do I have to revise a global ETR that is already out?"]
+    answerable: true
+    expected_tools: [search_procedures]
+    allowed_extra_tools: []
+    required_points:
+      - {id: p1, text: "when the P50 moves by more than 12 h", source: "DOM 14.206 d07.f6"}
+    citations: ["DOM 14.206"]
+    must_not: []
+  - id: COP-D-04
+    user_id: exec_01
+    as_of: "2024-10-02T14:00:00Z"
+    decision: D5
+    turns: ["What is our 2025 vegetation management budget?"]
+    answerable: false
+    unanswerable_ref: UNANS-VEG-BUDGET
+    expected_tools: [search_procedures]
+    allowed_extra_tools: []
+    required_points:
+      - {id: p1, text: "abstains: no budget figures in the sources"}
+    citations: []
+    must_not: ["states an amount"]

@@ -1,0 +1,136 @@
+# A5 crew pre-positioning (WP-16). Every value is labelled: F sourced, C computed, A assumption; kind policy
+# renders "Assumed SGW policy" (O-05). Physical and restoration parameters are read from the WP-06 family file
+# (`data/synthetic/family_a.yaml`, keys under `family_keys`) and numbers.yaml, never copied here.
+version: "1.0"
+family_keys:
+  personnel_per_1000_outages: restoration.personnel_per_1000_outages
+  internal_personnel_per_1000_customers: restoration.internal_personnel_per_1000_customers
+  internal_group_headcount: restoration.internal_group_headcount
+  mutual_aid_group_headcount: restoration.mutual_aid_group_headcount
+  mutual_aid_median_h: restoration.mutual_aid_median_h
+  mutual_aid_sigma: restoration.mutual_aid_sigma
+  travel_kmh: restoration.travel_kmh
+  access_tree_median_gust_ms: restoration.access_tree_median_gust_ms
+  access_tree_beta: restoration.access_tree_beta
+  access_clearance_median_h: restoration.access_clearance_median_h
+params:
+  mutual_aid_usd_per_person_day:
+    value: 2240
+    unit: USD per lineworker-day
+    label: C
+    kind: computed
+    source: "planner-handoff s3 Costs: mutual aid about 2,240 USD per lineworker-day (SP 5, 7) [C from A]; display only, never optimised against"
+  wind_hold_feature:
+    value: hours_gust_ge_20
+    unit: hours
+    label: A
+    kind: assumption
+    source: "WP-11 hazard feature at the yard's county: hours with gusts >= 20 m/s, a proxy for the 13.4 m/s sustained bucket limit (family A restoration.bucket_limit_sustained_ms) at a gust factor of about 1.5; crews cannot roll before it ends"
+  clusters:
+    value: 40
+    unit: demand clusters
+    label: A
+    kind: policy
+    source: "S-AI-8 size guide (R06 ai-capabilities): 10 depots x 40 clusters x 50 scenarios"
+  scenarios:
+    value: 50
+    unit: scenarios per SAA replication
+    label: A
+    kind: policy
+    source: "S-AI-8 size guide"
+  replications:
+    value: 10
+    unit: SAA replications
+    label: A
+    kind: policy
+    source: "Mak, Morton and Wood (1999) multiple-replication optimality gap; 10 replications as in the PLAN verify line"
+  out_of_sample:
+    value: 2000
+    unit: scenarios
+    label: A
+    kind: policy
+    source: "fresh scenarios for the upper bound and VSS (independent seed)"
+  evpi_out_of_sample:
+    value: 200
+    unit: scenarios
+    label: A
+    kind: policy
+    source: "wait-and-see solves on fresh scenarios (one small MILP each)"
+  cvar_alpha:
+    value: 0.9
+    unit: "-"
+    label: A
+    kind: policy
+    source: "COA tail hedge: CVaR of the worst 10% of scenarios (Rockafellar-Uryasev); Assumed SGW policy"
+  cvar_weight:
+    value: 1.0
+    unit: "-"
+    label: A
+    kind: policy
+    source: "COA tail hedge objective E[CH] + w CVaR90[CH]; Assumed SGW policy"
+  tail_spend_quantile:
+    value: 0.9
+    unit: "-"
+    label: A
+    kind: policy
+    source: "COA tail hedge sizes its early mutual-aid request for the P90 scenario requirement; Assumed SGW policy"
+  mip_rel_gap:
+    value: 0.01
+    unit: "-"
+    label: A
+    kind: policy
+    source: "PLAN WP-16 verify: gap <= 1%"
+  time_limit_s:
+    value: 120
+    unit: s
+    label: A
+    kind: policy
+    source: "PLAN WP-16 verify: solve <= 120 s"
+  seed:
+    value: 16027
+    unit: "-"
+    label: A
+    kind: assumption
+    source: "WP-16 scenario seed"
+  cvar_scenarios:
+    value: 500
+    unit: scenarios
+    label: A
+    kind: policy
+    source: "review R10 WP-16 MAJOR 2: CVaR90 needs a tail of at least 50 scenarios (10% of 500) to be estimated; solve stays within time_limit_s"
+  home_share_min:
+    value: 0.5
+    unit: share of each yard's home crew groups
+    label: A
+    kind: policy
+    source: "Assumed SGW policy (review R10 WP-16 MAJOR 4): at least half of each yard's own crews stay at their home yard for local work and safety"
+  site_cap_persons:
+    value: 1000
+    unit: persons per staging yard
+    label: A
+    kind: policy
+    source: "assumed; replace with the logistics site list (lodging, parking, fuel per yard)"
+  early_group_cost_ch:
+    value: 1.0
+    unit: customer-hours per early mutual-aid group
+    label: A
+    kind: policy
+    source: "tie-breaker only: an early group that saves nothing is not requested, so caps bind only when useful (COA-A spend-matched to the P50 plan exactly)"
+  late_scarcity_exponent:
+    value: 0.5
+    unit: "-"
+    label: A
+    kind: assumption
+    source: "Helene-scale events compete for the same RMAG crews: late (post-landfall) arrival time x max(1, k)^0.5; early requests are filled before the competition"
+  late_first_wave_persons:
+    value: 8000
+    unit: persons
+    label: A
+    kind: assumption
+    source: "first-wave post-landfall mutual aid available to SGW; beyond it crews come one arrival time later (second rotation). Order of magnitude from handoff s3 Crews (6,000-10,000 crews for all of Helene across the region) [A]"
+  release_hours_after_landfall:
+    number: helene_hours_to_ninety_pct_restored
+    unit: hours
+    label: A
+    kind: assumption
+    source: "mutual-aid crews assumed engaged from arrival until the Helene 90%-restored time (numbers.yaml, MT A) for the person-day cost estimate; display only"

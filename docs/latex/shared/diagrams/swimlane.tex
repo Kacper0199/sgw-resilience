@@ -1,0 +1,67 @@
+% Storm day in the future state, one lane per role, with today's pain points on top.
+% Scenario clock in hours from landfall (H0); the axis is not to scale.
+\begin{tikzpicture}[sgw,x=1cm,y=1.2cm,
+    ev/.style={sgw/box,font=\scriptsize\sffamily,text width=2.25cm,minimum width=2.35cm,minimum height=0.62cm,inner sep=2pt},
+    sig/.style={circle,fill=sgwPrimary,text=sgwOnPrimary,font=\tiny\sffamily\bfseries,inner sep=1.2pt,minimum size=0.48cm},
+    sig2/.style={sig,fill=sgwSecondary},
+    pain/.style={font=\scriptsize\sffamily\itshape,text=sgwInkMuted,text width=2.3cm,align=center}]
+  \def\W{16.2}
+  \newcommand{\lane}[3]{% index, label, fill
+    \fill[#3] (-2.1,-#1+0.5) rectangle (\W,-#1-0.5);
+    \draw[sgwHairline,line width=0.4pt] (-2.1,-#1-0.5) -- (\W,-#1-0.5);
+    \node[anchor=west,font=\scriptsize\sffamily\bfseries,text=sgwInk,text width=1.9cm,align=left] at (-2.05,-#1) {#2};}
+  \lane{0}{Today}{sgwNeutral}
+  \lane{1}{Platform}{sgwSevAdvisoryFill}
+  \lane{2}{Duty Manager}{sgwSurface}
+  \lane{3}{Incident Commander}{sgwNeutral}
+  \lane{4}{Logistics}{sgwSurface}
+  \lane{5}{Water Incident Lead}{sgwNeutral}
+  \lane{6}{Compliance}{sgwSurface}
+  \lane{7}{Executive}{sgwNeutral}
+  \foreach \x/\t in {0/H$-$72,2.2/H$-$48,4.4/H$-$24,6.4/H$-$12,10.4/H+12,12.4/H+24,15.2/H+72}{
+    \draw[sgwHairline,line width=0.4pt] (\x,0.45) -- (\x,-7.45);
+    \node[font=\scriptsize\sffamily,text=sgwInkMuted,anchor=south] at (\x,0.5) {\t};}
+  \draw[sgwSevCritical,line width=0.9pt] (8.4,0.45) -- (8.4,-7.45);
+  \node[font=\scriptsize\sffamily\bfseries,text=sgwSevCritical,anchor=south] at (8.4,0.5) {H0 landfall};
+
+  \node[pain] at (2.2,0) {crews called by phone, tracked in spreadsheets};
+  \node[pain] at (6.4,0) {water learns of a feeder loss late};
+  \node[pain] at (12.4,0) {restoration time set by judgement};
+  \node[pain] at (15.0,0) {review rebuilt from email};
+
+  \node[ev] (p1) at (0.9,-1) {Risk view and plan diff};
+  \node[ev] (p2) at (3.4,-1) {Crew options across scenarios};
+  \node[ev,fill=sgwSevCriticalFill,draw=sgwSevCritical] (p3) at (6.4,-1) {The next advisory moves the PS-17 clock};
+  \node[ev] (p4) at (9.9,-1) {Boil water rule fires, notice drafted};
+  \node[ev] (p5) at (12.5,-1) {Restoration time with range};
+  \node[ev] (p6) at (15.0,-1) {Clocks met or missed};
+
+  \node[ev] (d1) at (0.9,-2) {Proposes event type};
+  \node[ev] (d2) at (3.4,-2) {Proposes crew staging};
+  \node[sig] (s1) at (1.8,-3) {T2};
+  \node[sig] (s2a) at (4.0,-3) {T3};
+  \node[sig] (s2b) at (4.0,-4) {T3};
+  \node[sig] (s3a) at (7.2,-3) {T3};
+  \node[sig] (s3b) at (7.2,-5) {T3};
+  \node[sig] (s4a) at (10.9,-5) {T3};
+  \node[sig] (s4b) at (10.9,-6) {T3};
+  \node[sig] (s5a) at (12.5,-3) {T3};
+  \node[sig] (s5b) at (12.5,-2) {T3};
+  \node[ev,anchor=west] at (7.55,-5) {Generator priority};
+  \node[ev,anchor=west,text width=2.4cm,minimum width=2.5cm] at (4.35,-4) {Staging plan with envelope};
+  \node[ev,anchor=west,text width=2.4cm,minimum width=2.5cm] at (11.25,-6) {Public notice signed};
+  \node[sgw/box,font=\scriptsize\sffamily,minimum width=13.2cm,minimum height=0.55cm,anchor=west] at (2.0,-7)
+    {Briefing with read access only, the same numbers and clocks as every desk};
+
+  \draw[sgw/flow muted] (p1) -- (d1);
+  \draw[sgw/flow muted] (p2) -- (d2);
+  \draw[sgw/flow muted] (d1.east) -| (s1);
+  \draw[sgw/flow muted] (d2.east) -| (s2a);
+  \draw[line width=1.2pt,sgwPrimary] (s2a) -- (s2b);
+  \draw[sgw/critical] (p3.south) |- (s3a.west);
+  \draw[line width=1.2pt,sgwPrimary] (s3a) -- (s3b);
+  \draw[sgw/flow muted] (p4.south) -- ++(0,-0.4) -| (s4a);
+  \draw[line width=1.2pt,sgwPrimary] (s4a) -- (s4b);
+  \draw[sgw/flow muted] (p5) -- (s5b);
+  \draw[line width=1.2pt,sgwPrimary] (s5b) -- (s5a);
+\end{tikzpicture}

@@ -1,0 +1,422 @@
+{
+ "advisory": {
+  "term": "Advisory",
+  "text": "A forecast update from the National Hurricane Center: full advisories every 6 hours, intermediate ones (like 14A) every 3 hours during watches and warnings."
+ },
+ "after_action": {
+  "term": "After-action review",
+  "text": "What was decided, by whom and when, from the audit log. Nothing here changes a decision."
+ },
+ "ai_run": {
+  "term": "AI request",
+  "text": "One AI job, such as answering a question or drafting a report. Each is logged with its steps and cost."
+ },
+ "ai_trace": {
+  "term": "Steps",
+  "text": "The step-by-step record of a request: what was asked, what was looked up and what came back."
+ },
+ "allowed_tools": {
+  "term": "Allowed lookups",
+  "text": "The read-only lookups this AI step may use. Text-only steps have none. No step can sign or send anything."
+ },
+ "analog_baseline": {
+  "term": "Past-storm average",
+  "text": "The typical restoration time in past storms of the same kind. SGW's estimate should beat it."
+ },
+ "api_scope": {
+  "term": "Scope",
+  "text": "What a token can read. No token can sign or change a decision."
+ },
+ "approval": {
+  "term": "Signatures",
+  "text": "Who must sign, who has signed and who is still needed. Signing records your name, role and the plan version."
+ },
+ "approval_rights": {
+  "term": "Approval rights",
+  "text": "What each person can sign, by action and tier. Emergency approval rules are on each decision's Signatures tab."
+ },
+ "backtest": {
+  "term": "Track record",
+  "text": "Past storms run through the forecast without showing it what happened, to check how close it gets."
+ },
+ "bad_storm": {
+  "term": "Bad-storm case",
+  "text": "In 9 of 10 test storms the delay is no larger than this. It shows how bad a poor outcome can get."
+ },
+ "breach_chance": {
+  "term": "Chance of low pressure",
+  "text": "Chance that pressure at the most exposed connection drops below the minimum. Above SGW's trigger (policy, not law), a boil-water notice is proposed."
+ },
+ "break_glass": {
+  "term": "Emergency approval",
+  "text": "The Incident Commander approves alone, with a written reason. A second team must co-sign within 24 hours. Every emergency approval is reviewed."
+ },
+ "brief_status": {
+  "term": "Overall status",
+  "text": "One word for how serious things are now. Set by fixed rules from outages and open deadlines, not by AI."
+ },
+ "bwa": {
+  "term": "Boil-water notice",
+  "text": "Tells customers to boil water before using it. Issued when pressure may be lost; lifted once samples test clean and the regulator agrees."
+ },
+ "ce": {
+  "term": "Weighted customers",
+  "text": "Customers affected, weighted by need: a hospital counts for more than a household. The weights are SGW policy."
+ },
+ "clock": {
+  "term": "Clock",
+  "text": "Time left before acting is too late. It counts down to the deadline."
+ },
+ "clock_outcome": {
+  "term": "Met or missed",
+  "text": "Met: approved (by two signatures or alone in an emergency) by the deadline. Missed: approved later, or never."
+ },
+ "cone": {
+  "term": "Storm cone",
+  "text": "The area the storm's center may cross, about two-thirds of the time. Wind, rain and outages reach well beyond it."
+ },
+ "consequence": {
+  "term": "Impact starts",
+  "text": "When the impact is expected to begin if nothing is done. The range covers 8 in 10 storm scenarios."
+ },
+ "copilot": {
+  "term": "Ask AI",
+  "text": "Answers questions from SGW procedures and platform data, with sources. It only reads: it can't change, send, or sign anything."
+ },
+ "cosign": {
+  "term": "Co-sign",
+  "text": "After an emergency approval, a second team must co-sign within 24 hours. Late or missing co-signs are flagged here."
+ },
+ "critical_path": {
+  "term": "Critical path",
+  "text": "Steps that must happen in order (1→2→3→4). A delay in any step pulls the final deadline earlier."
+ },
+ "customer_hours": {
+  "term": "Customer-hours",
+  "text": "Customers without power multiplied by the hours they wait for a crew to arrive. Lower is better."
+ },
+ "cv_published": {
+  "term": "Published accuracy",
+  "text": "Accuracy MIT Lincoln Laboratory reported on its own test photos; SGW didn't measure it. Photos: Civil Air Patrol via MIT Lincoln Laboratory, CC BY 4.0."
+ },
+ "data_class_ceiling": {
+  "term": "Data allowed",
+  "text": "The most sensitive data this AI step may see. C1 is operational data with no personal details."
+ },
+ "decide_by": {
+  "term": "Decide by",
+  "text": "Latest time to decide: when impact starts minus the lead time. The range covers 8 in 10 storm scenarios."
+ },
+ "degraded_mode": {
+  "term": "SGW mode",
+  "text": "How much of SGW is working. M0 is normal; each step up turns off more AI and live features, down to manual procedures only."
+ },
+ "dq_check": {
+  "term": "Data check",
+  "text": "An automatic test of the data, such as ranges, units and duplicates. A failed error check blocks the dataset; a warning only flags it."
+ },
+ "effort": {
+  "term": "Effort",
+  "text": "How much the AI step may reason before answering. Higher is slower and costs more."
+ },
+ "envelope": {
+  "term": "Pre-approved limits",
+  "text": "How far the plan may change without new signatures. Changes outside them need a new decision."
+ },
+ "etr": {
+  "term": "Global ETR",
+  "text": "When 90% of the peak customers out have power again. Publishing needs Command and Operations to sign."
+ },
+ "etr_area": {
+  "term": "ETR by area",
+  "text": "The estimate per crew yard's area. Still out: share of the area's peak. The bar is the 80% range; the line, the middle."
+ },
+ "evidence": {
+  "term": "Evidence",
+  "text": "The records this recommendation rests on, each with its source. Open one to see where it came from and how fresh it is."
+ },
+ "evpi": {
+  "term": "Most a perfect forecast could save",
+  "text": "The most a perfect forecast could save, in customer-hours. If it is small, waiting for a better forecast adds little."
+ },
+ "fan": {
+  "term": "Forecast range",
+  "text": "Shaded bands show where outcomes could fall: the darkest holds half the scenarios, the next 8 in 10, the lightest 95 in 100."
+ },
+ "feed_freshness": {
+  "term": "Data age",
+  "text": "How old the latest data from each source is, against the maximum age SGW accepts. Older data is marked late, never shown as current."
+ },
+ "findings_only": {
+  "term": "Sources only",
+  "text": "The answer failed its source check, so only the source passages are shown."
+ },
+ "first_bad_seq": {
+  "term": "First bad entry",
+  "text": "The earliest audit-log entry that no longer matches. Nothing from there on can be trusted."
+ },
+ "forecast_actual": {
+  "term": "Forecast and actual",
+  "text": "Forecast: what the model expects, with an 80% range. Actual: what has been measured so far in the replay."
+ },
+ "from_platform_data": {
+  "term": "Answer from platform data",
+  "text": "No AI-written text: the answer lists what platform data and procedures say, word for word."
+ },
+ "how_i_got_this": {
+  "term": "Steps",
+  "text": "What the AI looked up, in order, so you can see where the answer came from."
+ },
+ "idle_crews": {
+  "term": "Idle early crews",
+  "text": "Early mutual-aid crews not needed because the storm turned out small. They are still paid."
+ },
+ "kill_switch": {
+  "term": "Stop level",
+  "text": "Stops parts of SGW on purpose. K1 pauses signing, K2 stops the AI, K3 stops new data and decisions, and K4 turns SGW off."
+ },
+ "lead_time": {
+  "term": "Lead time",
+  "text": "How long the action takes once decided. The decide-by time is when impact starts, minus this."
+ },
+ "ledger": {
+  "term": "Audit log",
+  "text": "The permanent record of every decision, signature, and action. Each entry is linked to the one before, so any edit shows."
+ },
+ "lifelines": {
+  "term": "Lifelines",
+  "text": "Services people depend on: power, water pumping, staging yards. Counts show how many sit in high-risk counties."
+ },
+ "lineage": {
+  "term": "Data flow",
+  "text": "Where this data comes from and what uses it. If a source is late, everything that uses it is affected."
+ },
+ "loso": {
+  "term": "Tested on unseen storms",
+  "text": "Each storm is forecast by a model built from the other storms only, so it never sees its own result."
+ },
+ "mode_strip": {
+  "term": "Replay mode",
+  "text": "Replay plays back a past storm on its own clock. All data is synthetic and not for operational use."
+ },
+ "model_card": {
+  "term": "Model details",
+  "text": "What a model does, which version is in use, and how it scored on new storms against a simple baseline."
+ },
+ "mutual_aid": {
+  "term": "Mutual aid",
+  "text": "Crews lent by other utilities or contractors. Early aid is requested before landfall and is paid for whether or not the storm needs it."
+ },
+ "no_regret": {
+  "term": "Timing",
+  "text": "Whether to act now, before the next advisory, or wait. Based on the share of storm scenarios that need this action."
+ },
+ "no_regret_act_now": {
+  "term": "Act now",
+  "text": "Most scenarios need it, or waiting would miss the deadline."
+ },
+ "no_regret_wait": {
+  "term": "Can wait",
+  "text": "The next NHC advisory comes before the earliest deadline, so waiting costs nothing."
+ },
+ "not_in_documents": {
+  "term": "Not found in SGW documents",
+  "text": "Nothing in SGW documents or platform data answers the question, so the AI says so instead of guessing."
+ },
+ "notary": {
+  "term": "Independent check",
+  "text": "A separate key confirms the latest audit-log entry. Confirmed means it matches a saved checkpoint; not confirmed means it couldn't be checked."
+ },
+ "outage_risk": {
+  "term": "Outage risk",
+  "text": "Chance that at least 1 in 10 customers in a county lose power at the peak of the storm."
+ },
+ "outage_surge": {
+  "term": "Outage surge",
+  "text": "A county where outages rose far above usual, flagged by an automatic detector on public outage data. It also raises false alarms."
+ },
+ "p50": {
+  "term": "Median",
+  "text": "Middle estimate: half of the scenarios come out lower, half higher."
+ },
+ "page_admin": {
+  "term": "Admin",
+  "text": "Who can sign what, the policy values, integrations, the audit log and AI settings. Everything here is read-only."
+ },
+ "page_brief": {
+  "term": "Briefing",
+  "text": "The first page for executives: overall status, four numbers, decisions needing two teams, what changed and a draft situation report. Numbers come from platform data."
+ },
+ "page_crews": {
+  "term": "Crews",
+  "text": "Where crews are, the crew plan options compared, damage photos waiting for review, staging yards and generators."
+ },
+ "page_water": {
+  "term": "Water",
+  "text": "Pressure in each zone, the PS-17 steps in order, boil-water notices and the sensor checks. Every decision named here opens in Decisions."
+ },
+ "pipeline_run": {
+  "term": "Data load",
+  "text": "One pass that fetches, checks and stores data from a source. Rows held back failed a check and are left out."
+ },
+ "plan_envelope": {
+  "term": "Pre-approved limits",
+  "text": "How far the crew plan may change. Inside them, one person confirms; outside them, two teams sign again."
+ },
+ "plan_scenarios": {
+  "term": "Planning for a range of outcomes",
+  "text": "Each plan is tested against many possible storm sizes, not one average storm. Results are customer-hours of delay, averaged over test storms."
+ },
+ "policy_chip": {
+  "term": "SGW policy",
+  "text": "A value SGW chose for this exercise, not a regulation. Admin → Policies shows where it comes from."
+ },
+ "policy_param": {
+  "term": "Policy value",
+  "text": "A number SGW chose by policy, not a legal limit. Read-only; changing one needs a decision and signatures."
+ },
+ "pressure_floor": {
+  "term": "Minimum pressure",
+  "text": "Lowest pressure allowed at a service connection. Falling below it can trigger a boil-water notice. Each state sets its own minimum."
+ },
+ "promote": {
+  "term": "Confirm",
+  "text": "Confirming makes the draft the current situation report; one person confirms. Nothing is sent outside SGW."
+ },
+ "range80": {
+  "term": "80% range",
+  "text": "8 in 10 outcomes should fall inside this range."
+ },
+ "read_only": {
+  "term": "Read-only",
+  "text": "The AI reads data and writes text. It can't sign, send, change records, or start anything."
+ },
+ "readiness": {
+  "term": "Readiness",
+  "text": "Pre-season checks that crews, fuel, agreements, and equipment are ready. Each item not ready has an owner and a due date."
+ },
+ "readiness_status": {
+  "term": "Ready, not ready, no record",
+  "text": "Ready: proof is on file. Not ready: proof is missing or overdue. No record: nothing logged yet."
+ },
+ "recall": {
+  "term": "Catch rate",
+  "text": "Share of test faults the checks caught. Missed faults stay hidden, so a low catch rate is a real risk."
+ },
+ "review_draft": {
+  "term": "Review draft",
+  "text": "AI drafts the after-action review from the audit log. Every number has a source. Nothing is filed."
+ },
+ "sc_report": {
+  "term": "SC 103-314 draft",
+  "text": "A draft of the interruption report South Carolina requires after a long outage. Nothing is filed from here; the filer adds notice times."
+ },
+ "scope": {
+  "term": "Coverage",
+  "text": "The event and service area this view covers. Read-only in this release."
+ },
+ "scorecard": {
+  "term": "ETR accuracy",
+  "text": "How far each ETR was from what happened. The actual is simulated, so this is practice, not field proof."
+ },
+ "seeded_faults": {
+  "term": "Test faults",
+  "text": "Faults added on purpose to simulated sensor data to see what the checks catch. Not field results."
+ },
+ "sgw_trigger": {
+  "term": "SGW trigger",
+  "text": "SGW's own trigger level, set by policy, not by law. Above it, the platform proposes a boil-water notice."
+ },
+ "sitrep": {
+  "term": "Situation report",
+  "text": "A short written summary of the situation. The AI drafts it; every number has a named source. A person must confirm it."
+ },
+ "source_badge": {
+  "term": "Source",
+  "text": "The small label after a sentence names the document it came from. Select it to read the passage."
+ },
+ "staging_yard": {
+  "term": "Staging yard",
+  "text": "A site near likely damage where crews and equipment wait before the storm, ready to move once winds drop."
+ },
+ "synthetic": {
+  "term": "Synthetic data",
+  "text": "Made-up data shaped like SGW's real data. Real data replaces it when SGW goes live."
+ },
+ "system_metrics": {
+  "term": "System metrics",
+  "text": "Requests and response times, counted by the platform itself. Grafana adds charts when monitoring runs."
+ },
+ "tamper_demo": {
+  "term": "Tamper test",
+  "text": "Changes one entry on a copy of the audit log and runs the check. The real log is never touched."
+ },
+ "tier": {
+  "term": "Approval",
+  "text": "How many people must sign. Tier 1: one person confirms. Tier 2: one approver signs. Tier 3: two approvers from two teams sign."
+ },
+ "tier_T0": {
+  "term": "View only",
+  "text": "Tier 0. Looking, asking and what-ifs. Logged; no signature needed."
+ },
+ "tier_T1": {
+  "term": "1 person confirms",
+  "text": "Tier 1. One person confirms a draft. Also covers changes inside an already approved plan."
+ },
+ "tier_T2": {
+  "term": "1 team signs",
+  "text": "Tier 2. One approver from the named team must sign."
+ },
+ "tier_T3": {
+  "term": "2 teams sign",
+  "text": "Tier 3. Two approvers from two different teams must sign. The person who proposed it can't sign."
+ },
+ "tier_T4": {
+  "term": "Outside SGW",
+  "text": "Tier 4. Not available in SGW. The system never controls field equipment directly."
+ },
+ "triage_score": {
+  "term": "Damage score",
+  "text": "How much damage the model sees in a photo, from 0 to 1. It sets the review order; a person checks every photo."
+ },
+ "two_function_restore": {
+  "term": "Two-team resume",
+  "text": "Turning a stopped part back on needs two teams to sign, each with their password. Both signatures go in the audit log."
+ },
+ "unverified_record": {
+  "term": "Unverified field report",
+  "text": "A field report or ticket nobody has checked yet. Treat it as unconfirmed, never as procedure."
+ },
+ "verify_chain": {
+  "term": "Check audit log",
+  "text": "Rechecks every entry from the first one and shows the first entry that doesn't match, if any."
+ },
+ "version_void": {
+  "term": "Version change",
+  "text": "A new advisory changed the plan, so earlier signatures no longer count. Review the new version and sign again."
+ },
+ "vss": {
+  "term": "Saved by planning for the full range",
+  "text": "Customer-hours saved by planning for the full range of storm outcomes, not just the middle forecast. If small, crew numbers matter more than locations."
+ },
+ "webhook": {
+  "term": "Webhook",
+  "text": "A web address SGW notifies when a decision changes. Failed sends retry, then stop and are listed here."
+ },
+ "what_if": {
+  "term": "What-if",
+  "text": "Reruns the storm with one thing changed, such as its track. Prepared in advance; the real plan doesn't change."
+ },
+ "why": {
+  "term": "Why",
+  "text": "The advice, up to three reasons, and what would change it."
+ },
+ "wind_gust": {
+  "term": "Peak gust",
+  "text": "Strongest gust in the official forecast for each county, in mph."
+ },
+ "wind_rule": {
+  "term": "Wind rule",
+  "text": "A simple baseline: outages start above a wind speed fitted on the other storms. The forecast must beat it to earn its place."
+ }
+}

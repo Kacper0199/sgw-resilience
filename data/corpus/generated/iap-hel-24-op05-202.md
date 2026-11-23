@@ -1,0 +1,31 @@
+---
+doc_id: IAP-HEL-24-OP05/202
+title: ICS 202 Incident Objectives, Helene, Operational Period 5
+family: form_record
+layout: record
+owner_function: command
+effective: '2024-09-27'
+classification: SGW Internal - Controlled
+trust: internal_free_text
+status: in_force
+decisions:
+- D1
+- D2
+---
+# INCIDENT OBJECTIVES (ICS 202)
+1. Incident Name: SGW-INC-24-0031 "HELENE"
+2. Operational Period: Date From: 2024-09-27  Date To: 2024-09-27  Time From: 0700  Time To: 1900 (EDT)
+# 3. Objective(s)
+a. Patrol Priority 1 feeders first (DOM 14.215 Att. A); restore hospital and pump-station supply.
+b. Hold zone pressure at PS-17 Pellicott Road Booster; dispatch the portable generator on the Water Incident Lead's order (WDS 03.318).
+c. Stand up STG-AIK-SANDHILL-YARD and STG-RCH-MILLPOND-YARD for arriving mutual-aid crews; onboarding per OB-24-07.
+d. Issue boil water advisories where pressure falls below the state minimum (WQC 07.114, WQC 07.120).
+# 4. Operational Period Command Emphasis
+Hospital supply first: FDR-AIK-2207 trunk and PS-17. Three-part communication on every switching instruction.
+General Situational Awareness: Tropical storm conditions ending by 0900; gusts 35-45 mph inland.
+5. Site Safety Plan Required? Yes [X]  No [ ]   Approved Site Safety Plan(s) Located at: EOC Safety desk, binder S-5
+# 6. Incident Action Plan (the items checked below are included in this Incident Action Plan)
+[X] ICS 203  [X] ICS 204  [X] ICS 205  [ ] ICS 205A  [X] ICS 206  [X] ICS 208  [X] Map/Chart  [ ] Weather Forecast/Tides/Currents
+7. Prepared by: Name: Okonkwo, Adaeze N.  Position/Title: Planning Section Chief  Signature: A. Okonkwo
+8. Approved by Incident Commander: Name: Wingard, Lorraine T.  Signature: L. T. Wingard
+ICS 202 | IAP Page 1 | Date/Time: 2024-09-27 0700

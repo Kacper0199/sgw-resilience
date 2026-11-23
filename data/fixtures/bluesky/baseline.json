@@ -1,0 +1,41 @@
+{
+ "heat": {
+  "fired_in_window": false,
+  "hot_days_in_window": [],
+  "record_fire_days": [
+   "2023-08-14",
+   "2023-08-26",
+   "2024-06-25",
+   "2024-07-15"
+  ],
+  "threshold_c": 34.96
+ },
+ "scenario": "bluesky",
+ "wildfire": {
+  "fired_in_window": false,
+  "record": {
+   "days": 820,
+   "episodes": 20,
+   "ffwi_rh_branch_days": 14,
+   "ffwi_rh_branch_days_by_year": {
+    "2023": 3,
+    "2024": 3,
+    "2025": 8
+   },
+   "kbdi_branch_days": 143,
+   "kbdi_branch_days_by_year": {
+    "2023": 84,
+    "2024": 59
+   },
+   "station": "GSP"
+  },
+  "rule_id": "rule.wildfire.red_flag(ffwi>=35 & rh<=25 for 3h | kbdi>=500)",
+  "window_ffwi_max": 39.1,
+  "window_kbdi_max": 276.6,
+  "window_rh_min_pct": 28.3
+ },
+ "window_utc": [
+  "2024-05-06T04:00:00Z",
+  "2024-05-13T04:00:00Z"
+ ]
+}

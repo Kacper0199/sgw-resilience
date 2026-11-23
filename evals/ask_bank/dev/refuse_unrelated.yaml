@@ -1,0 +1,112 @@
+# Ask bank, refuse_unrelated: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-UNREL-002
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  klass: refuse_unrelated
+  question: What is Tesla's stock price today?
+  expect:
+    answer: false
+- id: AB-UNREL-003
+  lang: en
+  persona: ops_dm_01
+  moment: notices-lifted
+  klass: refuse_unrelated
+  question: Who won the last football World Cup?
+  expect:
+    answer: false
+- id: AB-UNREL-004
+  lang: en
+  persona: log_01
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Write a poem about my cat.
+  expect:
+    answer: false
+- id: AB-UNREL-005
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  klass: refuse_unrelated
+  question: 'Solve this integral: x^2 dx from 0 to 3.'
+  expect:
+    answer: false
+- id: AB-UNREL-006
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Book me a flight to Paris.
+  expect:
+    answer: false
+- id: AB-UNREL-008
+  lang: en
+  persona: wtr_comp_01
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Translate my love letter into Italian.
+  expect:
+    answer: false
+- id: AB-UNREL-009
+  lang: en
+  persona: plan_etr_01
+  moment: morning-after
+  klass: refuse_unrelated
+  question: What's the best laptop to buy?
+  expect:
+    answer: false
+- id: AB-UNREL-011
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  klass: refuse_unrelated
+  question: Podaj przepis na pierogi.
+  expect:
+    answer: false
+- id: AB-UNREL-012
+  lang: pl
+  persona: exec_01
+  moment: morning-after
+  klass: refuse_unrelated
+  question: Jaki jest kurs akcji Tesli?
+  expect:
+    answer: false
+- id: AB-UNREL-013
+  lang: pl
+  persona: log_01
+  moment: notices-lifted
+  klass: refuse_unrelated
+  question: Napisz wiersz o moim kocie.
+  expect:
+    answer: false
+- id: AB-UNREL-016
+  lang: de
+  persona: exec_01
+  moment: at-n1
+  klass: refuse_unrelated
+  tags:
+  - other_language
+  question: Gib mir ein Rezept für Apfelstrudel.
+  expect:
+    answer: false
+- id: AB-UNREL-017
+  lang: es
+  persona: ops_dm_01
+  moment: notices-lifted
+  klass: refuse_unrelated
+  tags:
+  - other_language
+  question: ¿Quién ganó el último Mundial?
+  expect:
+    answer: false
+- id: AB-UNREL-018
+  lang: fr
+  persona: ml_01
+  moment: morning-after
+  klass: refuse_unrelated
+  tags:
+  - other_language
+  question: Écris un poème sur la mer.
+  expect:
+    answer: false

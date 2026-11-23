@@ -1,0 +1,781 @@
+{
+  "model_version": "surge-cusum-v1",
+  "source": "EAGLE-I county customers out, 15-min (ORNL, figshare doi:10.6084/m9.figshare.24237376.v4, CC BY 4.0); labels NCEI Storm Events (public domain)",
+  "fitted_on": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "params": {
+    "method": "robust_cusum",
+    "window_h": 168.0,
+    "k": 0.5,
+    "h": 16.0,
+    "scale_floor": 0.35,
+    "min_customers": 250.0,
+    "min_share": 0.01,
+    "end_h": 6.0,
+    "corroborate": 6,
+    "corroborate_h": 3.0
+  },
+  "confidence": {
+    "features": [
+      "log10_excess_share",
+      "log1p_concurrent_counties"
+    ],
+    "coef": [
+      -0.05485332622193512,
+      0.8414311088470319
+    ],
+    "intercept": -2.7772278486236273,
+    "bands": {
+      "high": 0.5,
+      "medium": 0.2
+    }
+  },
+  "counties": [
+    {
+      "fips": "13001",
+      "name": "Appling",
+      "st": "GA",
+      "mcc": 9991
+    },
+    {
+      "fips": "13003",
+      "name": "Atkinson",
+      "st": "GA",
+      "mcc": 4283
+    },
+    {
+      "fips": "13005",
+      "name": "Bacon",
+      "st": "GA",
+      "mcc": 6119
+    },
+    {
+      "fips": "13009",
+      "name": "Baldwin",
+      "st": "GA",
+      "mcc": 21849
+    },
+    {
+      "fips": "13011",
+      "name": "Banks",
+      "st": "GA",
+      "mcc": 11560
+    },
+    {
+      "fips": "13017",
+      "name": "Ben Hill",
+      "st": "GA",
+      "mcc": 14643
+    },
+    {
+      "fips": "13019",
+      "name": "Berrien",
+      "st": "GA",
+      "mcc": 8532
+    },
+    {
+      "fips": "13023",
+      "name": "Bleckley",
+      "st": "GA",
+      "mcc": 5492
+    },
+    {
+      "fips": "13025",
+      "name": "Brantley",
+      "st": "GA",
+      "mcc": 8007
+    },
+    {
+      "fips": "13027",
+      "name": "Brooks",
+      "st": "GA",
+      "mcc": 7555
+    },
+    {
+      "fips": "13029",
+      "name": "Bryan",
+      "st": "GA",
+      "mcc": 26792
+    },
+    {
+      "fips": "13031",
+      "name": "Bulloch",
+      "st": "GA",
+      "mcc": 39331
+    },
+    {
+      "fips": "13033",
+      "name": "Burke",
+      "st": "GA",
+      "mcc": 16403
+    },
+    {
+      "fips": "13039",
+      "name": "Camden",
+      "st": "GA",
+      "mcc": 24470
+    },
+    {
+      "fips": "13043",
+      "name": "Candler",
+      "st": "GA",
+      "mcc": 4883
+    },
+    {
+      "fips": "13049",
+      "name": "Charlton",
+      "st": "GA",
+      "mcc": 5213
+    },
+    {
+      "fips": "13051",
+      "name": "Chatham",
+      "st": "GA",
+      "mcc": 143708
+    },
+    {
+      "fips": "13059",
+      "name": "Clarke",
+      "st": "GA",
+      "mcc": 78630
+    },
+    {
+      "fips": "13065",
+      "name": "Clinch",
+      "st": "GA",
+      "mcc": 4096
+    },
+    {
+      "fips": "13069",
+      "name": "Coffee",
+      "st": "GA",
+      "mcc": 27859
+    },
+    {
+      "fips": "13073",
+      "name": "Columbia",
+      "st": "GA",
+      "mcc": 66977
+    },
+    {
+      "fips": "13075",
+      "name": "Cook",
+      "st": "GA",
+      "mcc": 9902
+    },
+    {
+      "fips": "13091",
+      "name": "Dodge",
+      "st": "GA",
+      "mcc": 7951
+    },
+    {
+      "fips": "13101",
+      "name": "Echols",
+      "st": "GA",
+      "mcc": 2019
+    },
+    {
+      "fips": "13103",
+      "name": "Effingham",
+      "st": "GA",
+      "mcc": 27148
+    },
+    {
+      "fips": "13105",
+      "name": "Elbert",
+      "st": "GA",
+      "mcc": 14785
+    },
+    {
+      "fips": "13107",
+      "name": "Emanuel",
+      "st": "GA",
+      "mcc": 12876
+    },
+    {
+      "fips": "13109",
+      "name": "Evans",
+      "st": "GA",
+      "mcc": 4456
+    },
+    {
+      "fips": "13119",
+      "name": "Franklin",
+      "st": "GA",
+      "mcc": 18696
+    },
+    {
+      "fips": "13125",
+      "name": "Glascock",
+      "st": "GA",
+      "mcc": 1689
+    },
+    {
+      "fips": "13127",
+      "name": "Glynn",
+      "st": "GA",
+      "mcc": 40392
+    },
+    {
+      "fips": "13133",
+      "name": "Greene",
+      "st": "GA",
+      "mcc": 12117
+    },
+    {
+      "fips": "13137",
+      "name": "Habersham",
+      "st": "GA",
+      "mcc": 34189
+    },
+    {
+      "fips": "13141",
+      "name": "Hancock",
+      "st": "GA",
+      "mcc": 4461
+    },
+    {
+      "fips": "13147",
+      "name": "Hart",
+      "st": "GA",
+      "mcc": 18626
+    },
+    {
+      "fips": "13155",
+      "name": "Irwin",
+      "st": "GA",
+      "mcc": 5703
+    },
+    {
+      "fips": "13157",
+      "name": "Jackson",
+      "st": "GA",
+      "mcc": 63033
+    },
+    {
+      "fips": "13161",
+      "name": "Jeff Davis",
+      "st": "GA",
+      "mcc": 8107
+    },
+    {
+      "fips": "13163",
+      "name": "Jefferson",
+      "st": "GA",
+      "mcc": 8747
+    },
+    {
+      "fips": "13165",
+      "name": "Jenkins",
+      "st": "GA",
+      "mcc": 4479
+    },
+    {
+      "fips": "13167",
+      "name": "Johnson",
+      "st": "GA",
+      "mcc": 4550
+    },
+    {
+      "fips": "13169",
+      "name": "Jones",
+      "st": "GA",
+      "mcc": 11169
+    },
+    {
+      "fips": "13173",
+      "name": "Lanier",
+      "st": "GA",
+      "mcc": 5311
+    },
+    {
+      "fips": "13175",
+      "name": "Laurens",
+      "st": "GA",
+      "mcc": 24434
+    },
+    {
+      "fips": "13179",
+      "name": "Liberty",
+      "st": "GA",
+      "mcc": 32090
+    },
+    {
+      "fips": "13181",
+      "name": "Lincoln",
+      "st": "GA",
+      "mcc": 4071
+    },
+    {
+      "fips": "13183",
+      "name": "Long",
+      "st": "GA",
+      "mcc": 5091
+    },
+    {
+      "fips": "13185",
+      "name": "Lowndes",
+      "st": "GA",
+      "mcc": 70771
+    },
+    {
+      "fips": "13189",
+      "name": "McDuffie",
+      "st": "GA",
+      "mcc": 10984
+    },
+    {
+      "fips": "13191",
+      "name": "McIntosh",
+      "st": "GA",
+      "mcc": 7007
+    },
+    {
+      "fips": "13195",
+      "name": "Madison",
+      "st": "GA",
+      "mcc": 20879
+    },
+    {
+      "fips": "13209",
+      "name": "Montgomery",
+      "st": "GA",
+      "mcc": 4636
+    },
+    {
+      "fips": "13211",
+      "name": "Morgan",
+      "st": "GA",
+      "mcc": 16571
+    },
+    {
+      "fips": "13219",
+      "name": "Oconee",
+      "st": "GA",
+      "mcc": 36796
+    },
+    {
+      "fips": "13221",
+      "name": "Oglethorpe",
+      "st": "GA",
+      "mcc": 8000
+    },
+    {
+      "fips": "13229",
+      "name": "Pierce",
+      "st": "GA",
+      "mcc": 10427
+    },
+    {
+      "fips": "13235",
+      "name": "Pulaski",
+      "st": "GA",
+      "mcc": 5122
+    },
+    {
+      "fips": "13237",
+      "name": "Putnam",
+      "st": "GA",
+      "mcc": 10183
+    },
+    {
+      "fips": "13241",
+      "name": "Rabun",
+      "st": "GA",
+      "mcc": 10115
+    },
+    {
+      "fips": "13245",
+      "name": "Richmond",
+      "st": "GA",
+      "mcc": 117219
+    },
+    {
+      "fips": "13251",
+      "name": "Screven",
+      "st": "GA",
+      "mcc": 9974
+    },
+    {
+      "fips": "13257",
+      "name": "Stephens",
+      "st": "GA",
+      "mcc": 16529
+    },
+    {
+      "fips": "13265",
+      "name": "Taliaferro",
+      "st": "GA",
+      "mcc": 900
+    },
+    {
+      "fips": "13267",
+      "name": "Tattnall",
+      "st": "GA",
+      "mcc": 7806
+    },
+    {
+      "fips": "13271",
+      "name": "Telfair",
+      "st": "GA",
+      "mcc": 8161
+    },
+    {
+      "fips": "13277",
+      "name": "Tift",
+      "st": "GA",
+      "mcc": 24544
+    },
+    {
+      "fips": "13279",
+      "name": "Toombs",
+      "st": "GA",
+      "mcc": 17512
+    },
+    {
+      "fips": "13283",
+      "name": "Treutlen",
+      "st": "GA",
+      "mcc": 3505
+    },
+    {
+      "fips": "13289",
+      "name": "Twiggs",
+      "st": "GA",
+      "mcc": 3412
+    },
+    {
+      "fips": "13299",
+      "name": "Ware",
+      "st": "GA",
+      "mcc": 21266
+    },
+    {
+      "fips": "13301",
+      "name": "Warren",
+      "st": "GA",
+      "mcc": 2705
+    },
+    {
+      "fips": "13303",
+      "name": "Washington",
+      "st": "GA",
+      "mcc": 10974
+    },
+    {
+      "fips": "13305",
+      "name": "Wayne",
+      "st": "GA",
+      "mcc": 16057
+    },
+    {
+      "fips": "13309",
+      "name": "Wheeler",
+      "st": "GA",
+      "mcc": 5211
+    },
+    {
+      "fips": "13315",
+      "name": "Wilcox",
+      "st": "GA",
+      "mcc": 4661
+    },
+    {
+      "fips": "13317",
+      "name": "Wilkes",
+      "st": "GA",
+      "mcc": 7535
+    },
+    {
+      "fips": "13319",
+      "name": "Wilkinson",
+      "st": "GA",
+      "mcc": 4059
+    },
+    {
+      "fips": "45001",
+      "name": "Abbeville",
+      "st": "SC",
+      "mcc": 9846
+    },
+    {
+      "fips": "45003",
+      "name": "Aiken",
+      "st": "SC",
+      "mcc": 79309
+    },
+    {
+      "fips": "45005",
+      "name": "Allendale",
+      "st": "SC",
+      "mcc": 4639
+    },
+    {
+      "fips": "45007",
+      "name": "Anderson",
+      "st": "SC",
+      "mcc": 101520
+    },
+    {
+      "fips": "45009",
+      "name": "Bamberg",
+      "st": "SC",
+      "mcc": 8728
+    },
+    {
+      "fips": "45011",
+      "name": "Barnwell",
+      "st": "SC",
+      "mcc": 10628
+    },
+    {
+      "fips": "45013",
+      "name": "Beaufort",
+      "st": "SC",
+      "mcc": 127289
+    },
+    {
+      "fips": "45015",
+      "name": "Berkeley",
+      "st": "SC",
+      "mcc": 162211
+    },
+    {
+      "fips": "45017",
+      "name": "Calhoun",
+      "st": "SC",
+      "mcc": 9147
+    },
+    {
+      "fips": "45019",
+      "name": "Charleston",
+      "st": "SC",
+      "mcc": 231046
+    },
+    {
+      "fips": "45021",
+      "name": "Cherokee",
+      "st": "SC",
+      "mcc": 39741
+    },
+    {
+      "fips": "45023",
+      "name": "Chester",
+      "st": "SC",
+      "mcc": 20548
+    },
+    {
+      "fips": "45025",
+      "name": "Chesterfield",
+      "st": "SC",
+      "mcc": 16153
+    },
+    {
+      "fips": "45027",
+      "name": "Clarendon",
+      "st": "SC",
+      "mcc": 17809
+    },
+    {
+      "fips": "45029",
+      "name": "Colleton",
+      "st": "SC",
+      "mcc": 20355
+    },
+    {
+      "fips": "45031",
+      "name": "Darlington",
+      "st": "SC",
+      "mcc": 19211
+    },
+    {
+      "fips": "45033",
+      "name": "Dillon",
+      "st": "SC",
+      "mcc": 10099
+    },
+    {
+      "fips": "45035",
+      "name": "Dorchester",
+      "st": "SC",
+      "mcc": 73269
+    },
+    {
+      "fips": "45037",
+      "name": "Edgefield",
+      "st": "SC",
+      "mcc": 12717
+    },
+    {
+      "fips": "45039",
+      "name": "Fairfield",
+      "st": "SC",
+      "mcc": 13983
+    },
+    {
+      "fips": "45041",
+      "name": "Florence",
+      "st": "SC",
+      "mcc": 54564
+    },
+    {
+      "fips": "45043",
+      "name": "Georgetown",
+      "st": "SC",
+      "mcc": 46010
+    },
+    {
+      "fips": "45045",
+      "name": "Greenville",
+      "st": "SC",
+      "mcc": 208040
+    },
+    {
+      "fips": "45047",
+      "name": "Greenwood",
+      "st": "SC",
+      "mcc": 40695
+    },
+    {
+      "fips": "45049",
+      "name": "Hampton",
+      "st": "SC",
+      "mcc": 8886
+    },
+    {
+      "fips": "45051",
+      "name": "Horry",
+      "st": "SC",
+      "mcc": 259189
+    },
+    {
+      "fips": "45053",
+      "name": "Jasper",
+      "st": "SC",
+      "mcc": 17702
+    },
+    {
+      "fips": "45055",
+      "name": "Kershaw",
+      "st": "SC",
+      "mcc": 43198
+    },
+    {
+      "fips": "45057",
+      "name": "Lancaster",
+      "st": "SC",
+      "mcc": 52274
+    },
+    {
+      "fips": "45059",
+      "name": "Laurens",
+      "st": "SC",
+      "mcc": 71549
+    },
+    {
+      "fips": "45061",
+      "name": "Lee",
+      "st": "SC",
+      "mcc": 5675
+    },
+    {
+      "fips": "45063",
+      "name": "Lexington",
+      "st": "SC",
+      "mcc": 165904
+    },
+    {
+      "fips": "45065",
+      "name": "McCormick",
+      "st": "SC",
+      "mcc": 4091
+    },
+    {
+      "fips": "45067",
+      "name": "Marion",
+      "st": "SC",
+      "mcc": 8497
+    },
+    {
+      "fips": "45069",
+      "name": "Marlboro",
+      "st": "SC",
+      "mcc": 14959
+    },
+    {
+      "fips": "45071",
+      "name": "Newberry",
+      "st": "SC",
+      "mcc": 23376
+    },
+    {
+      "fips": "45073",
+      "name": "Oconee",
+      "st": "SC",
+      "mcc": 40425
+    },
+    {
+      "fips": "45075",
+      "name": "Orangeburg",
+      "st": "SC",
+      "mcc": 58624
+    },
+    {
+      "fips": "45077",
+      "name": "Pickens",
+      "st": "SC",
+      "mcc": 74039
+    },
+    {
+      "fips": "45079",
+      "name": "Richland",
+      "st": "SC",
+      "mcc": 227559
+    },
+    {
+      "fips": "45081",
+      "name": "Saluda",
+      "st": "SC",
+      "mcc": 11824
+    },
+    {
+      "fips": "45083",
+      "name": "Spartanburg",
+      "st": "SC",
+      "mcc": 147558
+    },
+    {
+      "fips": "45085",
+      "name": "Sumter",
+      "st": "SC",
+      "mcc": 42515
+    },
+    {
+      "fips": "45087",
+      "name": "Union",
+      "st": "SC",
+      "mcc": 21940
+    },
+    {
+      "fips": "45089",
+      "name": "Williamsburg",
+      "st": "SC",
+      "mcc": 21455
+    },
+    {
+      "fips": "45091",
+      "name": "York",
+      "st": "SC",
+      "mcc": 173488
+    }
+  ],
+  "code_version": "7a5d989",
+  "report": "evals/reports/outage_surge.json"
+}

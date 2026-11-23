@@ -1,0 +1,48 @@
+\begin{tikzpicture}[sgw,
+  w/.style={text width=#1,minimum width=0pt},
+  wide/.style={text width=7.9cm,minimum width=0pt,align=left}]
+  % G1 outage surge detector
+  \node[sgw/source,w=3.6cm,minimum height=1.5cm] (s1) at (0,0) {EAGLE-I customers out\sgwsub{15-min series}\sgwsub{per county, 123 counties}};
+  \node[sgw/service,w=3.6cm,minimum height=1.5cm] (s2) at (4.3,0) {Robust residual\sgwsub{log1p(out) minus rolling}\sgwsub{median of 168 h, / (IQR/1.349)}};
+  \node[sgw/service,w=3.6cm,minimum height=1.5cm] (s3) at (8.6,0) {One-sided CUSUM\sgwsub{allowance k = 0.5}\sgwsub{start when $\geq$ h = 16}};
+  \node[sgw/gate,w=2.2cm] (s4) at (8.6,-2.05) {Size gate};
+  \node[sgw/service,w=3.6cm,minimum height=1.5cm] (s5) at (4.3,-2.05) {Corroboration\sgwsub{6 other counties started}\sgwsub{within 3 h}};
+  \node[sgw/service,w=3.6cm,minimum height=1.5cm] (s6) at (0,-2.05) {Confidence (logistic)\sgwsub{excess share, concurrent}\sgwsub{counties; high $\geq$ 0.5}};
+  \node[sgw/ok,wide,minimum height=1.25cm] (s7) at (6.45,-4.0) {Active surges: map layer and notification\\[-1pt]
+    {\scriptsize\color{sgwInkMuted}``Outage surge in N counties''; Ask AI tool list\_outage\_surges\\
+     a surge ends after 6 h below its baseline plus half the gate}};
+  \sgwzone{g1}{sgwNeutral}{(s1)(s3)(s4)(s7)}{Outage surge detector robust\_cusum, surge-cusum-v1 (surge/detect.py)}
+  \draw[sgw/flow] (s1) -- (s2);
+  \draw[sgw/flow] (s2) -- (s3);
+  \draw[sgw/flow] (s3) -- (s4);
+  \draw[sgw/flow] (s4) -- (s5);
+  \draw[sgw/flow] (s5) -- (s6);
+  \draw[sgw/flow] (s6.south) |- (s7.west);
+  \node[sgw/note,anchor=north] at ([yshift=-1pt]s4.south) {$\geq$ 250 customers and $\geq$ 1\% of MCC};
+
+  % A8 / A7 water telemetry
+  \node[sgw/source,w=3.6cm,minimum height=2.0cm] (w1) at (0,-7.2) {Pump-station SCADA\sgwsub{discharge pressure, tank}\sgwsub{level, pump and}\sgwsub{generator states}};
+  \node[sgw/service,wide,minimum height=2.0cm] (w2) at (6.45,-7.2) {A8 spoof guard (runs first)\\[-1pt]
+    {\scriptsize\color{sgwInkMuted}tank head check p = a + 0.433 L: CUSUM, k 0.5$\sigma$, h 10$\sigma$\\
+     hospital service pressure vs station pressure\\
+     frozen: 6 equal level or 8 equal pressure readings\\
+     replay: 8 readings repeat, lag 4 to 168 h}};
+  \node[sgw/service,wide,minimum height=1.75cm] (w3) at (6.45,-9.45) {A7 physical events, on readings A8 did not mark\\[-1pt]
+    {\scriptsize\color{sgwInkMuted}pump\_trip: pump stops while feeder energised\\
+     pressure\_loss: 2 readings below the station low-pressure alarm\\
+     demand\_increase: CUSUM on tank mass-balance demand, k 1$\sigma$, h 8$\sigma$}};
+  \node[sgw/note,w=3.6cm] (w5) at (0,-9.45) {alarm score =\\(peak $-$ threshold) / peak;\\alarms within 1 h merge};
+  \node[sgw/ok,wide,minimum height=1.0cm] (w4) at (6.45,-11.3) {Anomaly alarms: Water tab, Ask AI tool list\_anomalies};
+  \sgwzone{a78}{sgwSevAdvisoryFill}{(w1)(w2)(w3)(w4)(w5)}{Water anomaly detectors A8 and A7, offline on the Helene SCADA replay (anomaly/detect.py)}
+  \draw[sgw/flow] (w1) -- (w2);
+  \draw[sgw/flow] (w2) -- node[left,sgw/note] {suspect readings left out} (w3);
+  \draw[sgw/flow] (w3) -- (w4);
+
+  % W9 AMI rule
+  \node[sgw/source,w=3.6cm,minimum height=1.25cm] (m1) at (0,-13.75) {AMI meters of a section\sgwsub{silent, no last gasp}};
+  \node[sgw/gate,w=1.6cm] (m2) at (4.3,-13.75) {$\geq$ 60 min};
+  \node[sgw/decision,w=3.6cm,minimum height=1.25cm] (m3) at (8.6,-13.75) {Patrol work order draft\sgwsub{decision case, confirm in 6 h}};
+  \sgwzone{w9}{sgwOkFill}{(m1)(m2)(m3)}{Silent outage rule W9, ami\_dark\_section (rules/zones.py)}
+  \draw[sgw/flow] (m1) -- (m2);
+  \draw[sgw/flow] (m2) -- (m3);
+\end{tikzpicture}

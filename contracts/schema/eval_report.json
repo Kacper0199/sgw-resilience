@@ -1,0 +1,173 @@
+{
+  "$defs": {
+    "EvalSplit": {
+      "enum": [
+        "dev",
+        "heldout_family_b",
+        "real_loso",
+        "ladi_reference",
+        "heldout"
+      ],
+      "title": "EvalSplit",
+      "type": "string"
+    },
+    "MetricRow": {
+      "additionalProperties": false,
+      "properties": {
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "n": {
+          "minimum": 1,
+          "title": "N",
+          "type": "integer"
+        },
+        "split": {
+          "$ref": "#/$defs/EvalSplit"
+        },
+        "label": {
+          "$ref": "#/$defs/NumberLabel"
+        },
+        "baseline_name": {
+          "title": "Baseline Name",
+          "type": "string"
+        },
+        "baseline_value": {
+          "title": "Baseline Value",
+          "type": "number"
+        },
+        "threshold": {
+          "title": "Threshold",
+          "type": "number"
+        },
+        "direction": {
+          "enum": [
+            "higher_is_better",
+            "lower_is_better"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "ci_low": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ci Low"
+        },
+        "ci_high": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ci High"
+        }
+      },
+      "required": [
+        "metric",
+        "value",
+        "unit",
+        "n",
+        "split",
+        "label",
+        "baseline_name",
+        "baseline_value",
+        "threshold",
+        "direction",
+        "passed"
+      ],
+      "title": "MetricRow",
+      "type": "object"
+    },
+    "NumberLabel": {
+      "enum": [
+        "F",
+        "C",
+        "A",
+        "U",
+        "P",
+        "S"
+      ],
+      "title": "NumberLabel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "code_version": {
+      "title": "Code Version",
+      "type": "string"
+    },
+    "llm_mode": {
+      "enum": [
+        "live",
+        "record",
+        "replay"
+      ],
+      "title": "Llm Mode",
+      "type": "string"
+    },
+    "command": {
+      "description": "exact command that reproduces the report",
+      "title": "Command",
+      "type": "string"
+    },
+    "metrics": {
+      "items": {
+        "$ref": "#/$defs/MetricRow"
+      },
+      "minItems": 1,
+      "title": "Metrics",
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "created_at",
+    "code_version",
+    "llm_mode",
+    "command",
+    "metrics"
+  ],
+  "title": "SGW K17 eval report",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

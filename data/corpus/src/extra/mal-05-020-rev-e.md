@@ -1,0 +1,135 @@
+---
+doc_id: "MAL 05.020"
+title: "Staging Site Activation and Layout"
+family: sop
+layout: controlled
+owner_function: logistics
+sme: "Lumpkin, Harlan E."
+revision: "E"
+effective: 2023-05-08
+supersedes: "MAL 05.020 Rev D (eff. 2021-04-26)"
+next_review: 2024-04-30
+approvals:
+  - {function: logistics, position: "Logistics Section Chief; Manager, Supply Chain", name: "Huggins, Delmar J.", date: 2023-05-01}
+  - {function: command, position: "Vice President, Emergency Management", name: "Wingard, Lorraine T.", date: 2023-05-02}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: in_force
+decisions: [D2]
+states: [SC, GA]
+changes:
+  - {rev: "E", date: 2023-05-08, section: "Att. A", change: "STG-RLD-CONGAREEBEND-YARD added; STG-RCH-MILLPOND-YARD capacity confirmed at 9 crews after fence relocation."}
+  - {rev: "E", date: 2023-05-08, section: "6.2", change: "Fuel island moved downwind of the briefing tent in the standard layout."}
+  - {rev: "E", date: 2023-05-08, section: "6.4", change: "Editorial: site manager checklist renumbered."}
+---
+# 1.0 PURPOSE
+
+This procedure sets how SGW opens, lays out, runs and closes a crew staging site for storm restoration.
+
+# 2.0 SCOPE
+
+Applies to the staging yards in Attachment A and to any temporary site leased for an event. Crew onboarding and safety briefings follow DOM 12.040.
+
+# 3.0 RESPONSIBILITIES
+
+3.1 Logistics Section Chief: activates sites on the Incident Commander's approval and assigns a Staging Area Manager to each.
+
+3.2 Staging Area Manager: opens and runs the site, reports crew counts to Logistics each operational period.
+
+3.3 Security Lead: controls the gate and the overnight watch.
+
+3.4 Facilities Unit: power, lighting, sanitation, water and waste.
+
+# 4.0 DEFINITIONS
+
+Crew: one bucket truck or digger-derrick team with its support vehicles, normally 4 to 6 persons. Capacity is the number of crews a site can hold overnight with parking, fueling and briefing space.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 A site shall not exceed its Attachment A capacity. Overflow crews go to the next site on the list.
+
+5.2 Sites in a flood zone listed in GEP 2F.01 are not opened when flooding is forecast.
+
+5.3 Keep a 20 ft fire lane through the site at all times.
+
+5.4 Fueling stops in lightning within 6 mi.
+
+# 6.0 PROCEDURE
+
+## 6.1 Activation
+
+6.1.1 Logistics Section Chief selects sites from Attachment A based on the forecast track and crew numbers.
+
+6.1.2 Get Incident Commander approval for the sites and opening times.
+
+6.1.3 Call the site owner contact for leased sites at least 48 h before opening.
+
+6.1.4 Order portable lighting, sanitation, a fuel vendor slot (MAL 05.040) and meals (MAL 05.030).
+
+6.1.5 Staging Area Manager arrives at least 12 h before the first crews.
+
+## 6.2 Layout
+
+6.2.1 Mark the single entry gate and the check-in tent next to it.
+
+6.2.2 Place the briefing tent upwind of the fuel island.
+
+6.2.3 Lay out parking rows for 12 crews per row with 30 ft aisles.
+
+6.2.4 Set the fuel island at the exit side, 50 ft from tents.
+
+6.2.5 Set the material laydown (MAL 05.050) near the exit, reachable without crossing parking rows.
+
+6.2.6 Post the site map at the check-in tent.
+
+## 6.3 Operation
+
+6.3.1 Check in arriving crews on ICS 211 (see MAL 05.060).
+
+6.3.2 Report crews on site, arrivals expected and departures to Logistics at 0600 and 1800.
+
+6.3.3 Keep the overnight watch log.
+
+## 6.4 Closing
+
+6.4.1 Close on the Logistics Section Chief's order after the last crew is released.
+
+6.4.2 Walk the site with the owner. Photograph conditions.
+
+6.4.3 Remove waste, signs and rented equipment within 72 h.
+
+6.4.4 Send the site log to Logistics.
+
+## 6.5 Site conditions that stop operations
+
+| Condition | Action | Who decides |
+|---|---|---|
+| Lightning within 6 mi | Stop fueling; crews to vehicles | Staging Area Manager |
+| Standing water over parking rows | Move crews to the next site | Logistics Section Chief |
+| Loss of site power over 2 h | Start portable light towers | Staging Area Manager |
+| Gate security breach | Lock down the yard; call Security Lead | Security Lead |
+
+# 7.0 RECORDS
+
+ICS 211 sheets, watch log, owner walk-through record. Retain 3 years.
+
+# 8.0 REFERENCES
+
+DOM 12.040; GEP 2F.01; MAL 05.030; MAL 05.040; MAL 05.050; MAL 05.060.
+
+# ATTACHMENT A STAGING YARDS
+
+| Yard | District | Capacity (crews) | Surface | Owner |
+|---|---|---|---|---|
+| STG-AIK-SANDHILL-YARD | Aiken | 12 | Gravel, lit | SGW |
+| STG-RCH-MILLPOND-YARD | Richmond | 9 | Paved, lit | SGW |
+| STG-CHS-ASHLEYFERRY-YARD | Charleston | 14 | Gravel | Leased, fairground |
+| STG-GVL-REEDYSHOALS-YARD | Greenville | 10 | Paved | Leased, retail lot |
+| STG-RLD-CONGAREEBEND-YARD | Richland | 16 | Gravel, lit | SGW |
+
+# ATTACHMENT B CONTACTS
+
+| Position | Day | After hours |
+|---|---|---|
+| Logistics Section Chief | Supply Chain desk | Storm Room logistics line |
+| Staging Area Manager | Assigned at activation | Site radio channel |

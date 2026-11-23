@@ -1,0 +1,104 @@
+id: ops.1.0
+event: heartbeat
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"degraded_mode":"M0","head_ledger_seq":0,"kill_level":"K0","server_time":"2026-11-20T00:00:00Z"},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T03:40:00Z","seq":0,"ts":"2026-11-20T03:40:00Z","type":"heartbeat","v":1}
+
+id: ops.1.1
+event: ledger
+data: {"classification":"C1","ledger_seq":1,"ns":[],"payload":{"event_id":"02611c9b-97c5-59f4-8257-afc935dd8189","event_type":"ScenarioClockChanged","payload":{"bookmark":"H0-24","scenario_time_utc":"2024-09-26T03:40:00Z","speed":60}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T03:40:00Z","seq":1,"ts":"2026-11-20T03:40:00Z","type":"ledger","v":1}
+
+id: ops.1.2
+event: ledger
+data: {"classification":"C1","ledger_seq":2,"ns":[],"payload":{"event_id":"589e56e1-85d1-5068-bfdd-f456212e516e","event_type":"RiskSnapshotPublished","payload":{"as_of_utc":"2024-09-26T09:00:00Z","engine_version":"risk-0.1-synthetic","snapshot_id":"SNP-RISK-N","top_entities":[{"band":"high","entity_id":"FDR-AIK-2207","p_ppm":710000},{"band":"high","entity_id":"PS-17","p_ppm":690000}]}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:20:00Z","seq":2,"ts":"2026-11-20T09:20:00Z","type":"ledger","v":1}
+
+id: ops.1.3
+event: ledger
+data: {"classification":"C1","ledger_seq":3,"ns":[],"payload":{"event_id":"abb86c9b-4b7a-5527-8c2c-5860dd2e7e17","event_type":"DecisionClockUpdated","payload":{"cause_event_id":"bca27001-60d0-5bc6-84bc-efcb2c544647","decide_by_utc":"2024-09-27T01:10:00Z","decision_case_id":"DC-D2-CREWS-AIK","effective_decide_by_utc":"2024-09-27T00:30:00Z","no_regret_verdict":"n/a","on_critical_path":true,"previous_decide_by_utc":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:22:00Z","seq":3,"ts":"2026-11-20T09:22:00Z","type":"ledger","v":1}
+
+id: ops.1.3
+event: state
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"entity_id":"DC-D2-CREWS-AIK","tile":"decision_clock","value":{"cause_event_id":"bca27001-60d0-5bc6-84bc-efcb2c544647","decide_by_utc":"2024-09-27T01:10:00Z","decision_case_id":"DC-D2-CREWS-AIK","effective_decide_by_utc":"2024-09-27T00:30:00Z","no_regret_verdict":"n/a","on_critical_path":true,"previous_decide_by_utc":null},"version":3},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:22:00Z","seq":3,"ts":"2026-11-20T09:22:00Z","type":"state","v":1}
+
+id: ops.1.4
+event: ledger
+data: {"classification":"C1","ledger_seq":4,"ns":[],"payload":{"event_id":"1019d5c7-fbc5-5c66-a251-f6e4e6fdad32","event_type":"DecisionClockUpdated","payload":{"cause_event_id":"bca27001-60d0-5bc6-84bc-efcb2c544647","decide_by_utc":"2024-09-27T05:30:00Z","decision_case_id":"DC-D3-PS17-POWER","effective_decide_by_utc":"2024-09-27T05:30:00Z","no_regret_verdict":"wait_for_next_advisory","on_critical_path":true,"previous_decide_by_utc":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:22:00Z","seq":4,"ts":"2026-11-20T09:22:00Z","type":"ledger","v":1}
+
+id: ops.1.4
+event: state
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"entity_id":"DC-D3-PS17-POWER","tile":"decision_clock","value":{"cause_event_id":"bca27001-60d0-5bc6-84bc-efcb2c544647","decide_by_utc":"2024-09-27T05:30:00Z","decision_case_id":"DC-D3-PS17-POWER","effective_decide_by_utc":"2024-09-27T05:30:00Z","no_regret_verdict":"wait_for_next_advisory","on_critical_path":true,"previous_decide_by_utc":null},"version":4},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:22:00Z","seq":4,"ts":"2026-11-20T09:22:00Z","type":"state","v":1}
+
+id: ops.1.5
+event: ledger
+data: {"classification":"C1","ledger_seq":5,"ns":[],"payload":{"event_id":"9905fe3d-5f5d-521b-b700-eaab21369e4d","event_type":"ProposalCreated","payload":{"action_hash":"ab96eb6660ea811c4dd9269f4a69e33ec81de01ac87c2058c4f724c138fc5eaf","action_type":"preposition_crews","clock_kind":"model_estimate","decide_by_utc":"2024-09-27T01:10:00Z","decision_case_id":"DC-D2-CREWS-AIK","proposal_id":"PRP-CREW-AIK-0926A","proposal_version":1,"proposed_by":"ops_dm_01","tier":"T3"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:40:00Z","seq":5,"ts":"2026-11-20T09:40:00Z","type":"ledger","v":1}
+
+id: ops.1.6
+event: ledger
+data: {"classification":"C2","ledger_seq":6,"ns":[],"payload":{"event_id":"d785738b-7f5d-585a-abdc-4074551aaf69","event_type":"ProposalCreated","payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","action_type":"cross_domain_priority","clock_kind":"model_estimate","decide_by_utc":"2024-09-27T05:30:00Z","decision_case_id":"DC-D3-PS17-POWER","proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"proposed_by":"system:rule:ps17_pressure_floor","tier":"T3"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T09:45:00Z","seq":6,"ts":"2026-11-20T09:45:00Z","type":"ledger","v":1}
+
+id: ops.1.7
+event: ledger
+data: {"classification":"C1","ledger_seq":7,"ns":[],"payload":{"event_id":"20a398b8-8409-5960-9ffb-260e5658279b","event_type":"ApprovalRecorded","payload":{"action_hash":"ab96eb6660ea811c4dd9269f4a69e33ec81de01ac87c2058c4f724c138fc5eaf","approval_id":"APR-CREW-V1-IC","approver_id":"ic_01","decision":"approve","function":"command","proposal_id":"PRP-CREW-AIK-0926A","proposal_version":1,"reason_code":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T12:30:00Z","seq":7,"ts":"2026-11-20T12:30:00Z","type":"ledger","v":1}
+
+id: ops.1.8
+event: ledger
+data: {"classification":"C1","ledger_seq":8,"ns":[],"payload":{"event_id":"5789b935-b5c0-5c6b-914d-9142489ca399","event_type":"RiskSnapshotPublished","payload":{"as_of_utc":"2024-09-26T15:00:00Z","engine_version":"risk-0.1-synthetic","snapshot_id":"SNP-RISK-NP1","top_entities":[{"band":"very_high","entity_id":"FDR-AIK-2207","p_ppm":840000},{"band":"very_high","entity_id":"PS-17","p_ppm":820000}]}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:20:00Z","seq":8,"ts":"2026-11-20T15:20:00Z","type":"ledger","v":1}
+
+id: ops.1.9
+event: ledger
+data: {"classification":"C1","ledger_seq":9,"ns":[],"payload":{"event_id":"2630bec6-a867-5f3c-8ced-91ea0246e4dc","event_type":"DecisionClockUpdated","payload":{"cause_event_id":"c2676ed6-8c5a-53a3-b747-696151d39f96","decide_by_utc":"2024-09-26T23:50:00Z","decision_case_id":"DC-D2-CREWS-AIK","effective_decide_by_utc":"2024-09-26T23:10:00Z","no_regret_verdict":"n/a","on_critical_path":true,"previous_decide_by_utc":"2024-09-27T01:10:00Z"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:22:00Z","seq":9,"ts":"2026-11-20T15:22:00Z","type":"ledger","v":1}
+
+id: ops.1.9
+event: state
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"entity_id":"DC-D2-CREWS-AIK","tile":"decision_clock","value":{"cause_event_id":"c2676ed6-8c5a-53a3-b747-696151d39f96","decide_by_utc":"2024-09-26T23:50:00Z","decision_case_id":"DC-D2-CREWS-AIK","effective_decide_by_utc":"2024-09-26T23:10:00Z","no_regret_verdict":"n/a","on_critical_path":true,"previous_decide_by_utc":"2024-09-27T01:10:00Z"},"version":9},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:22:00Z","seq":9,"ts":"2026-11-20T15:22:00Z","type":"state","v":1}
+
+id: ops.1.10
+event: ledger
+data: {"classification":"C1","ledger_seq":10,"ns":[],"payload":{"event_id":"94832d65-6574-5b92-a6e8-a9cc6161f882","event_type":"DecisionClockUpdated","payload":{"cause_event_id":"c2676ed6-8c5a-53a3-b747-696151d39f96","decide_by_utc":"2024-09-27T04:10:00Z","decision_case_id":"DC-D3-PS17-POWER","effective_decide_by_utc":"2024-09-27T04:10:00Z","no_regret_verdict":"act_now","on_critical_path":true,"previous_decide_by_utc":"2024-09-27T05:30:00Z"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:22:00Z","seq":10,"ts":"2026-11-20T15:22:00Z","type":"ledger","v":1}
+
+id: ops.1.10
+event: state
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"entity_id":"DC-D3-PS17-POWER","tile":"decision_clock","value":{"cause_event_id":"c2676ed6-8c5a-53a3-b747-696151d39f96","decide_by_utc":"2024-09-27T04:10:00Z","decision_case_id":"DC-D3-PS17-POWER","effective_decide_by_utc":"2024-09-27T04:10:00Z","no_regret_verdict":"act_now","on_critical_path":true,"previous_decide_by_utc":"2024-09-27T05:30:00Z"},"version":10},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:22:00Z","seq":10,"ts":"2026-11-20T15:22:00Z","type":"state","v":1}
+
+id: ops.1.11
+event: ledger
+data: {"classification":"C1","ledger_seq":11,"ns":[],"payload":{"event_id":"6a9d003d-cbae-5883-9211-02d94258ef65","event_type":"ProposalUpdated","payload":{"action_hash":"d22bd66a89285fd2102a0e7c3a0d45178fa02896a9164508355973ff84ea737b","changed_fields":["params"],"decide_by_utc":"2024-09-26T23:50:00Z","material":true,"proposal_id":"PRP-CREW-AIK-0926A","proposal_version":2,"reason":"Advisory N+1: crews at STG-AIK-SANDHILL-YARD 14 -> 18","voided_approval_ids":["APR-CREW-V1-IC"]}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:25:00Z","seq":11,"ts":"2026-11-20T15:25:00Z","type":"ledger","v":1}
+
+id: ops.1.12
+event: ledger
+data: {"classification":"C2","ledger_seq":12,"ns":[],"payload":{"event_id":"1eeece7c-0acf-5c25-a628-693b36bae2a8","event_type":"ProposalUpdated","payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","changed_fields":["decide_by_utc"],"decide_by_utc":"2024-09-27T04:10:00Z","material":false,"proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"reason":"Advisory N+1 moved the decide-by earlier; no material field changed","voided_approval_ids":[]}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:26:00Z","seq":12,"ts":"2026-11-20T15:26:00Z","type":"ledger","v":1}
+
+id: ops.1.13
+event: ledger
+data: {"classification":"C2","ledger_seq":13,"ns":[],"payload":{"event_id":"3b23d94e-5c72-5b25-b151-c46c367dade9","event_type":"ApprovalRecorded","payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","approval_id":"APR-PS17-V1-IC","approver_id":"ic_01","decision":"approve","function":"command","proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"reason_code":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:52:00Z","seq":13,"ts":"2026-11-20T15:52:00Z","type":"ledger","v":1}
+
+id: ops.1.14
+event: ledger
+data: {"classification":"C2","ledger_seq":14,"ns":[],"payload":{"event_id":"f75c9b06-c69a-50b6-8ab6-4b591770182b","event_type":"ApprovalRecorded","payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","approval_id":"APR-PS17-V1-WLEAD","approver_id":"wtr_lead_01","decision":"approve","function":"water_operations","proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"reason_code":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:58:00Z","seq":14,"ts":"2026-11-20T15:58:00Z","type":"ledger","v":1}
+
+id: ops.1.15
+event: ledger
+data: {"classification":"C2","ledger_seq":15,"ns":[],"payload":{"event_id":"0271ee76-2523-51a5-ba1b-7c496e95f4ea","event_type":"DecisionApproved","payload":{"action_hash":"8471c2f5a6ee8fb2dcc6d5164515f28d4492351d402628456e2b1444a21914b4","approver_ids":["ic_01","wtr_lead_01"],"break_glass":false,"decision_case_id":"DC-D3-PS17-POWER","proposal_id":"PRP-PS17-FDR2207-PRIO","proposal_version":1,"tier":"T3"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T15:58:00Z","seq":15,"ts":"2026-11-20T15:58:00Z","type":"ledger","v":1}
+
+id: ops.1.16
+event: ledger
+data: {"classification":"C1","ledger_seq":16,"ns":[],"payload":{"event_id":"afa3897d-a101-5c7b-9497-2ea0da3c8960","event_type":"ApprovalRecorded","payload":{"action_hash":"d22bd66a89285fd2102a0e7c3a0d45178fa02896a9164508355973ff84ea737b","approval_id":"APR-CREW-V2-IC","approver_id":"ic_01","decision":"approve","function":"command","proposal_id":"PRP-CREW-AIK-0926A","proposal_version":2,"reason_code":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T16:05:00Z","seq":16,"ts":"2026-11-20T16:05:00Z","type":"ledger","v":1}
+
+id: ops.1.17
+event: ledger
+data: {"classification":"C1","ledger_seq":17,"ns":[],"payload":{"event_id":"030c5f04-d34f-5dc2-9719-7f66f43cea64","event_type":"ApprovalRecorded","payload":{"action_hash":"d22bd66a89285fd2102a0e7c3a0d45178fa02896a9164508355973ff84ea737b","approval_id":"APR-CREW-V2-LOG","approver_id":"log_01","decision":"approve","function":"logistics","proposal_id":"PRP-CREW-AIK-0926A","proposal_version":2,"reason_code":null}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T16:10:00Z","seq":17,"ts":"2026-11-20T16:10:00Z","type":"ledger","v":1}
+
+id: ops.1.18
+event: ledger
+data: {"classification":"C1","ledger_seq":18,"ns":[],"payload":{"event_id":"7e06caba-b4c7-513d-ae43-17d2a779d573","event_type":"DecisionApproved","payload":{"action_hash":"d22bd66a89285fd2102a0e7c3a0d45178fa02896a9164508355973ff84ea737b","approver_ids":["ic_01","log_01"],"break_glass":false,"decision_case_id":"DC-D2-CREWS-AIK","proposal_id":"PRP-CREW-AIK-0926A","proposal_version":2,"tier":"T3"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T16:11:00Z","seq":18,"ts":"2026-11-20T16:11:00Z","type":"ledger","v":1}
+
+id: ops.1.19
+event: ledger
+data: {"classification":"C1","ledger_seq":19,"ns":[],"payload":{"event_id":"8a7c3aed-8216-5711-ac11-8287a2185f59","event_type":"EnvelopeApproved","payload":{"bounds":{"crews_at_STG-AIK-SANDHILL-YARD":{"max":21,"min":15},"crews_at_STG-RCH-MILLPOND-YARD":{"max":10,"min":8}},"envelope_id":"ENV-CREW-AIK-V2","proposal_id":"PRP-CREW-AIK-0926A","valid_until_utc":"2024-09-27T12:00:00Z"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T16:11:00Z","seq":19,"ts":"2026-11-20T16:11:00Z","type":"ledger","v":1}
+
+id: ops.1.20
+event: ledger
+data: {"classification":"C1","ledger_seq":20,"ns":[],"payload":{"event_id":"66908f56-dec8-56fa-8dc8-9c2d2975c30d","event_type":"CommitmentCreated","payload":{"commitment_id":"CMT-CREW-AIK-STAGED","decision_case_id":"DC-D2-CREWS-AIK","milestones":["mobilised","enroute","staged"],"promised_by_utc":"2024-09-26T23:30:00Z","proposal_id":"PRP-CREW-AIK-0926A"}},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-26T16:12:00Z","seq":20,"ts":"2026-11-20T16:12:00Z","type":"ledger","v":1}
+
+id: ops.2.0
+event: resync
+data: {"classification":"C1","ledger_seq":null,"ns":[],"payload":{"epoch":2,"reason":"epoch_mismatch","snapshot_url":"/api/proposals"},"run_id":null,"run_mode":"replay","scenario_time":"2024-09-27T18:00:00Z","seq":21,"ts":"2026-11-20T18:00:00Z","type":"resync","v":1}
+

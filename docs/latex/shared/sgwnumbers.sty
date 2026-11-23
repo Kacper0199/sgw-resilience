@@ -1,0 +1,57 @@
+\ProvidesPackage{sgwnumbers}[2026/11/19 Numbers only as macros, from data/numbers/numbers.yaml]
+% Every quoted number is a key in data/numbers/numbers.yaml (contract K10).
+% WP-02's generator writes numbers.tex with one \sgwdefnum line per key:
+%   \sgwdefnum{<key>}{<value>}{<unit>}{<label>}{<source>}
+% Until it lands, numbers-stub.tex defines placeholders with \sgwstubnum.
+% Labels: F fact, C computed, A assumed, P SGW policy (assumed), S synthetic, U unverified.
+% A final build (\def\sgwbuildmode{final}) stops on any stub value or unknown key.
+\RequirePackage{xcolor}
+\newif\ifsgwfinal
+\providecommand{\sgwbuildmode}{draft}
+\def\sgw@final{final}
+\ifx\sgwbuildmode\sgw@final\sgwfinaltrue\fi
+
+\newcommand{\sgwdefnum}[5]{%
+  \expandafter\gdef\csname sgwnum@v@#1\endcsname{#2}%
+  \expandafter\gdef\csname sgwnum@u@#1\endcsname{#3}%
+  \expandafter\gdef\csname sgwnum@l@#1\endcsname{#4}%
+  \expandafter\gdef\csname sgwnum@s@#1\endcsname{#5}%
+  \expandafter\global\expandafter\let\csname sgwnum@stub@#1\endcsname\relax}
+\newcommand{\sgwstubnum}[5]{%
+  \sgwdefnum{#1}{#2}{#3}{#4}{#5}%
+  \expandafter\gdef\csname sgwnum@stub@#1\endcsname{stub}}
+
+\def\sgw@lab@F{fact}\def\sgw@lab@C{computed}\def\sgw@lab@A{assumed}
+\def\sgw@lab@P{SGW policy, assumed}\def\sgw@lab@S{synthetic}\def\sgw@lab@U{unverified}
+
+\newcommand{\sgw@check}[1]{%
+  \expandafter\ifx\csname sgwnum@v@#1\endcsname\relax
+    \ifsgwfinal\PackageError{sgwnumbers}{Unknown number key '#1'}{Add it to data/numbers/numbers.yaml.}\fi
+    \PackageWarning{sgwnumbers}{Unknown number key '#1'}%
+    \def\sgw@state{missing}%
+  \else
+    \expandafter\ifx\csname sgwnum@stub@#1\endcsname\relax
+      \def\sgw@state{ok}%
+    \else
+      \ifsgwfinal\PackageError{sgwnumbers}{Stub value for '#1' in a final build}{WP-02's numbers.tex must define it.}\fi
+      \def\sgw@state{stub}%
+    \fi
+  \fi}
+\def\sgw@missing{missing}\def\sgw@stub{stub}
+
+\newcommand{\sgw@mark}[2]{% {key}{rendered}
+  \ifx\sgw@state\sgw@missing\fbox{\textcolor{sgwError}{\ttfamily\scriptsize ??\detokenize{#1}}}%
+  \else\ifx\sgw@state\sgw@stub\textcolor{sgwSecondary}{#2\textsuperscript{\tiny\,stub}}%
+  \else#2\fi\fi}
+
+% \sgwval{key}: value only. \sgwnum{key}: value and unit. \sgwnumL{key}: value, unit and label.
+\newcommand{\sgwval}[1]{\sgw@check{#1}\sgw@mark{#1}{\csname sgwnum@v@#1\endcsname}}
+\newcommand{\sgwunit}[1]{\csname sgwnum@u@#1\endcsname}
+\newcommand{\sgwlbl}[1]{\csname sgw@lab@\csname sgwnum@l@#1\endcsname\endcsname}
+\newcommand{\sgwnum}[1]{\sgw@check{#1}\sgw@mark{#1}{%
+  \csname sgwnum@v@#1\endcsname
+  \expandafter\ifx\csname sgwnum@u@#1\endcsname\@empty\else\,\csname sgwnum@u@#1\endcsname\fi}}
+\newcommand{\sgwnumL}[1]{\sgwnum{#1}\ifx\sgw@state\sgw@missing\else~{\footnotesize[\sgwlbl{#1}]}\fi}
+
+\InputIfFileExists{numbers-stub.tex}{}{\PackageWarning{sgwnumbers}{numbers-stub.tex not found}}
+\InputIfFileExists{numbers.tex}{\typeout{SGW-NUMBERS: numbers.tex loaded}}{\typeout{SGW-NUMBERS: stub only}}

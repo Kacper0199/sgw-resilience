@@ -1,0 +1,224 @@
+{
+  "header": {
+    "additionalProperties": false,
+    "properties": {
+      "eventlog": {
+        "title": "Eventlog",
+        "type": "string"
+      },
+      "schema_version": {
+        "minimum": 1,
+        "title": "Schema Version",
+        "type": "integer"
+      },
+      "bookmark": {
+        "title": "Bookmark",
+        "type": "string"
+      },
+      "graph": {
+        "title": "Graph",
+        "type": "string"
+      },
+      "graph_version": {
+        "title": "Graph Version",
+        "type": "string"
+      },
+      "captured_at": {
+        "format": "date-time",
+        "title": "Captured At",
+        "type": "string"
+      },
+      "source_run_id": {
+        "title": "Source Run Id",
+        "type": "string"
+      },
+      "licence": {
+        "title": "Licence",
+        "type": "string"
+      },
+      "body_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "title": "Body Sha256",
+        "type": "string"
+      }
+    },
+    "required": [
+      "eventlog",
+      "schema_version",
+      "bookmark",
+      "graph",
+      "graph_version",
+      "captured_at",
+      "source_run_id",
+      "licence",
+      "body_sha256"
+    ],
+    "title": "SGW K19 event log header",
+    "type": "object",
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "line": {
+    "$defs": {
+      "Classification": {
+        "enum": [
+          "C0",
+          "C1",
+          "C2",
+          "C3",
+          "C3-N",
+          "C4",
+          "CX"
+        ],
+        "title": "Classification",
+        "type": "string"
+      },
+      "RunMode": {
+        "enum": [
+          "live",
+          "replay",
+          "backfill",
+          "shadow",
+          "what_if"
+        ],
+        "title": "RunMode",
+        "type": "string"
+      },
+      "WireEvent": {
+        "enum": [
+          "ledger",
+          "state",
+          "heartbeat",
+          "resync",
+          "run_start",
+          "text_delta",
+          "tool_start",
+          "tool_end",
+          "agent_start",
+          "agent_end",
+          "step",
+          "artifact",
+          "approval_required",
+          "run_paused",
+          "run_end",
+          "run_error"
+        ],
+        "title": "WireEvent",
+        "type": "string"
+      },
+      "WireFrame": {
+        "additionalProperties": false,
+        "properties": {
+          "v": {
+            "const": 1,
+            "default": 1,
+            "title": "V",
+            "type": "integer"
+          },
+          "type": {
+            "$ref": "#/$defs/WireEvent"
+          },
+          "seq": {
+            "minimum": 0,
+            "title": "Seq",
+            "type": "integer"
+          },
+          "ledger_seq": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ledger Seq"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Run Id"
+          },
+          "ns": {
+            "description": "subgraph namespace path",
+            "items": {
+              "type": "string"
+            },
+            "title": "Ns",
+            "type": "array"
+          },
+          "ts": {
+            "format": "date-time",
+            "title": "Ts",
+            "type": "string"
+          },
+          "scenario_time": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Scenario Time"
+          },
+          "run_mode": {
+            "$ref": "#/$defs/RunMode"
+          },
+          "classification": {
+            "$ref": "#/$defs/Classification"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          }
+        },
+        "required": [
+          "type",
+          "seq",
+          "ts",
+          "run_mode",
+          "classification"
+        ],
+        "title": "WireFrame",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "title": "Id",
+        "type": "string"
+      },
+      "delay_ms": {
+        "description": "gap after the previous frame at capture time",
+        "minimum": 0,
+        "title": "Delay Ms",
+        "type": "integer"
+      },
+      "frame": {
+        "$ref": "#/$defs/WireFrame"
+      }
+    },
+    "required": [
+      "id",
+      "delay_ms",
+      "frame"
+    ],
+    "title": "SGW K19 event log line",
+    "type": "object",
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

@@ -1,0 +1,217 @@
+# Ask bank, near_miss: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-NEAR-001
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: near_miss
+  question: What is the status of PS-99?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+    - PS-38
+    - PS-52
+    mentions_all:
+    - PS-99
+  judge: true
+- id: AB-NEAR-003
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: near_miss
+  question: Where is crew CRW-EAGLE-01?
+  expect:
+    mentions_any:
+    - Talon
+    - Bittern
+    - Cormorant
+    - Egret
+    - Gannet
+    - Grosbeak
+    - Harrier
+    - Heron
+    - Kestrel
+    - Merlin
+    - Nightjar
+    - Osprey
+    - Petrel
+    - Plover
+    - Shrike
+    - CRW-SWIFT
+    - Tanager
+    - CRW-TERN
+    - Warbler
+    mentions_all:
+    - EAGLE
+- id: AB-NEAR-004
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  klass: near_miss
+  question: When did the tornado hit Aiken?
+  expect:
+    mentions_any:
+    - Helene
+    - hurricane
+    mentions_all:
+    - tornado
+- id: AB-NEAR-005
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: near_miss
+  question: Is there a boil-water notice for Millpond?
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+    - Cedarfall
+    mentions_all:
+    - Millpond
+- id: AB-NEAR-006
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: near_miss
+  question: What is the status of the Laurelspur hospital?
+  expect:
+    mentions_any:
+    - Tallowbranch
+    mentions_all:
+    - hospital
+- id: AB-NEAR-009
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: readiness
+  klass: near_miss
+  question: Show me the wildfire decisions.
+  expect:
+    mentions_any:
+    - Readiness
+    - Helene
+    - wildfire
+    mentions_all:
+    - wildfire
+- id: AB-NEAR-010
+  lang: en
+  persona: plan_etr_01
+  moment: notices-lifted
+  page: forecast
+  klass: near_miss
+  question: What is the ETR for Charleston?
+  expect:
+    mentions_any:
+    - Aiken
+    - ETR
+    - global
+    mentions_all:
+    - Charleston
+- id: AB-NEAR-011
+  lang: en
+  persona: exec_01
+  moment: notices-lifted
+  page: after_action
+  klass: near_miss
+  question: Show me last year's earthquake after-action review.
+  expect:
+    mentions_any:
+    - Helene
+    - after-action
+    - review
+    mentions_all:
+    - earthquake
+- id: AB-NEAR-013
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: near_miss
+  question: Which tank does PS-40 fill?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+    - PS-38
+    - PS-52
+    mentions_all:
+    - PS-40
+- id: AB-NEAR-014
+  lang: pl
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: near_miss
+  question: Jaki jest stan PS-99?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+    - PS-38
+    - PS-52
+    mentions_all:
+    - PS-99
+- id: AB-NEAR-016
+  lang: pl
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: near_miss
+  question: Czy jest komunikat o gotowaniu wody dla Millpond?
+  expect:
+    mentions_any:
+    - Laurelspur
+    - Copperleaf
+    - Deerwater
+    - Cedarfall
+    mentions_all:
+    - Millpond
+- id: AB-NEAR-018
+  lang: es
+  persona: ic_01
+  moment: morning-after
+  klass: near_miss
+  tags:
+  - other_language
+  question: ¿Cuándo golpeó el tornado a Aiken?
+  expect:
+    mentions_any:
+    - Helene
+    - huracán
+    mentions_all:
+    - tornado
+- id: AB-NEAR-019
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: notifications
+  klass: near_miss
+  question: Turn my notifications into SMS messages.
+  expect:
+    mentions_any:
+    - notification
+    - Notifications
+    - cannot
+    - can't
+    mentions_all:
+    - SMS
+- id: AB-NEAR-020
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  page: help
+  klass: near_miss
+  question: Is there a user manual video?
+  expect:
+    mentions_any:
+    - Help
+    - glossary
+    - term
+    mentions_all:
+    - video

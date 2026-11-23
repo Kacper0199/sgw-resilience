@@ -1,0 +1,101 @@
+{
+  "alphas": [
+    0.025,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.975
+  ],
+  "blend": null,
+  "conformal_offsets": {
+    "50": {
+      "0": 0.01213691914525939,
+      "1": 0.011814675072009125,
+      "2": 0.017447632200745196,
+      "pooled": 0.01213691914525939
+    },
+    "80": {
+      "0": 0.025061808567556472,
+      "1": 0.018563213165941624,
+      "2": 0.08778184330728095,
+      "pooled": 0.025061808567556472
+    },
+    "95": {
+      "0": 0.21086176957520295,
+      "1": 0.18103704774867868,
+      "2": 0.2566206621394972,
+      "pooled": 0.21086176957520295
+    }
+  },
+  "data_sha256": "cd8c9b839b8f24168700cc2557c968e4b2548b89c8aaddcd9c2b0f7609a3ab56",
+  "features": [
+    "peak_gust_ms",
+    "hours_gust_ge_20",
+    "hours_ts",
+    "min_dist_km",
+    "speed_kmh_closest",
+    "vmax_ms_closest",
+    "log_customers"
+  ],
+  "interval_method": "storm-grouped CQR, uncalibrated across storm types (coverage reported per storm)",
+  "interval_space": "linear",
+  "intervals": {
+    "50": [
+      0.25,
+      0.75
+    ],
+    "80": [
+      0.1,
+      0.9
+    ],
+    "95": [
+      0.025,
+      0.975
+    ]
+  },
+  "name": "a2-excl-helene",
+  "params": {
+    "colsample_bytree": 0.9,
+    "deterministic": true,
+    "force_row_wise": true,
+    "learning_rate": 0.03,
+    "mean": {
+      "objective": "tweedie",
+      "tweedie_variance_power": 1.3
+    },
+    "min_child_samples": 15,
+    "monotone": {
+      "hours_centre_within_200km": 1,
+      "hours_gust_ge_20": 1,
+      "hours_ts": 1,
+      "log_customers": 0,
+      "min_dist_km": -1,
+      "peak_gust_ms": 1,
+      "rain_antecedent_14d_mm": 1,
+      "rain_window_mm": 1,
+      "speed_kmh_closest": 0,
+      "vmax_ms_closest": 0
+    },
+    "n_estimators": 300,
+    "n_jobs": 2,
+    "num_leaves": 7,
+    "random_state": 20241,
+    "reg_lambda": 1.0,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "verbose": -1
+  },
+  "prior_offset": false,
+  "trained_on": [
+    "debby",
+    "ian",
+    "michael"
+  ],
+  "version": "1.0",
+  "wind_bands_ms": [
+    20.0,
+    30.0
+  ]
+}

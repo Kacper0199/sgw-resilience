@@ -1,0 +1,219 @@
+# Ask bank, clarify: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-CLAR-002
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: clarify
+  tags:
+  - vague
+  question: When is the deadline?
+  expect:
+    mentions_any:
+    - PS-17
+    - fuel
+    - crew
+    - hospital
+    - pressure
+- id: AB-CLAR-004
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: clarify
+  tags:
+  - vague
+  question: Show me the crew.
+  expect:
+    mentions_any:
+    - Talon
+    - Bittern
+    - Cormorant
+    - Egret
+    - Gannet
+    - Grosbeak
+    - Harrier
+    - Heron
+    - Kestrel
+    - Merlin
+    - Nightjar
+    - Osprey
+    - Petrel
+    - Plover
+    - Shrike
+    - CRW-SWIFT
+    - Tanager
+    - CRW-TERN
+    - Warbler
+- id: AB-CLAR-005
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: map
+  klass: clarify
+  tags:
+  - vague
+  question: Is the feeder out?
+  expect:
+    mentions_any:
+    - '2207'
+    - '2214'
+    - '2219'
+    - '2225'
+    - '2231'
+    - '2238'
+- id: AB-CLAR-006
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: clarify
+  tags:
+  - vague
+  question: What about the yard?
+  expect:
+    mentions_any:
+    - Sandhill
+    - Millpond
+- id: AB-CLAR-008
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: decisions
+  klass: clarify
+  tags:
+  - vague
+  question: Should I sign it?
+  expect:
+    mentions_any:
+    - tanker
+    - Laurelspur
+    - restoration
+    - fuel
+    - patrol
+- id: AB-CLAR-010
+  lang: en
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  question: What's the generator situation?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-38
+    - PS-52
+    - MGEN
+    - hospital
+- id: AB-CLAR-011
+  lang: en
+  persona: plan_etr_01
+  moment: morning-after
+  page: forecast
+  klass: clarify
+  tags:
+  - vague
+  question: What's the estimate?
+  expect:
+    mentions_any:
+    - ETR
+    - restoration
+    - outage
+    - peak
+- id: AB-CLAR-013
+  lang: pl
+  persona: wtr_lead_01
+  moment: at-n1
+  page: water
+  klass: clarify
+  tags:
+  - vague
+  question: A co ze stacją?
+  expect:
+    mentions_any:
+    - PS-17
+    - PS-23
+    - PS-38
+    - PS-52
+- id: AB-CLAR-014
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: clarify
+  tags:
+  - vague
+  question: Kiedy jest termin?
+  expect:
+    mentions_any:
+    - PS-17
+    - paliw
+    - ekip
+    - szpital
+    - ciśnieni
+- id: AB-CLAR-016
+  lang: pl
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: clarify
+  tags:
+  - vague
+  question: Pokaż ekipę.
+  expect:
+    mentions_any:
+    - Talon
+    - Bittern
+    - Cormorant
+    - Egret
+    - Gannet
+    - Grosbeak
+    - Harrier
+    - Heron
+    - Kestrel
+    - Merlin
+    - Nightjar
+    - Osprey
+    - Petrel
+    - Plover
+    - Shrike
+    - CRW-SWIFT
+    - Tanager
+    - CRW-TERN
+    - Warbler
+- id: AB-CLAR-017
+  lang: de
+  persona: ic_01
+  moment: at-n1
+  page: decisions
+  klass: clarify
+  tags:
+  - other_language
+  - vague
+  question: Wann ist die Frist?
+  expect:
+    mentions_any:
+    - PS-17
+    - Treibstoff
+    - Crew
+    - Krankenhaus
+    - Druck
+- id: AB-CLAR-018
+  lang: es
+  persona: wtr_lead_01
+  moment: morning-after
+  page: water
+  klass: clarify
+  tags:
+  - other_language
+  - vague
+  question: ¿La zona está bien?
+  expect:
+    mentions_any:
+    - Cedarfall
+    - Laurelspur
+    - Copperleaf
+    - Deerwater

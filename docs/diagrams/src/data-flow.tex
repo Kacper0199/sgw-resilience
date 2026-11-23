@@ -1,0 +1,58 @@
+% Data flow from feeds to decisions: src/sgw/generator, data/fixtures/helene, src/sgw/opendata,
+% src/sgw/pipeline (replay, runner, dq), src/sgw/ingest (outbox, relay), src/sgw/models, src/sgw/models/clocks.
+\begin{tikzpicture}[sgw,font=\small\sffamily,
+    b/.style={sgw/service,minimum width=4.0cm,text width=3.8cm,minimum height=1.05cm,font=\small\sffamily},
+    src/.style={sgw/source,minimum width=4.0cm,text width=3.8cm,minimum height=1.05cm,font=\small\sffamily},
+    ext/.style={sgw/external,minimum width=4.0cm,text width=3.8cm,minimum height=1.05cm,font=\small\sffamily,text=sgwInk},
+    lbl/.style={font=\footnotesize\sffamily,text=sgwInk,fill=sgwSurface,inner sep=1.5pt,align=center}]
+  % 1 sources
+  \node[src] (sgwsys) at (0,0) {\textbf{SGW systems}\sgwsub{GIS, OMS, SCADA, AMI, EAM,}\sgwsub{field service, LIMS, weather}};
+  \node[ext] (open) at (9.2,0) {\textbf{Public open data}\sgwsub{USGS, IEM ASOS and VTEC,}\sgwsub{OpenFEMA, NCEI}};
+  \sgwzone{z1}{sgwNeutral}{(sgwsys)(open)}{1  Sources: synthetic SGW data (generator) and real Helene 2024 data}
+
+  % 2 ingest
+  \node[b] (adapt) at (0,-2.85) {\textbf{Replay adapters}\sgwsub{one per feed, on the}\sgwsub{scenario clock}};
+  \node[b] (dq) at (4.6,-2.85) {\textbf{Data-quality checks}\sgwsub{schemas, freshness;}\sgwsub{bad rows quarantined}};
+  \node[b] (derive) at (9.2,-2.85) {\textbf{Derived files}\sgwsub{peaks so far, warnings,}\sgwsub{clipped to the footprint}};
+  \node[b] (outbox) at (0,-4.65) {\textbf{Outbox}\sgwsub{same transaction as}\sgwsub{the stored rows}};
+  \node[b] (relay) at (4.6,-4.65) {\textbf{Ledger relay}\sgwsub{gapless sequence,}\sgwsub{notifies listeners}};
+  \node[b] (odq) at (9.2,-4.65) {\textbf{Open-data checks}\sgwsub{freshness per source}};
+  \sgwzone{z2}{sgwSurface}{(adapt)(dq)(derive)(outbox)(relay)(odq)}{2  Ingest: one pipeline run per replay}
+  \draw[sgw/flow] (sgwsys) -- (adapt);
+  \draw[sgw/flow] (open) -- (derive);
+  \draw[sgw/flow] (adapt) -- (dq);
+  \draw[sgw/flow] (dq.south) -- ++(0,-0.3) -| (outbox.north);
+  \draw[sgw/flow] (outbox) -- (relay);
+  \draw[sgw/flow] (derive) -- (odq);
+
+  % 3 store
+  \node[sgw/store,minimum width=6.0cm,minimum height=1.5cm,font=\small\sffamily] (db) at (4.6,-7.9)
+    {\textbf{Postgres}\sgwsub{event ledger, observations, data-quality results,}\sgwsub{model outputs, decision cases, proposals}};
+  \sgwzone{z3}{sgwNeutral}{(db)}{3  Store}
+  \draw[sgw/flow] (relay) -- (z3);
+
+  % 4 models
+  \node[b] (haz) at (0,-10.5) {\textbf{Hurricane ensemble}\sgwsub{forecast members per}\sgwsub{advisory}};
+  \node[b] (fc) at (4.6,-10.5) {\textbf{Outage forecast}\sgwsub{per feeder and county}};
+  \node[b] (det) at (9.2,-10.5) {\textbf{Detectors}\sgwsub{outage surges, sensor}\sgwsub{anomalies}};
+  \node[b] (cv) at (0,-12.25) {\textbf{Damage photos}\sgwsub{computer vision}};
+  \node[b] (water) at (4.6,-12.25) {\textbf{Water network model}\sgwsub{zones, tanks, pump stations}};
+  \node[b] (crew) at (9.2,-12.25) {\textbf{Crew optimiser}\sgwsub{staging, restoration times}};
+  \node[b] (rules) at (4.6,-14) {\textbf{Zone rules}\sgwsub{boil-water, hospital supply,}\sgwsub{silent outages (YAML)}};
+  \sgwzone{z4}{sgwSurface}{(haz)(fc)(det)(cv)(water)(crew)(rules)}{4  Models and rules (code, no AI)}
+  \draw[sgw/flow] (z3) -- (z4.north -| db);
+
+  % 5 decisions
+  \node[sgw/core,minimum width=4.4cm,minimum height=1.25cm,font=\small\sffamily\bfseries] (clock) at (2.3,-16.9)
+    {Decision clocks\sgwsub{\color{sgwHairline}decide-by P10/P50/P90,}\sgwsub{\color{sgwHairline}critical path, wait or act}};
+  \node[sgw/decision,minimum width=4.4cm,minimum height=1.25cm,font=\small\sffamily] (queue) at (7.9,-16.9)
+    {\textbf{Decision queue}\sgwsub{proposals for people to sign}};
+  \draw[sgw/flow] (z4.south -| clock) -- (clock);
+  \draw[sgw/flow] (clock) -- (queue);
+  \draw[sgw/flow] (z4.south -| queue) -- (queue);
+  \sgwzone{z5}{sgwSevAdvisoryFill}{(clock)(queue)}{5  Decisions, recomputed after each clock change and every 5 s}
+
+  % side read paths
+  \node[sgw/note,font=\footnotesize\sffamily,text width=13.4cm,align=left,anchor=north west] at (-2.0,-18.5)
+    {Open data goes to the map and the after-action record as files, not into the ledger. The web app and Ask AI read the database through the API; Ask AI tools only read.};
+\end{tikzpicture}

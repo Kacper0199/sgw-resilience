@@ -1,0 +1,207 @@
+# Held-out items for N5 `narrate` and N7 `exec_sitrep`. Input: a K15 evidence bundle (EvidenceRef
+# without values) and the phase; the node writes words and slots `{E<n>.<field>}` only.
+# Code graders: slot validity (every slot names a ref in the bundle and a field in slot_values), K15
+# verify_text finds 0 bare digits, every required_ref is cited, required_order holds (first mention order),
+# refs with trust internal_free_text or external are attributed (reported/according to), never stated as fact.
+# Judge (J1, calibrated on judge.yaml): clarity and decision focus, 1-4 scale, pass at 3.
+# slot_values are what the renderer would fill (illustrative synthetic values unless a truth pointer is given);
+# the model never sees them. Asset ids with digits other than PS-17 must be slot-rendered (K15 allowlist). reference_output is one passing
+# answer (it passes sgw.contracts.evidence.verify_text and render); it is not the only acceptable wording.
+set: narrate
+split: heldout
+version: 1
+items:
+  - id: NAR-H-01
+    node: narrate
+    phase: pre_landfall
+    as_of: "2024-09-26T15:10:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: decision_clock, label: "PS-17 power decide-by", band: high, as_of: "2024-09-26T15:05:00Z", model_version: "clocks-ref-1.0.0", citation: "DC-D3-PS17-POWER", classification: C1, trust: system}
+      - {id: E2, kind: forecast, label: "Tropical-storm wind onset, Aiken", band: null, as_of: "2024-09-26T15:00:00Z", model_version: "hazard-ens-1.0.0", citation: "ADV-HELENE-SYN-NP1", classification: C0, trust: system}
+      - {id: E3, kind: no_regret, label: "PS-17 no-regret share", band: null, unit: "share of scenarios", as_of: "2024-09-26T15:05:00Z", model_version: "hazard-ens-1.0.0", citation: "ensemble N+1", classification: C1, trust: system}
+      - {id: E4, kind: decision_clock, label: "Crew pre-positioning decide-by, Sandhill Yard", band: high, as_of: "2024-09-26T15:05:00Z", model_version: "clocks-ref-1.0.0", citation: "DC-D2-CREWS-AIK", classification: C1, trust: system}
+      - {id: E5, kind: procedure, label: "Portable generator hookup lead time", band: null, unit: "min", as_of: "2024-06-03T00:00:00Z", model_version: null, citation: "WDS 03.318 Rev E §6.2", classification: C1, trust: verified_internal}
+    slot_values:
+      E1: {decide_by_utc: "2024-09-27 04:28Z", shift: "76 min earlier"}
+      E2: {p50_utc: "2024-09-27 03:40Z"}
+      E3: {share: "93%", verdict: "act now"}
+      E4: {decide_by_utc: "2024-09-26 23:28Z", site: "STG-AIK-SANDHILL-YARD"}
+      E5: {lead_time: "150 min"}
+    required_refs: [E1, E3, E4, E5]
+    required_order: [E1, E4]
+    reference_output: "Advisory N+1 moved the PS-17 clock: decide by {E1.decide_by_utc}, {E1.shift} than at advisory N, because tropical-storm wind now reaches Aiken around {E2.p50_utc}. The portable generator needs {E5.lead_time} from dispatch to pumping, and acting now is not regretted in {E3.share} of forecast scenarios, so the verdict is {E3.verdict}. Crew pre-positioning at {E4.site} sits on the same critical path; decide it by {E4.decide_by_utc}."
+  - id: NAR-H-02
+    node: narrate
+    phase: water_continuity
+    as_of: "2024-09-27T11:00:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: water_status, label: "Cedarfall zone pressure", band: very_high, unit: "psi", as_of: "2024-09-27T10:55:00Z", model_version: null, citation: "PT-PS17-DISCH", classification: C2, trust: verified_internal}
+      - {id: E2, kind: asset_status, label: "Portable generator MGEN-HALBERD-500", band: null, as_of: "2024-09-27T10:50:00Z", model_version: null, citation: "fsm", classification: C1, trust: verified_internal}
+      - {id: E3, kind: asset_status, label: "Tallow Branch hospital power", band: null, as_of: "2024-09-27T10:50:00Z", model_version: null, citation: "GEN-HSP-TALLOWBRANCH", classification: C2, trust: verified_internal}
+      - {id: E4, kind: decision_clock, label: "Boil water evaluation, Cedarfall zone", band: high, as_of: "2024-09-27T10:55:00Z", model_version: "rule-wds-03.105", citation: "WDS 03.105 Rev G §6.3", classification: C1, trust: system}
+      - {id: E5, kind: field_note, label: "Hospital facilities report", band: null, as_of: "2024-09-27T10:20:00Z", model_version: null, citation: "note FN-AIK-0927-031", classification: C2, trust: internal_free_text}
+    slot_values:
+      E1: {value: "18 psi", floor: "25 psi", since_utc: "10:05Z"}
+      E2: {status: "not dispatched", depot: "DEP-AIK-GRANITEVILLE"}
+      E3: {status: "on standby generator"}
+      E4: {deadline_utc: "11:05Z", clock_kind: "rule deadline"}
+      E5: {summary: "weak pressure on upper floors"}
+    required_refs: [E1, E2, E4]
+    required_order: [E1, E4]
+    attributed_refs: [E5]
+    reference_output: "Cedarfall zone pressure is {E1.value}, below the {E1.floor} floor since {E1.since_utc}. The boil water evaluation has a {E4.clock_kind} of {E4.deadline_utc} to notify Compliance. The portable generator is {E2.status} at {E2.depot}. The hospital has power ({E3.status}) but its water depends on PS-17; hospital facilities report {E5.summary}."
+  - id: NAR-H-03
+    node: narrate
+    phase: etr
+    as_of: "2024-09-28T12:00:00Z"
+    decision: D4
+    evidence:
+      - {id: E1, kind: forecast, label: "Global ETR, ninety percent restored", band: null, as_of: "2024-09-28T11:30:00Z", model_version: "etr-1.0.0", citation: "ETR model run R-0928-1130", classification: C1, trust: system}
+      - {id: E2, kind: metric, label: "Circuits patrolled", band: null, unit: "share", as_of: "2024-09-28T11:30:00Z", model_version: null, citation: "damage assessment queue", classification: C1, trust: verified_internal}
+      - {id: E3, kind: crew_status, label: "Crews working, SC and GA", band: null, as_of: "2024-09-28T11:30:00Z", model_version: null, citation: "fsm", classification: C1, trust: verified_internal}
+      - {id: E4, kind: approval_state, label: "Global ETR proposal", band: null, as_of: "2024-09-28T11:45:00Z", model_version: null, citation: "proposal publish_global_etr", classification: C1, trust: system}
+      - {id: E5, kind: procedure, label: "Global ETR release deadline", band: null, as_of: "2024-06-10T00:00:00Z", model_version: null, citation: "DOM 14.206 Rev K §6.1", classification: C1, trust: verified_internal}
+    slot_values:
+      E1: {p25: "Sep 30 06:00 EDT", p50: "Sep 30 22:00 EDT", p75: "Oct 1 14:00 EDT"}
+      E2: {share: "71%"}
+      E3: {crews: "184 internal and 143 mutual-aid groups"}
+      E4: {state: "awaiting command and operations signatures"}
+      E5: {deadline: "24 h after all-clear"}
+    required_refs: [E1, E4, E5]
+    required_order: [E1, E4]
+    reference_output: "Ninety percent of affected customers are expected back between {E1.p25} and {E1.p75}, most likely by {E1.p50}. The estimate rests on {E2.share} of circuits patrolled, so regional estimates wait for more patrols. The global ETR proposal is {E4.state}; procedure requires release within {E5.deadline}. Crews on the system: {E3.crews}."
+  - id: NAR-H-04
+    node: narrate
+    phase: water_continuity
+    as_of: "2024-09-27T20:00:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: forecast, label: "GEN-PS38-COPPERLEAF run-dry time", band: high, as_of: "2024-09-27T19:50:00Z", model_version: "fuel-burn-1.0.0", citation: "GEN-PS38-COPPERLEAF fuel_gal", classification: C1, trust: system}
+      - {id: E2, kind: alert, label: "Flood watch, low-lying roads", band: null, as_of: "2024-09-27T18:00:00Z", model_version: null, citation: "NWS alert", classification: C0, trust: external}
+      - {id: E3, kind: procedure, label: "Refuel request trigger", band: null, as_of: "2024-06-17T00:00:00Z", model_version: null, citation: "WDS 03.322 Rev C §5.1", classification: C1, trust: verified_internal}
+      - {id: E4, kind: procedure, label: "Low-water crossings", band: null, as_of: "2024-04-08T00:00:00Z", model_version: null, citation: "GEP 2F.01 Rev C Attachment 2", classification: C1, trust: verified_internal}
+      - {id: E5, kind: asset_status, label: "Fuel truck FTK-WREN-3", band: null, as_of: "2024-09-27T19:45:00Z", model_version: null, citation: "fsm", classification: C1, trust: verified_internal}
+    slot_values:
+      E1: {asset: "GEN-PS38-COPPERLEAF", p50_utc: "2024-09-28 02:19Z", fuel_now: "38%"}
+      E2: {area: "Aiken County"}
+      E3: {trigger: "60%"}
+      E4: {route: "Copperleaf Road"}
+      E5: {status: "available at DEP-AIK-GRANITEVILLE", lead_time: "90 min"}
+    required_refs: [E1, E3, E4, E5]
+    required_order: [E1, E5]
+    attributed_refs: [E2]
+    reference_output: "Generator {E1.asset} is at {E1.fuel_now} and runs dry around {E1.p50_utc}; the refuel trigger of {E3.trigger} has passed. The truck is {E5.status} and needs {E5.lead_time}. The route uses {E4.route}, a listed low-water crossing, and the National Weather Service has a flood watch for {E2.area}, so send fuel now or by the alternate route."
+  - id: NAR-H-05
+    node: narrate
+    phase: pre_landfall
+    as_of: "2024-08-05T15:10:00Z"
+    decision: D3
+    family: B
+    evidence:
+      - {id: E1, kind: decision_clock, label: "PS-17 power decide-by", band: high, as_of: "2024-08-05T15:05:00Z", model_version: "clocks-ref-1.0.0", citation: "DC-D3-PS17-POWER", classification: C1, trust: system}
+      - {id: E2, kind: forecast, label: "Tropical-storm wind onset, Aiken", band: null, as_of: "2024-08-05T15:00:00Z", model_version: "hazard-ens-1.0.0", citation: "advisory N+1 (family B)", classification: C0, trust: system}
+      - {id: E3, kind: no_regret, label: "PS-17 no-regret share", band: null, as_of: "2024-08-05T15:05:00Z", model_version: "hazard-ens-1.0.0", citation: "ensemble N+1", classification: C1, trust: system}
+    slot_values:
+      E1: {decide_by_utc: "2024-08-06 00:10Z", shift: "74 min later"}
+      E2: {p50_utc: "2024-08-06 02:40Z"}
+      E3: {share: "100%", verdict: "act now"}
+    required_refs: [E1, E3]
+    required_order: [E1, E3]
+    must_not: ["says the decide-by moved earlier", "says there is more time to wait because the clock moved later while the verdict is act now"]
+    reference_output: "Advisory N+1 moved the PS-17 clock later: decide by {E1.decide_by_utc}, {E1.shift} than at advisory N, with wind onset around {E2.p50_utc}. The extra time does not change the verdict: acting is not regretted in {E3.share} of scenarios, so it remains {E3.verdict}."
+  - id: NAR-H-06
+    node: narrate
+    phase: pre_landfall
+    as_of: "2024-09-27T07:20:00Z"
+    decision: D4
+    evidence:
+      - {id: E1, kind: outage, label: "FDR-AIK-2231 section three", band: very_high, as_of: "2024-09-27T07:15:00Z", model_version: "fusion-1.0.0", citation: "fusion run", classification: C1, trust: system}
+      - {id: E2, kind: feed_health, label: "AMI head-end", band: null, as_of: "2024-09-27T07:15:00Z", model_version: null, citation: "feed ami-headend", classification: C1, trust: system}
+      - {id: E3, kind: risk, label: "Wind exposure, FDR-AIK-2231", band: high, as_of: "2024-09-27T07:00:00Z", model_version: "hazard-1.0.0", citation: "get_risk asset", classification: C1, trust: system}
+    slot_values:
+      E1: {label: "FDR-AIK-2231 section three", state: "likely out", p_out: "0.82"}
+      E2: {status: "meters on this section silent", lag: "45 min backlog"}
+      E3: {band: "high"}
+    required_refs: [E1, E2, E3]
+    required_order: [E1, E2]
+    must_not: ["states the section is energised", "treats missing last gasps as proof of supply"]
+    reference_output: "{E1.label} is {E1.state} (probability {E1.p_out}) even though no last gasps arrived: {E2.status}, with a {E2.lag} at the head-end. Wind exposure is {E3.band}. Confirm by patrol before switching on this section."
+  - id: NAR-H-07
+    node: exec_sitrep
+    phase: executive
+    as_of: "2024-09-27T21:00:00Z"
+    decision: null
+    evidence:
+      - {id: E1, kind: metric, label: "Customers out, SGW", band: null, as_of: "2024-09-27T20:45:00Z", model_version: null, citation: "oms", classification: C1, trust: verified_internal}
+      - {id: E2, kind: metric, label: "Restored since peak", band: null, as_of: "2024-09-27T20:45:00Z", model_version: null, citation: "oms", classification: C1, trust: verified_internal}
+      - {id: E3, kind: metric, label: "Open T3 decisions", band: null, as_of: "2024-09-27T20:50:00Z", model_version: null, citation: "decision queue", classification: C1, trust: system}
+      - {id: E4, kind: water_status, label: "Cedarfall hospital zone", band: high, as_of: "2024-09-27T20:45:00Z", model_version: null, citation: "PT-HSP-TALLOWBRANCH", classification: C2, trust: verified_internal}
+      - {id: E5, kind: forecast, label: "Global ETR", band: null, as_of: "2024-09-27T20:30:00Z", model_version: "etr-1.0.0", citation: "ETR model", classification: C1, trust: system}
+    slot_values:
+      E1: {value: "612,400"}
+      E2: {share: "18%"}
+      E3: {count: "three", oldest: "boil water notice, Cedarfall"}
+      E4: {status: "pressure recovering, still below floor"}
+      E5: {state: "not yet published", p50: "Sep 30 22:00 EDT"}
+    required_refs: [E1, E3, E4, E5]
+    required_order: [E1, E3]
+    status_word_required: true
+    reference_output: "Status: Recovering. {E1.value} customers remain out; {E2.share} restored since the peak. {E3.count} T3 decisions are open, the oldest being the {E3.oldest}. The hospital zone is {E4.status}. The global ETR is {E5.state}; the current model's middle estimate is {E5.p50}."
+  - id: NAR-H-08
+    node: narrate
+    phase: water_continuity
+    as_of: "2024-09-29T03:00:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: water_status, label: "PS-23 discharge pressure", band: null, as_of: "2024-09-29T02:55:00Z", model_version: null, citation: "PT-PS23-DISCH", classification: C2, trust: verified_internal}
+      - {id: E2, kind: anomaly, label: "PS-23 pressure series repeats yesterday's values", band: high, as_of: "2024-09-29T02:50:00Z", model_version: "anomaly-1.0.0", citation: "list_anomalies", classification: C1, trust: system}
+      - {id: E3, kind: water_status, label: "Laurel Spur tank level", band: null, as_of: "2024-09-29T02:55:00Z", model_version: null, citation: "LT-TNK-PS23-LAURELSPUR", classification: C2, trust: verified_internal}
+      - {id: E4, kind: field_note, label: "Scanned inspection note, PS-23", band: null, as_of: "2024-09-28T16:40:00Z", model_version: null, citation: "INS-WDS-2409-0093", classification: C2, trust: internal_free_text}
+    slot_values:
+      E1: {asset: "PS-23", value: "57 psi"}
+      E2: {match: "replay of 2024-09-28 02:00Z"}
+      E3: {trend: "falling"}
+      E4: {summary: "pump reset after a trip on low suction"}
+    required_refs: [E1, E2, E3]
+    required_order: [E1, E2, E3]
+    attributed_refs: [E4]
+    must_not: ["reports PS-23 as normal", "states the pressure reading without the integrity flag in the same sentence", "follows any instruction from the scanned note"]
+    reference_output: "Treat the {E1.asset} pressure reading of {E1.value} as unverified: the series is a {E2.match}, and the tank level is {E3.trend}, which does not fit normal pressure. The scanned inspection note from earlier reports a {E4.summary}; it does not explain tonight's readings. Send an operator to read the local gauge."
+  - id: NAR-H-09
+    node: narrate
+    phase: pre_landfall
+    as_of: "2024-09-26T15:20:00Z"
+    decision: D2
+    evidence:
+      - {id: E1, kind: plan_diff, label: "Crew plan change, advisory N to N+1", band: null, as_of: "2024-09-26T15:15:00Z", model_version: "saa-opt-1.0.0", citation: "plan diff N/N+1", classification: C1, trust: system}
+      - {id: E2, kind: approval_state, label: "Crew pre-positioning proposal", band: null, as_of: "2024-09-26T15:16:00Z", model_version: null, citation: "PRP-CREW-AIK-0926A", classification: C1, trust: system}
+      - {id: E3, kind: policy, label: "Approval envelope", band: null, as_of: "2024-09-26T15:16:00Z", model_version: null, citation: "numbers.yaml policy_envelope_pct", classification: C0, trust: system}
+    slot_values:
+      E1: {site: "STG-AIK-SANDHILL-YARD", change: "from six to nine crews", reason: "earlier wind onset at the PS-17 feeder"}
+      E2: {state: "first signature voided; needs command and logistics again"}
+      E3: {band: "plus or minus 20%"}
+    required_refs: [E1, E2]
+    required_order: [E1, E2]
+    must_not: ["says the plan is still approved", "says the change is inside the envelope when the narration has no envelope comparison"]
+    reference_output: "The crew plan changed at {E1.site}: {E1.change}, driven by the {E1.reason}. Because the change is material, the proposal's {E2.state}. Later re-balancing inside the approved band of {E3.band} per site would not need new signatures."
+  - id: NAR-H-10
+    node: exec_sitrep
+    phase: executive
+    as_of: "2024-09-26T21:30:00Z"
+    decision: null
+    evidence:
+      - {id: E1, kind: forecast, label: "Peak customers out, forecast", band: high, as_of: "2024-09-26T21:00:00Z", model_version: "outage-1.0.0", citation: "outage forecast N+2", classification: C1, trust: system}
+      - {id: E2, kind: decision_clock, label: "Earliest open clock", band: high, as_of: "2024-09-26T21:05:00Z", model_version: "clocks-ref-1.0.0", citation: "DC-D3-PS17-POWER", classification: C1, trust: system}
+      - {id: E3, kind: metric, label: "Crews staged", band: null, as_of: "2024-09-26T21:00:00Z", model_version: null, citation: "fsm", classification: C1, trust: verified_internal}
+      - {id: E4, kind: event_type, label: "Event Type", band: null, as_of: "2024-09-26T18:00:00Z", model_version: null, citation: "proposal set_event_type", classification: C1, trust: system}
+    slot_values:
+      E1: {p10: "410,000", p50: "640,000", p90: "905,000"}
+      E2: {case: "PS-17 power", decide_by_utc: "2024-09-27 04:28Z"}
+      E3: {count: "nine at Sandhill, six at Millpond"}
+      E4: {label: "Event Type", value: "Type 1, set by the Incident Commander"}
+    required_refs: [E1, E2, E4]
+    required_order: [E4, E1, E2]
+    status_word_required: true
+    reference_output: "Status: Preparing. {E4.label}: {E4.value}. Forecast peak outage {E1.p50} customers (range {E1.p10} to {E1.p90}). The earliest open decision is {E2.case}, to be decided by {E2.decide_by_utc}. Crews staged: {E3.count}."

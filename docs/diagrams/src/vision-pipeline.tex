@@ -1,0 +1,32 @@
+\begin{tikzpicture}[sgw,
+  w/.style={text width=#1,minimum width=0pt}]
+  % Offline scoring
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (p1) at (0,0) {LADI v2 photos\sgwsub{200 aerial photos, test split}\sgwsub{2023 US disasters, CC BY 4.0}};
+  \node[sgw/core,w=3.6cm,minimum height=1.75cm] (p2) at (4.3,0) {LADI-v2-classifier-\\small-reference\sgwsub{\color{sgwHairline}MITLL, BiT-50, Hugging Face}};
+  \node[sgw/store,w=3.4cm] (p3) at (8.6,0) {ladi\_scores.json\sgwsub{12 label probabilities}\sgwsub{per photo, sha256}};
+  \sgwzone{off}{sgwNeutral}{(p1)(p2)(p3)}{Scored once, offline (host/cv/ladi\_score.py, transformers on Apple MPS)}
+  \draw[sgw/flow] (p1) -- (p2);
+  \draw[sgw/flow] (p2) -- (p3);
+
+  % Queue build
+  \node[sgw/service,w=12.2cm,minimum height=1.3cm] (q1) at (4.3,-2.75) {Damage score = weighted mean of 7 label probabilities\sgwsub{buildings\_affected\_or\_greater 1.0, buildings\_minor\_or\_greater 1.0, debris\_any 0.9,}\sgwsub{flooding\_structures 0.9, trees\_damage 0.8, flooding\_any 0.7, roads\_damage 0}};
+  \node[sgw/service,w=7.9cm,minimum height=1.55cm] (q2) at (2.15,-4.75) {Signals: a label probability $\geq$ 0.5\sgwsub{trees or debris: line-clearance crew}\sgwsub{flooding: access check; buildings: raise restoration priority}};
+  \node[sgw/consequence,w=3.6cm,minimum height=1.55cm] (q3) at (8.6,-4.75) {roads\_damage\sgwsub{human review only,}\sgwsub{never moves the order}};
+  \node[sgw/service,w=12.2cm,minimum height=1.3cm] (q4) at (4.3,-6.75) {Review order: photos sorted by damage score, highest first\sgwsub{each seeded damage case: 5 stand-in photos picked by volunteer (CAP) labels, never by score;}\sgwsub{case score = mean damage score of its photos}};
+  \sgwzone{build}{sgwSevAdvisoryFill}{(q1)(q2)(q3)(q4)}{Review queue (models/cv/queue.py, queue\_policy.yaml)}
+  \draw[sgw/flow] (p3.south) -- (p3.south |- q1.north);
+  \draw[sgw/flow] (q1.south -| q2) -- (q2);
+  \draw[sgw/flow] (q1.south -| q3) -- (q3);
+  \draw[sgw/flow] (q2.south) -- (q2.south |- q4.north);
+
+  % Human review
+  \node[sgw/store,w=3.4cm] (r1) at (0,-9.45) {review\_queue.json\sgwsub{rank, signals, actions}};
+  \node[sgw/service,w=3.6cm,minimum height=1.25cm] (r2) at (4.3,-9.45) {Damage queue on\\the Crews screen\sgwsub{read-only API}};
+  \node[sgw/person,w=3.6cm,minimum height=1.25cm] (r3) at (8.6,-9.45) {Reviewer\sgwsub{\mdseries confirms or rejects}\sgwsub{\mdseries each photo}};
+  \node[sgw/note,w=12.2cm] (r4) at (4.3,-10.75) {Every row starts as awaiting\_review: the queue only orders photos, a person decides before a plan changes.\\Model quality quoted only from the LADI v2 paper (mAP 91.1\% on the test split), not measured by SGW.};
+  \begin{pgfonlayer}{background}\node[sgw/zone=sgwOkFill,fit=(r1)(r2)(r3)(r4)] (rev) {};\end{pgfonlayer}
+  \node[sgw/zone title,anchor=south] at ([yshift=1pt]rev.north) {Human review (api/routers/damage.py, web Crews screen)};
+  \draw[sgw/flow] (q4.south -| r1) -- (r1);
+  \draw[sgw/flow] (r1) -- (r2);
+  \draw[sgw/flow] (r2) -- (r3);
+\end{tikzpicture}

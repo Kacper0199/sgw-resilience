@@ -1,0 +1,88 @@
+# Ask bank, followup: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-FUP-011
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: map
+  klass: followup
+  tags:
+  - link_request
+  turns:
+  - Which feeder serves Tallowbranch hospital?
+  question: Show it on the map.
+  expect:
+    links:
+    - map
+- id: AB-FUP-012
+  lang: en
+  persona: ic_01
+  moment: morning-after
+  page: decisions
+  klass: followup
+  turns:
+  - When must we decide on the hospital tanker?
+  question: What happens if we miss it?
+  expect:
+    mentions_any:
+    - hospital
+    - Tallowbranch
+    - water
+- id: AB-FUP-019
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: followup
+  turns:
+  - Co oznacza najnowszy komunikat dla terminu PS-17?
+  question: a dla PS-23?
+  expect:
+    mentions_any:
+    - PS-23
+    - Laurelspur
+- id: AB-FUP-020
+  lang: pl
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: followup
+  turns:
+  - Opowiedz o decyzji o podłączeniu generatora do PS-17.
+  question: Kto musi to podpisać?
+  expect:
+    mentions_any:
+    - podpis
+    - dowodz
+    - wod
+    - operac
+- id: AB-FUP-023
+  lang: pl
+  persona: ic_01
+  moment: morning-after
+  page: map
+  klass: followup
+  tags:
+  - no_diacritics
+  - link_request
+  turns:
+  - Który fider zasila szpital Tallowbranch?
+  question: pokaz to na mapie
+  expect:
+    links:
+    - map
+- id: AB-FUP-025
+  lang: de
+  persona: ic_01
+  moment: at-n1
+  page: water
+  klass: followup
+  tags:
+  - other_language
+  turns:
+  - Was bedeutet die neueste Vorhersage für die Frist von PS-17?
+  question: Und für PS-23?
+  expect:
+    mentions_any:
+    - PS-23
+    - Laurelspur

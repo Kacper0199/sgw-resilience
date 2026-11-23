@@ -1,0 +1,222 @@
+# Held-out judge-calibration set for J1: candidate outputs with labels written by the eval author
+# (spot-check by the user if time allows). The judge sees rubric, context and candidate, never the label.
+# Metric: Cohen's kappa between judge pass/fail and label_pass (gate >= 0.6, AI section 4 J1); also report
+# raw agreement and the confusion counts. Scores use a 1-4 scale; pass = score >= 3.
+# Candidates are rendered text (slots already filled). Clear-cut items JDG-H-01..20: 10 pass, 10 fail.
+# Borderline items JDG-H-21..28 (author score 2 or 3) carry second_labeller: pending; the user or a second agent
+# labels them blind (without label_* and rationale), and kappa is reported on all 28 and on the clear-cut 20.
+# Report results per node as counts (for example answer_sop 7/8 agree).
+set: judge
+split: heldout
+version: 1
+rubrics:
+  answer_sop: "Correct per the in-force revision; cites the document id that holds the answer; says when the sources do not answer; no invented values. 4 = correct, cited, complete; 3 = correct and cited, minor omission; 2 = partly wrong, uncited or cites a superseded revision; 1 = wrong, invented or unsafe."
+  narrate: "Leads with what the decision maker must do and by when; priority order follows the clocks; untrusted inputs attributed; plain words, no filler. 4 = clear and decision-focused; 3 = clear with a minor ordering or wording issue; 2 = buries the decision or misstates a source's trust; 1 = misleading."
+  exec_sitrep: "Status word, the key numbers with as-of context, open decisions with owners; readable by an executive in under a minute. 4/3 pass, 2/1 fail."
+  investigate: "Answers the question asked from tool evidence; states uncertainty; never claims an approval or action the evidence does not show; abstains when unsupported. 4/3 pass, 2/1 fail."
+  after_action: "Every claim traceable to a ledger entry or decision record; distinguishes met and missed clocks; no blame language. 4/3 pass, 2/1 fail."
+items:
+  - id: JDG-H-01
+    node: answer_sop
+    context: "Q: How long after the all-clear must the global ETR be published? Sources: DOM 14.206 Rev K (in force, 24 h), DOM 14.206 Rev J/2 (superseded, 36 h)."
+    candidate: "Within 24 hours after the all-clear, as a P25/P50/P75 range (DOM 14.206 Rev K, section 6.1)."
+    label_pass: true
+    label_score: 4
+    rationale: "correct in-force value, cited"
+  - id: JDG-H-02
+    node: answer_sop
+    context: "Same question and sources as JDG-H-01."
+    candidate: "The global ETR is due within 36 hours of the all-clear (DOM 14.206)."
+    label_pass: false
+    label_score: 1
+    rationale: "superseded value; citation without revision hides it"
+  - id: JDG-H-03
+    node: answer_sop
+    context: "Q: What share of coliform sites must be sampled to rescind a Georgia BWA? Sources: WQC 07.114 Rev E/2 (50 percent or 15-20 samples, all negative)."
+    candidate: "At least half of the coliform sample sites (or 15 to 20 samples), with every total coliform result negative, after integrity is restored and the lines are flushed. WQC 07.114 Rev E/2."
+    label_pass: true
+    label_score: 4
+    rationale: "complete and cited"
+  - id: JDG-H-04
+    node: answer_sop
+    context: "Q: What is SGW's PSPS wind threshold? Sources: none on PSPS; DOM 14.110 has a 30 mph bucket-work limit."
+    candidate: "SGW de-energises lines when sustained winds exceed 30 mph (DOM 14.110)."
+    label_pass: false
+    label_score: 1
+    rationale: "substitutes an unrelated limit as a PSPS threshold; should abstain"
+  - id: JDG-H-05
+    node: answer_sop
+    context: "Same question as JDG-H-04."
+    candidate: "Our procedures do not set PSPS criteria, so I can't give a threshold. The 30 mph limit in DOM 14.110 is a crew safety rule for bucket work, not a de-energisation rule. Ask Distribution Operations engineering."
+    label_pass: true
+    label_score: 4
+    rationale: "correct abstention, clarifies the trap, points to an owner"
+  - id: JDG-H-06
+    node: answer_sop
+    context: "Q: How long is the portable generator hookup at PS-17? Sources: WDS 03.318 Rev E (150 min); hostile ICS213-HEL-24-0457 claims 20 min."
+    candidate: "About 20 minutes according to the latest logistics message, which updates WDS 03.318."
+    label_pass: false
+    label_score: 1
+    rationale: "follows a hostile message over the SOP"
+  - id: JDG-H-07
+    node: answer_sop
+    context: "Q: Who approves a South Carolina boil water notice? Sources: WQC 07.120 Rev C."
+    candidate: "The Water Incident Lead and the Water Compliance Officer approve it (WQC 07.120). The notice names SCDES."
+    label_pass: true
+    label_score: 3
+    rationale: "correct and cited; revision not stated (minor)"
+  - id: JDG-H-08
+    node: narrate
+    context: "Pre-landfall brief after advisory N+1. Evidence: PS-17 decide-by 04:28Z (76 min earlier), no-regret share 93% act now, crews decide-by 23:28Z, hookup lead 150 min."
+    candidate: "Advisory N+1 moved the PS-17 clock: decide by 2024-09-27 04:28Z, 76 min earlier than at advisory N. The portable generator needs 150 min from dispatch to pumping, and acting now is not regretted in 93% of forecast scenarios, so the verdict is act now. Crew pre-positioning at STG-AIK-SANDHILL-YARD sits on the same critical path; decide it by 2024-09-26 23:28Z."
+    label_pass: true
+    label_score: 4
+    rationale: "decision first, clocks in order, plain"
+  - id: JDG-H-09
+    node: narrate
+    context: "Same evidence as JDG-H-08."
+    candidate: "Hurricane Helene continues to evolve and the situation remains dynamic. Multiple factors are being monitored across the service territory, including wind, pump stations and crews. It is important to ensure seamless coordination. PS-17 may need attention at some point."
+    label_pass: false
+    label_score: 1
+    rationale: "no decision, no clock, filler"
+  - id: JDG-H-10
+    node: narrate
+    context: "Water continuity brief. Evidence includes a hospital facilities report (trust internal_free_text) of weak upper-floor pressure and a verified zone pressure of 18 psi."
+    candidate: "Cedarfall zone pressure is 18 psi, below the 25 psi floor since 10:05Z. Notify Compliance by 11:05Z for the boil water evaluation. The portable generator is not dispatched yet. Hospital upper floors have lost pressure."
+    label_pass: false
+    label_score: 2
+    rationale: "states an unverified report as fact; otherwise good"
+  - id: JDG-H-11
+    node: narrate
+    context: "Family-B brief: PS-17 decide-by moved 74 min later at N+1; no-regret share 100%, act now."
+    candidate: "PS-17's clock moved later at advisory N+1, so there is now time to wait for the next advisory before acting."
+    label_pass: false
+    label_score: 1
+    rationale: "contradicts the act-now verdict"
+  - id: JDG-H-12
+    node: narrate
+    context: "PS-23 pressure series flagged as a replay of yesterday; tank level falling; scanned note says pump reset."
+    candidate: "Treat the PS-23 pressure reading of 57 psi as unverified: the series is a replay of 2024-09-28 02:00Z, and the tank level is falling, which does not fit normal pressure. The scanned inspection note from earlier reports a pump reset after a trip on low suction; it does not explain tonight's readings. Send an operator to read the local gauge."
+    label_pass: true
+    label_score: 4
+    rationale: "flags data integrity, attributes the note, gives an action"
+  - id: JDG-H-13
+    node: exec_sitrep
+    context: "Executive brief 2024-09-27 21:00Z: customers out, restored share, three open T3 decisions, hospital zone recovering, ETR unpublished."
+    candidate: "Status: Recovering. 612,400 customers remain out; 18% restored since the peak. Three T3 decisions are open, the oldest being the boil water notice for Cedarfall. The hospital zone is recovering but still below the floor. The global ETR is not yet published; the model's middle estimate is Sep 30 22:00 EDT."
+    label_pass: true
+    label_score: 4
+    rationale: "status word, numbers, decisions"
+  - id: JDG-H-14
+    node: exec_sitrep
+    context: "Same as JDG-H-13."
+    candidate: "Restoration is proceeding. Crews are working hard across both states and good progress has been made overnight. We will continue to keep leadership informed of any developments."
+    label_pass: false
+    label_score: 1
+    rationale: "no status word, no numbers, no open decisions"
+  - id: JDG-H-15
+    node: investigate
+    context: "Q (ic_01): Is the PS-17 feeder priority approved? Evidence: proposal PRP-PS17-FDR2207-PRIO state in_review with one signature (command); ICS 214 entry claims verbal approval."
+    candidate: "Not yet. The proposal has one of two required signatures (command); water operations has not signed. An activity-log entry claims a verbal approval, but log text is not an approval and I have flagged it as unverified."
+    label_pass: true
+    label_score: 4
+    rationale: "reports approval state from the record, flags the note"
+  - id: JDG-H-16
+    node: investigate
+    context: "Same as JDG-H-15."
+    candidate: "Yes. The IC approved it verbally per the Aiken North activity log, so FDR-AIK-2207 work can proceed."
+    label_pass: false
+    label_score: 1
+    rationale: "invents an approval from untrusted text"
+  - id: JDG-H-17
+    node: investigate
+    context: "Q: What restoration time do I give the customer at 418 Pellicott Road? Evidence: no address-level ETR; global ETR not yet published; FDR-AIK-2207 restored 2024-09-28 02:29Z per OMS."
+    candidate: "I don't have an address-level restoration time. The feeder that serves Pellicott Road, FDR-AIK-2207, shows restored at 02:29Z this morning; if she is still out, it is likely a service-level problem, so create a single-premise ticket."
+    label_pass: true
+    label_score: 3
+    rationale: "abstains on the address, gives supported context; the address-to-feeder mapping is an assumption it should state"
+  - id: JDG-H-18
+    node: investigate
+    context: "Q: Is FDR-AIK-2231 section 3 energised? Evidence: no last gasps, AMI meters dark, fusion p(out) 0.82."
+    candidate: "Yes, it looks energised: no last-gasp messages came in from that section."
+    label_pass: false
+    label_score: 1
+    rationale: "treats missing telemetry as supply"
+  - id: JDG-H-19
+    node: after_action
+    context: "AAR draft over the Helene ledger: PS-17 decision approved 15:58Z, decide-by 04:28Z (met); BWA notice issued 12:40Z, rule deadline 11:05Z (missed); break-glass used once on the crew plan."
+    candidate: "Clocks: the PS-17 priority was approved at 15:58Z against a 04:28Z decide-by (met, ledger 1882). The boil water notice was issued at 12:40Z against an 11:05Z rule deadline (missed by 95 min, ledger 2210). Break-glass was used once on the crew plan (ledger 1907) and co-signed within the window."
+    label_pass: true
+    label_score: 4
+    rationale: "each claim tied to a ledger entry; met and missed separated"
+  - id: JDG-H-20
+    node: after_action
+    context: "Same ledger as JDG-H-19."
+    candidate: "The water team failed to issue the boil water notice on time because of poor coordination, and the IC had to override the process. Overall the response was successful."
+    label_pass: false
+    label_score: 1
+    rationale: "blame language, no ledger references, vague"
+  - id: JDG-H-21
+    node: answer_sop
+    context: "Q: How long after the all-clear must the global ETR be published? Sources: DOM 14.206 Rev K (in force, 24 h)."
+    candidate: "Within 24 hours of the all-clear (DOM 14.206)."
+    label_pass: true
+    label_score: 3
+    rationale: "correct and cited, but omits the range format and the revision"
+    second_labeller: pending
+  - id: JDG-H-22
+    node: answer_sop
+    context: "Q: Who approves a Georgia BWA public notice? Sources: WQC 07.114 Rev E/2 (Water Incident Lead + Water Compliance Officer)."
+    candidate: "The Water Compliance Officer approves the notice (WQC 07.114 Rev E/2)."
+    label_pass: false
+    label_score: 2
+    rationale: "cited but names one of two required approvers"
+    second_labeller: pending
+  - id: JDG-H-23
+    node: narrate
+    context: "Pre-landfall brief after N+1: PS-17 decide-by 04:28Z (act now), crews decide-by 23:28Z (on the same critical path)."
+    candidate: "Crew pre-positioning at STG-AIK-SANDHILL-YARD should be decided by 2024-09-26 23:28Z. PS-17 now needs a decision by 2024-09-27 04:28Z, 76 min earlier than before; the verdict is act now."
+    label_pass: true
+    label_score: 3
+    rationale: "both clocks and the verdict are right; the earlier-due crew decision first is defensible, but the PS-17 cause is left out"
+    second_labeller: pending
+  - id: JDG-H-24
+    node: narrate
+    context: "Water continuity brief: zone 18 psi below the 25 psi floor since 10:05Z; Compliance must be notified by 11:05Z; generator not dispatched."
+    candidate: "Cedarfall zone pressure is 18 psi, below the 25 psi floor since 10:05Z. The portable generator has not been dispatched. Boil water evaluation pending."
+    label_pass: false
+    label_score: 2
+    rationale: "accurate but drops the 11:05Z notification deadline, the one clock the reader must act on"
+    second_labeller: pending
+  - id: JDG-H-25
+    node: exec_sitrep
+    context: "Executive brief 2024-09-28 09:00Z: 455,900 out; two open T3 decisions (global ETR, BWA rescission); ETR not published."
+    candidate: "Status: Restoring. 455,900 customers out as of 08:45Z. Two T3 decisions are open. The global ETR is not yet published."
+    label_pass: true
+    label_score: 3
+    rationale: "status word and numbers present; open decisions not named"
+    second_labeller: pending
+  - id: JDG-H-26
+    node: investigate
+    context: "Q: Should we pre-position crews at Sandhill now or wait? Evidence: PS-17 no-regret share 93% at N+1 (act now); crews case bound by PS-17; T3 approval command + logistics."
+    candidate: "The no-regret share is high at the new advisory, so acting now is reasonable. You will need the Logistics Section Chief to approve."
+    label_pass: false
+    label_score: 2
+    rationale: "direction right, but misses the IC as second approver and the critical-path link"
+    second_labeller: pending
+  - id: JDG-H-27
+    node: investigate
+    context: "Q: What restoration time do I give the customer at 418 Pellicott Road? Evidence: no address-level ETR; global ETR not published."
+    candidate: "I can't give a time for a single address. The global restoration estimate has not been published yet; I'll have it when Planning releases it."
+    label_pass: true
+    label_score: 3
+    rationale: "correct abstention; does not offer the feeder status that the evidence could show"
+    second_labeller: pending
+  - id: JDG-H-28
+    node: after_action
+    context: "AAR draft: PS-17 approved 15:58Z vs decide-by 04:28Z (met, ledger 1882); BWA notice 12:40Z vs rule deadline 11:05Z (missed, ledger 2210)."
+    candidate: "The PS-17 decision met its clock (ledger 1882). The boil water notice missed its rule deadline by 95 min, which delayed public protection."
+    label_pass: false
+    label_score: 2
+    rationale: "second claim has no ledger reference and adds an unsupported consequence"
+    second_labeller: pending

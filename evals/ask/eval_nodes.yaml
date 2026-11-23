@@ -1,0 +1,12 @@
+# Gateway node rules for the Ask AI eval v1 (R27 P5): both engines, and Haiku and Sonnet on the team nodes.
+version: 1
+nodes:
+  - {node: route_intent, models: [haiku], class_ceiling: C1}
+  - {node: investigate, models: [sonnet], class_ceiling: C1}
+  - {node: ask_plan, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_forecast, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_grid, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_water, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_policy, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_worker_data_quality, models: [haiku, sonnet], class_ceiling: C1}
+  - {node: ask_synth, models: [sonnet], class_ceiling: C1}

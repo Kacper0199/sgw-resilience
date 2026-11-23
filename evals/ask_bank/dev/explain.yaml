@@ -1,0 +1,351 @@
+# Ask bank, explain: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-EXP-001
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: What does 'decide by' mean?
+  expect:
+    mentions_any:
+    - latest time
+    - lead time
+    - deadline
+    - impact
+  judge: true
+- id: AB-EXP-003
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: explain
+  question: What is the storm cone on the map?
+  expect:
+    mentions_any:
+    - center
+    - centre
+    - two-thirds
+    - path
+- id: AB-EXP-005
+  lang: en
+  persona: wtr_comp_01
+  moment: morning-after
+  page: water
+  klass: explain
+  question: What is a boil-water notice?
+  expect:
+    mentions_any:
+    - boil
+  judge: true
+- id: AB-EXP-007
+  lang: en
+  persona: plan_etr_01
+  moment: notices-lifted
+  page: forecast
+  klass: explain
+  question: What does the median and the 80% range mean for the ETR?
+  expect:
+    mentions_any:
+    - median
+    - '80'
+- id: AB-EXP-008
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  page: after_action
+  klass: explain
+  question: What is an emergency approval (break-glass)?
+  expect:
+    mentions_any:
+    - alone
+    - co-sign
+    - 24 hours
+    - Incident Commander
+- id: AB-EXP-009
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: explain
+  question: What does co-sign mean?
+  expect:
+    mentions_any:
+    - 24 hours
+    - second team
+    - emergency
+- id: AB-EXP-010
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: explain
+  question: What is the SC 103-314 draft?
+  expect:
+    mentions_any:
+    - 103-314
+    - report
+    - commission
+    - PSC
+- id: AB-EXP-011
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: map
+  klass: explain
+  question: What is a feeder?
+  expect:
+    mentions_any:
+    - line
+    - circuit
+    - substation
+    - customers
+  judge: true
+- id: AB-EXP-012
+  lang: en
+  persona: ops_dm_02
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: What does '2 teams sign' mean?
+  expect:
+    mentions_any:
+    - two
+    - team
+    - sign
+- id: AB-EXP-014
+  lang: en
+  persona: admin_01
+  moment: at-n1
+  page: health
+  klass: explain
+  question: What is a stop level?
+  expect:
+    mentions_any:
+    - stop
+    - AI
+    - level
+- id: AB-EXP-015
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  page: after_action
+  klass: explain
+  question: What is an after-action review?
+  expect:
+    mentions_any:
+    - review
+    - storm
+    - decision
+- id: AB-EXP-016
+  lang: en
+  persona: plan_etr_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  question: What is the critical path?
+  expect:
+    mentions_any:
+    - path
+    - step
+    - longest
+    - chain
+- id: AB-EXP-017
+  lang: en
+  persona: log_01
+  moment: at-n1
+  page: crews
+  klass: explain
+  question: What is mutual aid?
+  expect:
+    mentions_any:
+    - utilit
+    - crew
+    - other
+- id: AB-EXP-019
+  lang: en
+  persona: ml_01
+  moment: at-n1
+  page: health
+  klass: explain
+  question: What is SCADA?
+  expect:
+    mentions_any:
+    - control
+    - supervisory
+    - telemetry
+    - sensor
+- id: AB-EXP-021
+  lang: en
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: explain
+  question: What does peak gust mean?
+  expect:
+    mentions_any:
+    - gust
+    - wind
+- id: AB-EXP-023
+  lang: en
+  persona: ml_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  question: What does 'track record' mean on the forecast?
+  expect:
+    mentions_any:
+    - past
+    - storm
+    - backtest
+    - track record
+- id: AB-EXP-024
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  question: Why does the PS-17 decision say 'decide now'?
+  expect:
+    mentions_any:
+    - PS-17
+    - advisory
+    - deadline
+    - lead
+  judge: true
+- id: AB-EXP-025
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: forecast
+  klass: explain
+  question: What does 'customers out' mean exactly?
+  expect:
+    mentions_any:
+    - customer
+    - power
+- id: AB-EXP-026
+  lang: en
+  persona: wtr_comp_01
+  moment: notices-lifted
+  page: water
+  klass: explain
+  question: Why are two clean coliform sample sets needed before lifting a notice?
+  expect:
+    mentions_any:
+    - coliform
+    - sample
+- id: AB-EXP-027
+  lang: en
+  persona: ops_dm_01
+  moment: at-n1
+  page: decisions
+  klass: explain
+  tags:
+  - typo
+  question: what does no regret mean
+  expect:
+    mentions_any:
+    - regret
+- id: AB-EXP-029
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  question: Co to jest ETR?
+  expect:
+    mentions_any:
+    - przywr
+  judge: true
+- id: AB-EXP-030
+  lang: pl
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: explain
+  question: Co oznacza stożek huraganu na mapie?
+  expect:
+    mentions_any:
+    - stożek
+    - tor
+    - trajektori
+    - stozek
+- id: AB-EXP-031
+  lang: pl
+  persona: wtr_comp_01
+  moment: morning-after
+  page: water
+  klass: explain
+  tags:
+  - no_diacritics
+  question: co to jest komunikat o gotowaniu wody
+  expect:
+    mentions_any:
+    - gotow
+- id: AB-EXP-034
+  lang: pl
+  persona: audit_01
+  moment: notices-lifted
+  page: after_action
+  klass: explain
+  question: Na czym polega zatwierdzenie awaryjne?
+  expect:
+    mentions_any:
+    - awaryj
+    - break-glass
+    - podpis
+- id: AB-EXP-035
+  lang: pl
+  persona: exec_01
+  moment: at-n1
+  page: map
+  klass: explain
+  question: Co to jest fider?
+  expect:
+    mentions_any:
+    - lini
+    - zasil
+    - odbiorc
+    - stacj
+- id: AB-EXP-037
+  lang: de
+  persona: exec_01
+  moment: at-n1
+  page: forecast
+  klass: explain
+  tags:
+  - other_language
+  question: Was bedeutet ETR?
+  expect:
+    mentions_any:
+    - Wiederherstell
+    - wieder Strom
+    - Restoration
+- id: AB-EXP-039
+  lang: fr
+  persona: ic_01
+  moment: at-n1
+  page: map
+  klass: explain
+  tags:
+  - other_language
+  question: Que signifie le cône de l'ouragan ?
+  expect:
+    mentions_any:
+    - cône
+    - trajectoire
+- id: AB-EXP-040
+  lang: en
+  persona: exec_01
+  moment: at-n1
+  page: ask
+  klass: explain
+  question: Can Ask AI approve decisions for me?
+  expect:
+    mentions_any:
+    - read-only
+    - cannot
+    - can't
+    - sign
+    - Decisions

@@ -1,0 +1,619 @@
+{
+ "budget_cut_keeps": [
+  "DC-RDY-GEN-PS52-LOADTEST",
+  "DC-RDY-FUEL-PS38-PS52-TOPUP",
+  "DC-RDY-VEG-FDR2207-2231"
+ ],
+ "cases": [
+  {
+   "asset_id": "GEN-PS52-DEERWATER",
+   "binding_chain": [
+    "DC-RDY-GEN-PS52-LOADTEST"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 7200,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.generator_annual_load_test",
+      "basis_version": "2024-synthetic",
+      "citation": "SGW maintenance policy: load test every 12 months; last test 2023-04-24 (synthetic)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-04-24T04:00:00Z",
+     "consequence_p90_utc": "2024-04-24T04:00:00Z",
+     "consequence_utc": "2024-04-24T04:00:00Z",
+     "decide_by_p10_utc": "2024-04-19T04:00:00Z",
+     "decide_by_p90_utc": "2024-04-19T04:00:00Z",
+     "decide_by_utc": "2024-04-19T04:00:00Z",
+     "if_late": "PS-52 enters the season on an untested generator; in the Helene replay this unit stops at hour 30",
+     "lead_time_basis": {
+      "basis_id": "lead_time.generator_load_test",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-WTR-4.2",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-GEN-PS52-LOADTEST",
+    "domain": "water",
+    "effective_decide_by_utc": "2024-04-19T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": false,
+    "prerequisite_ids": [],
+    "region_id": "SC-45003",
+    "step": "D3",
+    "title": "Run the overdue annual load test on GEN-PS52-DEERWATER"
+   },
+   "hours_to_effective_decide_by": -416.0,
+   "missed": true,
+   "priority": 1,
+   "slack_min": 0.0,
+   "waterfall": {
+    "action_lead_time_min": 7200,
+    "bound_by_case_id": null,
+    "consequence_basis": {
+     "basis_id": "rule.readiness.generator_annual_load_test",
+     "basis_version": "2024-synthetic",
+     "citation": "SGW maintenance policy: load test every 12 months; last test 2023-04-24 (synthetic)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-04-24T04:00:00Z",
+     "2024-04-24T04:00:00Z"
+    ],
+    "consequence_utc": "2024-04-24T04:00:00Z",
+    "decide_by_utc": "2024-04-19T04:00:00Z",
+    "decision_case_id": "DC-RDY-GEN-PS52-LOADTEST",
+    "effective_decide_by_utc": "2024-04-19T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.generator_load_test",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-WTR-4.2",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.generator_annual_load_test",
+     "label": "rule deadline (rule.readiness.generator_annual_load_test)",
+     "p10": 1713931200.0,
+     "p50": 1713931200.0,
+     "p90": 1713931200.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.generator_load_test",
+     "label": "action lead time (generator_load_test)",
+     "p10": -7200.0,
+     "p50": -7200.0,
+     "p90": -7200.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by none)",
+     "p10": -0.0,
+     "p50": -0.0,
+     "p90": -0.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "generator_load_test"
+  },
+  {
+   "asset_id": "STG-AIK-SANDHILL-YARD",
+   "binding_chain": [
+    "DC-RDY-STAGE-SANDHILL-LEASE",
+    "DC-RDY-MAID-TALON-MOU"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 10080,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.hurricane_season_start",
+      "basis_version": "2024-synthetic",
+      "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-06-01T04:00:00Z",
+     "consequence_p90_utc": "2024-06-01T04:00:00Z",
+     "consequence_utc": "2024-06-01T04:00:00Z",
+     "decide_by_p10_utc": "2024-05-25T04:00:00Z",
+     "decide_by_p90_utc": "2024-05-25T04:00:00Z",
+     "decide_by_utc": "2024-05-25T04:00:00Z",
+     "if_late": "the mutual-aid MOU cannot name a staging yard, so arriving crews have nowhere to stage",
+     "lead_time_basis": {
+      "basis_id": "lead_time.staging_site_lease",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-ELE-2.2",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-STAGE-SANDHILL-LEASE",
+    "domain": "electric",
+    "effective_decide_by_utc": "2024-05-11T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": true,
+    "prerequisite_ids": [],
+    "region_id": "SC-45003",
+    "step": "D2",
+    "title": "Confirm the STG-AIK-SANDHILL-YARD lease and fuel-on-site terms"
+   },
+   "hours_to_effective_decide_by": 112.0,
+   "missed": false,
+   "priority": 4,
+   "slack_min": 20160.0,
+   "waterfall": {
+    "action_lead_time_min": 10080,
+    "bound_by_case_id": "DC-RDY-MAID-TALON-MOU",
+    "consequence_basis": {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "basis_version": "2024-synthetic",
+     "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-06-01T04:00:00Z",
+     "2024-06-01T04:00:00Z"
+    ],
+    "consequence_utc": "2024-06-01T04:00:00Z",
+    "decide_by_utc": "2024-05-25T04:00:00Z",
+    "decision_case_id": "DC-RDY-STAGE-SANDHILL-LEASE",
+    "effective_decide_by_utc": "2024-05-11T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.staging_site_lease",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-ELE-2.2",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "label": "rule deadline (rule.readiness.hurricane_season_start)",
+     "p10": 1717214400.0,
+     "p50": 1717214400.0,
+     "p90": 1717214400.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.staging_site_lease",
+     "label": "action lead time (staging_site_lease)",
+     "p10": -10080.0,
+     "p50": -10080.0,
+     "p90": -10080.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by DC-RDY-MAID-TALON-MOU)",
+     "p10": -20160.0,
+     "p50": -20160.0,
+     "p90": -20160.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "staging_site_lease"
+  },
+  {
+   "asset_id": "CRW-MA-TALON-11",
+   "binding_chain": [
+    "DC-RDY-MAID-TALON-MOU"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 20160,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.hurricane_season_start",
+      "basis_version": "2024-synthetic",
+      "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-06-01T04:00:00Z",
+     "consequence_p90_utc": "2024-06-01T04:00:00Z",
+     "consequence_utc": "2024-06-01T04:00:00Z",
+     "decide_by_p10_utc": "2024-05-18T04:00:00Z",
+     "decide_by_p90_utc": "2024-05-18T04:00:00Z",
+     "decide_by_utc": "2024-05-18T04:00:00Z",
+     "if_late": "mutual aid is requested without agreed terms, adding negotiation time to the 36 h median arrival",
+     "lead_time_basis": {
+      "basis_id": "lead_time.mutual_aid_mou_renewal",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-ELE-2.4",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-MAID-TALON-MOU",
+    "domain": "electric",
+    "effective_decide_by_utc": "2024-05-18T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": true,
+    "prerequisite_ids": [
+     "DC-RDY-STAGE-SANDHILL-LEASE"
+    ],
+    "region_id": "SC-45003",
+    "step": "D2",
+    "title": "Renew the mutual-aid MOU and roster with the Talon task force (CRW-MA-TALON-11)"
+   },
+   "hours_to_effective_decide_by": 280.0,
+   "missed": false,
+   "priority": 5,
+   "slack_min": 0.0,
+   "waterfall": {
+    "action_lead_time_min": 20160,
+    "bound_by_case_id": null,
+    "consequence_basis": {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "basis_version": "2024-synthetic",
+     "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-06-01T04:00:00Z",
+     "2024-06-01T04:00:00Z"
+    ],
+    "consequence_utc": "2024-06-01T04:00:00Z",
+    "decide_by_utc": "2024-05-18T04:00:00Z",
+    "decision_case_id": "DC-RDY-MAID-TALON-MOU",
+    "effective_decide_by_utc": "2024-05-18T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.mutual_aid_mou_renewal",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-ELE-2.4",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "label": "rule deadline (rule.readiness.hurricane_season_start)",
+     "p10": 1717214400.0,
+     "p50": 1717214400.0,
+     "p90": 1717214400.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.mutual_aid_mou_renewal",
+     "label": "action lead time (mutual_aid_mou_renewal)",
+     "p10": -20160.0,
+     "p50": -20160.0,
+     "p90": -20160.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by none)",
+     "p10": -0.0,
+     "p50": -0.0,
+     "p90": -0.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "mutual_aid_mou"
+  },
+  {
+   "asset_id": "FDR-AIK-2207",
+   "binding_chain": [
+    "DC-RDY-VEG-FDR2207-2231"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 20160,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.hurricane_season_start",
+      "basis_version": "2024-synthetic",
+      "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-06-01T04:00:00Z",
+     "consequence_p90_utc": "2024-06-01T04:00:00Z",
+     "consequence_utc": "2024-06-01T04:00:00Z",
+     "decide_by_p10_utc": "2024-05-18T04:00:00Z",
+     "decide_by_p90_utc": "2024-05-18T04:00:00Z",
+     "decide_by_utc": "2024-05-18T04:00:00Z",
+     "if_late": "the two critical-facility trunks go into the season with tree contact risk on the weakest spans",
+     "lead_time_basis": {
+      "basis_id": "lead_time.vegetation_clearance_critical_feeders",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-ELE-7.3",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-VEG-FDR2207-2231",
+    "domain": "electric",
+    "effective_decide_by_utc": "2024-05-18T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": false,
+    "prerequisite_ids": [],
+    "region_id": "SC-45003",
+    "step": "D2",
+    "title": "Clear vegetation on the FDR-AIK-2207 (PS-17) and FDR-AIK-2231 (Tallowbranch hospital) trunks"
+   },
+   "hours_to_effective_decide_by": 280.0,
+   "missed": false,
+   "priority": 3,
+   "slack_min": 0.0,
+   "waterfall": {
+    "action_lead_time_min": 20160,
+    "bound_by_case_id": null,
+    "consequence_basis": {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "basis_version": "2024-synthetic",
+     "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-06-01T04:00:00Z",
+     "2024-06-01T04:00:00Z"
+    ],
+    "consequence_utc": "2024-06-01T04:00:00Z",
+    "decide_by_utc": "2024-05-18T04:00:00Z",
+    "decision_case_id": "DC-RDY-VEG-FDR2207-2231",
+    "effective_decide_by_utc": "2024-05-18T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.vegetation_clearance_critical_feeders",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-ELE-7.3",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "label": "rule deadline (rule.readiness.hurricane_season_start)",
+     "p10": 1717214400.0,
+     "p50": 1717214400.0,
+     "p90": 1717214400.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.vegetation_clearance_critical_feeders",
+     "label": "action lead time (vegetation_clearance_critical_feeders)",
+     "p10": -20160.0,
+     "p50": -20160.0,
+     "p90": -20160.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by none)",
+     "p10": -0.0,
+     "p50": -0.0,
+     "p90": -0.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "vegetation_clearance"
+  },
+  {
+   "asset_id": "GEN-PS38-COPPERLEAF",
+   "binding_chain": [
+    "DC-RDY-FUEL-PS38-PS52-TOPUP"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 14400,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.hurricane_season_start",
+      "basis_version": "2024-synthetic",
+      "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-06-01T04:00:00Z",
+     "consequence_p90_utc": "2024-06-01T04:00:00Z",
+     "consequence_utc": "2024-06-01T04:00:00Z",
+     "decide_by_p10_utc": "2024-05-22T04:00:00Z",
+     "decide_by_p90_utc": "2024-05-22T04:00:00Z",
+     "decide_by_utc": "2024-05-22T04:00:00Z",
+     "if_late": "the onsite tanks start the season short of five days and the supplier owes no priority delivery",
+     "lead_time_basis": {
+      "basis_id": "lead_time.fuel_contract_top_up",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-WTR-4.4",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-FUEL-PS38-PS52-TOPUP",
+    "domain": "water",
+    "effective_decide_by_utc": "2024-05-22T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": false,
+    "prerequisite_ids": [
+     "DC-RDY-GEN-PS52-LOADTEST"
+    ],
+    "region_id": "SC-45003",
+    "step": "D3",
+    "title": "Top up PS-38 and PS-52 generator tanks to five days at 70 % load and renew priority delivery"
+   },
+   "hours_to_effective_decide_by": 376.0,
+   "missed": false,
+   "priority": 2,
+   "slack_min": 0.0,
+   "waterfall": {
+    "action_lead_time_min": 14400,
+    "bound_by_case_id": null,
+    "consequence_basis": {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "basis_version": "2024-synthetic",
+     "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-06-01T04:00:00Z",
+     "2024-06-01T04:00:00Z"
+    ],
+    "consequence_utc": "2024-06-01T04:00:00Z",
+    "decide_by_utc": "2024-05-22T04:00:00Z",
+    "decision_case_id": "DC-RDY-FUEL-PS38-PS52-TOPUP",
+    "effective_decide_by_utc": "2024-05-22T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.fuel_contract_top_up",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-WTR-4.4",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "label": "rule deadline (rule.readiness.hurricane_season_start)",
+     "p10": 1717214400.0,
+     "p50": 1717214400.0,
+     "p90": 1717214400.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.fuel_contract_top_up",
+     "label": "action lead time (fuel_contract_top_up)",
+     "p10": -14400.0,
+     "p50": -14400.0,
+     "p90": -14400.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by none)",
+     "p10": -0.0,
+     "p50": -0.0,
+     "p90": -0.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "fuel_contract_top_up"
+  },
+  {
+   "asset_id": "HSP-AIK-TALLOWBRANCH",
+   "binding_chain": [
+    "DC-RDY-TANKER-TALLOWBRANCH"
+   ],
+   "case": {
+    "clock": {
+     "action_lead_time_min": 10080,
+     "clock_kind": "rule_deadline",
+     "consequence_basis": {
+      "basis_id": "rule.readiness.hurricane_season_start",
+      "basis_version": "2024-synthetic",
+      "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+      "kind": "rule_deadline"
+     },
+     "consequence_p10_utc": "2024-06-01T04:00:00Z",
+     "consequence_p90_utc": "2024-06-01T04:00:00Z",
+     "consequence_utc": "2024-06-01T04:00:00Z",
+     "decide_by_p10_utc": "2024-05-25T04:00:00Z",
+     "decide_by_p90_utc": "2024-05-25T04:00:00Z",
+     "decide_by_utc": "2024-05-25T04:00:00Z",
+     "if_late": "if the hospital has power but no pressure (Helene D6), a tanker is sought ad hoc",
+     "lead_time_basis": {
+      "basis_id": "lead_time.potable_water_tanker_standby",
+      "basis_version": "1.0-synthetic",
+      "citation": "SOP-WTR-6.1",
+      "kind": "model_estimate"
+     }
+    },
+    "decision_case_id": "DC-RDY-TANKER-TALLOWBRANCH",
+    "domain": "water",
+    "effective_decide_by_utc": "2024-05-25T04:00:00Z",
+    "next_advisory_utc": null,
+    "no_regret_share_ppm": null,
+    "no_regret_verdict": "n/a",
+    "on_critical_path": false,
+    "prerequisite_ids": [],
+    "region_id": "SC-45003",
+    "step": "D3",
+    "title": "Sign a standby potable-water tanker agreement for HSP-AIK-TALLOWBRANCH"
+   },
+   "hours_to_effective_decide_by": 448.0,
+   "missed": false,
+   "priority": 6,
+   "slack_min": 0.0,
+   "waterfall": {
+    "action_lead_time_min": 10080,
+    "bound_by_case_id": null,
+    "consequence_basis": {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "basis_version": "2024-synthetic",
+     "citation": "A-083: annual readiness review before June 1 (hurricane season)",
+     "kind": "rule_deadline"
+    },
+    "consequence_range_utc": [
+     "2024-06-01T04:00:00Z",
+     "2024-06-01T04:00:00Z"
+    ],
+    "consequence_utc": "2024-06-01T04:00:00Z",
+    "decide_by_utc": "2024-05-25T04:00:00Z",
+    "decision_case_id": "DC-RDY-TANKER-TALLOWBRANCH",
+    "effective_decide_by_utc": "2024-05-25T04:00:00Z",
+    "lead_time_basis": {
+     "basis_id": "lead_time.potable_water_tanker_standby",
+     "basis_version": "1.0-synthetic",
+     "citation": "SOP-WTR-6.1",
+     "kind": "model_estimate"
+    }
+   },
+   "waterfall_rows": [
+    {
+     "basis_id": "rule.readiness.hurricane_season_start",
+     "label": "rule deadline (rule.readiness.hurricane_season_start)",
+     "p10": 1717214400.0,
+     "p50": 1717214400.0,
+     "p90": 1717214400.0,
+     "term_kind": "anchor",
+     "unit": "epoch_s"
+    },
+    {
+     "basis_id": "lead_time.potable_water_tanker_standby",
+     "label": "action lead time (potable_water_tanker_standby)",
+     "p10": -10080.0,
+     "p50": -10080.0,
+     "p90": -10080.0,
+     "term_kind": "lead_time",
+     "unit": "min"
+    },
+    {
+     "basis_id": null,
+     "label": "critical path (bound by none)",
+     "p10": -0.0,
+     "p50": -0.0,
+     "p90": -0.0,
+     "term_kind": "critical_path",
+     "unit": "min"
+    }
+   ],
+   "work_type": "water_tanker_standby"
+  }
+ ],
+ "clock_service": "WP-12 compute_queue (lead times from the WP-12 registry)",
+ "label": "synthetic",
+ "mode": "readiness",
+ "scenario_now_utc": "2024-05-06T12:00:00Z",
+ "season_deadline_utc": "2024-06-01T04:00:00Z"
+}

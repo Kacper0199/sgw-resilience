@@ -1,0 +1,158 @@
+# Machine-readable map of the SGW web platform for the Ask navigator (R33). Derived from the web routes and
+# query parameters (web/src/app/modules.ts, the `useQueryState` reads of each feature) and the page access
+# rule (`useNavModules`: Admin only for the platform function, `sgw.api.permissions.is_admin`). Keep it in
+# step with the web: tests/unit/agent/copilot/test_platform_map.py checks every path and parameter here
+# against the web sources.
+version: 1
+pages:
+  - key: decisions
+    label: Decisions
+    path: /
+    words: [decision, decisions, decide, deadline, deadlines, sign, signature, approve, approval, queue, proposal, clock, due, urgent, important, priority]
+    shows: >-
+      The decisions waiting for a signature with their decide-by times (the latest moment to decide), who must
+      sign, the evidence behind each proposal and what was decided already. A decision opens on its own page.
+    params:
+      d: "one decision selected (proposal id)"
+    actions: "People whose team must sign can sign or reject a decision here; everyone else can read it."
+  - key: map
+    label: Map
+    path: /map
+    words: [map, where, location, asset, assets, feeder, substation, pump, station, county, storm, track, cone, hospital, outage, outages, place, area]
+    shows: >-
+      Assets on a map (feeders, substations, pump stations, the hospital), the storm track and cone, county
+      outage risk and the places a decision is about.
+    params:
+      asset: "one asset selected, e.g. PS-17"
+      county: "one county selected (FIPS code)"
+      at: "the scenario time shown"
+      decision: "the assets of one decision case highlighted"
+  - key: forecast
+    label: Forecast
+    path: /forecast
+    words: [forecast, prediction, predict, outlook, hurricane, track, wind, advisory, peak, customers, model, what-if, whatif, scenario, risk, outage]
+    shows: >-
+      The outage forecast: customers expected without power per county and at the peak, how the latest
+      advisory changed it, and precomputed what-if scenarios.
+    params:
+      view: "range (counties) or whatif (what-ifs)"
+      at: "the scenario time shown"
+    tabs:
+      range: Counties
+      whatif: What-ifs
+  - key: crews
+    label: Crews
+    path: /crews
+    words: [crew, crews, team, teams, staging, yard, yards, mutual, aid, generator, generators, photo, photos, picture, pictures, image, images, damage, flood, flooding, restoration, plan, truck, fuel]
+    shows: >-
+      Line crews and where they are, the staging yards and the crew plan, portable generators, and the damage
+      photos ranked by the damage triage model for a reviewer.
+    params:
+      tab: "crews, plan or photos"
+      crew: "one crew selected"
+      yard: "one staging yard selected"
+      photo: "one damage photo opened"
+    tabs:
+      crews: Crews
+      plan: Plan
+      photos: Damage photos
+    actions: "Logistics and operations can assign a crew or mark it blocked."
+  - key: water
+    label: Water
+    path: /water
+    words: [water, pressure, pump, pumps, tank, tanks, zone, zones, boil, boil-water, notice, notices, advisory, advisories, sample, samples, hospital, supply, sensor, sensors, contamination]
+    shows: >-
+      Water zones with pressure, tanks and pump stations, the water continuity plan, and the boil-water
+      notices: due, issued, samples, the lift decision and lifted.
+    params:
+      tab: "zones, plan or advisories"
+      zone: "one water zone selected, e.g. WZ-PS17-CEDARFALL"
+    tabs:
+      zones: Zones
+      plan: Plan
+      advisories: Boil-water notices
+  - key: ask
+    label: Ask AI
+    path: /ask
+    words: [ask, ai, assistant, copilot, chat, question]
+    shows: "Questions about the storm response in plain words; answers cite their sources and link to the pages."
+    params:
+      t: "one conversation"
+  - key: brief
+    label: Briefing
+    path: /brief
+    words: [briefing, brief, summary, overview, situation, sitrep, status, report, today, happening, executive]
+    shows: >-
+      The current situation at a glance: what happened, what is decided and what is due next, written for a
+      shift change or the executive.
+  - key: after_action
+    label: After-action
+    path: /after-action
+    words: [after-action, review, lessons, audit, timeline, history, past, decided, missed, report, scorecard, etr, accuracy, emergency, break-glass]
+    shows: >-
+      What was decided, when and by whom: deadlines met and missed, emergency approvals, ETR accuracy, the
+      timeline and the regulator report.
+    params:
+      tab: "clocks, break-glass, scorecard, timeline or report"
+    tabs:
+      clocks: Deadlines
+      break-glass: Emergency approvals
+      scorecard: ETR accuracy
+      timeline: Timeline
+      report: Regulator report
+  - key: health
+    label: System health
+    path: /health
+    words: [health, system, data, feed, feeds, fresh, stale, models, model, sensors, runs, safety, stop, kill, quality]
+    shows: >-
+      Whether the data and models can be trusted: feed freshness, the models in use, sensor checks, AI
+      activity and the stop controls.
+    params:
+      tab: "data, models, sensors, runs or safety"
+    tabs:
+      data: Data
+      models: Models
+      sensors: Sensors
+      runs: AI activity
+      safety: Stop controls
+  - key: readiness
+    label: Readiness
+    path: /readiness
+    words: [readiness, ready, pre-season, preseason, check, checks, preparation, heat, wildfire, drill, owner]
+    shows: >-
+      Pre-season readiness checks with their owners and due dates, plus heat-wave and wildfire-weather
+      previews.
+    params:
+      view: "pre-season, heat or wildfire"
+      check: "one check selected"
+    tabs:
+      pre-season: Pre-season
+      heat: Heat wave
+      wildfire: Wildfire weather
+  - key: notifications
+    label: Notifications
+    path: /notifications
+    words: [notification, notifications, alert, alerts, inbox, message, messages]
+    shows: "Alerts addressed to you: decisions waiting for you, deadlines soon, signatures recorded."
+  - key: admin
+    label: Admin
+    path: /admin
+    roles: [platform]
+    words: [admin, users, user, policies, policy, integrations, settings, configuration]
+    shows: "Users, policies, integrations and AI settings."
+  - key: help
+    label: Help
+    path: /help
+    words: [help, glossary, term, terms, definition, definitions, meaning, explain]
+    shows: "Definitions of the terms used on the platform, and the data sources."
+roles:
+  command: {label: "Incident Commander", focus: [decisions, brief, map, water]}
+  operations: {label: "Duty Manager, Electric Operations", focus: [decisions, map, crews, forecast]}
+  planning: {label: "ETR Specialist", focus: [forecast, decisions, after_action]}
+  logistics: {label: "Logistics Section Chief", focus: [crews, decisions, map]}
+  water_operations: {label: "Water Incident Lead", focus: [water, decisions, map]}
+  compliance: {label: "Water Compliance Officer", focus: [water, decisions, after_action]}
+  executive: {label: "Executive", focus: [brief, decisions, forecast]}
+  audit: {label: "Auditor", focus: [after_action, decisions, health]}
+  platform: {label: "Platform Admin", focus: [admin, health, decisions]}
+  data: {label: "Data and Models Owner", focus: [health, forecast, crews]}

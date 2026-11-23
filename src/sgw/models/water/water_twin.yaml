@@ -1,0 +1,39 @@
+# WP-13 water twin parameters. Plant data (tank, pump, demand, generator, fuel truck) come from the family file
+# (data/synthetic/family_a.yaml) and the scenario's named assets; state pressure floors come from numbers.yaml.
+# This file holds only what the twin adds: network layout, uncertainty, survival classes, detector settings.
+# Labels: F sourced, C computed, A assumption. Every value is for the synthetic Helene world.
+version: "1.2-synthetic"
+model_ids:
+  drain: water_twin.zone_drain_critical_node
+  survival: water_twin.station_survival_mc
+  fuel: water_twin.portable_generator_fuel
+  wntr: water_twin.wntr_epanet22_pdd
+params:
+  network.service_nodes: {value: 14, unit: "-", label: A, source: "small booster zone: 14 lumped service nodes"}
+  network.hazen_williams_c: {value: 110, unit: "-", label: A, source: "older ductile iron / cement-lined, AWWA M32 typical 100-130"}
+  network.elevation_spread_ft: {value: [-25.0, 6.0], unit: "ft", label: A, source: "rolling Aiken County terrain around a standpipe zone"}
+  network.trunk_diameter_in: {value: [20, 16, 16, 12], unit: "in", label: A, source: "zone trunk main from the station"}
+  network.branch_diameter_in: {value: [8, 10, 12], unit: "in", label: A, source: "distribution laterals"}
+  network.loop_diameter_in: {value: 6, unit: "in", label: A, source: "loop-closing cross connections"}
+  network.pipe_length_ft: {value: [800.0, 3000.0], unit: "ft", label: A, source: "block-scale main lengths"}
+  network.hospital_is_highest_node: {value: true, unit: "-", label: A, source: "by construction: the hospital node sits at the WP-06 4 psi offset (+9.24 ft), above the elevation spread of the other nodes (max +6 ft); at higher flows a remote low node can still become critical (WNTR shows it)"}
+  network.hospital_demand_share: {value: 0.04, unit: "-", label: A, source: "a 200-bed hospital uses about 4 percent of a 1.6 MGD zone"}
+  network.hospital_pattern: {value: flat, unit: "-", label: A, source: "a hospital draws water around the clock (flat 24-h pattern)"}
+  demand.leak_multiplier_triangular: {value: [1.1, 1.3, 2.0], unit: "-", label: A, source: "R02 5.4 post-hurricane leakage 1.1 to 2.0; mode = family water.storm_leak_multiplier"}
+  demand.base_scale_lognormal_sigma: {value: 0.10, unit: "-", label: A, source: "storm-day demand uncertainty around the zone average"}
+  generator.class_share: {value: {good: 0.6, middling: 0.3, poor: 0.1}, unit: "-", label: A, source: "R02 5.2 maintenance classes 60/30/10"}
+  generator.fail_to_start: {value: {good: 0.0013, middling: 0.007, poor: 0.0165}, unit: "-", label: F, source: "planner-handoff s3 Generators (Marqusee et al. 2020)"}
+  generator.run_mttf_h: {value: {good: 1662.0, middling: 400.0, poor: 61.0}, unit: "h", label: F, source: "planner-handoff s3 Generators"}
+  fuel.own_truck_extra_delay_lognormal: {value: {median_h: 1.0, sigma: 0.7}, unit: "h", label: A, source: "own-fleet road delay after the load-and-drive lead (fuel.truck_lead_min)"}
+  fuel.route_blocked_p: {value: 0.10, unit: "-", label: A, source: "R02 D3 fuel truck blocked by flood; share of deliveries that fall to the contract supplier"}
+  fuel.contract_delay_lognormal: {value: {median_h: 12.0, sigma: 0.7}, unit: "h", label: A, source: "R02 5.3 contract delivery delay"}
+  fuel.empty_guard_frac: {value: 0.05, unit: "-", label: F, source: "R02 5.3: refill before 5 percent to avoid drawing sludge"}
+  pdd.minimum_psi: {value: 5.0, unit: "psi", label: A, source: "R02 5.4 Wagner p_min"}
+  pdd.required_psi: {value: 20.0, unit: "psi", label: A, source: "R02 5.4 Wagner p_nom"}
+  mc.samples: {value: 2000, unit: "-", label: A, source: "Monte Carlo samples per station (standard error of a 0.1 probability 0.007)"}
+  mc.seed: {value: 1913, unit: "-", label: A, source: "twin Monte Carlo root seed"}
+  band.hazen_williams_c: {value: [90, 130], unit: "-", label: A, source: "structural band for verification: old unlined to new lined mains"}
+  band.elevation_sigma_ft: {value: 3.0, unit: "ft", label: A, source: "structural band: survey and lumping error of node elevations (uniform with this sigma: uniform draws are bit-identical across OS)"}
+  band.draws: {value: 6, unit: "-", label: A, source: "perturbed networks per station in the band grid"}
+  rule.pre_landfall_breach_p: {value: 0.10, unit: "-", label: A, source: "SGW policy: an SC zone counts as at risk for the pre-landfall precautionary advisory when P(service floor breach within 72 h) reaches 0.10 (same risk tolerance as clocks.material_loss_p)"}
+  rule.horizon_h: {value: 72.0, unit: "h", label: A, source: "continuity horizon after landfall"}

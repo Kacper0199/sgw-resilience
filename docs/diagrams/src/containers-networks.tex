@@ -1,0 +1,80 @@
+% Containers, networks and trust boundaries of compose.yaml. Bands are the compose networks; a box on a band
+% border is attached to both networks. Profiles: no tag = core, [obs], [mlflow-ui].
+\begin{tikzpicture}[sgw,font=\small\sffamily,
+    svc/.style={sgw/service,minimum width=2.75cm,minimum height=1.0cm,font=\small\sffamily},
+    opt/.style={sgw/box,minimum width=2.75cm,minimum height=1.0cm,font=\small\sffamily,dashed,draw=sgwPrimary},
+    band/.style={draw=sgwHairline,line width=0.6pt,rounded corners=3pt},
+    bandtitle/.style={font=\footnotesize\sffamily\bfseries,anchor=north west,text=sgwInk,align=left},
+    bandnote/.style={font=\footnotesize\sffamily,anchor=north east,text=sgwInkMuted,align=right},
+    port/.style={font=\footnotesize\ttfamily,text=sgwInk,fill=sgwSurface,inner sep=1.5pt}]
+  % bands (x from 0 to 14)
+  \begin{pgfonlayer}{background}
+    \fill[sgwNeutral,band] (0,0) rectangle (14,1.9);
+    \fill[sgwSurface,band] (0,-0.25) rectangle (14,-3.3);
+    \fill[sgwSevAdvisoryFill,band] (0,-3.55) rectangle (14,-11.9);
+    \fill[sgwSevCriticalFill,band] (0,-12.15) rectangle (14,-14.0);
+    \fill[sgwNeutral,band,dashed] (0,-14.25) rectangle (14,-16.4);
+  \end{pgfonlayer}
+  \node[bandtitle] at (0.15,1.82) {Your machine};
+  \node[bandnote] at (13.85,1.82) {only 127.0.0.1 ports};
+  \node[bandtitle] at (0.15,-0.33) {edge network};
+  \node[bandnote] at (13.85,-0.33) {host ports};
+  \node[bandtitle] at (0.15,-3.63) {app network\\[-1pt]{\mdseries internal: no route out}};
+    \node[bandtitle,anchor=south west] at (0.15,-14.0) {egress network};
+  \node[bandnote,anchor=south east] at (13.85,-14.0) {outbound internet};
+  \node[bandtitle] at (0.15,-14.33) {Internet};
+
+  % host
+  \node[sgw/person,minimum width=3.2cm] (browser) at (3.0,0.75) {Browser};
+  \node[sgw/person,minimum width=3.2cm] (cli) at (10.2,0.75) {sgw CLI\sgwsub{uv run sgw ...}};
+
+  % edge band
+  \node[svc] (caddy) at (2.1,-1.55) {\textbf{caddy}\sgwsub{web app, TLS headers}};
+  \node[svc] (pgport) at (5.35,-3.3) {\textbf{pg-port}\sgwsub{socat relay}};
+  \node[opt] (mlport) at (8.6,-3.3) {\textbf{mlflow-port}\sgwsub{[mlflow-ui]}};
+  \node[opt] (grafana) at (11.85,-1.55) {\textbf{grafana}\sgwsub{[obs]}};
+  \node[opt] (prom) at (11.85,-3.3) {\textbf{prometheus}\sgwsub{[obs]}};
+  \draw[sgw/flow] (browser) -- node[port,pos=0.5] {:8080} (caddy);
+  \draw[sgw/flow muted] ([xshift=-12mm]cli.south) |- node[port,pos=0.6] {:5434} ++(0,-0.6) -| (pgport.north);
+  \draw[sgw/flow muted] ([xshift=-4mm]cli.south) |- ++(0,-1.25) -| node[port,pos=0.75] {:5001} (mlport.north);
+  \draw[sgw/flow muted] ([xshift=12mm]cli.south) -- node[port,pos=0.45] {:3001} ([xshift=-1mm]grafana.north);
+  \draw[sgw/flow muted] (grafana) -- (prom);
+
+  % app band
+  \node[sgw/core,minimum width=2.75cm,minimum height=1.25cm,font=\small\sffamily\bfseries] (api) at (2.1,-5.4)
+    {api\sgwsub{\color{sgwHairline}FastAPI, Ask AI,}\sgwsub{\color{sgwHairline}scenario jobs}};
+  \draw[sgw/flow] (caddy) -- node[port,right=1pt,align=left,font=\footnotesize\sffamily] {proxy network\\[-1pt]internal, fixed IP} (api);
+  \node[svc] (opa) at (5.35,-5.4) {\textbf{opa}\sgwsub{sign-off, egress rules}};
+  \node[sgw/store,minimum width=2.75cm,minimum height=1.35cm,font=\small\sffamily] (pg) at (5.35,-7.6)
+    {\textbf{postgres}\sgwsub{Timescale, PostGIS,}\sgwsub{pgvector, audit chain}};
+  \node[svc] (mlflow) at (8.6,-5.4) {\textbf{mlflow}\sgwsub{runs, model registry}};
+  \node[svc] (audit) at (8.6,-7.6) {\textbf{audit-checkpoint}\sgwsub{signs chain head, 60 s}};
+  \node[sgw/box,minimum width=2.75cm,minimum height=1.0cm,font=\small\sffamily,text=sgwInkMuted,dashed,draw=sgwInkMuted] (worker) at (2.1,-7.6)
+    {\textbf{worker}\sgwsub{health stub only}};
+  \node[opt] (cadv) at (11.85,-5.4) {\textbf{cadvisor}\sgwsub{[obs]}};
+  \node[opt] (pgexp) at (11.85,-7.6) {\textbf{postgres-exporter}\sgwsub{[obs] metrics of postgres}};
+  \node[sgw/box,font=\footnotesize\sffamily,minimum width=2.75cm,minimum height=1.0cm,dashed] (anchors) at (11.85,-9.9)
+    {audit anchors\sgwsub{private key: this}\sgwsub{service only}};
+
+  \draw[sgw/flow] (api) -- (opa);
+  \draw[sgw/flow] (api.south east) ++(-0.2,0) |- ([yshift=2mm]pg.west);
+    \draw[sgw/flow] (pgport) -- (pg);
+  \draw[sgw/flow] (mlport) -- (mlflow);
+  \draw[sgw/flow] (audit) -- (pg);
+  \draw[sgw/flow] (audit) |- (anchors);
+  \draw[sgw/flow muted] (prom.east) -- ++(0.35,0) |- (cadv.east);
+  \draw[sgw/flow muted] (prom.east) -- ++(0.35,0) |- (pgexp.east);
+  
+  % app + egress
+  \node[sgw/core,minimum width=3.2cm,minimum height=1.25cm,font=\small\sffamily\bfseries] (gw) at (3.0,-12.15)
+    {llm-gateway\sgwsub{\color{sgwHairline}replay, record, live}\sgwsub{\color{sgwHairline}spend cap, asks opa}};
+  \node[svc,minimum width=3.2cm,minimum height=1.25cm] (hooks) at (10.2,-12.15) {\textbf{webhooks}\sgwsub{signed deliveries}\sgwsub{of ledger events}};
+  \draw[sgw/flow] ([xshift=-4mm]api.south) -- node[port,pos=0.5] {model calls} ([xshift=-1.3cm]gw.north);
+    \draw[sgw/flow] (hooks.north) -- ++(0,0.9) -| ([xshift=4mm]pg.south);
+
+  % internet
+  \node[sgw/external,minimum width=3.6cm,minimum height=1.0cm,font=\small\sffamily] (anthropic) at (3.0,-15.4) {Anthropic Messages API\sgwsub{live and record modes}};
+  \node[sgw/external,minimum width=3.6cm,minimum height=1.0cm,font=\small\sffamily] (consumers) at (10.2,-15.4) {Webhook receivers\sgwsub{public HTTPS hosts}};
+  \draw[sgw/critical] (gw) -- node[port,right=2pt] {only AI egress} (anthropic);
+  \draw[sgw/critical] (hooks) -- (consumers);
+\end{tikzpicture}

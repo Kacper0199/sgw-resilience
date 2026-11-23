@@ -1,0 +1,95 @@
+# Action lead times (SGW policy parameters, label A, synthetic). Proposed for data/numbers/numbers.yaml as
+# kind=policy entries `policy_lead_<key>_min` (WP-12 round file, "Root changes needed"); until then this file
+# is the single source for the clock service. Values match the WP-06 family-A world so clocks and truth agree.
+version: "1.0-synthetic"
+lead_times:
+  crew_mobilise_and_stage:
+    minutes: 300
+    sop: SOP-ELE-2.1
+    source: WP-06 family_a clocks.crews_lead_min (helene_micro CREWS_LEAD_MIN)
+  fuel_truck_dispatch:
+    minutes: 90
+    sop: SOP-WTR-4.4
+    source: WP-06 family_a fuel.truck_lead_min
+  portable_generator_hookup:
+    minutes: 150
+    sop: SOP-WTR-4.2
+    source: WP-06 family_a generator.hookup_lead_min (helene_micro PS17_LEAD_MIN)
+  pump_restart_refill:
+    minutes: 30
+    sop: SOP-WTR-4.2
+    source: WP-06 family_a clocks.pressure_restart_lead_min
+  potable_water_tanker:
+    minutes: 120
+    sop: SOP-WTR-6.1
+    source: WP-06 family_a clocks.hospital_tanker_lead_min
+  boil_water_notice_release:
+    minutes: 60
+    sop: WQC 07.120 6.3.3
+    source: "R29 SX-1 assumption: draft from Attachment A, sign and release the written notice"
+  boil_water_lift_release:
+    minutes: 60
+    sop: WQC 07.120 6.4.3
+    source: "R29 SX-1 assumption: SCDES concurrence call and release of the lift notice"
+  feeder_restoration_dispatch:
+    minutes: 180
+    sop: SOP-ELE-2.1
+    source: "R29 SX-1 assumption: assign the next crew, travel, make safe and switch a moderate-damage section"
+  silent_outage_patrol:
+    minutes: 60
+    sop: SOP-ELE-2.1
+    source: "R29 SX-1 assumption: dispatch a patrol truck to a dark AMI section"
+  outage_report_drafting:
+    minutes: 60
+    sop: SOP-REG-1.3
+    source: WP-12 assumption (draft, review and file the SC 103-314 report)
+  # Exercise injects (R33 C3, data/synthetic/helene_injects.yaml); label A, synthetic.
+  mutual_aid_request_processing:
+    minutes: 240
+    sop: SOP-ELE-2.4
+    source: "R33 C3 assumption: agree crews, rates and route with the mutual aid group and confirm the dispatch"
+  event_type_declaration:
+    minutes: 30
+    sop: SOP-ELE-2.1
+    source: "R33 C3 assumption: command call, notice to the storm roles and the cost code"
+  crew_staging_small:
+    minutes: 120
+    sop: SOP-ELE-2.2
+    source: "R33 C3 assumption: brief, load and drive one to three crews to a nearby yard or site"
+  water_treatment_chemical_delivery:
+    minutes: 180
+    sop: SOP-WTR-4.4
+    source: "R33 C3 assumption: supplier call, loading and delivery of one bulk chemical load"
+  # Readiness (pre-season) actions, WP-22 (O-07, D-022); label A, synthetic.
+  generator_load_test:
+    minutes: 7200
+    sop: SOP-WTR-4.2
+    source: "WP-22 assumption: 5 days to book a load bank, write the switching plan and run the test"
+  fuel_contract_top_up:
+    minutes: 14400
+    sop: SOP-WTR-4.4
+    source: "WP-22 assumption: 10 days for the contract amendment and delivery to two sites"
+  vegetation_clearance_critical_feeders:
+    minutes: 20160
+    sop: SOP-ELE-7.3
+    source: "WP-22 assumption: 14 days for a tree contractor to schedule and clear two trunks"
+  mutual_aid_mou_renewal:
+    minutes: 20160
+    sop: SOP-ELE-2.4
+    source: "WP-22 assumption: 14 days for legal review and both signatures"
+  staging_site_lease:
+    minutes: 10080
+    sop: SOP-ELE-2.2
+    source: "WP-22 assumption: 7 days to confirm the lease and fuel-on-site terms"
+  potable_water_tanker_standby:
+    minutes: 10080
+    sop: SOP-WTR-6.1
+    source: "WP-22 assumption: 7 days to sign a standby agreement with a hauler"
+# Clock-service policy parameters (label A, kind policy; proposed for numbers.yaml as policy_clock_*).
+policy:
+  advisory_processing_latency_min:
+    value: 60
+    source: "WP-12 assumption: NHC advisory ingest, clock recompute and duty-manager read before a decision can use it"
+  critical_path_tolerance_min:
+    value: 1
+    source: "WP-12 assumption: clocks are floored to the minute, so a tie within one minute is a tie"

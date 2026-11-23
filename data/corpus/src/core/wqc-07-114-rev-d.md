@@ -1,0 +1,147 @@
+---
+doc_id: "WQC 07.114"
+title: "Boil Water Advisory: Issuance, Notification and Rescission (Georgia Systems)"
+family: sop
+layout: controlled
+owner_function: compliance
+sme: "Quattlebaum, Rhea D."
+revision: "D"
+change: 1
+effective: 2022-11-14
+supersedes: "WQC 07.114 Rev C (eff. 2020-10-05)"
+superseded_by: "WQC 07.114 Rev E (eff. 2024-06-03)"
+next_review: 2023-10-31
+approvals:
+  - {function: water_operations, position: "Water Incident Lead; Manager, Water Distribution", name: "Sistrunk, Odell M.", date: 2022-11-02}
+  - {function: compliance, position: "Water Compliance Officer", name: "Quattlebaum, Rhea D.", date: 2022-11-03}
+classification: "SGW Internal - Controlled"
+trust: verified_internal
+status: superseded
+decisions: [D3]
+states: [GA]
+changes:
+  - {rev: "D/1", date: 2023-04-10, section: "Att. B", change: "Contact roster updated."}
+  - {rev: "D", date: 2022-11-14, section: "6.2", change: "Nights and weekends contact changed to the Georgia State Emergency Operations Center."}
+  - {rev: "D", date: 2022-11-14, section: "6.4.3", change: "Partial rescission by zone or street added."}
+---
+# 1.0 PURPOSE
+
+This procedure sets how SGW issues, announces and rescinds a boil water advisory (BWA) for its Georgia water systems.
+
+# 2.0 SCOPE
+
+All SGW community water systems permitted by Georgia EPD, including the Richmond district. South Carolina systems follow WQC 07.120. It does not cover advisories ordered directly by EPD; follow the EPD order in that case.
+
+# 3.0 RESPONSIBILITIES
+
+Water Compliance Officer: owns the BWA decision with the Water Incident Lead. Notifies Georgia EPD. Signs the rescission request.
+
+Water Incident Lead: co-approves the public notice. Directs repair, flushing and isolation.
+
+Director, Corporate Communications: releases the approved notice through the channels in Attachment A.
+
+Water Quality Technician: collects samples and fills in F-WQC-031.
+
+# 4.0 DEFINITIONS AND ABBREVIATIONS
+
+BWA: boil water advisory. Georgia uses "boil water advisory" and "boil water notice" interchangeably; SGW Georgia documents use BWA.
+
+EPD: Georgia Environmental Protection Division, Drinking Water Program.
+
+Loss of integrity: a main break with contamination risk, backflow, a breach of a storage tank, or loss of positive pressure.
+
+# 5.0 PRECAUTIONS AND LIMITS
+
+5.1 Minimum pressure is 20 psi at each service connection (Ga. Comp. R. & Regs. 391-3-5-.10).
+
+5.2 Minimum free chlorine residual is 0.2 mg/L in the distribution system (Ga. Comp. R. & Regs. 391-3-5-.14).
+
+5.3 Do not delay a BWA to finish a repair. Issue first, repair second.
+
+# 6.0 PROCEDURE
+
+## 6.1 Assessment
+
+6.1.1 On a report from WDS 03.105 section 6.4, confirm the reading, time and location.
+
+6.1.2 Issue a BWA when pressure falls below 20 psi or system integrity is lost.
+
+6.1.3 Out of an abundance of caution, include adjoining streets on the same main.
+
+6.1.4 Define the affected area by zone and street. Use the zone map in WQC 07.130.
+
+## 6.2 Regulator Notification
+
+6.2.1 Notify the Georgia EPD district inspector by phone before the public notice is released, where possible.
+
+6.2.2 Nights and weekends, contact the Georgia State Emergency Operations Center. Ask that the EPD on-call be paged.
+
+6.2.3 Record the name, time and number called on F-WQC-031.
+
+6.2.4 Send the written notice copy to the district office within 24 h.
+
+## 6.3 Public Notice
+
+6.3.1 Prepare the notice from PCN 02.031.
+
+6.3.2 The public notice is approved by the Water Incident Lead and the Water Compliance Officer. Both names and times go on F-WQC-031.
+
+6.3.3 Communications releases the notice through the Attachment A channels within two hours of the decision.
+
+6.3.4 Phone critical customers in the area directly: hospitals, dialysis centres, nursing homes, schools.
+
+6.3.5 Assign the notice serial BWA-GA-yymm-nn from the compliance log.
+
+6.3.6 State the next update time in every notice.
+
+## 6.4 Rescission
+
+6.4.1 Rescission requires all of the following:
+
+a. system integrity restored and positive pressure held;
+
+b. the affected mains flushed per WDS 03.420;
+
+c. samples from at least 40 percent of the system's coliform sample sites (or 15 to 20 samples, whichever the EPD inspector accepts for the area);
+
+d. all total coliform results negative.
+
+6.4.2 Collect samples no sooner than 24 h after flushing is complete. Use sites from WQC 07.130.
+
+6.4.3 Rescission may be partial, by zone or street, where the sampled area is separable.
+
+6.4.4 Send results to the EPD district inspector and request concurrence.
+
+6.4.5 Release the rescission notice. Tell customers to flush all faucets for a minimum of two minutes.
+
+NOTE: A positive total coliform result restarts 6.4.1 for the affected zone.
+
+# 7.0 RECORDS
+
+F-WQC-031 Boil Water Advisory Field Checklist; issued notices; laboratory reports. Retain 3 years.
+
+# 8.0 REFERENCES
+
+Ga. Comp. R. & Regs. 391-3-5-.10 and 391-3-5-.14
+WDS 03.105; WDS 03.420; WQC 07.130; WQC 07.140; PCN 02.031; F-WQC-031
+GEP 03.020 (Water Compliance Officer role)
+
+<<PAGEBREAK>>
+# ATTACHMENT A NOTICE CHANNELS
+
+| Channel | Owner | Target time |
+|---|---|---|
+| Door hangers in affected streets | Water Distribution crews | within 6 h |
+| Outbound calls and texts to accounts in area | Customer Care | within 2 h |
+| sgw.com outage and water page | Corporate Communications | within 2 h |
+| Local radio and TV | Corporate Communications | next bulletin |
+| County EMA | Water Compliance Officer | within 2 h |
+
+# ATTACHMENT B CONTACTS
+
+| Contact | Day | Nights and weekends |
+|---|---|---|
+| Georgia EPD district inspector (East Central) | 706-792-7744 | Georgia State Emergency Operations Center, 24 h duty officer |
+| Water Compliance Officer | 803-641-2238 | via Water Control Room 803-641-2299 |
+| Water Incident Lead | 803-641-2270 | via Water Control Room 803-641-2299 |
+| SGW Richmond laboratory | 706-722-4180 | lab supervisor on call 706-722-4186 |

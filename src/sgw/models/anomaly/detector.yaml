@@ -1,0 +1,20 @@
+# A7 pressure anomaly and A8 spoof guard settings. Thresholds follow from the sensor noise of the family file
+# (water.pressure_noise_psi, water.level_noise_ft) and a target false-alarm rate; none is fitted to a fault.
+# Labels: A assumption, C computed.
+version: "1.0-synthetic"
+params:
+  cusum.k_sigma: {value: 0.5, unit: "sigma", label: A, source: "CUSUM reference value for a one-sigma shift (Page 1954)"}
+  cusum.h_sigma: {value: 10.0, unit: "sigma", label: C, source: "Siegmund ARL0 about 7e4 samples two-sided at k=0.5: < 0.1 false alarm per 100 station-days at 48 samples/day"}
+  frozen.level_run: {value: 6, unit: "readings", label: C, source: "P(tie) about 0.07 per pair at sigma 0.4 ft, 0.1 ft resolution: 6 equal readings about 2e-6 per start"}
+  frozen.pressure_run: {value: 8, unit: "readings", label: C, source: "P(tie) about 0.09 per pair at sigma 0.3 psi: 8 equal readings about 5e-8 per start"}
+  frozen.level_range_end_ft: {value: 0.05, unit: "ft", label: A, source: "an empty tank reads 0 repeatedly by design (transmitter range end)"}
+  replay.window: {value: 8, unit: "readings", label: C, source: "2 h of 15-min pressure: chance repeat of 8 noisy readings about 7e-9 per lag"}
+  replay.min_lag_h: {value: 4.0, unit: "h", label: A, source: "shorter lags are not a replay attack pattern"}
+  replay.max_lag_h: {value: 168.0, unit: "h", label: A, source: "one week of history kept per sensor"}
+  pressure.confirm_readings: {value: 2, unit: "readings", label: A, source: "two consecutive 15-min readings below the alarm before an A7 low-pressure event"}
+  refill.baseline_windows: {value: 8, unit: "windows", label: A, source: "first eight 30-min mass-balance windows set the station's demand multiplier (standard error about 0.44 sigma; changed from 4 after the first helene dev run, see WP-13 round file)"}
+  refill.k_sigma: {value: 1.0, unit: "sigma", label: A, source: "reference value above the baseline standard error, so a baseline error does not accumulate (changed from 0.5 after the first helene dev run)"}
+  refill.h_sigma: {value: 8.0, unit: "sigma", label: A, source: "one-sided CUSUM on the demand ratio (fewer windows per day than pressure readings)"}
+  refill.full_margin_ft: {value: 1.5, unit: "ft", label: A, source: "windows that touch the full level are truncated by the fill valve"}
+  refill.empty_margin_ft: {value: 0.5, unit: "ft", label: A, source: "windows that touch the empty level are clipped"}
+  episode.merge_gap_h: {value: 1.0, unit: "h", label: A, source: "alarms closer than an hour form one episode"}

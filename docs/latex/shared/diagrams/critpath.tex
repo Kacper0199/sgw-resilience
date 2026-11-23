@@ -1,0 +1,29 @@
+% Decision critical path for PS-17: fuel truck -> generator -> pressure -> hospital.
+% Forward arrows: what enables what. Dashed arrows: the decide-by time propagated backwards.
+% Synthetic scenario values from the water twin (D-075), all as macros from data/numbers/numbers.yaml.
+\providecommand{\sgwtwodigits}[1]{\ifnum#1<10 0\fi#1}
+\providecommand{\sgwclockfmt}[1]{\sgwtwodigits{\the\numexpr(#1-30)/60\relax}:\sgwtwodigits{\the\numexpr#1-60*((#1-30)/60)\relax}\,UTC}
+\providecommand{\sgwclock}[1]{\sgwclockfmt{\csname sgwnum@v@#1\endcsname}}
+\begin{tikzpicture}[sgw,
+    cp step/.style={align=center,text width=2.9cm,minimum width=3.1cm,minimum height=1.25cm,font=\footnotesize\sffamily},
+    cp clock/.style={font=\scriptsize\sffamily,text=sgwInkMuted}]
+  \node[sgw/decision,cp step] (truck) at (0,0) {\textbf{Dispatch fuel truck}\\[1pt]{\scriptsize lead time \sgwnum{demo.ps17.truck_lead}}};
+  \node[sgw/decision,cp step] (gen) at (4.4,0) {\textbf{Generator connection at PS-17}\\[1pt]{\scriptsize lead time \sgwnum{demo.ps17.generator_lead}}};
+  \node[sgw/box,cp step] (press) at (8.8,0) {\textbf{PS-17 pumps hold pressure}\\[1pt]{\scriptsize hospital storage \sgwnum{demo.ps17.storage_hours}}};
+  \node[sgw/consequence,cp step] (hosp) at (13.2,0) {\textbf{Hospital connection below the pressure floor}};
+  \draw[sgw/flow] (truck) -- node[above,sgw/note] {fuels} (gen);
+  \draw[sgw/flow] (gen) -- node[above,sgw/note] {powers} (press);
+  \draw[sgw/flow] (press) -- node[above,sgw/note] {protects} (hosp);
+
+  \node[cp clock,below=0.18cm of hosp] (ch) {consequence time from the water twin};
+  \node[cp clock,below=0.18cm of press] (cp) {pumps needed by};
+  \node[cp clock,below=0.18cm of gen] (cg) {generator deadline};
+  \node[cp clock,below=0.18cm of truck] (ct) {truck deadline};
+  \draw[sgw/critical] ([yshift=-1mm]ch.south) to[out=-150,in=-30] node[below,sgw/note,text=sgwSevCritical] {minus storage} ([yshift=-1mm]cp.south);
+  \draw[sgw/critical] ([yshift=-1mm]cp.south) to[out=-150,in=-30] node[below,sgw/note,text=sgwSevCritical] {minus lead time} ([yshift=-1mm]cg.south);
+  \draw[sgw/critical] ([yshift=-1mm]cg.south) to[out=-150,in=-30] node[below,sgw/note,text=sgwSevCritical,align=center] {minus lead time,\\before roads close} ([yshift=-1mm]ct.south);
+
+  \node[sgw/consequence,font=\footnotesize\sffamily,text width=6.2cm,align=left,anchor=north west] (eff) at (-1.55,-3.25)
+    {\textbf{Effective deadline \sgwclock{demo.ps17.decide_by_n_min} at one advisory, \sgwclock{demo.ps17.decide_by_n1_min} at the next advisory}, on 2024-09-27, hours before the hospital clock runs out. At the next advisory the signal turns to Before next advisory.};
+  \draw[sgw/critical] ([yshift=-1mm]ct.south) -- (ct.south |- eff.north);
+\end{tikzpicture}

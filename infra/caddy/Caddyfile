@@ -1,0 +1,75 @@
+{
+	admin off
+	auto_https off
+	persist_config off
+	log {
+		format json
+	}
+}
+
+(security_headers) {
+	header {
+		Content-Security-Policy "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; worker-src 'self' blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy no-referrer
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+}
+
+:8080 {
+	import security_headers
+	encode zstd gzip
+
+	handle /healthz {
+		respond "ok" 200
+	}
+
+	# API Prometheus metrics stay on the internal network (WP-39); the API also refuses relayed requests.
+	handle /metrics {
+		respond 404
+	}
+
+	handle /api/* {
+		reverse_proxy api:8000 {
+			flush_interval -1
+		}
+	}
+
+	# Vite content-hashed bundles: cached for a year. A missing asset is a plain 404, never the SPA shell.
+	handle /assets/* {
+		root * /srv
+		@asset file
+		header @asset Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# SPA: real files as they are, every other path gets index.html; revalidated on each load so a new
+	# build is picked up at once.
+	handle {
+		root * /srv
+		header Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+}
+
+(relay_headers) {
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options SAMEORIGIN
+		Referrer-Policy no-referrer
+		-Server
+	}
+}
+
+# Host port relay for the api, which sits on internal networks only. MLflow is not relayed here: its UI is
+# unauthenticated, so it is published only on request (profile mlflow-ui, a separate socat relay).
+:8000 {
+	import relay_headers
+	respond /metrics 404
+	reverse_proxy api:8000 {
+		flush_interval -1
+	}
+}

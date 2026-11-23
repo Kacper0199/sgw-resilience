@@ -1,0 +1,582 @@
+{
+ "get_crews|{}|2024-09-26T09:05:00+00:00|command|3": {
+  "content": "[E3] crew_summary: Crews by status at this time; trust=system; slots={E3.crews} {E3.people}; source=crew status events in the ledger (synthetic SGW replay data)\n[E4] crew_plan_option: Crew plan option P50: P50 deterministic plan; trust=system; risk=neutral; slots={E4.early_mutual_aid_persons} {E4.expected_customer_hours} {E4.mutual_aid_usd} {E4.own_groups_staged} {E4.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E5] crew_plan_option: Crew plan option COA-A: Spend-matched: the P50 request, placed for the spread; trust=system; risk=neutral; slots={E5.early_mutual_aid_persons} {E5.expected_customer_hours} {E5.mutual_aid_usd} {E5.own_groups_staged} {E5.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E6] crew_plan_option: Crew plan option COA-B: Tail hedge: P90-sized request, placed for E + CVaR90; trust=system; risk=cvar; slots={E6.early_mutual_aid_persons} {E6.expected_customer_hours} {E6.mutual_aid_usd} {E6.own_groups_staged} {E6.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide\n[E7] crew_plan_option: Crew plan option COA-C: Own crews only, request mutual aid after landfall; trust=system; risk=neutral; slots={E7.early_mutual_aid_persons} {E7.expected_customer_hours} {E7.mutual_aid_usd} {E7.own_groups_staged} {E7.p90_customer_hours}; source=SAA crew plan in force; the optimiser does not recommend, approvers decide",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "crew status events in the ledger (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [],
+    "hints": {},
+    "id": "E3",
+    "kind": "crew_summary",
+    "label": "Crews by status at this time",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "crews": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     },
+     "people": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "P50",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E4",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option P50: P50 deterministic plan",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 800
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 14094241
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 41773137
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 32907661
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-A",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E5",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-A: Spend-matched: the P50 request, placed for the spread",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 800
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 14030806
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 41779895
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 32828963
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-B",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "cvar"
+    },
+    "id": "E6",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-B: Tail hedge: P90-sized request, placed for E + CVaR90",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 6600
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 9869908
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 121328706
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 19758376
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:00:00Z",
+    "band": null,
+    "citation": "SAA crew plan in force; the optimiser does not recommend, approvers decide",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "COA-C",
+     "STG-AIK-SANDHILL-YARD",
+     "STG-CHS-ASHLEYFERRY-YARD",
+     "STG-CHT-OGEECHEEWHARF-YARD",
+     "STG-CLK-NORTHOCONEE-YARD",
+     "STG-FLO-LYNCHESRUN-YARD",
+     "STG-GVL-REEDYSHOALS-YARD",
+     "STG-LAU-OCONEEFLATS-YARD",
+     "STG-RCH-MILLPOND-YARD",
+     "STG-RLD-CONGAREEBEND-YARD",
+     "STG-WRE-OKEFENOKEEGATE-YARD",
+     "STG-YRK-CATAWBALANDING-YARD"
+    ],
+    "hints": {
+     "risk": "neutral"
+    },
+    "id": "E7",
+    "kind": "crew_plan_option",
+    "label": "Crew plan option COA-C: Own crews only, request mutual aid after landfall",
+    "label_classification": "C1",
+    "model_version": "a5-saa-1.1",
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "early_mutual_aid_persons": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     },
+     "expected_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 15224060
+     },
+     "mutual_aid_usd": {
+      "format": "count",
+      "unit": "USD",
+      "value": 33655116
+     },
+     "own_groups_staged": {
+      "format": "count",
+      "unit": null,
+      "value": 177
+     },
+     "p90_customer_hours": {
+      "format": "count",
+      "unit": null,
+      "value": 35533013
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "get_forecast|{\"entity_id\": \"FDR-AIK-2207\", \"target\": \"outages\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "Nothing to show: no outages forecast for FDR-AIK-2207 issued at or before this time",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_forecast|{\"entity_id\": \"PS-17\", \"target\": \"outages\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "Nothing to show: no outages forecast for PS-17 issued at or before this time",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_forecast|{\"entity_id\": \"PS-17\", \"target\": \"pressure\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "Nothing to show: no pressure forecast is published to the copilot",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_outages|{\"feeder_ids\": []}|2024-09-26T09:05:00+00:00|command|2": {
+  "content": "[E2] outage_summary: Open outages at this time, all feeders; trust=system; slots={E2.customers_out} {E2.open_outages}; source=OMS outage events in the ledger (synthetic SGW replay data)",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "OMS outage events in the ledger (synthetic SGW replay data)",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [],
+    "hints": {},
+    "id": "E2",
+    "kind": "outage_summary",
+    "label": "Open outages at this time, all feeders",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "customers_out": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     },
+     "open_outages": {
+      "format": "count",
+      "unit": null,
+      "value": 0
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "get_risk|{\"domain\": \"water\", \"entity_ids\": [\"PS-17\"], \"level\": \"asset\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_risk|{\"entity_ids\": [\"FDR-AIK-2207\", \"PS-17\"], \"level\": \"asset\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "get_risk|{\"entity_ids\": [\"PS-17\"], \"level\": \"asset\"}|2024-09-26T09:05:00+00:00|command|1": {
+  "content": "No evidence matched.",
+  "is_error": false,
+  "items": [],
+  "status": "empty"
+ },
+ "list_decisions|{\"limit\": 50}|2024-09-26T09:05:00+00:00|command|8": {
+  "content": "[E8] decision: Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Operations; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E8.decide_by} {E8.effective_decide_by}; source=decision board",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-CREW-AIK-0926A",
+     "DC-D2-CREWS-AIK"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E8",
+    "kind": "decision",
+    "label": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Operations",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T01:15:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T23:45:00Z"
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ },
+ "list_decisions|{}|2024-09-26T09:05:00+00:00|command|5": {
+  "content": "[E5] decision: Request 12 mutual-aid line crews from the Prairie Lakes group (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E5.decide_by} {E5.effective_decide_by}; source=decision board\n[E6] decision: Pre-stage a vegetation crew on feeder FDR-AIK-2219 (DC-D2-EX-02-VEG-CREW-2219), proposed, signed by Command and Logistics, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E6.decide_by} {E6.effective_decide_by}; source=decision board\n[E7] decision: Top up hypochlorite at the Hollowpine water treatment plant (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), proposed, signed by Logistics, signatures so far: none, owned by Logistics; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E7.decide_by} {E7.effective_decide_by}; source=decision board\n[E8] decision: Declare a major storm event for the SC and GA service area (DC-D1-EX-03-EVENT-TYPE-MAJOR), proposed, signed by Command and Operations, signatures so far: none, owned by Command; trust=system; critical_path=off; due=next_day; severity=advisory; state=proposed; slots={E8.decide_by} {E8.effective_decide_by}; source=decision board\n[E9] decision: Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Operations; trust=system; critical_path=on; due=next_day; severity=elevated; state=proposed; slots={E9.decide_by} {E9.effective_decide_by}; source=decision board",
+  "is_error": false,
+  "items": [
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-6F383B10E22E",
+     "DC-D2-EX-01-MUTUAL-AID-PRAIRIE"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E5",
+    "kind": "decision",
+    "label": "Request 12 mutual-aid line crews from the Prairie Lakes group (DC-D2-EX-01-MUTUAL-AID-PRAIRIE), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T16:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T16:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-D019180EFE71",
+     "DC-D2-EX-02-VEG-CREW-2219"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E6",
+    "kind": "decision",
+    "label": "Pre-stage a vegetation crew on feeder FDR-AIK-2219 (DC-D2-EX-02-VEG-CREW-2219), proposed, signed by Command and Logistics, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T18:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T18:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-2E1F6159DE99",
+     "DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E7",
+    "kind": "decision",
+    "label": "Top up hypochlorite at the Hollowpine water treatment plant (DC-D3-EX-04-HYPOCHLORITE-HOLLOWPINE), proposed, signed by Logistics, signatures so far: none, owned by Logistics",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T19:00:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T19:00:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-EX-A0023CBBA1B6",
+     "DC-D1-EX-03-EVENT-TYPE-MAJOR"
+    ],
+    "hints": {
+     "critical_path": "off",
+     "due": "next_day",
+     "severity": "advisory",
+     "state": "proposed"
+    },
+    "id": "E8",
+    "kind": "decision",
+    "label": "Declare a major storm event for the SC and GA service area (DC-D1-EX-03-EVENT-TYPE-MAJOR), proposed, signed by Command and Operations, signatures so far: none, owned by Command",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T20:30:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T20:30:00Z"
+     }
+    }
+   },
+   {
+    "as_of": "2024-09-26T09:05:00Z",
+    "band": null,
+    "citation": "decision board",
+    "classification": "C1",
+    "derived_classification": "C1",
+    "entity_ids": [
+     "PRP-CREW-AIK-0926A",
+     "DC-D2-CREWS-AIK"
+    ],
+    "hints": {
+     "critical_path": "on",
+     "due": "next_day",
+     "severity": "elevated",
+     "state": "proposed"
+    },
+    "id": "E9",
+    "kind": "decision",
+    "label": "Pre-position crews at Sandhill and Millpond yards (DC-D2-CREWS-AIK), proposed, signed by Command and Logistics, signatures so far: none, owned by Operations",
+    "label_classification": "C1",
+    "model_version": null,
+    "raw_text": null,
+    "trust": "system",
+    "unit": null,
+    "values": {
+     "decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-27T01:15:00Z"
+     },
+     "effective_decide_by": {
+      "format": "utc_minute",
+      "unit": null,
+      "value": "2024-09-26T23:45:00Z"
+     }
+    }
+   }
+  ],
+  "status": "ok"
+ }
+}

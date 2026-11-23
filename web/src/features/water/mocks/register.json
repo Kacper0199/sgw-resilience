@@ -1,0 +1,51 @@
+{
+  "advisories": [
+    {
+      "advisory_id": "BWA-WZ-PS17-CEDARFALL-PRELANDFALL",
+      "state": "SC",
+      "zone_id": "WZ-PS17-CEDARFALL",
+      "station_id": "PS-17",
+      "kind": "pre_landfall",
+      "clause_ids": ["SC-A2", "SC-P1"],
+      "policy_key": "policy_pre_landfall_breach_p",
+      "assessments": [
+        {
+          "advisory": "N",
+          "issued_utc": "2024-09-26T09:00:00Z",
+          "power_loss_p_ppm": 270471,
+          "breach_given_loss_p_ppm": 299982,
+          "breach_p_ppm": 81137
+        },
+        {
+          "advisory": "N+1",
+          "issued_utc": "2024-09-26T15:00:00Z",
+          "power_loss_p_ppm": 442082,
+          "breach_given_loss_p_ppm": 344919,
+          "breach_p_ppm": 152482
+        }
+      ],
+      "sensitivity": [
+        {
+          "hookup_lag_min": 60,
+          "breach_p_ppm": 65051
+        },
+        {
+          "hookup_lag_min": 90,
+          "breach_p_ppm": 65051
+        },
+        {
+          "hookup_lag_min": 120,
+          "breach_p_ppm": 75695
+        },
+        {
+          "hookup_lag_min": 150,
+          "breach_p_ppm": 152482
+        }
+      ],
+      "due_utc": "2024-09-27T03:10:00Z",
+      "status": "proposed",
+      "proposal_id": "PRP-BWN-READY",
+      "decision_case_id": "DC-D4-BWN-READY"
+    }
+  ]
+}

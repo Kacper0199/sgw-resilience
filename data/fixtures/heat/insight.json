@@ -1,0 +1,65 @@
+{
+ "insight": {
+  "advice": {
+   "action": "transfer load off the FDR-AIK-2219 trunk before the afternoon peak",
+   "tier": "T2",
+   "why": "in still air the conductor reaches its thermal limit before the transformer hot spot reaches warning; transformer cooling alone does not relieve the binding limit"
+  },
+  "conductor": "336.4 kcmil ACSR (Linnet class)",
+  "edge_case": "H2 (R02 hazard-interdependency 8)",
+  "feeder_id": "FDR-AIK-2219",
+  "id": "H2-STILL-AIR-LINE-BINDS",
+  "label": "synthetic units on real AGS weather",
+  "line_leads_transformer_h": 25.7,
+  "protected_load_check": {
+   "assets": [
+    "DT-AIK-2207-CEDARFALL",
+    "DT-AIK-2231-TALLOWBRANCH",
+    "TX-BRAMBLEGATE-T1"
+   ],
+   "rule": "units serving PS-17 and HSP-AIK-TALLOWBRANCH stay out of shed blocks",
+   "shed_execution": "refer to the system operator",
+   "shed_execution_tier": "T4"
+  },
+  "rating_basis": {
+   "binding": "transformer",
+   "line_limit_utc": null,
+   "peak_line_loading_pct": 95.1,
+   "peak_line_loading_utc": "2024-07-14T20:00:00Z",
+   "transformer_warning_utc": "2024-07-14T19:41:00Z",
+   "wind_case": "wind 0.61 m/s"
+  },
+  "seeded_insight_holds": true,
+  "still_air": {
+   "binding": "line",
+   "line_limit_utc": "2024-07-13T18:00:00Z",
+   "peak_line_loading_pct": 113.3,
+   "peak_line_loading_utc": "2024-07-15T19:00:00Z",
+   "transformer_warning_utc": "2024-07-14T19:41:00Z",
+   "wind_case": "wind 0.3 m/s"
+  },
+  "transformer_id": "TX-BRAMBLEGATE-T2"
+ },
+ "scenario": "heat",
+ "trigger": {
+  "calibration_summer_days": 89,
+  "fire_days_local": [
+   "2023-08-14",
+   "2023-08-26",
+   "2024-06-25",
+   "2024-07-15"
+  ],
+  "fire_utc": "2024-07-15T04:00:00Z",
+  "fired_in_window": true,
+  "forecast_note": "observed Tmax stands in for a day-ahead forecast (perfect-forecast proxy)",
+  "rule_id": "rule.heat.station_mean_tmax_p95_2days",
+  "threshold_c": 34.96
+ },
+ "units": 5,
+ "units_in_warning_or_worse": 3,
+ "weather_body_sha256": "e5ebf5a1750a80a9e2ece059c46a1920f2dec7e8c936db1a999ef63045be9918",
+ "window_utc": [
+  "2024-07-13T04:00:00Z",
+  "2024-07-18T04:00:00Z"
+ ]
+}

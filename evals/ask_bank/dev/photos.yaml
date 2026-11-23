@@ -1,0 +1,136 @@
+# Ask bank, photos: by C2 (R33) from the platform content; split by id.
+items:
+- id: AB-PHO-001
+  lang: pl
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - user_reported
+  - no_diacritics
+  question: pokaz zdjecia powodzi
+  expect:
+    photos: 3
+  judge: true
+- id: AB-PHO-003
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Show me the damage photos.
+  expect:
+    photos: 3
+- id: AB-PHO-004
+  lang: en
+  persona: ops_dm_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Are there photos of trees on lines?
+  expect:
+    photos: 1
+- id: AB-PHO-008
+  lang: en
+  persona: exec_01
+  moment: morning-after
+  page: brief
+  klass: photos
+  question: Can I see pictures of the damage?
+  expect:
+    photos: 3
+- id: AB-PHO-009
+  lang: en
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Show me photos of flooded buildings.
+  expect:
+    photos: 1
+- id: AB-PHO-011
+  lang: en
+  persona: wtr_lead_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Are there flood photos near the pump stations?
+  expect:
+    photos: 1
+- id: AB-PHO-013
+  lang: en
+  persona: ic_01
+  moment: notices-lifted
+  page: crews
+  klass: photos
+  question: Where do these damage photos come from?
+  expect:
+    mentions_any:
+    - LADI
+    - benchmark
+    - not SGW
+    - dataset
+    photos: 1
+- id: AB-PHO-014
+  lang: en
+  persona: audit_01
+  moment: notices-lifted
+  page: crews
+  klass: photos
+  question: Show me the photo evidence for the weak trunk case on feeder 2207.
+  expect:
+    photos: 1
+- id: AB-PHO-015
+  lang: en
+  persona: ml_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: How does the damage triage model rank the photos?
+  expect:
+    mentions_any:
+    - rank
+    - score
+    - triage
+    photos: 1
+- id: AB-PHO-017
+  lang: pl
+  persona: ops_dm_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Czy są zdjęcia drzew na liniach?
+  expect:
+    photos: 1
+- id: AB-PHO-019
+  lang: pl
+  persona: wtr_lead_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  question: Pokaż zdjęcia zalanych budynków.
+  expect:
+    photos: 1
+- id: AB-PHO-021
+  lang: de
+  persona: ic_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - other_language
+  question: Zeig mir Fotos der Überschwemmung.
+  expect:
+    photos: 3
+- id: AB-PHO-022
+  lang: es
+  persona: log_01
+  moment: morning-after
+  page: crews
+  klass: photos
+  tags:
+  - other_language
+  question: Muéstrame fotos de los daños.
+  expect:
+    photos: 3

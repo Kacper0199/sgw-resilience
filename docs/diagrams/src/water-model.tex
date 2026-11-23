@@ -1,0 +1,50 @@
+\begin{tikzpicture}[sgw,
+  w/.style={text width=#1,minimum width=0pt}]
+  % Inputs
+  \node[sgw/source,w=7.9cm,minimum height=1.45cm] (i1) at (2.15,0) {Zone networks (networks.json, seeded)\sgwsub{PS-17, PS-23, PS-38, PS-52: standpipe tank, trunk main,}\sgwsub{laterals, two loop cross connections, service nodes}};
+  \node[sgw/source,w=3.6cm,minimum height=1.45cm] (i3) at (8.6,0) {Station state\sgwsub{SCADA level, fuel;}\sgwsub{power loss, restore}};
+  \sgwzone{inp}{sgwNeutral}{(i1)(i3)}{Inputs}
+
+  % Hydraulic model
+  \node[sgw/core,w=7.9cm,minimum height=1.45cm] (h1) at (2.15,-2.5) {Reduced path model, Hazen-Williams\sgwsub{\color{sgwHairline}head loss tank to node n = K$_n$ Q$^{1.852}$ (one looped solve)}\sgwsub{\color{sgwHairline}p$_n$ = 0.433 (H$_{tank}$ $-$ K$_n$ Q$^{1.852}$ $-$ z$_n$) psi}};
+  \node[sgw/external,w=3.6cm,minimum height=1.45cm] (h2) at (8.6,-2.5) {WNTR check\sgwsub{EPANET 2.2, PDD: drain}\sgwsub{minutes within 60 min}};
+  \node[sgw/service,w=7.9cm,minimum height=1.45cm] (h3) at (2.15,-4.45) {Zone twin: tank drain with the pump unpowered\sgwsub{dL/dt = $-$Q(t)/A, Q = Q$_{avg}$ $\times$ diurnal $\times$ leak $\times$ demand scale}\sgwsub{1-min steps, minutes until the floor is crossed}};
+  \node[sgw/service,w=3.6cm,minimum height=1.45cm] (h4) at (8.6,-4.45) {A4 Monte Carlo\sgwsub{generator failures, fuel,}\sgwsub{refuelling, tank}};
+  \sgwzone{hyd}{sgwSevAdvisoryFill}{(h1)(h2)(h3)(h4)}{Hydraulic model (water/network.py, twin.py, survival.py)}
+  \draw[sgw/flow] (i1) -- (h1);
+  \draw[sgw/flow] (i3.east) -- ++(0.4,0) |- (h4.east);
+  \draw[sgw/feedback,<->] (h1) -- (h2);
+  \draw[sgw/flow] (h1) -- (h3);
+  \draw[sgw/flow] (h3) -- (h4);
+
+  % Pressure check
+  \node[sgw/gate,w=2.6cm] (c1) at (4.3,-7.25) {lowest service\\node $<$ floor?};
+  \node[sgw/box,w=3.6cm,minimum height=1.45cm,align=left] (c2) at (0,-7.25) {State floors\sgwsub{SC: 25 psi normal,}\sgwsub{\phantom{SC: }20 psi heavy flow}\sgwsub{GA: 20 psi, all flows}};
+  \node[sgw/note,w=3.6cm] (c3) at (8.6,-7.55) {checked at the service\\connection, not at the\\pump-station sensor};
+  \sgwzone{chk}{sgwSevCriticalFill}{(c1)(c2)(c3)}{Pressure check (water/floors.py)}
+  \draw[sgw/flow] (h3.south -| c1) -- (c1);
+  \draw[sgw/flow] (h4.south) -- ++(0,-0.75) -| ([xshift=6mm]c1.north);
+  \draw[sgw/flow] (c2) -- (c1);
+
+  % Boil water decision
+  \node[sgw/service,w=3.6cm,minimum height=1.75cm] (b1) at (0,-10.65) {Pressure loss (SC-A1)\sgwsub{a service reading below}\sgwsub{the floor (GA: GA-P1)}};
+  \node[sgw/service,w=3.6cm,minimum height=1.75cm] (b2) at (4.3,-10.65) {Before landfall (SC-A2)\sgwsub{P(breach in 72 h) $\geq$ 0.10,}\sgwsub{pumps exposed or on backup}};
+  \node[sgw/decision,w=3.6cm,minimum height=1.75cm] (b3) at (8.6,-10.65) {PS-17 decision clock\sgwsub{drain minutes to the}\sgwsub{floor (clocks/ps17.py)}};
+  \node[sgw/person,w=7.9cm,minimum height=1.2cm] (b4) at (2.15,-12.75) {Boil water notice: people decide, T3\sgwsub{\mdseries water operations and compliance sign; the engine only proposes}};
+  \node[sgw/box,w=3.6cm,minimum height=1.2cm] (b5) at (8.6,-12.75) {Lift check\sgwsub{clean total coliform sets}};
+  \sgwzone{bwa}{sgwOkFill}{(b1)(b2)(b3)(b4)(b5)}{Boil water rules (rules/bwa.py, bwa\_rules.yaml)}
+  \draw[sgw/flow] (c1.south) -- ++(0,-0.75) -| (b1.north);
+  \draw[sgw/flow] (c1.south) -- (b2.north);
+  \draw[sgw/flow] (c1.south) -- ++(0,-0.75) -| (b3.north);
+  \draw[sgw/flow] (b1.south) -- (b1.south |- b4.north);
+  \draw[sgw/flow] (b2.south) -- (b2.south |- b4.north);
+  \draw[sgw/flow] (b4) -- (b5);
+
+  % What-if grid
+  \node[sgw/source,w=3.6cm,minimum height=1.75cm] (g1) at (0,-15.55) {4 levers, 3 levels\sgwsub{track shift $\pm$40 km,}\sgwsub{gust $\times$0.9 / 1.1, crews}\sgwsub{$\times$0.75 / 1.25, request $\pm$12 h}};
+  \node[sgw/service,w=3.6cm,minimum height=1.75cm] (g2) at (4.3,-15.55) {81 runs of the\\Helene truth model\sgwsub{precomputed, no live run}};
+  \node[sgw/box,w=3.6cm,minimum height=1.75cm] (g3) at (8.6,-15.55) {Per cell: customer-\\hours, peak out, hours\\to 90\% restored};
+  \sgwzone{wi}{sgwNeutral}{(g1)(g2)(g3)}{What-if grid W10 (whatif/grid.py), Forecast tab, What-if}
+  \draw[sgw/flow] (g1) -- (g2);
+  \draw[sgw/flow] (g2) -- (g3);
+\end{tikzpicture}

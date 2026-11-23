@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "Classification": {
+      "enum": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C3-N",
+        "C4",
+        "CX"
+      ],
+      "title": "Classification",
+      "type": "string"
+    },
+    "RunMode": {
+      "enum": [
+        "live",
+        "replay",
+        "backfill",
+        "shadow",
+        "what_if"
+      ],
+      "title": "RunMode",
+      "type": "string"
+    },
+    "WireEvent": {
+      "enum": [
+        "ledger",
+        "state",
+        "heartbeat",
+        "resync",
+        "run_start",
+        "text_delta",
+        "tool_start",
+        "tool_end",
+        "agent_start",
+        "agent_end",
+        "step",
+        "artifact",
+        "approval_required",
+        "run_paused",
+        "run_end",
+        "run_error"
+      ],
+      "title": "WireEvent",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "v": {
+      "const": 1,
+      "default": 1,
+      "title": "V",
+      "type": "integer"
+    },
+    "type": {
+      "$ref": "#/$defs/WireEvent"
+    },
+    "seq": {
+      "minimum": 0,
+      "title": "Seq",
+      "type": "integer"
+    },
+    "ledger_seq": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ledger Seq"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Run Id"
+    },
+    "ns": {
+      "description": "subgraph namespace path",
+      "items": {
+        "type": "string"
+      },
+      "title": "Ns",
+      "type": "array"
+    },
+    "ts": {
+      "format": "date-time",
+      "title": "Ts",
+      "type": "string"
+    },
+    "scenario_time": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scenario Time"
+    },
+    "run_mode": {
+      "$ref": "#/$defs/RunMode"
+    },
+    "classification": {
+      "$ref": "#/$defs/Classification"
+    },
+    "payload": {
+      "additionalProperties": true,
+      "title": "Payload",
+      "type": "object"
+    }
+  },
+  "required": [
+    "type",
+    "seq",
+    "ts",
+    "run_mode",
+    "classification"
+  ],
+  "title": "SGW K4 SSE wire frame",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

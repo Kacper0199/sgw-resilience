@@ -1,0 +1,39 @@
+% Sign-off levels T0-T4 with the two exceptions to a fresh two-function signature:
+% break-glass (one signer now, co-sign later) and envelopes (pre-approved bounds).
+\begin{tikzpicture}[sgw,cell/.style={anchor=west,align=left,font=\scriptsize\sffamily}]
+  \newcommand{\level}[7]{% y, code, name, who, example, fill, text colour
+    \node[rectangle,fill=#6,draw=sgwHairline,line width=0.6pt,minimum width=12cm,minimum height=1cm,anchor=west] (L#2) at (0,#1) {};
+    \node[font=\small\sffamily\bfseries,text=#7,anchor=west] at (0.15,#1) {#2};
+    \node[cell,font=\footnotesize\sffamily\bfseries,text=#7,text width=3.1cm] at (0.8,#1) {#3};
+    \node[cell,text=#7,text width=3.6cm] at (4.1,#1) {#4};
+    \node[cell,text=#7,text width=4.0cm] at (7.9,#1) {#5};}
+  \node[cell,font=\scriptsize\sffamily\bfseries,text=sgwInkMuted] at (0.8,0.75) {Level};
+  \node[cell,font=\scriptsize\sffamily\bfseries,text=sgwInkMuted] at (4.1,0.75) {Who signs};
+  \node[cell,font=\scriptsize\sffamily\bfseries,text=sgwInkMuted] at (7.9,0.75) {Examples};
+  \level{0}{T4}{Outside the platform}{No tool. Switching stays in SCADA and ADMS}{Open a breaker, start a pump}{sgwNeutral}{sgwInkMuted}
+  \level{-1}{T3}{Two functions sign}{Two people from two functions, neither the proposer, bound to one version}{Crew staging, PS-17 generator priority, boil water notice, global ETR}{sgwPrimary}{sgwOnPrimary}
+  \level{-2}{T2}{One function signs}{One function, not the proposer}{Event type, small staging outside the hazard zone}{sgwSevAdvisoryFill}{sgwInk}
+  \level{-3}{T1}{Promote a draft}{Any person promotes what the system drafted}{Drafts of situation reports and work orders, new plan inside an envelope}{sgwSurface}{sgwInk}
+  \level{-4}{T0}{Inform}{Nobody, every view is logged}{Risk view, what if grid, questions to the assistant}{sgwSurface}{sgwInk}
+
+  \node[sgw/decision,text width=3.6cm,font=\scriptsize\sffamily] (bg1) at (15.2,0.3)
+    {\textbf{Emergency approval}\\Incident Commander signs alone with a written reason};
+  \node[sgw/box,text width=3.6cm,font=\scriptsize\sffamily,below=0.35cm of bg1] (bg2) {Action runs and the case is flagged};
+  \node[sgw/consequence,text width=3.6cm,font=\scriptsize\sffamily,below=0.35cm of bg2] (bg3)
+    {Second function countersigns within \sgwnum{policy.breakglass_cosign_window}};
+  \node[sgw/box,text width=3.6cm,font=\scriptsize\sffamily,below=0.35cm of bg3] (bg4) {Listed in the review after the event};
+  \draw[sgw/flow] (bg1) -- (bg2);
+  \draw[sgw/flow] (bg2) -- (bg3);
+  \draw[sgw/flow] (bg3) -- (bg4);
+  \draw[sgw/critical] (LT3.east) -- ++(0.55,0) |- (bg1.west);
+
+  \node[sgw/decision,text width=4.2cm,font=\scriptsize\sffamily,anchor=west] (env1) at (0.8,-5.9)
+    {\textbf{Envelope}\\An approved plan carries bounds, for example \sgwnum{policy.envelope_crew_band} crews per site};
+  \node[sgw/gate,font=\scriptsize\sffamily,right=0.8cm of env1] (env2) {New plan inside\\the bounds?};
+  \node[sgw/ok,font=\scriptsize\sffamily,minimum width=2.2cm,anchor=west] (env3) at ([xshift=1.4cm,yshift=0.55cm]env2.east) {T1 promote};
+  \node[sgw/box,font=\scriptsize\sffamily,minimum width=2.2cm,anchor=west,draw=sgwPrimary] (env4) at ([xshift=1.4cm,yshift=-0.55cm]env2.east) {T3 again};
+  \draw[sgw/flow] (env1) -- (env2);
+  \draw[sgw/flow] (env2.east) -- ++(0.5,0) |- node[pos=0.75,above,sgw/note] {yes} (env3.west);
+  \draw[sgw/flow] (env2.east) -- ++(0.5,0) |- node[pos=0.75,below,sgw/note] {no} (env4.west);
+  \draw[sgw/flow muted] (LT3.west) -- ++(-0.35,0) |- (env1.west);
+\end{tikzpicture}

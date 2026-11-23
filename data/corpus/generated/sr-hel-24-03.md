@@ -1,0 +1,33 @@
+---
+doc_id: SR-HEL-24-03
+title: 'SGW Situation Report #3, Hurricane Helene, 2024-09-27 07:00 EDT'
+family: sitrep
+layout: record
+owner_function: planning
+effective: '2024-09-27'
+classification: SGW Internal - Controlled
+trust: verified_internal
+status: in_force
+decisions:
+- D4
+---
+TLP:CLEAR
+SGW Situation Report #3 | 2024-09-27 | 07:00 EDT
+Incident: SGW-INC-24-0031 "HELENE"    REPORT DISTRIBUTION: SGW EOC, county EOC liaisons, SC and GA state EOCs
+# Executive Summary
+As of 06:30 EDT about 1.37 million customers out, still rising.
+FDR-AIK-2207 tripped at 05:30Z (01:30 EDT); PS-17 Pellicott Road Booster on tank TNK-PS17-CEDARFALL.
+Crews released from shelter at 06:12 EDT where the Safety Officer gave the all-clear.
+# Weather
+Helene passed over the service area overnight; tropical-storm winds ending by mid-morning.
+# Electric
+Damage assessment starting on Priority 1 feeders (DOM 14.215).
+# Water
+PS-17 zone drawing down; Water Incident Lead watching pressure every 15 min (WDS 03.240).
+# Resources
+Staging: STG-AIK-SANDHILL-YARD and STG-RCH-MILLPOND-YARD open. Fuel: Altamaha Fuel & Lube on call (MAL-CTR-0447).
+# Safety
+No recordable injuries this period. Carbon monoxide reminder issued for all portable generator sites.
+# Next report
+SR-HEL-24-04 at 17:00 EDT 2024-09-27.
+TLP:CLEAR

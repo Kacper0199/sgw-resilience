@@ -1,0 +1,65 @@
+# Dev items for N5 `narrate` / N7 `exec_sitrep`: developers may read and tune on these. Schema and
+# graders as in evals/README.md. Asset ids with digits other than PS-17 must be slot-rendered (K15 allowlist).
+set: narrate
+split: dev
+version: 1
+items:
+  - id: NAR-D-01
+    node: narrate
+    phase: pre_landfall
+    as_of: "2024-09-26T09:10:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: decision_clock, label: "PS-17 power decide-by", band: moderate, as_of: "2024-09-26T09:05:00Z", model_version: "clocks-ref-1.0.0", citation: "DC-D3-PS17-POWER", classification: C1, trust: system}
+      - {id: E2, kind: no_regret, label: "PS-17 no-regret share", band: null, as_of: "2024-09-26T09:05:00Z", model_version: "hazard-ens-1.0.0", citation: "ensemble N", classification: C1, trust: system}
+      - {id: E3, kind: forecast, label: "Next advisory", band: null, as_of: "2024-09-26T09:00:00Z", model_version: null, citation: "NHC schedule", classification: C0, trust: system}
+    slot_values:
+      E1: {decide_by_utc: "2024-09-27 05:44Z"}
+      E2: {share: "33%", verdict: "wait for the next advisory"}
+      E3: {time_utc: "2024-09-26 15:00Z"}
+    required_refs: [E1, E2, E3]
+    required_order: [E1, E2]
+    reference_output: "PS-17 must be decided by {E1.decide_by_utc}. Acting now is not regretted in only {E2.share} of scenarios, so the verdict is to {E2.verdict}, due at {E3.time_utc}, which is still well before the clock."
+  - id: NAR-D-02
+    node: narrate
+    phase: water_continuity
+    as_of: "2024-09-27T18:30:00Z"
+    decision: D3
+    evidence:
+      - {id: E1, kind: asset_status, label: "Portable generator at PS-17", band: null, as_of: "2024-09-27T18:20:00Z", model_version: null, citation: "fsm", classification: C1, trust: verified_internal}
+      - {id: E2, kind: water_status, label: "Cedarfall zone pressure", band: high, unit: "psi", as_of: "2024-09-27T18:25:00Z", model_version: null, citation: "PT-PS17-DISCH", classification: C2, trust: verified_internal}
+    slot_values:
+      E1: {asset: "MGEN-HALBERD-500", status: "running since 18:15Z"}
+      E2: {value: "14 psi", trend: "rising"}
+    required_refs: [E1, E2]
+    required_order: [E1, E2]
+    reference_output: "The portable generator {E1.asset} is {E1.status}. Zone pressure is {E2.value} and {E2.trend}; it is still below the floor, so the boil water evaluation stays open."
+  - id: NAR-D-03
+    node: narrate
+    phase: etr
+    as_of: "2024-09-29T12:00:00Z"
+    decision: D4
+    evidence:
+      - {id: E1, kind: forecast, label: "Global ETR", band: null, as_of: "2024-09-29T11:30:00Z", model_version: "etr-1.0.0", citation: "ETR model", classification: C1, trust: system}
+      - {id: E2, kind: approval_state, label: "Global ETR proposal", band: null, as_of: "2024-09-29T11:40:00Z", model_version: null, citation: "proposal publish_global_etr", classification: C1, trust: system}
+    slot_values:
+      E1: {p25: "Sep 30 08:00 EDT", p50: "Sep 30 20:00 EDT", p75: "Oct 1 10:00 EDT", change: "two hours earlier than this morning"}
+      E2: {state: "approved by command and operations"}
+    required_refs: [E1, E2]
+    required_order: [E1, E2]
+    reference_output: "Ninety percent restored between {E1.p25} and {E1.p75}, most likely {E1.p50}, {E1.change}. The release is {E2.state}."
+  - id: NAR-D-04
+    node: exec_sitrep
+    phase: executive
+    as_of: "2024-09-28T09:00:00Z"
+    decision: null
+    evidence:
+      - {id: E1, kind: metric, label: "Customers out", band: null, as_of: "2024-09-28T08:45:00Z", model_version: null, citation: "oms", classification: C1, trust: verified_internal}
+      - {id: E2, kind: metric, label: "Open T3 decisions", band: null, as_of: "2024-09-28T08:50:00Z", model_version: null, citation: "decision queue", classification: C1, trust: system}
+    slot_values:
+      E1: {value: "455,900"}
+      E2: {count: "two"}
+    required_refs: [E1, E2]
+    required_order: [E1, E2]
+    status_word_required: true
+    reference_output: "Status: Restoring. {E1.value} customers out. {E2.count} T3 decisions open."

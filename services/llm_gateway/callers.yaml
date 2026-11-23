@@ -1,0 +1,16 @@
+# Which platform service may call which LLM node through the gateway (security audit M4). Each service holds
+# its own bearer token (`sgw bootstrap` writes it to var/secrets; the gateway keeps only SHA-256 digests).
+# `nodes` are exact K14 node names or fnmatch patterns; `may_send_c2` lets a service declare C2 content, which
+# the gateway still sends only on route R2, for a node whose rule lists R2, with `x-sgw-pseudonymized: 1`.
+version: 1
+services:
+  api:
+    may_send_c2: false
+    nodes: [narrate, draft_rationale, answer_sop, route_intent, triage_intent, investigate, extract_note, etr_brief, sitrep,
+            after_action_summary, "ask_*"]
+  worker:
+    may_send_c2: false
+    nodes: [extract_note, rag_chunk_header]
+  cli:
+    may_send_c2: false
+    nodes: ["*"]

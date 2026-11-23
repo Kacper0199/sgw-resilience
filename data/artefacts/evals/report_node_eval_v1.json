@@ -1,0 +1,272 @@
+{
+  "label": "dev cases, code graders, n = 4 per node and model; a screen, not a significance claim",
+  "name": "report_node_eval",
+  "rows": [
+    {
+      "case": "etr-story-h24",
+      "failures": [],
+      "model": "sonnet",
+      "node": "etr_brief",
+      "output_tokens": 232,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, with a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, so {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing late, in order, are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50} and OPA-LAU-OCONEEFLATS at {E4.p50}, and they drive the global time. This is an estimate for the approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 182
+    },
+    {
+      "case": "etr-story-h24",
+      "failures": [],
+      "model": "haiku",
+      "node": "etr_brief",
+      "output_tokens": 1050,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, within a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, which is {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing latest are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50} and OPA-LAU-OCONEEFLATS at {E4.p50}, and these drive the global time. This is an estimate for the named approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 182
+    },
+    {
+      "case": "etr-story-h0",
+      "failures": [],
+      "model": "sonnet",
+      "node": "etr_brief",
+      "output_tokens": 232,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, with a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, so {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing late, in order, are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50} and OPA-CLK-NORTHOCONEE at {E4.p50}, and they drive the global time. This is an estimate for the approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 182
+    },
+    {
+      "case": "etr-story-h0",
+      "failures": [],
+      "model": "haiku",
+      "node": "etr_brief",
+      "output_tokens": 894,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, within a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, which is {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing last are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50}, and OPA-CLK-NORTHOCONEE at {E4.p50}, and the global estimate is driven by them. This is an estimate for the named approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 184
+    },
+    {
+      "case": "etr-uncalibrated-h24",
+      "failures": [],
+      "model": "sonnet",
+      "node": "etr_brief",
+      "output_tokens": 229,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, with a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, so {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing late are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50} and OPA-LAU-OCONEEFLATS at {E4.p50}, and they drive the global time. This is an estimate for the named approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 181
+    },
+    {
+      "case": "etr-uncalibrated-h24",
+      "failures": [],
+      "model": "haiku",
+      "node": "etr_brief",
+      "output_tokens": 870,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, within a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, which is {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing last are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50}, and OPA-LAU-OCONEEFLATS at {E4.p50}, and these drive the global time. This is an estimate for the named approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process. The approval policy sets tier {E6.tier} for this action; it needs {E6.approver_functions}.",
+      "words": 182
+    },
+    {
+      "case": "etr-story-h24-nopolicy",
+      "failures": [],
+      "model": "sonnet",
+      "node": "etr_brief",
+      "output_tokens": 228,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, with a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, so {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing late are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50} and OPA-LAU-OCONEEFLATS at {E4.p50}, and they drive the global time. This is an estimate for the approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process.",
+      "words": 166
+    },
+    {
+      "case": "etr-story-h24-nopolicy",
+      "failures": [],
+      "model": "haiku",
+      "node": "etr_brief",
+      "output_tokens": 830,
+      "passed": true,
+      "text": "The global estimate for {E1.target} is {E1.p50}, within a band from {E1.p25} to {E1.p75}, issued at {E1.as_of}, which is {E1.p50_hours} ahead. Customers out now stand at {E1.customers_out_now} against a peak of {E1.peak_customers_out}. The areas finishing last are OPA-GVL-REEDYSHOALS at {E2.p50}, OPA-WRE-OKEFENOKEEGATE at {E3.p50}, and OPA-LAU-OCONEEFLATS at {E4.p50}, and they drive the global time. This is an estimate for the named approvers to publish or hold, not a commitment. Caveat: on a test set of {E5.storms}, all synthetic and Helene-like, the P10 to P90 interval contained the actual time {E5.coverage80} of the time and the P25 to P75 band {E5.coverage50}; the simulator matches Helene's median county restoration times by construction but not how widely counties varied, and the estimate has not been checked against a real storm. The estimate is not drawn on the replayed outage curve, which comes from a different restoration process.",
+      "words": 168
+    },
+    {
+      "case": "sitrep-story",
+      "failures": [
+        "m2:verifier_rejected",
+        "number_word: One"
+      ],
+      "model": "sonnet",
+      "node": "sitrep",
+      "output_tokens": 244,
+      "passed": false,
+      "text": null,
+      "words": 94
+    },
+    {
+      "case": "sitrep-story",
+      "failures": [],
+      "model": "haiku",
+      "node": "sitrep",
+      "output_tokens": 1119,
+      "passed": true,
+      "text": "The service territory is restoring, with {E1.customers_out_now} customers still out as of {E1.as_of}, down from a peak of {E1.peak_customers_out} at {E1.peak_at}. Since that peak, {E1.restored_since_peak} have been restored, and outages remain in {E1.counties_out}, with the trend falling. The calibrated estimate puts global restoration at {E2.p50} (P50), with a P25 to P75 band of {E2.p25} to {E2.p75}; this is an estimate, not a commitment. Feeder or generator priority for pump station PS-17 (D3, DC-D3-PS17-POWER) is an open decision, to be decided by {E3.decide_by}. Break-glass uses still await {E4.cosign_open} open co-signatures.",
+      "words": 104
+    },
+    {
+      "case": "sitrep-early-no-etr",
+      "failures": [],
+      "model": "sonnet",
+      "node": "sitrep",
+      "output_tokens": 159,
+      "passed": true,
+      "text": "Responding: {E1.customers_out_now} customers are without power across the electric service territory as of {E1.as_of}. The peak was {E1.peak_customers_out} customers out at {E1.peak_at}, and the share restored since that peak is {E1.restored_since_peak}. {E1.counties_out} counties remain affected. The trend is rising, so outages are still increasing and the situation is not yet stabilising. No restoration estimate, open decision or governance item is listed in this update.",
+      "words": 71
+    },
+    {
+      "case": "sitrep-early-no-etr",
+      "failures": [],
+      "model": "haiku",
+      "node": "sitrep",
+      "output_tokens": 666,
+      "passed": true,
+      "text": "Status is responding. As of {E1.as_of}, {E1.customers_out_now} customers are out of power across the service territory. The peak was {E1.peak_customers_out} at {E1.peak_at}, and {E1.restored_since_peak} has been restored since that peak. Counties still affected are {E1.counties_out}. The trend is rising, so these figures may still change as restoration work continues.",
+      "words": 56
+    },
+    {
+      "case": "sitrep-two-clocks",
+      "failures": [
+        "m2:verifier_rejected",
+        "number_word: Two"
+      ],
+      "model": "sonnet",
+      "node": "sitrep",
+      "output_tokens": 306,
+      "passed": false,
+      "text": null,
+      "words": 115
+    },
+    {
+      "case": "sitrep-two-clocks",
+      "failures": [
+        "m2:verifier_rejected",
+        "number_word: Two"
+      ],
+      "model": "haiku",
+      "node": "sitrep",
+      "output_tokens": 1779,
+      "passed": false,
+      "text": null,
+      "words": 115
+    },
+    {
+      "case": "sitrep-late",
+      "failures": [
+        "m2:verifier_rejected",
+        "number_word: One"
+      ],
+      "model": "sonnet",
+      "node": "sitrep",
+      "output_tokens": 244,
+      "passed": false,
+      "text": null,
+      "words": 94
+    },
+    {
+      "case": "sitrep-late",
+      "failures": [],
+      "model": "haiku",
+      "node": "sitrep",
+      "output_tokens": 1119,
+      "passed": true,
+      "text": "The service territory is restoring, with {E1.customers_out_now} customers still out as of {E1.as_of}, down from a peak of {E1.peak_customers_out} at {E1.peak_at}. Since that peak, {E1.restored_since_peak} have been restored, and outages remain in {E1.counties_out}, with the trend falling. The calibrated estimate puts global restoration at {E2.p50} (P50), with a P25 to P75 band of {E2.p25} to {E2.p75}; this is an estimate, not a commitment. Feeder or generator priority for pump station PS-17 (D3, DC-D3-PS17-POWER) is an open decision, to be decided by {E3.decide_by}. Break-glass uses still await {E4.cosign_open} open co-signatures.",
+      "words": 104
+    },
+    {
+      "case": "aa-story",
+      "failures": [],
+      "model": "sonnet",
+      "node": "after_action_summary",
+      "output_tokens": 378,
+      "passed": true,
+      "text": "The audit chain verified, and it was checked up to {E1.checked_to}. Decision clocks closed as follows: {E2.met} met, {E2.missed} missed and {E2.open} still open at the review time. The missed clock was the D3 feeder or generator priority decision for the hospital-zone pump station PS-17 (case DC-D3-PS17-POWER), which had a decide-by of {E5.decide_by} and was decided at {E5.decided_at} by break-glass. Break-glass was used {E3.uses} times, with {E3.cosigned_on_time} co-signed in time, {E3.cosigned_late} co-signed late, {E3.overdue_unsigned} overdue and unsigned, and {E3.awaiting_cosign} still awaiting a co-signature; every use is flagged for this review. The South Carolina interruption began at {E4.started} and was restored at {E4.restored}, lasting {E4.duration} and interrupting {E4.customers} customers. {E4.counties_reportable} counties went over the reporting threshold of {E4.threshold}, and a complete report is due under the state's interruption-of-service rule.",
+      "words": 141
+    },
+    {
+      "case": "aa-story",
+      "failures": [],
+      "model": "haiku",
+      "node": "after_action_summary",
+      "output_tokens": 2127,
+      "passed": true,
+      "text": "The audit chain verified, checked to {E1.checked_to}, with a signed notary record. Of the decision clocks, {E2.met} were met, {E2.missed} missed and {E2.open} remain open. The missed clock covered power priority for pump station PS-17 (DC-D3-PS17-POWER); it was due {E5.decide_by} and was decided {E5.decided_at} by break-glass. The incident commander alone made {E3.uses} break-glass uses, with {E3.cosigned_on_time} co-signed on time, {E3.cosigned_late} co-signed late, {E3.overdue_unsigned} overdue and unsigned, and {E3.awaiting_cosign} awaiting co-signature. Every use is flagged for this review. The South Carolina interruption began {E4.started} and was restored {E4.restored}, lasting {E4.duration} and affecting {E4.customers} customers; {E4.counties_reportable} counties exceeded the {E4.threshold} reporting threshold, and a complete report is due under the state's interruption-of-service rule.",
+      "words": 124
+    },
+    {
+      "case": "aa-broken-chain",
+      "failures": [],
+      "model": "sonnet",
+      "node": "after_action_summary",
+      "output_tokens": 394,
+      "passed": true,
+      "text": "The audit chain did not verify, so facts after the first bad record are excluded, and it was checked up to {E1.checked_to}. Decision clocks closed with {E2.met} met, {E2.missed} missed and {E2.open} still open. The missed clock was the D3 feeder or generator priority for the hospital-zone pump station PS-17 (decision case DC-D3-PS17-POWER), which had a decide-by of {E5.decide_by} and was decided at {E5.decided_at} by break-glass. Break-glass was used {E3.uses} times by the incident commander alone, and every use is flagged for this review. Of these, {E3.cosigned_on_time} were co-signed in time, {E3.cosigned_late} late, {E3.overdue_unsigned} were overdue and unsigned, and {E3.awaiting_cosign} still await a co-signature. The South Carolina interruption started at {E4.started} and was restored at {E4.restored}, lasting {E4.duration} and interrupting {E4.customers} customers, and {E4.counties_reportable} counties went over the reporting threshold of {E4.threshold}. A complete report is due under the state's interruption-of-service rule.",
+      "words": 155
+    },
+    {
+      "case": "aa-broken-chain",
+      "failures": [],
+      "model": "haiku",
+      "node": "after_action_summary",
+      "output_tokens": 2183,
+      "passed": true,
+      "text": "The audit chain did not verify (checked to {E1.checked_to}), so facts after the first bad record are excluded and the figures below need re-verification. Decision clocks: {E2.met} met, {E2.missed} missed, {E2.open} open. The missed clock was the feeder or generator priority for pump station PS-17 (decision case DC-D3-PS17-POWER), due {E5.decide_by} and decided {E5.decided_at} by break-glass. The incident commander alone used break-glass {E3.uses} times: {E3.cosigned_on_time} co-signed on time, {E3.cosigned_late} late, {E3.overdue_unsigned} overdue and unsigned, and {E3.awaiting_cosign} awaiting co-signature; all uses are flagged for this review. South Carolina's interruption ran from {E4.started} to {E4.restored}, lasting {E4.duration} and affecting {E4.customers} customers; {E4.counties_reportable} counties exceeded the {E4.threshold} threshold, and a complete report is due under the state's interruption-of-service rule.",
+      "words": 128
+    },
+    {
+      "case": "aa-clean",
+      "failures": [],
+      "model": "sonnet",
+      "node": "after_action_summary",
+      "output_tokens": 329,
+      "passed": true,
+      "text": "The audit chain verified, and it was checked to {E1.checked_to}. Decision clocks at the review time: {E2.met} met, {E2.missed} missed and {E2.open} still open. No missed_clock item was listed, so no individual decide-by times or break-glass decisions are named for missed clocks. Break-glass was used {E3.uses} times, each by the incident commander alone. Of these, {E3.cosigned_on_time} were co-signed in time, {E3.cosigned_late} late, {E3.overdue_unsigned} are overdue and unsigned, and {E3.awaiting_cosign} still await a co-signature. Every use is flagged for this review. The South Carolina interruption began at {E4.started} and was restored at {E4.restored}, lasting {E4.duration} and interrupting {E4.customers} customers. {E4.counties_reportable} counties went over the reporting threshold of {E4.threshold}, and a complete report is due under the state's interruption-of-service rule.",
+      "words": 127
+    },
+    {
+      "case": "aa-clean",
+      "failures": [],
+      "model": "haiku",
+      "node": "after_action_summary",
+      "output_tokens": 1248,
+      "passed": true,
+      "text": "The audit chain was verified and notarised, checked to {E1.checked_to}, so the facts below rest on records up to that point. Decision clocks: {E2.met} met, {E2.missed} missed, and {E2.open} still open at the review time. The incident commander alone made {E3.uses} break-glass uses; {E3.cosigned_on_time} were co-signed on time, {E3.cosigned_late} were co-signed late, {E3.overdue_unsigned} are overdue and unsigned, and {E3.awaiting_cosign} await co-signature. Every break-glass use is flagged for this review. The South Carolina interruption started at {E4.started} and was restored at {E4.restored}, lasting {E4.duration} and affecting {E4.customers} customers. {E4.counties_reportable} counties exceeded the reporting threshold of {E4.threshold}, and a complete report is due under the state's interruption-of-service rule.",
+      "words": 115
+    },
+    {
+      "case": "aa-worse",
+      "failures": [],
+      "model": "sonnet",
+      "node": "after_action_summary",
+      "output_tokens": 424,
+      "passed": true,
+      "text": "The audit chain verified, and it was checked up to {E1.checked_to}. At the review time, {E2.met} decision clocks were met, {E2.missed} were missed and {E2.open} were still open. The missed clock for pre-positioning crews at Sandhill and Millpond yards (D2, DC-D2-CREWS-AIK) had a decide-by of {E5.decide_by} and was never decided. The missed clock for feeder or generator priority at pump station PS-17 (D3, DC-D3-PS17-POWER) had a decide-by of {E6.decide_by} and was decided at {E6.decided_at} by break-glass. Break-glass was used {E3.uses} times: {E3.cosigned_on_time} were co-signed in time, {E3.cosigned_late} late, {E3.overdue_unsigned} are overdue and unsigned, and {E3.awaiting_cosign} still await a co-signature; every use is flagged for this review. The South Carolina interruption began at {E4.started} and was restored at {E4.restored}, lasting {E4.duration} and interrupting {E4.customers} customers, with {E4.counties_reportable} counties over the reporting threshold of {E4.threshold}. A complete report is due under the state's interruption-of-service rule.",
+      "words": 158
+    },
+    {
+      "case": "aa-worse",
+      "failures": [],
+      "model": "haiku",
+      "node": "after_action_summary",
+      "output_tokens": 1675,
+      "passed": true,
+      "text": "The audit chain verified, checked to {E1.checked_to}. Decision clocks met {E2.met}, missed {E2.missed}, and still open {E2.open}. The missed clock to pre-position crews at Sandhill and Millpond yards before tropical-storm winds (D2, DC-D2-CREWS-AIK), due by {E5.decide_by}, was not decided. The missed clock for feeder or generator priority for hospital-zone pump station PS-17 (D3, DC-D3-PS17-POWER), due by {E6.decide_by}, was decided at {E6.decided_at} by break-glass. The incident commander alone made {E3.uses} break-glass uses: {E3.cosigned_on_time} co-signed on time, {E3.cosigned_late} co-signed late, {E3.overdue_unsigned} overdue and unsigned, and {E3.awaiting_cosign} awaiting co-signature, and every use is flagged for this review. The South Carolina system interruption started {E4.started} and was restored {E4.restored}, lasting {E4.duration} and interrupting {E4.customers} customers, with {E4.counties_reportable} counties exceeding the reporting threshold of {E4.threshold}. A complete report is required under the state's interruption-of-service rule.",
+      "words": 145
+    }
+  ],
+  "summary": {
+    "after_action_summary": {
+      "haiku": "4/4",
+      "sonnet": "4/4"
+    },
+    "etr_brief": {
+      "haiku": "4/4",
+      "sonnet": "4/4"
+    },
+    "sitrep": {
+      "haiku": "3/4",
+      "sonnet": "1/4"
+    }
+  }
+}

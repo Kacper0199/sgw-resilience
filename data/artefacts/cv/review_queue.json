@@ -1,0 +1,3568 @@
+{
+ "acceptance_history": [
+  "single-photo design failed: one stand-in photo per seeded case left 5 of 13 severity pairs out of order and a slight case below no-damage control photos (earlier scores of the same model, R05)",
+  "photo-set sizes k=1, 3 and 5 compared on those existing scores: k=1 fails the two-tier check, k=3 and k=5 pass",
+  "criterion relaxed from the full four-level severity ladder to two tiers (moderate or worse above slight and above every no-damage control group), because the LADI v2 paper merged building-damage levels that the classifier separates poorly; the full ladder is still reported (ladder_discordant_pairs)",
+  "k=5 chosen; photos are picked by CAP volunteer labels only, never by model score"
+ ],
+ "cases": [
+  {
+   "case_id": "FDR2207-WEAK-TRUNK",
+   "case_rank": 1,
+   "case_score": 0.3764,
+   "damage_state": "moderate",
+   "photo_ids": [
+    "ladi-v2-test-0006",
+    "ladi-v2-test-0034",
+    "ladi-v2-test-0450",
+    "ladi-v2-test-0449",
+    "ladi-v2-test-0008"
+   ],
+   "photo_ranks": [
+    8,
+    11,
+    18,
+    24,
+    84
+   ],
+   "section_id": "FDR-AIK-2207-S1",
+   "status": "awaiting_review"
+  },
+  {
+   "case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "case_rank": 2,
+   "case_score": 0.3214,
+   "damage_state": "extensive",
+   "photo_ids": [
+    "ladi-v2-test-0924",
+    "ladi-v2-test-0987",
+    "ladi-v2-test-0923",
+    "ladi-v2-test-0899",
+    "ladi-v2-test-0462"
+   ],
+   "photo_ranks": [
+    6,
+    20,
+    21,
+    47,
+    116
+   ],
+   "section_id": "FDR-AIK-2238-S1",
+   "status": "awaiting_review"
+  },
+  {
+   "case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "case_rank": 3,
+   "case_score": 0.2287,
+   "damage_state": "moderate",
+   "photo_ids": [
+    "ladi-v2-test-0223",
+    "ladi-v2-test-0038",
+    "ladi-v2-test-0222",
+    "ladi-v2-test-0215",
+    "ladi-v2-test-0236"
+   ],
+   "photo_ranks": [
+    7,
+    32,
+    52,
+    54,
+    144
+   ],
+   "section_id": "FDR-AIK-2219-S2",
+   "status": "awaiting_review"
+  },
+  {
+   "case_id": "D2-GENERATOR-FAILS-H30",
+   "case_rank": 4,
+   "case_score": 0.1952,
+   "damage_state": "complete",
+   "photo_ids": [
+    "ladi-v2-test-0003",
+    "ladi-v2-test-0001",
+    "ladi-v2-test-0000",
+    "ladi-v2-test-0005",
+    "ladi-v2-test-0004"
+   ],
+   "photo_ranks": [
+    14,
+    41,
+    51,
+    83,
+    93
+   ],
+   "section_id": "FDR-AIK-2214-S1",
+   "status": "awaiting_review"
+  },
+  {
+   "case_id": "D7-PRIORITY-CONFLICT",
+   "case_rank": 5,
+   "case_score": 0.0412,
+   "damage_state": "slight",
+   "photo_ids": [
+    "ladi-v2-test-0022",
+    "ladi-v2-test-0027",
+    "ladi-v2-test-0023",
+    "ladi-v2-test-0025",
+    "ladi-v2-test-0002"
+   ],
+   "photo_ranks": [
+    61,
+    77,
+    102,
+    120,
+    182
+   ],
+   "section_id": "FDR-AIK-2219-S1",
+   "status": "awaiting_review"
+  },
+  {
+   "case_id": "W9-AMI-DARK-SECTION",
+   "case_rank": 6,
+   "case_score": 0.0248,
+   "damage_state": "slight",
+   "photo_ids": [
+    "ladi-v2-test-0039",
+    "ladi-v2-test-0121",
+    "ladi-v2-test-0037",
+    "ladi-v2-test-0134",
+    "ladi-v2-test-0030"
+   ],
+   "photo_ranks": [
+    74,
+    80,
+    140,
+    143,
+    174
+   ],
+   "section_id": "FDR-AIK-2231-S3",
+   "status": "awaiting_review"
+  }
+ ],
+ "honest_miss": "D2 complete ranks 4th of 4 damaged cases",
+ "imagery_note": "benchmark imagery (LADI-v2 test split, 2023 US disaster events), not SGW territory",
+ "model_id": "MITLL/LADI-v2-classifier-small-reference",
+ "model_revision": "6ba5a0300601284bc6b69dddb46c8991a8ac196c",
+ "policy_version": "1.0",
+ "review_note": "prioritisation aid: a reviewer confirms or rejects every photo before it changes a plan",
+ "rows": [
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0016",
+   "no_damage_control": false,
+   "rank": 1,
+   "row_idx": 16,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_minor_or_greater",
+    "buildings_affected_or_greater",
+    "debris_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=16",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0016.jpg",
+   "triage_score": 0.6972
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0049",
+   "no_damage_control": false,
+   "rank": 2,
+   "row_idx": 49,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "debris_any",
+    "buildings_affected_or_greater",
+    "buildings_minor_or_greater",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=49",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0049.jpg",
+   "triage_score": 0.6966
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0021",
+   "no_damage_control": false,
+   "rank": 3,
+   "row_idx": 21,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "debris_any",
+    "buildings_affected_or_greater",
+    "buildings_minor_or_greater",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=21",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0021.jpg",
+   "triage_score": 0.6701
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0042",
+   "no_damage_control": false,
+   "rank": 4,
+   "row_idx": 42,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "trees_damage",
+    "buildings_minor_or_greater",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=42",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0042.jpg",
+   "triage_score": 0.6634
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0040",
+   "no_damage_control": false,
+   "rank": 5,
+   "row_idx": 40,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "trees_damage",
+    "debris_any",
+    "buildings_minor_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=40",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0040.jpg",
+   "triage_score": 0.6479
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0924",
+   "no_damage_control": false,
+   "rank": 6,
+   "row_idx": 924,
+   "section_id": "FDR-AIK-2238-S1",
+   "seeded_case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "signals": [
+    "flooding_any",
+    "flooding_structures",
+    "buildings_affected_or_greater",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=924",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0924.jpg",
+   "triage_score": 0.6202
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0223",
+   "no_damage_control": false,
+   "rank": 7,
+   "row_idx": 223,
+   "section_id": "FDR-AIK-2219-S2",
+   "seeded_case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "signals": [
+    "flooding_any",
+    "trees_damage",
+    "flooding_structures"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=223",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0223.jpg",
+   "triage_score": 0.5622
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0006",
+   "no_damage_control": false,
+   "rank": 8,
+   "row_idx": 6,
+   "section_id": "FDR-AIK-2207-S1",
+   "seeded_case_id": "FDR2207-WEAK-TRUNK",
+   "signals": [
+    "trees_damage",
+    "buildings_affected_or_greater",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=6",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0006.jpg",
+   "triage_score": 0.5499
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0911",
+   "no_damage_control": false,
+   "rank": 9,
+   "row_idx": 911,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "flooding_structures",
+    "trees_damage",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=911",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0911.jpg",
+   "triage_score": 0.5406
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0155",
+   "no_damage_control": false,
+   "rank": 10,
+   "row_idx": 155,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "debris_any",
+    "buildings_minor_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=155",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0155.jpg",
+   "triage_score": 0.5341
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0034",
+   "no_damage_control": false,
+   "rank": 11,
+   "row_idx": 34,
+   "section_id": "FDR-AIK-2207-S1",
+   "seeded_case_id": "FDR2207-WEAK-TRUNK",
+   "signals": [
+    "buildings_affected_or_greater",
+    "trees_damage",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=34",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0034.jpg",
+   "triage_score": 0.5328
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0028",
+   "no_damage_control": false,
+   "rank": 12,
+   "row_idx": 28,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "trees_damage",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=28",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0028.jpg",
+   "triage_score": 0.5298
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0020",
+   "no_damage_control": false,
+   "rank": 13,
+   "row_idx": 20,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "debris_any",
+    "buildings_minor_or_greater",
+    "trees_damage",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=20",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0020.jpg",
+   "triage_score": 0.5295
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0003",
+   "no_damage_control": false,
+   "rank": 14,
+   "row_idx": 3,
+   "section_id": "FDR-AIK-2214-S1",
+   "seeded_case_id": "D2-GENERATOR-FAILS-H30",
+   "signals": [
+    "buildings_affected_or_greater",
+    "trees_damage",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=3",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0003.jpg",
+   "triage_score": 0.5001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1042",
+   "no_damage_control": false,
+   "rank": 15,
+   "row_idx": 1042,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "flooding_structures",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1042",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_1042.jpg",
+   "triage_score": 0.4509
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1036",
+   "no_damage_control": false,
+   "rank": 16,
+   "row_idx": 1036,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "buildings_affected_or_greater",
+    "flooding_structures"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1036",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_1036.jpg",
+   "triage_score": 0.4422
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-1022",
+   "no_damage_control": false,
+   "rank": 17,
+   "row_idx": 1022,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "debris_any",
+    "roads_damage",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1022",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1022.jpg",
+   "triage_score": 0.4136
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0450",
+   "no_damage_control": false,
+   "rank": 18,
+   "row_idx": 450,
+   "section_id": "FDR-AIK-2207-S1",
+   "seeded_case_id": "FDR2207-WEAK-TRUNK",
+   "signals": [
+    "trees_damage",
+    "buildings_affected_or_greater",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=450",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0450.jpg",
+   "triage_score": 0.4129
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0036",
+   "no_damage_control": false,
+   "rank": 19,
+   "row_idx": 36,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=36",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0036.jpg",
+   "triage_score": 0.4105
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-0987",
+   "no_damage_control": false,
+   "rank": 20,
+   "row_idx": 987,
+   "section_id": "FDR-AIK-2238-S1",
+   "seeded_case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "signals": [
+    "flooding_any",
+    "roads_damage",
+    "trees_damage",
+    "flooding_structures"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=987",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0987.jpg",
+   "triage_score": 0.4056
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0923",
+   "no_damage_control": false,
+   "rank": 21,
+   "row_idx": 923,
+   "section_id": "FDR-AIK-2238-S1",
+   "seeded_case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "signals": [
+    "flooding_any",
+    "flooding_structures",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=923",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0923.jpg",
+   "triage_score": 0.3922
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0972",
+   "no_damage_control": true,
+   "rank": 22,
+   "row_idx": 972,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "debris_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=972",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0972.jpg",
+   "triage_score": 0.3756
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-1005",
+   "no_damage_control": false,
+   "rank": 23,
+   "row_idx": 1005,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "roads_damage",
+    "trees_damage",
+    "flooding_structures"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1005",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1005.jpg",
+   "triage_score": 0.3674
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0449",
+   "no_damage_control": false,
+   "rank": 24,
+   "row_idx": 449,
+   "section_id": "FDR-AIK-2207-S1",
+   "seeded_case_id": "FDR2207-WEAK-TRUNK",
+   "signals": [
+    "trees_damage",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=449",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0449.jpg",
+   "triage_score": 0.3459
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0033",
+   "no_damage_control": false,
+   "rank": 25,
+   "row_idx": 33,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater",
+    "buildings_minor_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=33",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0033.jpg",
+   "triage_score": 0.3351
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0983",
+   "no_damage_control": false,
+   "rank": 26,
+   "row_idx": 983,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=983",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0983.jpg",
+   "triage_score": 0.3131
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0044",
+   "no_damage_control": false,
+   "rank": 27,
+   "row_idx": 44,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "trees_damage",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=44",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0044.jpg",
+   "triage_score": 0.2969
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0032",
+   "no_damage_control": false,
+   "rank": 28,
+   "row_idx": 32,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=32",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0032.jpg",
+   "triage_score": 0.2967
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1044",
+   "no_damage_control": false,
+   "rank": 29,
+   "row_idx": 1044,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1044",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1044.jpg",
+   "triage_score": 0.2844
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0015",
+   "no_damage_control": false,
+   "rank": 30,
+   "row_idx": 15,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_minor_or_greater",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=15",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0015.jpg",
+   "triage_score": 0.2835
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1047",
+   "no_damage_control": false,
+   "rank": 31,
+   "row_idx": 1047,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1047",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1047.jpg",
+   "triage_score": 0.2832
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0038",
+   "no_damage_control": false,
+   "rank": 32,
+   "row_idx": 38,
+   "section_id": "FDR-AIK-2219-S2",
+   "seeded_case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=38",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0038.jpg",
+   "triage_score": 0.278
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0467",
+   "no_damage_control": false,
+   "rank": 33,
+   "row_idx": 467,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=467",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0467.jpg",
+   "triage_score": 0.2765
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0977",
+   "no_damage_control": false,
+   "rank": 34,
+   "row_idx": 977,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=977",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0977.jpg",
+   "triage_score": 0.2747
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0465",
+   "no_damage_control": false,
+   "rank": 35,
+   "row_idx": 465,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "trees_damage",
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=465",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew",
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0465.jpg",
+   "triage_score": 0.2635
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1034",
+   "no_damage_control": false,
+   "rank": 36,
+   "row_idx": 1034,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "debris_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1034",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1034.jpg",
+   "triage_score": 0.2622
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0007",
+   "no_damage_control": false,
+   "rank": 37,
+   "row_idx": 7,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=7",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0007.jpg",
+   "triage_score": 0.2587
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1045",
+   "no_damage_control": false,
+   "rank": 38,
+   "row_idx": 1045,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1045",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1045.jpg",
+   "triage_score": 0.2585
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0451",
+   "no_damage_control": false,
+   "rank": 39,
+   "row_idx": 451,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=451",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0451.jpg",
+   "triage_score": 0.2582
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0043",
+   "no_damage_control": false,
+   "rank": 40,
+   "row_idx": 43,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=43",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0043.jpg",
+   "triage_score": 0.2429
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0001",
+   "no_damage_control": false,
+   "rank": 41,
+   "row_idx": 1,
+   "section_id": "FDR-AIK-2214-S1",
+   "seeded_case_id": "D2-GENERATOR-FAILS-H30",
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0001.jpg",
+   "triage_score": 0.2425
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1007",
+   "no_damage_control": false,
+   "rank": 42,
+   "row_idx": 1007,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1007",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1007.jpg",
+   "triage_score": 0.2362
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1040",
+   "no_damage_control": false,
+   "rank": 43,
+   "row_idx": 1040,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1040",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)",
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_1040.jpg",
+   "triage_score": 0.2219
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0464",
+   "no_damage_control": false,
+   "rank": 44,
+   "row_idx": 464,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=464",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0464.jpg",
+   "triage_score": 0.2187
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0574",
+   "no_damage_control": true,
+   "rank": 45,
+   "row_idx": 574,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=574",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0574.jpg",
+   "triage_score": 0.1874
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0265",
+   "no_damage_control": false,
+   "rank": 46,
+   "row_idx": 265,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=265",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0265.jpg",
+   "triage_score": 0.187
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-0899",
+   "no_damage_control": false,
+   "rank": 47,
+   "row_idx": 899,
+   "section_id": "FDR-AIK-2238-S1",
+   "seeded_case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "signals": [
+    "flooding_any",
+    "roads_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=899",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0899.jpg",
+   "triage_score": 0.1809
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0035",
+   "no_damage_control": false,
+   "rank": 48,
+   "row_idx": 35,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "debris_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=35",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0035.jpg",
+   "triage_score": 0.1792
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0900",
+   "no_damage_control": false,
+   "rank": 49,
+   "row_idx": 900,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=900",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0900.jpg",
+   "triage_score": 0.1732
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0965",
+   "no_damage_control": true,
+   "rank": 50,
+   "row_idx": 965,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=965",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0965.jpg",
+   "triage_score": 0.1667
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0000",
+   "no_damage_control": false,
+   "rank": 51,
+   "row_idx": 0,
+   "section_id": "FDR-AIK-2214-S1",
+   "seeded_case_id": "D2-GENERATOR-FAILS-H30",
+   "signals": [
+    "buildings_affected_or_greater"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=0",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "raise restoration priority"
+   ],
+   "thumb": "thumbs/test_0000.jpg",
+   "triage_score": 0.1628
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0222",
+   "no_damage_control": false,
+   "rank": 52,
+   "row_idx": 222,
+   "section_id": "FDR-AIK-2219-S2",
+   "seeded_case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=222",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0222.jpg",
+   "triage_score": 0.1529
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0944",
+   "no_damage_control": false,
+   "rank": 53,
+   "row_idx": 944,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=944",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0944.jpg",
+   "triage_score": 0.1493
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0215",
+   "no_damage_control": false,
+   "rank": 54,
+   "row_idx": 215,
+   "section_id": "FDR-AIK-2219-S2",
+   "seeded_case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=215",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0215.jpg",
+   "triage_score": 0.148
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0999",
+   "no_damage_control": false,
+   "rank": 55,
+   "row_idx": 999,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=999",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0999.jpg",
+   "triage_score": 0.143
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-0985",
+   "no_damage_control": false,
+   "rank": 56,
+   "row_idx": 985,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "roads_damage",
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=985",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0985.jpg",
+   "triage_score": 0.1413
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-0984",
+   "no_damage_control": false,
+   "rank": 57,
+   "row_idx": 984,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "roads_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=984",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0984.jpg",
+   "triage_score": 0.1381
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1024",
+   "no_damage_control": false,
+   "rank": 58,
+   "row_idx": 1024,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1024",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_1024.jpg",
+   "triage_score": 0.1377
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0201",
+   "no_damage_control": true,
+   "rank": 59,
+   "row_idx": 201,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=201",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0201.jpg",
+   "triage_score": 0.1321
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0461",
+   "no_damage_control": true,
+   "rank": 60,
+   "row_idx": 461,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=461",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0461.jpg",
+   "triage_score": 0.1318
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0022",
+   "no_damage_control": false,
+   "rank": 61,
+   "row_idx": 22,
+   "section_id": "FDR-AIK-2219-S1",
+   "seeded_case_id": "D7-PRIORITY-CONFLICT",
+   "signals": [
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=22",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0022.jpg",
+   "triage_score": 0.1282
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0299",
+   "no_damage_control": false,
+   "rank": 62,
+   "row_idx": 299,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=299",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0299.jpg",
+   "triage_score": 0.1261
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0586",
+   "no_damage_control": true,
+   "rank": 63,
+   "row_idx": 586,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "trees_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=586",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "line-clearance crew"
+   ],
+   "thumb": "thumbs/test_0586.jpg",
+   "triage_score": 0.1196
+  },
+  {
+   "human_only": [
+    "road damage, human review only"
+   ],
+   "image_id": "ladi-v2-test-1000",
+   "no_damage_control": false,
+   "rank": 64,
+   "row_idx": 1000,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any",
+    "roads_damage"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1000",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_1000.jpg",
+   "triage_score": 0.1144
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0048",
+   "no_damage_control": false,
+   "rank": 65,
+   "row_idx": 48,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=48",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0048.jpg",
+   "triage_score": 0.1043
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0331",
+   "no_damage_control": true,
+   "rank": 66,
+   "row_idx": 331,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=331",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0331.jpg",
+   "triage_score": 0.1
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0915",
+   "no_damage_control": false,
+   "rank": 67,
+   "row_idx": 915,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=915",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0915.jpg",
+   "triage_score": 0.1
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1006",
+   "no_damage_control": false,
+   "rank": 68,
+   "row_idx": 1006,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1006",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_1006.jpg",
+   "triage_score": 0.094
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0947",
+   "no_damage_control": false,
+   "rank": 69,
+   "row_idx": 947,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=947",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0947.jpg",
+   "triage_score": 0.0869
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0986",
+   "no_damage_control": false,
+   "rank": 70,
+   "row_idx": 986,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=986",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0986.jpg",
+   "triage_score": 0.0867
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0164",
+   "no_damage_control": true,
+   "rank": 71,
+   "row_idx": 164,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=164",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0164.jpg",
+   "triage_score": 0.0775
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0979",
+   "no_damage_control": true,
+   "rank": 72,
+   "row_idx": 979,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [
+    "flooding_any"
+   ],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=979",
+   "status": "awaiting_review",
+   "suggested_actions": [
+    "access check (routing penalty)"
+   ],
+   "thumb": "thumbs/test_0979.jpg",
+   "triage_score": 0.0774
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0606",
+   "no_damage_control": false,
+   "rank": 73,
+   "row_idx": 606,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=606",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0606.jpg",
+   "triage_score": 0.0736
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0039",
+   "no_damage_control": false,
+   "rank": 74,
+   "row_idx": 39,
+   "section_id": "FDR-AIK-2231-S3",
+   "seeded_case_id": "W9-AMI-DARK-SECTION",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=39",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0039.jpg",
+   "triage_score": 0.0724
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0949",
+   "no_damage_control": false,
+   "rank": 75,
+   "row_idx": 949,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=949",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0949.jpg",
+   "triage_score": 0.0686
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0282",
+   "no_damage_control": true,
+   "rank": 76,
+   "row_idx": 282,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=282",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0282.jpg",
+   "triage_score": 0.054
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0027",
+   "no_damage_control": false,
+   "rank": 77,
+   "row_idx": 27,
+   "section_id": "FDR-AIK-2219-S1",
+   "seeded_case_id": "D7-PRIORITY-CONFLICT",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=27",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0027.jpg",
+   "triage_score": 0.0515
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0019",
+   "no_damage_control": false,
+   "rank": 78,
+   "row_idx": 19,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=19",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0019.jpg",
+   "triage_score": 0.0497
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0686",
+   "no_damage_control": false,
+   "rank": 79,
+   "row_idx": 686,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=686",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0686.jpg",
+   "triage_score": 0.0483
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0121",
+   "no_damage_control": false,
+   "rank": 80,
+   "row_idx": 121,
+   "section_id": "FDR-AIK-2231-S3",
+   "seeded_case_id": "W9-AMI-DARK-SECTION",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=121",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0121.jpg",
+   "triage_score": 0.0468
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0209",
+   "no_damage_control": false,
+   "rank": 81,
+   "row_idx": 209,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=209",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0209.jpg",
+   "triage_score": 0.0468
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0123",
+   "no_damage_control": false,
+   "rank": 82,
+   "row_idx": 123,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=123",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0123.jpg",
+   "triage_score": 0.0438
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0005",
+   "no_damage_control": false,
+   "rank": 83,
+   "row_idx": 5,
+   "section_id": "FDR-AIK-2214-S1",
+   "seeded_case_id": "D2-GENERATOR-FAILS-H30",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=5",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0005.jpg",
+   "triage_score": 0.0427
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0008",
+   "no_damage_control": false,
+   "rank": 84,
+   "row_idx": 8,
+   "section_id": "FDR-AIK-2207-S1",
+   "seeded_case_id": "FDR2207-WEAK-TRUNK",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=8",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0008.jpg",
+   "triage_score": 0.0405
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0919",
+   "no_damage_control": true,
+   "rank": 85,
+   "row_idx": 919,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=919",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0919.jpg",
+   "triage_score": 0.0399
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0401",
+   "no_damage_control": false,
+   "rank": 86,
+   "row_idx": 401,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=401",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0401.jpg",
+   "triage_score": 0.0383
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0253",
+   "no_damage_control": true,
+   "rank": 87,
+   "row_idx": 253,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=253",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0253.jpg",
+   "triage_score": 0.037
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0675",
+   "no_damage_control": false,
+   "rank": 88,
+   "row_idx": 675,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=675",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0675.jpg",
+   "triage_score": 0.0361
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0938",
+   "no_damage_control": false,
+   "rank": 89,
+   "row_idx": 938,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=938",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0938.jpg",
+   "triage_score": 0.0328
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0998",
+   "no_damage_control": false,
+   "rank": 90,
+   "row_idx": 998,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=998",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0998.jpg",
+   "triage_score": 0.0308
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0538",
+   "no_damage_control": false,
+   "rank": 91,
+   "row_idx": 538,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=538",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0538.jpg",
+   "triage_score": 0.03
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1013",
+   "no_damage_control": false,
+   "rank": 92,
+   "row_idx": 1013,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1013",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1013.jpg",
+   "triage_score": 0.0288
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0004",
+   "no_damage_control": false,
+   "rank": 93,
+   "row_idx": 4,
+   "section_id": "FDR-AIK-2214-S1",
+   "seeded_case_id": "D2-GENERATOR-FAILS-H30",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=4",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0004.jpg",
+   "triage_score": 0.0278
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0667",
+   "no_damage_control": false,
+   "rank": 94,
+   "row_idx": 667,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=667",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0667.jpg",
+   "triage_score": 0.027
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0903",
+   "no_damage_control": true,
+   "rank": 95,
+   "row_idx": 903,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=903",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0903.jpg",
+   "triage_score": 0.0253
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0166",
+   "no_damage_control": false,
+   "rank": 96,
+   "row_idx": 166,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=166",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0166.jpg",
+   "triage_score": 0.0239
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0105",
+   "no_damage_control": true,
+   "rank": 97,
+   "row_idx": 105,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=105",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0105.jpg",
+   "triage_score": 0.0228
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0248",
+   "no_damage_control": true,
+   "rank": 98,
+   "row_idx": 248,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=248",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0248.jpg",
+   "triage_score": 0.0213
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0115",
+   "no_damage_control": false,
+   "rank": 99,
+   "row_idx": 115,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=115",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0115.jpg",
+   "triage_score": 0.0205
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0566",
+   "no_damage_control": true,
+   "rank": 100,
+   "row_idx": 566,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=566",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0566.jpg",
+   "triage_score": 0.0198
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0927",
+   "no_damage_control": true,
+   "rank": 101,
+   "row_idx": 927,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=927",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0927.jpg",
+   "triage_score": 0.0198
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0023",
+   "no_damage_control": false,
+   "rank": 102,
+   "row_idx": 23,
+   "section_id": "FDR-AIK-2219-S1",
+   "seeded_case_id": "D7-PRIORITY-CONFLICT",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=23",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0023.jpg",
+   "triage_score": 0.0195
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0264",
+   "no_damage_control": false,
+   "rank": 103,
+   "row_idx": 264,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=264",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0264.jpg",
+   "triage_score": 0.0188
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0666",
+   "no_damage_control": false,
+   "rank": 104,
+   "row_idx": 666,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=666",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0666.jpg",
+   "triage_score": 0.0177
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0500",
+   "no_damage_control": true,
+   "rank": 105,
+   "row_idx": 500,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=500",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0500.jpg",
+   "triage_score": 0.017
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1001",
+   "no_damage_control": false,
+   "rank": 106,
+   "row_idx": 1001,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1001",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1001.jpg",
+   "triage_score": 0.0155
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0041",
+   "no_damage_control": false,
+   "rank": 107,
+   "row_idx": 41,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=41",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0041.jpg",
+   "triage_score": 0.0149
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1020",
+   "no_damage_control": false,
+   "rank": 108,
+   "row_idx": 1020,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1020",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1020.jpg",
+   "triage_score": 0.0139
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0017",
+   "no_damage_control": false,
+   "rank": 109,
+   "row_idx": 17,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=17",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0017.jpg",
+   "triage_score": 0.0138
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0273",
+   "no_damage_control": false,
+   "rank": 110,
+   "row_idx": 273,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=273",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0273.jpg",
+   "triage_score": 0.013
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0638",
+   "no_damage_control": false,
+   "rank": 111,
+   "row_idx": 638,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=638",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0638.jpg",
+   "triage_score": 0.0125
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0174",
+   "no_damage_control": true,
+   "rank": 112,
+   "row_idx": 174,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=174",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0174.jpg",
+   "triage_score": 0.0111
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1011",
+   "no_damage_control": false,
+   "rank": 113,
+   "row_idx": 1011,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1011",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1011.jpg",
+   "triage_score": 0.0111
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0799",
+   "no_damage_control": true,
+   "rank": 114,
+   "row_idx": 799,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=799",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0799.jpg",
+   "triage_score": 0.011
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0292",
+   "no_damage_control": true,
+   "rank": 115,
+   "row_idx": 292,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=292",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0292.jpg",
+   "triage_score": 0.0095
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0462",
+   "no_damage_control": false,
+   "rank": 116,
+   "row_idx": 462,
+   "section_id": "FDR-AIK-2238-S1",
+   "seeded_case_id": "D3-FUEL-TRUCK-FLOOD-BLOCK",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=462",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0462.jpg",
+   "triage_score": 0.0081
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0780",
+   "no_damage_control": true,
+   "rank": 117,
+   "row_idx": 780,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=780",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0780.jpg",
+   "triage_score": 0.0076
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0910",
+   "no_damage_control": false,
+   "rank": 118,
+   "row_idx": 910,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=910",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0910.jpg",
+   "triage_score": 0.0076
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0928",
+   "no_damage_control": false,
+   "rank": 119,
+   "row_idx": 928,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=928",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0928.jpg",
+   "triage_score": 0.0069
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0025",
+   "no_damage_control": false,
+   "rank": 120,
+   "row_idx": 25,
+   "section_id": "FDR-AIK-2219-S1",
+   "seeded_case_id": "D7-PRIORITY-CONFLICT",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=25",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0025.jpg",
+   "triage_score": 0.0066
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0168",
+   "no_damage_control": true,
+   "rank": 121,
+   "row_idx": 168,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=168",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0168.jpg",
+   "triage_score": 0.0062
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0214",
+   "no_damage_control": false,
+   "rank": 122,
+   "row_idx": 214,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=214",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0214.jpg",
+   "triage_score": 0.0061
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0603",
+   "no_damage_control": true,
+   "rank": 123,
+   "row_idx": 603,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=603",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0603.jpg",
+   "triage_score": 0.006
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0624",
+   "no_damage_control": true,
+   "rank": 124,
+   "row_idx": 624,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=624",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0624.jpg",
+   "triage_score": 0.006
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1004",
+   "no_damage_control": false,
+   "rank": 125,
+   "row_idx": 1004,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1004",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1004.jpg",
+   "triage_score": 0.0058
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0318",
+   "no_damage_control": false,
+   "rank": 126,
+   "row_idx": 318,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=318",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0318.jpg",
+   "triage_score": 0.0054
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0966",
+   "no_damage_control": true,
+   "rank": 127,
+   "row_idx": 966,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=966",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0966.jpg",
+   "triage_score": 0.0052
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0708",
+   "no_damage_control": true,
+   "rank": 128,
+   "row_idx": 708,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=708",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0708.jpg",
+   "triage_score": 0.0048
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0627",
+   "no_damage_control": false,
+   "rank": 129,
+   "row_idx": 627,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=627",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0627.jpg",
+   "triage_score": 0.0037
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0912",
+   "no_damage_control": false,
+   "rank": 130,
+   "row_idx": 912,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=912",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0912.jpg",
+   "triage_score": 0.0037
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0448",
+   "no_damage_control": false,
+   "rank": 131,
+   "row_idx": 448,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=448",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0448.jpg",
+   "triage_score": 0.0036
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0261",
+   "no_damage_control": false,
+   "rank": 132,
+   "row_idx": 261,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=261",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0261.jpg",
+   "triage_score": 0.0034
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0943",
+   "no_damage_control": false,
+   "rank": 133,
+   "row_idx": 943,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=943",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0943.jpg",
+   "triage_score": 0.0034
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0384",
+   "no_damage_control": true,
+   "rank": 134,
+   "row_idx": 384,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=384",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0384.jpg",
+   "triage_score": 0.0033
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0916",
+   "no_damage_control": false,
+   "rank": 135,
+   "row_idx": 916,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=916",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0916.jpg",
+   "triage_score": 0.0033
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0381",
+   "no_damage_control": false,
+   "rank": 136,
+   "row_idx": 381,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=381",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0381.jpg",
+   "triage_score": 0.0031
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0659",
+   "no_damage_control": true,
+   "rank": 137,
+   "row_idx": 659,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=659",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0659.jpg",
+   "triage_score": 0.0031
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0917",
+   "no_damage_control": false,
+   "rank": 138,
+   "row_idx": 917,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=917",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0917.jpg",
+   "triage_score": 0.0029
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0259",
+   "no_damage_control": false,
+   "rank": 139,
+   "row_idx": 259,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=259",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0259.jpg",
+   "triage_score": 0.0028
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0037",
+   "no_damage_control": false,
+   "rank": 140,
+   "row_idx": 37,
+   "section_id": "FDR-AIK-2231-S3",
+   "seeded_case_id": "W9-AMI-DARK-SECTION",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=37",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0037.jpg",
+   "triage_score": 0.0023
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0087",
+   "no_damage_control": true,
+   "rank": 141,
+   "row_idx": 87,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=87",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0087.jpg",
+   "triage_score": 0.0023
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1003",
+   "no_damage_control": false,
+   "rank": 142,
+   "row_idx": 1003,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1003",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1003.jpg",
+   "triage_score": 0.0023
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0134",
+   "no_damage_control": false,
+   "rank": 143,
+   "row_idx": 134,
+   "section_id": "FDR-AIK-2231-S3",
+   "seeded_case_id": "W9-AMI-DARK-SECTION",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=134",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0134.jpg",
+   "triage_score": 0.0022
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0236",
+   "no_damage_control": false,
+   "rank": 144,
+   "row_idx": 236,
+   "section_id": "FDR-AIK-2219-S2",
+   "seeded_case_id": "AMI-FLOOD-ONE-RECLOSER",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=236",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0236.jpg",
+   "triage_score": 0.0022
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0704",
+   "no_damage_control": true,
+   "rank": 145,
+   "row_idx": 704,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=704",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0704.jpg",
+   "triage_score": 0.0022
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0822",
+   "no_damage_control": true,
+   "rank": 146,
+   "row_idx": 822,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=822",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0822.jpg",
+   "triage_score": 0.002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0604",
+   "no_damage_control": true,
+   "rank": 147,
+   "row_idx": 604,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=604",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0604.jpg",
+   "triage_score": 0.0017
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0973",
+   "no_damage_control": false,
+   "rank": 148,
+   "row_idx": 973,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=973",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0973.jpg",
+   "triage_score": 0.0017
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0018",
+   "no_damage_control": false,
+   "rank": 149,
+   "row_idx": 18,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=18",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0018.jpg",
+   "triage_score": 0.0016
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0817",
+   "no_damage_control": true,
+   "rank": 150,
+   "row_idx": 817,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=817",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0817.jpg",
+   "triage_score": 0.0016
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0619",
+   "no_damage_control": true,
+   "rank": 151,
+   "row_idx": 619,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=619",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0619.jpg",
+   "triage_score": 0.0014
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0918",
+   "no_damage_control": false,
+   "rank": 152,
+   "row_idx": 918,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=918",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0918.jpg",
+   "triage_score": 0.0014
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1002",
+   "no_damage_control": false,
+   "rank": 153,
+   "row_idx": 1002,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1002",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1002.jpg",
+   "triage_score": 0.0014
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1048",
+   "no_damage_control": false,
+   "rank": 154,
+   "row_idx": 1048,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1048",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1048.jpg",
+   "triage_score": 0.0014
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0665",
+   "no_damage_control": false,
+   "rank": 155,
+   "row_idx": 665,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=665",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0665.jpg",
+   "triage_score": 0.0013
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0964",
+   "no_damage_control": true,
+   "rank": 156,
+   "row_idx": 964,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=964",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0964.jpg",
+   "triage_score": 0.0013
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0843",
+   "no_damage_control": true,
+   "rank": 157,
+   "row_idx": 843,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=843",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0843.jpg",
+   "triage_score": 0.0012
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0800",
+   "no_damage_control": true,
+   "rank": 158,
+   "row_idx": 800,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=800",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0800.jpg",
+   "triage_score": 0.0011
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0615",
+   "no_damage_control": true,
+   "rank": 159,
+   "row_idx": 615,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=615",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0615.jpg",
+   "triage_score": 0.001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0838",
+   "no_damage_control": true,
+   "rank": 160,
+   "row_idx": 838,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=838",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0838.jpg",
+   "triage_score": 0.001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0112",
+   "no_damage_control": true,
+   "rank": 161,
+   "row_idx": 112,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=112",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0112.jpg",
+   "triage_score": 0.0009
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0336",
+   "no_damage_control": true,
+   "rank": 162,
+   "row_idx": 336,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=336",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0336.jpg",
+   "triage_score": 0.0008
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0680",
+   "no_damage_control": true,
+   "rank": 163,
+   "row_idx": 680,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=680",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0680.jpg",
+   "triage_score": 0.0008
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0165",
+   "no_damage_control": true,
+   "rank": 164,
+   "row_idx": 165,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=165",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0165.jpg",
+   "triage_score": 0.0007
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0934",
+   "no_damage_control": false,
+   "rank": 165,
+   "row_idx": 934,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=934",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0934.jpg",
+   "triage_score": 0.0007
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0399",
+   "no_damage_control": false,
+   "rank": 166,
+   "row_idx": 399,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=399",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0399.jpg",
+   "triage_score": 0.0006
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0011",
+   "no_damage_control": false,
+   "rank": 167,
+   "row_idx": 11,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=11",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0011.jpg",
+   "triage_score": 0.0005
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0547",
+   "no_damage_control": true,
+   "rank": 168,
+   "row_idx": 547,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=547",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0547.jpg",
+   "triage_score": 0.0005
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0184",
+   "no_damage_control": true,
+   "rank": 169,
+   "row_idx": 184,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=184",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0184.jpg",
+   "triage_score": 0.0004
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0287",
+   "no_damage_control": true,
+   "rank": 170,
+   "row_idx": 287,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=287",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0287.jpg",
+   "triage_score": 0.0004
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0790",
+   "no_damage_control": true,
+   "rank": 171,
+   "row_idx": 790,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=790",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0790.jpg",
+   "triage_score": 0.0004
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0997",
+   "no_damage_control": false,
+   "rank": 172,
+   "row_idx": 997,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=997",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0997.jpg",
+   "triage_score": 0.0004
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1009",
+   "no_damage_control": false,
+   "rank": 173,
+   "row_idx": 1009,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1009",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1009.jpg",
+   "triage_score": 0.0004
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0030",
+   "no_damage_control": false,
+   "rank": 174,
+   "row_idx": 30,
+   "section_id": "FDR-AIK-2231-S3",
+   "seeded_case_id": "W9-AMI-DARK-SECTION",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=30",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0030.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0216",
+   "no_damage_control": true,
+   "rank": 175,
+   "row_idx": 216,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=216",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0216.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0296",
+   "no_damage_control": false,
+   "rank": 176,
+   "row_idx": 296,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=296",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0296.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0302",
+   "no_damage_control": false,
+   "rank": 177,
+   "row_idx": 302,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=302",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0302.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0319",
+   "no_damage_control": false,
+   "rank": 178,
+   "row_idx": 319,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=319",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0319.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0561",
+   "no_damage_control": false,
+   "rank": 179,
+   "row_idx": 561,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=561",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0561.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0635",
+   "no_damage_control": false,
+   "rank": 180,
+   "row_idx": 635,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=635",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0635.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0990",
+   "no_damage_control": true,
+   "rank": 181,
+   "row_idx": 990,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=990",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0990.jpg",
+   "triage_score": 0.0003
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0002",
+   "no_damage_control": false,
+   "rank": 182,
+   "row_idx": 2,
+   "section_id": "FDR-AIK-2219-S1",
+   "seeded_case_id": "D7-PRIORITY-CONFLICT",
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=2",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0002.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0009",
+   "no_damage_control": false,
+   "rank": 183,
+   "row_idx": 9,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=9",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0009.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0136",
+   "no_damage_control": true,
+   "rank": 184,
+   "row_idx": 136,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=136",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0136.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0317",
+   "no_damage_control": false,
+   "rank": 185,
+   "row_idx": 317,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=317",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0317.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0359",
+   "no_damage_control": true,
+   "rank": 186,
+   "row_idx": 359,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=359",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0359.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0565",
+   "no_damage_control": false,
+   "rank": 187,
+   "row_idx": 565,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=565",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0565.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0758",
+   "no_damage_control": true,
+   "rank": 188,
+   "row_idx": 758,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=758",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0758.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-1043",
+   "no_damage_control": true,
+   "rank": 189,
+   "row_idx": 1043,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=1043",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_1043.jpg",
+   "triage_score": 0.0002
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0010",
+   "no_damage_control": false,
+   "rank": 190,
+   "row_idx": 10,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=10",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0010.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0076",
+   "no_damage_control": true,
+   "rank": 191,
+   "row_idx": 76,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=76",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0076.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0242",
+   "no_damage_control": true,
+   "rank": 192,
+   "row_idx": 242,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=242",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0242.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0294",
+   "no_damage_control": false,
+   "rank": 193,
+   "row_idx": 294,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=294",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0294.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0380",
+   "no_damage_control": true,
+   "rank": 194,
+   "row_idx": 380,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=380",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0380.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0441",
+   "no_damage_control": true,
+   "rank": 195,
+   "row_idx": 441,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=441",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0441.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0907",
+   "no_damage_control": false,
+   "rank": 196,
+   "row_idx": 907,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=907",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0907.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0922",
+   "no_damage_control": true,
+   "rank": 197,
+   "row_idx": 922,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=922",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0922.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0931",
+   "no_damage_control": true,
+   "rank": 198,
+   "row_idx": 931,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=931",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0931.jpg",
+   "triage_score": 0.0001
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0599",
+   "no_damage_control": true,
+   "rank": 199,
+   "row_idx": 599,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=599",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0599.jpg",
+   "triage_score": 0.0
+  },
+  {
+   "human_only": [],
+   "image_id": "ladi-v2-test-0742",
+   "no_damage_control": true,
+   "rank": 200,
+   "row_idx": 742,
+   "section_id": null,
+   "seeded_case_id": null,
+   "signals": [],
+   "source_url": "https://huggingface.co/datasets/MITLL/LADI-v2-dataset/viewer/default/test?row=742",
+   "status": "awaiting_review",
+   "suggested_actions": [],
+   "thumb": "thumbs/test_0742.jpg",
+   "triage_score": 0.0
+  }
+ ],
+ "seeded_order": {
+  "control_group_max_score": 0.1252,
+  "control_groups": 12,
+  "ladder_discordant_pairs": 4,
+  "ladder_pairs": 13,
+  "ranked_cases": [
+   "FDR2207-WEAK-TRUNK (moderate)",
+   "D3-FUEL-TRUCK-FLOOD-BLOCK (extensive)",
+   "AMI-FLOOD-ONE-RECLOSER (moderate)",
+   "D2-GENERATOR-FAILS-H30 (complete)",
+   "D7-PRIORITY-CONFLICT (slight)",
+   "W9-AMI-DARK-SECTION (slight)"
+  ],
+  "slight_case_scores": [
+   0.0412,
+   0.0248
+  ],
+  "structural_above_all_control_groups": true,
+  "structural_min_score": 0.1952,
+  "structural_tier": "damage_state severity >= 2",
+  "tier_violations": 0
+ }
+}
