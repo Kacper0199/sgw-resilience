@@ -146,12 +146,21 @@ Six roles take storm decisions and the Executive follows them. The pain points b
 A relief Duty Manager covers the second shift, the Auditor checks the record of approvals, the Platform Admin manages users, policies and integrations, and the Data and Models Owner watches data feeds and model quality.
 Before landfall the queue holds D1 and D2, and at landfall the decisions where power and water depend on each other (D3) rise. After the all clear the ETR (D4) leads, after demobilisation D5 closes each deadline as met or missed, and outside storms a Readiness mode holds the decisions due before the season.
 
-\begin{figure}[tb]
-  \centering
-  \resizebox{0.7\textwidth}{!}{\input{swimlane}}
-  \caption{A storm day in the future state, with the pain points of today on top. Each signature binds two functions to one version of the plan. Synthetic scenario.}
-  \label{fig:swimlane}
-\end{figure}
+\begin{table}[tb]\footnotesize
+\caption{A storm day in the future state, with the pain points of today. Each signature binds two functions to one version of the plan. Synthetic scenario.}\label{tab:stormday}
+\begin{tabularx}{\textwidth}{@{}L{2.9cm} L{3.3cm} Y L{3.4cm}@{}}
+  \toprule
+  \textbf{Time} & \textbf{Today} & \textbf{With the platform} & \textbf{Who signs} \\ \midrule
+  Three to two days before landfall & Crews called by phone and tracked in spreadsheets & Risk view and plan diff, the Duty Manager proposes the event type & Incident Commander \\
+  Two days to one day before landfall & Same as above & Crew options across scenarios, the Duty Manager proposes crew staging, a staging plan with an envelope & Incident Commander and Logistics \\
+  Twelve hours before landfall & Water learns of a feeder loss late & The next advisory moves the PS-17 clock, generator priority is decided & Incident Commander and Water Incident Lead \\
+  Twelve hours after landfall & Notices drafted by hand & The boil water rule fires and the notice is drafted & Water Incident Lead and Compliance \\
+  One day after landfall & Restoration time set by judgement & Restoration time with a range & Duty Manager and Incident Commander \\
+  Three days after landfall & Review rebuilt from email & Clocks met or missed, from the record & No signature \\
+  Throughout & Separate reports per desk & The Executive reads the Briefing with the same numbers and clocks as every desk, with read access only & No signature \\
+  \bottomrule
+\end{tabularx}
+\end{table}
 
 \sgwsection{scope}{0.25}{Goals and out of scope}
 \noindent\begin{minipage}{\linewidth}
