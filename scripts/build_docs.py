@@ -1,10 +1,10 @@
 """Build the SGW documents: numbers -> palette -> figures -> pdflatex, bibtex, pdflatex x2 -> lint -> budgets.
 
-    uv run python docs/build.py all           # palette, numbers, figures, diagrams, prd, briefing
-    uv run python docs/build.py prd           # one document (also: briefing)
-    uv run python docs/build.py diagrams      # each TikZ diagram as its own PDF and a 60 dpi PNG preview
-    uv run python docs/build.py lint          # prose lint and palette drift check, no TeX run
-    uv run python docs/build.py all --final   # refuse stub numbers, unknown keys and pending boxes
+    uv run python scripts/build_docs.py all           # palette, numbers, figures, diagrams, prd, briefing
+    uv run python scripts/build_docs.py prd           # one document (also: briefing)
+    uv run python scripts/build_docs.py diagrams  # each TikZ diagram as a PDF and a 60 dpi PNG preview
+    uv run python scripts/build_docs.py lint          # prose lint and palette drift check, no TeX run
+    uv run python scripts/build_docs.py all --final   # refuse stub numbers, unknown keys and pending boxes
 
 Outputs: docs/pdf/<doc>.pdf and docs/pdf/diagrams/. Intermediate files: var/docs/ (git-ignored).
 Toolchain: pdflatex, bibtex, pdfinfo, pdftoppm (TeX Live and poppler). No latexmk, no biber.
@@ -25,8 +25,8 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
-DOCS = Path(__file__).resolve().parent
-REPO = DOCS.parent
+REPO = Path(__file__).resolve().parent.parent
+DOCS = REPO / "docs"
 LATEX = DOCS / "latex"
 SHARED = LATEX / "shared"
 DIAGRAMS = SHARED / "diagrams"

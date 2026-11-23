@@ -67,7 +67,7 @@ Text is normalised first (NFKC), so full-width digits are treated like ASCII dig
 
 ## Replay, live and the gateway
 
-Every model call goes through the LLM gateway (`services/llm_gateway`, see [gateway.md](gateway.md)). In `compose.yaml` only the `llm-gateway` service reads the key file (`SGW_ENV_FILE`, default `var/llm.env`).
+Every model call goes through the LLM gateway (`services/llm_gateway`, see [13. LLM gateway](13-llm-gateway.md)). In `compose.yaml` only the `llm-gateway` service reads the key file (`SGW_ENV_FILE`, default `var/llm.env`).
 
 | Mode (`LLM_MODE`) | What happens |
 | --- | --- |

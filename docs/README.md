@@ -18,6 +18,8 @@ The SGW Resilience Platform is a working prototype of decision support for South
 | [10. Crew optimisation and restoration estimates](10-crew-optimisation-and-restoration-estimates.md) | Crew pre-positioning across forecast members and restoration times |
 | [11. Security, governance and human oversight](11-security-governance-and-human-oversight.md) | Policy engine, signing, audit, what the LLM may do, egress, secrets, prompt injection |
 | [12. Assumptions, limitations and improvements](12-assumptions-limitations-and-improvements.md) | What the prototype assumes, what it does not prove, what comes next |
+| [13. LLM gateway](13-llm-gateway.md) | The single path to the model provider: interface, egress gate, budget caps, record and replay |
+| [14. Code tour](14-code-tour.md) | The key files on the demo path, in reading order |
 
 ## Deliverables
 
@@ -30,15 +32,9 @@ The SGW Resilience Platform is a working prototype of decision support for South
 
 | Document | Use it for |
 | --- | --- |
-| [architecture.md](architecture.md) | The long architecture reference: every data-flow step, tiers, contracts, degraded modes, Ask AI and scenarios |
-| [adr/](adr/README.md) | Architecture decision records 0001 to 0006 |
-| [code-tour.md](code-tour.md) | Twelve key files on the demo path, in reading order |
-| [tradeoffs.md](tradeoffs.md) | What each prototype choice costs, and the minimum pilot architecture |
-| [data.md](data.md) | Every dataset with its path, licence and rebuild command; see also [data/ATTRIBUTION.md](../data/ATTRIBUTION.md) |
-| [limitations.md](limitations.md) | The full limitation register with evidence and how to close each item |
-| [gateway.md](gateway.md) | LLM gateway interface, egress gate, budget and recording format |
+| [../data/ATTRIBUTION.md](../data/ATTRIBUTION.md) | Every public dataset with its source and licence |
 | [models/](models/) | Model notes: outage forecast, outage surge detector, forecast pre-registration |
 | [ops/stack.md](ops/stack.md) | Services, ports, limits, credentials, audit wiring, database roles |
-| [ops/](ops/) | Golden-path API walk-through, memory baseline, multi-architecture builds |
+| [ops/](ops/) | Golden-path API walk-through, multi-architecture builds |
 
-Diagrams are built from TikZ sources in [diagrams/src/](diagrams/src/) with `docs/diagrams/build.sh <name>`; images live in [images/](images/).
+Diagrams are built from TikZ sources in [diagrams/src/](diagrams/src/) with `docs/diagrams/build.sh <name>`; images live in [images/](images/). The PRD and the briefing are built with `uv run python scripts/build_docs.py prd --final` and `briefing --final`.

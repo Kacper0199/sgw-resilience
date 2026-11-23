@@ -15,8 +15,8 @@ The build needs TeX Live (`pdflatex`, `bibtex`, the `charter` and `fira` font pa
 
 ```sh
 uv run python -m sgw.common.numbers --check --audit
-uv run python docs/build.py prd --final
-uv run python docs/build.py briefing --final
+uv run python scripts/build_docs.py prd --final
+uv run python scripts/build_docs.py briefing --final
 ```
 
 The PDFs are written to `docs/pdf/` (not tracked). Copy them here after a rebuild:

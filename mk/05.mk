@@ -1,5 +1,5 @@
-# Documents. Every target wraps docs/build.py, which runs on any OS with uv and TeX Live.
-DOCS_BUILD := uv run python docs/build.py
+# Documents. Every target wraps scripts/build_docs.py, which runs on any OS with uv and TeX Live.
+DOCS_BUILD := uv run python scripts/build_docs.py
 
 .PHONY: docs docs-prd docs-briefing docs-diagrams docs-figures docs-lint docs-final docs-test
 

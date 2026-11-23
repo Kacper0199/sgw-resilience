@@ -26,7 +26,7 @@ The platform's core object is a **decision case** with a computed **decide-by ti
 
 `decide-by = consequence time - action lead time`
 
-The consequence time comes from models run on every member of the forecast ensemble, so each deadline is a range (P10, P50, P90), not a single time. When a new advisory arrives, the deadlines move, and the decision queue reorders. Deterministic code computes every deadline; the AI explains it but cannot set it. How the clock is computed and who signs: [02. Roles and decision workflow](02-roles-and-decision-workflow.md). Why this object: [ADR 0001](adr/0001-decision-clocks-as-the-core.md).
+The consequence time comes from models run on every member of the forecast ensemble, so each deadline is a range (P10, P50, P90), not a single time. When a new advisory arrives, the deadlines move, and the decision queue reorders. Deterministic code computes every deadline; the AI explains it but cannot set it. How the clock is computed and who signs: [02. Roles and decision workflow](02-roles-and-decision-workflow.md).
 
 The demo story is one such clock: pump station PS-17 feeds a zone with a hospital. If the station loses power, its tank drains, and the hospital connection falls below the state pressure floor. When the next advisory shifts the storm, that deadline moves earlier, and the Incident Commander and the Water Incident Lead must sign a feeder priority before it passes.
 
@@ -78,7 +78,7 @@ Source: `web/src/app/modules.ts`. The UI shows only the pages and buttons the si
 | Water network model and what-if | tank drain to the pressure floor per forecast member; a precomputed what-if grid | [09](09-water-network-model-and-what-if.md) |
 | Optimisation | crew pre-positioning across forecast members; restoration estimates | [10](10-crew-optimisation-and-restoration-estimates.md) |
 
-The LLM never decides: it writes text with placeholders that code fills with computed values, and a verifier rejects any number it cannot trace ([ADR 0003](adr/0003-llm-explains-never-decides.md)). Without an API key, recorded answers replay at no cost.
+The LLM never decides: it writes text with placeholders that code fills with computed values, and a verifier rejects any number it cannot trace. Without an API key, recorded answers replay at no cost.
 
 ## Real and synthetic data
 

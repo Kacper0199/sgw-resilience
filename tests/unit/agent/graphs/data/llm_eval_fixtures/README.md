@@ -5,4 +5,4 @@ version is not the one `src/sgw/agent/llm_nodes.yaml` sets for the node: Haiku r
 `after_action_summary`, Sonnet runs of `sitrep`, `sitrep` prompt v1, and `sitrep` at the earlier `max_tokens`.
 They stay out of `data/fixtures/llm/` because WP-04's replay test replays every runtime fixture under the
 production egress rules, which deny these models. `test_report_replay.py` merges both folders into a temporary
-replay gateway to regrade the eval keyless. Format: K11 (`docs/gateway.md`).
+replay gateway to regrade the eval keyless. Format: K11 (`docs/13-llm-gateway.md`).

@@ -1,6 +1,6 @@
 # Code tour: twelve files on the golden path
 
-Audience: a reviewer with an hour who wants to see where the important behaviour lives. Read in this order; each stop names the file, what it does and why it is built that way, and the test that pins it. Architecture context: [architecture.md](architecture.md).
+Audience: a reviewer with an hour who wants to see where the important behaviour lives. Read in this order; each stop names the file, what it does and why it is built that way, and the test that pins it. Architecture context: [architecture reference](03-architecture.md#architecture-reference).
 
 ## 1. Decision clocks
 
@@ -23,7 +23,7 @@ Audience: a reviewer with an hour who wants to see where the important behaviour
 [`src/sgw/approval/service.py`](../src/sgw/approval/service.py) with [`db/migrations/4500_approval_execution_token_binding.sql`](../db/migrations/4500_approval_execution_token_binding.sql) and [`4750_breakglass_authority.sql`](../db/migrations/4750_breakglass_authority.sql)
 
 - Creates proposals with the tier from policy, records approvals with compare-and-set on the version, and issues a single-use execution token bound to `proposal_version` and `action_hash`.
-- The same rules are enforced again by triggers, so even a direct SQL insert by the runtime role cannot create a token without two functions' signatures or a break-glass row ([ADR 0002](adr/0002-authority-is-a-database-row.md)).
+- The same rules are enforced again by triggers, so even a direct SQL insert by the runtime role cannot create a token without two functions' signatures or a break-glass row.
 - Tests: `tests/unit/approval/test_service.py`, `tests/security/test_sec_16.py`, `test_sec_17.py`, `test_sec_47.py`.
 
 ## 4. Audit chain
@@ -39,7 +39,7 @@ Audience: a reviewer with an hour who wants to see where the important behaviour
 [`services/llm_gateway/egress.py`](../services/llm_gateway/egress.py) with [`policy/egress.rego`](../policy/egress.rego)
 
 - Asks the egress policy before every model call, in every mode, with the declared data classes, the node's allowlist row and detector counts for canaries and secret shapes.
-- One process, one network route and one key holder, so data-class rules are enforced in one place ([ADR 0004](adr/0004-single-egress-gateway.md)); an unreachable OPA denies.
+- One process, one network route and one key holder, so data-class rules are enforced in one place; an unreachable OPA denies.
 - A Python twin of the policy runs where OPA is absent; a parity test runs both over one case table. Tests: `tests/security/test_sec_30.py`, `test_sec_33.py`.
 
 ## 6. Output verifier
@@ -47,7 +47,7 @@ Audience: a reviewer with an hour who wants to see where the important behaviour
 [`src/sgw/agent/render/verify.py`](../src/sgw/agent/render/verify.py)
 
 - Accepts model text only if every value is a slot filled by code and every other digit-bearing token is an exact id from the run's evidence or the asset and document registry.
-- Shape-based id matching would let an invented `PS-91` through; exact matching does not ([ADR 0003](adr/0003-llm-explains-never-decides.md)).
+- Shape-based id matching would let an invented `PS-91` through; exact matching does not.
 - On failure the node falls back to a template with the same slot values. Tests: `tests/unit/agent/test_render.py`, `tests/security/test_sec_39.py`.
 
 ## 7. Retrieval guard

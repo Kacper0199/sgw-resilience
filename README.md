@@ -26,6 +26,8 @@ This README tells you how to run the demo. How the platform works, for whom, and
 | [10. Crew optimisation and restoration estimates](docs/10-crew-optimisation-and-restoration-estimates.md) | Crew pre-positioning, dispatch, restoration time ranges |
 | [11. Security, governance and human oversight](docs/11-security-governance-and-human-oversight.md) | Permissions, policy, audit, what the AI may and may not do |
 | [12. Assumptions, limitations and improvements](docs/12-assumptions-limitations-and-improvements.md) | What is assumed, what is missing, what comes next |
+| [13. LLM gateway](docs/13-llm-gateway.md) | The single path to the model provider, budget caps, record and replay |
+| [14. Code tour](docs/14-code-tour.md) | The key files on the demo path, in reading order |
 | [Product requirements document (PDF)](docs/deliverables/prd.pdf) | Deliverable 1 |
 | [Executive briefing (PDF)](docs/deliverables/executive-briefing.pdf) | Deliverable 2 |
 
@@ -180,7 +182,7 @@ uv run sgw bootstrap --demo-password 123
 uv run sgw up --demo
 ```
 
-`bootstrap` keeps the existing credentials and only records where the key file is; `up` recreates the gateway with the key. A key file in another place also works: `SGW_ENV_FILE=/absolute/path/to/file uv run sgw bootstrap`. Only the `llm-gateway` container reads the file, and `llm.env` is never committed (it is in `.gitignore`). Live answers are cached locally in `var/llm/live_cache/`, so the same question costs once. The gateway stops live calls at a daily cap of 30 USD and at a 40 USD running total; for a lower daily cap add a line such as `LLM_DAILY_CAP_USD=5` to the same file. Spend so far: `uv run sgw llm-spend`. Details: [docs/gateway.md](docs/gateway.md).
+`bootstrap` keeps the existing credentials and only records where the key file is; `up` recreates the gateway with the key. A key file in another place also works: `SGW_ENV_FILE=/absolute/path/to/file uv run sgw bootstrap`. Only the `llm-gateway` container reads the file, and `llm.env` is never committed (it is in `.gitignore`). Live answers are cached locally in `var/llm/live_cache/`, so the same question costs once. The gateway stops live calls at a daily cap of 30 USD and at a 40 USD running total; for a lower daily cap add a line such as `LLM_DAILY_CAP_USD=5` to the same file. Spend so far: `uv run sgw llm-spend`. Details: [docs/13-llm-gateway.md](docs/13-llm-gateway.md).
 
 ### Operating system notes
 
@@ -236,12 +238,12 @@ The same mechanics run crew pre-positioning, field resource orders, boil-water n
 
 One Docker Compose project. The core profile has ten services: Caddy (the only HTTP entry, serves the web app), the API (FastAPI, SSE, agent runs, approvals, scenario jobs), a webhook delivery worker, a worker placeholder, an audit checkpointer, the LLM gateway (the only service with Internet egress), OPA for policy, Postgres 18 with TimescaleDB, PostGIS and pgvector, a Postgres port relay and MLflow. Optional profiles add an MLflow UI relay and Prometheus with Grafana.
 
-- **Models predict, code computes, the LLM explains.** Forecasts come from statistical and physical models; clocks, rankings and rules are deterministic code; AI text only fills slots with values from code, and a verifier rejects any number or id it cannot trace ([ADR 0003](docs/adr/0003-llm-explains-never-decides.md)).
-- **Authority is a database row.** OPA sets the approval level; Postgres triggers check approvals, execution tokens and effects again ([ADR 0002](docs/adr/0002-authority-is-a-database-row.md)).
-- **One egress.** Only the gateway reaches the model provider, after a data-class policy check ([ADR 0004](docs/adr/0004-single-egress-gateway.md)).
+- **Models predict, code computes, the LLM explains.** Forecasts come from statistical and physical models; clocks, rankings and rules are deterministic code; AI text only fills slots with values from code, and a verifier rejects any number or id it cannot trace.
+- **Authority is a database row.** OPA sets the approval level; Postgres triggers check approvals, execution tokens and effects again.
+- **One egress.** Only the gateway reaches the model provider, after a data-class policy check.
 - **Ask AI is a read-only team.** A router and a wide gate decide the path; a planner sends the question to up to three specialist workers (forecast, grid, water, policy, data quality) in parallel; one synthesis step writes the answer; code adds the links. A guide path answers "where is", "what does this mean" and photo requests, and declines unrelated topics, write requests and injected instructions with suggestions instead of a bare refusal. Follow-ups are rewritten into standalone questions, and the answer comes in the language of the question. Ask knows the signed-in role: it names the decisions that role signs, says who signs the others, and links only pages the role can open. It gives the same customers-out figure as Briefing, and explains the platform's own models (method, inputs, measured quality) from a card per model.
 
-Diagrams and data flow: [docs/03-architecture.md](docs/03-architecture.md). Ten files to read first: [docs/code-tour.md](docs/code-tour.md).
+Diagrams and data flow: [docs/03-architecture.md](docs/03-architecture.md). Ten files to read first: [docs/14-code-tour.md](docs/14-code-tour.md).
 
 ## Built, simulated, not built
 
@@ -253,7 +255,7 @@ Diagrams and data flow: [docs/03-architecture.md](docs/03-architecture.md). Ten 
 | **Readiness preview only** | Heat wave (July 2024) and Table Rock wildfire weather (March 2025): readiness checks on real station data, not a playable storm |
 | **Not built** | A second modelled storm replay (Ian is scripted), scheduled background worker (loops start from the CLI or the API), field mobile app, public notice sending, crew road routing, reinforcement learning |
 
-Details and how each gap would close: [docs/limitations.md](docs/limitations.md).
+Details and how each gap would close: [docs/12-assumptions-limitations-and-improvements.md](docs/12-assumptions-limitations-and-improvements.md).
 
 ## How well Ask AI answers
 
@@ -265,7 +267,7 @@ Besides the unit, contract, policy and end-to-end tests of the merge gate (`scri
 
 ## Data and licences
 
-Code: Apache-2.0 ([LICENSE](LICENSE), [NOTICE](NOTICE)). Real public data: NOAA HURDAT2 and the NHC GIS archive (public domain), ORNL EAGLE-I county outages (CC BY 4.0), ASOS observations and NWS warnings via Iowa Environmental Mesonet, USGS gauges, OpenFEMA declarations, NCEI Storm Events, Natural Earth, US Census boundaries, DOE and EPA documents (public domain), LADI v2 imagery (CC BY 4.0) and its reference classifier (MIT). Everything about SGW itself is synthetic and labelled. Sources, labels and rebuild commands: [docs/data.md](docs/data.md); per-file attribution: [data/ATTRIBUTION.md](data/ATTRIBUTION.md). Dependency licences are checked by `make licences` (GPL, AGPL and LGPL fail the check unless allow-listed).
+Code: Apache-2.0 ([LICENSE](LICENSE), [NOTICE](NOTICE)). Real public data: NOAA HURDAT2 and the NHC GIS archive (public domain), ORNL EAGLE-I county outages (CC BY 4.0), ASOS observations and NWS warnings via Iowa Environmental Mesonet, USGS gauges, OpenFEMA declarations, NCEI Storm Events, Natural Earth, US Census boundaries, DOE and EPA documents (public domain), LADI v2 imagery (CC BY 4.0) and its reference classifier (MIT). Everything about SGW itself is synthetic and labelled. Sources, labels and rebuild commands: [docs/04-data.md](docs/04-data.md); per-file attribution: [data/ATTRIBUTION.md](data/ATTRIBUTION.md). Dependency licences are checked by `make licences` (GPL, AGPL and LGPL fail the check unless allow-listed).
 
 ## Tools used
 
@@ -278,7 +280,7 @@ Code: Apache-2.0 ([LICENSE](LICENSE), [NOTICE](NOTICE)). Real public data: NOAA 
 
 ## Limitations
 
-The short list; the full one with evidence is [docs/limitations.md](docs/limitations.md).
+The short list; the full one with evidence is [docs/12-assumptions-limitations-and-improvements.md](docs/12-assumptions-limitations-and-improvements.md).
 
 - All SGW data is synthetic. Model quality on SGW's real assets is unknown until a pilot has data access.
 - The outage forecast beats a fitted wind-threshold rule on county error for 21 of 24 real storms but under-calls the storm total on 18 of them, most for the largest (Helene: 0.4 M customers out forecast against 2.3 M observed). Crews are never sized on it alone.
@@ -312,7 +314,7 @@ The short list; the full one with evidence is [docs/limitations.md](docs/limitat
 | `evals/` | Evaluation sets (dev and held-out) and reports |
 | `host/` | Host-only jobs (WNTR precompute, CV scoring) |
 | `docker/`, `infra/`, `ops/`, `compose.yaml` | Images, Caddy and OPA config, observability profile, the stack |
-| `docs/` | Platform guide (numbered files 01 to 12), deliverables (PRD and executive briefing PDFs), diagrams and their TikZ sources, ADRs, ops notes, LaTeX sources |
+| `docs/` | Platform guide (numbered files 01 to 14), deliverables (PRD and executive briefing PDFs), diagrams and their TikZ sources, ops notes, LaTeX sources |
 | `examples/webhook-consumer/` | Minimal HTTPS webhook receiver that verifies signatures |
 | `tests/`, `scripts/` | Unit, integration, security and end-to-end API tests; repository checks (`scripts/check.sh`) |
 | [DESIGN.md](DESIGN.md) | Visual design source of truth for the UI |

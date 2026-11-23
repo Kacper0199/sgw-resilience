@@ -34,7 +34,7 @@ The UI reads the same rules from `GET /api/me/permissions` (`permissions()` in `
 
 ## Decision cases and the decision clock
 
-The platform's core object is a **decision case**: an action that must be decided by a computed time (the "decide-by" time), so that its lead time still fits before the consequence. The reasoning is in [ADR 0001](adr/0001-decision-clocks-as-the-core.md).
+The platform's core object is a **decision case**: an action that must be decided by a computed time (the "decide-by" time), so that its lead time still fits before the consequence.
 
 How a clock is computed (deterministic code, no LLM):
 
@@ -84,7 +84,7 @@ What happens when someone presses **Sign** (`ApprovalService.decide` and `_recor
 1. The request carries the proposal version and action hash, and an `If-Match` header with the same pair. If the proposal changed since the person opened it, the API answers 412 and the dialog shows the newer version.
 2. OPA checks the signature. It refuses, among others, self-approval, a function the person does not hold, a function the decision does not require, a function or a person that has already signed, a person off shift, and an expired proposal.
 3. The signature row is written. If every required function has now signed, from distinct people who are not the proposer, the proposal becomes `approved` and a single-use **execution token** is issued, bound to that version and action hash. Otherwise it stays `in_review` with the functions still missing.
-4. Database triggers check the same rules again on insert (`db/migrations/4500_approval_execution_token_binding.sql`): a token can exist only for an approved proposal whose current version carries every required function from distinct non-proposers. A direct SQL insert by the runtime role is refused too. The reasoning is in [ADR 0002](adr/0002-authority-is-a-database-row.md).
+4. Database triggers check the same rules again on insert (`db/migrations/4500_approval_execution_token_binding.sql`): a token can exist only for an approved proposal whose current version carries every required function from distinct non-proposers. A direct SQL insert by the runtime role is refused too.
 5. A material change to the proposal (for example its targets) changes the version and the action hash and voids the earlier signatures and token (security test `tests/security/test_sec_47.py`).
 
 **Withdraw.** The proposer may withdraw an open proposal. An approver may withdraw their own signature while the proposal is still in review. An approved T3 action cannot be withdrawn; it is rescinded by a new T3 proposal (`ApprovalService.withdraw`).

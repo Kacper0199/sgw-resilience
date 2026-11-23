@@ -143,6 +143,6 @@ Server settings: `shared_buffers=384MB`, `max_connections=60`, `work_mem=16MB`, 
 ## Known limits
 
 - worker runs the image's placeholder process (`/opt/sgw/placeholder.py`); background loops (webhook worker, SAA jobs, commitment watch) are started from the CLI until the worker gets its `command:`.
-- llm-gateway mounts `data/fixtures/llm` read-only (replay recordings; record mode runs on the host per `docs/gateway.md`) and writes its spend ledger to `var/llm/llm_spend.csv` (`LLM_SPEND_CSV`). `var/llm/` is 0700 and owned by the uid the gateway runs as (`SGW_RUN_UID`: the invoking user on Linux, 10001 on Docker Desktop; a root bootstrap chowns it to 10001).
+- llm-gateway mounts `data/fixtures/llm` read-only (replay recordings; record mode runs on the host per `docs/13-llm-gateway.md`) and writes its spend ledger to `var/llm/llm_spend.csv` (`LLM_SPEND_CSV`). `var/llm/` is 0700 and owned by the uid the gateway runs as (`SGW_RUN_UID`: the invoking user on Linux, 10001 on Docker Desktop; a root bootstrap chowns it to 10001).
 - The worker has no egress.
 - MLflow keeps metadata in SQLite inside its volume and runs with `MLFLOW_SERVER_ENABLE_JOB_EXECUTION=false` (the 3.x job executor alone pushed it past 512 MiB). Server-side scorer jobs are not used.

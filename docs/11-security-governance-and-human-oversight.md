@@ -5,8 +5,8 @@ Audience: an assessor, a utility security reviewer or a compliance officer who a
 ## Principles
 
 - **People decide.** Every action that changes anything outside the platform needs a person's signature at a tier set by policy. The prototype has no write path to field equipment or control systems; T4 actions (direct control) have no tool at all.
-- **The AI explains, never decides.** Models predict, deterministic code computes, the LLM writes explanations around values that code fills in ([ADR 0003](adr/0003-llm-explains-never-decides.md)).
-- **Checks run twice.** Authority is checked by the policy engine and again by database triggers ([ADR 0002](adr/0002-authority-is-a-database-row.md)).
+- **The AI explains, never decides.** Models predict, deterministic code computes, the LLM writes explanations around values that code fills in.
+- **Checks run twice.** Authority is checked by the policy engine and again by database triggers.
 - **Everything leaves a trace.** Every state change is in a hash-chained, signed audit trail.
 
 ## Who can do what
@@ -56,7 +56,7 @@ The LLM gateway (`services/llm_gateway/`) is the only service that reaches the p
 - **Data classes.** Each call declares the classes of its inputs (C0 to C4 and CX, ranked in `class_rank`). Route R1, the prototype route, allows C0 and C1 only; C3, C3-N, C4 and CX are allowed on no route (`tests/security/test_sec_30.py`).
 - **Node allowlist.** Each calling node has a row in `src/sgw/agent/llm_nodes.yaml` with its models, class ceiling, beta headers and tool types; a call outside its row is denied. Attributes a caller asserts about itself are ignored (`tests/security/test_sec_m4_gateway_callers.py`).
 - **Detectors.** Canary tokens planted in test documents and secret-shaped strings in the outbound body deny the call before any network request (`tests/security/test_sec_33.py`).
-- **Budget.** Spend stops, a daily cap and a circuit breaker stop live calls; replay never touches the budget ([gateway.md](gateway.md), "Retries, breaker, budget").
+- **Budget.** Spend stops, a daily cap and a circuit breaker stop live calls; replay never touches the budget ([13. LLM gateway](13-llm-gateway.md), "Retries, breaker, budget").
 
 The webhook worker is the only other service on the egress network; it refuses private, loopback and reserved targets (`src/sgw/integrations/urls.py`).
 
@@ -83,8 +83,8 @@ Detection is deterministic: a model's opinion never clears a flag. The red-team 
 ## Data protection
 
 - The repository holds no utility customer data and no personal data beyond the seeded synthetic identities, whose display names are role titles.
-- Only synthetic or public content labelled C0 or C1 reaches the external model in the prototype. Above C1, a recording keeps no verbatim request ([gateway.md](gateway.md)).
-- Recorded LLM answers are committed fixtures; live answers to unrecorded questions are cached only in the git-ignored `var/llm/live_cache/` ([data.md](data.md)).
+- Only synthetic or public content labelled C0 or C1 reaches the external model in the prototype. Above C1, a recording keeps no verbatim request ([13. LLM gateway](13-llm-gateway.md)).
+- Recorded LLM answers are committed fixtures; live answers to unrecorded questions are cached only in the git-ignored `var/llm/live_cache/` ([dataset reference](04-data.md#dataset-reference)).
 - Retention is an assumption: audit records are kept 7 years as SGW policy, above the legal floors found (2 to 10 years by record type).
 
 Known gaps (the gateway trusts the declared class, sessions are not bound to per-user keys, a revoked session keeps an open stream) are listed in [12](12-assumptions-limitations-and-improvements.md).

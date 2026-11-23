@@ -9,7 +9,7 @@ Audience: a reviewer or data scientist deciding how far to trust the county outa
 | Headline method | Two-parameter wind-fragility curve: share of customers out per county as a lognormal function of the modelled peak gust, median and spread fitted on past storms (customer-weighted L1) |
 | Output | Customers out per county and the storm total, with a range |
 | Comparator | Fitted wind-threshold rule (threshold and coefficients fitted on the same training storms) |
-| Data | 24 real storms in Georgia and South Carolina, 2016-2025, 123 footprint counties; NOAA HURDAT2 observed tracks, ORNL EAGLE-I county outages ([data.md](../data.md)) |
+| Data | 24 real storms in Georgia and South Carolina, 2016-2025, 123 footprint counties; NOAA HURDAT2 observed tracks, ORNL EAGLE-I county outages ([dataset reference](../04-data.md#dataset-reference)) |
 | Test | Leave-one-storm-out hindcast: every storm is forecast by a curve fitted without it, on its observed track |
 | Decisions it informs | D1 event type and risk, D2 crew pre-positioning. Crews are never sized on the forecast alone |
 
