@@ -8,6 +8,71 @@ A decision platform for a combined power and water utility during severe weather
 
 It is built for the people who run a storm response at a utility: the Incident Commander, electric and water duty staff, logistics, compliance, the ETR (restoration time) specialist and the executive who reads the briefing. The prototype replays Hurricane Helene (September 2024) on synthetic SGW data calibrated to public sources; Hurricane Ian (2022) runs as a second, scripted exercise. It runs on one laptop and needs no API key: AI answers replay from committed recordings.
 
+## Demo tour
+
+Eight short clips follow one storm through the platform. On Thursday 26 September 2024, two days before Hurricane Helene makes landfall, a new advisory moves the deadlines and two teams sign off a crew plan. On Friday morning, after landfall, water pressure drops, damage photos come in, the executive reads the briefing and the auditor checks the record. Each clip shows one part of the platform through the eyes of one role. The storm data is real; the SGW network, people and decisions are synthetic.
+
+The clips are silent and captioned. The red label in the top right corner shows which role is signed in.
+
+| | Clip | Role | What it shows |
+| --- | --- | --- | --- |
+| 1 | [Decision queue](#1-decision-queue) | Incident Commander | Every decision with a computed deadline |
+| 2 | [Why the deadline moved](#2-why-the-deadline-moved) | Incident Commander | Step order, storm track history, outage forecast and what-ifs |
+| 3 | [Two teams sign](#3-two-teams-sign) | Incident Commander, Logistics Section Chief | Sign-off by two teams on a tamper-evident record |
+| 4 | [Ask AI](#4-ask-ai) | Water Incident Lead | Agentic answers with links and sources |
+| 5 | [Morning after landfall](#5-morning-after-landfall) | Water Compliance Officer | Pressure zones and a drafted boil-water notice |
+| 6 | [Damage photos and crews](#6-damage-photos-and-crews) | Logistics Section Chief | Photos ranked by an image model, crew plans from an optimiser |
+| 7 | [Briefing and the record](#7-briefing-and-the-record) | Executive (COO), Auditor | Executive briefing, after-action review, audit log check |
+| 8 | [Platform health](#8-platform-health) | Platform Admin | Data feeds, model quality, stop controls, who can sign |
+
+### 1. Decision queue
+
+Thursday, 11:05 ET. The Incident Commander starts the shift with 12 open decisions, 5 of them waiting for Command, the next one due in 55 minutes. Every decision carries a deadline computed from the storm forecast, the network and the time the action takes. The 11:00 advisory moved the deadline to send a fuel truck to pump station PS-17 1 h 16 min earlier: the truck feeds the generator that keeps water pressure up at Tallowbranch hospital.
+
+https://github.com/user-attachments/assets/fa692951-db43-438e-af38-f4681f9ade76
+
+### 2. Why the deadline moved
+
+The Sequence tab shows the PS-17 plan as five steps in order. The map shows the same decision under the official hurricane cone, and the advisory history bar shows the track moving east, towards the service area. The outage forecast, a statistical model fitted on 24 real storms, gives each county a range instead of one number. What-ifs test a track 40 km further east, stronger winds or mutual aid requested 12 hours later.
+
+https://github.com/user-attachments/assets/e18477c0-b45a-4729-8aff-c0ce024303b0
+
+### 3. Two teams sign
+
+Big decisions need signatures from two teams. The advisory changed the crew plan for two staging yards to version 2, so the earlier signature no longer counts. The commander signs version 2 for Command, then the Logistics Section Chief, in a separate account, signs for Logistics. AI drafted the plan, but only people approve it, and every signature, the voided one included, stays on a tamper-evident record.
+
+https://github.com/user-attachments/assets/cdff8cb5-ac39-45ca-85d3-757e5e13e353
+
+### 4. Ask AI
+
+The Water Incident Lead asks what the latest advisory means for PS-17. A small team of AI agents splits the question, reads decisions, water status, outage risk and the forecast, and a last step writes the answer with links into the app and sources alongside. Numbers are checked against platform data before the answer is shown. A follow-up keeps the context, and every decision in the answer opens in the queue with one click. Ask AI only reads: it explains decisions but never signs or changes them.
+
+https://github.com/user-attachments/assets/3d8dc5dc-35ad-455c-b5b3-9177ef9e9df8
+
+### 5. Morning after landfall
+
+Friday, 08:00 ET. Overnight, two of the four water pressure zones fell below the state minimum of 25 psi. The platform drafted a boil-water notice that cites the state rule behind it. The Water Compliance Officer signs for Compliance, and the notice now waits for water operations, due in just over an hour.
+
+https://github.com/user-attachments/assets/1908b5ff-83c5-49f6-a535-e0e89b2cb59c
+
+### 6. Damage photos and crews
+
+The Logistics Section Chief sees 58 crews reporting, 18 blocked and 6 damage cases waiting for review. A computer vision model ranks field photos worst first, with a probability for each label such as tree damage or debris, and the damage score sets the review order. An optimiser builds crew plan options, compared by cost and delay in an average and a bad storm.
+
+https://github.com/user-attachments/assets/edc8747a-589d-47aa-8772-1a3ea0438be7
+
+### 7. Briefing and the record
+
+The executive briefing shows customers out, critical facilities, water notices, crews and the counties a surge detector flagged; the executive reads it but cannot sign. The auditor cannot approve anything either. The after-action review counts deadlines met, missed and still open, and emergency approvals, and one click verifies the audit log, whose entries are chained so that any later change would show.
+
+https://github.com/user-attachments/assets/f350f83b-9a98-4ba0-831a-ac0594ad6f33
+
+### 8. Platform health
+
+The Platform Admin checks every data feed against its age limit (the network map is 27 hours old, so it is flagged late) and every model against its target, including where a model falls short. Stop controls scale the AI down step by step, from reduced AI to rules only and then to manual procedures. The admin page shows who may sign what.
+
+https://github.com/user-attachments/assets/d42b94e7-28b7-4c0e-9cf6-ddfb3618b033
+
 ## Read more in the docs folder
 
 This README tells you how to run the demo. How the platform works, for whom, and how far to trust it is explained in the [`docs`](docs/README.md) folder, one topic per file:
