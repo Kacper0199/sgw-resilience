@@ -10,7 +10,7 @@ It is built for the people who run a storm response at a utility: the Incident C
 
 ## Demo tour
 
-Eight short clips follow one storm through the platform. On Thursday 26 September 2024, two days before Hurricane Helene makes landfall, a new advisory moves the deadlines and two teams sign off a crew plan. On Friday morning, after landfall, water pressure drops, damage photos come in, the executive reads the briefing and the auditor checks the record. Each clip shows one part of the platform through the eyes of one role. The storm data is real; the SGW network, people and decisions are synthetic.
+Eight short clips follow one storm through the platform. On Thursday 26 September 2024, about twelve hours before Hurricane Helene makes landfall, a new advisory moves the deadlines and two teams sign off a crew plan. On Friday morning, after landfall, water pressure drops, damage photos come in, the executive reads the briefing and the auditor checks the record. Each clip shows one part of the platform through the eyes of one role. The storm data is real; the SGW network, people and decisions are synthetic.
 
 The clips are silent and captioned. The red label in the top right corner shows which role is signed in.
 
